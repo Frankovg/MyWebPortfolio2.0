@@ -1,8 +1,8 @@
 
-export default function Home() {
+export default function AboutMe() {
   return (
     <main className="flex min-h-screen text-base flex-col items-center justify-between p-24">
-      Hello World!
+      About me
     </main>
   );
 }
