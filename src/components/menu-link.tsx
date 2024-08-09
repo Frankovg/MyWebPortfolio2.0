@@ -1,12 +1,20 @@
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "./ui/navigation-menu"
+import DownloadLinks from "./download-links"
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "./ui/navigation-menu"
 
 type MenuLinkProps = {
   name: string,
-  children: React.ReactNode
   linkStyles?: string,
 }
 
-export default function MenuLink({ name, linkStyles, children }: MenuLinkProps) {
+export default function MenuLink({ name, linkStyles }: MenuLinkProps) {
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -15,9 +23,14 @@ export default function MenuLink({ name, linkStyles, children }: MenuLinkProps) 
             {name}
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <NavigationMenuLink>{children}</NavigationMenuLink>
+            <NavigationMenuLink>
+              <div className="flex flex-col gap-4 items-center w-max h-auto p-4">
+                <DownloadLinks />
+              </div>
+            </NavigationMenuLink>
           </NavigationMenuContent>
         </NavigationMenuItem>
+        <NavigationMenuIndicator className="bg-softGrey h-1.5 transition-all duration-300 ease-in w-0 hover:w-full" />
       </NavigationMenuList>
     </NavigationMenu>
   )

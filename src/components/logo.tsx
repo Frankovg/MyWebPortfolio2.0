@@ -5,7 +5,7 @@ import logo from "../../public/logo.svg"
 export default function Logo() {
   return (
     <Link href='/' >
-      <Image src={logo} alt='Franco Amoroso Web Portfolio logo' className="w-full max-w-[115px] h-auto" />
+      <Image src={logo} alt='Franco Amoroso Web Portfolio logo' className="w-full max-w-[115px] h-auto" priority />
     </Link>
   )
 }
