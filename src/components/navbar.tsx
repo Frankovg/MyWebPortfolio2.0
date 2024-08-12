@@ -24,6 +24,11 @@ type NavLinkProps = {
 }
 
 function NavLink({ href, className, children }: NavLinkProps) {
+
+  //TODO: routing for active links
+
+
+
   return (
     <li>
       <Link href={href} className={cn("text-lg hover:text-white transition-colors duration-300 ease-in-out", className)} >
