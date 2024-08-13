@@ -30,7 +30,9 @@ function MobileMenu({ open, close }: MobileMenuProps) {
             <li>
               <Link href='/#contact' className={linkStyles}>Contact</Link>
             </li>
-            <li><div className="max-[640px]:border-b min-[640px]:border-r min-[640px]:h-8 border-solid border-primary" /></li>
+            <li>
+              <div className="max-[640px]:border-b min-[640px]:border-r min-[640px]:h-8 border-solid border-primary" />
+            </li>
             {SOCIAL.map((socialIcon) => (
               <li key={socialIcon.href}>
                 <Link href={socialIcon.href} className={linkStyles}>

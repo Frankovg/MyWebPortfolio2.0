@@ -1,6 +1,10 @@
-import Link from "next/link";
+import Link from "next/link"
+
+//Components
 import TextAnimation from "./components/text-animation"
-import ArrowRight from "@/icons/arrow-right";
+import ArrowRight from "@/icons/arrow-right"
+import H3 from "@/components/h3"
+import Section from "@/components/section"
 
 // List of titles for the animation
 const toRotate = [
@@ -13,24 +17,24 @@ const toRotate = [
 
 export default function Home() {
   return (
-    <section id="home" className="h-[70vh] flex text-base flex-col items-center p-24">
+    <Section id="home" className="h-[65vh] pt-24">
       <div className="w-full text-center [&_h1]:text-white space-y-3">
-        <h2>Welcome to my portfolio</h2>
+        <h4>Welcome to my portfolio</h4>
         <h1 className="text-7xl font-semibold">Hi! I&apos;m Franco</h1>
         <TextAnimation texts={toRotate} />
-        <h3 className="max-w-[920px] mx-auto py-8">
+        <H3>
           As a <span className="font-semibold text-white">Front-End Developer with a solid design background</span>, I bring a unique perspective to my work, crafting web apps that look great and feel intuitive. Check out my work, and let&apos;s connect if you&apos;ve got questions or want to team up.
-        </h3>
+        </H3>
         <div className="w-fit mx-auto">
           <Link
             href="#contact"
-            className="group text-white font-bold flex items-center"
+            className="group text-white font-bold flex items-center text-lg"
           >
             <span>Let&apos;s connect</span>
             <ArrowRight className="inline-block ml-1 group-hover:translate-x-[5px] duration-300 ease-in w-auto h-5" />
           </Link>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }
