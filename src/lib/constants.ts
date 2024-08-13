@@ -1,4 +1,4 @@
-import Linkedin from "../icons/linkedin"
+import LinkedIn from "../icons/LinkedIn"
 import Github from "../icons/github"
 
 export const ROUTES = [
@@ -23,9 +23,9 @@ export const ROUTES = [
 export const SOCIAL = [
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/in/francoamoroso/",
+    href: "https://www.LinkedIn.com/in/francoamoroso/",
     alt: "LinkedIn icon",
-    icon: Linkedin,
+    icon: LinkedIn,
   },
   {
     name: "Github",

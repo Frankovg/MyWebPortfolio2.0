@@ -1,6 +1,6 @@
 import { SVGProps } from "react"
 
-function Linkedin(props: SVGProps<SVGSVGElement>): JSX.Element {
+function LinkedIn(props: SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg
       width="16"
@@ -24,4 +24,4 @@ function Linkedin(props: SVGProps<SVGSVGElement>): JSX.Element {
   )
 }
 
-export default Linkedin
+export default LinkedIn
