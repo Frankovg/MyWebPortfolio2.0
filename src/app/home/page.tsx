@@ -10,17 +10,16 @@ import Section from "@/components/section"
 const toRotate = [
   "Front-End Developer",
   "UX/UI Designer",
-  "Full-Stack Web Dev",
   "Industrial Designer",
-  "Web Developer",
+  "Web App Developer",
 ]
 
 export default function Home() {
   return (
     <Section id="home" className="h-[65vh] pt-24">
-      <div className="w-full text-center [&_h1]:text-white space-y-3">
+      <div className="w-full text-center [&_h1]:text-white [&_h1]:text-3xl min-[550px]:[&_h1]:text-5xl min-[830px]:[&_h1]:text-7xl [&_h1]:font-semibold space-y-0 min-[550px]:space-y-3">
         <h4>Welcome to my portfolio</h4>
-        <h1 className="text-7xl font-semibold">Hi! I&apos;m Franco</h1>
+        <h1>Hi! I&apos;m Franco</h1>
         <TextAnimation texts={toRotate} />
         <H3>
           As a <span className="font-semibold text-white">Front-End Developer with a solid design background</span>, I bring a unique perspective to my work, crafting web apps that look great and feel intuitive. Check out my work, and let&apos;s connect if you&apos;ve got questions or want to team up.

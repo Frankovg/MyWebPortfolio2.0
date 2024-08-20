@@ -47,7 +47,7 @@ const TextAnimation = ({ texts, period = PERIOD }: TextAnimationProps) => {
   }, [text, isDeleting, delta, fullText, loopNum, period]);
 
   return (
-    <h1 className="text-7xl font-semibold">
+    <h1>
       <span className="border-r-[0.08em] border-solid border-[#6666]">
         {text}
       </span>
