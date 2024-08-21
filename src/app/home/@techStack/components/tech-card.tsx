@@ -1,13 +1,15 @@
+'use client'
+
 import Link from "next/link";
-import Image from "next/image";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Button } from "@/components/ui/button";
+import { SVGProps } from "react";
 
 type TechCardProps = {
   tech: {
     name: string;
     value: string;
-    icon: string;
+    icon: (props: SVGProps<SVGSVGElement>) => JSX.Element;
     description: string;
     link: string;
   },
@@ -16,18 +18,10 @@ type TechCardProps = {
 
 function TechCard({ tech, className = '' }: TechCardProps) {
   return (
-    <HoverCard key={tech.name}>
+    <HoverCard key={tech.name} openDelay={200} closeDelay={150}>
       <HoverCardTrigger asChild>
-        <Button variant={"ghost"} className="flex justify-center h-auto">
-          <Image
-            key={tech.name}
-            src={tech.icon}
-            alt={`${tech.name} logo`}
-            id={tech.name}
-            className={className}
-            width={85}
-            height={85}
-          />
+        <Button variant={"ghost"} className="flex justify-center h-auto cursor-default p-0">
+          <tech.icon className={className} />
         </Button>
       </HoverCardTrigger>
       <HoverCardContent className="w-80 bg-background" sideOffset={2}>
