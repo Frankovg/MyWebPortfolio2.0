@@ -1,37 +1,7 @@
 // logos
 import LinkedIn from "../icons/linkedIn"
 import Github from "../icons/github"
-
-import ReactIcon from "../icons/techs/react"
-import Nextjs from "@/icons/techs/nextjs";
-import Turborepo from "@/icons/techs/turborepo";
-import Js from "@/icons/techs/js";
-import Ts from "@/icons/techs/ts";
-import Css from "@/icons/techs/css";
-import Express from "@/icons/techs/express";
-import Tailwind from "@/icons/techs/tailwind";
-import Ai from "@/icons/techs/ai";
-import Bootstrap from "@/icons/techs/bootstrap";
-import EmotionCss from "@/icons/techs/emotioncss";
-import Firebase from "@/icons/techs/firebase";
-import Git from "@/icons/techs/git";
-import GithubBig from "@/icons/techs/githubbig";
-import Ladle from "@/icons/techs/ladle";
-import MySql from "@/icons/techs/mysql";
-import Playwright from "@/icons/techs/playwright";
-import PostgreSql from "@/icons/techs/postgresql";
-import Prisma from "@/icons/techs/prisma";
-import Ps from "@/icons/techs/ps";
-import Sass from "@/icons/techs/sass";
-import ShadcnUi from "@/icons/techs/shadcnui";
-import Sql from "@/icons/techs/sql";
-import Storybook from "@/icons/techs/storybook";
-import StyledComponents from "@/icons/techs/styledcomponents";
-import Vercel from "@/icons/techs/vercel";
-import Html from "@/icons/techs/html";
-import Figma from "@/icons/techs/figma";
-import Gitlab from "@/icons/techs/gitlab";
-import Node from "@/icons/techs/node";
+import { Ai, Node, Bootstrap, Css, EmotionCss, Express, Figma, Firebase, Git, GithubBig, Gitlab, Html, Js, Ladle, MySql, Nextjs, Playwright, PostgreSql, Prisma, Ps, ReactIcon, Sass, ShadcnUi, Sql, Storybook, StyledComponents, Tailwind, Ts, Turborepo, Vercel } from "@/icons/techs";
 
 export const ROUTES = [
   {

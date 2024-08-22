@@ -1,5 +1,3 @@
-
-
 import { CarouselItem } from "@/components/ui/carousel"
 import { CATEGORIES } from "@/lib/constants"
 
@@ -13,8 +11,8 @@ function CarouselItems() {
               {cat.label}
             </h5>
             {cat.techs.map(tech => (
-              <div key={tech.name} className="flex justify-center">
-                <tech.icon />
+              <div key={tech.name} className="flex justify-center p-4 h-40 max-h-40">
+                <tech.icon className="h-auto w-auto" />
               </div>
             ))}
           </div>

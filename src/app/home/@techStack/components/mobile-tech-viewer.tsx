@@ -4,7 +4,7 @@ import CarouselItems from "./carousel-items";
 function MobileTechViewer() {
   return (
     <section className="sm:hidden w-full flex justify-center px-5">
-      <Carousel className="w-full mx-10">
+      <Carousel className="w-full mx-10" opts={{ loop: true }}>
         <CarouselContent>
           <CarouselItems />
         </CarouselContent>
