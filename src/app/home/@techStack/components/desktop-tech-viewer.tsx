@@ -50,7 +50,7 @@ function DesktopTechViewer() {
             type="button"
             title="Tech stack category"
             onClick={() => handleCategoryChange(cat.value)}
-            className={`text-left pt-3 mt-3 pb-2 pl-1 border-b border-solid transition-all duration-600 ease-in-out hover:bg-white/5 ${selectedCategory === cat.value && 'bg-white/5 text-xl'}`}
+            className={`text-left pt-3 mt-3 pb-2 pl-1 border-b border-solid transition-all duration-600 ease-in-out hover:bg-white/5 ${selectedCategory === cat.value && 'bg-white/5 text-xl text-white'}`}
           >
             {cat.label}
           </button>
