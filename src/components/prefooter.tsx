@@ -3,7 +3,7 @@
 import Image from "next/image"
 
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel"
-import Autoplay from "embla-carousel-autoplay"
+import AutoScroll from 'embla-carousel-auto-scroll'
 
 import img1 from '/public/images/in_profile_1.webp'
 import img2 from '/public/images/in_profile_2.webp'
@@ -43,39 +43,44 @@ const referrals = [
 ]
 
 function Prefooter() {
-
-  //TODO: Update the carousel version and it's plugins API
   return (
-    <Carousel
-      className="w-full mx-10"
-      opts={{
-        loop: true
-      }}
-      plugins={[Autoplay({ delay: 2000, stopOnInteraction: true })]}
-    >
-      <CarouselContent>
-        {referrals.map((ref) => (
-          <CarouselItem key={ref.id}>
-            <article className="grid grid-cols-12 gap-0">
-              <div className="col-span-4">
-                <Image
-                  src={ref.img}
-                  alt='LinkIn profile picture'
-                  className="w-[48px] h-[48px] rounded-full object-cover"
-                />
-              </div>
-              <div className="col-span-8 flex flex-col text-left">
-                <p>{ref.name}</p>
-                <p>{ref.role}</p>
-              </div>
-              <div className="row-start-2 col-start-5 col-span-8">
-                <p>{ref.text}</p>
-              </div>
-            </article>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-    </Carousel>
+    <section className="w-full mt-12 py-6 cursor-move bg-background/30">
+      <Carousel
+        className="w-full"
+        opts={{
+          loop: true
+        }}
+        plugins={[
+          AutoScroll({
+            speed: 1,
+            stopOnInteraction: false,
+          })
+        ]}
+      >
+        <CarouselContent>
+          {referrals.map((ref) => (
+            <CarouselItem key={ref.id} className="basis-[40%]">
+              <article className="grid grid-cols-12 gap-0 ">
+                <div className="col-span-2 flex justify-end">
+                  <Image
+                    src={ref.img}
+                    alt='LinkIn profile picture'
+                    className="w-[48px] h-[48px] rounded-full object-cover mr-4"
+                  />
+                </div>
+                <div className="col-span-10 flex flex-col text-left">
+                  <p className="font-medium text-lg leading-6">{ref.name}</p>
+                  <p className="text-xs opacity-80">{ref.role}</p>
+                </div>
+                <div className="row-start-2 col-start-3 col-span-10">
+                  <p className="italic">{`"${ref.text}"`}</p>
+                </div>
+              </article>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
+    </section>
   )
 }
 
