@@ -60,7 +60,7 @@ type TItem = {
 }
 
 const Li = ({ index, item }: { index: number, item: TItem }) => (
-  <li className="max-sm:text-right">
+  <li className="max-sm:text-center">
     {index === 0 && 'title' in item ? (
       <h6 className="font-medium underline mb-1.5 max-sm:text-xl text-base">{item.title || ''}</h6>
     ) : (
@@ -82,19 +82,19 @@ function Footer() {
             <Logo />
           </div>
 
-          <ul className="max-sm:ml-auto col-start-4 col-span-2 row-start-1 row-span-1 space-y-2">
+          <ul className="max-sm:mx-auto col-start-4 col-span-2 row-start-1 row-span-1 space-y-2">
             {footerLinks.sections.map((section, index) => (
               <Li index={index} item={section} key={index} />
             ))}
           </ul>
 
-          <ul className="max-sm:ml-auto col-start-7 col-span-2 row-start-1 row-span-1 space-y-2">
+          <ul className="max-sm:mx-auto col-start-7 col-span-2 row-start-1 row-span-1 space-y-2">
             {footerLinks.downloads.map((download, index) => (
               <Li index={index} item={download} key={index} />
             ))}
           </ul>
 
-          <ul className="max-sm:ml-auto col-start-10 col-span-2 row-start-1 row-span-1 space-y-2">
+          <ul className="max-sm:mx-auto col-start-10 col-span-2 row-start-1 row-span-1 space-y-2">
             {footerLinks.letsTalk.map((more, index) => (
               <Li index={index} item={more} key={index} />
             ))}
@@ -108,8 +108,8 @@ function Footer() {
           </div>
 
         </div>
-        <div className="absolute right-4 bottom-2.5">
-          <p className="w-full text-xs">Last update: November 2024 | Version: 1.0.0</p>
+        <div className="sm:absolute right-4 bottom-2.5">
+          <p className="text-center w-full text-xs">Last update: November 2024 | Version: 1.0.0</p>
         </div>
       </footer>
     </>
