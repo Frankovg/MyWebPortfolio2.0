@@ -1,10 +1,16 @@
-import type { Metadata } from "next";
-import { Readex_Pro as FontSans } from "next/font/google";
-import "../styles/globals.css";
-import { cn } from "@/lib/utils";
-import Navbar from "@/components/navbar";
+import type { Metadata } from "next"
+
+//Styles
+import { Readex_Pro as FontSans } from "next/font/google"
+import "../styles/globals.css"
+import { cn } from "@/lib/utils"
+
+//Components
+import Navbar from "@/components/navbar"
+import Footer from "@/components/footer"
 import NextNProgress from 'nextjs-toploader'
-import Footer from "@/components/footer";
+import { getProjects } from "@/lib/server-utils"
+import ProjectContextProvider from "@/context/project-provider"
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -33,11 +39,14 @@ export const metadata: Metadata = {
   // },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const data = await getProjects()
+
   return (
     <html lang="en" suppressHydrationWarning >
       <meta property='og:url' content='https://franamoroso.com/' />
@@ -54,7 +63,9 @@ export default function RootLayout({
         <div className="relative flex flex-col min-h-screen w-full z-10">
           <div className="max-w-[1320px] mx-auto ">
             <Navbar />
-            {children}
+            <ProjectContextProvider data={data}>
+              {children}
+            </ProjectContextProvider>
           </div>
           <Footer />
         </div>
