@@ -24,7 +24,7 @@ model Project {
   shortDescription String
   description      String
   image            String
-  slug             String    @unique
+  slug             String
   gallery          Gallery[]
   repository       String?
   websiteUrl       String?
@@ -42,7 +42,7 @@ model Project {
 model Category {
   id       String    @id @default(cuid())
   name     String
-  value    String    @unique
+  value    String
   projects Project[]
 }
 
