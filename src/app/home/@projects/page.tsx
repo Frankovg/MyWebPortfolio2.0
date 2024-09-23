@@ -1,24 +1,23 @@
+//Components
 import H4 from "@/components/h4"
+import H3 from "@/components/h3"
 import Section from "@/components/section"
-import { getProjects } from "@/lib/server-utils"
-import ProjectCard from "./components/project-card"
+import Categories from "./components/categories"
+
+//Utils
+import { getCategories } from "@/lib/server-utils"
 
 async function Projects() {
-  const projects = await getProjects()
+  const categories = await getCategories()
+  console.log(categories);
 
   return (
     <Section id="tech-stack">
       <H4>Projects</H4>
-      <section>
-        {projects.map((project) => {
-          const parsedProject = {
-            image: project.image,
-            title: project.title,
-            description: project.shortDescription,
-          }
-          return <ProjectCard key={project.id} project={parsedProject} />
-        })}
-      </section>
+      <H3>
+        A short exploration of my present as a Front-end Developer and my past as a Designer.
+      </H3>
+      <Categories categories={categories} />
     </Section>
   )
 }
