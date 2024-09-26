@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { CATEGORIES } from "@/lib/client-constants"
 import TechCard from "./tech-card"
 
+//TODO: Its probably better to use the tabs component here
 function DesktopTechViewer() {
   const [selectedCategory, setSelectedCategory] = useState('basics')
   const [transitionClass, setTransitionClass] = useState('opacity-100 translate-y-0')
@@ -31,8 +32,9 @@ function DesktopTechViewer() {
       }, 400)
     }
   }
+
   return (
-    <section className="max-sm:hidden w-full flex">
+    <div className="max-sm:hidden w-full flex">
       <div className={`transition-all duration-500 ease-in-out ${transitionClass} max-sm:w-full w-1/2 min-[930px]:w-3/5 px-12 grid grid-cols-3 min-[640px]:max-[799px]:grid-cols-2 min-[800px]:max-[929px]:grid-cols-3 min-[930px]:grid-cols-4 grid-rows-3 gap-8`}>
         {selectedCategoryObj && selectedCategoryObj.techs.map(tech => (
           <TechCard
@@ -56,7 +58,7 @@ function DesktopTechViewer() {
           </button>
         ))}
       </div>
-    </section>
+    </div>
   )
 }
 

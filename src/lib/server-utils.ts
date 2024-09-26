@@ -1,6 +1,15 @@
 import { Project } from '@prisma/client'
 import prisma from './db'
 
+export async function getCategories() {
+  const categories = await prisma.category.findMany({
+    include: {
+      projects: true
+    }
+  })
+  return categories
+}
+
 export async function getProjects() {
   const projects = await prisma.project.findMany({
     include: {
