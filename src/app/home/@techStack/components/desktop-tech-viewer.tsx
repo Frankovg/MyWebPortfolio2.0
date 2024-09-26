@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { CATEGORIES } from "@/lib/client-constants"
 import TechCard from "./tech-card"
 
+//TODO: Its probably better to use the tabs component here
 function DesktopTechViewer() {
   const [selectedCategory, setSelectedCategory] = useState('basics')
   const [transitionClass, setTransitionClass] = useState('opacity-100 translate-y-0')

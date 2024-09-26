@@ -9,7 +9,6 @@ import { getCategories } from "@/lib/server-utils"
 
 async function Projects() {
   const categories = await getCategories()
-  console.log(categories);
 
   return (
     <Section id="tech-stack">
