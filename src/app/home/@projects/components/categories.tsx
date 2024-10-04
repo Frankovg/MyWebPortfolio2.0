@@ -42,7 +42,7 @@ function Categories({ categories }: CategoriesProps) {
   return (
     <Tabs
       defaultValue='web-development'
-      className="flex flex-col w-full items-center"
+      className="flex flex-col w-full items-center space-y-8 pb-24"
       onValueChange={handleTabChange}
     >
       <TabsList className="w-full flex flex-col lg:flex-row justify-around lg:bg-background h-auto p-2">
@@ -71,7 +71,7 @@ function Categories({ categories }: CategoriesProps) {
           <TabsContent
             key={category.id}
             value={category.value}
-            className={`w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 mt-6 grid-flow-row transition-all duration-300 ease-out ${isCurrent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'} ${isNext && 'opacity-0 translate-y-2'}`}
+            className={`m-0 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid-flow-row gap-4 transition-all duration-300 ease-out ${isCurrent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'} ${isNext && 'opacity-0 translate-y-2'}`}
           >
             {category.projects.map(project => (
               <ProjectCard key={project.id} project={project} />
