@@ -18,25 +18,32 @@ type CategoriesProps = {
 }
 
 function Categories({ categories }: CategoriesProps) {
-  const [transitionClass, setTransitionClass] = useState('opacity-100 translate-y-0')
+  const [currentTab, setCurrentTab] = useState('web-development')
+  const [nextTab, setNextTab] = useState<string | null>(null)
   const [isTransitioning, setIsTransitioning] = useState(false)
 
   useEffect(() => {
     if (isTransitioning) {
-      setTransitionClass('opacity-0 translate-y-2')
       const timer = setTimeout(() => {
-        setTransitionClass('opacity-100 translate-y-0')
+        setCurrentTab(nextTab!)
+        setNextTab(null)
         setIsTransitioning(false)
       }, 400)
 
-      return () => clearTimeout(timer);
+      return () => clearTimeout(timer)
     }
-  }, [isTransitioning])
+  }, [isTransitioning, nextTab])
+
+  const handleTabChange = (value: string) => {
+    setNextTab(value)
+    setIsTransitioning(true)
+  }
 
   return (
     <Tabs
       defaultValue='web-development'
       className="flex flex-col w-full items-center"
+      onValueChange={handleTabChange}
     >
       <TabsList className="w-full flex flex-col lg:flex-row justify-around lg:bg-background h-auto p-2">
         {categories.map((category) => {
@@ -58,8 +65,14 @@ function Categories({ categories }: CategoriesProps) {
       </TabsList>
 
       {categories.map((category) => {
+        const isCurrent = category.value === currentTab
+        const isNext = category.value === nextTab
         return (
-          <TabsContent key={category.id} value={category.value}>
+          <TabsContent
+            key={category.id}
+            value={category.value}
+            className={`w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 mt-6 grid-flow-row transition-all duration-300 ease-out ${isCurrent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'} ${isNext && 'opacity-0 translate-y-2'}`}
+          >
             {category.projects.map(project => (
               <ProjectCard key={project.id} project={project} />
             ))}

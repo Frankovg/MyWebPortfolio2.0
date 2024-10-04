@@ -1,23 +1,32 @@
 import Image from "next/image";
+import Link from "next/link";
 
 type ProjectCardProps = {
   project: {
     image: string,
     title: string,
     shortDescription: string,
+    techStack: string,
+    slug: string,
   }
 }
 
 function ProjectCard({ project }: ProjectCardProps) {
 
   return (
-    <div className="w-1/3 max-w-1/3 rounded overflow-hidden shadow-lg m-4">
+    <Link
+      href={`/project/${project.slug}`}
+      className="w-full overflow-hidden p-2 my-3 rounded shadow-lg shadow-background border border-solid border-darkPrimary transition-all duration-300 ease-in-out hover:bg-background hover:scale-[1.02]"
+    >
       <Image className="w-full" src={project.image} alt={project.title} width={0} height={0} sizes={'100%'} quality={50} />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{project.title}</div>
-        <p className="text-gray-700 text-base">{project.shortDescription}</p>
+        <p className="text-gray-600 text-base">{project.shortDescription}</p>
       </div>
-    </div>
+      <div className="w-[90%] mx-auto border-t border-solid border-darkPrimary text-center pt-2.5 pb-1">
+        <p className="text-xs text-primary/80">{project.techStack}</p>
+      </div>
+    </Link>
   )
 }
 
