@@ -8,54 +8,63 @@ import { Textarea } from "@/components/ui/textarea"
 
 //Utils
 import { useForm } from 'react-hook-form'
-import { sendMail } from '@/lib/send-email'
 
 //Zod
-import { z } from 'zod';
-// import { zodResolver } from '@hookform/resolvers/zod'
+import { zodResolver } from '@hookform/resolvers/zod';
+import { contactFormSchema, TContactForm } from "@/lib/validations"
+import { sendMail } from "@/actions/actions"
+import { toast } from "sonner"
 
-const contactFormSchema = z.object({
-  first_name: z.string().min(2, { message: 'Please enter your first name.' }),
-  last_name: z.string().min(2, { message: 'Please enter your last name.' }),
-  phone: z.string().min(10, { message: 'Please enter a valid phone number.' }),
-  email: z.string().email({ message: 'Please enter a valid email address.' }),
-  message: z.string().min(10, { message: 'Please make sure your message is at least 10 characters long.' }),
-})
+
 
 function ContactForm() {
   const {
     register,
     formState: { errors, isSubmitting },
-  } = useForm<z.infer<typeof contactFormSchema>>({
-    // resolver: zodResolver(contactFormSchema),
-    defaultValues: {
-      first_name: '',
-      last_name: '',
-      phone: '',
-      email: '',
-      message: '',
-    },
+    trigger,
+    getValues,
+  } = useForm<TContactForm>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: undefined,
   })
 
-  const onSubmit = async (values: z.infer<typeof contactFormSchema>) => {
-    const mailText = `Name: ${values.first_name} ${values.last_name}\n  Email: ${values.email}\nMessage: ${values.message}`
-    const response = await sendMail({
-      email: values.email,
-      subject: 'New Contact Us Form',
-      text: mailText,
-    })
-    if (response?.messageId) {
-      // toast.success('Application Submitted Successfully.');
-    } else {
-      // toast.error('Failed To send application.');
-    }
-  };
+  // const onSubmit = async (values: z.infer<typeof contactFormSchema>) => {
+  //   const mailText = `Name: ${values.first_name} ${values.last_name}\n  Email: ${values.email}\nMessage: ${values.message}`
+  //   const response = await sendMail({
+  //     email: values.email,
+  //     subject: 'New Contact Us Form',
+  //     text: mailText,
+  //   })
+  //   if (response?.messageId) {
+  //     toast.success('Application Submitted Successfully.');
+  //   } else {
+  //     toast.error('Failed To send application.');
+  //   }
+  // };
 
   return (
     <div className="w-full pb-24">
       <form
-        action=""
         className="max-w-[645px] mx-auto"
+        action={async () => {
+          const result = await trigger()
+          if (!result) return
+
+          const messageData = getValues()
+          const mailText = `Name: ${messageData.first_name} ${messageData.last_name}\n  Email: ${messageData.email}\n Message: ${messageData.message}`
+          const response = await sendMail({
+            email: messageData.email,
+            subject: `Mensaje de ${messageData.email}`,
+            text: mailText,
+          })
+          if (response?.messageId) {
+            toast.success('Application submitted successfully')
+          } else {
+            toast.error('Failed to send application', {
+              richColors: true
+            })
+          }
+        }}
       >
         <div className="space-y-4">
           <div className="flex flex-col md:flex-row gap-3">
@@ -65,14 +74,12 @@ function ContactForm() {
                 className="bg-transparent"
                 id="first_name"
                 placeholder="John"
-                maxLength={100}
+                // maxLength={100}
                 {...register('first_name')}
               />
               {
                 errors.first_name &&
-                <span className='text-red-500'>
-                  {/* {errors.first_name.message} */}
-                </span>
+                <span className='text-red-500'>{errors.first_name.message}</span>
               }
             </div>
             <div className='space-y-1 w-full'>
@@ -81,14 +88,12 @@ function ContactForm() {
                 className="bg-transparent"
                 id="last_name"
                 placeholder="Doe"
-                maxLength={100}
+                // maxLength={100}
                 {...register('last_name')}
               />
               {
                 errors.last_name &&
-                <span className='text-red-500'>
-                  {/* {errors.last_name.message} */}
-                </span>
+                <span className='text-red-500'>{errors.last_name.message}</span>
               }
             </div>
           </div>
@@ -101,14 +106,12 @@ function ContactForm() {
                 type="tel"
                 id="phone"
                 placeholder="123 456 7890"
-                maxLength={100}
+                // maxLength={100}
                 {...register('phone')}
               />
               {
                 errors.phone &&
-                <span className='text-red-500'>
-                  {/* {errors.phone.message} */}
-                </span>
+                <span className='text-red-500'>{errors.phone.message}</span>
               }
             </div>
             <div className='space-y-1 w-full'>
@@ -118,15 +121,13 @@ function ContactForm() {
                 type="email"
                 id="email"
                 placeholder="john.doe@email.com"
-                required
-                maxLength={100}
+                // required
+                // maxLength={100}
                 {...register('email')}
               />
               {
                 errors.email &&
-                <span className='text-red-500'>
-                  {/* {errors.email.message} */}
-                </span>
+                <span className='text-red-500'>{errors.email.message}</span>
               }
             </div>
           </div>
@@ -144,9 +145,7 @@ function ContactForm() {
             </p>
             {
               errors.message &&
-              <span className='text-red-500'>
-                {/* {errors.message.message} */}
-              </span>
+              <span className='text-red-500'>{errors.message.message}</span>
             }
           </div>
 
