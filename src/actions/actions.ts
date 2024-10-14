@@ -1,10 +1,18 @@
-// --- Project actions ---
+'use server'
 
 import prisma from "@/lib/db"
 import { getProjectById } from "@/lib/server-utils"
 import { sleep } from "@/lib/utils"
 import { revalidatePath } from "next/cache"
+
+//Validations
+import { contactFormSchema, emailSchema, TContactForm } from "@/lib/validations"
+
+//Nodemailer
 import nodemailer from 'nodemailer'
+import SMTPTransport from "nodemailer/lib/smtp-transport"
+
+// --- Contact actions ---
 
 const SMTP_SERVER_HOST = process.env.SMTP_SERVER_HOST
 const SMTP_SERVER_USERNAME = process.env.SMTP_SERVER_USERNAME
@@ -30,30 +38,38 @@ type SendMailProps = {
   html?: string,
 }
 
-export async function sendMail({
-  email,
-  sendTo,
-  subject,
-  text,
-  html,
-}: SendMailProps) {
+export async function sendMail(mail: SendMailProps) {
+  if (process.env.NODE_ENV === 'development') {
+    await sleep(1000)
+  }
+
+  const validateEmail = emailSchema.safeParse(mail)
+  if (!validateEmail.success) {
+    console.error('Invalid mail data.', validateEmail.error)
+  }
+
+  const { email, subject, text, html, sendTo } = mail
+
+  let isVerified = false
   try {
-    const isVerified = await transporter.verify()
+    isVerified = await transporter.verify()
   } catch (error) {
     console.error('Something Went Wrong', SMTP_SERVER_USERNAME, SMTP_SERVER_PASSWORD, error)
     return
   }
 
-  const info = await transporter.sendMail({
-    from: email,
-    to: sendTo || SITE_MAIL_RECIEVER,
-    subject: subject,
-    text: text,
-    html: html ? html : '',
-  })
-
-  console.log('Message Sent', info.messageId)
-  console.log('Mail sent to', SITE_MAIL_RECIEVER)
+  let info: SMTPTransport.SentMessageInfo | undefined
+  if (isVerified) {
+    info = await transporter.sendMail({
+      from: email,
+      to: sendTo || SITE_MAIL_RECIEVER,
+      subject: subject,
+      text: text,
+      html: html ? html : '',
+    })
+    console.log('Message Sent', info.messageId)
+    console.log('Mail sent to', SITE_MAIL_RECIEVER)
+  }
 
   return info
 }

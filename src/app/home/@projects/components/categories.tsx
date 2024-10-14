@@ -73,9 +73,13 @@ function Categories({ categories }: CategoriesProps) {
             value={category.value}
             className={`m-0 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid-flow-row gap-4 transition-all duration-300 ease-out ${isCurrent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'} ${isNext && 'opacity-0 translate-y-2'}`}
           >
-            {category.projects.map(project => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
+            {category.projects.map((project, index) => {
+              if (index <= 5) {
+                return (
+                  <ProjectCard key={project.id} project={project} />
+                )
+              }
+            })}
           </TabsContent>
         )
       })}

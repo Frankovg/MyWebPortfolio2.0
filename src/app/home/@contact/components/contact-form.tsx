@@ -5,45 +5,40 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import { toast, Toaster } from "sonner"
 
 //Utils
 import { useForm } from 'react-hook-form'
 
 //Zod
 import { zodResolver } from '@hookform/resolvers/zod';
+
+//Validations
 import { contactFormSchema, TContactForm } from "@/lib/validations"
+
+//Actions
 import { sendMail } from "@/actions/actions"
-import { toast } from "sonner"
 
-
+//TODO: agregar spinner al boton
+//TODO: borrar inputs al enviar correctamente
+//TODO: cambiar estilos del toast
+//TODO: testear inputs con datos erroneos y verificar mensajes de error
+//TODO: probar distintos formatos de telefonos
 
 function ContactForm() {
   const {
     register,
-    formState: { errors, isSubmitting },
     trigger,
     getValues,
+    formState: { errors, isSubmitting },
   } = useForm<TContactForm>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: undefined,
   })
 
-  // const onSubmit = async (values: z.infer<typeof contactFormSchema>) => {
-  //   const mailText = `Name: ${values.first_name} ${values.last_name}\n  Email: ${values.email}\nMessage: ${values.message}`
-  //   const response = await sendMail({
-  //     email: values.email,
-  //     subject: 'New Contact Us Form',
-  //     text: mailText,
-  //   })
-  //   if (response?.messageId) {
-  //     toast.success('Application Submitted Successfully.');
-  //   } else {
-  //     toast.error('Failed To send application.');
-  //   }
-  // };
-
   return (
     <div className="w-full pb-24">
+      <Toaster />
       <form
         className="max-w-[645px] mx-auto"
         action={async () => {
@@ -52,11 +47,13 @@ function ContactForm() {
 
           const messageData = getValues()
           const mailText = `Name: ${messageData.first_name} ${messageData.last_name}\n  Email: ${messageData.email}\n Message: ${messageData.message}`
-          const response = await sendMail({
+          const mail = {
             email: messageData.email,
             subject: `Mensaje de ${messageData.email}`,
             text: mailText,
-          })
+          }
+          const response = await sendMail(mail)
+
           if (response?.messageId) {
             toast.success('Application submitted successfully')
           } else {
@@ -105,7 +102,7 @@ function ContactForm() {
                 className="bg-transparent"
                 type="tel"
                 id="phone"
-                placeholder="123 456 7890"
+                placeholder="+34 608 222 555"
                 // maxLength={100}
                 {...register('phone')}
               />
