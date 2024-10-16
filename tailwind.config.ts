@@ -31,6 +31,8 @@ const config = {
         softGrey: "#d9d9d91a",
         darkGrey: "#242424",
         whiteText: "#ffffffb3",
+        success: "#5cedc2",
+        error: "#e453bc",
       },
       borderRadius: {
         lg: "var(--radius)",

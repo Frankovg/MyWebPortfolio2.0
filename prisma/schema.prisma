@@ -1,0 +1,54 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// for development, use sqlite
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// for production, use postgres
+// datasource db {
+//   provider = "postgresql"
+//   url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+//   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+// }
+
+model Project {
+  id               String    @id @default(cuid())
+  title            String
+  shortDescription String
+  description      String
+  image            String
+  slug             String
+  gallery          Gallery[]
+  repository       String?
+  websiteUrl       String?
+  videoUrl         String?
+  company          String?
+  client           String?
+  techStack        String
+  category         Category  @relation(fields: [categoryId], references: [id])
+  categoryId       String
+  updatedAt        DateTime  @updatedAt
+  createdAt        DateTime  @default(now())
+  published        Boolean   @default(true)
+}
+
+model Category {
+  id       String    @id @default(cuid())
+  name     String
+  value    String
+  projects Project[]
+}
+
+model Gallery {
+  id        String  @id @default(cuid())
+  imageUrl  String
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id])
+}

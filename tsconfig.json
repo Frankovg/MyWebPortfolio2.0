@@ -20,10 +20,6 @@
       }
     ],
     "paths": {
-      "@/components/*": ["./src/components/*"],
-      "@/services/*": ["./src/services/*"],
-      "@/hooks/*": ["./src/hooks/*"],
-      "@/lib/*": ["./src/lib/*"],
       "@/*": ["./src/*"]
     }
   },
