@@ -1,9 +1,78 @@
-// --- Project actions ---
+'use server'
 
 import prisma from "@/lib/db"
 import { getProjectById } from "@/lib/server-utils"
 import { sleep } from "@/lib/utils"
 import { revalidatePath } from "next/cache"
+
+//Validations
+import { contactFormSchema, emailSchema, TContactForm } from "@/lib/validations"
+
+//Nodemailer
+import nodemailer from 'nodemailer'
+import SMTPTransport from "nodemailer/lib/smtp-transport"
+
+// --- Contact actions ---
+
+const SMTP_SERVER_HOST = process.env.SMTP_SERVER_HOST
+const SMTP_SERVER_USERNAME = process.env.SMTP_SERVER_USERNAME
+const SMTP_SERVER_PASSWORD = process.env.SMTP_SERVER_PASSWORD
+const SITE_MAIL_RECIEVER = process.env.SITE_MAIL_RECIEVER
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  host: SMTP_SERVER_HOST,
+  port: 587,
+  secure: true,
+  auth: {
+    user: SMTP_SERVER_USERNAME,
+    pass: SMTP_SERVER_PASSWORD,
+  },
+})
+
+type SendMailProps = {
+  email: string,
+  sendTo?: string,
+  subject: string,
+  text: string,
+  html?: string,
+}
+
+export async function sendMail(mail: SendMailProps) {
+  if (process.env.NODE_ENV === 'development') {
+    await sleep(1000)
+  }
+
+  const validateEmail = emailSchema.safeParse(mail)
+  if (!validateEmail.success) {
+    console.error('Invalid mail data.', validateEmail.error)
+  }
+
+  const { email, subject, text, html, sendTo } = mail
+
+  let isVerified = false
+  try {
+    isVerified = await transporter.verify()
+  } catch (error) {
+    console.error('Something Went Wrong', SMTP_SERVER_USERNAME, SMTP_SERVER_PASSWORD, error)
+    return
+  }
+
+  let info: SMTPTransport.SentMessageInfo | undefined
+  if (isVerified) {
+    info = await transporter.sendMail({
+      from: email,
+      to: sendTo || SITE_MAIL_RECIEVER,
+      subject: subject,
+      text: text,
+      html: html ? html : '',
+    })
+    console.log('Message Sent', info.messageId)
+    console.log('Mail sent to', SITE_MAIL_RECIEVER)
+  }
+
+  return info
+}
 
 export async function addProject(project: unknown) {
   if (process.env.NODE_ENV === 'development') {

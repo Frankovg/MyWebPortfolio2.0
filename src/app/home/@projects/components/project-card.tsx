@@ -16,12 +16,14 @@ function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Link
       href={`/project/${project.slug}`}
-      className="w-full overflow-hidden p-2 my-3 rounded shadow-lg shadow-background border border-solid border-darkPrimary transition-all duration-300 ease-in-out hover:bg-background hover:scale-[1.02]"
+      className="w-full flex flex-col justify-between overflow-hidden p-2 rounded shadow-lg shadow-background border border-solid border-darkPrimary transition-all duration-300 ease-in-out hover:bg-background hover:scale-[1.02]"
     >
-      <Image className="w-full" src={project.image} alt={project.title} width={0} height={0} sizes={'100%'} quality={50} />
-      <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">{project.title}</div>
-        <p className="text-gray-600 text-base">{project.shortDescription}</p>
+      <div className="w-full h-auto">
+        <Image className="w-full" src={project.image} alt={project.title} width={0} height={0} sizes={'100%'} quality={50} />
+        <div className="px-6 py-4">
+          <div className="font-bold text-xl mb-2">{project.title}</div>
+          <p className="text-gray-600 text-base">{project.shortDescription}</p>
+        </div>
       </div>
       <div className="w-[90%] mx-auto border-t border-solid border-darkPrimary text-center pt-2.5 pb-1">
         <p className="text-xs text-primary/80">{project.techStack}</p>
