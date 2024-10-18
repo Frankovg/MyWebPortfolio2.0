@@ -1,12 +1,16 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
-import { DOWNLOADS } from '@/lib/constants'
+import { useUserDataContext } from '@/hooks/useUserDataContext'
 
 function DownloadLinks() {
+  const { downloads } = useUserDataContext()
+
   return (
     <>
-      {DOWNLOADS.map((download) => (
-        <Link href={download.href} target="_blank" className="group relative overflow-hidden" key={download.name}>
+      {downloads.map((download) => (
+        <Link href={download.href || '#'} target="_blank" className="group relative overflow-hidden" key={download.name}>
           <Image
             src={download.img}
             alt={download.name}

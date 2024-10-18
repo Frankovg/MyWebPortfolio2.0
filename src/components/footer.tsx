@@ -1,7 +1,8 @@
-import { DOWNLOADS } from "@/lib/constants"
 import Logo from "./logo"
 import Link from "next/link"
 import Prefooter from "./prefooter"
+import packageJson from '../../package.json'
+import DownloadLinksFooter from "./download-links-footer"
 
 const footerLinks = {
   sections: [
@@ -21,19 +22,6 @@ const footerLinks = {
       href: '/projects'
     }
   ],
-  downloads: [
-    {
-      title: 'Downloads'
-    },
-    {
-      name: 'Curriculum Vitae',
-      href: DOWNLOADS[0].href
-    },
-    {
-      name: 'Portfolio',
-      href: DOWNLOADS[1].href
-    }
-  ],
   letsTalk: [
     {
       title: "Let's Talk"
@@ -48,18 +36,18 @@ const footerLinks = {
     },
     {
       name: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/francoamoroso/'
+      href: process.env.LINKEDIN_URL
     }
   ]
 }
 
-type TItem = {
+export type TItem = {
   name?: string,
   href?: string
   title?: string,
 }
 
-const Li = ({ index, item }: { index: number, item: TItem }) => (
+export const Li = ({ index, item }: { index: number, item: TItem }) => (
   <li className="max-sm:text-center">
     {index === 0 && 'title' in item ? (
       <h6 className="font-medium underline mb-1.5 max-sm:text-xl text-base">{item.title || ''}</h6>
@@ -89,9 +77,7 @@ function Footer() {
           </ul>
 
           <ul className="max-sm:mx-auto col-start-7 col-span-2 row-start-1 row-span-1 space-y-2">
-            {footerLinks.downloads.map((download, index) => (
-              <Li index={index} item={download} key={index} />
-            ))}
+            <DownloadLinksFooter />
           </ul>
 
           <ul className="max-sm:mx-auto col-start-10 col-span-2 row-start-1 row-span-1 space-y-2">
@@ -109,7 +95,7 @@ function Footer() {
 
         </div>
         <div className="sm:absolute right-4 bottom-2.5">
-          <p className="text-center w-full text-xs">Last update: November 2024 | Version: 1.0.0</p>
+          <p className="text-center w-full text-xs">Last update: November 2024 | Version: {packageJson.version}</p>
         </div>
       </footer>
     </>
