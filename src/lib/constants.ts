@@ -1,6 +1,4 @@
 // logos
-import LinkedIn from "../icons/linkedIn"
-import Github from "../icons/github"
 import { Ai, Node, Bootstrap, Css, EmotionCss, Express, Figma, Firebase, Git, GithubBig, Gitlab, Html, Js, Ladle, MySql, Nextjs, Playwright, PostgreSql, Prisma, Ps, ReactIcon, Sass, ShadcnUi, Sql, Storybook, StyledComponents, Tailwind, Ts, Turborepo, Vercel } from "@/icons/techs";
 
 //Images
@@ -25,21 +23,6 @@ export const ROUTES = [
     path: '/about-me'
   },
 ]
-
-export const SOCIAL = [
-  {
-    name: "LinkedIn",
-    href: "https://www.LinkedIn.com/in/francoamoroso/",
-    alt: "LinkedIn icon",
-    icon: LinkedIn,
-  },
-  {
-    name: "Github",
-    href: "https://github.com/Frankovg",
-    alt: "Github icon",
-    icon: Github,
-  },
-];
 
 export const CATEGORIES = [
   {
@@ -108,17 +91,4 @@ export const CATEGORIES = [
       { name: 'Firebase', value: 'firebase', description: "A platform developed by Google for creating mobile and web applications.", link: "https://firebase.google.com/", icon: Firebase },
     ]
   }
-]
-
-export const DOWNLOADS = [
-  {
-    name: "Curriculum Vitae",
-    href: "https://drive.google.com/file/d/1IOwsxqChdt0bWAtnU5dXfpqcK6L6ZKLG/view?usp=sharing",
-    img: downloadCv
-  },
-  {
-    name: "Portfolio",
-    href: "https://drive.google.com/file/d/14Hjmod8Uf0y7DHNt--0mgk51Y0WFbeCk/view?usp=sharing",
-    img: downloadPortfolio
-  },
 ]

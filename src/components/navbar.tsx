@@ -15,7 +15,10 @@ import { cn } from "@/lib/utils"
 import { ReactNode, useEffect, useState } from "react"
 
 //Constants
-import { ROUTES, SOCIAL } from "@/lib/constants"
+import { ROUTES } from "@/lib/constants"
+
+//Context
+import { useUserDataContext } from "@/hooks/useUserDataContext"
 
 type NavLinkProps = {
   href: string,
@@ -52,16 +55,18 @@ function NavLinks() {
 }
 
 function SocialNavLinks() {
-  const socialLinks = SOCIAL.map((socialIcon) => (
+  const { socials } = useUserDataContext()
+
+  const socialLinks = socials.map((socialIcon) => (
     <Link
       key={socialIcon.href}
-      href={socialIcon.href}
+      href={socialIcon.href || '#'}
       target="_blank"
       rel="noopener noreferrer"
       className="group relative inline-flex items-center justify-center bg-softGrey border border-solid border-whiteText rounded-full h-[42px] w-[42px] transition duration-300 ease-in hover:border-background"
     >
       <span className="absolute inset-0 bg-primary rounded-full transform scale-0 transition-transform duration-300 ease-in-out group-hover:scale-100" />
-      <socialIcon.icon className="w-4 h-4 z-10 transition-colors group-hover:fill-darkGrey" />
+      {socialIcon.icon}
     </Link>
   ))
   return <li className="flex items-center gap-1.5">{socialLinks}</li>
