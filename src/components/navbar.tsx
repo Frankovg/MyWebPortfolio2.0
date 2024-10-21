@@ -7,6 +7,7 @@ import Logo from "./logo"
 import MenuLink from "./menu-link"
 import MobileMenu from "./mobile-menu"
 import Burguer from "@/icons/burguer"
+import ScrollLink from "./scroll-link"
 
 //Utils
 import { cn } from "@/lib/utils"
@@ -27,16 +28,18 @@ type NavLinkProps = {
 }
 
 function NavLink({ href, className, children }: NavLinkProps) {
-
   //TODO: routing for active links
-
-
-
   return (
     <li>
-      <Link href={href} className={cn("text-lg hover:text-white transition-colors duration-300 ease-in-out", className)} >
-        {children}
-      </Link>
+      {!href.includes('about-me') ? (
+        <ScrollLink id={href} className={cn("text-lg hover:text-white transition-colors duration-300 ease-in-out", className)} >
+          {children}
+        </ScrollLink>
+      ) : (
+        <Link href={href} className={cn("text-lg hover:text-white transition-colors duration-300 ease-in-out", className)} >
+          {children}
+        </Link>
+      )}
     </li>
   )
 }
@@ -75,15 +78,15 @@ function SocialNavLinks() {
 function LetsConnectLink() {
   return (
     <li className="max-[600px]:hidden">
-      <Link
-        href='#connect'
+      <ScrollLink
+        id='contact'
         className="group relative border border-solid border-whiteText text-lg font-semibold py-[18px] px-[34px] transition duration-300 ease-in hover:border-background overflow-hidden"
       >
         <span className="absolute inset-0 bg-primary transform w-0 transition-all duration-300 ease-in-out group-hover:w-full" />
         <span className="relative z-10 transition-colors group-hover:text-darkGrey">
           Let&apos;s Connect
         </span>
-      </Link>
+      </ScrollLink>
     </li>
   )
 }
@@ -153,7 +156,7 @@ export default function Navbar() {
 
           <div className="w-fit">
             <ul className={cn(ulStyles, 'gap-6')}>
-              <NavLink href={ROUTES[ROUTES.length - 1].path} className="ml-10 max-[830px]:hidden">{ROUTES[ROUTES.length - 1].label}</NavLink>
+              <NavLink href='about-me' className="ml-10 max-[830px]:hidden">About me</NavLink>
               <SocialNavLinks />
               <LetsConnectLink />
               <MobileMenuButton open={handleOpenMenu} />

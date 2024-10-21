@@ -1,17 +1,15 @@
 'use client'
 
 import { useUserDataContext } from "@/hooks/useUserDataContext"
-import { Li, TItem } from "./footer"
+import { TItem } from "./footer"
 import { useMemo } from "react"
+import Link from "next/link"
 
 function DownloadLinksFooter() {
   const { downloads } = useUserDataContext()
 
   let _downloads = useMemo(() => {
     const links: TItem[] = [
-      {
-        title: 'Downloads'
-      },
       ...downloads.map((download) => ({
         name: download.name,
         href: download.href,
@@ -23,7 +21,11 @@ function DownloadLinksFooter() {
   return (
     <>
       {_downloads.map((download, index) => (
-        <Li index={index} item={download} key={index} />
+        <li className="max-sm:text-center" key={index}>
+          <Link href={download.href || '#'} className="font-normal hover:text-white max-sm:text-lg" >
+            {download.name || ''}
+          </Link>
+        </li>
       ))}
     </>
   )
