@@ -3,7 +3,7 @@ import MobileTechViewer from "./mobile-tech-viewer";
 
 function TechViewer() {
   return (
-    <div className="w-full max-w-5xl flex max-sm:flex-col-reverse pb-24">
+    <div className="w-full max-w-5xl flex max-sm:flex-col-reverse">
       <DesktopTechViewer />
       <MobileTechViewer />
     </div>

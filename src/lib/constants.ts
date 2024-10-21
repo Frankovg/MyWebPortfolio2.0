@@ -1,26 +1,22 @@
 // logos
 import { Ai, Node, Bootstrap, Css, EmotionCss, Express, Figma, Firebase, Git, GithubBig, Gitlab, Html, Js, Ladle, MySql, Nextjs, Playwright, PostgreSql, Prisma, Ps, ReactIcon, Sass, ShadcnUi, Sql, Storybook, StyledComponents, Tailwind, Ts, Turborepo, Vercel } from "@/icons/techs";
 
-//Images
-import downloadCv from '/public/download-cv.webp'
-import downloadPortfolio from '/public/download-portfolio.webp'
-
 export const ROUTES = [
   {
     label: 'Home',
-    path: '/'
+    path: 'home'
   },
   {
     label: 'Tech stack',
-    path: '/#tech-stack'
+    path: 'tech-stack'
   },
   {
     label: 'Projects',
-    path: '/#projects'
+    path: 'projects'
   },
   {
     label: 'About me',
-    path: '/about-me'
+    path: 'about-me'
   },
 ]
 

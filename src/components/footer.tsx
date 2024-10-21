@@ -3,29 +3,24 @@ import Link from "next/link"
 import Prefooter from "./prefooter"
 import packageJson from '../../package.json'
 import DownloadLinksFooter from "./download-links-footer"
+import ScrollLink from "./scroll-link"
 
 const footerLinks = {
   sections: [
     {
-      title: 'Sections'
-    },
-    {
       name: 'Home',
-      href: '/'
+      href: 'home'
     },
     {
       name: 'Tech Stack',
-      href: '/#tech-stack'
+      href: 'tech-stack'
     },
     {
       name: 'Projects',
-      href: '/projects'
+      href: 'projects'
     }
   ],
   letsTalk: [
-    {
-      title: "Let's Talk"
-    },
     {
       name: 'About',
       href: '/about-me'
@@ -47,19 +42,6 @@ export type TItem = {
   title?: string,
 }
 
-export const Li = ({ index, item }: { index: number, item: TItem }) => (
-  <li className="max-sm:text-center">
-    {index === 0 && 'title' in item ? (
-      <h6 className="font-medium underline mb-1.5 max-sm:text-xl text-base">{item.title || ''}</h6>
-    ) : (
-      <Link href={item.href || '#'} className="font-normal hover:text-white max-sm:text-lg" >
-        {item.name || ''}
-      </Link>
-    )}
-  </li>
-)
-
-
 function Footer() {
   return (
     <>
@@ -71,18 +53,29 @@ function Footer() {
           </div>
 
           <ul className="max-sm:mx-auto col-start-4 col-span-2 row-start-1 row-span-1 space-y-2">
+            <li><h6 className="font-medium underline mb-1.5 max-sm:text-xl text-base">Sections</h6></li>
             {footerLinks.sections.map((section, index) => (
-              <Li index={index} item={section} key={index} />
+              <li className="max-sm:text-center" key={index}>
+                <ScrollLink id={section.href || '#'} className="font-normal hover:text-white max-sm:text-lg" >
+                  {section.name || ''}
+                </ScrollLink>
+              </li>
             ))}
           </ul>
 
           <ul className="max-sm:mx-auto col-start-7 col-span-2 row-start-1 row-span-1 space-y-2">
+            <li><h6 className="font-medium underline mb-1.5 max-sm:text-xl text-base">Downloads</h6></li>
             <DownloadLinksFooter />
           </ul>
 
           <ul className="max-sm:mx-auto col-start-10 col-span-2 row-start-1 row-span-1 space-y-2">
-            {footerLinks.letsTalk.map((more, index) => (
-              <Li index={index} item={more} key={index} />
+            <li><h6 className="font-medium underline mb-1.5 max-sm:text-xl text-base">Let&apos;s Talk</h6></li>
+            {footerLinks.letsTalk.map((item, index) => (
+              <li className="max-sm:text-center" key={index}>
+                <Link href={item.href || '#'} className="font-normal hover:text-white max-sm:text-lg" >
+                  {item.name || ''}
+                </Link>
+              </li>
             ))}
           </ul>
 

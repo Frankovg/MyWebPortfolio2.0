@@ -5,7 +5,7 @@ import TechViewer from "./components/tech-viewer"
 
 function TechStack() {
   return (
-    <Section id="tech-stack">
+    <Section id="tech-stack" className="pt-[15vh]">
       <H4>Tech Stack</H4>
       <H3 className="max-w-[600px] pt-0">
         These are the hottest technologies right now. I enjoy staying up-to-date and continuously expanding my knowledge and skills.

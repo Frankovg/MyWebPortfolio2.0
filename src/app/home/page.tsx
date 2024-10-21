@@ -16,7 +16,7 @@ const toRotate = [
 
 export default function Home() {
   return (
-    <Section id="home" className="h-[65vh] pt-24">
+    <Section id="home" className="h-[50vh] pt-24">
       <div className="w-full text-center [&_h1]:text-white [&_h1]:text-3xl min-[550px]:[&_h1]:text-5xl min-[830px]:[&_h1]:text-7xl [&_h1]:font-semibold space-y-0 min-[550px]:space-y-3">
         <h4>Welcome to my portfolio</h4>
         <h1>Hi! I&apos;m Franco</h1>

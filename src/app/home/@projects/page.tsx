@@ -11,7 +11,7 @@ async function Projects() {
   const categories = await getCategories()
 
   return (
-    <Section id="tech-stack">
+    <Section id="projects" className="pt-24">
       <H4>Projects</H4>
       <H3>
         A short exploration of my present as a Front-end Developer and my past as a Designer.

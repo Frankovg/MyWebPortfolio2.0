@@ -6,6 +6,7 @@ import Link from "next/link"
 import { ROUTES } from "@/lib/constants"
 import DownloadLinks from "./download-links"
 import { useUserDataContext } from "@/hooks/useUserDataContext"
+import ScrollLink from "./scroll-link"
 
 type MobileMenuProps = {
   open: boolean,
@@ -25,9 +26,15 @@ function MobileMenu({ open, close }: MobileMenuProps) {
           <ul className="w-full h-fit text-right min-[640px]:text-left max-[640px]:space-y-5 text-2xl flex max-[640px]:flex-col flex-row min-[640px]:gap-6 min-[640px]:items-center min-[640px]:justify-center flex-wrap">
             {ROUTES.map((route) => (
               <li key={route.path}>
-                <Link href={route.path} onClick={close} className={linkStyles}>
-                  {route.label}
-                </Link>
+                {route.path === 'about-me' ? (
+                  <Link href={route.path} onClick={close} className={linkStyles}>
+                    {route.label}
+                  </Link>
+                ) : (
+                  <ScrollLink id={route.path} className={linkStyles} onClick={close}>
+                    {route.label}
+                  </ScrollLink>
+                )}
               </li>
             ))}
             <li>

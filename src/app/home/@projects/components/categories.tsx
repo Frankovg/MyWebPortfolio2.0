@@ -42,7 +42,7 @@ function Categories({ categories }: CategoriesProps) {
   return (
     <Tabs
       defaultValue='web-development'
-      className="flex flex-col w-full items-center space-y-8 pb-24"
+      className="flex flex-col w-full items-center space-y-8"
       onValueChange={handleTabChange}
     >
       <TabsList className="w-full flex flex-col lg:flex-row justify-around lg:bg-background h-auto p-2">
