@@ -1,10 +1,9 @@
-import Link from "next/link"
-
 //Components
 import TextAnimation from "./components/text-animation"
 import ArrowRight from "@/icons/arrow-right"
 import H3 from "@/components/h3"
 import Section from "@/components/section"
+import ScrollLink from "@/components/scroll-link"
 
 // List of titles for the animation
 const toRotate = [
@@ -25,13 +24,13 @@ export default function Home() {
           As a <span className="font-semibold text-white">Front-End Developer with a solid design background</span>, I bring a unique perspective to my work, crafting web apps that look great and feel intuitive. Check out my work, and let&apos;s connect if you&apos;ve got questions or want to team up.
         </H3>
         <div className="w-fit mx-auto">
-          <Link
-            href="#contact"
+          <ScrollLink
+            id='contact'
             className="group text-white font-bold flex items-center text-lg"
           >
             <span>Let&apos;s connect</span>
             <ArrowRight className="inline-block ml-1 group-hover:translate-x-[5px] duration-300 ease-in w-auto h-5" />
-          </Link>
+          </ScrollLink>
         </div>
       </div>
     </Section>
