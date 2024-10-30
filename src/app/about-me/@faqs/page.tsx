@@ -3,13 +3,14 @@ import H4 from "@/components/h4"
 import H3 from "@/components/h3"
 import Section from "@/components/section"
 import FaqsAccordion from "./components/faqs-accordion"
+import WorkedWith from "./components/worked-with"
 
 async function Faqs() {
   const items = [
     {
       id: 'item-1',
       trigger: "Companies I've collaborated with",
-      content: <span>Yes. It adheres to the WAI-ARIA design pattern.</span>
+      content: <WorkedWith />
     },
     {
       id: 'item-2',

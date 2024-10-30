@@ -1,5 +1,6 @@
 // logos
 import { Ai, Node, Bootstrap, Css, EmotionCss, Express, Figma, Firebase, Git, GithubBig, Gitlab, Html, Js, Ladle, MySql, Nextjs, Playwright, PostgreSql, Prisma, Ps, ReactIcon, Sass, ShadcnUi, Sql, Storybook, StyledComponents, Tailwind, Ts, Turborepo, Vercel } from "@/icons/techs";
+import { Alex, AsafeDigital, Fix, GrupoQuiero, Ikea, Micropack, Norush, Pubext } from "@/icons/jobs"
 
 export const ROUTES = [
   {
@@ -87,4 +88,15 @@ export const CATEGORIES = [
       { name: 'Firebase', value: 'firebase', description: "A platform developed by Google for creating mobile and web applications.", link: "https://firebase.google.com/", icon: Firebase },
     ]
   }
+]
+
+export const WORKED_WITH = [
+  { name: 'EstudioFIX', value: 'estudio-fix', description: "An innovative industrial design studio specializing in creating functional and aesthetically pleasing products.", link: "https://www.linkedin.com/company/estudio-fix/", icon: Fix },
+  { name: 'Micropack', value: 'micropack', description: " Design and development of packing, display cases, packaging, POPs (Points of Purchase), display-flash and elements of visual communication made from corrugated cardboard.", link: "https://micropacklatamamericas.godaddysites.com/", icon: Micropack },
+  { name: 'Grupo Quiero', value: 'grupo-quiero', description: "A leading company specializing in brand design, P.O.P displays, and commercial architecture, dedicated to creating impactful and innovative solutions.", link: "https://www.grupoquiero.com/", icon: GrupoQuiero },
+  { name: 'Norush', value: 'norush', description: "A brand of wallets made with Tyvek® known for their durability and unique design.", link: "", icon: Norush },
+  { name: 'Pubext', value: 'pubext', description: "A full-service advertising agency primarily focused on outdoor advertising and large-format printing, offering tailored communication solutions for your business.", link: "https://pubext.com/", icon: Pubext },
+  { name: 'Ikea', value: 'ikea', description: "A global leader in home furnishings, offering a wide range of well-designed, functional products at affordable prices.", link: "https://www.ikea.com/es/es/", icon: Ikea },
+  { name: 'RotulosAlex', value: 'rotulos-alex', description: "An studio specializing in creating impactful and visually appealing outdoor advertising solutions.", link: "", icon: Alex },
+  { name: 'A-SAFE Digital', value: 'a-safe-digital', description: "A software development studio specializing in creating innovative and efficient digital solutions.", link: "https://asafedigital.com/", icon: AsafeDigital },
 ]
