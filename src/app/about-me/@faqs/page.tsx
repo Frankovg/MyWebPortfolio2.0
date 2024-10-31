@@ -4,18 +4,19 @@ import H3 from "@/components/h3"
 import Section from "@/components/section"
 import FaqsAccordion from "./components/faqs-accordion"
 import WorkedWith from "./components/worked-with"
+import CompanyClients from "./components/company-clients"
 
 async function Faqs() {
   const items = [
     {
       id: 'item-1',
-      trigger: "Companies I've collaborated with",
+      trigger: "Companies where I've worked",
       content: <WorkedWith />
     },
     {
       id: 'item-2',
       trigger: "Clients I've collaborated with",
-      content: <span>Yes. It adheres to the WAI-ARIA design pattern.</span>
+      content: <CompanyClients />
     },
     {
       id: 'item-3',

@@ -1,6 +1,7 @@
 // logos
 import { Ai, Node, Bootstrap, Css, EmotionCss, Express, Figma, Firebase, Git, GithubBig, Gitlab, Html, Js, Ladle, MySql, Nextjs, Playwright, PostgreSql, Prisma, Ps, ReactIcon, Sass, ShadcnUi, Sql, Storybook, StyledComponents, Tailwind, Ts, Turborepo, Vercel } from "@/icons/techs";
 import { Alex, AsafeDigital, Fix, GrupoQuiero, Ikea, Micropack, Norush, Pubext } from "@/icons/jobs"
+import { Amstel, Axe, CocaCola, Coty, CruzCampo, ElAguila, Garnier, Gillete, Johnsons, Loreal, Maybelline, Mondelez, Movistar, Nestle, NewBalance, Pepsico, Refresco, Rimmel, SallyHansen, TheProcterAndGambleCompany, Unilever, ViaCelere, Vichy, Volkswagen } from "@/icons/companies"
 
 export const ROUTES = [
   {
@@ -92,11 +93,29 @@ export const CATEGORIES = [
 
 export const WORKED_WITH = [
   { name: 'EstudioFIX', value: 'estudio-fix', description: "An innovative industrial design studio specializing in creating functional and aesthetically pleasing products.", link: "https://www.linkedin.com/company/estudio-fix/", icon: Fix },
-  { name: 'Micropack', value: 'micropack', description: " Design and development of packing, display cases, packaging, POPs (Points of Purchase), display-flash and elements of visual communication made from corrugated cardboard.", link: "https://micropacklatamamericas.godaddysites.com/", icon: Micropack },
+  { name: 'Micropack', value: 'micropack', description: "Design and development of packing, display cases, packaging, POPs (Points of Purchase), display-flash and elements of visual communication made from corrugated cardboard.", link: "https://micropacklatamamericas.godaddysites.com/", icon: Micropack },
   { name: 'Grupo Quiero', value: 'grupo-quiero', description: "A leading company specializing in brand design, P.O.P displays, and commercial architecture, dedicated to creating impactful and innovative solutions.", link: "https://www.grupoquiero.com/", icon: GrupoQuiero },
   { name: 'Norush', value: 'norush', description: "A brand of wallets made with Tyvek® known for their durability and unique design.", link: "", icon: Norush },
   { name: 'Pubext', value: 'pubext', description: "A full-service advertising agency primarily focused on outdoor advertising and large-format printing, offering tailored communication solutions for your business.", link: "https://pubext.com/", icon: Pubext },
-  { name: 'Ikea', value: 'ikea', description: "A global leader in home furnishings, offering a wide range of well-designed, functional products at affordable prices.", link: "https://www.ikea.com/es/es/", icon: Ikea },
+  { name: 'Ikea', value: 'ikea', description: "A global leader in home furnishings, offering a wide range of well-designed, functional products at affordable prices.", link: "https://www.ikea.com", icon: Ikea },
   { name: 'RotulosAlex', value: 'rotulos-alex', description: "An studio specializing in creating impactful and visually appealing outdoor advertising solutions.", link: "", icon: Alex },
   { name: 'A-SAFE Digital', value: 'a-safe-digital', description: "A software development studio specializing in creating innovative and efficient digital solutions.", link: "https://asafedigital.com/", icon: AsafeDigital },
+]
+
+export const COMPANY_CLIENTS = [
+  { name: 'Amstel', value: 'amstel', description: "Amstel is a Dutch brewery founded in 1870 on the Mauritskade in Amsterdam.", link: "https://www.amstel.com/", icon: Amstel },
+  { name: 'Axe', value: 'axe', description: "Axe fragrances are worn by men in more than 90 countries across the globe.", link: "https://www.axe.com/", icon: Axe },
+  { name: 'Coca Cola', value: 'coca-cola', description: "The Coca-Cola Company is an American corporation founded in 1892 and today engaged primarily in the manufacture and sale of syrup and concentrate for Coca-Cola, a sweetened carbonated beverage that is a cultural institution in the United States and a global symbol of American tastes.", link: "https://www.coca-cola.com/", icon: CocaCola },
+  { name: 'Coty', value: 'coty', description: "Coty Inc. is an American multinational beauty company founded in 1904 by François Coty. With its subsidiaries, it develops, manufactures, markets, and distributes fragrances, cosmetics, skin care, nail care, and both professional and retail hair care products. Coty owns around 40 brands as of 2024.", link: "https://www.coty.com/", icon: Coty },
+  { name: 'Cruzcampo', value: 'cruz-campo', description: "Cruzcampo was founded in Seville in 1904 – the first brewer to be based in the south of Spain, established with the ambition to brew beer that would retain its quality flavour even when served at the sub-zero temperatures demanded by the heat of the southern sun.", link: "https://www.cruzcampo.es/", icon: CruzCampo },
+  { name: 'El Águila', value: 'el-aguila', description: "El Águila is a brand of Spanish beer, founded in Madrid in 1900, which in 2019 has returned to the market. It is currently owned by the Dutch brewing group Heineken International.", link: "https://cervezaelaguila.es/", icon: ElAguila },
+  { name: 'Garnier', value: 'garnier', description: "Garnier is an international haircare and skincare brand with sub-brands in four categories and 7 areas of expertise. With products formulated to meet the needs of women everywhere in the world, we offer innovative, affordable care solutions.", link: "https://www.garnierusa.com/", icon: Garnier },
+  { name: 'Gillete', value: 'gillete', description: "Gillette is an American brand of safety razors and other personal care products including shaving supplies, owned by the multi-national corporation Procter & Gamble (P&G).", link: "https://gillette.com/", icon: Gillete },
+  { name: 'Johnson & Johnson', value: 'johnsons', description: "is an American multinational pharmaceutical, biotechnology, and medical technologies corporation headquartered in New Brunswick, New Jersey.", link: "https://www.jnj.com/", icon: Johnsons },
+  { name: "L'Oréal Paris", value: 'loreal', description: "It is the world's largest cosmetics company, with activities spanning skin care, sun protection, make-up, perfume, hair care and hair color.", link: "https://www.lorealparisusa.com/", icon: Loreal },
+  { name: "Maybelline", value: 'maybelline', description: "An American multinational cosmetics, skin care, perfume, and personal care company, based in New York City. It was founded in Chicago in 1914.", link: "https://www.maybelline.com/", icon: Maybelline },
+  { name: "Mondeléz", value: 'mondelez', description: "The Mondelez International company manufactures chocolate, cookies, biscuits, gum, confectionery, and powdered beverages.", link: "https://www.mondelezinternational.com/", icon: Mondelez },
+  { name: "Movistar", value: 'movistar', description: "Movistar is Telefónica's Spanish-speaking market brand operating in 14 countries, including Spain where it is the largest mobile phone operator with more than 20 million customers and where it also offers landline, broadband, and pay television services.", link: "https://www.movistar.es/", icon: Movistar },
+  { name: "Nestlé", value: 'nestle', description: "Is a Swiss multinational food and drink processing conglomerate corporation headquartered in Vevey, Switzerland.", link: "https://www.nestle.com/", icon: Nestle },
+  { name: "New Balance", value: 'new-balance', description: "New Balance Athletic Inc (New Balance) manufactures, markets and sells shoes, apparels and accessories for men, women and children.", link: "https://www.newbalance.co.uk/", icon: NewBalance },
 ]

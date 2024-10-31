@@ -5,7 +5,7 @@ import Link from "next/link"
 
 function WorkedWith() {
   return (
-    <div className="w-full flex flex-wrap justify-between items-center p-4">
+    <div className="w-full grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(150px,1fr))] p-4">
       {WORKED_WITH.map((company) => (
         <HoverCard key={company.value} openDelay={200} closeDelay={150}>
           <HoverCardTrigger asChild>
