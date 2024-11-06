@@ -5,42 +5,43 @@ import Section from "@/components/section"
 import FaqsAccordion from "./components/faqs-accordion"
 import WorkedWith from "./components/worked-with"
 import CompanyClients from "./components/company-clients"
+import AcademicBackground from "./components/academic-background"
 
 async function Faqs() {
   const items = [
     {
       id: 'item-1',
-      trigger: "Companies where I've worked",
+      trigger: "What companies have you worked for?",
       content: <WorkedWith />
     },
     {
       id: 'item-2',
-      trigger: "Clients I've collaborated with",
+      trigger: "Can you name some of the most important clients you've worked with?",
       content: <CompanyClients />
     },
     {
       id: 'item-3',
-      trigger: "About my degrees and education",
-      content: <span>Yes. It adheres to the WAI-ARIA design pattern.</span>
+      trigger: "Tell me about your academic background",
+      content: <AcademicBackground />
     },
     {
       id: 'item-4',
-      trigger: "Why did I make the move to software development?",
+      trigger: "What inspired your move from product design to web apps development?",
       content: <span>Yes. It adheres to the WAI-ARIA design pattern.</span>
     },
     {
       id: 'item-5',
-      trigger: "My hobbies and activities",
+      trigger: "What do you like to do in your free time?",
       content: <span>Yes. It adheres to the WAI-ARIA design pattern.</span>
     },
     {
       id: 'item-6',
-      trigger: "My Curriculum Vitae",
+      trigger: "Where can I find a copy of your CV?",
       content: <span>Yes. It adheres to the WAI-ARIA design pattern.</span>
     },
     {
       id: 'item-7',
-      trigger: "LinkedIn recommendations",
+      trigger: "Where can I find recommendations or references about you?",
       content: <span>Yes. It adheres to the WAI-ARIA design pattern.</span>
     }
   ]

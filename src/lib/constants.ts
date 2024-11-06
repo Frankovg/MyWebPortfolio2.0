@@ -118,4 +118,64 @@ export const COMPANY_CLIENTS = [
   { name: "Movistar", value: 'movistar', description: "Movistar is Telefónica's Spanish-speaking market brand operating in 14 countries, including Spain where it is the largest mobile phone operator with more than 20 million customers and where it also offers landline, broadband, and pay television services.", link: "https://www.movistar.es/", icon: Movistar },
   { name: "Nestlé", value: 'nestle', description: "Is a Swiss multinational food and drink processing conglomerate corporation headquartered in Vevey, Switzerland.", link: "https://www.nestle.com/", icon: Nestle },
   { name: "New Balance", value: 'new-balance', description: "New Balance Athletic Inc (New Balance) manufactures, markets and sells shoes, apparels and accessories for men, women and children.", link: "https://www.newbalance.co.uk/", icon: NewBalance },
+  { name: "Pepsico", value: 'pepsico', description: "PepsiCo, Inc. is an American multinational food, snack, and beverage corporation headquartered in Harrison, New York, in the hamlet of Purchase.", link: "https://www.pepsico.com/", icon: Pepsico },
+  { name: "Refresco", value: 'refresco', description: "Refresco is the world's largest independent bottler of beverages for leading retailers and A-brands with production in Europe, North America and Mexico.", link: "https://www.refresco.com/", icon: Refresco },
+  { name: "Rimmel", value: 'rimmel', description: "Is a British multinational cosmetics brand, now owned by parent company Coty. The House of Rimmel was founded by French-born British cosmetics entrepreneur Eugène Rimmel in 1834, in Bond Street, London.", link: "https://www.rimmellondon.com/", icon: Rimmel },
+  { name: "Sally Hansen", value: 'sally-hansen', description: "Sally Hansen Inc. is an American beauty brand, first founded in 1946 by Sally Hansen herself. Since then, the brand has become a household name.", link: "https://www.sallyhansen.com/", icon: SallyHansen },
+  { name: "P&G", value: 'procter-&-gamble', description: "P&G was founded over 180 years ago. Today, is the world's largest consumer goods company.", link: "https://us.pg.com/", icon: TheProcterAndGambleCompany },
+  { name: "Unilever", value: 'unilever', description: "Unilever PLC is a British multinational fast-moving consumer goods company founded on 2 September 1929 following the merger of British soap maker Lever Brothers.", link: "https://www.unilever.com/", icon: Unilever },
+  { name: "Via Célere", value: 'via-celere', description: "Via Célere is now one of the benchmark companies in the development, investment and management of residential assets in Spain and Portugal.", link: "https://www.viacelere.com/", icon: ViaCelere },
+  { name: "Vichy", value: 'vichy', description: "Vichy is a French dermo-cosmetic brand, whose field of expertise extends to multiple categories covering skincare, hygiene, makeup, suncare and haircare.", link: "https://www.vichy.com/", icon: Vichy },
+  { name: "Volkswagen", value: 'volkswagen', description: "The Volkswagen Group is one of the world's leading automobile manufacturers and commercial vehicles the largest carmaker in Europe.", link: "https://www.volkswagen.com/", icon: Volkswagen },
+]
+
+export const ACADEMIC_BACKGROUND = [
+  {
+    id: 1,
+    year: "2014",
+    city: "Mar del Plata",
+    country: "Argentina",
+    degree: "Industrial Design",
+    institution: "Mar del Plata University",
+    description: [
+      "A six-year-long and multifaceted journey that led me through the intricate interplay of technology, art, engineering, and industry.",
+      "Throughout the design process, the industrial design engineer adeptly employs a wide array of techniques encompassing ideation, invention, visualization, calculation, management, and the meticulous specification of industrial intricacies that ultimately shape the form of an engineering product. Concurrently, this discipline seamlessly marries market analysis with an innovative outlook, thereby infusing the proposal with a visionary perspective."
+    ]
+  },
+  {
+    id: 2,
+    year: "2022",
+    city: "Málaga",
+    country: "Spain",
+    degree: "UX/UI Designer",
+    institution: "Google Career Certificate",
+    description: [
+      "Focus on the user and all else will follow.” It is a 200 hours course, plus a lot of reading and video support material.",
+      "I acquired comprehensive knowledge of the entire design process, covering every stage from inception to completion. This encompassed user empathy, identification of user pain points, crafting wireframes, mockups, and prototypes, rigorous testing through usability studies, and iterative refinement."
+    ]
+  },
+  {
+    id: 3,
+    year: "2022",
+    city: "Málaga",
+    country: "Spain",
+    degree: "Computer Science",
+    institution: "HarvardX",
+    description: [
+      "The CS50 is a 200 hours introduction to the intellectual enterprises of computer science and the art of programming.",
+      "Topics include abstraction, algorithms, data structures, encapsulation, resource management, security, software engineering, and web development. Languages include C, Python, SQL, and JavaScript plus CSS and HTML."
+    ]
+  },
+  {
+    id: 4,
+    year: "2022",
+    city: "Málaga",
+    country: "Spain",
+    degree: "Full-stack Web Developer",
+    institution: "Socratech",
+    description: [
+      "An immersive 16-week (630-hour) bootcamp during which I acquired a robust foundation in JavaScript programming and honed my skills in web application development.",
+      "Receiving training in the industry's most demanded technologies, including React.js, Node.js, HTML, CSS, MySQL, and more, the program also immersed me in an authentic tech ecosystem. This hands-on experience involved developing a project for an actual company, providing invaluable exposure to a real-world tech environment."
+    ]
+  },
 ]

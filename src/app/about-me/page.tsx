@@ -10,7 +10,7 @@ const aboutMe = {
 export default function AboutMe() {
   return (
     <Section id="about-me">
-      <div className="w-full h-[35vh] md:h-auto pb-14 lg:px-24">
+      <div className="w-full h-[35vh] md:h-auto pb-14">
         <Image
           src='/images/about-me-banner.webp'
           alt='A picture of Franco in an abandoned place in front of a graffitied wall.'
