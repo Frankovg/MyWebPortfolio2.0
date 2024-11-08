@@ -1,4 +1,4 @@
-import { ACADEMIC_BACKGROUND } from "@/lib/constants";
+import { ACADEMIC_BACKGROUND } from "../constants/constants";
 
 function AcademicBackground() {
   return (

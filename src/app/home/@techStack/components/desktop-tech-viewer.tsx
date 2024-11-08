@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect, useState } from "react"
-import { CATEGORIES } from "@/lib/client-constants"
 import TechCard from "./tech-card"
+import { CATEGORIES } from "../utils/client-constants"
 
 //TODO: Its probably better to use the tabs component here
 function DesktopTechViewer() {
@@ -40,7 +40,7 @@ function DesktopTechViewer() {
           <TechCard
             key={tech.value}
             tech={tech}
-            className="inline-block h-28 max-h-28 w-auto object-contain transition-all duration-300 ease-in-out hover:fill-primary hover:scale-105"
+            className="inline-block h-28 max-h-28 w-auto object-contain transition-all duration-200 ease-in-out group-hover:fill-primary group-hover:scale-105"
           />
         ))}
       </div>

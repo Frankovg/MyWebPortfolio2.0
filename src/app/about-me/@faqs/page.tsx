@@ -6,6 +6,10 @@ import FaqsAccordion from "./components/faqs-accordion"
 import WorkedWith from "./components/worked-with"
 import CompanyClients from "./components/company-clients"
 import AcademicBackground from "./components/academic-background"
+import Inspiration from "./components/inspiration"
+import Hobbies from "./components/hobbies"
+import MyCv from "./components/my-cv"
+import ToLinkedIn from "./components/to-linkedin"
 
 async function Faqs() {
   const items = [
@@ -27,22 +31,22 @@ async function Faqs() {
     {
       id: 'item-4',
       trigger: "What inspired your move from product design to web apps development?",
-      content: <span>Yes. It adheres to the WAI-ARIA design pattern.</span>
+      content: <Inspiration />
     },
     {
       id: 'item-5',
       trigger: "What do you like to do in your free time?",
-      content: <span>Yes. It adheres to the WAI-ARIA design pattern.</span>
+      content: <Hobbies />
     },
     {
       id: 'item-6',
       trigger: "Where can I find a copy of your CV?",
-      content: <span>Yes. It adheres to the WAI-ARIA design pattern.</span>
+      content: <MyCv />
     },
     {
       id: 'item-7',
       trigger: "Where can I find recommendations or references about you?",
-      content: <span>Yes. It adheres to the WAI-ARIA design pattern.</span>
+      content: <ToLinkedIn />
     }
   ]
 

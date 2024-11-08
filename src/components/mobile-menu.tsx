@@ -5,8 +5,8 @@ import { Sheet, SheetContent } from "./ui/sheet"
 import Link from "next/link"
 import { ROUTES } from "@/lib/constants"
 import DownloadLinks from "./download-links"
-import { useUserDataContext } from "@/hooks/useUserDataContext"
 import ScrollLink from "./scroll-link"
+import { SOCIAL_ICONS } from "@/lib/client-constants"
 
 type MobileMenuProps = {
   open: boolean,
@@ -14,8 +14,6 @@ type MobileMenuProps = {
 }
 
 function MobileMenu({ open, close }: MobileMenuProps) {
-  const { socials } = useUserDataContext()
-
   const isMobile = useMediaQuery("(max-width: 640px)")
   const linkStyles = "whitespace-nowrap transition-colors duration-300 ease-in-out hover:text-white"
 
@@ -43,7 +41,7 @@ function MobileMenu({ open, close }: MobileMenuProps) {
             <li>
               <div className="max-[640px]:border-b min-[640px]:border-r min-[640px]:h-8 border-solid border-primary" />
             </li>
-            {socials.map((socialIcon) => (
+            {SOCIAL_ICONS.map((socialIcon) => (
               <li key={socialIcon.href}>
                 <Link href={socialIcon.href || '#'} className={linkStyles}>
                   {socialIcon.name}

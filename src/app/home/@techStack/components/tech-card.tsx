@@ -19,7 +19,7 @@ type TechCardProps = {
 function TechCard({ tech, className = '' }: TechCardProps) {
   return (
     <HoverCard key={tech.name} openDelay={200} closeDelay={150}>
-      <HoverCardTrigger asChild>
+      <HoverCardTrigger asChild className="group">
         <Button variant={"ghost"} className="flex justify-center h-auto cursor-default p-0">
           <tech.icon className={className} />
         </Button>

@@ -1,5 +1,5 @@
 'use client'
 
-import { CATEGORIES as SERVER_CATEGORIES } from "./constants"
+import { SOCIAL_ICONS as SERVER_SOCIALS } from "./constants"
 
-export const CATEGORIES = SERVER_CATEGORIES 
+export const SOCIAL_ICONS = SERVER_SOCIALS 
