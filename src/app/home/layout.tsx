@@ -1,18 +1,20 @@
+import Contact from "@/components/contact/page"
+import Main from "@/components/main"
+
 type LayoutProps = {
   children: React.ReactNode,
   techStack: React.ReactNode
   projects: React.ReactNode
-  contact: React.ReactNode
 }
 
-const Layout = ({ children, techStack, projects, contact }: LayoutProps) => {
+const Layout = ({ children, techStack, projects }: LayoutProps) => {
   return (
-    <main className='pt-[25vh] flex flex-col items-center w-full h-fit'>
+    <Main className='pt-[25vh]'>
       {children}
       {techStack}
       {projects}
-      {contact}
-    </main>
+      <Contact />
+    </Main>
   )
 }
 

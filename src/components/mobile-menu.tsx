@@ -3,8 +3,10 @@
 import { useMediaQuery } from "usehooks-ts"
 import { Sheet, SheetContent } from "./ui/sheet"
 import Link from "next/link"
-import { ROUTES, SOCIAL } from "@/lib/constants"
+import { ROUTES } from "@/lib/constants"
 import DownloadLinks from "./download-links"
+import ScrollLink from "./scroll-link"
+import { SOCIAL_ICONS } from "@/lib/client-constants"
 
 type MobileMenuProps = {
   open: boolean,
@@ -22,9 +24,15 @@ function MobileMenu({ open, close }: MobileMenuProps) {
           <ul className="w-full h-fit text-right min-[640px]:text-left max-[640px]:space-y-5 text-2xl flex max-[640px]:flex-col flex-row min-[640px]:gap-6 min-[640px]:items-center min-[640px]:justify-center flex-wrap">
             {ROUTES.map((route) => (
               <li key={route.path}>
-                <Link href={route.path} onClick={close} className={linkStyles}>
-                  {route.label}
-                </Link>
+                {route.path === 'about-me' ? (
+                  <Link href={route.path} onClick={close} className={linkStyles}>
+                    {route.label}
+                  </Link>
+                ) : (
+                  <ScrollLink id={route.path} className={linkStyles} onClick={close}>
+                    {route.label}
+                  </ScrollLink>
+                )}
               </li>
             ))}
             <li>
@@ -33,9 +41,9 @@ function MobileMenu({ open, close }: MobileMenuProps) {
             <li>
               <div className="max-[640px]:border-b min-[640px]:border-r min-[640px]:h-8 border-solid border-primary" />
             </li>
-            {SOCIAL.map((socialIcon) => (
+            {SOCIAL_ICONS.map((socialIcon) => (
               <li key={socialIcon.href}>
-                <Link href={socialIcon.href} className={linkStyles}>
+                <Link href={socialIcon.href || '#'} className={linkStyles}>
                   {socialIcon.name}
                 </Link>
               </li>

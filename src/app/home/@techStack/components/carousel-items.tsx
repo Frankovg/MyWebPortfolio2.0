@@ -1,5 +1,5 @@
 import { CarouselItem } from "@/components/ui/carousel"
-import { CATEGORIES } from "@/lib/constants"
+import { CATEGORIES } from "../../constants/constants"
 
 function CarouselItems() {
   return (
