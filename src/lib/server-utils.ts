@@ -1,4 +1,4 @@
-import { Project } from '@prisma/client'
+import { Project, User } from '@prisma/client'
 import prisma from './db'
 
 export async function getCategories() {
@@ -31,4 +31,13 @@ export async function getProjectById(projectId: Project['id']) {
     }
   })
   return project
+}
+
+export async function getUserByEmail(email: User['email']) {
+  const user = await prisma.user.findUnique({
+    where: {
+      email
+    },
+  })
+  return user
 }
