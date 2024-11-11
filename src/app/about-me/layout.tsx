@@ -1,3 +1,4 @@
+import Contact from "@/components/contact/page"
 import Main from "@/components/main"
 
 type LayoutProps = {
@@ -10,6 +11,7 @@ const Layout = ({ children, faqs }: LayoutProps) => {
     <Main>
       {children}
       {faqs}
+      <Contact />
     </Main>
   )
 }

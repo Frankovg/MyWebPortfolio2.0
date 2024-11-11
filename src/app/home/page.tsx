@@ -1,9 +1,9 @@
 //Components
 import TextAnimation from "./components/text-animation"
-import ArrowRight from "@/icons/arrow-right"
 import H3 from "@/components/h3"
 import Section from "@/components/section"
 import ScrollLink from "@/components/scroll-link"
+import AnimatedArrowRight from "@/components/animated-arrow-right"
 
 // List of titles for the animation
 const toRotate = [
@@ -29,7 +29,7 @@ export default function Home() {
             className="group text-white font-bold flex items-center text-lg"
           >
             <span>Let&apos;s connect</span>
-            <ArrowRight className="inline-block ml-1 group-hover:translate-x-[5px] duration-300 ease-in w-auto h-5" />
+            <AnimatedArrowRight />
           </ScrollLink>
         </div>
       </div>
