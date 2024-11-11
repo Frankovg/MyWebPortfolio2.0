@@ -1,3 +1,5 @@
+import Main from "@/components/main"
+
 type LayoutProps = {
   children: React.ReactNode,
 
@@ -5,9 +7,9 @@ type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <main className='pt-[25vh] flex flex-col items-center w-full h-fit'>
+    <Main>
       {children}
-    </main>
+    </Main>
   )
 }
 

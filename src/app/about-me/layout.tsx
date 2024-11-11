@@ -1,8 +1,18 @@
-const Layout = ({ children }: { children: React.ReactNode }) => {
+import Contact from "@/components/contact/page"
+import Main from "@/components/main"
+
+type LayoutProps = {
+  children: React.ReactNode,
+  faqs: React.ReactNode
+}
+
+const Layout = ({ children, faqs }: LayoutProps) => {
   return (
-    <div className=''>
+    <Main>
       {children}
-    </div>
+      {faqs}
+      <Contact />
+    </Main>
   )
 }
 
