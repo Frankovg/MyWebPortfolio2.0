@@ -1,3 +1,5 @@
+import 'server-only'
+
 import { Project, User } from '@prisma/client'
 import prisma from './db'
 

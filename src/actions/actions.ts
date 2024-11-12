@@ -1,9 +1,13 @@
 'use server'
 
+import { revalidatePath } from "next/cache"
+
+//Db
 import prisma from "@/lib/db"
+
+//Utils
 import { getProjectById } from "@/lib/server-utils"
 import { sleep } from "@/lib/utils"
-import { revalidatePath } from "next/cache"
 import { signIn, signOut } from "@/lib/auth"
 
 //Validations

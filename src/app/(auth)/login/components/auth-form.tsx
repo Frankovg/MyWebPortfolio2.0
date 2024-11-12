@@ -15,6 +15,7 @@ import { Button } from '@/components/ui/button'
 
 const AuthForm = () => {
   const [logInError, dispatchLogIn] = useFormState(logIn, undefined)
+
   const { pending } = useFormStatus()
 
   return (

@@ -1,9 +1,13 @@
 import NextAuth, { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
+
+//Utils
 import bcrypt from 'bcryptjs'
 import { getUserByEmail } from "./server-utils";
-import { authSchema } from "./validations";
 import { sleep } from "./utils";
+
+//Validations
+import { authSchema } from "./validations";
 
 const config = {
   pages: {
@@ -40,28 +44,29 @@ const config = {
   ],
   callbacks: {
     authorized: ({ auth, request }) => {
-      //TODO: Add logic to check if user is an admin or not and what tyo do in each case
       // runs on every request with middleware
-      // const isLoggedIn = !!auth?.user
-      // const isTryingToAccessApp = request.nextUrl.pathname.includes('/app')
+      const isLoggedIn = !!auth?.user
+      const isSuperUser = auth?.user?.isAdmin ?? false
+      const isTryingToAccessAdmin = request.nextUrl.pathname.includes('/admin')
+      const isTryingToAccessSample = request.nextUrl.pathname.includes('/sample')
+      const isTryingToAccessLogin = request.nextUrl.pathname.includes('/login')
 
-      // if (!isLoggedIn && isTryingToAccessApp) return false
+      // Case for non logged user trying to access admin or sample
+      if (!isLoggedIn && (isTryingToAccessAdmin || isTryingToAccessSample)) return Response.redirect(new URL('/login', request.nextUrl))
+      // Case for non logged user which is not navigating to admin or sample
+      if (!isLoggedIn && !isTryingToAccessAdmin && !isTryingToAccessSample) return true
 
-      // if (isLoggedIn && isTryingToAccessApp && !auth?.user.hasAccess) return Response.redirect(new URL('/payment', request.nextUrl))
+      // Case for logged super user trying to access login or sample
+      if (isLoggedIn && isSuperUser && (isTryingToAccessLogin || isTryingToAccessSample)) return Response.redirect(new URL('/admin', request.nextUrl))
+      // Case for logged super user trying to access admin
+      if (isLoggedIn && isSuperUser) return true
 
-      // if (isLoggedIn && isTryingToAccessApp && auth?.user.hasAccess) return true
+      // Case for logged sample account trying to access login or admin
+      if (isLoggedIn && !isSuperUser && (isTryingToAccessLogin || isTryingToAccessAdmin)) return Response.redirect(new URL('/sample', request.nextUrl))
+      // Case for logged sample account which is not navigating to admin
+      if (isLoggedIn && !isSuperUser) return true
 
-      // if (isLoggedIn && (request.nextUrl.pathname.includes('/login') || request.nextUrl.pathname.includes('/signup')) && auth?.user.hasAccess) return Response.redirect(new URL('/app/dashboard', request.nextUrl))
-
-      // if (isLoggedIn && !isTryingToAccessApp && !auth?.user.hasAccess) {
-      //   if (request.nextUrl.pathname.includes('/login') || request.nextUrl.pathname.includes('/signup')) return Response.redirect(new URL('/payment', request.nextUrl))
-      //   else return true
-      // }
-
-      // if (!isLoggedIn && !isTryingToAccessApp) return true
-
-      // return false
-      return true
+      return false
     },
     jwt: async ({ token, user, trigger }) => {
       if (user) {
@@ -69,6 +74,7 @@ const config = {
         token.userId = user.id! //TODO: fix this type
         token.email = user.email! //TODO: fix this type
         token.isAdmin = user.isAdmin
+        token.exp = Math.floor(Date.now() / 1000) + (24 * 60 * 60)
       }
       if (trigger === 'update') {
         if (process.env.NODE_ENV === 'development') {
