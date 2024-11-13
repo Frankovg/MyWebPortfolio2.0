@@ -32,7 +32,21 @@ const config = {
 				darkGrey: '#242424',
 				whiteText: '#ffffffb3',
 				success: '#5cedc2',
-				error: '#e453bc'
+				error: '#e453bc',
+				sidebar: {
+					DEFAULT: '#121212',
+					// DEFAULT: 'hsl(var(--sidebar-background))',
+					foreground: 'hsl(var(--sidebar-foreground))',
+					primary: '#5cedc2',
+					// primary: 'hsl(var(--sidebar-primary))',
+					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+					accent: 'hsl(var(--sidebar-accent))',
+					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+					border: '#e453bc',
+					// border: 'hsl(var(--sidebar-border))',
+					ring: '#5cedc2'
+					// ring: 'hsl(var(--sidebar-ring))'
+				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -63,12 +77,12 @@ const config = {
 					'100%': {
 						left: '100%'
 					}
-				},
+				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				shiny: 'shiny 3s linear infinite',
+				shiny: 'shiny 3s linear infinite'
 			}
 		}
 	},

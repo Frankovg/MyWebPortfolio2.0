@@ -98,11 +98,11 @@ export const FOOTER_LINKS = {
   letsTalk: [
     {
       name: 'About',
-      href: '/about-me'
+      href: 'about-me'
     },
     {
       name: 'Contact',
-      href: '/contact'
+      href: 'contact'
     },
     {
       name: 'LinkedIn',
