@@ -1,16 +1,66 @@
 'use server'
 
-import prisma from "@/lib/db"
-import { getProjectById } from "@/lib/server-utils"
-import { sleep } from "@/lib/utils"
 import { revalidatePath } from "next/cache"
 
+//Db
+import prisma from "@/lib/db"
+
+//Utils
+import { getProjectById } from "@/lib/server-utils"
+import { sleep } from "@/lib/utils"
+import { signIn, signOut } from "@/lib/auth"
+
 //Validations
-import { contactFormSchema, emailSchema, TContactForm } from "@/lib/validations"
+import { emailSchema } from "@/lib/validations"
 
 //Nodemailer
 import nodemailer from 'nodemailer'
 import SMTPTransport from "nodemailer/lib/smtp-transport"
+
+//Types
+import { AuthError } from "next-auth"
+
+// --- user actions ---
+
+export async function logIn(prevState: unknown, formData: unknown) {
+  if (process.env.NODE_ENV === 'development') {
+    await sleep(1000)
+  }
+
+  if (!(formData instanceof FormData)) {
+    return {
+      message: 'Invalid form data.'
+    }
+  }
+
+  try {
+    await signIn('credentials', formData)
+  } catch (error) {
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case 'CredentialsSignin': {
+          return {
+            message: 'Invalid credentials.'
+          }
+        }
+        default: {
+          return {
+            message: 'Error. Could not sign in.'
+          }
+        }
+      }
+    }
+    throw error // nextjs redirects throw error, so we need rethrow it
+  }
+}
+
+export async function logOut() {
+  if (process.env.NODE_ENV === 'development') {
+    await sleep(1000)
+  }
+  await signOut({ redirectTo: '/' })
+}
+
 
 // --- Contact actions ---
 
@@ -73,6 +123,9 @@ export async function sendMail(mail: SendMailProps) {
 
   return info
 }
+
+
+// --- Project actions ---
 
 export async function addProject(project: unknown) {
   if (process.env.NODE_ENV === 'development') {

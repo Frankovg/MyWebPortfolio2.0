@@ -1,4 +1,5 @@
 import { Prisma, PrismaClient } from "@prisma/client";
+import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient()
 
@@ -234,6 +235,17 @@ const industrialDesign: Prisma.CategoryCreateInput = {
   value: 'industrial-design',
 }
 
+const superUserAccount: Prisma.UserCreateInput = {
+  email: process.env.SUPERUSER_ACCOUNT_EMAIL || '',
+  hashedpassword: process.env.SUPERUSER_ACCOUNT_PASSWORD || '',
+  isAdmin: true
+}
+
+const sampleUserAccount: Prisma.UserCreateInput = {
+  email: 'sample_admin@franamoroso.com',
+  hashedpassword: 'sample_admin',
+}
+
 async function main() {
   console.log(`Start seeding ...`)
 
@@ -248,6 +260,19 @@ async function main() {
     include: {
       projects: true
     }
+  })
+
+  const hashedSuperuserPassword = await bcrypt.hash(superUserAccount.hashedpassword, 10)
+  superUserAccount.hashedpassword = hashedSuperuserPassword
+
+  const hashedSampleUserPassword = await bcrypt.hash(sampleUserAccount.hashedpassword, 10)
+  sampleUserAccount.hashedpassword = hashedSampleUserPassword
+
+  await prisma.user.create({
+    data: superUserAccount,
+  })
+  await prisma.user.create({
+    data: sampleUserAccount,
   })
 
   console.log(`Seeding finished.`)

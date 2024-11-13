@@ -26,3 +26,8 @@ export const emailSchema = z.object({
   text: z.string().trim().min(10, { message: 'Please make sure your message is at least 10 characters long.' }).max(1000),
   html: z.string().optional(),
 })
+
+export const authSchema = z.object({
+  email: z.string().email().max(100),
+  password: z.string().max(100),
+})
