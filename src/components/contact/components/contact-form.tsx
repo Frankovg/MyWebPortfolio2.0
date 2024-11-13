@@ -3,11 +3,11 @@
 import { useTransition } from "react"
 
 //Components
-import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { toast, Toaster } from "sonner"
+import ButtonWhite from "@/components/button-white"
 
 //Utils
 import { useForm } from 'react-hook-form'
@@ -154,13 +154,10 @@ function ContactForm() {
             }
           </div>
 
-          <Button
-            className="group relative bg-white text-lg font-semibold py-[18px] px-[34px] overflow-hidden w-full md:w-fit"
+          <ButtonWhite
             disabled={isPending}
-          >
-            <span className="absolute inset-0 bg-primary transform w-0 transition-all duration-300 ease-in-out group-hover:w-full" />
-            <span className="relative z-10 text-darkGrey">{isPending ? 'Sending...' : 'Send'}</span>
-          </Button>
+            text={isPending ? 'Sending...' : 'Send'}
+          />
         </div>
       </form>
     </div>

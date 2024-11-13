@@ -52,3 +52,12 @@ model Gallery {
   projectId String
   project   Project @relation(fields: [projectId], references: [id])
 }
+
+model User {
+  id             String   @id @default(cuid())
+  email          String   @unique
+  hashedpassword String
+  isAdmin        Boolean  @default(false)
+  updatedAt      DateTime @updatedAt
+  createdAt      DateTime @default(now())
+}
