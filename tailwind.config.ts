@@ -35,17 +35,13 @@ const config = {
 				error: '#e453bc',
 				sidebar: {
 					DEFAULT: '#121212',
-					// DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
+					foreground: 'whiteText',
 					primary: '#5cedc2',
-					// primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+					'primary-foreground': '#e453bc',
+					accent: '#5cedc2',
+					'accent-foreground': '#121212',
 					border: '#e453bc',
-					// border: 'hsl(var(--sidebar-border))',
 					ring: '#5cedc2'
-					// ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
 			borderRadius: {

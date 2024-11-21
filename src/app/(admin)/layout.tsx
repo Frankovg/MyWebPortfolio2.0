@@ -1,15 +1,19 @@
 import React from 'react'
 import { AppSidebar } from '@/components/app-sidebar'
-import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
+import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main>
-        <SidebarTrigger />
-        {children}
-      </main>
+      <SidebarInset >
+        <header>
+          <SidebarTrigger />
+        </header>
+        <main>
+          {children}
+        </main>
+      </SidebarInset>
     </SidebarProvider>
   )
 }
