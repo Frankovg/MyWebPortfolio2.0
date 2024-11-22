@@ -38,8 +38,8 @@ const config = {
 					foreground: 'whiteText',
 					primary: '#5cedc2',
 					'primary-foreground': '#e453bc',
-					accent: '#5cedc2',
-					'accent-foreground': '#121212',
+					accent: '#122f27',
+					'accent-foreground': 'whiteText',
 					border: '#e453bc',
 					ring: '#5cedc2'
 				}

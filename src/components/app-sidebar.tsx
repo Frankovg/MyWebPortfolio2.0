@@ -1,7 +1,12 @@
 'use client'
 
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+import Link from "next/link"
+import { useTransition } from "react"
 
+//Icons
+import { CloudDownload, Home, Users, KeyRound, LogOut, Briefcase } from "lucide-react"
+
+//Sidebar
 import {
   Sidebar,
   SidebarContent,
@@ -15,9 +20,13 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import Link from "next/link"
+
+//Logos
 import Logo from "./logo"
 import Isologo from "./isologo"
+
+//Actions
+import { logOut } from "@/actions/actions"
 
 // Menu items.
 const items = [
@@ -28,28 +37,31 @@ const items = [
     isActive: true,
   },
   {
-    title: "Inbox",
+    title: "Portfolio",
     url: "#",
-    icon: Inbox,
+    icon: Briefcase,
+    isActive: false,
   },
   {
-    title: "Calendar",
+    title: "Downloads",
     url: "#",
-    icon: Calendar,
+    icon: CloudDownload,
   },
   {
-    title: "Search",
+    title: "User Management",
     url: "#",
-    icon: Search,
+    icon: Users,
   },
   {
-    title: "Settings",
+    title: "Change Password",
     url: "#",
-    icon: Settings,
+    icon: KeyRound,
   },
 ]
 
 export function AppSidebar() {
+  const [isPending, startTransition] = useTransition()
+
   const {
     state,
     open,
@@ -59,7 +71,6 @@ export function AppSidebar() {
     isMobile,
     toggleSidebar,
   } = useSidebar()
-  console.log(state);
 
   return (
     <Sidebar collapsible="icon">
@@ -73,9 +84,10 @@ export function AppSidebar() {
           <Isologo />
         )}
       </SidebarHeader>
+
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>Tools</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
@@ -92,6 +104,24 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+
+      <SidebarFooter>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              disabled={isPending}
+              onClick={async () => {
+                startTransition(async () => {
+                  await logOut()
+                })
+              }}
+            >
+              <LogOut />
+              <span>Logout</span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
     </Sidebar>
   )
 }

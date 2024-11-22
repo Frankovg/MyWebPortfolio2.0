@@ -7,7 +7,7 @@ import downloadCv from '/public/download-cv.webp'
 import downloadPortfolio from '/public/download-portfolio.webp'
 
 //Utils
-import { getProjects } from "@/lib/server-utils"
+import { checkAuth, getProjects } from "@/lib/server-utils"
 
 //Context
 import ProjectContextProvider from "@/context/project-provider"
@@ -18,6 +18,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await checkAuth()
+  console.log(session);
 
   const projectData = await getProjects()
 

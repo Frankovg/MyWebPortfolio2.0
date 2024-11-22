@@ -8,6 +8,9 @@ import { cn } from "@/lib/utils"
 //Components
 import NextNProgress from 'nextjs-toploader'
 
+//Providers
+import { SessionProvider } from "next-auth/react";
+
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -55,7 +58,7 @@ export default async function RootLayout({
         />
         <div className="absolute inset-0 bg-gradient-to-br to-darkPrimary via-background from-darkGrey animate-gradient bg-[length:400%_400%] z-0" />
         <div className="relative flex flex-col min-h-screen w-full z-10">
-          {children}
+          <SessionProvider>{children}</SessionProvider>
         </div>
       </body>
     </html>
