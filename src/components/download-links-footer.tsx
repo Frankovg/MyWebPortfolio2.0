@@ -1,6 +1,6 @@
 'use client'
 
-import { useUserDataContext } from "@/hooks/useUserDataContext"
+import { useUserDataContext } from "@/hooks/use-user-data-context"
 import { TItem } from "./footer"
 import { useMemo } from "react"
 import Link from "next/link"
