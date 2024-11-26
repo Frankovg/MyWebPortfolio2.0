@@ -10,6 +10,7 @@ import prisma from './db'
 
 export async function checkAuth() {
   const session = await auth()
+  //TODO: Do I need a redirect here?
   // if (!session?.user) {
   //   redirect('/login')
   // }
