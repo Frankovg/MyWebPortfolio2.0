@@ -22,7 +22,7 @@ function Prefooter() {
       >
         <CarouselContent>
           {REFERRALS.map((ref) => (
-            <CarouselItem key={ref.id} className="basis-full sm:max-[1099px]:basis-[60%] min-[1100px]:basis-[40%]">
+            <CarouselItem key={ref.id} className="basis-full sm:max-1099:basis-[60%] 1100:basis-[40%]">
               <article className="grid grid-cols-12 gap-0 ">
                 <div className="col-span-2 flex justify-end">
                   <Image

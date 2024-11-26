@@ -20,8 +20,35 @@ const config = {
 			}
 		},
 		extend: {
+			screens: {
+				'550': '550px',
+				'600': '600px',
+				'799': '799px',
+				'800': '800px',
+				'830': '830px',
+				'929': '929px',
+				'930': '930px',
+				'940': '940px',
+				'1099': '1099px',
+				'1100': '1100px',
+				'1170': '1170px',
+			},
+			spacing: {
+				'600': '600px',
+			},
+			maxWidth: {
+				'fa': '1320px',
+				"am": '920px',
+				'hobby': '360px',
+				'inspiration': '840px',
+				'logo': '115px',
+				'contact': '645px',
+			},
 			fontFamily: {
 				sans: ["var(--font-sans)", ...fontFamily.sans]
+			},
+			fontSize: {
+				'am': ['0.9rem', '1.4rem'],
 			},
 			colors: {
 				background: '#121212',
@@ -33,6 +60,7 @@ const config = {
 				whiteText: '#ffffffb3',
 				success: '#5cedc2',
 				error: '#e453bc',
+				textAnimation: '#6666',
 				sidebar: {
 					DEFAULT: '#121212',
 					foreground: 'whiteText',

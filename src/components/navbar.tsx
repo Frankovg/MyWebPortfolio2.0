@@ -73,7 +73,7 @@ function SocialNavLinks() {
 
 function LetsConnectLink() {
   return (
-    <li className="max-[600px]:hidden">
+    <li className="max-600:hidden">
       <ScrollLink
         id='contact'
         className="group relative rounded border border-solid border-whiteText text-lg font-semibold py-[18px] px-[34px] transition duration-300 ease-in hover:border-background overflow-hidden"
@@ -93,7 +93,7 @@ type MobileMenuButtonProps = {
 
 function MobileMenuButton({ open }: MobileMenuButtonProps) {
   return (
-    <li className="min-[1100px]:hidden flex items-center">
+    <li className="1100:hidden flex items-center">
       <button
         type="button"
         title="mobileMenuButton"
@@ -136,10 +136,10 @@ export default function Navbar() {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ease-in-out ${scrolled ? 'bg-background py-5' : 'bg-transparent py-8'}`}>
-        <div className="flex items-center justify-between w-full max-w-[1320px] mx-auto px-4">
+        <div className="flex items-center justify-between w-full max-w-fa mx-auto px-4">
           <div className="flex items-center gap-8 w-fit">
             <Logo />
-            <ul className={cn(ulStyles, 'max-[1100px]:hidden')}>
+            <ul className={cn(ulStyles, 'max-1100:hidden')}>
               <NavLinks />
               <li>
                 <MenuLink
@@ -152,7 +152,7 @@ export default function Navbar() {
 
           <div className="w-fit">
             <ul className={cn(ulStyles, 'gap-6')}>
-              <NavLink href='about-me' className="ml-10 max-[830px]:hidden">About me</NavLink>
+              <NavLink href='about-me' className="ml-10 max-830:hidden">About me</NavLink>
               <SocialNavLinks />
               <LetsConnectLink />
               <MobileMenuButton open={handleOpenMenu} />

@@ -19,9 +19,9 @@ function MobileMenu({ open, close }: MobileMenuProps) {
 
   return (
     <Sheet open={open} onOpenChange={close}>
-      <SheetContent side={isMobile ? 'right' : 'top'} className="max-[640px]:w-screen [&_svg]:w-6 [&_svg]:h-6 focus:[&_button]:ring-softGrey max-[640px]:border-none border-primary pt-[10vh] min-[640px]:pt-12 px-8 pb-8 bg-background">
+      <SheetContent side={isMobile ? 'right' : 'top'} className="max-sm:w-screen [&_svg]:w-6 [&_svg]:h-6 focus:[&_button]:ring-softGrey max-sm:border-none border-primary pt-[10vh] sm:pt-12 px-8 pb-8 bg-background">
         <div className="w-full h-full overflow-y-auto flex flex-col justify-between">
-          <ul className="w-full h-fit text-right min-[640px]:text-left max-[640px]:space-y-5 text-2xl flex max-[640px]:flex-col flex-row min-[640px]:gap-6 min-[640px]:items-center min-[640px]:justify-center flex-wrap">
+          <ul className="w-full h-fit text-right sm:text-left max-sm:space-y-5 text-2xl flex max-sm:flex-col flex-row sm:gap-6 sm:items-center sm:justify-center flex-wrap">
             {ROUTES.map((route) => (
               <li key={route.path}>
                 {route.path === 'about-me' ? (
@@ -39,7 +39,7 @@ function MobileMenu({ open, close }: MobileMenuProps) {
               <Link href='/#contact' className={linkStyles}>Contact</Link>
             </li>
             <li>
-              <div className="max-[640px]:border-b min-[640px]:border-r min-[640px]:h-8 border-solid border-primary" />
+              <div className="max-sm:border-b sm:border-r sm:h-8 border-solid border-primary" />
             </li>
             {SOCIAL_ICONS.map((socialIcon) => (
               <li key={socialIcon.href}>
@@ -49,8 +49,8 @@ function MobileMenu({ open, close }: MobileMenuProps) {
               </li>
             ))}
           </ul>
-          <div className="flex flex-col min-[640px]:flex-row gap-6 w-full h-full items-end justify-center min-[640px]:pt-16">
-            <h2 className="text-2xl min-[640px]:hidden">Downloads</h2>
+          <div className="flex flex-col sm:flex-row gap-6 w-full h-full items-end justify-center sm:pt-16">
+            <h2 className="text-2xl sm:hidden">Downloads</h2>
             <DownloadLinks />
           </div>
         </div>

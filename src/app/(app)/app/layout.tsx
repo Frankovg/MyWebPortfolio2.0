@@ -23,6 +23,7 @@ export default async function RootLayout({
 
   const projectData = await getProjects()
 
+  //TODO: Downloads should come from the DB
   const userData = {
     downloads: [
       {
@@ -40,7 +41,7 @@ export default async function RootLayout({
 
   return (
     <UserDataContextProvider data={userData}>
-      <div className="max-w-[1320px] mx-auto w-full">
+      <div className="max-w-fa mx-auto w-full">
         <Navbar />
         <ProjectContextProvider data={projectData}>
           {children}

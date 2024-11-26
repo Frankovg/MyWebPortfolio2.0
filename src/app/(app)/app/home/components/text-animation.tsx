@@ -48,7 +48,7 @@ const TextAnimation = ({ texts, period = PERIOD }: TextAnimationProps) => {
 
   return (
     <h1>
-      <span className="border-r-[0.08em] border-solid border-[#6666]">
+      <span className="border-r-[0.08em] border-solid border-textAnimation">
         {text}
       </span>
     </h1>
