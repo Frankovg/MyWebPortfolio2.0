@@ -18,6 +18,9 @@ import { ReactNode, useEffect, useState } from "react"
 //Constants
 import { ROUTES } from "@/lib/constants"
 import { SOCIAL_ICONS } from "@/lib/client-constants"
+import { checkAuth } from "@/lib/server-utils"
+import { useSession } from "next-auth/react"
+import UserMainBar from "./user-main-bar"
 
 type NavLinkProps = {
   href: string,
@@ -111,6 +114,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
 
+  const { data: session } = useSession()
+
   const handleOpenMenu = () => {
     setOpenMenu(true)
   }
@@ -136,7 +141,8 @@ export default function Navbar() {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ease-in-out ${scrolled ? 'bg-background py-5' : 'bg-transparent py-8'}`}>
-        <div className="flex items-center justify-between w-full max-w-fa mx-auto px-4">
+        {!!session && <UserMainBar />}
+        <div className="flex items-center justify-between w-full max-w-fa mx-auto px-4 mt-6">
           <div className="flex items-center gap-8 w-fit">
             <Logo />
             <ul className={cn(ulStyles, 'max-1100:hidden')}>

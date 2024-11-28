@@ -5,7 +5,6 @@ import packageJson from '../../package.json'
 import Logo from "./logo"
 import Prefooter from "./prefooter"
 import DownloadLinksFooter from "./download-links-footer"
-import ScrollLink from "./scroll-link"
 
 //Constants
 import { FOOTER_LINKS } from "@/lib/constants"
@@ -30,9 +29,9 @@ function Footer() {
             <li><h6 className="font-medium underline mb-1.5 max-sm:text-xl text-base">Sections</h6></li>
             {FOOTER_LINKS.sections.map((section, index) => (
               <li className="max-sm:text-center" key={index}>
-                <ScrollLink id={section.href || '#'} className="font-normal hover:text-white max-sm:text-lg" >
+                <Link href={section.href || '#'} className="font-normal hover:text-white max-sm:text-lg" >
                   {section.name || ''}
-                </ScrollLink>
+                </Link>
               </li>
             ))}
           </ul>
