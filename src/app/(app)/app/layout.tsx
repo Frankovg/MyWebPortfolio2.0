@@ -20,6 +20,7 @@ export default async function RootLayout({
 }>) {
   // TODO: Use session to show the logged user
   const session = await checkAuth()
+  console.log(session);
 
   const projectData = await getProjects()
 
@@ -42,7 +43,7 @@ export default async function RootLayout({
   return (
     <UserDataContextProvider data={userData}>
       <div className="max-w-fa mx-auto w-full">
-        <Navbar />
+        <Navbar session={session} />
         <ProjectContextProvider data={projectData}>
           {children}
         </ProjectContextProvider>
