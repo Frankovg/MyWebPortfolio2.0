@@ -22,7 +22,7 @@ export default function AboutMe() {
         />
       </div>
       <H4>About me</H4>
-      <div className='max-w-[920px] flex flex-col gap-4 text-base lg:text-xl font-light leading-7 lg:leading-8'>
+      <div className='max-w-am flex flex-col gap-4 text-base lg:text-xl font-light leading-7 lg:leading-8'>
         <p>{aboutMe['paragraph1']}</p>
         <p>{aboutMe['paragraph2']}</p>
       </div>

@@ -33,6 +33,7 @@ export const metadata: Metadata = {
   publisher: 'Franco Gabriel Amoroso',
   applicationName: 'My Web Portfolio 2.0',
   generator: 'Next.js',
+  //TODO: Add openGraph
   // openGraph: {
   //   images: '/og-image.png',
   // },

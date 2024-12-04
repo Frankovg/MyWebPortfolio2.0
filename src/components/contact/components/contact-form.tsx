@@ -73,7 +73,7 @@ function ContactForm() {
         }}
       />
       <form
-        className="max-w-[645px] mx-auto"
+        className="max-w-contact mx-auto"
         action={handleAction}
       >
         <div className="space-y-4">

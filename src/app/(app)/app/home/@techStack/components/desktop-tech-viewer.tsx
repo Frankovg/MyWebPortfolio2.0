@@ -35,7 +35,7 @@ function DesktopTechViewer() {
 
   return (
     <div className="max-sm:hidden w-full flex">
-      <div className={`transition-all duration-500 ease-in-out ${transitionClass} max-sm:w-full w-1/2 min-[930px]:w-3/5 px-12 grid grid-cols-3 min-[640px]:max-[799px]:grid-cols-2 min-[800px]:max-[929px]:grid-cols-3 min-[930px]:grid-cols-4 grid-rows-3 gap-8`}>
+      <div className={`transition-all duration-500 ease-in-out ${transitionClass} max-sm:w-full w-1/2 930:w-3/5 px-12 grid grid-cols-3 sm:max-799:grid-cols-2 800:max-929:grid-cols-3 930:grid-cols-4 grid-rows-3 gap-8`}>
         {selectedCategoryObj && selectedCategoryObj.techs.map(tech => (
           <TechCard
             key={tech.value}
@@ -45,7 +45,7 @@ function DesktopTechViewer() {
         ))}
       </div>
 
-      <div className="max-sm:w-full w-1/2 min-[930px]:w-2/5 flex flex-col text-lg">
+      <div className="max-sm:w-full w-1/2 930:w-2/5 flex flex-col text-lg">
         {CATEGORIES.map((cat) => (
           <button
             key={cat.value}
