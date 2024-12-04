@@ -1,11 +1,20 @@
 'use client'
 
-import Link from "next/link"
-import LanguageSelector from "./language-selector"
-import { cn } from "@/lib/utils"
 import { useTransition } from "react"
+import Link from "next/link"
+
+//Utils
+import { cn } from "@/lib/utils"
+
+//Actions
 import { logOut } from "@/actions/actions"
+
+//Hooks
 import { UserSession } from "@/lib/types"
+
+//Components
+import LanguageSelector from "./language-selector"
+import LogOutOverlay from "./logout-overlay"
 
 type UserMainBarContentProps = {
   isLogged: boolean
@@ -14,18 +23,6 @@ type UserMainBarContentProps = {
 
 type UserMainBarProps = {
   session: UserSession
-}
-
-const LogOutOverlay = () => {
-  return (
-    <div className="absolute top-0 left-0 w-screen h-screen bg-background z-50 opacity-[0.98] animate-fadeIn">
-      <div className="w-full h-full flex items-center justify-center text-whiteText">
-        <p className="text-5xl font-semibold animate-slideUp">
-          Good Bye!
-        </p>
-      </div>
-    </div>
-  )
 }
 
 const LanguageSelectorContainer = () => {
@@ -86,7 +83,6 @@ function UserMainBar({ session }: UserMainBarProps) {
   const isLogged = !!user
   const isAdmin = user?.isAdmin ?? false
   const styles = isLogged ? 'bg-primary text-darkPrimary' : 'bg-transparent text-whiteText'
-  console.log("isLogged", isLogged);
 
   return (
     <div className={cn("absolute top-0 w-screen h-6 z-50 flex items-center", styles)}>
