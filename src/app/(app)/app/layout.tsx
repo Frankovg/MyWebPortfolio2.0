@@ -20,7 +20,6 @@ export default async function RootLayout({
 }>) {
   // TODO: Use session to show the logged user
   const session = await checkAuth()
-  console.log(session);
 
   const projectData = await getProjects()
 
