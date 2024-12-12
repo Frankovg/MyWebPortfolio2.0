@@ -1,31 +1,37 @@
 'use client'
 
-import { User } from "@prisma/client";
-import { ColumnDef } from "@tanstack/react-table";
+import { Checkbox } from "@/components/ui/checkbox"
+import { User } from "@prisma/client"
+import { ColumnDef } from "@tanstack/react-table"
 
 export const columns: ColumnDef<User>[] = [
   {
     accessorKey: "email",
-    header: () => <div className="text-right">Email</div>,
+    header: () => <div className="text-left">Email</div>,
     cell: ({ row }) => (
-      <div className="text-right font-medium">{row.original.email}</div>
+      <div className="text-left font-light text-white">{row.original.email}</div>
     ),
   },
   {
     accessorKey: "role",
-    header: () => <div className="text-right">Role</div>,
+    header: () => <div className="text-left">Role</div>,
     cell: ({ row }) => {
       const role = row.original.isAdmin ? 'Admin' : 'Sample'
       return (
-        <div className="text-right font-medium">{role}</div>
+        <div className="text-left font-light text-white">{role}</div>
       )
     },
   },
   {
     accessorKey: "active",
-    header: () => <div className="text-right">Active</div>,
+    header: () => <div className="text-center">Active</div>,
     cell: ({ row }) => (
-      <div className="text-right font-medium">{row.original.isActive}</div>
+      <div className="text-center">
+        <Checkbox
+          checked={row.original.isActive}
+          onCheckedChange={(value) => row.toggleSelected(!!value)}
+        />
+      </div>
     ),
   },
 ]

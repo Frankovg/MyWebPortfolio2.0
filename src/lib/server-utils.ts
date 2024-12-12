@@ -45,6 +45,15 @@ export async function getUserByEmail(email: User['email']) {
   return user
 }
 
+export async function getUserById(id: User['id']) {
+  const user = await prisma.user.findUnique({
+    where: {
+      id
+    },
+  })
+  return user
+}
+
 export async function getUsers() {
   const users = await prisma.user.findMany()
   return users

@@ -6,12 +6,12 @@ import { revalidatePath } from "next/cache"
 import prisma from "@/lib/db"
 
 //Utils
-import { getProjectById } from "@/lib/server-utils"
+import { getProjectById, getUserById } from "@/lib/server-utils"
 import { sleep } from "@/lib/utils"
 import { signIn, signOut } from "@/lib/auth"
 
 //Validations
-import { emailSchema } from "@/lib/validations"
+import { emailSchema, isActiveSchema, userIdSchema } from "@/lib/validations"
 
 //Nodemailer
 import nodemailer from 'nodemailer'
@@ -19,6 +19,7 @@ import SMTPTransport from "nodemailer/lib/smtp-transport"
 
 //Types
 import { AuthError } from "next-auth"
+import { checkAuth } from "@/lib/check-auth"
 
 // --- user actions ---
 
@@ -122,6 +123,54 @@ export async function sendMail(mail: SendMailProps) {
   }
 
   return info
+}
+
+
+// --- User Management actions ---
+
+export async function activateAccount(userId: unknown, isActive: unknown) {
+  if (process.env.NODE_ENV === 'development') {
+    await sleep(1000)
+  }
+
+  const session = await checkAuth()
+  if (!session?.user.isAdmin) {
+    return {
+      message: 'You are not authorized to activate accounts.'
+    }
+  }
+
+  const validatedUserId = userIdSchema.safeParse(userId)
+  const validatedIsActive = isActiveSchema.safeParse(isActive)
+  if (!validatedIsActive.success || !validatedUserId.success) {
+    return {
+      message: 'Invalid user data.'
+    }
+  }
+
+  const user = await getUserById(validatedUserId.data)
+  if (!user) {
+    return {
+      message: 'Account not found.'
+    }
+  }
+
+  try {
+    await prisma.user.update({
+      where: {
+        id: validatedUserId.data
+      },
+      data: {
+        isActive: validatedIsActive.data
+      }
+    })
+  } catch (error) {
+    return {
+      message: 'Could not edit the account.'
+    }
+  }
+
+  revalidatePath('/admin/user-management', 'page')
 }
 
 
