@@ -1,6 +1,5 @@
 'use client'
 
-import { User } from "@prisma/client"
 import {
   ColumnDef,
   flexRender,

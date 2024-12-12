@@ -9,12 +9,6 @@ import DownloadLinksFooter from "./download-links-footer"
 //Constants
 import { FOOTER_LINKS } from "@/lib/constants"
 
-export type TItem = {
-  name?: string,
-  href?: string
-  title?: string,
-}
-
 function Footer() {
   return (
     <>

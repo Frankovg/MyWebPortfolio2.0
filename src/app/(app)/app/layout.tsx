@@ -7,7 +7,8 @@ import downloadCv from '/public/download-cv.webp'
 import downloadPortfolio from '/public/download-portfolio.webp'
 
 //Utils
-import { checkAuth, getProjects } from "@/lib/server-utils"
+import { getProjects } from "@/lib/server-utils"
+import { checkAuth } from "@/lib/check-auth"
 
 //Context
 import ProjectContextProvider from "@/context/project-provider"

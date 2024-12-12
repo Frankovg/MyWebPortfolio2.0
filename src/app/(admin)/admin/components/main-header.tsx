@@ -1,13 +1,9 @@
 import { Separator } from '@radix-ui/react-separator'
 import { SidebarTrigger } from '@/components/ui/sidebar'
 import BreadcrumbContainer from './breadcrumb-container'
-import { checkAuth } from '@/lib/server-utils'
 import SampleMessage from './sample-message'
-
-export type BreadcrumbLinkObject = {
-  name: string
-  href?: string
-}
+import { BreadcrumbLinkObject } from '../types/common'
+import { checkAuth } from '@/lib/check-auth'
 
 type MainHeaderProps = {
   breadcrumbLinks: BreadcrumbLinkObject[]

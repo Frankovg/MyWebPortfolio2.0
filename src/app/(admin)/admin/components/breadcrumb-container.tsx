@@ -1,6 +1,6 @@
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
-import { BreadcrumbLinkObject } from './main-header'
 import { Fragment } from 'react'
+import { BreadcrumbLinkObject } from '../types/common'
 
 function BreadcrumbContainer({ links }: { links: BreadcrumbLinkObject[] }) {
   return (
