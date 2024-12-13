@@ -1,22 +1,8 @@
 import 'server-only'
-import { redirect } from 'next/navigation'
-
-//Utils
-import { auth } from "./auth"
 
 //DB
 import { Project, User } from '@prisma/client'
 import prisma from './db'
-
-export async function checkAuth() {
-  const session = await auth()
-  //TODO: Do I need a redirect here?
-  // if (!session?.user) {
-  //   redirect('/login')
-  // }
-
-  return session
-}
 
 export async function getCategories() {
   const categories = await prisma.category.findMany({
@@ -57,4 +43,18 @@ export async function getUserByEmail(email: User['email']) {
     },
   })
   return user
+}
+
+export async function getUserById(id: User['id']) {
+  const user = await prisma.user.findUnique({
+    where: {
+      id
+    },
+  })
+  return user
+}
+
+export async function getUsers() {
+  const users = await prisma.user.findMany()
+  return users
 }

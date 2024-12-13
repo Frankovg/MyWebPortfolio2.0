@@ -5,10 +5,11 @@ const { fontFamily } = require("tailwindcss/defaultTheme")
 const config = {
 	darkMode: ["class"],
 	content: [
-		'./pages/**/*.{ts,tsx}',
-		'./components/**/*.{ts,tsx}',
-		'./app/**/*.{ts,tsx}',
-		'./src/**/*.{ts,tsx}',
+		'./src/pages/**/*.{tsx,mdx}',
+		'./src/components/**/*.{tsx,mdx}',
+		'./src/app/**/*.{tsx,mdx}',
+		'./src/icons/**/*.{tsx,mdx}',
+		'./node_modules/@tanstack/**/*.{js,tsx,tsx}'
 	],
 	prefix: "",
 	theme: {
@@ -60,6 +61,7 @@ const config = {
 				whiteText: '#ffffffb3',
 				success: '#5cedc2',
 				error: '#e453bc',
+				warning: '#f5ec28',
 				textAnimation: '#6666',
 				sidebar: {
 					DEFAULT: '#121212',
@@ -71,11 +73,6 @@ const config = {
 					border: '#e453bc',
 					ring: '#5cedc2'
 				}
-			},
-			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
 			},
 			keyframes: {
 				'accordion-down': {
