@@ -50,18 +50,18 @@ const config = {
       const isTryingToAccessAdmin = request.nextUrl.pathname.includes('/admin')
       const isTryingToAccessLogin = request.nextUrl.pathname.includes('/login')
 
-      // Case for non logged user trying to access admin or sample
+      // Case for non logged user trying to access to admin
       if (!isLoggedIn && isTryingToAccessAdmin) return Response.redirect(new URL('/login', request.nextUrl))
-      // Case for non logged user which is not navigating to admin or sample
+      // Case for non logged user which is not navigating to admin
       if (!isLoggedIn && !isTryingToAccessAdmin) return true
 
-      // Case for logged super user trying to access login or sample
+      // Case for logged super user trying to access login
       if (isLoggedIn && isSuperUser && isTryingToAccessLogin) return Response.redirect(new URL('/admin', request.nextUrl))
       // Case for logged super user trying to access admin
       if (isLoggedIn && isSuperUser) return true
 
-      // Case for logged sample account trying to access login or admin
-      if (isLoggedIn && !isSuperUser && (isTryingToAccessLogin || isTryingToAccessAdmin)) return Response.redirect(new URL('/sample', request.nextUrl))
+      // Case for logged sample account trying to access login
+      if (isLoggedIn && !isSuperUser && isTryingToAccessLogin) return Response.redirect(new URL('/admin', request.nextUrl))
       // Case for logged sample account which is not navigating to admin
       if (isLoggedIn && !isSuperUser) return true
 

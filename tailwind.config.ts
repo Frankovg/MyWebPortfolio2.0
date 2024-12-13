@@ -61,6 +61,7 @@ const config = {
 				whiteText: '#ffffffb3',
 				success: '#5cedc2',
 				error: '#e453bc',
+				warning: '#f5ec28',
 				textAnimation: '#6666',
 				sidebar: {
 					DEFAULT: '#121212',

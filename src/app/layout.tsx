@@ -68,6 +68,7 @@ export default async function RootLayout({
                 title: 'text-whiteText',
                 success: 'text-success',
                 error: 'text-error',
+                warning: 'text-warning'
               }
             }}
           />
