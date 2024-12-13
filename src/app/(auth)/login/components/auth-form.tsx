@@ -1,19 +1,19 @@
 'use client'
 
-import React from 'react'
+import React, { useActionState } from 'react'
 
 //Actions
 import { logIn } from '@/actions/actions'
 
 //Hooks
-import { useFormState, useFormStatus } from 'react-dom'
+import { useFormStatus } from 'react-dom'
 
 //Components
 import ButtonWhite from '@/components/button-white'
 import InputLogin from './input-login'
 
 const AuthForm = () => {
-  const [logInError, dispatchLogIn] = useFormState(logIn, undefined)
+  const [logInError, dispatchLogIn] = useActionState(logIn, undefined)
 
   const { pending } = useFormStatus()
 

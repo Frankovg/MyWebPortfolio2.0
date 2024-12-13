@@ -27,14 +27,14 @@ const config = {
         // extract values
         const { email, password } = validatedFormData.data
         const user = await getUserByEmail(email)
-        if (!user) {
-          console.log('User not found');
+        if (!user || !user.isActive) {
+          console.error('User not found')
           return null
         }
 
         const passwordsMatch = await bcrypt.compare(password, user.hashedpassword)
         if (!passwordsMatch) {
-          console.log('Invalid credentials');
+          console.error('Invalid credentials')
           return null
         }
 
@@ -48,21 +48,20 @@ const config = {
       const isLoggedIn = !!auth?.user
       const isSuperUser = auth?.user?.isAdmin ?? false
       const isTryingToAccessAdmin = request.nextUrl.pathname.includes('/admin')
-      const isTryingToAccessSample = request.nextUrl.pathname.includes('/sample')
       const isTryingToAccessLogin = request.nextUrl.pathname.includes('/login')
 
-      // Case for non logged user trying to access admin or sample
-      if (!isLoggedIn && (isTryingToAccessAdmin || isTryingToAccessSample)) return Response.redirect(new URL('/login', request.nextUrl))
-      // Case for non logged user which is not navigating to admin or sample
-      if (!isLoggedIn && !isTryingToAccessAdmin && !isTryingToAccessSample) return true
+      // Case for non logged user trying to access to admin
+      if (!isLoggedIn && isTryingToAccessAdmin) return Response.redirect(new URL('/login', request.nextUrl))
+      // Case for non logged user which is not navigating to admin
+      if (!isLoggedIn && !isTryingToAccessAdmin) return true
 
-      // Case for logged super user trying to access login or sample
-      if (isLoggedIn && isSuperUser && (isTryingToAccessLogin || isTryingToAccessSample)) return Response.redirect(new URL('/admin', request.nextUrl))
+      // Case for logged super user trying to access login
+      if (isLoggedIn && isSuperUser && isTryingToAccessLogin) return Response.redirect(new URL('/admin', request.nextUrl))
       // Case for logged super user trying to access admin
       if (isLoggedIn && isSuperUser) return true
 
-      // Case for logged sample account trying to access login or admin
-      if (isLoggedIn && !isSuperUser && (isTryingToAccessLogin || isTryingToAccessAdmin)) return Response.redirect(new URL('/sample', request.nextUrl))
+      // Case for logged sample account trying to access login
+      if (isLoggedIn && !isSuperUser && isTryingToAccessLogin) return Response.redirect(new URL('/admin', request.nextUrl))
       // Case for logged sample account which is not navigating to admin
       if (isLoggedIn && !isSuperUser) return true
 

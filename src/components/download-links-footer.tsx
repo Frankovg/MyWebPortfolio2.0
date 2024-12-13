@@ -1,9 +1,14 @@
 'use client'
 
-import { useUserDataContext } from "@/hooks/useUserDataContext"
-import { TItem } from "./footer"
+import { useUserDataContext } from "@/hooks/use-user-data-context"
 import { useMemo } from "react"
 import Link from "next/link"
+
+type TItem = {
+  name?: string,
+  href?: string
+  title?: string,
+}
 
 function DownloadLinksFooter() {
   const { downloads } = useUserDataContext()

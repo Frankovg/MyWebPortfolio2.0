@@ -7,6 +7,10 @@ import { cn } from "@/lib/utils"
 
 //Components
 import NextNProgress from 'nextjs-toploader'
+import { Toaster } from "sonner"
+
+//Providers
+import { SessionProvider } from "next-auth/react";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -30,6 +34,7 @@ export const metadata: Metadata = {
   publisher: 'Franco Gabriel Amoroso',
   applicationName: 'My Web Portfolio 2.0',
   generator: 'Next.js',
+  //TODO: Add openGraph
   // openGraph: {
   //   images: '/og-image.png',
   // },
@@ -55,7 +60,18 @@ export default async function RootLayout({
         />
         <div className="absolute inset-0 bg-gradient-to-br to-darkPrimary via-background from-darkGrey animate-gradient bg-[length:400%_400%] z-0" />
         <div className="relative flex flex-col min-h-screen w-full z-10">
-          {children}
+          <SessionProvider>{children}</SessionProvider>
+          <Toaster
+            toastOptions={{
+              classNames: {
+                toast: 'bg-background',
+                title: 'text-whiteText',
+                success: 'text-success',
+                error: 'text-error',
+                warning: 'text-warning'
+              }
+            }}
+          />
         </div>
       </body>
     </html>

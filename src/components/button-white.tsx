@@ -14,7 +14,7 @@ function ButtonWhite({
 }: ButtonWhiteProps) {
   return (
     <Button
-      className={cn("group relative bg-white text-lg font-semibold py-[18px] px-[34px] overflow-hidden w-full md:w-fit", className)}
+      className={cn("group relative bg-white text-lg font-semibold py-[18px] px-[34px] overflow-hidden w-full md:w-fit rounded", className)}
       disabled={disabled}
     >
       <span className="absolute inset-0 bg-primary transform w-0 transition-all duration-300 ease-in-out group-hover:w-full" />

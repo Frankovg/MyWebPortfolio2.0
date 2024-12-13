@@ -83,26 +83,22 @@ export const REFERRALS = [
 export const FOOTER_LINKS = {
   sections: [
     {
+      name: 'About Me',
+      href: 'about-me'
+    },
+    {
+      name: 'Admin',
+      href: '/admin'
+    },
+    {
       name: 'Home',
-      href: 'home'
+      href: '/'
     },
-    {
-      name: 'Tech Stack',
-      href: 'tech-stack'
-    },
-    {
-      name: 'Projects',
-      href: 'projects'
-    }
   ],
   letsTalk: [
     {
-      name: 'About',
-      href: '/about-me'
-    },
-    {
       name: 'Contact',
-      href: '/contact'
+      href: 'contact'
     },
     {
       name: 'LinkedIn',

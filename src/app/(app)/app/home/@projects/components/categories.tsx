@@ -45,13 +45,13 @@ function Categories({ categories }: CategoriesProps) {
       className="flex flex-col w-full items-center space-y-8"
       onValueChange={handleTabChange}
     >
-      <TabsList className="w-full flex flex-col lg:flex-row justify-around lg:bg-background h-auto p-2">
+      <TabsList className="w-full flex flex-col lg:flex-row justify-around lg:bg-background h-auto p-2 rounded">
         {categories.map((category) => {
           return (
             <TabsTrigger
               key={category.id}
               value={category.value}
-              className='w-full data-[state=active]:bg-white/5 data-[state=active]:text-white data-[state=active]:font-bold'
+              className='w-full data-[state=active]:bg-white/5 data-[state=active]:text-white data-[state=active]:font-bold rounded'
               disabled={category.projects.length === 0}
             >
               <h2

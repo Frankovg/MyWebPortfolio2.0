@@ -1,4 +1,4 @@
-import Contact from "@/components/contact/page"
+import Contact from "@/app/(app)/app/home/@contact/page"
 import Main from "@/components/main"
 
 type LayoutProps = {
