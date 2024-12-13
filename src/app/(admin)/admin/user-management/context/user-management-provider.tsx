@@ -2,9 +2,10 @@
 
 import { activateAccount } from "@/actions/actions"
 import { User } from "@prisma/client"
-import { createContext, useState } from "react"
+import { createContext } from "react"
 import { useOptimistic } from "react"
 import { toast } from "sonner"
+import { SAMPLE_ACTION } from "../../constants/admin-constants"
 
 type UserManagementProviderProps = {
   data: User[],
@@ -37,10 +38,18 @@ const UserManagementProvider = ({ data, children }: UserManagementProviderProps)
   const handleActiveAccount = async (userId: User['id'], isActive: boolean) => {
     setOptimisticUsers({ action: "edit", payload: { id: userId, isActive } })
     const error = await activateAccount(userId, isActive)
-    if (error) {
-      toast.warning(error.message)
+    if (!!error) {
+      if (error.message === SAMPLE_ACTION) {
+        toast.warning('This is a sample action with no effects.')
+        console.warn(error.message)
+      } else {
+        toast.error(error.message)
+        console.error(error.message)
+      }
       return
     }
+    const successMessage = isActive ? 'Account activated successfully' : 'Account deactivated successfully'
+    toast.success(successMessage)
   }
 
   return (

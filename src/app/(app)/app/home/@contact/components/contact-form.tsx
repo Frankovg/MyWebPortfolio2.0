@@ -6,7 +6,7 @@ import { useTransition } from "react"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { toast, Toaster } from "sonner"
+import { toast } from "sonner"
 import ButtonWhite from "@/components/button-white"
 
 //Utils
@@ -53,25 +53,14 @@ function ContactForm() {
         reset()
         toast.success('Application submitted successfully')
       } else {
-        toast.error('Failed to send application', {
-          richColors: true
-        })
+        toast.error('Failed to send application')
+        console.error('Failed to send application')
       }
     })
   }
 
   return (
     <div className="w-full pb-24">
-      <Toaster
-        toastOptions={{
-          classNames: {
-            toast: 'bg-background',
-            title: 'text-whiteText',
-            success: 'text-success',
-            error: 'text-error',
-          }
-        }}
-      />
       <form
         className="max-w-contact mx-auto"
         action={handleAction}

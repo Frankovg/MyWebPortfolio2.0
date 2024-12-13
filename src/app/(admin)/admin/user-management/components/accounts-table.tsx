@@ -17,20 +17,69 @@ import {
 import { useUserManagementContext } from "@/hooks/use-user-management-context"
 import { User } from "@prisma/client"
 import { Checkbox } from "@/components/ui/checkbox"
-import { useTransition } from "react"
+import { useState, useTransition } from "react"
+import { Spinner } from "@/components/spinner"
 
-function AccountsTable() {
+type AccountsTableProps = {
+  isAdmin?: boolean
+}
+
+type CheckboxCellProps = {
+  loading: boolean
+  disabled: boolean
+  checked: boolean
+  id: string
+  handleCheckboxChange: (id: string, value: boolean) => Promise<void>
+}
+
+const CheckboxCell = ({
+  loading,
+  disabled,
+  checked,
+  id,
+  handleCheckboxChange
+}: CheckboxCellProps) => (
+  <div className="flex justify-center items-center">
+    {loading ? (
+      <Spinner size="sm" className="text-white" />
+    ) : (
+      <Checkbox
+        disabled={disabled}
+        checked={checked}
+        onCheckedChange={(value) => handleCheckboxChange(id, !!value)}
+      />
+    )}
+  </div>
+)
+
+
+function AccountsTable({ isAdmin = false }: AccountsTableProps) {
   const [isPending, startTransition] = useTransition()
+  const [pendingRowId, setPendingRowId] = useState<string | null>(null)
 
   const { handleActiveAccount, users } = useUserManagementContext()
+
+  const handleCheckboxChange = async (id: string, value: boolean) => {
+    setPendingRowId(id)
+    startTransition(async () => {
+      await handleActiveAccount(id, value)
+      setPendingRowId(null)
+    })
+  }
 
   const columns: ColumnDef<User>[] = [
     {
       accessorKey: "email",
       header: () => <div className="text-left">Email</div>,
-      cell: ({ row }) => (
-        <div className="text-left font-light text-white">{row.original.email}</div>
-      ),
+      cell: ({ row }) => {
+        const blurEmail = !isAdmin && row.original.isAdmin
+        const email = blurEmail ? 'dontlook@behindyou.com' : row.original.email
+        return (
+          <div className={`text-left font-light text-white ${blurEmail && 'blur-sm select-none'}`}>
+            {email}
+          </div>
+        )
+      },
     },
     {
       accessorKey: "role",
@@ -46,12 +95,13 @@ function AccountsTable() {
       accessorKey: "active",
       header: () => <div className="text-center">Active</div>,
       cell: ({ row }) => (
-        <div className="text-center">
-          <Checkbox
-            checked={row.original.isActive}
-            onCheckedChange={(value) => startTransition(() => handleActiveAccount(row.original.id, !!value))}
-          />
-        </div>
+        <CheckboxCell
+          loading={isPending && pendingRowId === row.original.id}
+          disabled={row.original.isAdmin}
+          checked={row.original.isActive}
+          id={row.original.id}
+          handleCheckboxChange={handleCheckboxChange}
+        />
       ),
     },
   ]

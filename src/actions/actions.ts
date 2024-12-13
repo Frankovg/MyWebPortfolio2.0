@@ -9,6 +9,7 @@ import prisma from "@/lib/db"
 import { getProjectById, getUserById } from "@/lib/server-utils"
 import { sleep } from "@/lib/utils"
 import { signIn, signOut } from "@/lib/auth"
+import { checkAuth } from "@/lib/check-auth"
 
 //Validations
 import { emailSchema, isActiveSchema, userIdSchema } from "@/lib/validations"
@@ -19,7 +20,9 @@ import SMTPTransport from "nodemailer/lib/smtp-transport"
 
 //Types
 import { AuthError } from "next-auth"
-import { checkAuth } from "@/lib/check-auth"
+
+//Constants
+import { SAMPLE_ACTION } from "@/app/(admin)/admin/constants/admin-constants"
 
 // --- user actions ---
 
@@ -136,7 +139,7 @@ export async function activateAccount(userId: unknown, isActive: unknown) {
   const session = await checkAuth()
   if (!session?.user.isAdmin) {
     return {
-      message: 'You are not authorized to activate accounts.'
+      message: SAMPLE_ACTION
     }
   }
 
@@ -152,6 +155,11 @@ export async function activateAccount(userId: unknown, isActive: unknown) {
   if (!user) {
     return {
       message: 'Account not found.'
+    }
+  }
+  if (user.isAdmin) {
+    return {
+      message: 'Admin cannot be deactivated.'
     }
   }
 
