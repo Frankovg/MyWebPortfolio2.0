@@ -48,6 +48,9 @@ export default async function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning >
+      {/* //TODO: remove this script */}
+      {/* <script src="https://unpkg.com/react-scan/dist/auto.global.js" async></script> rest of your scripts go under */}
+
       <meta property='og:url' content='https://franamoroso.com/' />
       <meta property='og:type' content='website' />
       <body className={cn("text-sm min-h-screen text-whiteText relative font-sans antialiased", fontSans.variable)}>
