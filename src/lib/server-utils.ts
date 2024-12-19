@@ -23,10 +23,34 @@ export async function getProjects() {
   return projects
 }
 
+export async function getFirstSoftwareProject() {
+  const project = await prisma.project.findFirst({
+    where: {
+      category: {
+        value: 'web-development'
+      }
+    }
+  })
+  return project
+}
+
 export async function getProjectById(projectId: Project['id']) {
   const project = await prisma.project.findUnique({
     where: {
       id: projectId
+    },
+    include: {
+      category: true,
+      gallery: true,
+    }
+  })
+  return project
+}
+
+export async function getProjectBySlug(slug: Project['slug']) {
+  const project = await prisma.project.findUnique({
+    where: {
+      slug: slug
     },
     include: {
       category: true,

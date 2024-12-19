@@ -19,7 +19,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // TODO: Use session to show the logged user
   const session = await checkAuth()
 
   const projectData = await getProjects()

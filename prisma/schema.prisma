@@ -24,7 +24,7 @@ model Project {
   shortDescription String
   description      String
   image            String
-  slug             String
+  slug             String    @unique
   gallery          Gallery[]
   repository       String?
   websiteUrl       String?
