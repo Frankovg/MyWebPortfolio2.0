@@ -18,12 +18,12 @@ async function UserManagement() {
   return (
     <>
       <MainHeader breadcrumbLinks={breadcrumbLinks} />
-      <main className='w-full px-20 py-10 space-y-6'>
+      <section className='w-full px-20 py-10 space-y-6'>
         <h1 className="text-xl font-semibold">User Management</h1>
         <UserManagementProvider data={users}>
           <AccountsTable isAdmin={session?.user.isAdmin} />
         </UserManagementProvider>
-      </main>
+      </section>
     </>
   )
 }
