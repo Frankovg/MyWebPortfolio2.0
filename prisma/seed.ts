@@ -17,10 +17,13 @@ const webDevelopment: Prisma.CategoryCreateInput = {
           In addition to the main platform, Safeguru features side projects such as a commerce admin tool for the sales and marketing team, and Safeguru PRO, a platform tailored for B2B users.
           This combination of tools enhances the experience for both internal teams and business customers, supporting Safeguru’s growth within the A-SAFE group.
           `,
-        image: 'https://drive.google.com/uc?export=view&id=1apoVnfFU6vQwvyW5Po0rVGnHbmmuvEyJ',
+        image: 'https://drive.google.com/uc?export=view&id=1cZFgjn05mh_NgbiCjhKKvDJQesahMbQ1',
         slug: 'safeguru',
         gallery: {
           create: [
+            {
+              imageUrl: 'https://drive.google.com/uc?export=view&id=1apoVnfFU6vQwvyW5Po0rVGnHbmmuvEyJ',
+            },
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W',
             },

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import H4 from "@/components/h4"
 import Section from '@/components/section'
+import BannerContainer from '@/components/banner-container'
 
 const aboutMe = {
   "paragraph1": "My name is Franco Gabriel Amoroso, and my journey with technology began in my childhood in Argentina. This passion has been a constant in my life, sparked by growing up around my father's computer store in the 90s, a place filled with vintage computers that marked the dawn of the modern computer science. In 2018, I moved to Australia, spending three formative years immersed in a new culture and expanding my perspectives. Since 2020, I've made my home in the south of Spain.",
@@ -10,7 +11,7 @@ const aboutMe = {
 export default function AboutMe() {
   return (
     <Section id="about-me">
-      <div className="w-full h-[35vh] md:h-auto pb-14">
+      <BannerContainer>
         <Image
           src='/images/about-me-banner.webp'
           alt='A picture of Franco in an abandoned place in front of a graffitied wall.'
@@ -20,7 +21,7 @@ export default function AboutMe() {
           sizes={'100%'}
           quality={50}
         />
-      </div>
+      </BannerContainer>
       <H4>About me</H4>
       <div className='max-w-am flex flex-col gap-4 text-base lg:text-xl font-light leading-7 lg:leading-8'>
         <p>{aboutMe['paragraph1']}</p>

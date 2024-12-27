@@ -8,7 +8,7 @@ export default async function ProjectPage({
 
   const project = await getProjectBySlug(slug)
   if (!project) throw new Error('Project not found')
-
+  //TODO: Add banner container
   return (
     <Test project={project} />
   )
