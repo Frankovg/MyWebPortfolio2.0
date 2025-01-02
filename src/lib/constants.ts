@@ -107,3 +107,5 @@ export const FOOTER_LINKS = {
   ]
 }
 
+export const FALLBACK_IMG = "/images/project-placeholder.webp"
+

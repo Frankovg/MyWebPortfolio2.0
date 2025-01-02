@@ -1,4 +1,5 @@
 import ImageWithFallback from "@/components/image-with-fallback";
+import { FALLBACK_IMG } from "@/lib/constants";
 import Link from "next/link";
 
 type ProjectCardProps = {
@@ -22,7 +23,7 @@ function ProjectCard({ project }: ProjectCardProps) {
         <ImageWithFallback
           className="w-full h-full object-cover min-h-[250px]"
           src={project.image}
-          fallbackSrc="/images/project-placeholder.webp"
+          fallbackSrc={FALLBACK_IMG}
           alt={project.title}
           width={0}
           height={0}
