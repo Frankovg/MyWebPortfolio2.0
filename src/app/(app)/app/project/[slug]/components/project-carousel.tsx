@@ -1,40 +1,41 @@
 'use client'
 
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
+
+//Carousel
+import {
+  Carousel,
+  CarouselApi,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel"
+
+//Components
 import ImageWithFallback from "@/components/image-with-fallback"
-import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel"
 import { FALLBACK_IMG } from "@/lib/constants"
+
+//Types
 import { Gallery } from "@prisma/client"
-import { useEffect, useMemo, useState } from "react"
+import CarouselViewer from "./carousel-viewer"
 
 type ProjectCarouselProps = {
   images: Gallery[]
 }
 
+//TODO: If it needs lazy loading look for more information here https://www.embla-carousel.com/examples/predefined/
 function ProjectCarousel({ images }: ProjectCarouselProps) {
-  const [mainApi, setMainApi] = useState<CarouselApi>()
-  const [thumbnailApi, setThumbnailApi] = useState<CarouselApi>()
+  const mainApiRef = useRef<CarouselApi>()
+  const thumbnailApiRef = useRef<CarouselApi>()
+
   const [current, setCurrent] = useState(0)
 
-  const mainImage = useMemo(
-    () =>
-      images.map((image, index) => (
-        <CarouselItem
-          key={index}
-        >
-          <ImageWithFallback
-            className='object-cover md:object-contain w-auto h-full'
-            src={image.imageUrl}
-            fallbackSrc={FALLBACK_IMG}
-            alt={`Carousel Main Image ${index + 1}`}
-            width={0}
-            height={0}
-            sizes={'100%'}
-            quality={50}
-          />
-        </CarouselItem>
-      )),
-    [images],
-  )
+  const setMainApi = useCallback((api: CarouselApi) => {
+    mainApiRef.current = api
+  }, [])
+
+  const setThumbnailApi = useCallback((api: CarouselApi) => {
+    thumbnailApiRef.current = api
+  }, [])
 
   const thumbnailImages = useMemo(
     () =>
@@ -60,45 +61,46 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
   )
 
   useEffect(() => {
-    if (!mainApi || !thumbnailApi) {
+    if (!mainApiRef.current || !thumbnailApiRef.current) {
       return
     }
 
+    // Initialize both carousels to index 0
+    setCurrent(0)
+    mainApiRef.current.scrollTo(0)
+    thumbnailApiRef.current.scrollTo(0)
+
     const handleTopSelect = () => {
-      const selected = mainApi.selectedScrollSnap()
+      const selected = mainApiRef.current!.selectedScrollSnap()
       setCurrent(selected)
-      thumbnailApi.scrollTo(selected)
+      thumbnailApiRef.current!.scrollTo(selected)
     }
 
     const handleBottomSelect = () => {
-      const selected = thumbnailApi.selectedScrollSnap()
+      const selected = thumbnailApiRef.current!.selectedScrollSnap()
       setCurrent(selected)
-      mainApi.scrollTo(selected)
-    };
+      mainApiRef.current!.scrollTo(selected)
+    }
 
-    mainApi.on("select", handleTopSelect)
-    thumbnailApi.on("select", handleBottomSelect)
+    mainApiRef.current.on("select", handleTopSelect)
+    thumbnailApiRef.current.on("select", handleBottomSelect)
 
     return () => {
-      mainApi.off("select", handleTopSelect)
-      thumbnailApi.off("select", handleBottomSelect)
+      mainApiRef.current?.off("select", handleTopSelect)
+      thumbnailApiRef.current?.off("select", handleBottomSelect)
     }
-  }, [mainApi, thumbnailApi])
+  }, [])
 
   const handleClick = (index: number) => {
-    if (!mainApi || !thumbnailApi) {
-      return
-    }
-    thumbnailApi.scrollTo(index)
-    mainApi.scrollTo(index)
     setCurrent(index)
+
+    mainApiRef.current?.scrollTo(index)
+    thumbnailApiRef.current?.scrollTo(index)
   }
 
   return (
-    <div className="w-full max-w-xl">
-      <Carousel setApi={setMainApi}>
-        <CarouselContent className="mb-4">{mainImage}</CarouselContent>
-      </Carousel >
+    <div className="w-full">
+      <CarouselViewer images={images} setMainApi={setMainApi} />
 
       <Carousel
         setApi={setThumbnailApi}
