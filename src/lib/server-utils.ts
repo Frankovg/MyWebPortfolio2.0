@@ -28,7 +28,8 @@ export async function getFirstSoftwareProject() {
     where: {
       category: {
         value: 'web-development'
-      }
+      },
+      published: true
     }
   })
   return project
@@ -50,7 +51,8 @@ export async function getProjectById(projectId: Project['id']) {
 export async function getProjectBySlug(slug: Project['slug']) {
   const project = await prisma.project.findUnique({
     where: {
-      slug: slug
+      slug: slug,
+      published: true
     },
     include: {
       category: true,

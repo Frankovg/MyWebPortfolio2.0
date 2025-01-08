@@ -1,11 +1,11 @@
 import { getProjectBySlug } from "@/lib/server-utils"
-import Test from "./components/test"
 import Section from "@/components/section"
 import BannerContainer from "@/components/banner-container"
 import ImageWithFallback from "@/components/image-with-fallback"
 import { FALLBACK_IMG } from "@/lib/constants"
 import ProjectCarousel from "./components/project-carousel"
 import H4 from "@/components/h4"
+import ProjectInfo from "./components/project-info"
 
 export default async function ProjectPage({
   params
@@ -36,7 +36,7 @@ export default async function ProjectPage({
           <ProjectCarousel images={project.gallery} />
         </div>
         <div className="col-start-9 col-span-4">
-          <Test project={project} />
+          <ProjectInfo project={project} />
         </div>
       </div>
 

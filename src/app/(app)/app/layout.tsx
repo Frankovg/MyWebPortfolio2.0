@@ -20,8 +20,6 @@ export default async function RootLayout({
 }>) {
   const session = await checkAuth()
 
-  const projectsData = await getProjects()
-
   //TODO: Downloads should come from the DB
   const userData = {
     downloads: [
