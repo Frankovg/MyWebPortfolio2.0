@@ -1,20 +1,24 @@
 'use client'
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
+import Image from "next/image"
 
 //Carousel
 import { CarouselApi, CarouselItem } from "@/components/ui/carousel"
-import CarouselViewer from "./carousel-viewer"
-import CarouselThumbnail from "./carousel-thumbnail"
-import ExpanderButton from "./expander-button"
 
 //Types
 import { Gallery } from "@prisma/client"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+
+//Components
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { DialogTrigger } from "@radix-ui/react-dialog"
+import CarouselViewer from "./carousel-viewer"
+import CarouselThumbnail from "./carousel-thumbnail"
+import ExpanderButton from "./expander-button"
 import ImageWithFallback from "@/components/image-with-fallback"
+
+//Constants
 import { FALLBACK_IMG } from "@/lib/constants"
-import CarouselExpanded from "./carousel-expanded"
 
 type ProjectCarouselProps = {
   images: Gallery[]
@@ -111,12 +115,12 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
       )),
     [images, current],
   )
-  // TODO: Quitar carousel del dialog y solo ampliar la imagen seleccionada
+  // TODO: Add alt/description image in the db model and in the dialog
   return (
     <Dialog >
       <div className="relative w-full">
         <DialogTrigger asChild>
-          <ExpanderButton onClick={() => console.log('expand')} />
+          <ExpanderButton onClick={() => console.log('Open image')} />
         </DialogTrigger>
         <CarouselViewer
           images={mainImage}
@@ -129,8 +133,18 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
       </div >
 
       <DialogContent className="max-w-screen h-fit max-h-screen">
-        <DialogTitle className="hidden" />
-        <CarouselExpanded images={mainImage} />
+        <DialogTitle >
+          {`Main Image ${current + 1}`}
+        </DialogTitle>
+        <Image
+          src={images[current].imageUrl}
+          alt={`Main Image ${current + 1}`}
+          className="w-full h-full object-contain"
+          width={0}
+          height={0}
+          sizes={'100%'}
+          quality={60}
+        />
       </DialogContent>
     </Dialog>
   )
