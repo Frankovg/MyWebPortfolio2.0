@@ -1,4 +1,4 @@
-import { SVGProps } from "react"
+import { JSX, SVGProps } from "react"
 
 function GithubBig(props: SVGProps<SVGSVGElement>): JSX.Element {
   return (

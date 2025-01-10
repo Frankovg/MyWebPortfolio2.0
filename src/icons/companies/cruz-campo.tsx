@@ -1,4 +1,4 @@
-import { SVGProps } from "react"
+import { JSX, SVGProps } from "react"
 
 function CruzCampo(props: SVGProps<SVGSVGElement>): JSX.Element {
   return (

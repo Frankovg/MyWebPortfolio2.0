@@ -11,11 +11,19 @@ const webDevelopment: Prisma.CategoryCreateInput = {
       {
         title: "Safeguru",
         shortDescription: "Safeguru is an e-commerce platform offering workplace safety products, serving both B2C and B2B users, with dedicated tools for internal teams and business customers.",
-        description: "Safeguru is an e-commerce platform focused on workplace safety products, including PPE and industrial safety gear. The project is developed by A-SAFE Digital, part of the UK-based A-SAFE group, known for its innovative safety systems for industrial plants. Safeguru serves industries like construction, healthcare, and manufacturing, and is operational in Spain, the UK, and Germany, with plans for further international expansion. In addition to the main platform, Safeguru features side projects such as a commerce admin tool for the sales and marketing team, and Safeguru PRO, a platform tailored for B2B users. This combination of tools enhances the experience for both internal teams and business customers, supporting Safeguru’s growth within the A-SAFE group.",
-        image: 'https://drive.google.com/uc?export=view&id=1apoVnfFU6vQwvyW5Po0rVGnHbmmuvEyJ',
+        description: `Safeguru is an e-commerce platform focused on workplace safety products, including PPE and industrial safety gear.
+          The project is developed by A-SAFE Digital, part of the UK-based A-SAFE group, known for its innovative safety systems for industrial plants.
+          Safeguru serves industries like construction, healthcare, and manufacturing, and is operational in Spain, the UK, and Germany, with plans for further international expansion.
+          In addition to the main platform, Safeguru features side projects such as a commerce admin tool for the sales and marketing team, and Safeguru PRO, a platform tailored for B2B users.
+          This combination of tools enhances the experience for both internal teams and business customers, supporting Safeguru’s growth within the A-SAFE group.
+          `,
+        image: 'https://drive.google.com/uc?export=view&id=1cZFgjn05mh_NgbiCjhKKvDJQesahMbQ1',
         slug: 'safeguru',
         gallery: {
           create: [
+            {
+              imageUrl: 'https://drive.google.com/uc?export=view&id=1apoVnfFU6vQwvyW5Po0rVGnHbmmuvEyJ',
+            },
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W',
             },

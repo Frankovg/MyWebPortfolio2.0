@@ -151,7 +151,7 @@ export default function Navbar({ session }: NavbarProps) {
 
           <div className="w-fit">
             <ul className={cn(ulStyles, 'gap-6')}>
-              <NavLink href='about-me' className="ml-10 max-830:hidden">About me</NavLink>
+              <NavLink href='/app/about-me' className="ml-10 max-830:hidden">About me</NavLink>
               <SocialNavLinks />
               <LetsConnectLink />
               <MobileMenuButton open={handleOpenMenu} />

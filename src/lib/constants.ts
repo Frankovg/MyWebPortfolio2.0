@@ -1,9 +1,9 @@
 
 // LinkedIn profile images
-import img1 from '/public/images/in_profile_1.webp'
-import img2 from '/public/images/in_profile_2.webp'
-import img3 from '/public/images/in_profile_3.webp'
-import img4 from '/public/images/in_profile_4.webp'
+import img1 from '/public/images/in-profile-1.webp'
+import img2 from '/public/images/in-profile-2.webp'
+import img3 from '/public/images/in-profile-3.webp'
+import img4 from '/public/images/in-profile-4.webp'
 
 //Social icons
 import { GithubIcon, LinkedInIcon } from '@/icons/social'
@@ -106,4 +106,6 @@ export const FOOTER_LINKS = {
     }
   ]
 }
+
+export const FALLBACK_IMG = "/images/project-placeholder.webp"
 

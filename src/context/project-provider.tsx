@@ -22,6 +22,9 @@ type TProjectContext = {
 
 export const ProjectContext = createContext<TProjectContext | null>(null)
 
+
+// TODO: This is an example from other project
+
 const ProjectContextProvider = ({ data, children }: ProjectContextProviderProps) => {
   // Optimistic UI -> to update automatically the UI (it works as a state)
   const [optimisticProjects, setOptimisticProjects] = useOptimistic(

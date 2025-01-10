@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Button } from "@/components/ui/button";
-import { SVGProps } from "react";
+import { JSX, SVGProps } from "react";
 
 type TechCardProps = {
   tech: {

@@ -11,7 +11,6 @@ import { getProjects } from "@/lib/server-utils"
 import { checkAuth } from "@/lib/check-auth"
 
 //Context
-import ProjectContextProvider from "@/context/project-provider"
 import UserDataContextProvider from "@/context/user-data-provider"
 
 export default async function RootLayout({
@@ -19,10 +18,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // TODO: Use session to show the logged user
   const session = await checkAuth()
-
-  const projectData = await getProjects()
 
   //TODO: Downloads should come from the DB
   const userData = {
@@ -44,9 +40,7 @@ export default async function RootLayout({
     <UserDataContextProvider data={userData}>
       <div className="max-w-fa mx-auto w-full">
         <Navbar session={session} />
-        <ProjectContextProvider data={projectData}>
-          {children}
-        </ProjectContextProvider>
+        {children}
       </div>
       <Footer />
     </UserDataContextProvider>

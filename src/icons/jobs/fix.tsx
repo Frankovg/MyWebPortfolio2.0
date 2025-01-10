@@ -1,4 +1,4 @@
-import { SVGProps } from "react"
+import { JSX, SVGProps } from "react"
 
 function Fix(props: SVGProps<SVGSVGElement>): JSX.Element {
   return (
