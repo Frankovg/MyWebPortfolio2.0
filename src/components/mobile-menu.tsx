@@ -1,12 +1,12 @@
 'use client'
 
-import { useMediaQuery } from "usehooks-ts"
 import { Sheet, SheetContent } from "./ui/sheet"
 import Link from "next/link"
 import { ROUTES } from "@/lib/constants"
 import DownloadLinks from "./download-links"
 import ScrollLink from "./scroll-link"
 import { SOCIAL_ICONS } from "@/lib/client-constants"
+import { useEffect, useState } from "react"
 
 type MobileMenuProps = {
   open: boolean,
@@ -14,8 +14,19 @@ type MobileMenuProps = {
 }
 
 function MobileMenu({ open, close }: MobileMenuProps) {
-  const isMobile = useMediaQuery("(max-width: 640px)")
+  const [isMobile, setIsMobile] = useState(false)
   const linkStyles = "whitespace-nowrap transition-colors duration-300 ease-in-out hover:text-white"
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia('(max-width: 640px)').matches)
+    }
+
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   return (
     <Sheet open={open} onOpenChange={close}>
