@@ -1,6 +1,6 @@
-import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel"
+import { JSX } from "react"
+import { Carousel, CarouselApi, CarouselContent } from "@/components/ui/carousel"
 import Fade from "embla-carousel-fade"
-import { Gallery } from "@prisma/client"
 
 type CarouselViewerProps = {
   images: JSX.Element[],

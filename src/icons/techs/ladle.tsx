@@ -1,4 +1,4 @@
-import { SVGProps } from "react"
+import { JSX, SVGProps } from "react"
 
 function Ladle(props: SVGProps<SVGSVGElement>): JSX.Element {
   return (

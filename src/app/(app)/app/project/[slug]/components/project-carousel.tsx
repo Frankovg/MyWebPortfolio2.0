@@ -26,8 +26,8 @@ type ProjectCarouselProps = {
 
 //TODO: If it needs lazy loading look for more information here https://www.embla-carousel.com/examples/predefined/
 function ProjectCarousel({ images }: ProjectCarouselProps) {
-  const mainApiRef = useRef<CarouselApi>()
-  const thumbnailApiRef = useRef<CarouselApi>()
+  const mainApiRef = useRef<CarouselApi>(null)
+  const thumbnailApiRef = useRef<CarouselApi>(null)
 
   const [current, setCurrent] = useState(0)
 

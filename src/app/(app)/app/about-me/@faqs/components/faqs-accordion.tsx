@@ -1,3 +1,4 @@
+import { JSX } from "react";
 import { Accordion, AccordionContent, AccordionTrigger } from "@/components/ui/accordion"
 import { AccordionItem } from "@radix-ui/react-accordion"
 
