@@ -11,7 +11,7 @@ type LinkButtonsProps = {
 
 function LinkButtons({ data }: LinkButtonsProps) {
   return (
-    <div className="w-full flex items-start">
+    <>
       {data.map((item, index) => (
         <Link
           key={index}
@@ -29,7 +29,7 @@ function LinkButtons({ data }: LinkButtonsProps) {
           </Button>
         </Link>
       ))}
-    </div >
+    </ >
   )
 }
 

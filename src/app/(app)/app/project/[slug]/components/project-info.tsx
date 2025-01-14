@@ -2,6 +2,7 @@ import { Project } from "@prisma/client"
 import LinkButtons from "./link-buttons"
 import LongDescription from "./long-description"
 import HeadOfDescription from "./head-of-description"
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 
 type ProjectInfoProps = {
   project?: Project
@@ -30,11 +31,17 @@ function ProjectInfo({ project }: ProjectInfoProps) {
   }
 
   return (
-    <div className="w-full h-auto flex flex-col space-y-6">
-      <HeadOfDescription data={getHeaderData(project)} />
-      <LongDescription description={getFormattedDescription(project.description)} />
-      <LinkButtons data={getLinkButtons(project)} />
-    </div>
+    <Card>
+      <CardHeader>
+        <HeadOfDescription data={getHeaderData(project)} />
+      </CardHeader>
+      <CardContent>
+        <LongDescription description={getFormattedDescription(project.description)} />
+      </CardContent>
+      <CardFooter className="flex justify-between">
+        <LinkButtons data={getLinkButtons(project)} />
+      </CardFooter>
+    </Card>
   )
 }
 

@@ -6,6 +6,8 @@ import { FALLBACK_IMG } from "@/lib/constants"
 import ProjectCarousel from "./components/project-carousel"
 import H4 from "@/components/h4"
 import ProjectInfo from "./components/project-info"
+import ProjectChart from "./components/project-chart"
+import ProjectTechStack from "./components/project-tech-stack"
 
 export default async function ProjectPage({
   params
@@ -35,9 +37,13 @@ export default async function ProjectPage({
         <div className="col-span-7">
           <ProjectCarousel images={project.gallery} />
         </div>
-        <div className="col-start-9 col-span-4">
+        <div className="col-start-8 col-span-5 pl-8">
           <ProjectInfo project={project} />
         </div>
+      </div>
+      <div className="mt-40 w-full flex items-top">
+        <ProjectChart />
+        <ProjectTechStack stack={project.techStack} />
       </div>
 
     </Section>
