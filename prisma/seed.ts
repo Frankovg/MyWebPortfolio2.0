@@ -40,6 +40,7 @@ const webDevelopment: Prisma.CategoryCreateInput = {
         companyUrl: 'https://asafedigital.com/',
         client: 'Safeguru',
         clientUrl: 'https://safeguru.co.uk',
+        videoUrl: 'https://youtu.be/ROJoLYIi0ZA?si=MA0YjjbvzIM7lLsp',
         techStack: 'Next.js, TypeScript, Tailwind, Node.js, Prisma, PostgreSQL'
       },
       {
