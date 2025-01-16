@@ -8,7 +8,9 @@ function ProjectTechStack({ stack }: ProjectTechStackProps) {
   // const filteredTechs = CATEGORIES.flatMap(category => 
   //   category.techs.filter(tech => stack.includes(tech.name.toLowerCase()))
   // )
-
+  //TODO: Hacer que techStack de la DB sea un array de strings.
+  //TODO: Arreglar las product cards
+  //TODO: Filtrar categories con ese array de tech stack para este componente
   return (
     <Card className="w-1/2 border-none">
       <CardHeader>

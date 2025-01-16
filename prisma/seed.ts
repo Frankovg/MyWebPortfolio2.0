@@ -37,7 +37,9 @@ const webDevelopment: Prisma.CategoryCreateInput = {
         },
         websiteUrl: 'https://safeguru.co.uk',
         company: 'A-SAFE Digital',
+        companyUrl: 'https://asafedigital.com/',
         client: 'Safeguru',
+        clientUrl: 'https://safeguru.co.uk',
         techStack: 'Next.js, TypeScript, Tailwind, Node.js, Prisma, PostgreSQL'
       },
       {

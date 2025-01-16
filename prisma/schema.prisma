@@ -30,7 +30,9 @@ model Project {
   websiteUrl       String?
   videoUrl         String?
   company          String?
+  companyUrl       String?
   client           String?
+  clientUrl        String?
   techStack        String
   category         Category  @relation(fields: [categoryId], references: [id])
   categoryId       String
