@@ -2,20 +2,12 @@
 
 import { useEffect, useState } from "react"
 
-//Types
-import { Category, Project } from "@prisma/client"
-
 //Components
 import ProjectCard from "./project-card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-interface ICategoryWithProjects extends Category {
-  projects: Project[]
-}
-
-type CategoriesProps = {
-  categories: ICategoryWithProjects[]
-}
+//Types
+import { CategoriesProps } from "../types/types"
 
 function Categories({ categories }: CategoriesProps) {
   const [currentTab, setCurrentTab] = useState('web-development')

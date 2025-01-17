@@ -22,9 +22,6 @@ const webDevelopment: Prisma.CategoryCreateInput = {
         gallery: {
           create: [
             {
-              imageUrl: 'https://drive.google.com/uc?export=view&id=1apoVnfFU6vQwvyW5Po0rVGnHbmmuvEyJ',
-            },
-            {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W',
             },
             {
@@ -40,8 +37,36 @@ const webDevelopment: Prisma.CategoryCreateInput = {
         companyUrl: 'https://asafedigital.com/',
         client: 'Safeguru',
         clientUrl: 'https://safeguru.co.uk',
+        repository: 'https://github.com/Frankovg/theJokesAPI',
         videoUrl: 'https://youtu.be/ROJoLYIi0ZA?si=MA0YjjbvzIM7lLsp',
-        techStack: 'Next.js, TypeScript, Tailwind, Node.js, Prisma, PostgreSQL'
+        techStack: {
+          create: [
+            {
+              name: "React",
+              value: "react",
+            },
+            {
+              name: "Typescript",
+              value: "typescript",
+            },
+            {
+              name: "Tailwind",
+              value: "tailwind",
+            },
+            {
+              name: "Node.js",
+              value: "node",
+            },
+            {
+              name: "Prisma",
+              value: "prisma",
+            },
+            {
+              name: "PostgreSQL",
+              value: "postgresql",
+            }
+          ]
+        }
       },
       {
         title: "The Jokes API",
@@ -64,7 +89,34 @@ const webDevelopment: Prisma.CategoryCreateInput = {
         },
         repository: 'https://github.com/Frankovg/theJokesAPI',
         videoUrl: 'https://youtu.be/ROJoLYIi0ZA?si=MA0YjjbvzIM7lLsp',
-        techStack: 'React.js, JavaScript, Bootstrap, Sass, MySQL, Node.js'
+        techStack: {
+          create: [
+            {
+              name: "React",
+              value: "react",
+            },
+            {
+              name: "JavaScript",
+              value: "javascript",
+            },
+            {
+              name: "Bootstrap",
+              value: "bootstrap",
+            },
+            {
+              name: "Sass",
+              value: "sass",
+            },
+            {
+              name: "MySQL",
+              value: "mysql",
+            },
+            {
+              name: "Node.js",
+              value: "node",
+            }
+          ]
+        }
       },
       {
         title: "My old personal web portfolio",
@@ -85,7 +137,30 @@ const webDevelopment: Prisma.CategoryCreateInput = {
             },
           ]
         },
-        techStack: 'React.js, JavaScript, Bootstrap, Sass, Firebase'
+        techStack: {
+          create: [
+            {
+              name: "React",
+              value: "react",
+            },
+            {
+              name: "JavaScript",
+              value: "javascript",
+            },
+            {
+              name: "Bootstrap",
+              value: "bootstrap",
+            },
+            {
+              name: "Sass",
+              value: "sass",
+            },
+            {
+              name: "Firebase",
+              value: "firebase",
+            },
+          ]
+        }
       },
       {
         title: "Netfilm",
@@ -108,7 +183,30 @@ const webDevelopment: Prisma.CategoryCreateInput = {
         },
         repository: "https://github.com/Frankovg/netfilm",
         videoUrl: "https://youtu.be/g6nDENxjK3c?si=zmwR7MVnSmXXKGNB",
-        techStack: 'React.js, JavaScript, Bootstrap, Sass, Firebase'
+        techStack: {
+          create: [
+            {
+              name: "React",
+              value: "react",
+            },
+            {
+              name: "JavaScript",
+              value: "javascript",
+            },
+            {
+              name: "Bootstrap",
+              value: "bootstrap",
+            },
+            {
+              name: "Sass",
+              value: "sass",
+            },
+            {
+              name: "Firebase",
+              value: "firebase",
+            },
+          ]
+        }
       },
       {
         title: "Coolx",
@@ -131,7 +229,38 @@ const webDevelopment: Prisma.CategoryCreateInput = {
         },
         repository: "https://github.com/Frankovg/MVP_Coolx",
         videoUrl: "https://youtu.be/BGOv_VQLyyU?si=8wCn8xNe8F_54ulO",
-        techStack: 'React.js, JavaScript, Node.js, Express, MySQL, Bootstrap, Sass'
+        techStack: {
+          create: [
+            {
+              name: "React",
+              value: "react",
+            },
+            {
+              name: "JavaScript",
+              value: "javascript",
+            },
+            {
+              name: "Bootstrap",
+              value: "bootstrap",
+            },
+            {
+              name: "Sass",
+              value: "sass",
+            },
+            {
+              name: "MySQL",
+              value: "mysql",
+            },
+            {
+              name: "Node.js",
+              value: "node",
+            },
+            {
+              name: "Express",
+              value: "express",
+            }
+          ]
+        }
       },
       {
         title: "DigiArt",
@@ -155,8 +284,44 @@ const webDevelopment: Prisma.CategoryCreateInput = {
         company: "Socratech",
         repository: "https://github.com/Frankovg/proyecto_socratech",
         videoUrl: "https://youtu.be/x851u6-utEU?si=m8Zn362rN7g5YpMr",
-        techStack: 'HTML5, CSS3, Bootstrap, Sass, JavaScript, Node.js, Express, MySQL'
+        techStack: {
+          create: [
+            {
+              name: "HTML",
+              value: "html",
+            },
+            {
+              name: "CSS",
+              value: "css",
+            },
+            {
+              name: "JavaScript",
+              value: "javascript",
+            },
+            {
+              name: "Bootstrap",
+              value: "bootstrap",
+            },
+            {
+              name: "Sass",
+              value: "sass",
+            },
+            {
+              name: "MySQL",
+              value: "mysql",
+            },
+            {
+              name: "Node.js",
+              value: "node",
+            },
+            {
+              name: "Express",
+              value: "express",
+            }
+          ]
+        }
       },
+
       // {
       //   title: "Calculator",
       //   shortDescription: "This is my own made calculator built with JavaScript. It has a simple design and is easy to use.",
@@ -235,7 +400,23 @@ const graphicAndUxUiDesign: Prisma.CategoryCreateInput = {
         websiteUrl: 'https://safeguru.co.uk',
         company: 'A-SAFE Digital',
         client: 'Safeguru',
-        techStack: 'Next.js, TypeScript, Tailwind'
+        techStack: {
+          create: [
+            {
+              name: "Next.js",
+              value: "nextjs",
+            },
+            {
+              name: "Typescript",
+              value: "typescript",
+            },
+            {
+              name: "Tailwind",
+              value: "tailwind",
+            },
+
+          ]
+        }
       }
     ]
   }

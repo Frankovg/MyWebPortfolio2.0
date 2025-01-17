@@ -1,18 +1,38 @@
+import Link from "next/link"
+
 type HeadOfDescriptionProps = {
   data: {
+    type: string
     name: string
-    url: string
+    url?: string
   }[]
 }
 
 function HeadOfDescription({ data }: HeadOfDescriptionProps) {
   return (
     <div>
-      {data.map((item, index) => (
-        <p key={index}>
-          {item.name} <span className="font-bold">{item.url}</span>
-        </p>
-      ))}
+      {data.map((item, index) => {
+        if (!!item.url) {
+          return (
+            <Link
+              key={index}
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <p>
+                {item.type} <span className="font-bold hover:underline">{item.name}</span>
+              </p>
+            </Link>
+          )
+        }
+
+        return (
+          <p key={index}>
+            {item.type} <span className="font-bold">{item.name}</span>
+          </p>
+        )
+      })}
     </div>
   )
 }

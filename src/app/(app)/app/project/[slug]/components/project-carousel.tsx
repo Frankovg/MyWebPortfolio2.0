@@ -79,7 +79,7 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
       images.map((image, index) => (
         <CarouselItem key={index}>
           <ImageWithFallback
-            className='object-cover md:object-contain w-full h-full max-h-[80vh]'
+            className='object-cover md:object-contain bg-softGrey rounded-lg w-full h-full max-h-[80vh]'
             src={image.imageUrl}
             fallbackSrc={FALLBACK_IMG}
             alt={`Carousel Main Image ${index + 1}`}
@@ -102,7 +102,7 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
           onClick={() => handleClick(index)}
         >
           <ImageWithFallback
-            className={`${index === current && "border-2"} w-full h-full object-contain`}
+            className={`${index === current && "border-2"} w-full h-full object-contain rounded-lg`}
             src={image.imageUrl}
             fallbackSrc={FALLBACK_IMG}
             alt={`Carousel Thumbnail Image ${index + 1}`}

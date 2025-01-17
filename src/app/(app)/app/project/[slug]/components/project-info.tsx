@@ -19,26 +19,25 @@ function ProjectInfo({ project }: ProjectInfoProps) {
     const buttons = []
     if (project.repository) buttons.push({ name: 'Repository', url: project.repository })
     if (project.websiteUrl) buttons.push({ name: 'Website', url: project.websiteUrl })
-    if (project.videoUrl) buttons.push({ name: 'Video', url: project.videoUrl })
     return buttons
   }
 
   const getHeaderData = (project: Project) => {
     const data = []
-    if (project.company) data.push({ name: 'Developed at', url: project.company })
-    if (project.client) data.push({ name: 'Client:', url: project.client })
+    if (project.company) data.push({ type: 'Developed at', name: project.company, url: project.companyUrl ?? undefined })
+    if (project.client) data.push({ type: 'Client:', name: project.client, url: project.clientUrl ?? undefined })
     return data
   }
 
   return (
-    <Card>
-      <CardHeader>
+    <Card className="border-none">
+      <CardHeader className="pt-0">
         <HeadOfDescription data={getHeaderData(project)} />
       </CardHeader>
       <CardContent>
         <LongDescription description={getFormattedDescription(project.description)} />
       </CardContent>
-      <CardFooter className="flex justify-between">
+      <CardFooter className="flex gap-4">
         <LinkButtons data={getLinkButtons(project)} />
       </CardFooter>
     </Card>

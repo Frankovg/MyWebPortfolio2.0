@@ -75,8 +75,13 @@ function ProjectChart() {
               tickFormatter={(value) =>
                 chartConfig[value as keyof typeof chartConfig]?.label
               }
+              stroke="#ffffffb3"
             />
-            <XAxis dataKey="percentage" type="number" hide />
+            <XAxis
+              dataKey="percentage"
+              type="number"
+              stroke="#ffffffb3"
+            />
             <Bar dataKey="percentage" layout="vertical" radius={5} />
           </BarChart >
         </ChartContainer >
