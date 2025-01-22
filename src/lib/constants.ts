@@ -1,4 +1,6 @@
 
+import { BASICS_TECHS, DB_TECHS, DEPLOYMENT_TECHS, DESIGN_TECHS, STYLING_TECHS, TESTING_TECHS } from '@/app/(app)/app/home/constants/constants'
+
 // LinkedIn profile images
 import img1 from '/public/images/in-profile-1.webp'
 import img2 from '/public/images/in-profile-2.webp'
@@ -109,3 +111,12 @@ export const FOOTER_LINKS = {
 
 export const FALLBACK_IMG = "/images/project-placeholder.webp"
 
+// All technologies supported by the portfolio
+export const ALL_TECHS = Object.values({
+  ...BASICS_TECHS,
+  ...STYLING_TECHS,
+  ...DESIGN_TECHS,
+  ...DB_TECHS,
+  ...TESTING_TECHS,
+  ...DEPLOYMENT_TECHS,
+})

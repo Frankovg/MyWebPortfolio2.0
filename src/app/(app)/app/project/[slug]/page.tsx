@@ -43,7 +43,7 @@ export default async function ProjectPage({
       </div>
       <div className="mt-40 w-full flex items-top">
         <ProjectChart />
-        {/* <ProjectTechStack stack={project.techStack} /> */}
+        <ProjectTechStack techStack={project.techStack} />
       </div>
 
     </Section>

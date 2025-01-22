@@ -29,11 +29,9 @@ import {
   Ts,
   Turborepo,
   Vercel
-} from "@/icons/techs";
+} from "@/icons/techs"
 
-//TODO: Create a constant with all the techs
-
-const BASICS_TECHS = {
+export const BASICS_TECHS = {
   react: {
     name: 'React',
     value: 'react',
@@ -99,7 +97,7 @@ const BASICS_TECHS = {
   }
 }
 
-const STYLING_TECHS = {
+export const STYLING_TECHS = {
   tailwind: {
     name: 'Tailwind',
     value: 'tailwind',
@@ -144,7 +142,7 @@ const STYLING_TECHS = {
   }
 }
 
-const DESIGN_TECHS = {
+export const DESIGN_TECHS = {
   figma: {
     name: 'Figma',
     value: 'figma',
@@ -168,7 +166,7 @@ const DESIGN_TECHS = {
   }
 }
 
-const DB_TECHS = {
+export const DB_TECHS = {
   sql: {
     name: 'SQL',
     value: 'sql',
@@ -199,7 +197,7 @@ const DB_TECHS = {
   }
 }
 
-const TESTING_TECHS = {
+export const TESTING_TECHS = {
   playwright: {
     name: 'Playwright',
     value: 'playwright',
@@ -223,7 +221,7 @@ const TESTING_TECHS = {
   }
 }
 
-const DEPLOYMENT_TECHS = {
+export const DEPLOYMENT_TECHS = {
   vercel: {
     name: 'Vercel',
     value: 'vercel',
@@ -261,7 +259,6 @@ const DEPLOYMENT_TECHS = {
   }
 }
 
-// Tech stack categories
 export const CATEGORIES = [
   {
     label: 'Essentials for Web App Development',

@@ -21,7 +21,7 @@ function LinkButtons({ data }: LinkButtonsProps) {
           className="w-1/3"
         >
           <Button
-            className="w-full mx-1 text-lg font-semibold"
+            className="w-full mx-1 text-lg font-semibold text-white"
             variant="secondary"
             size="default"
           >

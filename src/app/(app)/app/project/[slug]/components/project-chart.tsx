@@ -51,7 +51,7 @@ function ProjectChart() {
   return (
     <Card className="w-1/2 border-none">
       <CardHeader>
-        <CardTitle>Responsabilities</CardTitle>
+        <CardTitle className="text-white">Responsibilities</CardTitle>
         <CardDescription>January 2023 - Present</CardDescription>
       </CardHeader>
       <CardContent>

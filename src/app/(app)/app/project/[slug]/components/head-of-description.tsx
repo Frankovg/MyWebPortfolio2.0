@@ -21,7 +21,7 @@ function HeadOfDescription({ data }: HeadOfDescriptionProps) {
               rel="noopener noreferrer"
             >
               <p>
-                {item.type} <span className="font-bold hover:underline">{item.name}</span>
+                {item.type} <span className="font-bold hover:underline text-white">{item.name}</span>
               </p>
             </Link>
           )
