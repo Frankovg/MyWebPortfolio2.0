@@ -8,6 +8,7 @@ import H4 from "@/components/h4"
 import ProjectInfo from "./components/project-info"
 import ProjectChart from "./components/project-chart"
 import ProjectTechStack from "./components/project-tech-stack"
+import { Card, CardContent } from "@/components/ui/card"
 
 export default async function ProjectPage({
   params
@@ -32,20 +33,21 @@ export default async function ProjectPage({
         />
       </BannerContainer>
 
-      <H4>{project.title}</H4>
+      <H4 className="pt-24">{project.title}</H4>
       <div className="grid grid-cols-12 grid-flow-row gap-0">
-        <div className="col-span-7">
+        <div className="1100:col-span-7 col-span-12">
           <ProjectCarousel images={project.gallery} />
         </div>
-        <div className="col-start-8 col-span-5 pl-8">
+        <div className="1100:col-start-8 1100:col-span-5 1100:pl-8 col-span-12 max-1100:pt-24">
           <ProjectInfo project={project} />
         </div>
       </div>
-      <div className="mt-40 w-full flex items-top">
-        <ProjectChart />
-        <ProjectTechStack techStack={project.techStack} />
-      </div>
-
+      <Card className="mt-40 w-full bg-background">
+        <CardContent className="w-full flex flex-col 930:flex-row items-top p-0">
+          <ProjectChart />
+          <ProjectTechStack techStack={project.techStack} />
+        </CardContent>
+      </Card>
     </Section>
   )
 }

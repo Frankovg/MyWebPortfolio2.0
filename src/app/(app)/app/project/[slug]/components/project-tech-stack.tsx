@@ -15,12 +15,12 @@ function ProjectTechStack({ techStack }: ProjectTechStackProps) {
   )
 
   return (
-    <Card className="w-1/2 border-none">
+    <Card className="w-full 930:w-1/2 border-none">
       <CardHeader>
         <CardTitle className="text-white">Technologies</CardTitle>
         <CardDescription>The most relevant tools used in this project</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="pt-2">
         <div className="grid grid-cols-3 gap-8">
           {filteredTechs.map(tech => (
             <TechCard

@@ -18,10 +18,10 @@ function LinkButtons({ data }: LinkButtonsProps) {
           href={item.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-1/3"
+          className=""
         >
           <Button
-            className="w-full mx-1 text-lg font-semibold text-white"
+            className="w-fit min-w-40 mx-1 text-lg font-semibold text-white"
             variant="secondary"
             size="default"
           >
