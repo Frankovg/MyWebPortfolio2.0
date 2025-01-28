@@ -31,13 +31,13 @@ function ProjectInfo({ project }: ProjectInfoProps) {
 
   return (
     <Card className="border-none">
-      <CardHeader className="pt-0">
+      <CardHeader className="pt-0 max-600:px-0" >
         <HeadOfDescription data={getHeaderData(project)} />
       </CardHeader>
-      <CardContent>
+      <CardContent className="max-600:px-0">
         <LongDescription description={getFormattedDescription(project.description)} />
       </CardContent>
-      <CardFooter className="flex gap-4">
+      <CardFooter className="flex gap-4 max-600:px-0">
         <LinkButtons data={getLinkButtons(project)} />
       </CardFooter>
     </Card>

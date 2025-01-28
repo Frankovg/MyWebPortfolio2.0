@@ -10,7 +10,7 @@ type HeadOfDescriptionProps = {
 
 function HeadOfDescription({ data }: HeadOfDescriptionProps) {
   return (
-    <div>
+    <div className="w-fit">
       {data.map((item, index) => {
         if (!!item.url) {
           return (
