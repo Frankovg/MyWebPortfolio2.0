@@ -24,7 +24,7 @@ export default function MenuLink({ name, linkStyles }: MenuLinkProps) {
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <NavigationMenu>
-              <div className="flex flex-col gap-4 items-center w-max h-auto p-4 backdrop-blur-sm">
+              <div className="flex flex-col gap-4 items-center w-max h-auto p-4 backdrop-blur-xs">
                 <DownloadLinks />
               </div>
             </NavigationMenu>

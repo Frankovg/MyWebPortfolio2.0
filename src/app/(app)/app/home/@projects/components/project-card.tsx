@@ -9,7 +9,7 @@ function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Link
       href={`/app/project/${project.slug}`}
-      className="w-full h-full flex flex-col justify-between overflow-hidden p-2 rounded shadow-lg shadow-background border border-solid border-darkPrimary transition-all duration-300 ease-in-out hover:bg-background hover:scale-[1.02]"
+      className="w-full h-full flex flex-col justify-between overflow-hidden p-2 rounded-sm shadow-lg shadow-background border border-solid border-darkPrimary transition-all duration-300 ease-in-out hover:bg-background hover:scale-[1.02]"
     >
       <div className="w-full">
         <ImageWithFallback

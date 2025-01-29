@@ -75,7 +75,7 @@ function AccountsTable({ isAdmin = false }: AccountsTableProps) {
         const blurEmail = !isAdmin && row.original.isAdmin
         const email = blurEmail ? 'dontlook@behindyou.com' : row.original.email
         return (
-          <div className={`text-left font-light text-white ${blurEmail && 'blur-sm select-none'}`}>
+          <div className={`text-left font-light text-white ${blurEmail && 'blur-xs select-none'}`}>
             {email}
           </div>
         )

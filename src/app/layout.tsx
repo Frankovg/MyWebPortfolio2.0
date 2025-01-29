@@ -61,7 +61,7 @@ export default async function RootLayout({
           showSpinner={false}
           height={4}
         />
-        <div className="absolute inset-0 bg-gradient-to-br to-darkPrimary via-background from-darkGrey animate-gradient bg-[length:400%_400%] z-0" />
+        <div className="absolute inset-0 bg-linear-to-br to-darkPrimary via-background from-darkGrey animate-gradient bg-[length:400%_400%] z-0" />
         <div className="relative flex flex-col min-h-screen w-full z-10">
           <SessionProvider>{children}</SessionProvider>
           <Toaster
