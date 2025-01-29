@@ -2,6 +2,7 @@ import { Project } from "@prisma/client"
 import LinkButtons from "./link-buttons"
 import LongDescription from "./long-description"
 import HeadOfDescription from "./head-of-description"
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 
 type ProjectInfoProps = {
   project?: Project
@@ -18,23 +19,28 @@ function ProjectInfo({ project }: ProjectInfoProps) {
     const buttons = []
     if (project.repository) buttons.push({ name: 'Repository', url: project.repository })
     if (project.websiteUrl) buttons.push({ name: 'Website', url: project.websiteUrl })
-    if (project.videoUrl) buttons.push({ name: 'Video', url: project.videoUrl })
     return buttons
   }
 
   const getHeaderData = (project: Project) => {
     const data = []
-    if (project.company) data.push({ name: 'Developed at', url: project.company })
-    if (project.client) data.push({ name: 'Client:', url: project.client })
+    if (project.company) data.push({ type: 'Developed at', name: project.company, url: project.companyUrl ?? undefined })
+    if (project.client) data.push({ type: 'Client:', name: project.client, url: project.clientUrl ?? undefined })
     return data
   }
 
   return (
-    <div className="w-full h-auto flex flex-col space-y-6">
-      <HeadOfDescription data={getHeaderData(project)} />
-      <LongDescription description={getFormattedDescription(project.description)} />
-      <LinkButtons data={getLinkButtons(project)} />
-    </div>
+    <Card className="border-none">
+      <CardHeader className="pt-0 max-600:px-0" >
+        <HeadOfDescription data={getHeaderData(project)} />
+      </CardHeader>
+      <CardContent className="max-600:px-0">
+        <LongDescription description={getFormattedDescription(project.description)} />
+      </CardContent>
+      <CardFooter className="flex gap-4 max-600:px-0">
+        <LinkButtons data={getLinkButtons(project)} />
+      </CardFooter>
+    </Card>
   )
 }
 

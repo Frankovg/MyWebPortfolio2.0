@@ -20,7 +20,7 @@ function Footer() {
           </div>
 
           <ul className="max-sm:mx-auto col-start-4 col-span-2 row-start-1 row-span-1 space-y-2">
-            <li><h6 className="font-medium underline mb-1.5 max-sm:text-xl text-base">Sections</h6></li>
+            <li><h6 className="max-sm:text-center font-medium underline mb-1.5 max-sm:text-xl text-base">Sections</h6></li>
             {FOOTER_LINKS.sections.map((section, index) => (
               <li className="max-sm:text-center" key={index}>
                 <Link href={section.href || '#'} className="font-normal hover:text-white max-sm:text-lg" >
@@ -31,12 +31,12 @@ function Footer() {
           </ul>
 
           <ul className="max-sm:mx-auto col-start-7 col-span-2 row-start-1 row-span-1 space-y-2">
-            <li><h6 className="font-medium underline mb-1.5 max-sm:text-xl text-base">Downloads</h6></li>
+            <li><h6 className="max-sm:text-center font-medium underline mb-1.5 max-sm:text-xl text-base">Downloads</h6></li>
             <DownloadLinksFooter />
           </ul>
 
           <ul className="max-sm:mx-auto col-start-10 col-span-2 row-start-1 row-span-1 space-y-2">
-            <li><h6 className="font-medium underline mb-1.5 max-sm:text-xl text-base">Let&apos;s Talk</h6></li>
+            <li><h6 className="max-sm:text-center font-medium underline mb-1.5 max-sm:text-xl text-base">Let&apos;s Talk</h6></li>
             {FOOTER_LINKS.letsTalk.map((item, index) => (
               <li className="max-sm:text-center" key={index}>
                 <Link href={item.href || '#'} className="font-normal hover:text-white max-sm:text-lg" >

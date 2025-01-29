@@ -1,23 +1,15 @@
 import ImageWithFallback from "@/components/image-with-fallback";
 import { FALLBACK_IMG } from "@/lib/constants";
 import Link from "next/link";
-
-type ProjectCardProps = {
-  project: {
-    image: string,
-    title: string,
-    shortDescription: string,
-    techStack: string,
-    slug: string,
-  }
-}
+import { ProjectCardProps } from "../types/types";
 
 function ProjectCard({ project }: ProjectCardProps) {
+  const techStackString = project.techStack.map(tech => tech.name).join(', ');
 
   return (
     <Link
       href={`/app/project/${project.slug}`}
-      className="w-full h-full flex flex-col justify-between overflow-hidden p-2 rounded shadow-lg shadow-background border border-solid border-darkPrimary transition-all duration-300 ease-in-out hover:bg-background hover:scale-[1.02]"
+      className="w-full h-full flex flex-col justify-between overflow-hidden p-2 rounded-sm shadow-lg shadow-background border border-solid border-darkPrimary transition-all duration-300 ease-in-out hover:bg-background hover:scale-[1.02]"
     >
       <div className="w-full">
         <ImageWithFallback
@@ -36,7 +28,7 @@ function ProjectCard({ project }: ProjectCardProps) {
         <p className="text-gray-600 text-base">{project.shortDescription}</p>
       </div>
       <div className="w-[90%] mx-auto border-t border-solid border-darkPrimary text-center pt-2.5 pb-1">
-        <p className="text-xs text-primary/80">{project.techStack}</p>
+        <p className="text-xs text-primary/80">{techStackString}</p>
       </div>
     </Link>
   )

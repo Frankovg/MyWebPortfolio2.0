@@ -7,7 +7,11 @@ import prisma from './db'
 export async function getCategories() {
   const categories = await prisma.category.findMany({
     include: {
-      projects: true
+      projects: {
+        include: {
+          techStack: true,
+        }
+      },
     }
   })
   return categories
@@ -18,6 +22,7 @@ export async function getProjects() {
     include: {
       category: true,
       gallery: true,
+      techStack: true,
     }
   })
   return projects
@@ -43,6 +48,7 @@ export async function getProjectById(projectId: Project['id']) {
     include: {
       category: true,
       gallery: true,
+      techStack: true,
     }
   })
   return project
@@ -57,6 +63,7 @@ export async function getProjectBySlug(slug: Project['slug']) {
     include: {
       category: true,
       gallery: true,
+      techStack: true,
     }
   })
   return project

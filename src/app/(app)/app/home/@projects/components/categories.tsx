@@ -2,20 +2,12 @@
 
 import { useEffect, useState } from "react"
 
-//Types
-import { Category, Project } from "@prisma/client"
-
 //Components
 import ProjectCard from "./project-card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-interface ICategoryWithProjects extends Category {
-  projects: Project[]
-}
-
-type CategoriesProps = {
-  categories: ICategoryWithProjects[]
-}
+//Types
+import { CategoriesProps } from "../types/types"
 
 function Categories({ categories }: CategoriesProps) {
   const [currentTab, setCurrentTab] = useState('web-development')
@@ -45,13 +37,13 @@ function Categories({ categories }: CategoriesProps) {
       className="flex flex-col w-full items-center space-y-8"
       onValueChange={handleTabChange}
     >
-      <TabsList className="w-full flex flex-col lg:flex-row justify-around lg:bg-background h-auto p-2 rounded">
+      <TabsList className="w-full flex flex-col lg:flex-row justify-around lg:bg-background h-auto p-2 rounded-sm">
         {categories.map((category) => {
           return (
             <TabsTrigger
               key={category.id}
               value={category.value}
-              className='w-full data-[state=active]:bg-white/5 data-[state=active]:text-white data-[state=active]:font-bold rounded'
+              className='w-full data-[state=active]:bg-white/5 data-[state=active]:text-white data-[state=active]:font-bold rounded-sm'
               disabled={category.projects.length === 0}
             >
               <h2

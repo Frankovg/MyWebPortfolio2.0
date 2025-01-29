@@ -9,7 +9,6 @@ import { getCategories } from "@/lib/server-utils"
 
 async function Projects() {
   const categories = await getCategories()
-
   return (
     <Section id="projects" className="pt-24">
       <H4>Projects</H4>

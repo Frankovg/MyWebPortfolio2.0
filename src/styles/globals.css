@@ -1,21 +1,152 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@keyframes gradientAnimation {
-  0% {
-    background-position: 0% 50%;
+@source '../../node_modules/@tanstack/**/*.{js,tsx,tsx}';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --breakpoint-550: 550px;
+  --breakpoint-600: 600px;
+  --breakpoint-799: 799px;
+  --breakpoint-800: 800px;
+  --breakpoint-830: 830px;
+  --breakpoint-929: 929px;
+  --breakpoint-930: 930px;
+  --breakpoint-940: 940px;
+  --breakpoint-1099: 1099px;
+  --breakpoint-1100: 1100px;
+  --breakpoint-1170: 1170px;
+
+  --spacing-600: 600px;
+
+  --container-fa: 1320px;
+  --container-am: 920px;
+  --container-hobby: 360px;
+  --container-inspiration: 840px;
+  --container-logo: 115px;
+  --container-contact: 645px;
+
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --text-am: 0.9rem, 1.4rem;
+
+  --color-background: #121212;
+  --color-primary: #5cedc2;
+  --color-darkPrimary: #122f27;
+  --color-secondary: #e453bc;
+  --color-softGrey: #d9d9d91a;
+  --color-darkGrey: #242424;
+  --color-whiteText: #ffffffb3;
+  --color-success: #5cedc2;
+  --color-error: #e453bc;
+  --color-warning: #f5ec28;
+  --color-textAnimation: #6666;
+
+  --color-sidebar: #121212;
+  --color-sidebar-foreground: var(--color-whiteText);
+  --color-sidebar-primary: #5cedc2;
+  --color-sidebar-primary-foreground: #e453bc;
+  --color-sidebar-accent: #122f27;
+  --color-sidebar-accent-foreground: var(--color-whiteText);
+  --color-sidebar-border: #e453bc;
+  --color-sidebar-ring: #5cedc2;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-shiny: shiny 3s linear infinite;
+  --animate-fade-in: fadeIn 0.5s ease-out forwards;
+  --animate-slide-up: slideUp 0.6s ease-out forwards;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
   }
-  50% {
-    background-position: 100% 50%;
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
   }
-  100% {
-    background-position: 0% 50%;
+  @keyframes shiny {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0.98;
+    }
+  }
+  @keyframes slideUp {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 }
 
-.animate-gradient {
-  animation: gradientAnimation 15s ease infinite;
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  @media (width >= --theme(--breakpoint-550)) {
+    max-width: none;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@layer utilities {
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-gradient {
+    animation: gradientAnimation 15s ease infinite;
+  }
 }
 
 @layer base {
@@ -28,5 +159,12 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
   }
 }
