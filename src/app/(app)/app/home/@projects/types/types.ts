@@ -1,7 +1,7 @@
-import { Category, Project, TechStack } from "@prisma/client"
+import { Category, Project, Tech } from "@prisma/client"
 
 interface IProjectWithTechStack extends Project {
-  techStack: TechStack[]
+  techStack: Tech[]
 }
 interface ICategoryWithProjects extends Category {
   projects: IProjectWithTechStack[]
