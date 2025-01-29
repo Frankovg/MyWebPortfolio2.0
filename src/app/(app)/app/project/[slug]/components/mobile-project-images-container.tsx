@@ -9,7 +9,7 @@ function MobileProjectImagesContainer({ images }: ProjectImagesContainerProps) {
   return (
     <div className="w-full h-auto flex flex-col gap-12" >
       {images.map((image) => (
-        <div className="flex flex-col items-center gap-2">
+        <div key={image.id} className="flex flex-col items-center gap-2">
           <Image
             src={image.imageUrl}
             alt={`Main Image ${'name'}`}
