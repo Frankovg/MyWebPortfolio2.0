@@ -56,7 +56,6 @@ export default async function ProjectPage({
       </Card>
 
       {/* //TODO: embed video url for every project in the database */}
-      {/* //TODO: aspect ratio for responsive video */}
       <Suspense fallback={<p>Loading video...</p>}>
         <VideoComponent />
       </Suspense>
