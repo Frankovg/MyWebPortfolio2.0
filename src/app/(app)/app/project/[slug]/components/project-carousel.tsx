@@ -134,11 +134,11 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
 
       <DialogContent className="max-w-screen h-screen 1100:h-fit max-h-screen grid-cols-none grid-rows-none flex flex-col">
         <DialogTitle >
-          {`Main Image ${current + 1}`}
+          {images[current].description}
         </DialogTitle>
         <Image
           src={images[current].imageUrl}
-          alt={`Main Image ${current + 1}`}
+          alt={images[current].alt}
           className="w-full h-full object-contain"
           width={0}
           height={0}

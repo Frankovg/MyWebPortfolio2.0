@@ -56,12 +56,18 @@ const webDevelopment: Prisma.CategoryCreateInput = {
           create: [
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
           ]
         },
@@ -71,33 +77,49 @@ const webDevelopment: Prisma.CategoryCreateInput = {
         client: 'Safeguru',
         clientUrl: 'https://safeguru.co.uk',
         repository: 'https://github.com/Frankovg/theJokesAPI',
-        videoUrl: 'https://youtu.be/ROJoLYIi0ZA?si=MA0YjjbvzIM7lLsp',
+        videoUrl: 'https://www.youtube.com/embed/ROJoLYIi0ZA?si=WJLVWg0SmaQMbOsm',
+        videoTitle: 'A video title',
+        videoDescription: 'A video description.',
         techStack: {
+          connect: [
+            { value: 'react' },
+            { value: 'typescript' },
+            { value: 'nextjs' },
+            { value: 'tailwind' },
+          ]
+        },
+        roles: {
           create: [
             {
-              name: "React",
-              value: "react",
+              label: "Front-end",
+              value: "front-end",
+              percentage: 100
             },
             {
-              name: "Typescript",
-              value: "typescript",
+              label: "UI/UX",
+              value: "ui-ux",
+              percentage: 40
             },
             {
-              name: "Tailwind",
-              value: "tailwind",
+              label: "Project Lead",
+              value: "project-lead",
+              percentage: 100
             },
             {
-              name: "Node.js",
-              value: "node",
+              label: "DevOps",
+              value: "devops",
+              percentage: 3
             },
             {
-              name: "Prisma",
-              value: "prisma",
+              label: "Back-end",
+              value: "back-end",
+              percentage: 5
             },
             {
-              name: "PostgreSQL",
-              value: "postgresql",
-            }
+              label: "Data Specialist",
+              value: "data-specialist",
+              percentage: 1
+            },
           ]
         }
       },
@@ -474,20 +496,18 @@ const sampleUserAccount: Prisma.UserCreateInput = {
 async function main() {
   console.log(`Start seeding ...`)
 
-  // First, create all tech stack entries
-  // console.log('Creating tech stack entries...');
-  // for (const tech of techStackData) {
-  //   await prisma.tech.upsert({
-  //     where: { value: tech.value },
-  //     update: {},
-  //     create: tech,
-  //   });
-  // }
-  // console.log('Tech stack entries created successfully');
+  console.log('Creating tech stack entries...')
+  for (const tech of techStackData) {
+    await prisma.tech.upsert({
+      where: { value: tech.value },
+      update: {},
+      create: tech,
+    })
+  }
+  console.log('Tech stack entries created successfully')
 
-  // Then create categories with their projects
-  console.log('Creating categories and projects...');
 
+  console.log('Creating categories and projects...')
   await prisma.category.create({
     data: webDevelopment,
   })
@@ -500,8 +520,7 @@ async function main() {
       projects: true
     }
   })
-
-  console.log('Categories and projects created successfully');
+  console.log('Categories and projects created successfully')
 
   const hashedSuperuserPassword = await bcrypt.hash(superUserAccount.hashedpassword, 10)
   superUserAccount.hashedpassword = hashedSuperuserPassword
@@ -509,12 +528,14 @@ async function main() {
   const hashedSampleUserPassword = await bcrypt.hash(sampleUserAccount.hashedpassword, 10)
   sampleUserAccount.hashedpassword = hashedSampleUserPassword
 
+  console.log('Creating accounts...')
   await prisma.user.create({
     data: superUserAccount,
   })
   await prisma.user.create({
     data: sampleUserAccount,
   })
+  console.log('Accounts created successfully')
 
   console.log(`Seeding finished.`)
 }

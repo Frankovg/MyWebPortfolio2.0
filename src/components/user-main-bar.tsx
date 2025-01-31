@@ -52,11 +52,16 @@ const UserMainBarContent = ({ isLogged, isAdmin }: UserMainBarContentProps) => {
   }
 
   const message = isAdmin ? 'Welcome back! You have admin access.' : 'Welcome! This is a demo account with restricted access.'
+  const mobileMessage = isAdmin ? 'Admin access.' : 'Demo account'
 
   return (
     <>
       {isPending && <LogOutOverlay />}
-      <p>{message}</p>
+      <p
+        data-mobile={mobileMessage}
+        data-desktop={message}
+        className="before:content-[attr(data-mobile)] md:before:content-none md:before:hidden md:after:content-[attr(data-desktop)] before:block after:hidden md:after:block"
+      />
       <div className={wrapperStyle}>
         <LanguageSelectorContainer />
         <Link href='/admin' className={hoverStyle} >

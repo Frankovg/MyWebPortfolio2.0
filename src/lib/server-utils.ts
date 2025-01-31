@@ -64,6 +64,7 @@ export async function getProjectBySlug(slug: Project['slug']) {
       category: true,
       gallery: true,
       techStack: true,
+      roles: true,
     }
   })
   return project
