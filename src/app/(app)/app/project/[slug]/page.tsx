@@ -1,4 +1,4 @@
-import { getProjectBySlug } from "@/lib/server-utils"
+import { getCategories, getProjectBySlug } from "@/lib/server-utils"
 import Section from "@/components/section"
 import BannerContainer from "@/components/banner-container"
 import ImageWithFallback from "@/components/image-with-fallback"
@@ -19,7 +19,11 @@ export default async function ProjectPage({
 }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
 
-  const project = await getProjectBySlug(slug)
+  const [project, categories] = await Promise.all([
+    getProjectBySlug(slug),
+    getCategories()
+  ])
+
   if (!project) throw new Error('Project not found')
 
   const hasVideo = !!project.videoUrl
@@ -30,9 +34,23 @@ export default async function ProjectPage({
       url: project.videoUrl || ''
     } : undefined
 
+  const parsedCategories = categories?.filter((cat) => cat.id !== project?.categoryId)
+  const projectsInCategory = categories?.find((cat) => cat.id === project?.categoryId)?.projects || []
+  const projectIndex = projectsInCategory?.findIndex((p) => p.id === project?.id)
+
+  const prevProject = projectIndex > 0 ? projectsInCategory[projectIndex - 1] : null
+  const nextProject = projectIndex >= 0 && projectIndex < projectsInCategory.length - 1 ? projectsInCategory[projectIndex + 1] : null
+
+  const moreProjects = {
+    categories: parsedCategories,
+    prevProject,
+    nextProject
+  }
+
   return (
     <Suspense fallback={<Loading />}>
       <Section id={`project-slug:${project.slug}`}>
+          //TODO: Move this component to a separate component with just the necessary data
         <BannerContainer className='max-600:hidden'>
           <ImageWithFallback
             className='object-cover md:object-contain w-auto md:w-full h-full md:h-auto'
@@ -46,18 +64,22 @@ export default async function ProjectPage({
           />
         </BannerContainer>
 
-        <H4 className="600:pt-24">{project.title}</H4>
-        <div className="grid grid-cols-12 grid-flow-row gap-0 mb-12">
-          <div className="max-600:hidden 1100:col-span-7 col-span-12">
-            <ProjectCarousel images={project.gallery} />
+
+        //TODO: Move this component to a separate component with just the necessary data
+        <>
+          <H4 className="600:pt-24">{project.title}</H4>
+          <div className="grid grid-cols-12 grid-flow-row gap-0 mb-12">
+            <div className="max-600:hidden 1100:col-span-7 col-span-12">
+              <ProjectCarousel images={project.gallery} />
+            </div>
+            <div className="1100:col-start-8 1100:col-span-5 1100:pl-8 col-span-12 600:max-1100:pt-24">
+              <ProjectInfo project={project} />
+            </div>
+            <div className="600:hidden 1100:col-span-7 col-span-12 pt-24">
+              <MobileProjectImagesContainer images={project.gallery} />
+            </div>
           </div>
-          <div className="1100:col-start-8 1100:col-span-5 1100:pl-8 col-span-12 600:max-1100:pt-24">
-            <ProjectInfo project={project} />
-          </div>
-          <div className="600:hidden 1100:col-span-7 col-span-12 pt-24">
-            <MobileProjectImagesContainer images={project.gallery} />
-          </div>
-        </div>
+        </>
 
         <Card className="my-12 600:mt-40 w-full bg-background">
           <CardContent className="w-full flex flex-col 930:flex-row items-top p-0">
@@ -69,6 +91,8 @@ export default async function ProjectPage({
         {hasVideo &&
           <VideoComponent videoData={videoData} />
         }
+
+
       </Section>
     </Suspense>
   )
