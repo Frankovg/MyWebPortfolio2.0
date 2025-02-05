@@ -1,11 +1,4 @@
-import { Category, Project, Tech } from "@prisma/client"
-
-interface IProjectWithTechStack extends Project {
-  techStack: Tech[]
-}
-interface ICategoryWithProjects extends Category {
-  projects: IProjectWithTechStack[]
-}
+import { ICategoryWithProjects, IProjectWithTechStack } from "@/lib/types"
 
 export type CategoriesProps = {
   categories: ICategoryWithProjects[]
