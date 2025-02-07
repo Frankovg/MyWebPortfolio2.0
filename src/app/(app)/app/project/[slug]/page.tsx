@@ -34,8 +34,11 @@ export default async function ProjectPage({
   const projectsInCategory = categories?.find((cat) => cat.id === project?.categoryId)?.projects || []
   const projectIndex = projectsInCategory?.findIndex((p) => p.id === project?.id)
 
-  const prevProject = projectIndex > 0 ? projectsInCategory[projectIndex - 1] : null
-  const nextProject = projectIndex >= 0 && projectIndex < projectsInCategory.length - 1 ? projectsInCategory[projectIndex + 1] : null
+  const firstProjectInTheList = projectsInCategory[0]
+  const lastProjectInTheList = projectsInCategory[projectsInCategory.length - 1]
+
+  const prevProject = projectIndex > 0 ? projectsInCategory[projectIndex - 1] : lastProjectInTheList
+  const nextProject = projectIndex >= 0 && projectIndex < projectsInCategory.length - 1 ? projectsInCategory[projectIndex + 1] : firstProjectInTheList
 
   const moreProjects = {
     categories: parsedCategories,

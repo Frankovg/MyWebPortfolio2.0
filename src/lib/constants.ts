@@ -110,6 +110,8 @@ export const FOOTER_LINKS = {
 }
 
 export const FALLBACK_IMG = "/images/project-placeholder.webp"
+export const PREV = 'prev' as const
+export const NEXT = 'next' as const
 
 // All technologies supported by the portfolio
 export const ALL_TECHS = Object.values({

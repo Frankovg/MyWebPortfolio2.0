@@ -6,7 +6,7 @@ import { revalidatePath } from "next/cache"
 import prisma from "@/lib/db"
 
 //Utils
-import { getProjectById, getUserById } from "@/lib/server-utils"
+import { getUserById } from "@/lib/server-utils"
 import { sleep } from "@/lib/utils"
 import { signIn, signOut } from "@/lib/auth"
 import { checkAuth } from "@/lib/check-auth"

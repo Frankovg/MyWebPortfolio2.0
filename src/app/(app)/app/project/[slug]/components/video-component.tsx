@@ -1,5 +1,3 @@
-'use client'
-
 import H3 from "@/components/h3"
 import H4 from "@/components/h4"
 

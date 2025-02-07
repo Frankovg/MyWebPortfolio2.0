@@ -149,7 +149,7 @@ const webDevelopment: Prisma.CategoryCreateInput = {
           ]
         },
         repository: 'https://github.com/Frankovg/theJokesAPI',
-        videoUrl: 'https://youtu.be/ROJoLYIi0ZA?si=MA0YjjbvzIM7lLsp',
+        videoUrl: 'https://www.youtube.com/embed/ROJoLYIi0ZA?si=RPZ4DvrVug4e-pM9',
         videoTitle: 'A video title',
         videoDescription: 'A video description.',
         techStack: {
