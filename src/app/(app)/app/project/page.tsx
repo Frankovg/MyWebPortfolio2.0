@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation"
+
 import { getFirstSoftwareProject } from "@/lib/server-utils"
 
 export default async function Project() {

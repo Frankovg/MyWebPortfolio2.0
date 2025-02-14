@@ -2,12 +2,16 @@ import 'server-only'
 
 //DB
 import { Project, User } from '@prisma/client'
+
 import prisma from './db'
 
 export async function getCategories() {
   const categories = await prisma.category.findMany({
     include: {
       projects: {
+        where: {
+          published: true
+        },
         include: {
           techStack: true,
         }
@@ -17,16 +21,16 @@ export async function getCategories() {
   return categories
 }
 
-export async function getProjects() {
-  const projects = await prisma.project.findMany({
-    include: {
-      category: true,
-      gallery: true,
-      techStack: true,
-    }
-  })
-  return projects
-}
+// export async function getProjects() {
+//   const projects = await prisma.project.findMany({
+//     include: {
+//       category: true,
+//       gallery: true,
+//       techStack: true,
+//     }
+//   })
+//   return projects
+// }
 
 export async function getFirstSoftwareProject() {
   const project = await prisma.project.findFirst({
@@ -40,19 +44,19 @@ export async function getFirstSoftwareProject() {
   return project
 }
 
-export async function getProjectById(projectId: Project['id']) {
-  const project = await prisma.project.findUnique({
-    where: {
-      id: projectId
-    },
-    include: {
-      category: true,
-      gallery: true,
-      techStack: true,
-    }
-  })
-  return project
-}
+// export async function getProjectById(projectId: Project['id']) {
+//   const project = await prisma.project.findUnique({
+//     where: {
+//       id: projectId
+//     },
+//     include: {
+//       category: true,
+//       gallery: true,
+//       techStack: true,
+//     }
+//   })
+//   return project
+// }
 
 export async function getProjectBySlug(slug: Project['slug']) {
   const project = await prisma.project.findUnique({
@@ -64,8 +68,10 @@ export async function getProjectBySlug(slug: Project['slug']) {
       category: true,
       gallery: true,
       techStack: true,
+      roles: true,
     }
   })
+
   return project
 }
 

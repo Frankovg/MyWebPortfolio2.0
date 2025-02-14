@@ -1,16 +1,34 @@
-'use client'
+import H3 from "@/components/h3"
+import H4 from "@/components/h4"
 
-function VideoComponent() {
+type VideoData = {
+  title: string,
+  description: string,
+  url: string
+}
+
+type VideoComponentProps = {
+  videoData?: VideoData
+}
+
+//TODO: Fix the error ReferenceError: browser is not defined 
+function VideoComponent({ videoData }: VideoComponentProps) {
   return (
-    <iframe
-      className="my-12 600:mt-40 aspect-video w-full max-w-am"
-      src="https://www.youtube.com/embed/ROJoLYIi0ZA?si=WJLVWg0SmaQMbOsm"
-      title="YouTube video player"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerPolicy="strict-origin-when-cross-origin"
-      allowFullScreen
-      loading="lazy"
-    />
+    <>
+      <H4 className="mt-12">{videoData?.title}</H4>
+      <H3 className="max-w-600 pt-0">
+        {videoData?.description}
+      </H3>
+      <iframe
+        className="mb-12 aspect-video w-full max-w-am"
+        src={videoData?.url}
+        title={videoData?.title}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+        loading="lazy"
+      />
+    </>
   )
 }
 

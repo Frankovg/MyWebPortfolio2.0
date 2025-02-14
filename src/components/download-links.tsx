@@ -1,7 +1,8 @@
 'use client'
 
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
+
 import { useUserDataContext } from '@/hooks/use-user-data-context'
 
 function DownloadLinks() {

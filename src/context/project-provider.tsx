@@ -1,12 +1,10 @@
 'use client'
 
+import { Project } from "@prisma/client"
 import { createContext, useOptimistic } from "react"
 
 import { addProject, deleteProject, editProject } from "@/actions/actions"
-
-//Types
 import { ProjectEssentials } from "@/lib/types"
-import { Project } from "@prisma/client"
 
 type ProjectContextProviderProps = {
   data: Project[],

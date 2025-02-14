@@ -1,5 +1,6 @@
-import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel"
 import { JSX } from "react"
+
+import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel"
 
 type CarouselThumbnailProps = {
   images: JSX.Element[],

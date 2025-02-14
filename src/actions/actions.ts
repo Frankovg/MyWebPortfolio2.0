@@ -1,28 +1,18 @@
 'use server'
 
 import { revalidatePath } from "next/cache"
-
-//Db
-import prisma from "@/lib/db"
-
-//Utils
-import { getProjectById, getUserById } from "@/lib/server-utils"
-import { sleep } from "@/lib/utils"
-import { signIn, signOut } from "@/lib/auth"
-import { checkAuth } from "@/lib/check-auth"
-
-//Validations
-import { emailSchema, isActiveSchema, userIdSchema } from "@/lib/validations"
-
-//Nodemailer
+import { AuthError } from "next-auth"
 import nodemailer from 'nodemailer'
 import SMTPTransport from "nodemailer/lib/smtp-transport"
 
-//Types
-import { AuthError } from "next-auth"
-
-//Constants
 import { SAMPLE_ACTION } from "@/app/(admin)/admin/constants/admin-constants"
+import { signIn, signOut } from "@/lib/auth"
+import { checkAuth } from "@/lib/check-auth"
+import prisma from "@/lib/db"
+import { getUserById } from "@/lib/server-utils"
+import { sleep } from "@/lib/utils"
+import { emailSchema, isActiveSchema, userIdSchema } from "@/lib/validations"
+
 
 
 // --- user actions ---

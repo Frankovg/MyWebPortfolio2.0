@@ -1,10 +1,9 @@
 "use client"
 
+import { Role } from "@prisma/client"
+import { useMemo } from "react"
 import { Bar, BarChart, XAxis, YAxis } from "recharts"
-import {
-  ChartConfig,
-  ChartContainer,
-} from "@/components/ui/chart"
+
 import {
   Card,
   CardContent,
@@ -12,41 +11,38 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import {
+  ChartConfig,
+  ChartContainer,
+} from "@/components/ui/chart"
 
-const chartConfig = {
-  percentage: {
-    label: "Percentage",
-  },
-  frontEnd: {
-    label: "Front-end",
-  },
-  projectLead: {
-    label: "Project Lead",
-  },
-  uxUi: {
-    label: "UX/UI",
-  },
-  devops: {
-    label: "DevOps",
-  },
-  backEnd: {
-    label: "Back-end",
-  },
-  dataSpecialist: {
-    label: "Data Specialist",
-  },
-} satisfies ChartConfig
+function ProjectChart({ roles }: { roles: Role[] }) {
+  const chartData = useMemo(() => {
+    return roles.map((role) => (
+      {
+        rol: role.value,
+        percentage: role.percentage,
+        fill: "#5cedc1"
+      }
+    ))
+  }, [roles])
 
-const chartData = [
-  { rol: "frontEnd", percentage: 100, fill: "#5cedc2" },
-  { rol: "projectLead", percentage: 100, fill: "#5cedc1" },
-  { rol: "uxUi", percentage: 40, fill: "#5cedc1" },
-  { rol: "devops", percentage: 3, fill: "#5cedc1" },
-  { rol: "backEnd", percentage: 5, fill: "#5cedc1" },
-  { rol: "dataSpecialist", percentage: 1, fill: "#5cedc1" },
-]
-
-function ProjectChart() {
+  const chartConfig = useMemo(() => {
+    const config: ChartConfig = {
+      percentage: {
+        label: "Percentage",
+      }
+    }
+    chartData.forEach((item) => {
+      const roleFromData = roles.find(role => role.value === item.rol)
+      if (roleFromData) {
+        config[item.rol] = {
+          label: roleFromData.label
+        }
+      }
+    })
+    return config
+  }, [chartData, roles])
 
   return (
     <Card className="w-full 930:w-1/2 border-none">
@@ -73,7 +69,7 @@ function ProjectChart() {
               width={100}
               axisLine={false}
               tickFormatter={(value) =>
-                chartConfig[value as keyof typeof chartConfig]?.label
+                String(chartConfig[value as keyof typeof chartConfig]?.label ?? '')
               }
               stroke="#ffffffb3"
             />

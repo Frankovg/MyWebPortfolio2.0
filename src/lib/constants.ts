@@ -1,15 +1,10 @@
 
 import { BASICS_TECHS, DB_TECHS, DEPLOYMENT_TECHS, DESIGN_TECHS, STYLING_TECHS, TESTING_TECHS } from '@/app/(app)/app/home/constants/constants'
-
-// LinkedIn profile images
-import img1 from '/public/images/in-profile-1.webp'
-import img2 from '/public/images/in-profile-2.webp'
-import img3 from '/public/images/in-profile-3.webp'
-import img4 from '/public/images/in-profile-4.webp'
-
-//Social icons
 import { GithubIcon, LinkedInIcon } from '@/icons/social'
-
+import img1 from '@/public/images/in-profile-1.webp'
+import img2 from '@/public/images/in-profile-2.webp'
+import img3 from '@/public/images/in-profile-3.webp'
+import img4 from '@/public/images/in-profile-4.webp'
 
 // Navbar links
 export const ROUTES = [
@@ -110,6 +105,8 @@ export const FOOTER_LINKS = {
 }
 
 export const FALLBACK_IMG = "/images/project-placeholder.webp"
+export const PREV = 'prev' as const
+export const NEXT = 'next' as const
 
 // All technologies supported by the portfolio
 export const ALL_TECHS = Object.values({

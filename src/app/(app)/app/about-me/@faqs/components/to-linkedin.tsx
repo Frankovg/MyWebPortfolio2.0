@@ -1,5 +1,6 @@
-import AnimatedArrowRight from "@/components/animated-arrow-right"
 import Link from "next/link"
+
+import AnimatedArrowRight from "@/components/animated-arrow-right"
 
 function ToLinkedIn() {
   const linkedinUrl = process.env.NEXT_PUBLIC_LINKEDIN_URL

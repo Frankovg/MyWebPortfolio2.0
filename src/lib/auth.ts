@@ -1,12 +1,9 @@
+import bcrypt from 'bcryptjs'
 import NextAuth, { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
-//Utils
-import bcrypt from 'bcryptjs'
 import { getUserByEmail } from "./server-utils";
 import { sleep } from "./utils";
-
-//Validations
 import { authSchema } from "./validations";
 
 const config = {

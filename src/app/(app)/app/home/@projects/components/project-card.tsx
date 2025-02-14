@@ -1,6 +1,8 @@
+import Link from "next/link";
+
 import ImageWithFallback from "@/components/image-with-fallback";
 import { FALLBACK_IMG } from "@/lib/constants";
-import Link from "next/link";
+
 import { ProjectCardProps } from "../types/types";
 
 function ProjectCard({ project }: ProjectCardProps) {
@@ -9,7 +11,7 @@ function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Link
       href={`/app/project/${project.slug}`}
-      className="w-full h-full flex flex-col justify-between overflow-hidden p-2 rounded-sm shadow-lg shadow-background border border-solid border-darkPrimary transition-all duration-300 ease-in-out hover:bg-background hover:scale-[1.02]"
+      className="w-full h-full flex flex-col justify-between overflow-hidden p-2 rounded-sm shadow-background border border-solid border-darkPrimary transition-all duration-300 ease-in-out hover:bg-background hover:scale-[1.02] hover:shadow-lg"
     >
       <div className="w-full">
         <ImageWithFallback
@@ -24,7 +26,7 @@ function ProjectCard({ project }: ProjectCardProps) {
         />
       </div>
       <div className="w-full h-full px-6 py-4">
-        <div className="font-bold text-xl mb-2">{project.title}</div>
+        <h2 className="font-bold text-xl mb-2">{project.title}</h2>
         <p className="text-gray-600 text-base">{project.shortDescription}</p>
       </div>
       <div className="w-[90%] mx-auto border-t border-solid border-darkPrimary text-center pt-2.5 pb-1">

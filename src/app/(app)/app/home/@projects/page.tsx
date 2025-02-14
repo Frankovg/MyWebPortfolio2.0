@@ -1,11 +1,12 @@
 //Components
-import H4 from "@/components/h4"
 import H3 from "@/components/h3"
+import H4 from "@/components/h4"
 import Section from "@/components/section"
+import { getCategories } from "@/lib/server-utils"
+
 import Categories from "./components/categories"
 
 //Utils
-import { getCategories } from "@/lib/server-utils"
 
 async function Projects() {
   const categories = await getCategories()

@@ -1,13 +1,15 @@
 import Link from "next/link"
+
+import { FOOTER_LINKS } from "@/lib/constants"
+
 import packageJson from '../../package.json'
 
 //Components
+import DownloadLinksFooter from "./download-links-footer"
 import Logo from "./logo"
 import Prefooter from "./prefooter"
-import DownloadLinksFooter from "./download-links-footer"
 
 //Constants
-import { FOOTER_LINKS } from "@/lib/constants"
 
 function Footer() {
   return (

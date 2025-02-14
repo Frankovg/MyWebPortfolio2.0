@@ -1,15 +1,16 @@
 //Components
-import H4 from "@/components/h4"
 import H3 from "@/components/h3"
+import H4 from "@/components/h4"
 import Section from "@/components/section"
-import FaqsAccordion from "./components/faqs-accordion"
-import WorkedWith from "./components/worked-with"
-import CompanyClients from "./components/company-clients"
+
 import AcademicBackground from "./components/academic-background"
-import Inspiration from "./components/inspiration"
+import CompanyClients from "./components/company-clients"
+import FaqsAccordion from "./components/faqs-accordion"
 import Hobbies from "./components/hobbies"
+import Inspiration from "./components/inspiration"
 import MyCv from "./components/my-cv"
 import ToLinkedIn from "./components/to-linkedin"
+import WorkedWith from "./components/worked-with"
 
 async function Faqs() {
   const items = [
