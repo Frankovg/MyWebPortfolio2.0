@@ -9,6 +9,7 @@ import Loading from "./loading"
 import ProjectBanner from "./components/project-banner"
 import ProjectMainInfo from "./components/project-main-info"
 import MoreProjects from "./components/more-projects"
+import { parseCategories } from "./utils/parse-categories"
 
 export default async function ProjectPage({
   params
@@ -30,7 +31,8 @@ export default async function ProjectPage({
       url: project.videoUrl || ''
     } : undefined
 
-  const parsedCategories = categories?.filter((cat) => cat.id !== project?.categoryId)
+  const filteredCategories = categories?.filter((cat) => cat.id !== project?.categoryId)
+  const parsedCategories = parseCategories(filteredCategories)
   const projectsInCategory = categories?.find((cat) => cat.id === project?.categoryId)?.projects || []
   const projectIndex = projectsInCategory?.findIndex((p) => p.id === project?.id)
 

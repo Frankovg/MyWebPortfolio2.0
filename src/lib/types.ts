@@ -16,4 +16,7 @@ export interface IProjectWithTechStack extends Project {
 export interface ICategoryWithProjects extends Category {
   projects: IProjectWithTechStack[]
 }
+export interface ICategoryWithOneProject extends Category {
+  firstProjectSlug: string
+}
 export type PrevOrNextProject = ICategoryWithProjects['projects'][0]
