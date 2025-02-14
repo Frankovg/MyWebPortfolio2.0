@@ -1,6 +1,8 @@
+import Link from "next/link";
+
 import ImageWithFallback from "@/components/image-with-fallback";
 import { FALLBACK_IMG } from "@/lib/constants";
-import Link from "next/link";
+
 import { ProjectCardProps } from "../types/types";
 
 function ProjectCard({ project }: ProjectCardProps) {

@@ -1,4 +1,5 @@
 import { Carousel, CarouselContent, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+
 import CarouselItems from "./carousel-items";
 
 function MobileTechViewer() {

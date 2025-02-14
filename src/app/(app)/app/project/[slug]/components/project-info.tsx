@@ -1,8 +1,9 @@
-import LinkButtons from "./link-buttons"
-import LongDescription from "./long-description"
-import HeadOfDescription from "./head-of-description"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { ProjectShort } from "@/lib/types"
+
+import HeadOfDescription from "./head-of-description"
+import LinkButtons from "./link-buttons"
+import LongDescription from "./long-description"
 
 type ProjectInfoProps = {
   project?: ProjectShort

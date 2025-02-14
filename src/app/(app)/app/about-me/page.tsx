@@ -1,9 +1,11 @@
 import Image from 'next/image'
+import { Suspense } from 'react'
+
+import BannerContainer from '@/components/banner-container'
 import H4 from "@/components/h4"
 import Section from '@/components/section'
-import BannerContainer from '@/components/banner-container'
+
 import { ABOUT_ME, ABOUT_ME_BANNER } from './constants/constants'
-import { Suspense } from 'react'
 import Loading from './loading'
 
 export default function AboutMe() {

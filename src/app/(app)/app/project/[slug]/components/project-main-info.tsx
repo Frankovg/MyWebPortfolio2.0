@@ -1,8 +1,9 @@
 import H4 from "@/components/h4"
+import { ProjectShort } from "@/lib/types"
+
+import MobileProjectImagesContainer from "./mobile-project-images-container"
 import ProjectCarousel from "./project-carousel"
 import ProjectInfo from "./project-info"
-import MobileProjectImagesContainer from "./mobile-project-images-container"
-import { ProjectShort } from "@/lib/types"
 
 type ProjectMainInfoProps = {
   project: ProjectShort

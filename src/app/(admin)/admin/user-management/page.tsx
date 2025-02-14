@@ -1,9 +1,12 @@
+import { Suspense } from "react"
+
+import { checkAuth } from "@/lib/check-auth"
 import { getUsers } from "@/lib/server-utils"
+
 import MainHeader from "../components/main-header"
+
 import AccountsTable from "./components/accounts-table"
 import UserManagementProvider from "./context/user-management-provider"
-import { checkAuth } from "@/lib/check-auth"
-import { Suspense } from "react"
 import Loading from "./loading"
 
 async function UserManagement() {

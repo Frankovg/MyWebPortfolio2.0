@@ -1,18 +1,12 @@
 'use client'
 
-import { useTransition } from "react"
 import Link from "next/link"
+import { useTransition } from "react"
 
-//Utils
+import { logOut } from "@/actions/actions"
+import { UserSession } from "@/lib/types"
 import { cn } from "@/lib/utils"
 
-//Actions
-import { logOut } from "@/actions/actions"
-
-//Hooks
-import { UserSession } from "@/lib/types"
-
-//Components
 import LanguageSelector from "./language-selector"
 import LogOutOverlay from "./logout-overlay"
 

@@ -1,7 +1,8 @@
 
 
-import { UserManagementContext } from "@/app/(admin)/admin/user-management/context/user-management-provider";
 import { useContext } from "react";
+
+import { UserManagementContext } from "@/app/(admin)/admin/user-management/context/user-management-provider";
 
 export function useUserManagementContext() {
   const context = useContext(UserManagementContext)

@@ -1,15 +1,11 @@
 'use client'
 
 import React, { useActionState } from 'react'
-
-//Actions
-import { logIn } from '@/actions/actions'
-
-//Hooks
 import { useFormStatus } from 'react-dom'
 
-//Components
+import { logIn } from '@/actions/actions'
 import ButtonWhite from '@/components/button-white'
+
 import InputLogin from './input-login'
 
 const AuthForm = () => {

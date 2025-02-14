@@ -1,26 +1,18 @@
 'use client'
 
 import Link from "next/link"
+import { ReactNode, useEffect, useState } from "react"
 
-//Components
+import Burger from "@/icons/burger"
+import { SOCIAL_ICONS } from "@/lib/client-constants"
+import { ROUTES } from "@/lib/constants"
+import { UserSession } from "@/lib/types"
+import { cn } from "@/lib/utils"
+
 import Logo from "./logo"
 import MenuLink from "./menu-link"
 import MobileMenu from "./mobile-menu"
-import Burger from "@/icons/burger"
 import ScrollLink from "./scroll-link"
-
-//Utils
-import { cn } from "@/lib/utils"
-
-//Types
-import { ReactNode, useEffect, useState } from "react"
-import { UserSession } from "@/lib/types"
-
-//Constants
-import { ROUTES } from "@/lib/constants"
-import { SOCIAL_ICONS } from "@/lib/client-constants"
-
-//Hooks
 import UserMainBar from "./user-main-bar"
 
 type NavLinkProps = {

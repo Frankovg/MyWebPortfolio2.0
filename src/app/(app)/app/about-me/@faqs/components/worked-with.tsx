@@ -1,6 +1,8 @@
+import Link from "next/link"
+
 import { Button } from "@/components/ui/button"
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
-import Link from "next/link"
+
 import { WORKED_WITH } from "../constants/constants"
 
 function WorkedWith() {

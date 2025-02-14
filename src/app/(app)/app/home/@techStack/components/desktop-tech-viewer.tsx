@@ -1,8 +1,10 @@
 'use client'
 
 import { useEffect, useState } from "react"
-import TechCard from "./tech-card"
+
 import { CATEGORIES } from "../utils/client-constants"
+
+import TechCard from "./tech-card"
 
 //TODO: Its probably better to use the tabs component here
 function DesktopTechViewer() {

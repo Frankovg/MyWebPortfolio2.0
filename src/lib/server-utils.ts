@@ -2,6 +2,7 @@ import 'server-only'
 
 //DB
 import { Project, User } from '@prisma/client'
+
 import prisma from './db'
 
 export async function getCategories() {

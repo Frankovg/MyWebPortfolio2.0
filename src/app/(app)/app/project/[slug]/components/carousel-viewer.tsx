@@ -1,6 +1,7 @@
-import { JSX } from "react"
-import { Carousel, CarouselApi, CarouselContent } from "@/components/ui/carousel"
 import Fade from "embla-carousel-fade"
+import { JSX } from "react"
+
+import { Carousel, CarouselApi, CarouselContent } from "@/components/ui/carousel"
 
 type CarouselViewerProps = {
   images: JSX.Element[],

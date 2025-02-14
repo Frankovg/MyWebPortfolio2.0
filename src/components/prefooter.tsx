@@ -1,9 +1,11 @@
 'use client'
 
-import Image from "next/image"
-import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel"
 import AutoScroll from 'embla-carousel-auto-scroll'
+import Image from "next/image"
+
 import { REFERRALS } from "@/lib/constants"
+
+import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel"
 
 function Prefooter() {
   return (

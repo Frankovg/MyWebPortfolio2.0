@@ -1,16 +1,10 @@
-//Components
-import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
-
-//Images
-import downloadCv from '/public/download-cv.webp'
-import downloadPortfolio from '/public/download-portfolio.webp'
-
-//Utils
-import { checkAuth } from "@/lib/check-auth"
-
-//Context
+import Navbar from "@/components/navbar"
 import UserDataContextProvider from "@/context/user-data-provider"
+import { checkAuth } from "@/lib/check-auth"
+import downloadCv from '@/public/download-cv.webp'
+import downloadPortfolio from '@/public/download-portfolio.webp'
+
 
 export default async function RootLayout({
   children,

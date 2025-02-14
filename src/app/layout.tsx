@@ -1,16 +1,13 @@
-import type { Metadata } from "next"
-
-//Styles
 import { Readex_Pro as FontSans } from "next/font/google"
-import "../styles/globals.css"
-import { cn } from "@/lib/utils"
-
-//Components
+import { SessionProvider } from "next-auth/react";
 import NextNProgress from 'nextjs-toploader'
 import { Toaster } from "sonner"
 
-//Providers
-import { SessionProvider } from "next-auth/react";
+import { cn } from "@/lib/utils"
+
+import type { Metadata } from "next"
+
+import "../styles/globals.css"
 
 const fontSans = FontSans({
   subsets: ["latin"],

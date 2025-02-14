@@ -1,5 +1,6 @@
 import { NEXT, PREV } from "@/lib/constants"
 import { ICategoryWithOneProject, PrevOrNextProject } from "@/lib/types"
+
 import ProjectPaginationCard from "./project-pagination-card"
 
 type MoreProjectsProps = {

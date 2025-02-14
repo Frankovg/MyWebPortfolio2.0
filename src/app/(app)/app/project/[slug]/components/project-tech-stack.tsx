@@ -1,9 +1,12 @@
 'use client'
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tech } from "@prisma/client"
-import TechCard from "../../../home/@techStack/components/tech-card";
+
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ALL_TECHS } from "@/lib/client-constants";
+
+import TechCard from "../../../home/@techStack/components/tech-card";
+
 
 type ProjectTechStackProps = {
   techStack: Tech[]

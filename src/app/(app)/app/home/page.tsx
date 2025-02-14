@@ -1,10 +1,12 @@
 //Components
-import TextAnimation from "./components/text-animation"
-import H3 from "@/components/h3"
-import Section from "@/components/section"
-import ScrollLink from "@/components/scroll-link"
-import AnimatedArrowRight from "@/components/animated-arrow-right"
 import { Suspense } from "react"
+
+import AnimatedArrowRight from "@/components/animated-arrow-right"
+import H3 from "@/components/h3"
+import ScrollLink from "@/components/scroll-link"
+import Section from "@/components/section"
+
+import TextAnimation from "./components/text-animation"
 import Loading from "./loading"
 
 // List of titles for the animation

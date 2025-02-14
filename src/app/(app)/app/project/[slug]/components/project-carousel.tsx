@@ -1,24 +1,19 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react"
-import Image from "next/image"
-
-//Carousel
-import { CarouselApi, CarouselItem } from "@/components/ui/carousel"
-
-//Types
 import { Gallery } from "@prisma/client"
-
-//Components
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { DialogTrigger } from "@radix-ui/react-dialog"
-import CarouselViewer from "./carousel-viewer"
-import CarouselThumbnail from "./carousel-thumbnail"
-import ExpanderButton from "./expander-button"
-import ImageWithFallback from "@/components/image-with-fallback"
+import Image from "next/image"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 
-//Constants
+import ImageWithFallback from "@/components/image-with-fallback"
+import { CarouselApi, CarouselItem } from "@/components/ui/carousel"
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { FALLBACK_IMG } from "@/lib/constants"
+
+import CarouselThumbnail from "./carousel-thumbnail"
+import CarouselViewer from "./carousel-viewer"
+import ExpanderButton from "./expander-button"
+
 
 type ProjectCarouselProps = {
   images: Gallery[]

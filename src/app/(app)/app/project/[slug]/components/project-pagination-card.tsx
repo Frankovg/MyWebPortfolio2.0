@@ -1,9 +1,10 @@
+import { ArrowLeft } from "lucide-react"
+import Link from "next/link"
+
 import ImageWithFallback from "@/components/image-with-fallback"
 import { FALLBACK_IMG, NEXT, PREV } from "@/lib/constants"
 import { PrevOrNextProject } from "@/lib/types"
 import { cn } from "@/lib/utils"
-import { ArrowLeft } from "lucide-react"
-import Link from "next/link"
 
 type ProjectPaginationCardProps = {
   project: PrevOrNextProject

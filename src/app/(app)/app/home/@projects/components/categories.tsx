@@ -3,11 +3,12 @@
 import { useEffect, useState } from "react"
 
 //Components
-import ProjectCard from "./project-card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 //Types
 import { CategoriesProps } from "../types/types"
+
+import ProjectCard from "./project-card"
 
 function Categories({ categories }: CategoriesProps) {
   const [currentTab, setCurrentTab] = useState('web-development')

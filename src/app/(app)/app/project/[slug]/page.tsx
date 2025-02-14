@@ -1,14 +1,16 @@
-import { getCategories, getProjectBySlug } from "@/lib/server-utils"
-import Section from "@/components/section"
-import ProjectChart from "./components/project-chart"
-import ProjectTechStack from "./components/project-tech-stack"
-import { Card, CardContent } from "@/components/ui/card"
 import { Suspense } from "react"
+
+import Section from "@/components/section"
+import { Card, CardContent } from "@/components/ui/card"
+import { getCategories, getProjectBySlug } from "@/lib/server-utils"
+
+import MoreProjects from "./components/more-projects"
+import ProjectBanner from "./components/project-banner"
+import ProjectChart from "./components/project-chart"
+import ProjectMainInfo from "./components/project-main-info"
+import ProjectTechStack from "./components/project-tech-stack"
 import VideoComponent from "./components/video-component"
 import Loading from "./loading"
-import ProjectBanner from "./components/project-banner"
-import ProjectMainInfo from "./components/project-main-info"
-import MoreProjects from "./components/more-projects"
 import { parseCategories } from "./utils/parse-categories"
 
 export default async function ProjectPage({
