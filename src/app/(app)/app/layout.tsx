@@ -1,28 +1,17 @@
-//Components
-import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
-
-//Images
-import downloadCv from '/public/download-cv.webp'
-import downloadPortfolio from '/public/download-portfolio.webp'
-
-//Utils
-import { getProjects } from "@/lib/server-utils"
-import { checkAuth } from "@/lib/check-auth"
-
-//Context
-import ProjectContextProvider from "@/context/project-provider"
+import Navbar from "@/components/navbar"
 import UserDataContextProvider from "@/context/user-data-provider"
+import { checkAuth } from "@/lib/check-auth"
+import downloadCv from '@/public/download-cv.webp'
+import downloadPortfolio from '@/public/download-portfolio.webp'
+
 
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // TODO: Use session to show the logged user
   const session = await checkAuth()
-
-  const projectData = await getProjects()
 
   //TODO: Downloads should come from the DB
   const userData = {
@@ -44,9 +33,7 @@ export default async function RootLayout({
     <UserDataContextProvider data={userData}>
       <div className="max-w-fa mx-auto w-full">
         <Navbar session={session} />
-        <ProjectContextProvider data={projectData}>
-          {children}
-        </ProjectContextProvider>
+        {children}
       </div>
       <Footer />
     </UserDataContextProvider>

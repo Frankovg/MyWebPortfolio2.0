@@ -1,10 +1,11 @@
 'use client'
 
-import { activateAccount } from "@/actions/actions"
 import { User } from "@prisma/client"
-import { createContext } from "react"
-import { useOptimistic } from "react"
+import { createContext , useOptimistic } from "react"
 import { toast } from "sonner"
+
+import { activateAccount } from "@/actions/actions"
+
 import { SAMPLE_ACTION } from "../../constants/admin-constants"
 
 type UserManagementProviderProps = {

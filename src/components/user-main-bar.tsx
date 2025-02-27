@@ -1,18 +1,12 @@
 'use client'
 
-import { useTransition } from "react"
 import Link from "next/link"
+import { useTransition } from "react"
 
-//Utils
+import { logOut } from "@/actions/actions"
+import { UserSession } from "@/lib/types"
 import { cn } from "@/lib/utils"
 
-//Actions
-import { logOut } from "@/actions/actions"
-
-//Hooks
-import { UserSession } from "@/lib/types"
-
-//Components
 import LanguageSelector from "./language-selector"
 import LogOutOverlay from "./logout-overlay"
 
@@ -52,11 +46,16 @@ const UserMainBarContent = ({ isLogged, isAdmin }: UserMainBarContentProps) => {
   }
 
   const message = isAdmin ? 'Welcome back! You have admin access.' : 'Welcome! This is a demo account with restricted access.'
+  const mobileMessage = isAdmin ? 'Admin access.' : 'Demo account'
 
   return (
     <>
       {isPending && <LogOutOverlay />}
-      <p>{message}</p>
+      <p
+        data-mobile={mobileMessage}
+        data-desktop={message}
+        className="before:content-[attr(data-mobile)] md:before:content-none md:before:hidden md:after:content-[attr(data-desktop)] before:block after:hidden md:after:block"
+      />
       <div className={wrapperStyle}>
         <LanguageSelectorContainer />
         <Link href='/admin' className={hoverStyle} >

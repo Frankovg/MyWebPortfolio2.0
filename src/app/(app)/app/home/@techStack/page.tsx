@@ -1,6 +1,7 @@
 import H3 from "@/components/h3"
 import H4 from "@/components/h4"
 import Section from "@/components/section"
+
 import TechViewer from "./components/tech-viewer"
 
 function TechStack() {

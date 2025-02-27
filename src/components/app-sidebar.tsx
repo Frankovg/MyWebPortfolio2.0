@@ -1,13 +1,11 @@
 'use client'
 
-import Link from "next/link"
-import { useTransition } from "react"
-import { usePathname } from "next/navigation"
-
-//Icons
 import { CloudDownload, Home, Users, KeyRound, LogOut, Briefcase } from "lucide-react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { useTransition } from "react"
 
-//Sidebar
+import { logOut } from "@/actions/actions"
 import {
   Sidebar,
   SidebarContent,
@@ -22,12 +20,8 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 
-//Logos
-import Logo from "./logo"
 import Isologo from "./isologo"
-
-//Actions
-import { logOut } from "@/actions/actions"
+import Logo from "./logo"
 import LogOutOverlay from "./logout-overlay"
 
 type SidebarLogoutProps = {
@@ -69,7 +63,7 @@ const items = [
 
 const SidebarNavigation = () => {
   const pathname = usePathname()
-  
+
   return (
     <>
       <SidebarGroupLabel>Tools</SidebarGroupLabel>

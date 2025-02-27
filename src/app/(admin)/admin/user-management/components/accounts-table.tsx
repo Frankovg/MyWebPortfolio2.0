@@ -1,11 +1,16 @@
 'use client'
 
+import { User } from "@prisma/client"
 import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table"
+import { useState, useTransition } from "react"
+
+import { Spinner } from "@/components/spinner"
+import { Checkbox } from "@/components/ui/checkbox"
 import {
   Table,
   TableBody,
@@ -15,10 +20,8 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { useUserManagementContext } from "@/hooks/use-user-management-context"
-import { User } from "@prisma/client"
-import { Checkbox } from "@/components/ui/checkbox"
-import { useState, useTransition } from "react"
-import { Spinner } from "@/components/spinner"
+
+
 
 type AccountsTableProps = {
   isAdmin?: boolean
@@ -75,7 +78,7 @@ function AccountsTable({ isAdmin = false }: AccountsTableProps) {
         const blurEmail = !isAdmin && row.original.isAdmin
         const email = blurEmail ? 'dontlook@behindyou.com' : row.original.email
         return (
-          <div className={`text-left font-light text-white ${blurEmail && 'blur-sm select-none'}`}>
+          <div className={`text-left font-light text-white ${blurEmail && 'blur-xs select-none'}`}>
             {email}
           </div>
         )

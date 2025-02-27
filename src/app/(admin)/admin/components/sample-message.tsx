@@ -1,7 +1,7 @@
 function SampleMessage() {
   return (
     <div className='w-full p-2'>
-      <div className='p-8 rounded bg-darkPrimary flex items-stretch'>
+      <div className='p-8 rounded-sm bg-darkPrimary flex items-stretch'>
         <div className='bg-secondary w-4 mr-4' />
         <div>
           <h2 className="text-lg font-semibold mb-2">This is a sample version of the platform</h2>

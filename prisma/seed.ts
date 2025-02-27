@@ -3,6 +3,39 @@ import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient()
 
+const techStackData = [
+  { name: "React", value: "react" },
+  { name: "Next.js", value: "nextjs" },
+  { name: "Typescript", value: "typescript" },
+  { name: "Tailwind", value: "tailwind" },
+  { name: "Node.js", value: "node" },
+  { name: "Prisma", value: "prisma" },
+  { name: "PostgreSQL", value: "postgresql" },
+  { name: "JavaScript", value: "javascript" },
+  { name: "Bootstrap", value: "bootstrap" },
+  { name: "Firebase", value: "firebase" },
+  { name: "MySQL", value: "mysql" },
+  { name: "Express", value: "express" },
+  { name: "Storybook", value: "storybook" },
+  { name: "Styled Components", value: "styledcomponents" },
+  { name: "Emotion", value: "emotioncss" },
+  { name: "Ladle", value: "ladle" },
+  { name: "Playwright", value: "playwright" },
+  { name: "Figma", value: "figma" },
+  { name: "Adobe Photoshop", value: "ps" },
+  { name: "Adobe Illustrator", value: "ai" },
+  { name: "Git", value: "git" },
+  { name: "Gitlab", value: "gitlab" },
+  { name: "Github", value: "github" },
+  { name: "SQL", value: "sql" },
+  { name: "Shadcn/ui", value: "shadcnui" },
+  { name: "Sass", value: "sass" },
+  { name: "CSS", value: "css" },
+  { name: "HTML", value: "html" },
+  { name: "Turborepo", value: "turborepo" },
+  { name: "Vercel", value: "vercel" },
+]
+
 const webDevelopment: Prisma.CategoryCreateInput = {
   name: 'Web development',
   value: 'web-development',
@@ -11,26 +44,84 @@ const webDevelopment: Prisma.CategoryCreateInput = {
       {
         title: "Safeguru",
         shortDescription: "Safeguru is an e-commerce platform offering workplace safety products, serving both B2C and B2B users, with dedicated tools for internal teams and business customers.",
-        description: "Safeguru is an e-commerce platform focused on workplace safety products, including PPE and industrial safety gear. The project is developed by A-SAFE Digital, part of the UK-based A-SAFE group, known for its innovative safety systems for industrial plants. Safeguru serves industries like construction, healthcare, and manufacturing, and is operational in Spain, the UK, and Germany, with plans for further international expansion. In addition to the main platform, Safeguru features side projects such as a commerce admin tool for the sales and marketing team, and Safeguru PRO, a platform tailored for B2B users. This combination of tools enhances the experience for both internal teams and business customers, supporting Safeguru’s growth within the A-SAFE group.",
-        image: 'https://drive.google.com/uc?export=view&id=1apoVnfFU6vQwvyW5Po0rVGnHbmmuvEyJ',
+        description: `Safeguru is an e-commerce platform focused on workplace safety products, including PPE and industrial safety gear.
+          The project is developed by A-SAFE Digital, part of the UK-based A-SAFE group, known for its innovative safety systems for industrial plants.
+          Safeguru serves industries like construction, healthcare, and manufacturing, and is operational in Spain, the UK, and Germany, with plans for further international expansion.
+          In addition to the main platform, Safeguru features side projects such as a commerce admin tool for the sales and marketing team, and Safeguru PRO, a platform tailored for B2B users.
+          This combination of tools enhances the experience for both internal teams and business customers, supporting Safeguru’s growth within the A-SAFE group.
+          `,
+        image: 'https://drive.google.com/uc?export=view&id=1cZFgjn05mh_NgbiCjhKKvDJQesahMbQ1',
         slug: 'safeguru',
         gallery: {
           create: [
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
           ]
         },
         websiteUrl: 'https://safeguru.co.uk',
         company: 'A-SAFE Digital',
+        companyUrl: 'https://asafedigital.com/',
         client: 'Safeguru',
-        techStack: 'Next.js, TypeScript, Tailwind, Node.js, Prisma, PostgreSQL'
+        clientUrl: 'https://safeguru.co.uk',
+        repository: 'https://github.com/Frankovg/theJokesAPI',
+        videoUrl: 'https://www.youtube.com/embed/ROJoLYIi0ZA?si=WJLVWg0SmaQMbOsm',
+        videoTitle: 'A video title',
+        videoDescription: 'A video description.',
+        techStack: {
+          connect: [
+            { value: 'react' },
+            { value: 'typescript' },
+            { value: 'nextjs' },
+            { value: 'tailwind' },
+          ]
+        },
+        roles: {
+          create: [
+            {
+              label: "Front-end",
+              value: "front-end",
+              percentage: 100
+            },
+            {
+              label: "UI/UX",
+              value: "ui-ux",
+              percentage: 40
+            },
+            {
+              label: "Project Lead",
+              value: "project-lead",
+              percentage: 100
+            },
+            {
+              label: "DevOps",
+              value: "devops",
+              percentage: 3
+            },
+            {
+              label: "Back-end",
+              value: "back-end",
+              percentage: 5
+            },
+            {
+              label: "Data Specialist",
+              value: "data-specialist",
+              percentage: 1
+            },
+          ]
+        }
       },
       {
         title: "The Jokes API",
@@ -42,18 +133,81 @@ const webDevelopment: Prisma.CategoryCreateInput = {
           create: [
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
           ]
         },
         repository: 'https://github.com/Frankovg/theJokesAPI',
-        videoUrl: 'https://youtu.be/ROJoLYIi0ZA?si=MA0YjjbvzIM7lLsp',
-        techStack: 'React.js, JavaScript, Bootstrap, Sass, MySQL, Node.js'
+        videoUrl: 'https://www.youtube.com/embed/ROJoLYIi0ZA?si=RPZ4DvrVug4e-pM9',
+        videoTitle: 'A video title',
+        videoDescription: 'A video description.',
+        techStack: {
+          connect: [
+            {
+              value: "react",
+            },
+            {
+              value: "javascript",
+            },
+            {
+              value: "bootstrap",
+            },
+            {
+              value: "sass",
+            },
+            {
+              value: "mysql",
+            },
+            {
+              value: "node",
+            }
+          ]
+        },
+        roles: {
+          create: [
+            {
+              label: "Front-end",
+              value: "front-end",
+              percentage: 100
+            },
+            {
+              label: "UI/UX",
+              value: "ui-ux",
+              percentage: 40
+            },
+            {
+              label: "Project Lead",
+              value: "project-lead",
+              percentage: 100
+            },
+            {
+              label: "DevOps",
+              value: "devops",
+              percentage: 3
+            },
+            {
+              label: "Back-end",
+              value: "back-end",
+              percentage: 5
+            },
+            {
+              label: "Data Specialist",
+              value: "data-specialist",
+              percentage: 1
+            },
+          ]
+        }
       },
       {
         title: "My old personal web portfolio",
@@ -65,16 +219,74 @@ const webDevelopment: Prisma.CategoryCreateInput = {
           create: [
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
           ]
         },
-        techStack: 'React.js, JavaScript, Bootstrap, Sass, Firebase'
+        techStack: {
+          connect: [
+            {
+              value: "react",
+            },
+            {
+              value: "javascript",
+            },
+            {
+              value: "bootstrap",
+            },
+            {
+              value: "sass",
+            },
+            {
+              value: "firebase",
+            },
+          ]
+        },
+        roles: {
+          create: [
+            {
+              label: "Front-end",
+              value: "front-end",
+              percentage: 100
+            },
+            {
+              label: "UI/UX",
+              value: "ui-ux",
+              percentage: 40
+            },
+            {
+              label: "Project Lead",
+              value: "project-lead",
+              percentage: 100
+            },
+            {
+              label: "DevOps",
+              value: "devops",
+              percentage: 3
+            },
+            {
+              label: "Back-end",
+              value: "back-end",
+              percentage: 5
+            },
+            {
+              label: "Data Specialist",
+              value: "data-specialist",
+              percentage: 1
+            },
+          ]
+        }
       },
       {
         title: "Netfilm",
@@ -86,18 +298,78 @@ const webDevelopment: Prisma.CategoryCreateInput = {
           create: [
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
           ]
         },
         repository: "https://github.com/Frankovg/netfilm",
         videoUrl: "https://youtu.be/g6nDENxjK3c?si=zmwR7MVnSmXXKGNB",
-        techStack: 'React.js, JavaScript, Bootstrap, Sass, Firebase'
+        videoTitle: 'A video title',
+        videoDescription: 'A video description.',
+        techStack: {
+          connect: [
+            {
+              value: "react",
+            },
+            {
+              value: "javascript",
+            },
+            {
+              value: "bootstrap",
+            },
+            {
+              value: "sass",
+            },
+            {
+              value: "firebase",
+            },
+          ]
+        },
+        roles: {
+          create: [
+            {
+              label: "Front-end",
+              value: "front-end",
+              percentage: 100
+            },
+            {
+              label: "UI/UX",
+              value: "ui-ux",
+              percentage: 40
+            },
+            {
+              label: "Project Lead",
+              value: "project-lead",
+              percentage: 100
+            },
+            {
+              label: "DevOps",
+              value: "devops",
+              percentage: 3
+            },
+            {
+              label: "Back-end",
+              value: "back-end",
+              percentage: 5
+            },
+            {
+              label: "Data Specialist",
+              value: "data-specialist",
+              percentage: 1
+            },
+          ]
+        }
       },
       {
         title: "Coolx",
@@ -109,18 +381,84 @@ const webDevelopment: Prisma.CategoryCreateInput = {
           create: [
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
           ]
         },
         repository: "https://github.com/Frankovg/MVP_Coolx",
         videoUrl: "https://youtu.be/BGOv_VQLyyU?si=8wCn8xNe8F_54ulO",
-        techStack: 'React.js, JavaScript, Node.js, Express, MySQL, Bootstrap, Sass'
+        videoTitle: 'A video title',
+        videoDescription: 'A video description.',
+        techStack: {
+          connect: [
+            {
+              value: "react",
+            },
+            {
+              value: "javascript",
+            },
+            {
+              value: "bootstrap",
+            },
+            {
+              value: "sass",
+            },
+            {
+              value: "mysql",
+            },
+            {
+              value: "node",
+            },
+            {
+              value: "express",
+            }
+          ]
+        },
+        roles: {
+          create: [
+            {
+              label: "Front-end",
+              value: "front-end",
+              percentage: 100
+            },
+            {
+              label: "UI/UX",
+              value: "ui-ux",
+              percentage: 40
+            },
+            {
+              label: "Project Lead",
+              value: "project-lead",
+              percentage: 100
+            },
+            {
+              label: "DevOps",
+              value: "devops",
+              percentage: 3
+            },
+            {
+              label: "Back-end",
+              value: "back-end",
+              percentage: 5
+            },
+            {
+              label: "Data Specialist",
+              value: "data-specialist",
+              percentage: 1
+            },
+          ]
+        }
       },
       {
         title: "DigiArt",
@@ -132,67 +470,242 @@ const webDevelopment: Prisma.CategoryCreateInput = {
           create: [
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
           ]
         },
         company: "Socratech",
         repository: "https://github.com/Frankovg/proyecto_socratech",
         videoUrl: "https://youtu.be/x851u6-utEU?si=m8Zn362rN7g5YpMr",
-        techStack: 'HTML5, CSS3, Bootstrap, Sass, JavaScript, Node.js, Express, MySQL'
+        videoTitle: 'A video title',
+        videoDescription: 'A video description.',
+        techStack: {
+          connect: [
+            {
+              value: "html",
+            },
+            {
+              value: "css",
+            },
+            {
+              value: "javascript",
+            },
+            {
+              value: "bootstrap",
+            },
+            {
+              value: "sass",
+            },
+            {
+              value: "mysql",
+            },
+            {
+              value: "node",
+            },
+            {
+              value: "express",
+            }
+          ]
+        },
+        roles: {
+          create: [
+            {
+              label: "Front-end",
+              value: "front-end",
+              percentage: 100
+            },
+            {
+              label: "UI/UX",
+              value: "ui-ux",
+              percentage: 40
+            },
+            {
+              label: "Project Lead",
+              value: "project-lead",
+              percentage: 100
+            },
+            {
+              label: "DevOps",
+              value: "devops",
+              percentage: 3
+            },
+            {
+              label: "Back-end",
+              value: "back-end",
+              percentage: 5
+            },
+            {
+              label: "Data Specialist",
+              value: "data-specialist",
+              percentage: 1
+            },
+          ]
+        }
       },
-      // {
-      //   title: "Calculator",
-      //   shortDescription: "This is my own made calculator built with JavaScript. It has a simple design and is easy to use.",
-      //   description: "A calculator meticulously crafted from scratch using JavaScript. This application adeptly handles fundamental mathematical operations such as addition, subtraction, multiplication, and division. Notably, the calculator's functionalities are implemented using pure Vanilla JavaScript, devoid of any reliance on the 'eval()' function for computation.",
-      //   image: 'https://drive.google.com/uc?export=view&id=1apoVnfFU6vQwvyW5Po0rVGnHbmmuvEyJ',
-      //   slug: 'calculator',
-      //   gallery: {
-      //     create: [
-      //       {
-      //         imageUrl: 'https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W',
-      //       },
-      //       {
-      //         imageUrl: 'https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI',
-      //       },
-      //       {
-      //         imageUrl: 'https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx',
-      //       },
-      //     ]
-      //   },
-      //   company: "Socratech",
-      //   repository: "https://github.com/Frankovg/Calculator_JS",
-      //   websiteUrl: "https://frankovg.github.io/Calculator_JS/",
-      //   techStack: 'JavaScript, HTML5, CSS3, Sass'
-      // },
-      // {
-      //   title: "Video Player",
-      //   shortDescription: "Made from scratch with JavaScript, this Video Player offers a range of functionalities, including automatic detection of video duration, playback control, and interactive timebar adjustment.",
-      //   description: "The Video Player serves as an educational exercise for mastering Vanilla JavaScript. All functionalities within this project are meticulously crafted using JavaScript. Automatic detection of video duration is incorporated seamlessly. Noteworthy features include the ability to advance or rewind by 5 seconds, as well as play and pause functions. Additionally, the timebar is interactive, allowing users to adjust the playback position simply by clicking on it.",
-      //   image: 'https://drive.google.com/uc?export=view&id=1apoVnfFU6vQwvyW5Po0rVGnHbmmuvEyJ',
-      //   slug: 'video-player',
-      //   gallery: {
-      //     create: [
-      //       {
-      //         imageUrl: 'https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W',
-      //       },
-      //       {
-      //         imageUrl: 'https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI',
-      //       },
-      //       {
-      //         imageUrl: 'https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx',
-      //       },
-      //     ]
-      //   },
-      //   repository: "https://github.com/Frankovg/video-player",
-      //   websiteUrl: "https://frankovg.github.io/video-player/",
-      //   techStack: 'JavaScript, HTML5, CSS3'
-      // },
+      {
+        title: "Calculator",
+        shortDescription: "This is my own made calculator built with JavaScript. It has a simple design and is easy to use.",
+        description: "A calculator meticulously crafted from scratch using JavaScript. This application adeptly handles fundamental mathematical operations such as addition, subtraction, multiplication, and division. Notably, the calculator's functionalities are implemented using pure Vanilla JavaScript, devoid of any reliance on the 'eval()' function for computation.",
+        image: 'https://drive.google.com/uc?export=view&id=1apoVnfFU6vQwvyW5Po0rVGnHbmmuvEyJ',
+        slug: 'calculator',
+        gallery: {
+          create: [
+            {
+              imageUrl: 'https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
+            },
+            {
+              imageUrl: 'https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
+            },
+            {
+              imageUrl: 'https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
+            },
+          ]
+        },
+        company: "Socratech",
+        companyUrl: "https://socratech.es/",
+        repository: "https://github.com/Frankovg/Calculator_JS",
+        websiteUrl: "https://frankovg.github.io/Calculator_JS/",
+        techStack: {
+          connect: [
+            {
+              value: "javascript",
+            },
+            {
+              value: "html",
+            },
+            {
+              value: "css",
+            },
+            { value: "sass" }
+          ]
+        },
+        roles: {
+          create: [
+            {
+              label: "Front-end",
+              value: "front-end",
+              percentage: 100
+            },
+            {
+              label: "UI/UX",
+              value: "ui-ux",
+              percentage: 40
+            },
+            {
+              label: "Project Lead",
+              value: "project-lead",
+              percentage: 100
+            },
+            {
+              label: "DevOps",
+              value: "devops",
+              percentage: 3
+            },
+            {
+              label: "Back-end",
+              value: "back-end",
+              percentage: 5
+            },
+            {
+              label: "Data Specialist",
+              value: "data-specialist",
+              percentage: 1
+            },
+          ]
+        },
+      },
+      {
+        title: "Video Player",
+        shortDescription: "Made from scratch with JavaScript, this Video Player offers a range of functionalities, including automatic detection of video duration, playback control, and interactive timebar adjustment.",
+        description: "The Video Player serves as an educational exercise for mastering Vanilla JavaScript. All functionalities within this project are meticulously crafted using JavaScript. Automatic detection of video duration is incorporated seamlessly. Noteworthy features include the ability to advance or rewind by 5 seconds, as well as play and pause functions. Additionally, the timebar is interactive, allowing users to adjust the playback position simply by clicking on it.",
+        image: 'https://drive.google.com/uc?export=view&id=1apoVnfFU6vQwvyW5Po0rVGnHbmmuvEyJ',
+        slug: 'video-player',
+        gallery: {
+          create: [
+            {
+              imageUrl: 'https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
+            },
+            {
+              imageUrl: 'https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
+            },
+            {
+              imageUrl: 'https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
+            },
+          ]
+        },
+        repository: "https://github.com/Frankovg/video-player",
+        websiteUrl: "https://frankovg.github.io/video-player/",
+        techStack: {
+          connect: [
+            {
+              value: "javascript",
+            },
+            {
+              value: "html",
+            },
+            {
+              value: "css",
+            },
+          ]
+        },
+        roles: {
+          create: [
+            {
+              label: "Front-end",
+              value: "front-end",
+              percentage: 100
+            },
+            {
+              label: "UI/UX",
+              value: "ui-ux",
+              percentage: 40
+            },
+            {
+              label: "Project Lead",
+              value: "project-lead",
+              percentage: 100
+            },
+            {
+              label: "DevOps",
+              value: "devops",
+              percentage: 3
+            },
+            {
+              label: "Back-end",
+              value: "back-end",
+              percentage: 5
+            },
+            {
+              label: "Data Specialist",
+              value: "data-specialist",
+              percentage: 1
+            },
+          ]
+        }
+      },
     ]
   }
 }
@@ -212,19 +725,74 @@ const graphicAndUxUiDesign: Prisma.CategoryCreateInput = {
           create: [
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
             {
               imageUrl: 'https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx',
+              alt: 'This is a meta description of the picture.',
+              description: 'This is a description of the picture.'
             },
           ]
         },
         websiteUrl: 'https://safeguru.co.uk',
         company: 'A-SAFE Digital',
+        companyUrl: 'https://asafedigital.com/',
         client: 'Safeguru',
-        techStack: 'Next.js, TypeScript, Tailwind'
+        clientUrl: 'https://safeguru.co.uk',
+        techStack: {
+          connect: [
+            {
+              value: "nextjs",
+            },
+            {
+              value: "typescript",
+            },
+            {
+              value: "tailwind",
+            },
+
+          ]
+        },
+        roles: {
+          create: [
+            {
+              label: "Front-end",
+              value: "front-end",
+              percentage: 100
+            },
+            {
+              label: "UI/UX",
+              value: "ui-ux",
+              percentage: 40
+            },
+            {
+              label: "Project Lead",
+              value: "project-lead",
+              percentage: 100
+            },
+            {
+              label: "DevOps",
+              value: "devops",
+              percentage: 3
+            },
+            {
+              label: "Back-end",
+              value: "back-end",
+              percentage: 5
+            },
+            {
+              label: "Data Specialist",
+              value: "data-specialist",
+              percentage: 1
+            },
+          ]
+        }
       }
     ]
   }
@@ -249,6 +817,18 @@ const sampleUserAccount: Prisma.UserCreateInput = {
 async function main() {
   console.log(`Start seeding ...`)
 
+  console.log('Creating tech stack entries...')
+  for (const tech of techStackData) {
+    await prisma.tech.upsert({
+      where: { value: tech.value },
+      update: {},
+      create: tech,
+    })
+  }
+  console.log('Tech stack entries created successfully')
+
+
+  console.log('Creating categories and projects...')
   await prisma.category.create({
     data: webDevelopment,
   })
@@ -261,6 +841,7 @@ async function main() {
       projects: true
     }
   })
+  console.log('Categories and projects created successfully')
 
   const hashedSuperuserPassword = await bcrypt.hash(superUserAccount.hashedpassword, 10)
   superUserAccount.hashedpassword = hashedSuperuserPassword
@@ -268,12 +849,14 @@ async function main() {
   const hashedSampleUserPassword = await bcrypt.hash(sampleUserAccount.hashedpassword, 10)
   sampleUserAccount.hashedpassword = hashedSampleUserPassword
 
+  console.log('Creating accounts...')
   await prisma.user.create({
     data: superUserAccount,
   })
   await prisma.user.create({
     data: sampleUserAccount,
   })
+  console.log('Accounts created successfully')
 
   console.log(`Seeding finished.`)
 }

@@ -24,19 +24,31 @@ model Project {
   shortDescription String
   description      String
   image            String
-  slug             String
+  slug             String    @unique
   gallery          Gallery[]
   repository       String?
   websiteUrl       String?
   videoUrl         String?
+  videoTitle       String?
+  videoDescription String?
   company          String?
+  companyUrl       String?
   client           String?
-  techStack        String
+  clientUrl        String?
+  techStack        Tech[]
   category         Category  @relation(fields: [categoryId], references: [id])
   categoryId       String
+  roles            Role[]
   updatedAt        DateTime  @updatedAt
   createdAt        DateTime  @default(now())
   published        Boolean   @default(true)
+}
+
+model Tech {
+  id       String    @id @default(cuid())
+  name     String    @unique
+  value    String    @unique
+  projects Project[]
 }
 
 model Category {
@@ -47,10 +59,21 @@ model Category {
 }
 
 model Gallery {
-  id        String  @id @default(cuid())
-  imageUrl  String
-  projectId String
-  project   Project @relation(fields: [projectId], references: [id])
+  id          String  @id @default(cuid())
+  imageUrl    String
+  alt         String
+  description String?
+  projectId   String
+  project     Project @relation(fields: [projectId], references: [id])
+}
+
+model Role {
+  id         String  @id @default(cuid())
+  label      String
+  value      String
+  percentage Int
+  projectId  String
+  project    Project @relation(fields: [projectId], references: [id])
 }
 
 model User {

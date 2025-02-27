@@ -1,4 +1,4 @@
-import { SVGProps } from "react"
+import { JSX, SVGProps } from "react"
 
 function Css(props: SVGProps<SVGSVGElement>): JSX.Element {
   return (

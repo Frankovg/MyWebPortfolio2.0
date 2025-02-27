@@ -1,5 +1,6 @@
-import { UserDataContext } from "@/context/user-data-provider";
 import { useContext } from "react";
+
+import { UserDataContext } from "@/context/user-data-provider";
 
 export function useUserDataContext() {
   const context = useContext(UserDataContext)

@@ -1,9 +1,10 @@
 'use client'
 
 import Link from "next/link";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { JSX, SVGProps } from "react";
+
 import { Button } from "@/components/ui/button";
-import { SVGProps } from "react";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
 type TechCardProps = {
   tech: {

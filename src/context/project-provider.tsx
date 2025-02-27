@@ -1,12 +1,10 @@
 'use client'
 
+import { Project } from "@prisma/client"
 import { createContext, useOptimistic } from "react"
 
 import { addProject, deleteProject, editProject } from "@/actions/actions"
-
-//Types
 import { ProjectEssentials } from "@/lib/types"
-import { Project } from "@prisma/client"
 
 type ProjectContextProviderProps = {
   data: Project[],
@@ -21,6 +19,9 @@ type TProjectContext = {
 }
 
 export const ProjectContext = createContext<TProjectContext | null>(null)
+
+
+// TODO: This is an example from other project
 
 const ProjectContextProvider = ({ data, children }: ProjectContextProviderProps) => {
   // Optimistic UI -> to update automatically the UI (it works as a state)

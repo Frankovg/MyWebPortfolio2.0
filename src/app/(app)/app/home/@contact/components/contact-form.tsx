@@ -1,25 +1,18 @@
 'use client'
 
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useTransition } from "react"
+import { useForm } from 'react-hook-form'
+import { toast } from "sonner"
 
-//Components
+import { sendMail } from "@/actions/actions"
+import ButtonWhite from "@/components/button-white"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { toast } from "sonner"
-import ButtonWhite from "@/components/button-white"
-
-//Utils
-import { useForm } from 'react-hook-form'
-
-//Zod
-import { zodResolver } from '@hookform/resolvers/zod';
-
-//Validations
 import { contactFormSchema, TContactForm } from "@/lib/validations"
 
-//Actions
-import { sendMail } from "@/actions/actions"
+
 
 function ContactForm() {
   const [isPending, startTransition] = useTransition()

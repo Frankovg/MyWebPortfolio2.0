@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils"
+
 import { Button } from "./ui/button"
 
 type ButtonWhiteProps = {
@@ -14,7 +15,7 @@ function ButtonWhite({
 }: ButtonWhiteProps) {
   return (
     <Button
-      className={cn("group relative bg-white text-lg font-semibold py-[18px] px-[34px] overflow-hidden w-full md:w-fit rounded", className)}
+      className={cn("group relative bg-white text-lg font-semibold py-[18px] px-[34px] overflow-hidden w-full md:w-fit rounded-sm", className)}
       disabled={disabled}
     >
       <span className="absolute inset-0 bg-primary transform w-0 transition-all duration-300 ease-in-out group-hover:w-full" />

@@ -1,6 +1,6 @@
-import { Alex, AsafeDigital, Fix, GrupoQuiero, Ikea, Micropack, Norush, Pubext } from "@/icons/jobs"
 import { Amstel, Axe, CocaCola, Coty, CruzCampo, ElAguila, Garnier, Gillete, Johnsons, Loreal, Maybelline, Mondelez, Movistar, Nestle, NewBalance, Pepsico, Refresco, Rimmel, SallyHansen, TheProcterAndGambleCompany, Unilever, ViaCelere, Vichy, Volkswagen } from "@/icons/companies"
 import { Airsoft, Computer, Outdoor, Rock, Sport, VideoGames } from "@/icons/hobbies";
+import { Alex, AsafeDigital, Fix, GrupoQuiero, Ikea, Micropack, Norush, Pubext } from "@/icons/jobs"
 
 
 // About me  - Worked with

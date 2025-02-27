@@ -1,26 +1,18 @@
 'use client'
 
 import Link from "next/link"
+import { ReactNode, useEffect, useState } from "react"
 
-//Components
+import Burger from "@/icons/burger"
+import { SOCIAL_ICONS } from "@/lib/client-constants"
+import { ROUTES } from "@/lib/constants"
+import { UserSession } from "@/lib/types"
+import { cn } from "@/lib/utils"
+
 import Logo from "./logo"
 import MenuLink from "./menu-link"
 import MobileMenu from "./mobile-menu"
-import Burger from "@/icons/burger"
 import ScrollLink from "./scroll-link"
-
-//Utils
-import { cn } from "@/lib/utils"
-
-//Types
-import { ReactNode, useEffect, useState } from "react"
-import { UserSession } from "@/lib/types"
-
-//Constants
-import { ROUTES } from "@/lib/constants"
-import { SOCIAL_ICONS } from "@/lib/client-constants"
-
-//Hooks
 import UserMainBar from "./user-main-bar"
 
 type NavLinkProps = {
@@ -89,9 +81,9 @@ function LetsConnectLink() {
     <li className="max-600:hidden">
       <ScrollLink
         id='contact'
-        className="group relative rounded border border-solid border-whiteText text-lg font-semibold py-[18px] px-[34px] transition duration-300 ease-in hover:border-background overflow-hidden"
+        className="group relative rounded-sm border border-solid border-whiteText text-lg font-semibold py-[18px] px-[34px] transition duration-300 ease-in hover:border-background overflow-hidden"
       >
-        <span className="absolute rounded inset-0 bg-primary transform w-0 transition-all duration-300 ease-in-out group-hover:w-full" />
+        <span className="absolute rounded-sm inset-0 bg-primary transform w-0 transition-all duration-300 ease-in-out group-hover:w-full" />
         <span className="relative z-10 transition-colors group-hover:text-darkGrey">
           Let&apos;s Connect
         </span>
@@ -151,7 +143,7 @@ export default function Navbar({ session }: NavbarProps) {
 
           <div className="w-fit">
             <ul className={cn(ulStyles, 'gap-6')}>
-              <NavLink href='about-me' className="ml-10 max-830:hidden">About me</NavLink>
+              <NavLink href='/app/about-me' className="ml-10 max-830:hidden">About me</NavLink>
               <SocialNavLinks />
               <LetsConnectLink />
               <MobileMenuButton open={handleOpenMenu} />

@@ -23,11 +23,11 @@ export default function MenuLink({ name, linkStyles }: MenuLinkProps) {
             {name}
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <NavigationMenuLink>
-              <div className="flex flex-col gap-4 items-center w-max h-auto p-4 backdrop-blur-sm">
+            <NavigationMenu>
+              <div className="flex flex-col gap-4 items-center w-max h-auto p-4 backdrop-blur-xs">
                 <DownloadLinks />
               </div>
-            </NavigationMenuLink>
+            </NavigationMenu>
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuIndicator className="bg-softGrey h-1.5 transition-all duration-300 ease-in w-0 hover:w-full" />
