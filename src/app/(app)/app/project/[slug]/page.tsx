@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 
 import Section from "@/components/section";
-import { getCategories, getProjectBySlug } from "@/lib/server-utils";
+import { getCategories, getProjectBySlug } from "@/lib/server-utils-public";
 
 import MoreProjects from "./components/more-projects";
 import ProjectBanner from "./components/project-banner";
