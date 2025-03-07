@@ -1,12 +1,7 @@
 "use client";
 
-import {
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
-import { useState, useTransition } from "react";
-
+import { Project } from "@prisma/client";
+import { flexRender, Table as TTable } from "@tanstack/react-table";
 import {
   Table,
   TableBody,
@@ -15,39 +10,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useUserManagementContext } from "@/hooks/use-user-management-context";
-import { accountsColumns } from "./accounts-columns";
 
-type AccountsTableProps = {
-  isAdmin?: boolean;
-};
-
-function AccountsTable({ isAdmin = false }: AccountsTableProps) {
-  const [isPending, startTransition] = useTransition();
-  const [pendingRowId, setPendingRowId] = useState<string | null>(null);
-
-  const { handleActiveAccount, users } = useUserManagementContext();
-
-  const handleCheckboxChange = async (id: string, value: boolean) => {
-    setPendingRowId(id);
-    startTransition(async () => {
-      await handleActiveAccount(id, value);
-      setPendingRowId(null);
-    });
-  };
-
-  const columns = accountsColumns(
-    isAdmin,
-    isPending,
-    pendingRowId,
-    handleCheckboxChange
-  );
-  const table = useReactTable({
-    data: users,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-  });
-
+//TODO: Check why is divided by 3 the space for the table
+function PortfolioTable({ table }: { table: TTable<Project> }) {
   return (
     <div className="rounded-md border border-whiteText">
       <Table>
@@ -85,7 +50,10 @@ function AccountsTable({ isAdmin = false }: AccountsTableProps) {
             ))
           ) : (
             <TableRow>
-              <TableCell colSpan={columns.length} className="h-24 text-center">
+              <TableCell
+                colSpan={table.getAllColumns().length}
+                className="h-24 text-center"
+              >
                 No results.
               </TableCell>
             </TableRow>
@@ -96,4 +64,4 @@ function AccountsTable({ isAdmin = false }: AccountsTableProps) {
   );
 }
 
-export default AccountsTable;
+export default PortfolioTable;

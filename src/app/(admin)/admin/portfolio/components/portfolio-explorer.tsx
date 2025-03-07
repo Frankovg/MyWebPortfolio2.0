@@ -1,32 +1,27 @@
-import { Category, Project } from "@prisma/client";
-
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-interface ICategoryWithProjectsAdmin extends Category {
-  projects: Project[];
-}
+import { Tabs } from "@/components/ui/tabs";
+import PortfolioTabsList from "./portfolio-tabs-list";
+import { ICategoryWithProjectsAdmin } from "../types/types";
+import PortfolioContent from "./portfolio-content";
 
 type PortfolioExplorerProps = {
   categories: ICategoryWithProjectsAdmin[];
+  isAdmin?: boolean;
 };
 
-function PortfolioExplorer({ categories }: PortfolioExplorerProps) {
+function PortfolioExplorer({
+  categories,
+  isAdmin = false,
+}: PortfolioExplorerProps) {
   return (
-    <Tabs defaultValue="web-development" className="w-fit">
-      <TabsList className="grid w-full grid-cols-3">
-        {categories.map((category) => {
-          return (
-            <TabsTrigger
-              key={category.id}
-              value={category.value}
-              className="w-full data-[state=active]:bg-darkGrey rounded-sm font-normal"
-            >
-              {category.name}
-            </TabsTrigger>
-          );
-        })}
-      </TabsList>
-    </Tabs>
+    <div className="w-full border-b border-darkGrey">
+      <Tabs defaultValue="web-development" className="w-fit">
+        <PortfolioTabsList tabs={categories} />
+
+        {categories.map((category) => (
+          <PortfolioContent key={category.id} content={category} />
+        ))}
+      </Tabs>
+    </div>
   );
 }
 

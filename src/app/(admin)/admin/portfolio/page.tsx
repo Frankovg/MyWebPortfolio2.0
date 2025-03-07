@@ -8,8 +8,7 @@ import MainHeader from "../components/main-header";
 
 import PortfolioExplorer from "./components/portfolio-explorer";
 import Loading from "./loading";
-
-
+import { checkAuth } from "@/lib/check-auth";
 
 async function Admin() {
   const breadcrumbLinks = [
@@ -17,6 +16,8 @@ async function Admin() {
       name: "Portfolio",
     },
   ];
+
+  const session = await checkAuth();
 
   const categories = await getCategoriesAdmin();
 
@@ -26,7 +27,10 @@ async function Admin() {
       <Suspense fallback={<Loading />}>
         <AdminSection>
           <H1Main>Portfolio</H1Main>
-          <PortfolioExplorer categories={categories} />
+          <PortfolioExplorer
+            categories={categories}
+            isAdmin={session?.user.isAdmin}
+          />
         </AdminSection>
       </Suspense>
     </>
