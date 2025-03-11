@@ -1,66 +1,20 @@
 "use client";
 
 import { Project } from "@prisma/client";
-import { flexRender, Table as TTable } from "@tanstack/react-table";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { Table as TTable } from "@tanstack/react-table";
+import { Table } from "@/components/ui/table";
+import HeaderTable from "@/components/table/header-table";
+import WrapperTable from "@/components/table/wrapper-table";
+import BodyTable from "@/components/table/body-table";
 
-//TODO: Check why is divided by 3 the space for the table
 function PortfolioTable({ table }: { table: TTable<Project> }) {
   return (
-    <div className="rounded-md border border-whiteText">
+    <WrapperTable>
       <Table>
-        <TableHeader>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map((header) => {
-                return (
-                  <TableHead key={header.id}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                  </TableHead>
-                );
-              })}
-            </TableRow>
-          ))}
-        </TableHeader>
-        <TableBody>
-          {table.getRowModel().rows?.length ? (
-            table.getRowModel().rows.map((row) => (
-              <TableRow
-                key={row.id}
-                data-state={row.getIsSelected() && "selected"}
-              >
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))
-          ) : (
-            <TableRow>
-              <TableCell
-                colSpan={table.getAllColumns().length}
-                className="h-24 text-center"
-              >
-                No results.
-              </TableCell>
-            </TableRow>
-          )}
-        </TableBody>
+        <HeaderTable table={table} />
+        <BodyTable table={table} />
       </Table>
-    </div>
+    </WrapperTable>
   );
 }
 

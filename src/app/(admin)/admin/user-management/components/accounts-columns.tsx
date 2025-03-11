@@ -16,7 +16,7 @@ export const accountsColumns = (
       const email = blurEmail ? "dontlook@behindyou.com" : row.original.email;
       return (
         <div
-          className={`text-left font-light text-white ${
+          className={`text-left font-light text-textWhite ${
             blurEmail && "blur-xs select-none"
           }`}
         >
@@ -30,7 +30,7 @@ export const accountsColumns = (
     header: () => <div className="text-left">Role</div>,
     cell: ({ row }) => {
       const role = row.original.isAdmin ? "Admin" : "Sample";
-      return <div className="text-left font-light text-white">{role}</div>;
+      return <div className="text-left font-light text-textWhite">{role}</div>;
     },
   },
   {

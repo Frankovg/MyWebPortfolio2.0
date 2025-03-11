@@ -19,10 +19,7 @@ function PortfolioContent({ content }: PortfolioContentProps) {
   });
 
   return (
-    <TabsContent
-      value={content.value}
-      className={`m-0 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid-flow-row gap-4 transition-all duration-300 ease-out `}
-    >
+    <TabsContent value={content.value}>
       <PortfolioTable table={table} />
     </TabsContent>
   );

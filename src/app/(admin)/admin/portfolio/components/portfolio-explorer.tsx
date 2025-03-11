@@ -14,7 +14,7 @@ function PortfolioExplorer({
 }: PortfolioExplorerProps) {
   return (
     <div className="w-full border-b border-darkGrey">
-      <Tabs defaultValue="web-development" className="w-fit">
+      <Tabs defaultValue="web-development" className="w-full">
         <PortfolioTabsList tabs={categories} />
 
         {categories.map((category) => (

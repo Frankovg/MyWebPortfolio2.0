@@ -10,7 +10,7 @@ function PortfolioTabsList({ tabs }: { tabs: ICategoryWithProjectsAdmin[] }) {
           <TabsTrigger
             key={tab.id}
             value={tab.value}
-            className="w-full py-1.5 px-3 data-[state=active]:bg-darkGrey font-normal hover:data-[state=inactive]:text-white border-r border-darkGrey"
+            className="w-full py-1.5 px-3 data-[state=active]:bg-darkGrey font-normal hover:data-[state=inactive]:text-white border-r-2 border-darkPrimary"
           >
             {tab.name}
           </TabsTrigger>
