@@ -1,10 +1,9 @@
 import "server-only";
 
-//DB
 import { Project, User } from "@prisma/client";
 
 import prisma from "./db";
-import { notFound } from "next/navigation";
+// import { notFound } from "next/navigation";
 
 export async function getCategories() {
   const categories = await prisma.category.findMany({
@@ -96,9 +95,4 @@ export async function getUserById(id: User["id"]) {
     },
   });
   return user;
-}
-
-export async function getUsers() {
-  const users = await prisma.user.findMany();
-  return users;
 }

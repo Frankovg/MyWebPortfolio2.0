@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-import { getFirstSoftwareProject } from "@/lib/server-utils";
+import { getFirstSoftwareProject } from "@/lib/server-utils-public";
 
 //TODO: make this dynamic pages as static pages
 export default async function Project() {
