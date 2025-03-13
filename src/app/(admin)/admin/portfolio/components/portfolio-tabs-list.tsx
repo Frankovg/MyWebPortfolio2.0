@@ -16,8 +16,8 @@ function PortfolioTabsList({ tabs }: { tabs: ICategoryWithProjectsAdmin[] }) {
             value={tab.value}
             className="w-full h-full py-1.5 px-3 data-[state=active]:bg-darkGrey font-normal hover:data-[state=inactive]:text-white border-r-2 border-darkPrimary"
           >
-            <span className="hidden min-[400px]:block">{tab.name}</span>
-            <span className="block min-[399px]:hidden">
+            <span className="hidden min-430:block">{tab.name}</span>
+            <span className="block min-430:hidden">
               {getFirstWord(tab.name)}
             </span>
           </TabsTrigger>
