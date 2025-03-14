@@ -15,6 +15,9 @@ export async function getCategories() {
         include: {
           techStack: true,
         },
+        orderBy: {
+          date: "asc",
+        },
       },
     },
   });

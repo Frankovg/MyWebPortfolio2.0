@@ -35,10 +35,16 @@ export const portfolioColumns = (): ColumnDef<Project>[] => [
     accessorKey: "last_update",
     header: () => <div className="text-center">Last update</div>,
     cell: ({ row }) => {
-      //TODO: check how it works
-      const newDate = new Date(row.original.updatedAt).toLocaleDateString();
+      const newDate = new Date(row.original.updatedAt).toLocaleDateString(
+        "es-ES",
+        {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        }
+      );
       return (
-        <div className="text-center font-light text-textWhite">{"newDate"}</div>
+        <div className="text-center font-light text-textWhite">{newDate}</div>
       );
     },
   },
