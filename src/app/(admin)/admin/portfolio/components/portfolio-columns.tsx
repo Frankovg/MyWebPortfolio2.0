@@ -14,23 +14,31 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+const dropdownLabels = { asc: "Asc", desc: "Desc" };
+
 export const portfolioColumns = (): ColumnDef<Project>[] => [
   {
-    accessorKey: "name",
+    accessorKey: "title",
     header: () => <div className="text-left">Project name</div>,
     cell: ({ row }) => {
       return (
-        <div className="text-left font-light text-textWhite">
-          {row.original.title}
-        </div>
+        <Link
+          href={`/app/project/${row.original.slug}`}
+          target="_blank"
+          className="text-left font-light text-textWhite hover:underline"
+        >
+          {row.getValue("title")}
+        </Link>
       );
     },
+    enableColumnFilter: true,
+    enableSorting: true,
   },
   {
     accessorKey: "company",
     header: () => <div className="text-left">Company</div>,
     cell: ({ row }) => {
-      const _company = row.original.company;
+      const _company = row.getValue("company") as string;
       const company = _company ? _company : "-";
       return (
         <div className="text-left font-light text-textWhite">{company}</div>
@@ -41,7 +49,7 @@ export const portfolioColumns = (): ColumnDef<Project>[] => [
     accessorKey: "client",
     header: () => <div className="text-left">Client</div>,
     cell: ({ row }) => {
-      const _client = row.original.client;
+      const _client = row.getValue("client") as string;
       const client = _client ? _client : "-";
       return (
         <div className="text-left font-light text-textWhite">{client}</div>
@@ -54,7 +62,7 @@ export const portfolioColumns = (): ColumnDef<Project>[] => [
     cell: ({ row }) => {
       return (
         <div className="flex justify-center font-textWhite">
-          {row.original.published ? (
+          {row.getValue("published") ? (
             <CheckIcon className="h-4 w-auto" />
           ) : (
             <XIcon className="h-4 w-auto" />
@@ -64,11 +72,11 @@ export const portfolioColumns = (): ColumnDef<Project>[] => [
     },
   },
   {
-    accessorKey: "created_at",
+    accessorKey: "createdAt",
     header: () => <div className="text-center">Created</div>,
     cell: ({ row }) => {
       const newDateCreated = new Date(
-        row.original.createdAt
+        row.getValue("createdAt")
       ).toLocaleDateString(DATE_LOCATION, DATE_FORMAT);
       return (
         <div className="text-center font-light text-textWhite">
@@ -78,11 +86,11 @@ export const portfolioColumns = (): ColumnDef<Project>[] => [
     },
   },
   {
-    accessorKey: "last_update",
+    accessorKey: "updatedAt",
     header: () => <div className="text-center">Last update</div>,
     cell: ({ row }) => {
       const newDateUpdated = new Date(
-        row.original.updatedAt
+        row.getValue("updatedAt")
       ).toLocaleDateString(DATE_LOCATION, DATE_FORMAT);
       return (
         <div className="text-center font-light text-textWhite">

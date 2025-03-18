@@ -2,6 +2,7 @@ import { Tabs } from "@/components/ui/tabs";
 import PortfolioTabsList from "./portfolio-tabs-list";
 import { ICategoryWithProjectsAdmin } from "../types/types";
 import PortfolioContent from "./portfolio-content";
+import PortfolioTableTools from "./portfolio-table-tools";
 
 type PortfolioExplorerProps = {
   categories: ICategoryWithProjectsAdmin[];
@@ -13,10 +14,9 @@ function PortfolioExplorer({
   isAdmin = false,
 }: PortfolioExplorerProps) {
   return (
-    <div className="w-full border-b border-darkGrey">
+    <div className="w-full ">
       <Tabs defaultValue="web-development" className="w-full">
         <PortfolioTabsList tabs={categories} />
-
         {categories.map((category) => (
           <PortfolioContent key={category.id} content={category} />
         ))}
