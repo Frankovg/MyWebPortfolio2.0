@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 
+import { BreadcrumbLinkObject } from "@/app/(admin)/admin/types/common";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,8 +9,6 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-
-import { BreadcrumbLinkObject } from "../../../app/(admin)/admin/types/common";
 
 function BreadcrumbContainer({ links }: { links: BreadcrumbLinkObject[] }) {
   return (

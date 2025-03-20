@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 
-import AdminPageTitle from "@/components/admin/components/admin-page-title";
-import MainHeader from "@/components/admin/components/main-header";
+import AdminPageTitle from "@/components/admin/admin-page-title";
+import MainHeader from "@/components/admin/main-header";
 import AdminSection from "@/components/admin-section";
 
 import Loading from "./loading";
