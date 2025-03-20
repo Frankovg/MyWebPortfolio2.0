@@ -3,37 +3,30 @@ import { Suspense } from "react";
 import AdminPageTitle from "@/components/admin/components/admin-page-title";
 import MainHeader from "@/components/admin/components/main-header";
 import AdminSection from "@/components/admin-section";
-import { checkAuth } from "@/lib/check-auth";
-import { getCategoriesAdmin } from "@/lib/server-utils-admin";
 
-import PortfolioExplorer from "./components/portfolio-explorer";
 import Loading from "./loading";
 
-async function Portfolio() {
+async function AddProject() {
   const breadcrumbLinks = [
     {
       name: "Portfolio",
+      href: "/admin/portfolio",
+    },
+    {
+      name: "Add Project",
     },
   ];
-
-  const session = await checkAuth();
-
-  const categories = await getCategoriesAdmin();
 
   return (
     <>
       <MainHeader breadcrumbLinks={breadcrumbLinks} />
       <Suspense fallback={<Loading />}>
         <AdminSection>
-          <AdminPageTitle title="Portfolio" />
-          <PortfolioExplorer
-            categories={categories}
-            isAdmin={session?.user.isAdmin}
-          />
+          <AdminPageTitle title="Add Project" showGoBack={true} />
         </AdminSection>
       </Suspense>
     </>
   );
 }
 
-export default Portfolio;
+export default AddProject;

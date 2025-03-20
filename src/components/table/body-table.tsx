@@ -1,5 +1,7 @@
 import { Table } from "@tanstack/react-table";
+
 import { TableBody } from "../ui/table";
+
 import RowContentTable from "./row-content-table";
 
 function BodyTable<T>({ table }: { table: Table<T> }) {

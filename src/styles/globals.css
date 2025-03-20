@@ -133,6 +133,17 @@
 }
 
 @layer utilities {
+  .hover-table-buttons:hover {
+    border-color: white;
+    background-color: black;
+    transition-property: color, background-color, border-color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+  }
+  .hover-table-buttons:focus {
+    background-color: black;
+    border-color: var(--color-primary);
+  }
   @keyframes gradientAnimation {
     0% {
       background-position: 0% 50%;

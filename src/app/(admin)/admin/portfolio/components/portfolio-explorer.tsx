@@ -1,8 +1,9 @@
 import { Tabs } from "@/components/ui/tabs";
-import PortfolioTabsList from "./portfolio-tabs-list";
+
 import { ICategoryWithProjectsAdmin } from "../types/types";
+
 import PortfolioContent from "./portfolio-content";
-import PortfolioTableTools from "./portfolio-table-tools";
+import PortfolioTabsList from "./portfolio-tabs-list";
 
 type PortfolioExplorerProps = {
   categories: ICategoryWithProjectsAdmin[];

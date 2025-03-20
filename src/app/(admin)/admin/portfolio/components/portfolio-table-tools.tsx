@@ -1,33 +1,50 @@
+import { Project } from "@prisma/client";
+import { Table as TTable } from "@tanstack/react-table";
+import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
-import { Project } from "@prisma/client";
-import { Table as TTable } from "@tanstack/react-table";
 
 function PortfolioTableTools({ table }: { table: TTable<Project> }) {
   return (
-    <div className="w-full flex justify-between mt-10 pb-2">
+    <div className="w-full flex justify-between mt-10 pb-2 group">
       <Input
         placeholder="Search project..."
         value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
         onChange={(event) =>
           table.getColumn("title")?.setFilterValue(event.target.value)
         }
-        className="h-full w-1/3 border-whiteText placeholder:text-whiteText placeholder:font-normal"
+        className="h-full w-1/3 border-whiteText placeholder:text-whiteText placeholder:font-normal hover-table-buttons"
       />
-      <div className="flex items-center space-x-2">
-        <Checkbox id="terms2" className="border-whiteText" />
-        <label htmlFor="terms2" className="font-normal">
+
+      <div className="flex items-center space-x-2 group">
+        <Checkbox
+          id="filter-check"
+          className="border-whiteText group-hover:border-white transition-colors ease-in-out duration-200"
+          onCheckedChange={(checked) =>
+            typeof checked === "boolean" &&
+            checked &&
+            table.getColumn("published")?.setFilterValue(checked)
+          }
+        />
+        <label
+          htmlFor="filter-check"
+          className="font-normal hover:cursor-pointer"
+        >
           Only published projects
         </label>
       </div>
-      <Button
-        className="font-normal border border-whiteText hover:bg-black"
-        variant="outline"
-        size="default"
-      >
-        + Add new project
-      </Button>
+
+      <Link href="/admin/portfolio/add">
+        <Button
+          className="font-normal border border-whiteText hover-table-buttons"
+          variant="outline"
+          size="default"
+        >
+          + Add new project
+        </Button>
+      </Link>
     </div>
   );
 }

@@ -1,11 +1,10 @@
 import { Suspense } from "react";
 
+import AdminPageTitle from "@/components/admin/components/admin-page-title";
+import MainHeader from "@/components/admin/components/main-header";
 import AdminSection from "@/components/admin-section";
-import H1Main from "@/components/h1-main";
 import { checkAuth } from "@/lib/check-auth";
 import { getUsersAdmin } from "@/lib/server-utils-admin";
-
-import MainHeader from "../components/main-header";
 
 import AccountsTable from "./components/accounts-table";
 import UserManagementProvider from "./context/user-management-provider";
@@ -27,7 +26,7 @@ async function UserManagement() {
       <MainHeader breadcrumbLinks={breadcrumbLinks} />
       <Suspense fallback={<Loading />}>
         <AdminSection>
-          <H1Main>User Management</H1Main>
+          <AdminPageTitle title="User Management" />
           <UserManagementProvider data={users}>
             <AccountsTable isAdmin={session?.user.isAdmin} />
           </UserManagementProvider>

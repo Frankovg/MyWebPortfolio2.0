@@ -1,9 +1,5 @@
 "use client";
 
-import { TabsContent } from "@/components/ui/tabs";
-import { ICategoryWithProjectsAdmin } from "../types/types";
-import PortfolioTable from "./portfolio-table";
-import { portfolioColumns } from "./portfolio-columns";
 import {
   ColumnFiltersState,
   getCoreRowModel,
@@ -12,8 +8,16 @@ import {
   SortingState,
   useReactTable,
 } from "@tanstack/react-table";
-import PortfolioTableTools from "./portfolio-table-tools";
 import { useState } from "react";
+
+import { TabsContent } from "@/components/ui/tabs";
+
+import { ICategoryWithProjectsAdmin } from "../types/types";
+
+import { portfolioColumns } from "./portfolio-columns";
+import PortfolioTable from "./portfolio-table";
+import PortfolioTableTools from "./portfolio-table-tools";
+
 
 type PortfolioContentProps = {
   content: ICategoryWithProjectsAdmin;
@@ -22,7 +26,9 @@ type PortfolioContentProps = {
 function PortfolioContent({ content }: PortfolioContentProps) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+
   const columns = portfolioColumns();
+
   const table = useReactTable({
     data: content.projects,
     columns,

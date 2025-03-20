@@ -1,6 +1,7 @@
 import { TabsContent } from "@/components/ui/tabs";
-import ProjectCard from "./project-card";
 import { ICategoryWithProjects } from "@/lib/types";
+
+import ProjectCard from "./project-card";
 
 type ProjectContentProps = {
   content: ICategoryWithProjects;

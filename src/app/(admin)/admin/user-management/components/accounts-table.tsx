@@ -3,13 +3,13 @@
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { useState, useTransition } from "react";
 
+import BodyTable from "@/components/table/body-table";
+import HeaderTable from "@/components/table/header-table";
+import WrapperTable from "@/components/table/wrapper-table";
 import { Table } from "@/components/ui/table";
 import { useUserManagementContext } from "@/hooks/use-user-management-context";
+
 import { accountsColumns } from "./accounts-columns";
-import HeaderTable from "@/components/table/header-table";
-import RowContentTable from "@/components/table/row-content-table";
-import WrapperTable from "@/components/table/wrapper-table";
-import BodyTable from "@/components/table/body-table";
 
 type AccountsTableProps = {
   isAdmin?: boolean;

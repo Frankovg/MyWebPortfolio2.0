@@ -1,7 +1,5 @@
 "use client";
 
-import { GithubIcon } from "@/icons/social";
-import { DATE_FORMAT, DATE_LOCATION } from "@/lib/constants";
 import { Project } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import {
@@ -13,6 +11,9 @@ import {
   XIcon,
 } from "lucide-react";
 import Link from "next/link";
+
+import { GithubIcon } from "@/icons/social";
+import { DATE_FORMAT, DATE_LOCATION } from "@/lib/constants";
 
 const dropdownLabels = { asc: "Asc", desc: "Desc" };
 
