@@ -1,11 +1,18 @@
-'use client'
+"use client";
 
-import { CloudDownload, Home, Users, KeyRound, LogOut, Briefcase } from "lucide-react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { useTransition } from "react"
+import {
+  CloudDownload,
+  Home,
+  Users,
+  KeyRound,
+  LogOut,
+  Briefcase,
+} from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useTransition } from "react";
 
-import { logOut } from "@/actions/actions"
+import { logOut } from "@/actions/actions";
 import {
   Sidebar,
   SidebarContent,
@@ -18,20 +25,20 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
-import Isologo from "./isologo"
-import Logo from "./logo"
-import LogOutOverlay from "./logout-overlay"
+import Isologo from "./isologo";
+import Logo from "./logo";
+import LogOutOverlay from "./logout-overlay";
 
 type SidebarLogoutProps = {
-  handleLogout: () => void,
-  isPending: boolean
-}
+  handleLogout: () => void;
+  isPending: boolean;
+};
 
 type SidebarHeaderWithLogoProps = {
-  isExpanded: boolean
-}
+  isExpanded: boolean;
+};
 
 const items = [
   {
@@ -59,10 +66,17 @@ const items = [
     url: "/admin/change-password",
     icon: KeyRound,
   },
-]
+];
 
 const SidebarNavigation = () => {
-  const pathname = usePathname()
+  const pathname = usePathname();
+  const { setOpenMobile, isMobile } = useSidebar();
+
+  const handleItemClick = () => {
+    if (isMobile) {
+      setOpenMobile(false);
+    }
+  };
 
   return (
     <>
@@ -71,8 +85,12 @@ const SidebarNavigation = () => {
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton asChild tooltip={item.title} isActive={pathname === item.url}>
-                <Link href={item.url}>
+              <SidebarMenuButton
+                asChild
+                tooltip={item.title}
+                isActive={pathname === item.url}
+              >
+                <Link href={item.url} onClick={handleItemClick}>
                   <item.icon />
                   <span>{item.title}</span>
                 </Link>
@@ -82,11 +100,11 @@ const SidebarNavigation = () => {
         </SidebarMenu>
       </SidebarGroupContent>
     </>
-  )
-}
+  );
+};
 
 const SidebarHeaderWithLogo = ({ isExpanded }: SidebarHeaderWithLogoProps) => {
-  const headerStyle = "flex items-center py-8"
+  const headerStyle = "flex items-center py-8";
   if (isExpanded) {
     return (
       <SidebarHeader className={headerStyle}>
@@ -95,53 +113,39 @@ const SidebarHeaderWithLogo = ({ isExpanded }: SidebarHeaderWithLogoProps) => {
           <h4 className="text-xs font-light">Content Management System</h4>
         </div>
       </SidebarHeader>
-    )
+    );
   }
 
   return (
     <SidebarHeader className={headerStyle}>
       <Isologo />
     </SidebarHeader>
-  )
-}
+  );
+};
 
 const SidebarLogout = ({ handleLogout, isPending }: SidebarLogoutProps) => (
-  <SidebarMenuButton
-    disabled={isPending}
-    onClick={handleLogout}
-  >
+  <SidebarMenuButton disabled={isPending} onClick={handleLogout}>
     <LogOut />
     <span>Logout</span>
   </SidebarMenuButton>
-)
-
+);
 
 export function AppSidebar() {
-  const [isPending, startTransition] = useTransition()
+  const [isPending, startTransition] = useTransition();
 
-  const {
-    state,
-    open,
-    setOpen,
-    openMobile,
-    setOpenMobile,
-    isMobile,
-    toggleSidebar,
-  } = useSidebar()
+  const { state } = useSidebar();
 
   const handleLogout = () => {
     startTransition(async () => {
-      await logOut()
-    })
-  }
+      await logOut();
+    });
+  };
 
   return (
     <>
       {isPending && <LogOutOverlay />}
       <Sidebar collapsible="icon">
-        <SidebarHeaderWithLogo
-          isExpanded={state === 'expanded'}
-        />
+        <SidebarHeaderWithLogo isExpanded={state === "expanded"} />
         <SidebarContent>
           <SidebarGroup>
             <SidebarNavigation />
@@ -159,5 +163,5 @@ export function AppSidebar() {
         </SidebarFooter>
       </Sidebar>
     </>
-  )
+  );
 }

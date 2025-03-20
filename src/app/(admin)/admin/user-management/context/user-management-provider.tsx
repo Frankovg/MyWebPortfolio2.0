@@ -1,66 +1,73 @@
-'use client'
+"use client";
 
-import { User } from "@prisma/client"
-import { createContext , useOptimistic } from "react"
-import { toast } from "sonner"
+import { User } from "@prisma/client";
+import { createContext, useOptimistic } from "react";
+import { toast } from "sonner";
 
-import { activateAccount } from "@/actions/actions"
-
-import { SAMPLE_ACTION } from "../../constants/admin-constants"
+import { activateAccount } from "@/actions/actions";
+import { SAMPLE_ACTION } from "@/constants/admin-constants";
 
 type UserManagementProviderProps = {
-  data: User[],
-  children: React.ReactNode,
-}
+  data: User[];
+  children: React.ReactNode;
+};
 
 type TUserManagementContext = {
-  users: User[],
-  handleActiveAccount: (userId: User['id'], isActive: boolean) => Promise<void>
-}
+  users: User[];
+  handleActiveAccount: (userId: User["id"], isActive: boolean) => Promise<void>;
+};
 
-export const UserManagementContext = createContext<TUserManagementContext | null>(null)
+export const UserManagementContext =
+  createContext<TUserManagementContext | null>(null);
 
-const UserManagementProvider = ({ data, children }: UserManagementProviderProps) => {
+const UserManagementProvider = ({
+  data,
+  children,
+}: UserManagementProviderProps) => {
   const [optimisticUsers, setOptimisticUsers] = useOptimistic(
     data,
     (prev, { action, payload }) => {
       if (action === "edit") {
-        return prev.map(user => {
+        return prev.map((user) => {
           if (user.id === payload.id) {
-            return { ...user, ...payload.newUserData }
+            return { ...user, ...payload.newUserData };
           }
-          return user
-        })
+          return user;
+        });
       }
-      return prev
+      return prev;
     }
-  )
+  );
 
-  const handleActiveAccount = async (userId: User['id'], isActive: boolean) => {
-    setOptimisticUsers({ action: "edit", payload: { id: userId, isActive } })
-    const error = await activateAccount(userId, isActive)
+  const handleActiveAccount = async (userId: User["id"], isActive: boolean) => {
+    setOptimisticUsers({ action: "edit", payload: { id: userId, isActive } });
+    const error = await activateAccount(userId, isActive);
     if (!!error) {
       if (error.message === SAMPLE_ACTION) {
-        toast.warning('This is a sample action with no effects.')
-        console.warn(error.message)
+        toast.warning("This is a sample action with no effects.");
+        console.warn(error.message);
       } else {
-        toast.error(error.message)
-        console.error(error.message)
+        toast.error(error.message);
+        console.error(error.message);
       }
-      return
+      return;
     }
-    const successMessage = isActive ? 'Account activated successfully' : 'Account deactivated successfully'
-    toast.success(successMessage)
-  }
+    const successMessage = isActive
+      ? "Account activated successfully"
+      : "Account deactivated successfully";
+    toast.success(successMessage);
+  };
 
   return (
-    <UserManagementContext.Provider value={{
-      users: optimisticUsers,
-      handleActiveAccount
-    }}>
+    <UserManagementContext.Provider
+      value={{
+        users: optimisticUsers,
+        handleActiveAccount,
+      }}
+    >
       {children}
     </UserManagementContext.Provider>
-  )
-}
+  );
+};
 
-export default UserManagementProvider
+export default UserManagementProvider;

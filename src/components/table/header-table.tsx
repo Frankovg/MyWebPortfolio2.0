@@ -1,4 +1,5 @@
 import { flexRender, Table } from "@tanstack/react-table";
+
 import { TableHead, TableHeader, TableRow } from "../ui/table";
 
 function HeaderTable<T>({ table }: { table: Table<T> }) {

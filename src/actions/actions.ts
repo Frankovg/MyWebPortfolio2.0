@@ -5,7 +5,7 @@ import { AuthError } from "next-auth";
 import nodemailer from "nodemailer";
 import SMTPTransport from "nodemailer/lib/smtp-transport";
 
-import { SAMPLE_ACTION } from "@/app/(admin)/admin/constants/admin-constants";
+import { SAMPLE_ACTION } from "@/constants/admin-constants";
 import { signIn, signOut } from "@/lib/auth";
 import { checkAuth } from "@/lib/check-auth";
 import prisma from "@/lib/db";

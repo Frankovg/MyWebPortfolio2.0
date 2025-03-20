@@ -5,8 +5,9 @@ import { useEffect, useState } from "react";
 import { Tabs } from "@/components/ui/tabs";
 
 import { CategoriesProps } from "../types/types";
-import ProjectTabsList from "./project-tabs-list";
+
 import ProjectContent from "./project-content";
+import ProjectTabsList from "./project-tabs-list";
 
 function Categories({ categories }: CategoriesProps) {
   const [currentTab, setCurrentTab] = useState("web-development");
