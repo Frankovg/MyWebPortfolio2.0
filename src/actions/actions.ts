@@ -1,71 +1,68 @@
-'use server'
+"use server";
 
-import { revalidatePath } from "next/cache"
-import { AuthError } from "next-auth"
-import nodemailer from 'nodemailer'
-import SMTPTransport from "nodemailer/lib/smtp-transport"
+import { revalidatePath } from "next/cache";
+import { AuthError } from "next-auth";
+import nodemailer from "nodemailer";
+import SMTPTransport from "nodemailer/lib/smtp-transport";
 
-import { SAMPLE_ACTION } from "@/app/(admin)/admin/constants/admin-constants"
-import { signIn, signOut } from "@/lib/auth"
-import { checkAuth } from "@/lib/check-auth"
-import prisma from "@/lib/db"
-import { getUserById } from "@/lib/server-utils"
-import { sleep } from "@/lib/utils"
-import { emailSchema, isActiveSchema, userIdSchema } from "@/lib/validations"
-
-
+import { SAMPLE_ACTION } from "@/constants/admin-constants";
+import { signIn, signOut } from "@/lib/auth";
+import { checkAuth } from "@/lib/check-auth";
+import prisma from "@/lib/db";
+import { getUserById } from "@/lib/server-utils-public";
+import { sleep } from "@/lib/utils";
+import { emailSchema, isActiveSchema, userIdSchema } from "@/lib/validations";
 
 // --- user actions ---
 
 export async function logIn(prevState: unknown, formData: unknown) {
-  if (process.env.NODE_ENV === 'development') {
-    await sleep(1000)
+  if (process.env.NODE_ENV === "development") {
+    await sleep(1000);
   }
 
   if (!(formData instanceof FormData)) {
     return {
-      message: 'Invalid form data.'
-    }
+      message: "Invalid form data.",
+    };
   }
 
   try {
-    await signIn('credentials', formData)
+    await signIn("credentials", formData);
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
-        case 'CredentialsSignin': {
+        case "CredentialsSignin": {
           return {
-            message: 'Invalid credentials.'
-          }
+            message: "Invalid credentials.",
+          };
         }
         default: {
           return {
-            message: 'Error. Could not sign in.'
-          }
+            message: "Error. Could not sign in.",
+          };
         }
       }
     }
-    throw error // nextjs redirects throw error, so we need rethrow it
+    throw error; // nextjs redirects throw error, so we need rethrow it
   }
 }
 
 export async function logOut() {
-  if (process.env.NODE_ENV === 'development') {
-    await sleep(1000)
+  if (process.env.NODE_ENV === "development") {
+    await sleep(1000);
   }
-  await signOut({ redirectTo: '/' })
+  await signOut({ redirectTo: "/" });
 }
-
 
 // --- Contact actions ---
 
-const SMTP_SERVER_HOST = process.env.SMTP_SERVER_HOST
-const SMTP_SERVER_USERNAME = process.env.SMTP_SERVER_USERNAME
-const SMTP_SERVER_PASSWORD = process.env.SMTP_SERVER_PASSWORD
-const SITE_MAIL_RECIEVER = process.env.SITE_MAIL_RECIEVER
+const SMTP_SERVER_HOST = process.env.SMTP_SERVER_HOST;
+const SMTP_SERVER_USERNAME = process.env.SMTP_SERVER_USERNAME;
+const SMTP_SERVER_PASSWORD = process.env.SMTP_SERVER_PASSWORD;
+const SITE_MAIL_RECIEVER = process.env.SITE_MAIL_RECIEVER;
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  service: "gmail",
   host: SMTP_SERVER_HOST,
   port: 587,
   secure: true,
@@ -73,111 +70,114 @@ const transporter = nodemailer.createTransport({
     user: SMTP_SERVER_USERNAME,
     pass: SMTP_SERVER_PASSWORD,
   },
-})
+});
 
 type SendMailProps = {
-  email: string,
-  sendTo?: string,
-  subject: string,
-  text: string,
-  html?: string,
-}
+  email: string;
+  sendTo?: string;
+  subject: string;
+  text: string;
+  html?: string;
+};
 
 export async function sendMail(mail: SendMailProps) {
-  if (process.env.NODE_ENV === 'development') {
-    await sleep(1000)
+  if (process.env.NODE_ENV === "development") {
+    await sleep(1000);
   }
 
-  const validateEmail = emailSchema.safeParse(mail)
+  const validateEmail = emailSchema.safeParse(mail);
   if (!validateEmail.success) {
-    console.error('Invalid mail data.', validateEmail.error)
+    console.error("Invalid mail data.", validateEmail.error);
   }
 
-  const { email, subject, text, html, sendTo } = mail
+  const { email, subject, text, html, sendTo } = mail;
 
-  let isVerified = false
+  let isVerified = false;
   try {
-    isVerified = await transporter.verify()
+    isVerified = await transporter.verify();
   } catch (error) {
-    console.error('Something Went Wrong', SMTP_SERVER_USERNAME, SMTP_SERVER_PASSWORD, error)
-    return
+    console.error(
+      "Something Went Wrong",
+      SMTP_SERVER_USERNAME,
+      SMTP_SERVER_PASSWORD,
+      error
+    );
+    return;
   }
 
-  let info: SMTPTransport.SentMessageInfo | undefined
+  let info: SMTPTransport.SentMessageInfo | undefined;
   if (isVerified) {
     info = await transporter.sendMail({
       from: email,
       to: sendTo || SITE_MAIL_RECIEVER,
       subject: subject,
       text: text,
-      html: html ? html : '',
-    })
-    console.log('Message Sent', info.messageId)
-    console.log('Mail sent to', SITE_MAIL_RECIEVER)
+      html: html ? html : "",
+    });
+    console.log("Message Sent", info.messageId);
+    console.log("Mail sent to", SITE_MAIL_RECIEVER);
   }
 
-  return info
+  return info;
 }
-
 
 // --- User Management actions ---
 
 export async function activateAccount(userId: unknown, isActive: unknown) {
-  if (process.env.NODE_ENV === 'development') {
-    await sleep(1000)
+  if (process.env.NODE_ENV === "development") {
+    await sleep(1000);
   }
 
-  const session = await checkAuth()
+  const session = await checkAuth();
   if (!session?.user.isAdmin) {
     return {
-      message: SAMPLE_ACTION
-    }
+      message: SAMPLE_ACTION,
+    };
   }
 
-  const validatedUserId = userIdSchema.safeParse(userId)
-  const validatedIsActive = isActiveSchema.safeParse(isActive)
+  const validatedUserId = userIdSchema.safeParse(userId);
+  const validatedIsActive = isActiveSchema.safeParse(isActive);
   if (!validatedIsActive.success || !validatedUserId.success) {
     return {
-      message: 'Invalid user data.'
-    }
+      message: "Invalid user data.",
+    };
   }
 
-  const user = await getUserById(validatedUserId.data)
+  const user = await getUserById(validatedUserId.data);
   if (!user) {
     return {
-      message: 'Account not found.'
-    }
+      message: "Account not found.",
+    };
   }
   if (user.isAdmin) {
     return {
-      message: 'Admin cannot be deactivated.'
-    }
+      message: "Admin cannot be deactivated.",
+    };
   }
 
   try {
     await prisma.user.update({
       where: {
-        id: validatedUserId.data
+        id: validatedUserId.data,
       },
       data: {
-        isActive: validatedIsActive.data
-      }
-    })
+        isActive: validatedIsActive.data,
+      },
+    });
   } catch (error) {
     return {
-      message: 'Could not edit the account.'
-    }
+      message: "Could not edit the account.",
+    };
   }
 
-  revalidatePath('/admin/user-management', 'page')
+  revalidatePath("/admin/user-management", "page");
 }
-
 
 // --- Project actions ---
 
 export async function addProject(project: unknown) {
-  if (process.env.NODE_ENV === 'development') {
-    await sleep(1000)
+  if (process.env.NODE_ENV === "development") {
+    await sleep(1000);
   }
 
   // const session = await checkAuth()
@@ -210,8 +210,8 @@ export async function addProject(project: unknown) {
 }
 
 export async function editProject(projectId: unknown, newProjectData: unknown) {
-  if (process.env.NODE_ENV === 'development') {
-    await sleep(1000)
+  if (process.env.NODE_ENV === "development") {
+    await sleep(1000);
   }
 
   // authentication check
@@ -252,8 +252,8 @@ export async function editProject(projectId: unknown, newProjectData: unknown) {
 }
 
 export async function deleteProject(projectId: unknown) {
-  if (process.env.NODE_ENV === 'development') {
-    await sleep(1000)
+  if (process.env.NODE_ENV === "development") {
+    await sleep(1000);
   }
 
   // authentication check
@@ -289,5 +289,4 @@ export async function deleteProject(projectId: unknown) {
   // }
 
   // revalidatePath('/app', 'layout')
-
 }

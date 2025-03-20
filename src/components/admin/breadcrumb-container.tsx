@@ -1,17 +1,21 @@
-import { Fragment } from 'react'
+import { Fragment } from "react";
 
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
-
-import { BreadcrumbLinkObject } from '../types/common'
+import { BreadcrumbLinkObject } from "@/app/(admin)/admin/types/common";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 function BreadcrumbContainer({ links }: { links: BreadcrumbLinkObject[] }) {
   return (
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem className="hidden md:block">
-          <BreadcrumbLink href="/">
-            Home
-          </BreadcrumbLink>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
 
         {links.map((link) => (
@@ -19,9 +23,7 @@ function BreadcrumbContainer({ links }: { links: BreadcrumbLinkObject[] }) {
             <BreadcrumbSeparator className="hidden md:block" />
             <BreadcrumbItem>
               {link.href ? (
-                <BreadcrumbLink href={link.href}>
-                  {link.name}
-                </BreadcrumbLink>
+                <BreadcrumbLink href={link.href}>{link.name}</BreadcrumbLink>
               ) : (
                 <BreadcrumbPage>{link.name}</BreadcrumbPage>
               )}
@@ -30,7 +32,7 @@ function BreadcrumbContainer({ links }: { links: BreadcrumbLinkObject[] }) {
         ))}
       </BreadcrumbList>
     </Breadcrumb>
-  )
+  );
 }
 
-export default BreadcrumbContainer
+export default BreadcrumbContainer;

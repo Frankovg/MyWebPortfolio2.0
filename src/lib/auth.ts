@@ -1,8 +1,8 @@
-import bcrypt from 'bcryptjs'
+import bcrypt from "bcryptjs";
 import NextAuth, { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
-import { getUserByEmail } from "./server-utils";
+import { getUserByEmail } from "./server-utils-public";
 import { sleep } from "./utils";
 import { authSchema } from "./validations";
 
@@ -16,87 +16,92 @@ const config = {
         // runs on logIn
 
         // validation
-        const validatedFormData = authSchema.safeParse(credentials)
+        const validatedFormData = authSchema.safeParse(credentials);
         if (!validatedFormData.success) {
-          return null
+          return null;
         }
 
         // extract values
-        const { email, password } = validatedFormData.data
-        const user = await getUserByEmail(email)
+        const { email, password } = validatedFormData.data;
+        const user = await getUserByEmail(email);
         if (!user || !user.isActive) {
-          console.error('User not found')
-          return null
+          console.error("User not found");
+          return null;
         }
 
-        const passwordsMatch = await bcrypt.compare(password, user.hashedpassword)
+        const passwordsMatch = await bcrypt.compare(
+          password,
+          user.hashedpassword
+        );
         if (!passwordsMatch) {
-          console.error('Invalid credentials')
-          return null
+          console.error("Invalid credentials");
+          return null;
         }
 
-        return user
-      }
-    })
+        return user;
+      },
+    }),
   ],
   callbacks: {
     authorized: ({ auth, request }) => {
       // runs on every request with middleware
-      const isLoggedIn = !!auth?.user
-      const isSuperUser = auth?.user?.isAdmin ?? false
-      const isTryingToAccessAdmin = request.nextUrl.pathname.includes('/admin')
-      const isTryingToAccessLogin = request.nextUrl.pathname.includes('/login')
+      const isLoggedIn = !!auth?.user;
+      const isSuperUser = auth?.user?.isAdmin ?? false;
+      const isTryingToAccessAdmin = request.nextUrl.pathname.includes("/admin");
+      const isTryingToAccessLogin = request.nextUrl.pathname.includes("/login");
 
       // Case for non logged user trying to access to admin
-      if (!isLoggedIn && isTryingToAccessAdmin) return Response.redirect(new URL('/login', request.nextUrl))
+      if (!isLoggedIn && isTryingToAccessAdmin)
+        return Response.redirect(new URL("/login", request.nextUrl));
       // Case for non logged user which is not navigating to admin
-      if (!isLoggedIn && !isTryingToAccessAdmin) return true
+      if (!isLoggedIn && !isTryingToAccessAdmin) return true;
 
       // Case for logged super user trying to access login
-      if (isLoggedIn && isSuperUser && isTryingToAccessLogin) return Response.redirect(new URL('/admin', request.nextUrl))
+      if (isLoggedIn && isSuperUser && isTryingToAccessLogin)
+        return Response.redirect(new URL("/admin", request.nextUrl));
       // Case for logged super user trying to access admin
-      if (isLoggedIn && isSuperUser) return true
+      if (isLoggedIn && isSuperUser) return true;
 
       // Case for logged sample account trying to access login
-      if (isLoggedIn && !isSuperUser && isTryingToAccessLogin) return Response.redirect(new URL('/admin', request.nextUrl))
+      if (isLoggedIn && !isSuperUser && isTryingToAccessLogin)
+        return Response.redirect(new URL("/admin", request.nextUrl));
       // Case for logged sample account which is not navigating to admin
-      if (isLoggedIn && !isSuperUser) return true
+      if (isLoggedIn && !isSuperUser) return true;
 
-      return false
+      return false;
     },
     jwt: async ({ token, user, trigger }) => {
       if (user) {
         // on sign in
-        token.userId = user.id! //TODO: fix this type
-        token.email = user.email! //TODO: fix this type
-        token.isAdmin = user.isAdmin
-        token.exp = Math.floor(Date.now() / 1000) + (24 * 60 * 60)
+        token.userId = user.id!; //TODO: fix this type
+        token.email = user.email!; //TODO: fix this type
+        token.isAdmin = user.isAdmin;
+        token.exp = Math.floor(Date.now() / 1000) + 24 * 60 * 60;
       }
-      if (trigger === 'update') {
-        if (process.env.NODE_ENV === 'development') {
-          await sleep(1000)
+      if (trigger === "update") {
+        if (process.env.NODE_ENV === "development") {
+          await sleep(1000);
         }
         // on every request
-        const userFromDb = await getUserByEmail(token.email)
+        const userFromDb = await getUserByEmail(token.email);
         if (userFromDb) {
-          token.isAdmin = userFromDb.isAdmin
+          token.isAdmin = userFromDb.isAdmin;
         }
       }
 
-      return token
+      return token;
     },
     session: ({ session, token }) => {
-      session.user.id = token.userId,
-        session.user.isAdmin = token.isAdmin
+      (session.user.id = token.userId), (session.user.isAdmin = token.isAdmin);
 
-      return session
-    }
-  }
-} satisfies NextAuthConfig
+      return session;
+    },
+  },
+} satisfies NextAuthConfig;
 
 export const {
   auth,
   signIn,
   signOut,
-  handlers: { GET, POST }
-} = NextAuth(config)
+  handlers: { GET, POST },
+} = NextAuth(config);

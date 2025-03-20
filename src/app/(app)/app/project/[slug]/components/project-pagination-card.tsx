@@ -36,16 +36,16 @@ function ProjectPaginationCard({ project, type }: ProjectPaginationCardProps) {
           )}
         >
           <p>{isNext ? "Next project" : "Previous project"}</p>
-          <h2 className="font-bold text-xl">{project.title}</h2>
+          <h2 className="font-bold text-xl">{project?.title}</h2>
         </div>
         <ImageWithFallback
           className={cn(
             "800:max-930:col-span-4 col-span-6 w-full 800:max-930:h-[150px] h-[200px] object-cover",
             isNext && "550:order-first"
           )}
-          src={project.image}
+          src={project?.image}
           fallbackSrc={FALLBACK_IMG}
-          alt={project.title}
+          alt={project?.title}
           width={0}
           height={0}
           sizes={"100%"}

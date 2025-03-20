@@ -26,6 +26,7 @@ model Project {
   image            String
   slug             String    @unique
   gallery          Gallery[]
+  date             DateTime  @default(now())
   repository       String?
   websiteUrl       String?
   videoUrl         String?
