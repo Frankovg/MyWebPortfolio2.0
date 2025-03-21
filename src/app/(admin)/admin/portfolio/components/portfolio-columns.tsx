@@ -26,7 +26,7 @@ export const portfolioColumns = (): ColumnDef<Project>[] => [
         <Link
           href={`/app/project/${row.original.slug}`}
           target="_blank"
-          className="text-left font-light text-textWhite hover:underline"
+          className="text-left font-light text-textWhite hover:text-white"
         >
           {row.getValue("title")}
         </Link>
@@ -130,7 +130,7 @@ export const portfolioColumns = (): ColumnDef<Project>[] => [
   },
   {
     accessorKey: "actions",
-    header: () => {},
+    header: () => <div className="text-center">Actions</div>,
     cell: ({ row }) => {
       const editButton = (
         <button

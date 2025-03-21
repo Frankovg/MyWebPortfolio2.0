@@ -11,7 +11,12 @@ import { checkAuth } from "@/lib/check-auth";
 import prisma from "@/lib/db";
 import { getUserById } from "@/lib/server-utils-public";
 import { sleep } from "@/lib/utils";
-import { emailSchema, isActiveSchema, userIdSchema } from "@/lib/validations";
+import {
+  emailSchema,
+  isActiveSchema,
+  projectFormSchema,
+  userIdSchema,
+} from "@/lib/validations";
 
 // --- user actions ---
 
@@ -175,19 +180,25 @@ export async function activateAccount(userId: unknown, isActive: unknown) {
 
 // --- Project actions ---
 
-export async function addProject(project: unknown) {
+export async function addProject(project: unknown, categoryId: string) {
   if (process.env.NODE_ENV === "development") {
     await sleep(1000);
   }
 
-  // const session = await checkAuth()
+  const session = await checkAuth();
+  if (!session?.user.isAdmin) {
+    console.warn("You are not authorized to add a project.");
+    return {
+      message: "You are not authorized to add a project.",
+    };
+  }
 
-  // const validatedProject = projectFormSchema.safeParse(project)
-  // if (!validatedProject.success) {
-  //   return {
-  //     message: 'Invalid project data.'
-  //   }
-  // }
+  const validatedProject = projectFormSchema.safeParse(project);
+  if (!validatedProject.success) {
+    return {
+      message: "Invalid project data.",
+    };
+  }
 
   // try {
   //   await prisma.project.create({
