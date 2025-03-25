@@ -4,8 +4,8 @@ import AdminPageTitle from "@/components/admin/admin-page-title";
 import MainHeader from "@/components/admin/main-header";
 import AdminSection from "@/components/admin-section";
 
-import Loading from "./loading";
 import ProjectNewForm from "./components/project-new-form";
+import Loading from "./loading";
 
 async function AddProject() {
   const breadcrumbLinks = [

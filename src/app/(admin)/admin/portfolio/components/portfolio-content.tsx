@@ -11,13 +11,11 @@ import {
 import { useState } from "react";
 
 import { TabsContent } from "@/components/ui/tabs";
-
-import { ICategoryWithProjectsAdmin } from "../types/types";
+import { ICategoryWithProjectsAdmin } from "@/lib/types";
 
 import { portfolioColumns } from "./portfolio-columns";
 import PortfolioTable from "./portfolio-table";
 import PortfolioTableTools from "./portfolio-table-tools";
-
 
 type PortfolioContentProps = {
   content: ICategoryWithProjectsAdmin;

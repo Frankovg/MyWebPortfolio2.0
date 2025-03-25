@@ -1,4 +1,5 @@
 import { z } from "zod";
+
 import { FALLBACK_IMG } from "./constants";
 
 const invalid_type_error = "Invalid type provided for this field.";

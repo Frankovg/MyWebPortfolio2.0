@@ -2,15 +2,15 @@
 
 import { Project } from "@prisma/client";
 import { createContext, useOptimistic } from "react";
+import { toast } from "sonner";
 
 import { addProject, deleteProject, editProject } from "@/actions/actions";
+import { SAMPLE_ACTION } from "@/constants/admin-constants";
 import {
   Action,
   ICategoryWithProjectsAdmin,
   ProjectEssentials,
 } from "@/lib/types";
-import { SAMPLE_ACTION } from "@/constants/admin-constants";
-import { toast } from "sonner";
 
 type ProjectContextProviderProps = {
   data: ICategoryWithProjectsAdmin[];

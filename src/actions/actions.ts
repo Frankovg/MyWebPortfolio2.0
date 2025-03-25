@@ -1,5 +1,6 @@
 "use server";
 
+import { User } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import { AuthError } from "next-auth";
 import nodemailer from "nodemailer";
@@ -10,6 +11,7 @@ import { signIn, signOut } from "@/lib/auth";
 import { checkAuth } from "@/lib/check-auth";
 import prisma from "@/lib/db";
 import { getUserById } from "@/lib/server-utils-public";
+import { ProjectEssentials } from "@/lib/types";
 import { sleep } from "@/lib/utils";
 import {
   categoryIdSchema,
@@ -18,8 +20,6 @@ import {
   projectFormSchema,
   userIdSchema,
 } from "@/lib/validations";
-import { ProjectEssentials } from "@/lib/types";
-import { User } from "@prisma/client";
 
 // --- user actions ---
 
