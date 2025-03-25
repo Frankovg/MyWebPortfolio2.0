@@ -4,7 +4,13 @@ import { Project } from "@prisma/client";
 import { createContext, useOptimistic } from "react";
 
 import { addProject, deleteProject, editProject } from "@/actions/actions";
-import { ICategoryWithProjectsAdmin, ProjectEssentials } from "@/lib/types";
+import {
+  Action,
+  ICategoryWithProjectsAdmin,
+  ProjectEssentials,
+} from "@/lib/types";
+import { SAMPLE_ACTION } from "@/constants/admin-constants";
+import { toast } from "sonner";
 
 type ProjectContextProviderProps = {
   data: ICategoryWithProjectsAdmin[];
@@ -23,8 +29,6 @@ type TProjectContext = {
   //   newProjectData: ProjectEssentials
   // ) => Promise<void>;
 };
-
-type Action = "add" | "delete" | "edit";
 
 export const ProjectContext = createContext<TProjectContext | null>(null);
 
@@ -60,10 +64,16 @@ const ProjectContextProvider = ({
   ) => {
     setOptimisticProjects({ action: "add", payload: newProject });
     const error = await addProject(newProject, categoryId);
-    // if (error) {
-    //   toast.warning(error.message)
-    //   return
-    // }
+    if (!!error) {
+      if (error.message === SAMPLE_ACTION) {
+        toast.warning("This is a sample action with no effects.");
+        console.warn(error.message);
+      } else {
+        toast.error(error.message);
+        console.error(error.message);
+      }
+      return;
+    }
   };
 
   // const handleEditProject = async (

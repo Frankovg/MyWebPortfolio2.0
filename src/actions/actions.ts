@@ -12,11 +12,14 @@ import prisma from "@/lib/db";
 import { getUserById } from "@/lib/server-utils-public";
 import { sleep } from "@/lib/utils";
 import {
+  categoryIdSchema,
   emailSchema,
   isActiveSchema,
   projectFormSchema,
   userIdSchema,
 } from "@/lib/validations";
+import { ProjectEssentials } from "@/lib/types";
+import { User } from "@prisma/client";
 
 // --- user actions ---
 
@@ -128,7 +131,7 @@ export async function sendMail(mail: SendMailProps) {
 
 // --- User Management actions ---
 
-export async function activateAccount(userId: unknown, isActive: unknown) {
+export async function activateAccount(userId: User["id"], isActive: boolean) {
   if (process.env.NODE_ENV === "development") {
     await sleep(1000);
   }
@@ -180,16 +183,18 @@ export async function activateAccount(userId: unknown, isActive: unknown) {
 
 // --- Project actions ---
 
-export async function addProject(project: unknown, categoryId: string) {
+export async function addProject(
+  project: ProjectEssentials,
+  categoryId: string
+) {
   if (process.env.NODE_ENV === "development") {
     await sleep(1000);
   }
 
   const session = await checkAuth();
   if (!session?.user.isAdmin) {
-    console.warn("You are not authorized to add a project.");
     return {
-      message: "You are not authorized to add a project.",
+      message: SAMPLE_ACTION,
     };
   }
 
@@ -200,24 +205,43 @@ export async function addProject(project: unknown, categoryId: string) {
     };
   }
 
-  // try {
-  //   await prisma.project.create({
-  //     data: {
-  //       ...validatedProject.data,
-  //       user: {
-  //         connect: {
-  //           id: session.user.id
-  //         }
-  //       }
-  //     }
-  //   })
-  // } catch (error) {
-  //   return {
-  //     message: 'Could not add project.'
-  //   }
-  // }
+  const validateCategoryId = categoryIdSchema.safeParse(categoryId);
+  if (!validateCategoryId.success) {
+    return {
+      message: "Invalid category data.",
+    };
+  }
 
-  // revalidatePath('/app', 'layout')
+  try {
+    await prisma.project.create({
+      data: {
+        ...validatedProject.data,
+        categoryId: validateCategoryId.data,
+        gallery: {
+          create: validatedProject.data.gallery.map((item) => ({
+            imageUrl: item.imageUrl,
+            alt: item.alt,
+            description: item.description,
+          })),
+        },
+        techStack: {
+          connect: validatedProject.data.techStack.map((tech) => ({
+            value: tech.value,
+          })),
+        },
+        roles: {
+          create: validatedProject.data.roles,
+        },
+      },
+    });
+  } catch (error) {
+    console.error("Error adding project:", error);
+    return {
+      message: "Could not add project.",
+    };
+  }
+
+  revalidatePath("/admin", "layout");
 }
 
 export async function editProject(projectId: unknown, newProjectData: unknown) {

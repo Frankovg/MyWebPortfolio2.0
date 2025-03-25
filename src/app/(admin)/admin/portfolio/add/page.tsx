@@ -5,6 +5,7 @@ import MainHeader from "@/components/admin/main-header";
 import AdminSection from "@/components/admin-section";
 
 import Loading from "./loading";
+import ProjectNewForm from "./components/project-new-form";
 
 async function AddProject() {
   const breadcrumbLinks = [
@@ -23,6 +24,7 @@ async function AddProject() {
       <Suspense fallback={<Loading />}>
         <AdminSection>
           <AdminPageTitle title="Add Project" showGoBack={true} />
+          <ProjectNewForm />
         </AdminSection>
       </Suspense>
     </>

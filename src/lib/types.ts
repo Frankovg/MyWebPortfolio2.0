@@ -37,3 +37,5 @@ export type PrevOrNextProject = ICategoryWithProjects["projects"][0];
 export interface ICategoryWithProjectsAdmin extends Category {
   projects: Project[];
 }
+
+export type Action = "add" | "delete" | "edit";
