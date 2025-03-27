@@ -55,7 +55,7 @@ model Tech {
 model Category {
   id       String    @id @default(cuid())
   name     String
-  value    String
+  value    String    @unique
   projects Project[]
 }
 

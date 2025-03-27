@@ -1,7 +1,7 @@
 import ProjectForm from "@/components/project-form";
 
-function ProjectNewForm() {
-  return <ProjectForm actionType="add" />;
+function ProjectNewForm({ categoryId }: { categoryId: string }) {
+  return <ProjectForm actionType="add" categoryId={categoryId} />;
 }
 
 export default ProjectNewForm;

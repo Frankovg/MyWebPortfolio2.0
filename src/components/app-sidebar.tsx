@@ -48,7 +48,7 @@ const items = [
   },
   {
     title: "Portfolio",
-    url: "/admin/portfolio",
+    url: "/admin/portfolio?category=web-development",
     icon: Briefcase,
   },
   {

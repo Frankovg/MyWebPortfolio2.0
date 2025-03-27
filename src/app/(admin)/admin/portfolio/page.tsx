@@ -9,7 +9,14 @@ import { getCategoriesAdmin } from "@/lib/server-utils-admin";
 import PortfolioExplorer from "./components/portfolio-explorer";
 import Loading from "./loading";
 
-async function Portfolio() {
+type Props = {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+async function Portfolio({ searchParams }: Props) {
+  const params = await searchParams;
+  const category = params.category as string;
+
   const breadcrumbLinks = [
     {
       name: "Portfolio",
@@ -29,6 +36,7 @@ async function Portfolio() {
           <PortfolioExplorer
             categories={categories}
             isAdmin={session?.user.isAdmin}
+            defaultCategory={category || "web-development"}
           />
         </AdminSection>
       </Suspense>

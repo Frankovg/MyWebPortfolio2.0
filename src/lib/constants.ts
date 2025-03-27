@@ -131,3 +131,6 @@ export const DATE_FORMAT = {
 } as const;
 
 export const DATE_LOCATION = "es-ES";
+
+//Admin constants
+export const SAMPLE_ACTION = "isSample";

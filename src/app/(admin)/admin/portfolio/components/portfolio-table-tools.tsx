@@ -1,10 +1,10 @@
 import { Project } from "@prisma/client";
 import { Table as TTable } from "@tanstack/react-table";
-import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
+
+import AddProjectButton from "./add-project-button";
 
 function PortfolioTableTools({ table }: { table: TTable<Project> }) {
   return (
@@ -36,15 +36,7 @@ function PortfolioTableTools({ table }: { table: TTable<Project> }) {
         </label>
       </div>
 
-      <Link href="/admin/portfolio/add">
-        <Button
-          className="font-normal border border-whiteText hover-table-buttons"
-          variant="outline"
-          size="default"
-        >
-          + Add new project
-        </Button>
-      </Link>
+      <AddProjectButton />
     </div>
   );
 }

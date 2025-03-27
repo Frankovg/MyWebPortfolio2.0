@@ -26,3 +26,12 @@ export async function getCategoriesAdmin() {
   });
   return categories;
 }
+
+export async function getCategoryBySlug(slug: string) {
+  const category = await prisma.category.findUnique({
+    where: {
+      value: slug,
+    },
+  });
+  return category;
+}
