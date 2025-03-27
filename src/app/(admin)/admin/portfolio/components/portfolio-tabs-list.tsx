@@ -1,8 +1,5 @@
-import { TabsTrigger } from "@radix-ui/react-tabs";
-
-import { TabsList } from "@/components/ui/tabs";
-
-import { ICategoryWithProjectsAdmin } from "../types/types";
+import { TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ICategoryWithProjectsAdmin } from "@/lib/types";
 
 function getFirstWord(text: string): string {
   return text.split(" ")[0];

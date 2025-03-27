@@ -1,17 +1,25 @@
 "use server";
 
+import { User } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import { AuthError } from "next-auth";
 import nodemailer from "nodemailer";
 import SMTPTransport from "nodemailer/lib/smtp-transport";
 
-import { SAMPLE_ACTION } from "@/constants/admin-constants";
 import { signIn, signOut } from "@/lib/auth";
 import { checkAuth } from "@/lib/check-auth";
+import { SAMPLE_ACTION } from "@/lib/constants";
 import prisma from "@/lib/db";
 import { getUserById } from "@/lib/server-utils-public";
+import { ProjectEssentials } from "@/lib/types";
 import { sleep } from "@/lib/utils";
-import { emailSchema, isActiveSchema, userIdSchema } from "@/lib/validations";
+import {
+  categoryIdSchema,
+  emailSchema,
+  isActiveSchema,
+  projectFormSchema,
+  userIdSchema,
+} from "@/lib/validations";
 
 // --- user actions ---
 
@@ -123,7 +131,7 @@ export async function sendMail(mail: SendMailProps) {
 
 // --- User Management actions ---
 
-export async function activateAccount(userId: unknown, isActive: unknown) {
+export async function activateAccount(userId: User["id"], isActive: boolean) {
   if (process.env.NODE_ENV === "development") {
     await sleep(1000);
   }
@@ -175,38 +183,65 @@ export async function activateAccount(userId: unknown, isActive: unknown) {
 
 // --- Project actions ---
 
-export async function addProject(project: unknown) {
+export async function addProject(
+  project: ProjectEssentials,
+  categoryId: string
+) {
   if (process.env.NODE_ENV === "development") {
     await sleep(1000);
   }
 
-  // const session = await checkAuth()
+  const session = await checkAuth();
+  if (!session?.user.isAdmin) {
+    return {
+      message: SAMPLE_ACTION,
+    };
+  }
 
-  // const validatedProject = projectFormSchema.safeParse(project)
-  // if (!validatedProject.success) {
-  //   return {
-  //     message: 'Invalid project data.'
-  //   }
-  // }
+  const validatedProject = projectFormSchema.safeParse(project);
+  if (!validatedProject.success) {
+    return {
+      message: "Invalid project data.",
+    };
+  }
 
-  // try {
-  //   await prisma.project.create({
-  //     data: {
-  //       ...validatedProject.data,
-  //       user: {
-  //         connect: {
-  //           id: session.user.id
-  //         }
-  //       }
-  //     }
-  //   })
-  // } catch (error) {
-  //   return {
-  //     message: 'Could not add project.'
-  //   }
-  // }
+  const validateCategoryId = categoryIdSchema.safeParse(categoryId);
+  if (!validateCategoryId.success) {
+    return {
+      message: "Invalid category data.",
+    };
+  }
 
-  // revalidatePath('/app', 'layout')
+  try {
+    await prisma.project.create({
+      data: {
+        ...validatedProject.data,
+        categoryId: validateCategoryId.data,
+        gallery: {
+          create: validatedProject.data.gallery.map((item) => ({
+            imageUrl: item.imageUrl,
+            alt: item.alt,
+            description: item.description,
+          })),
+        },
+        techStack: {
+          connect: validatedProject.data.techStack.map((tech) => ({
+            value: tech.value,
+          })),
+        },
+        roles: {
+          create: validatedProject.data.roles,
+        },
+      },
+    });
+  } catch (error) {
+    console.error("Error adding project:", error);
+    return {
+      message: "Could not add project.",
+    };
+  }
+
+  revalidatePath("/admin", "layout");
 }
 
 export async function editProject(projectId: unknown, newProjectData: unknown) {
