@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
-import { Button } from "@/components/ui/button";
+import ButtonMinimal from "@/components/button-minimal";
 
 function AddProjectButton() {
   const params = useSearchParams();
@@ -11,13 +11,7 @@ function AddProjectButton() {
 
   return (
     <Link href={`/admin/portfolio/add?category=${category}`}>
-      <Button
-        className="font-normal border border-whiteText hover-table-buttons"
-        variant="outline"
-        size="default"
-      >
-        + Add new project
-      </Button>
+      <ButtonMinimal title="+ Add new project" />
     </Link>
   );
 }

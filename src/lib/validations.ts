@@ -97,7 +97,6 @@ const gallerySchema = z.object({
     .trim()
     .min(1)
     .max(200, value_too_long_error_200)
-    .optional()
     .nullable(),
 });
 
@@ -124,55 +123,19 @@ export const projectFormSchema = z
     slug: z.string().trim().min(1, { message: required_error }),
     gallery: z.array(gallerySchema),
     date: z.date().default(() => new Date()),
-    repository: z
-      .string()
-      .url({ message: invalid_url_error })
-      .optional()
-      .nullable(),
-    websiteUrl: z
-      .string()
-      .url({ message: invalid_url_error })
-      .optional()
-      .nullable(),
-    videoUrl: z
-      .string()
-      .url({ message: invalid_url_error })
-      .optional()
-      .nullable(),
-    videoTitle: z
-      .string()
-      .trim()
-      .max(50, value_too_long_error_50)
-      .optional()
-      .nullable(),
+    repository: z.string().url({ message: invalid_url_error }).nullable(),
+    websiteUrl: z.string().url({ message: invalid_url_error }).nullable(),
+    videoUrl: z.string().url({ message: invalid_url_error }).nullable(),
+    videoTitle: z.string().trim().max(50, value_too_long_error_50).nullable(),
     videoDescription: z
       .string()
       .trim()
       .max(1000, value_too_long_error_1000)
-      .optional()
       .nullable(),
-    company: z
-      .string()
-      .trim()
-      .max(50, value_too_long_error_50)
-      .optional()
-      .nullable(),
-    companyUrl: z
-      .string()
-      .url({ message: invalid_url_error })
-      .optional()
-      .nullable(),
-    client: z
-      .string()
-      .trim()
-      .max(50, value_too_long_error_50)
-      .optional()
-      .nullable(),
-    clientUrl: z
-      .string()
-      .url({ message: invalid_url_error })
-      .optional()
-      .nullable(),
+    company: z.string().trim().max(50, value_too_long_error_50).nullable(),
+    companyUrl: z.string().url({ message: invalid_url_error }).nullable(),
+    client: z.string().trim().max(50, value_too_long_error_50).nullable(),
+    clientUrl: z.string().url({ message: invalid_url_error }).nullable(),
     techStack: z.array(techStackSchema),
     roles: z.array(roleSchema),
     published: z.boolean().default(true),
