@@ -13,6 +13,8 @@ import { Action } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { projectFormSchema, TProjectForm } from "@/lib/validations";
 
+import ButtonMinimal from "./button-minimal";
+import ImageWithFallback from "./image-with-fallback";
 import { Button } from "./ui/button";
 import { Checkbox } from "./ui/checkbox";
 import {
@@ -25,12 +27,14 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Textarea } from "./ui/textarea";
-import ButtonMinimal from "./button-minimal";
 
 type ProjectFormProps = {
   actionType: Action;
   categoryId: string;
 };
+
+let imagesCount = 0;
+const DEFAULT_IMAGE_URL = "https://drive.google.com/uc?export=view&id=";
 
 function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
   const { createProjectByCategoryId } = useProjectContext();
@@ -64,7 +68,13 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
       shortDescription: "",
       description: "",
       slug: "",
-      gallery: [{ imageUrl: "", alt: "", description: "" }],
+      gallery: [
+        {
+          imageUrl: DEFAULT_IMAGE_URL,
+          alt: "",
+          description: "",
+        },
+      ],
       date: new Date(),
       repository: null,
       client: "",
@@ -263,7 +273,7 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
 
       <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
         <h2 className="text-xl font-bold">Images</h2>
-        <ul className="w-full">
+        <ul className="w-full space-y-6">
           {fields.map((field, index) => (
             <li key={field.id} className="flex gap-2 items-end w-full">
               <div className="relative w-full flex flex-col gap-2">
@@ -299,13 +309,59 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
                   </span>
                 )}
               </div>
-              <ButtonMinimal title="Add image" className="" />
+              <ButtonMinimal title="Delete" onClick={() => remove(index)} />
             </li>
           ))}
         </ul>
         <p className="text-secondary text-xs">
           {errors.gallery?.root?.message}
         </p>
+        <div className="w-full flex justify-center">
+          <ButtonMinimal
+            title="+"
+            className="text-2xl leading-0"
+            onClick={() =>
+              append({
+                description: "",
+                imageUrl: DEFAULT_IMAGE_URL,
+                alt: "",
+              })
+            }
+          />
+        </div>
+        <div className="flex flex-wrap gap-4">
+          {watch("gallery")?.map((image, index) => {
+            if (
+              !image.imageUrl ||
+              !image.imageUrl.includes(DEFAULT_IMAGE_URL) ||
+              image.imageUrl.length === DEFAULT_IMAGE_URL.length
+            ) {
+              return (
+                <div
+                  key={index}
+                  className="aspect-video min-w-42 border border-darkPrimary flex items-center justify-center"
+                />
+              );
+            }
+            return (
+              <div
+                key={`${image.imageUrl}-${index}`}
+                className="aspect-video w-42"
+              >
+                <ImageWithFallback
+                  src={image.imageUrl}
+                  alt={image.alt}
+                  className="w-full h-full object-cover"
+                  width={0}
+                  height={0}
+                  sizes={"100%"}
+                  quality={40}
+                  fallbackSrc="/images/error-placeholder.svg"
+                />
+              </div>
+            );
+          })}
+        </div>
       </section>
 
       <div className="relative flex flex-col gap-2">
