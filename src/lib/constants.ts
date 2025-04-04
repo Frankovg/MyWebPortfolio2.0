@@ -134,3 +134,38 @@ export const DATE_LOCATION = "es-ES";
 
 //Admin constants
 export const SAMPLE_ACTION = "isSample";
+
+//Forms constants
+export const DEFAULT_IMAGE_URL = "https://drive.google.com/uc?export=view&id=";
+export const DEFAULT_TECH_STACK = [
+  { name: "React", value: "react", checked: false },
+  { name: "Next.js", value: "nextjs", checked: false },
+  { name: "Typescript", value: "typescript", checked: false },
+  { name: "Tailwind", value: "tailwind", checked: false },
+  { name: "Node.js", value: "node", checked: false },
+  { name: "Prisma", value: "prisma", checked: false },
+  { name: "PostgreSQL", value: "postgresql", checked: false },
+  { name: "JavaScript", value: "javascript", checked: false },
+  { name: "Bootstrap", value: "bootstrap", checked: false },
+  { name: "Firebase", value: "firebase", checked: false },
+  { name: "MySQL", value: "mysql", checked: false },
+  { name: "Express", value: "express", checked: false },
+  { name: "Storybook", value: "storybook", checked: false },
+  { name: "Styled Components", value: "styledcomponents", checked: false },
+  { name: "Emotion", value: "emotioncss", checked: false },
+  { name: "Ladle", value: "ladle", checked: false },
+  { name: "Playwright", value: "playwright", checked: false },
+  { name: "Figma", value: "figma", checked: false },
+  { name: "Adobe Photoshop", value: "ps", checked: false },
+  { name: "Adobe Illustrator", value: "ai", checked: false },
+  { name: "Git", value: "git", checked: false },
+  { name: "Gitlab", value: "gitlab", checked: false },
+  { name: "Github", value: "github", checked: false },
+  { name: "SQL", value: "sql", checked: false },
+  { name: "Shadcn/ui", value: "shadcnui", checked: false },
+  { name: "Sass", value: "sass", checked: false },
+  { name: "CSS", value: "css", checked: false },
+  { name: "HTML", value: "html", checked: false },
+  { name: "Turborepo", value: "turborepo", checked: false },
+  { name: "Vercel", value: "vercel", checked: false },
+];

@@ -2,13 +2,17 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { Calendar as CalendarIcon } from "lucide-react";
+import { Calendar as CalendarIcon, PlusIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 
 import { Calendar } from "@/components/ui/calendar";
 import { useProjectContext } from "@/hooks/use-project-context";
-import { FALLBACK_IMG } from "@/lib/constants";
+import {
+  DEFAULT_IMAGE_URL,
+  DEFAULT_TECH_STACK,
+  FALLBACK_IMG,
+} from "@/lib/constants";
 import { Action } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { projectFormSchema, TProjectForm } from "@/lib/validations";
@@ -27,30 +31,17 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Textarea } from "./ui/textarea";
+import Link from "next/link";
 
 type ProjectFormProps = {
   actionType: Action;
   categoryId: string;
 };
 
-let imagesCount = 0;
-const DEFAULT_IMAGE_URL = "https://drive.google.com/uc?export=view&id=";
-
 function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
   const { createProjectByCategoryId } = useProjectContext();
 
-  const [techStack, setTechStack] = useState([
-    {
-      value: "react",
-      name: "React",
-      checked: false,
-    },
-    {
-      value: "typescript",
-      name: "TypeScript",
-      checked: false,
-    },
-  ]);
+  const [techStack, setTechStack] = useState(DEFAULT_TECH_STACK);
 
   const {
     register,
@@ -63,7 +54,7 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
   } = useForm<TProjectForm>({
     resolver: zodResolver(projectFormSchema),
     defaultValues: {
-      image: "",
+      image: DEFAULT_IMAGE_URL,
       title: "",
       shortDescription: "",
       description: "",
@@ -158,8 +149,28 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
             )}
           </div>
           <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
-            <Label htmlFor="image">Hero image url</Label>
-            <Input id="image" {...register("image")} />
+            <Label htmlFor="image">
+              Hero image url
+              {watch("image").includes(DEFAULT_IMAGE_URL) &&
+                watch("image").length > DEFAULT_IMAGE_URL.length && (
+                  <span>
+                    {" > "}
+                    <Link
+                      href={getValues("image") || ""}
+                      target="_blank"
+                      className="text-primary hover:underline"
+                    >
+                      Open image
+                    </Link>
+                  </span>
+                )}
+            </Label>
+            <Input
+              id="image"
+              {...register("image", {
+                validate: (value) => value.includes(DEFAULT_IMAGE_URL),
+              })}
+            />
             {errors.image && (
               <span className="absolute -bottom-4 text-secondary text-xs">
                 {errors.image.message}
@@ -273,9 +284,12 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
 
       <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
         <h2 className="text-xl font-bold">Images</h2>
-        <ul className="w-full space-y-6">
+        <ul className="w-full space-y-12 lg:space-y-6">
           {fields.map((field, index) => (
-            <li key={field.id} className="flex gap-2 items-end w-full">
+            <li
+              key={field.id}
+              className="flex flex-col lg:flex-row gap-4 lg:gap-2 items-end w-full"
+            >
               <div className="relative w-full flex flex-col gap-2">
                 <Label htmlFor="image-url">Url</Label>
                 <Input
@@ -309,17 +323,21 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
                   </span>
                 )}
               </div>
-              <ButtonMinimal title="Delete" onClick={() => remove(index)} />
+              <ButtonMinimal
+                className="w-full lg:w-auto"
+                title="Delete"
+                onClick={() => remove(index)}
+              />
             </li>
           ))}
         </ul>
         <p className="text-secondary text-xs">
           {errors.gallery?.root?.message}
         </p>
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center items-center">
           <ButtonMinimal
-            title="+"
-            className="text-2xl leading-0"
+            title={<PlusIcon className="w-6 h-auto" />}
+            className="py-6 max-lg:my-6"
             onClick={() =>
               append({
                 description: "",
@@ -331,6 +349,8 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
         </div>
         <div className="flex flex-wrap gap-4">
           {watch("gallery")?.map((image, index) => {
+            //TODO: Make this works for guest users and allow to upload images from other sites
+            //TODO: Add a script to modify the default drive url to the good one
             if (
               !image.imageUrl ||
               !image.imageUrl.includes(DEFAULT_IMAGE_URL) ||
@@ -339,14 +359,14 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
               return (
                 <div
                   key={index}
-                  className="aspect-video min-w-42 border border-darkPrimary flex items-center justify-center"
+                  className="aspect-video max-sm:w-full sm:min-w-42 border border-darkPrimary flex items-center justify-center"
                 />
               );
             }
             return (
               <div
                 key={`${image.imageUrl}-${index}`}
-                className="aspect-video w-42"
+                className="aspect-video w-full sm:w-42"
               >
                 <ImageWithFallback
                   src={image.imageUrl}
@@ -361,6 +381,30 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
+        <h2 className="text-xl font-bold">Tech stack</h2>
+        <div>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline">Explore</Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-56">
+              {techStack.map((tech) => (
+                <DropdownMenuCheckboxItem
+                  key={tech.value}
+                  checked={tech.checked}
+                  onCheckedChange={(checked) =>
+                    handleTechStack(tech.value, checked)
+                  }
+                >
+                  {tech.name}
+                </DropdownMenuCheckboxItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </section>
 
@@ -452,28 +496,6 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
             {errors.clientUrl.message}
           </span>
         )}
-      </div>
-
-      <div>
-        <h2>Tech stack</h2>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline">Open</Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-56">
-            {techStack.map((tech) => (
-              <DropdownMenuCheckboxItem
-                key={tech.value}
-                checked={tech.checked}
-                onCheckedChange={(checked) =>
-                  handleTechStack(tech.value, checked)
-                }
-              >
-                {tech.name}
-              </DropdownMenuCheckboxItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
       </div>
     </form>
   );

@@ -10,7 +10,7 @@ function ButtonMinimal({
   onClick,
   type = "button",
 }: {
-  title: string;
+  title: string | React.ReactNode;
   className?: string;
   onClick?: () => void;
   type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
