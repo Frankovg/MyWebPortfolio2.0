@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon, PlusIcon } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 
@@ -19,29 +20,42 @@ import { projectFormSchema, TProjectForm } from "@/lib/validations";
 
 import ButtonMinimal from "./button-minimal";
 import ImageWithFallback from "./image-with-fallback";
+import { MultiSelect } from "./multi-select";
 import { Button } from "./ui/button";
 import { Checkbox } from "./ui/checkbox";
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Textarea } from "./ui/textarea";
-import Link from "next/link";
 
 type ProjectFormProps = {
   actionType: Action;
   categoryId: string;
 };
 
+const getInitialTechStack = () => {
+  return DEFAULT_TECH_STACK.map((tech) => ({
+    label: tech.name,
+    value: tech.value,
+  }));
+};
+
 function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
   const { createProjectByCategoryId } = useProjectContext();
 
-  const [techStack, setTechStack] = useState(DEFAULT_TECH_STACK);
+  const [techStack, setTechStack] = useState(getInitialTechStack());
+  const [selectedFrameworks, setSelectedFrameworks] = useState<string[]>([
+    "react",
+    "angular",
+  ]);
+
+  // const frameworksList = [
+  //   { value: "react", label: "React" },
+  //   { value: "angular", label: "Angular" },
+  //   { value: "vue", label: "Vue" },
+  //   { value: "svelte", label: "Svelte" },
+  //   { value: "ember", label: "Ember" },
+  // ];
 
   const {
     register,
@@ -386,25 +400,15 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
 
       <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
         <h2 className="text-xl font-bold">Tech stack</h2>
-        <div>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline">Explore</Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56">
-              {techStack.map((tech) => (
-                <DropdownMenuCheckboxItem
-                  key={tech.value}
-                  checked={tech.checked}
-                  onCheckedChange={(checked) =>
-                    handleTechStack(tech.value, checked)
-                  }
-                >
-                  {tech.name}
-                </DropdownMenuCheckboxItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
+        <div className="relative flex flex-col gap-2">
+          <Label htmlFor="websiteUrl">Select technologies</Label>
+          <MultiSelect
+            options={techStack}
+            onValueChange={setSelectedFrameworks}
+            defaultValue={selectedFrameworks}
+            placeholder=">"
+            maxCount={10}
+          />
         </div>
       </section>
 
