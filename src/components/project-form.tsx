@@ -11,8 +11,8 @@ import { Calendar } from "@/components/ui/calendar";
 import { useProjectContext } from "@/hooks/use-project-context";
 import {
   DEFAULT_IMAGE_URL,
-  DEFAULT_TECH_STACK,
   FALLBACK_IMG,
+  TECH_STACK_DATA,
 } from "@/lib/constants";
 import { Action } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -33,29 +33,19 @@ type ProjectFormProps = {
   categoryId: string;
 };
 
-const getInitialTechStack = () => {
-  return DEFAULT_TECH_STACK.map((tech) => ({
+const getDefaultTechStack = () => {
+  return TECH_STACK_DATA.map((tech) => ({
     label: tech.name,
     value: tech.value,
   }));
 };
+const DEFAULT_TECH_STACK = getDefaultTechStack();
 
 function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
   const { createProjectByCategoryId } = useProjectContext();
 
-  const [techStack, setTechStack] = useState(getInitialTechStack());
-  const [selectedFrameworks, setSelectedFrameworks] = useState<string[]>([
-    "react",
-    "angular",
-  ]);
-
-  // const frameworksList = [
-  //   { value: "react", label: "React" },
-  //   { value: "angular", label: "Angular" },
-  //   { value: "vue", label: "Vue" },
-  //   { value: "svelte", label: "Svelte" },
-  //   { value: "ember", label: "Ember" },
-  // ];
+  const [selectedFrameworks, setSelectedFrameworks] = useState<string[]>();
+  console.log(selectedFrameworks);
 
   const {
     register,
@@ -117,13 +107,6 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
     name: "gallery",
     control,
   });
-
-  const handleTechStack = (value: string, checked: boolean) => {
-    setTechStack((prev) =>
-      prev.map((tech) => (tech.value === value ? { ...tech, checked } : tech))
-    );
-    //TODO: how to set the value?
-  };
 
   useEffect(() => {
     const subscription = watch((value, { name, type }) =>
@@ -403,7 +386,7 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
         <div className="relative flex flex-col gap-2">
           <Label htmlFor="websiteUrl">Select technologies</Label>
           <MultiSelect
-            options={techStack}
+            options={DEFAULT_TECH_STACK}
             onValueChange={setSelectedFrameworks}
             defaultValue={selectedFrameworks}
             placeholder=">"

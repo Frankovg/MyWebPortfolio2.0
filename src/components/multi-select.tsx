@@ -24,7 +24,7 @@ import { cn } from "@/lib/utils";
 const multiSelectVariants = cva("m-1", {
   variants: {
     variant: {
-      default: "border-textWhite text-textWhite bg-card",
+      default: "border-darkPrimary rounded-none text-textWhite bg-transparent",
       secondary:
         "border-foreground/10 bg-secondary text-secondary-foreground hover:bg-secondary/80",
       destructive:

@@ -1,40 +1,8 @@
+import { TECH_STACK_DATA } from "@/lib/constants";
 import { Prisma, PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
-
-const techStackData = [
-  { name: "React", value: "react" },
-  { name: "Next.js", value: "nextjs" },
-  { name: "Typescript", value: "typescript" },
-  { name: "Tailwind", value: "tailwind" },
-  { name: "Node.js", value: "node" },
-  { name: "Prisma", value: "prisma" },
-  { name: "PostgreSQL", value: "postgresql" },
-  { name: "JavaScript", value: "javascript" },
-  { name: "Bootstrap", value: "bootstrap" },
-  { name: "Firebase", value: "firebase" },
-  { name: "MySQL", value: "mysql" },
-  { name: "Express", value: "express" },
-  { name: "Storybook", value: "storybook" },
-  { name: "Styled Components", value: "styledcomponents" },
-  { name: "Emotion", value: "emotioncss" },
-  { name: "Ladle", value: "ladle" },
-  { name: "Playwright", value: "playwright" },
-  { name: "Figma", value: "figma" },
-  { name: "Adobe Photoshop", value: "ps" },
-  { name: "Adobe Illustrator", value: "ai" },
-  { name: "Git", value: "git" },
-  { name: "Gitlab", value: "gitlab" },
-  { name: "Github", value: "github" },
-  { name: "SQL", value: "sql" },
-  { name: "Shadcn/ui", value: "shadcnui" },
-  { name: "Sass", value: "sass" },
-  { name: "CSS", value: "css" },
-  { name: "HTML", value: "html" },
-  { name: "Turborepo", value: "turborepo" },
-  { name: "Vercel", value: "vercel" },
-];
 
 const webDevelopment: Prisma.CategoryCreateInput = {
   name: "Web development",
@@ -880,7 +848,7 @@ async function main() {
   console.log(`Start seeding ...`);
 
   console.log("Creating tech stack entries...");
-  for (const tech of techStackData) {
+  for (const tech of TECH_STACK_DATA) {
     await prisma.tech.upsert({
       where: { value: tech.value },
       update: {},
