@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { FALLBACK_IMG } from "./constants";
+import { FALLBACK_IMG, TECH_STACK_DATA } from "./constants";
 
 const invalid_type_error = "Invalid type provided for this field.";
 const invalid_url_error = "Invalid url provided.";
@@ -21,6 +21,8 @@ const valid_email_address = "Please enter a valid email address.";
 const phoneValidation = new RegExp(
   /^(?:\+?\d{1,3})?[\s.-]?\(?\d{1,4}\)?[\s.-]?\d{1,4}[\s.-]?\d{1,4}[\s.-]?\d{1,4}$/
 );
+
+const validTechStackValues = TECH_STACK_DATA.map((tech) => tech.value);
 
 export const contactFormSchema = z
   .object({
@@ -79,8 +81,13 @@ export const userIdSchema = z.string().cuid();
 export const isActiveSchema = z.boolean();
 
 const techStackSchema = z.object({
-  // name: z.string().trim().min(1),
-  value: z.string().trim().min(1),
+  value: z
+    .string()
+    .trim()
+    .min(1)
+    .refine((val) => validTechStackValues.includes(val), {
+      message: "Value must be one of the following in the list",
+    }),
 });
 
 const roleSchema = z.object({

@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { contactFormSchema, TContactForm } from "@/lib/validations";
+import RequiredInputLabel from "@/components/primitives/required-input-label";
 
 function ContactForm() {
   const [isPending, startTransition] = useTransition();
@@ -56,7 +57,7 @@ function ContactForm() {
         <div className="space-y-4">
           <div className="flex flex-col md:flex-row gap-3">
             <div className="space-y-1 w-full">
-              <Label htmlFor="first_name">*First name</Label>
+              <RequiredInputLabel htmlFor="first_name" label="First name" />
               <Input
                 className="bg-transparent"
                 id="first_name"
@@ -68,7 +69,7 @@ function ContactForm() {
               )}
             </div>
             <div className="space-y-1 w-full">
-              <Label htmlFor="last_name">*Last name</Label>
+              <RequiredInputLabel htmlFor="last_name" label="Last name" />
               <Input
                 className="bg-transparent"
                 id="last_name"
@@ -96,7 +97,7 @@ function ContactForm() {
               )}
             </div>
             <div className="space-y-1 w-full">
-              <Label htmlFor="email">*Email</Label>
+              <RequiredInputLabel htmlFor="email" label="Email" />
               <Input
                 className="bg-transparent"
                 type="email"
@@ -111,7 +112,7 @@ function ContactForm() {
           </div>
 
           <div className="space-y-1">
-            <Label htmlFor="message">*Message</Label>
+            <RequiredInputLabel htmlFor="message" label="Message" />
             <Textarea
               className="bg-transparent min-h-36"
               id="message"

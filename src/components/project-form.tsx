@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon, PlusIcon } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 
 import { Calendar } from "@/components/ui/calendar";
@@ -27,6 +27,7 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Textarea } from "./ui/textarea";
+import RequiredInputLabel from "./primitives/required-input-label";
 
 type ProjectFormProps = {
   actionType: Action;
@@ -43,9 +44,6 @@ const DEFAULT_TECH_STACK = getDefaultTechStack();
 
 function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
   const { createProjectByCategoryId } = useProjectContext();
-
-  const [selectedFrameworks, setSelectedFrameworks] = useState<string[]>();
-  console.log(selectedFrameworks);
 
   const {
     register,
@@ -137,7 +135,7 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
 
         <div className="w-full flex flex-col lg:flex-row gap-6">
           <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
-            <Label htmlFor="title">Title</Label>
+            <RequiredInputLabel htmlFor="title" label="Title" />
             <Input id="title" {...register("title")} />
             {errors.title && (
               <span className="absolute -bottom-4 text-secondary text-xs">
@@ -146,22 +144,27 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
             )}
           </div>
           <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
-            <Label htmlFor="image">
-              Hero image url
-              {watch("image").includes(DEFAULT_IMAGE_URL) &&
-                watch("image").length > DEFAULT_IMAGE_URL.length && (
-                  <span>
-                    {" > "}
-                    <Link
-                      href={getValues("image") || ""}
-                      target="_blank"
-                      className="text-primary hover:underline"
-                    >
-                      Open image
-                    </Link>
-                  </span>
-                )}
-            </Label>
+            <RequiredInputLabel
+              htmlFor="image"
+              label={
+                <>
+                  Hero image url
+                  {watch("image").includes(DEFAULT_IMAGE_URL) &&
+                    watch("image").length > DEFAULT_IMAGE_URL.length && (
+                      <span>
+                        {" > "}
+                        <Link
+                          href={getValues("image") || ""}
+                          target="_blank"
+                          className="text-primary hover:underline"
+                        >
+                          Open image
+                        </Link>
+                      </span>
+                    )}
+                </>
+              }
+            />
             <Input
               id="image"
               {...register("image", {
@@ -178,7 +181,7 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
 
         <div className="w-full flex flex-col lg:flex-row gap-6">
           <div className="relative flex flex-col gap-2 w-full lg:w-1/3">
-            <Label htmlFor="slug">Unique identifier</Label>
+            <RequiredInputLabel htmlFor="slug" label="Unique identifier" />
             <Input id="slug" {...register("slug")} />
             {errors.slug && (
               <span className="absolute -bottom-4 text-secondary text-xs">
@@ -250,7 +253,10 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
 
         <div className="w-full flex flex-col xl:flex-row gap-6">
           <div className="relative flex flex-col gap-2 w-full xl:w-1/2">
-            <Label htmlFor="shortDescription">Short description</Label>
+            <RequiredInputLabel
+              htmlFor="shortDescription"
+              label="Short description"
+            />
             <Textarea
               maxLength={200}
               id="shortDescription"
@@ -264,7 +270,7 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
             )}
           </div>
           <div className="relative flex flex-col gap-2 w-full xl:w-1/2">
-            <Label htmlFor="description">Description</Label>
+            <RequiredInputLabel htmlFor="description" label="Description" />
             <Textarea
               id="description"
               {...register("description")}
@@ -384,13 +390,23 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
       <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
         <h2 className="text-xl font-bold">Tech stack</h2>
         <div className="relative flex flex-col gap-2">
-          <Label htmlFor="websiteUrl">Select technologies</Label>
-          <MultiSelect
-            options={DEFAULT_TECH_STACK}
-            onValueChange={setSelectedFrameworks}
-            defaultValue={selectedFrameworks}
-            placeholder=">"
-            maxCount={10}
+          <RequiredInputLabel htmlFor="techStack" label="Select technologies" />
+          <Controller
+            control={control}
+            name="techStack"
+            render={({ field }) => (
+              <MultiSelect
+                options={DEFAULT_TECH_STACK}
+                onValueChange={(values) => {
+                  const techStackValues =
+                    values?.map((value) => ({ value })) || [];
+                  field.onChange(techStackValues);
+                }}
+                defaultValue={field.value?.map((item) => item.value)}
+                placeholder=">"
+                maxCount={10}
+              />
+            )}
           />
         </div>
       </section>
