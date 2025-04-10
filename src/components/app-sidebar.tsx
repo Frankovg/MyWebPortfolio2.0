@@ -27,9 +27,9 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 
-import Isologo from "./isologo";
-import Logo from "./logo";
 import LogOutOverlay from "./logout-overlay";
+import Isologo from "./primitives/isologo";
+import Logo from "./primitives/logo";
 
 type SidebarLogoutProps = {
   handleLogout: () => void;

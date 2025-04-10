@@ -1,12 +1,12 @@
 import Link from "next/link";
 
-import ImageWithFallback from "@/components/image-with-fallback";
+import ImageWithFallback from "@/components/primitives/image-with-fallback";
 import { FALLBACK_IMG } from "@/lib/constants";
 
 import { ProjectCardProps } from "../types/types";
 
 function ProjectCard({ project }: ProjectCardProps) {
-  const techStackString = project.techStack.map(tech => tech.name).join(', ');
+  const techStackString = project.techStack.map((tech) => tech.name).join(", ");
 
   return (
     <Link
@@ -21,7 +21,7 @@ function ProjectCard({ project }: ProjectCardProps) {
           alt={project.title}
           width={0}
           height={0}
-          sizes={'100%'}
+          sizes={"100%"}
           quality={50}
         />
       </div>
@@ -33,7 +33,7 @@ function ProjectCard({ project }: ProjectCardProps) {
         <p className="text-xs text-primary/80">{techStackString}</p>
       </div>
     </Link>
-  )
+  );
 }
 
-export default ProjectCard
+export default ProjectCard;

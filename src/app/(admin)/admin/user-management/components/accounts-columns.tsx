@@ -1,7 +1,7 @@
 import { User } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 
-import CheckboxCell from "@/components/checkbox-cell";
+import CheckboxCell from "@/components/primitives/checkbox-cell";
 
 export const accountsColumns = (
   isAdmin: boolean,

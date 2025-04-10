@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
-import ButtonMinimal from "@/components/button-minimal";
+import ButtonMinimal from "@/components/primitives/button-minimal";
 
 function AddProjectButton() {
   const params = useSearchParams();

@@ -18,9 +18,9 @@ import { Action } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { projectFormSchema, TProjectForm } from "@/lib/validations";
 
-import ButtonMinimal from "./button-minimal";
-import ImageWithFallback from "./image-with-fallback";
-import { MultiSelect } from "./multi-select";
+import ButtonMinimal from "./primitives/button-minimal";
+import ImageWithFallback from "./primitives/image-with-fallback";
+import { MultiSelect } from "./primitives/multi-select";
 import { Button } from "./ui/button";
 import { Checkbox } from "./ui/checkbox";
 import { Input } from "./ui/input";
