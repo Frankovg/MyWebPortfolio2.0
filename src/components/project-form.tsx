@@ -42,6 +42,8 @@ const getDefaultTechStack = () => {
 };
 const DEFAULT_TECH_STACK = getDefaultTechStack();
 
+const minimalUrlCheck = "https://www.";
+
 function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
   const { createProjectByCategoryId } = useProjectContext();
 
@@ -294,7 +296,7 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
               className="flex flex-col lg:flex-row gap-4 lg:gap-2 items-end w-full"
             >
               <div className="relative w-full flex flex-col gap-2">
-                <Label htmlFor="image-url">Url</Label>
+                <RequiredInputLabel htmlFor="image-url" label="Url" />
                 <Input
                   id="image-url"
                   {...register(`gallery.${index}.imageUrl`)}
@@ -306,7 +308,7 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
                 )}
               </div>
               <div className="relative w-full flex flex-col gap-2">
-                <Label htmlFor="image-alt">Alt</Label>
+                <RequiredInputLabel htmlFor="image-alt" label="Alt" />
                 <Input id="image-alt" {...register(`gallery.${index}.alt`)} />
                 {errors.gallery?.[index]?.alt && (
                   <span className="absolute -bottom-4 text-secondary text-xs">
@@ -411,95 +413,170 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
         </div>
       </section>
 
-      <div className="relative flex flex-col gap-2">
-        <Label htmlFor="repository">Repository Url</Label>
-        <Input id="repository" {...register("repository")} />
-        {errors.repository && (
-          <span className="absolute -bottom-4 text-secondary text-xs">
-            {errors.repository.message}
-          </span>
-        )}
-      </div>
+      <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
+        <h2 className="text-xl font-bold">Entities</h2>
+        <div className="w-full flex flex-col lg:flex-row gap-6">
+          <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
+            <Label htmlFor="company">Company name</Label>
+            <Input id="company" {...register("company")} />
+            {errors.company && (
+              <span className="absolute -bottom-4 text-secondary text-xs">
+                {errors.company.message}
+              </span>
+            )}
+          </div>
+          <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
+            <Label htmlFor="companyUrl">
+              Company Url
+              {watch("companyUrl")?.includes("https://") && (
+                <span>
+                  {" > "}
+                  <Link
+                    href={getValues("companyUrl") || ""}
+                    target="_blank"
+                    className="text-primary hover:underline"
+                  >
+                    Open Website
+                  </Link>
+                </span>
+              )}
+            </Label>
+            <Input id="companyUrl" {...register("companyUrl")} />
+            {errors.companyUrl && (
+              <span className="absolute -bottom-4 text-secondary text-xs">
+                {errors.companyUrl.message}
+              </span>
+            )}
+          </div>
+        </div>
+        <div className="w-full flex flex-col lg:flex-row gap-6">
+          <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
+            <Label htmlFor="client">Client name</Label>
+            <Input id="client" {...register("client")} />
+            {errors.client && (
+              <span className="absolute -bottom-4 text-secondary text-xs">
+                {errors.client.message}
+              </span>
+            )}
+          </div>
+          <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
+            <Label htmlFor="clientUrl">
+              Client Url
+              {watch("clientUrl")?.includes("https://") && (
+                <span>
+                  {" > "}
+                  <Link
+                    href={getValues("clientUrl") || ""}
+                    target="_blank"
+                    className="text-primary hover:underline"
+                  >
+                    Open Website
+                  </Link>
+                </span>
+              )}
+            </Label>
+            <Input id="clientUrl" {...register("clientUrl")} />
+            {errors.clientUrl && (
+              <span className="absolute -bottom-4 text-secondary text-xs">
+                {errors.clientUrl.message}
+              </span>
+            )}
+          </div>
+        </div>
+      </section>
 
-      <div className="relative flex flex-col gap-2">
-        <Label htmlFor="websiteUrl">Website Url</Label>
-        <Input id="websiteUrl" {...register("websiteUrl")} />
-        {errors.websiteUrl && (
-          <span className="absolute -bottom-4 text-secondary text-xs">
-            {errors.websiteUrl.message}
-          </span>
-        )}
-      </div>
-
-      <div className="relative flex flex-col gap-2">
-        <Label htmlFor="videoTitle">Video Title</Label>
-        <Input id="videoTitle" {...register("videoTitle")} />
-        {errors.videoTitle && (
-          <span className="absolute -bottom-4 text-secondary text-xs">
-            {errors.videoTitle.message}
-          </span>
-        )}
-      </div>
-
-      <div className="relative flex flex-col gap-2">
-        <Label htmlFor="videoUrl">Video Url</Label>
-        <Input id="videoUrl" {...register("videoUrl")} />
-        {errors.videoUrl && (
-          <span className="absolute -bottom-4 text-secondary text-xs">
-            {errors.videoUrl.message}
-          </span>
-        )}
-      </div>
-
-      <div className="relative flex flex-col gap-2">
-        <Label htmlFor="videoDescription">Video Description</Label>
-        <Input id="videoDescription" {...register("videoDescription")} />
-        {errors.videoDescription && (
-          <span className="absolute -bottom-4 text-secondary text-xs">
-            {errors.videoDescription.message}
-          </span>
-        )}
-      </div>
-
-      <div className="relative flex flex-col gap-2">
-        <Label htmlFor="company">Company name</Label>
-        <Input id="company" {...register("company")} />
-        {errors.company && (
-          <span className="absolute -bottom-4 text-secondary text-xs">
-            {errors.company.message}
-          </span>
-        )}
-      </div>
-
-      <div className="relative flex flex-col gap-2">
-        <Label htmlFor="companyUrl">Company Url</Label>
-        <Input id="companyUrl" {...register("companyUrl")} />
-        {errors.companyUrl && (
-          <span className="absolute -bottom-4 text-secondary text-xs">
-            {errors.companyUrl.message}
-          </span>
-        )}
-      </div>
-
-      <div className="relative flex flex-col gap-2">
-        <Label htmlFor="client">Client name</Label>
-        <Input id="client" {...register("client")} />
-        {errors.client && (
-          <span className="absolute -bottom-4 text-secondary text-xs">
-            {errors.client.message}
-          </span>
-        )}
-      </div>
-
-      <div className="relative flex flex-col gap-2">
-        <Label htmlFor="clientUrl">Client Url</Label>
-        <Input id="clientUrl" {...register("clientUrl")} />
-        {errors.clientUrl && (
-          <span className="absolute -bottom-4 text-secondary text-xs">
-            {errors.clientUrl.message}
-          </span>
-        )}
-      </div>
+      <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
+        <h2 className="text-xl font-bold">Extra content</h2>
+        <div className="relative flex flex-col gap-2">
+          <Label htmlFor="repository">
+            Github Repository Url
+            {watch("repository")?.includes("https://github.com/") && (
+              <span>
+                {" > "}
+                <Link
+                  href={getValues("repository") || ""}
+                  target="_blank"
+                  className="text-primary hover:underline"
+                >
+                  Explore project
+                </Link>
+              </span>
+            )}
+          </Label>
+          <Input id="repository" {...register("repository")} />
+          {errors.repository && (
+            <span className="absolute -bottom-4 text-secondary text-xs">
+              {errors.repository.message}
+            </span>
+          )}
+        </div>
+        <div className="relative flex flex-col gap-2">
+          <Label htmlFor="websiteUrl">
+            Website Url
+            {watch("websiteUrl")?.includes("https://") && (
+              <span>
+                {" > "}
+                <Link
+                  href={getValues("websiteUrl") || ""}
+                  target="_blank"
+                  className="text-primary hover:underline"
+                >
+                  Open Website
+                </Link>
+              </span>
+            )}
+          </Label>
+          <Input id="websiteUrl" {...register("websiteUrl")} />
+          {errors.websiteUrl && (
+            <span className="absolute -bottom-4 text-secondary text-xs">
+              {errors.websiteUrl.message}
+            </span>
+          )}
+        </div>
+        <div className="w-full flex flex-col lg:flex-row gap-6">
+          <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
+            <Label htmlFor="videoTitle">Video Title</Label>
+            <Input id="videoTitle" {...register("videoTitle")} />
+            {errors.videoTitle && (
+              <span className="absolute -bottom-4 text-secondary text-xs">
+                {errors.videoTitle.message}
+              </span>
+            )}
+          </div>
+          <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
+            <Label htmlFor="videoDescription">Video Description</Label>
+            <Input id="videoDescription" {...register("videoDescription")} />
+            {errors.videoDescription && (
+              <span className="absolute -bottom-4 text-secondary text-xs">
+                {errors.videoDescription.message}
+              </span>
+            )}
+          </div>
+        </div>
+        <div className="relative flex flex-col gap-2">
+          <Label htmlFor="videoUrl">
+            Youtube Video Url
+            {watch("videoUrl")?.includes("https://www.youtube.com/") && (
+              <span>
+                {" > "}
+                <Link
+                  href={getValues("videoUrl") || ""}
+                  target="_blank"
+                  className="text-primary hover:underline"
+                >
+                  Watch video
+                </Link>
+              </span>
+            )}
+          </Label>
+          <Input id="videoUrl" {...register("videoUrl")} />
+          {errors.videoUrl && (
+            <span className="absolute -bottom-4 text-secondary text-xs">
+              {errors.videoUrl.message}
+            </span>
+          )}
+        </div>
+      </section>
     </form>
   );
 }

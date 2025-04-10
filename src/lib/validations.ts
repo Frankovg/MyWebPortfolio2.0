@@ -98,7 +98,7 @@ const roleSchema = z.object({
 
 const gallerySchema = z.object({
   imageUrl: z.string().trim().url({ message: invalid_url_error }),
-  alt: z.string().trim().min(1),
+  alt: z.string().trim().min(1, { message: required_error }),
   description: z
     .string()
     .trim()
