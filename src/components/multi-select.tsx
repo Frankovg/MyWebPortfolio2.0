@@ -21,7 +21,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 
-const multiSelectVariants = cva("m-1", {
+export const multiSelectVariants = cva("m-1", {
   variants: {
     variant: {
       default: "border-darkPrimary rounded-none text-textWhite bg-transparent",
@@ -39,7 +39,7 @@ const multiSelectVariants = cva("m-1", {
 
 interface MultiSelectProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof multiSelectVariants> {
+  VariantProps<typeof multiSelectVariants> {
   options: {
     label: string;
     value: string;

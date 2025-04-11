@@ -7,11 +7,11 @@ import { toast } from "sonner";
 
 import { sendMail } from "@/actions/actions";
 import ButtonWhite from "@/components/primitives/button-white";
+import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { contactFormSchema, TContactForm } from "@/lib/validations";
-import RequiredInputLabel from "@/components/primitives/required-input-label";
 
 function ContactForm() {
   const [isPending, startTransition] = useTransition();

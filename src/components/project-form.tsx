@@ -2,8 +2,9 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { Calendar as CalendarIcon, PlusIcon } from "lucide-react";
+import { Calendar as CalendarIcon, PlusIcon, XCircle } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 
@@ -18,16 +19,18 @@ import { Action } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { projectFormSchema, TProjectForm } from "@/lib/validations";
 
+import { MultiSelect } from "./multi-select";
+import ButtonForm from "./primitives/button-form";
 import ButtonMinimal from "./primitives/button-minimal";
 import ImageWithFallback from "./primitives/image-with-fallback";
-import { MultiSelect } from "./primitives/multi-select";
+import RequiredInputLabel from "./primitives/required-input-label";
+import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Checkbox } from "./ui/checkbox";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Textarea } from "./ui/textarea";
-import RequiredInputLabel from "./primitives/required-input-label";
 
 type ProjectFormProps = {
   actionType: Action;
@@ -42,9 +45,9 @@ const getDefaultTechStack = () => {
 };
 const DEFAULT_TECH_STACK = getDefaultTechStack();
 
-const minimalUrlCheck = "https://www.";
-
 function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
+  const router = useRouter()
+
   const { createProjectByCategoryId } = useProjectContext();
 
   const {
@@ -58,53 +61,61 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
   } = useForm<TProjectForm>({
     resolver: zodResolver(projectFormSchema),
     defaultValues: {
-      image: DEFAULT_IMAGE_URL,
+      image: "",
       title: "",
       shortDescription: "",
       description: "",
       slug: "",
       gallery: [
         {
-          imageUrl: DEFAULT_IMAGE_URL,
+          imageUrl: "",
           alt: "",
-          description: "",
+          description: null,
         },
       ],
       date: new Date(),
       repository: null,
-      client: "",
-      clientUrl: "",
-      techStack: [],
-      roles: [],
+      websiteUrl: null,
+      videoUrl: null,
+      videoTitle: null,
+      videoDescription: null,
+      company: null,
+      companyUrl: null,
+      client: null,
+      clientUrl: null,
+      techStack: [{
+        value: "",
+      }],
+      roles: [
+        {
+          label: "",
+          value: "",
+          percentage: 50
+        }
+      ],
       published: true,
     },
-
-    // defaultValues:
-    //   actionType === "edit"
-    //     ? {
-    //         image: "",
-    //         title: "",
-    //         shortDescription: "",
-    //         description: "",
-    //         slug: "",
-    //         gallery: [{ imageUrl: "", alt: "", description: "" }],
-    //         date: new Date(),
-    //         repository: null,
-    //         client: "",
-    //         clientUrl: "",
-    //         techStack: [],
-    //         roles: [],
-    //         published: true,
-    //       }
-    //     : undefined,
   });
 
-  // TODO: Add validation with zod
   // TODO: More info at https://react-hook-form.com/docs/usefieldarray
   // TODO: Watch example at https://codesandbox.io/p/sandbox/usefieldarray-llp6lw?file=%2Fsrc%2FApp.tsx
-  const { fields, append, remove } = useFieldArray({
+  const {
+    fields: galleryFields,
+    append: galleryAppend,
+    remove: galleryRemove
+  } = useFieldArray({
     rules: { minLength: 1, required: "Please add at least 1 picture." },
     name: "gallery",
+    control,
+  });
+
+  const {
+    fields: rolesFields,
+    append: rolesAppend,
+    remove: rolesRemove
+  } = useFieldArray({
+    rules: { minLength: 1, required: "Please add at least 1 role." },
+    name: "roles",
     control,
   });
 
@@ -134,7 +145,6 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
     >
       <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
         <h2 className="text-xl font-bold">Project details</h2>
-
         <div className="w-full flex flex-col lg:flex-row gap-6">
           <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
             <RequiredInputLabel htmlFor="title" label="Title" />
@@ -169,6 +179,7 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
             />
             <Input
               id="image"
+              placeholder={DEFAULT_IMAGE_URL}
               {...register("image", {
                 validate: (value) => value.includes(DEFAULT_IMAGE_URL),
               })}
@@ -290,7 +301,7 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
       <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
         <h2 className="text-xl font-bold">Images</h2>
         <ul className="w-full space-y-12 lg:space-y-6">
-          {fields.map((field, index) => (
+          {galleryFields.map((field, index) => (
             <li
               key={field.id}
               className="flex flex-col lg:flex-row gap-4 lg:gap-2 items-end w-full"
@@ -299,6 +310,7 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
                 <RequiredInputLabel htmlFor="image-url" label="Url" />
                 <Input
                   id="image-url"
+                  placeholder={DEFAULT_IMAGE_URL}
                   {...register(`gallery.${index}.imageUrl`)}
                 />
                 {errors.gallery?.[index]?.imageUrl && (
@@ -331,7 +343,7 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
               <ButtonMinimal
                 className="w-full lg:w-auto"
                 title="Delete"
-                onClick={() => remove(index)}
+                onClick={() => galleryRemove(index)}
               />
             </li>
           ))}
@@ -344,7 +356,7 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
             title={<PlusIcon className="w-6 h-auto" />}
             className="py-6 max-lg:my-6"
             onClick={() =>
-              append({
+              galleryAppend({
                 description: "",
                 imageUrl: DEFAULT_IMAGE_URL,
                 alt: "",
@@ -353,39 +365,43 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
           />
         </div>
         <div className="flex flex-wrap gap-4">
-          {watch("gallery")?.map((image, index) => {
-            //TODO: Make this works for guest users and allow to upload images from other sites
-            //TODO: Add a script to modify the default drive url to the good one
-            if (
-              !image.imageUrl ||
-              !image.imageUrl.includes(DEFAULT_IMAGE_URL) ||
-              image.imageUrl.length === DEFAULT_IMAGE_URL.length
-            ) {
+          {watch("gallery")?.length
+            && watch("gallery")[0].imageUrl !== ""
+            && watch("gallery").map((image, index) => {
+              //TODO: Make this works for guest users and allow to upload images from other sites
+              //TODO: Add a script to modify the default drive url to the good one
+              if (
+                !image.imageUrl ||
+                !image.imageUrl.includes(DEFAULT_IMAGE_URL) ||
+                image.imageUrl.length === DEFAULT_IMAGE_URL.length
+              ) {
+                return (
+                  <div
+                    key={index}
+                    className="aspect-video max-sm:w-full sm:min-w-42 border border-darkPrimary flex items-center justify-center"
+                  />
+                );
+              }
               return (
                 <div
-                  key={index}
-                  className="aspect-video max-sm:w-full sm:min-w-42 border border-darkPrimary flex items-center justify-center"
-                />
+                  key={`${image.imageUrl}-${index}`}
+                  className="aspect-video w-full sm:w-42"
+                >
+                  <ImageWithFallback
+                    src={image.imageUrl}
+                    alt={image.alt}
+                    className="w-full h-full object-cover"
+                    width={0}
+                    height={0}
+                    sizes={"100%"}
+                    quality={40}
+                    fallbackSrc="/images/error-placeholder.svg"
+                  />
+                </div>
               );
-            }
-            return (
-              <div
-                key={`${image.imageUrl}-${index}`}
-                className="aspect-video w-full sm:w-42"
-              >
-                <ImageWithFallback
-                  src={image.imageUrl}
-                  alt={image.alt}
-                  className="w-full h-full object-cover"
-                  width={0}
-                  height={0}
-                  sizes={"100%"}
-                  quality={40}
-                  fallbackSrc="/images/error-placeholder.svg"
-                />
-              </div>
-            );
-          })}
+            })
+            || <></>
+          }
         </div>
       </section>
 
@@ -404,12 +420,109 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
                     values?.map((value) => ({ value })) || [];
                   field.onChange(techStackValues);
                 }}
-                defaultValue={field.value?.map((item) => item.value)}
+                // defaultValue={field.value?.map((item) => item.value)}
                 placeholder=">"
                 maxCount={10}
               />
             )}
           />
+          {errors.techStack?.[0]?.value && (
+            <span className="absolute -bottom-4 text-secondary text-xs">
+              {errors.techStack?.[0]?.value.message}
+            </span>
+          )}
+        </div>
+      </section>
+
+      <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
+        <h2 className="text-xl font-bold">Roles</h2>
+        <ul className="w-full space-y-12 lg:space-y-6">
+          {rolesFields.map((field, index) => (
+            <li
+              key={field.id}
+              className="flex flex-col lg:flex-row gap-4 lg:gap-2 items-end w-full"
+            >
+              <div className="relative w-full flex flex-col gap-2">
+                <RequiredInputLabel htmlFor="role-label" label="Name" />
+                <Input
+                  id="role-label"
+                  {...register(`roles.${index}.label`)}
+                />
+                {errors.roles?.[index]?.label && (
+                  <span className="absolute -bottom-4 text-secondary text-xs">
+                    {errors.roles?.[index]?.label.message}
+                  </span>
+                )}
+              </div>
+              <div className="relative w-full flex flex-col gap-2">
+                <RequiredInputLabel htmlFor="role-value" label="Value" />
+                <Input id="role-value" {...register(`roles.${index}.value`)} />
+                {errors.roles?.[index]?.value && (
+                  <span className="absolute -bottom-4 text-secondary text-xs">
+                    {errors.roles?.[index]?.value.message}
+                  </span>
+                )}
+              </div>
+              <div className="relative w-full flex flex-col gap-2 max-w-18">
+                <Label htmlFor="role-percentage">%</Label>
+                <Input
+                  id="role-percentage"
+                  type="number"
+                  min={1}
+                  max={100}
+                  {...register(`roles.${index}.percentage`, { min: 1, max: 100, valueAsNumber: true })}
+                />
+                {errors.roles?.[index]?.percentage && (
+                  <span className="absolute -bottom-4 text-secondary text-xs">
+                    {errors.roles?.[index]?.percentage.message}
+                  </span>
+                )}
+              </div>
+              <ButtonMinimal
+                className="w-full lg:w-auto"
+                title="Delete"
+                onClick={() => rolesRemove(index)}
+              />
+            </li>
+          ))}
+        </ul>
+        <p className="text-secondary text-xs">
+          {errors.roles?.root?.message}
+        </p>
+        <div className="w-full flex justify-center items-center">
+          <ButtonMinimal
+            title={<PlusIcon className="w-6 h-auto" />}
+            className="py-6 max-lg:my-6"
+            onClick={() =>
+              rolesAppend({
+                label: "",
+                value: "",
+                percentage: 50,
+              })
+            }
+          />
+        </div>
+        <div className="flex flex-wrap gap-4">
+          {watch("roles")?.map((role, index) => {
+            if (!role.value) return null
+            return (
+              <div
+                key={`${role.value}-${index}`}
+                className="aspect-video w-full sm:w-42"
+              >
+                <Badge
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    rolesRemove(index);
+                  }}
+                  className="p-3 text-sm bg-darkPrimary cursor-pointer"
+                >
+                  {role.label}
+                  <XCircle className="ml-2 size-6 cursor-pointer" />
+                </Badge>
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -577,6 +690,18 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
           )}
         </div>
       </section>
+
+      <div className="w-full flex flex-col items-center gap-4 mt-10 mb-14">
+        <ButtonForm
+          actionType={actionType}
+          className="!w-full max-w-72"
+        />
+        <ButtonMinimal
+          title="Cancel"
+          onClick={() => router.back()}
+          className="!w-full max-w-72 text-base"
+        />
+      </div>
     </form>
   );
 }

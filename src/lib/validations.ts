@@ -84,16 +84,16 @@ const techStackSchema = z.object({
   value: z
     .string()
     .trim()
-    .min(1)
+    .min(1, { message: required_error })
     .refine((val) => validTechStackValues.includes(val), {
       message: "Value must be one of the following in the list",
     }),
 });
 
 const roleSchema = z.object({
-  label: z.string().trim().min(1),
-  value: z.string().trim().min(1),
-  percentage: z.number().min(1).max(100),
+  label: z.string().trim().min(1, { message: required_error }),
+  value: z.string().trim().min(1, { message: required_error }),
+  percentage: z.number().gte(1).lte(100).int().positive().finite(),
 });
 
 const gallerySchema = z.object({

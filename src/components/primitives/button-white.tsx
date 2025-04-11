@@ -1,3 +1,5 @@
+import { ButtonHTMLAttributes } from "react";
+
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -6,9 +8,10 @@ type ButtonWhiteProps = {
   text: string;
   disabled?: boolean;
   className?: string;
+  type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
 };
 
-function ButtonWhite({ text, disabled = false, className }: ButtonWhiteProps) {
+function ButtonWhite({ text, disabled = false, className, type = "button" }: ButtonWhiteProps) {
   return (
     <Button
       className={cn(
@@ -16,6 +19,7 @@ function ButtonWhite({ text, disabled = false, className }: ButtonWhiteProps) {
         className
       )}
       disabled={disabled}
+      type={type}
     >
       <span className="absolute inset-0 bg-primary transform w-0 transition-all duration-300 ease-in-out group-hover:w-full" />
       <span className="relative z-10 text-darkGrey">{text}</span>
