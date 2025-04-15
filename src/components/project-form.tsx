@@ -35,6 +35,7 @@ import { Textarea } from "./ui/textarea";
 type ProjectFormProps = {
   actionType: Action;
   categoryId: string;
+  onFormSubmission: VoidFunction;
 };
 
 const getDefaultTechStack = () => {
@@ -45,8 +46,12 @@ const getDefaultTechStack = () => {
 };
 const DEFAULT_TECH_STACK = getDefaultTechStack();
 
-function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
-  const router = useRouter()
+function ProjectForm({
+  actionType,
+  categoryId,
+  onFormSubmission,
+}: ProjectFormProps) {
+  const router = useRouter();
 
   const { createProjectByCategoryId } = useProjectContext();
 
@@ -83,15 +88,17 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
       companyUrl: null,
       client: null,
       clientUrl: null,
-      techStack: [{
-        value: "",
-      }],
+      techStack: [
+        {
+          value: "",
+        },
+      ],
       roles: [
         {
           label: "",
           value: "",
-          percentage: 50
-        }
+          percentage: 50,
+        },
       ],
       published: true,
     },
@@ -102,7 +109,7 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
   const {
     fields: galleryFields,
     append: galleryAppend,
-    remove: galleryRemove
+    remove: galleryRemove,
   } = useFieldArray({
     rules: { minLength: 1, required: "Please add at least 1 picture." },
     name: "gallery",
@@ -112,7 +119,7 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
   const {
     fields: rolesFields,
     append: rolesAppend,
-    remove: rolesRemove
+    remove: rolesRemove,
   } = useFieldArray({
     rules: { minLength: 1, required: "Please add at least 1 role." },
     name: "roles",
@@ -358,16 +365,16 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
             onClick={() =>
               galleryAppend({
                 description: "",
-                imageUrl: DEFAULT_IMAGE_URL,
+                imageUrl: "",
                 alt: "",
               })
             }
           />
         </div>
         <div className="flex flex-wrap gap-4">
-          {watch("gallery")?.length
-            && watch("gallery")[0].imageUrl !== ""
-            && watch("gallery").map((image, index) => {
+          {(watch("gallery")?.length &&
+            watch("gallery")[0].imageUrl !== "" &&
+            watch("gallery").map((image, index) => {
               //TODO: Make this works for guest users and allow to upload images from other sites
               //TODO: Add a script to modify the default drive url to the good one
               if (
@@ -399,9 +406,7 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
                   />
                 </div>
               );
-            })
-            || <></>
-          }
+            })) || <></>}
         </div>
       </section>
 
@@ -444,10 +449,7 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
             >
               <div className="relative w-full flex flex-col gap-2">
                 <RequiredInputLabel htmlFor="role-label" label="Name" />
-                <Input
-                  id="role-label"
-                  {...register(`roles.${index}.label`)}
-                />
+                <Input id="role-label" {...register(`roles.${index}.label`)} />
                 {errors.roles?.[index]?.label && (
                   <span className="absolute -bottom-4 text-secondary text-xs">
                     {errors.roles?.[index]?.label.message}
@@ -470,7 +472,11 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
                   type="number"
                   min={1}
                   max={100}
-                  {...register(`roles.${index}.percentage`, { min: 1, max: 100, valueAsNumber: true })}
+                  {...register(`roles.${index}.percentage`, {
+                    min: 1,
+                    max: 100,
+                    valueAsNumber: true,
+                  })}
                 />
                 {errors.roles?.[index]?.percentage && (
                   <span className="absolute -bottom-4 text-secondary text-xs">
@@ -486,9 +492,7 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
             </li>
           ))}
         </ul>
-        <p className="text-secondary text-xs">
-          {errors.roles?.root?.message}
-        </p>
+        <p className="text-secondary text-xs">{errors.roles?.root?.message}</p>
         <div className="w-full flex justify-center items-center">
           <ButtonMinimal
             title={<PlusIcon className="w-6 h-auto" />}
@@ -504,7 +508,7 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
         </div>
         <div className="flex flex-wrap gap-4">
           {watch("roles")?.map((role, index) => {
-            if (!role.value) return null
+            if (!role.value) return null;
             return (
               <div
                 key={`${role.value}-${index}`}
@@ -692,10 +696,7 @@ function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
       </section>
 
       <div className="w-full flex flex-col items-center gap-4 mt-10 mb-14">
-        <ButtonForm
-          actionType={actionType}
-          className="!w-full max-w-72"
-        />
+        <ButtonForm actionType={actionType} className="!w-full max-w-72" />
         <ButtonMinimal
           title="Cancel"
           onClick={() => router.back()}

@@ -11,9 +11,10 @@ import {
   ICategoryWithProjectsAdmin,
   ProjectEssentials,
 } from "@/lib/types";
+import { TProjectForm } from "@/lib/validations";
 
 type ProjectContextProviderProps = {
-  data: ICategoryWithProjectsAdmin[];
+  data: Project[];
   children: React.ReactNode;
 };
 
@@ -30,6 +31,8 @@ type TProjectContext = {
   // ) => Promise<void>;
 };
 
+type Payload = ProjectEssentials & { categoryId: string };
+
 export const ProjectContext = createContext<TProjectContext | null>(null);
 
 const ProjectContextProvider = ({
@@ -39,19 +42,29 @@ const ProjectContextProvider = ({
   //TODO: Take a look of this state
   const [optimisticProjects, setOptimisticProjects] = useOptimistic(
     data,
-    (prev, { action, payload }: { action: Action; payload: any }) => {
+    (prev, { action, payload }: { action: Action; payload: Payload }) => {
+      const now = new Date();
       switch (action) {
         case "add":
-          return [...prev, { ...payload, id: Math.random().toString() }];
+          return [
+            ...prev,
+            {
+              ...payload,
+              id: Math.random().toString(),
+              categoryId: payload.categoryId || "",
+              createdAt: now,
+              updatedAt: now,
+            },
+          ];
         case "edit":
           return prev.map((project) => {
-            if (project.id === payload.id) {
-              return { ...project, ...payload.newProjectData };
+            if (project.slug === payload.slug) {
+              return { ...project, ...payload, updatedAt: now };
             }
             return project;
           });
         case "delete":
-          return prev.filter((project) => project.id !== payload);
+          return prev.filter((project) => project.slug !== payload.slug);
         default:
           return prev;
       }
@@ -62,7 +75,10 @@ const ProjectContextProvider = ({
     newProject: ProjectEssentials,
     categoryId: string
   ) => {
-    setOptimisticProjects({ action: "add", payload: newProject });
+    setOptimisticProjects({
+      action: "add",
+      payload: { ...newProject, categoryId },
+    });
     const error = await addProject(newProject, categoryId);
     if (!!error) {
       if (error.message === SAMPLE_ACTION) {
