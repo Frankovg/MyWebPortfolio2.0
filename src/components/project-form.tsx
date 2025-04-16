@@ -140,6 +140,8 @@ function ProjectForm({
         const result = await trigger();
         if (!result) return;
 
+        onFormSubmission();
+
         const project = getValues();
         project.image = project.image || FALLBACK_IMG;
 

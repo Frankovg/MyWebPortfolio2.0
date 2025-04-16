@@ -32,7 +32,6 @@ export const portfolioColumns = (): ColumnDef<Project>[] => [
         </Link>
       );
     },
-    enableColumnFilter: true,
     enableSorting: true,
   },
   {
@@ -45,6 +44,7 @@ export const portfolioColumns = (): ColumnDef<Project>[] => [
         <div className="text-left font-light text-textWhite">{company}</div>
       );
     },
+    enableSorting: true,
   },
   {
     accessorKey: "client",
@@ -56,6 +56,7 @@ export const portfolioColumns = (): ColumnDef<Project>[] => [
         <div className="text-left font-light text-textWhite">{client}</div>
       );
     },
+    enableSorting: true,
   },
   {
     accessorKey: "published",

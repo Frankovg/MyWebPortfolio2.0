@@ -21,7 +21,11 @@ export async function getUsersAdmin() {
 export async function getCategoriesAdmin() {
   const categories = await prisma.category.findMany({
     include: {
-      projects: true,
+      projects: {
+        orderBy: {
+          date: "desc",
+        },
+      },
     },
   });
   return categories;

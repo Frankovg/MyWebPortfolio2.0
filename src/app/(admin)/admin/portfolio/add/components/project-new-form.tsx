@@ -1,8 +1,9 @@
 "use client";
 
-import ProjectForm from "@/components/project-form";
-import { flushSync } from "react-dom";
 import { useRouter } from "next/navigation";
+import { flushSync } from "react-dom";
+
+import ProjectForm from "@/components/project-form";
 
 function ProjectNewForm({ categoryId }: { categoryId: string }) {
   const router = useRouter();

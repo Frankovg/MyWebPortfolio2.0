@@ -4,12 +4,12 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
+import { MONTHS } from "@/lib/constants";
 import { ProjectShort } from "@/lib/types";
 
 import HeadOfDescription from "./head-of-description";
 import LinkButtons from "./link-buttons";
 import LongDescription from "./long-description";
-import { MONTHS } from "@/lib/constants";
 
 type ProjectInfoProps = {
   project?: ProjectShort;
