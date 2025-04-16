@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { Role } from "@prisma/client"
-import { useMemo } from "react"
-import { Bar, BarChart, XAxis, YAxis } from "recharts"
+import { Role } from "@prisma/client";
+import { useMemo } from "react";
+import { Bar, BarChart, XAxis, YAxis } from "recharts";
 
 import {
   Card,
@@ -10,45 +10,42 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import {
-  ChartConfig,
-  ChartContainer,
-} from "@/components/ui/chart"
+} from "@/components/ui/card";
+import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 
 function ProjectChart({ roles }: { roles: Role[] }) {
   const chartData = useMemo(() => {
-    return roles.map((role) => (
-      {
-        rol: role.value,
-        percentage: role.percentage,
-        fill: "#5cedc1"
-      }
-    ))
-  }, [roles])
+    return roles.map((role) => ({
+      rol: role.value,
+      percentage: role.percentage,
+      fill: "#5cedc1",
+    }));
+  }, [roles]);
 
   const chartConfig = useMemo(() => {
     const config: ChartConfig = {
       percentage: {
         label: "Percentage",
-      }
-    }
+      },
+    };
     chartData.forEach((item) => {
-      const roleFromData = roles.find(role => role.value === item.rol)
+      const roleFromData = roles.find((role) => role.value === item.rol);
       if (roleFromData) {
         config[item.rol] = {
-          label: roleFromData.label
-        }
+          label: roleFromData.label,
+        };
       }
-    })
-    return config
-  }, [chartData, roles])
+    });
+    return config;
+  }, [chartData, roles]);
 
   return (
     <Card className="w-full 930:w-1/2 border-none">
       <CardHeader>
         <CardTitle className="text-white">Responsibilities</CardTitle>
-        <CardDescription>January 2023 - Present</CardDescription>
+        <CardDescription>
+          My role during all the project lifetime
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
@@ -69,22 +66,19 @@ function ProjectChart({ roles }: { roles: Role[] }) {
               width={100}
               axisLine={false}
               tickFormatter={(value) =>
-                String(chartConfig[value as keyof typeof chartConfig]?.label ?? '')
+                String(
+                  chartConfig[value as keyof typeof chartConfig]?.label ?? ""
+                )
               }
               stroke="#ffffffb3"
             />
-            <XAxis
-              dataKey="percentage"
-              type="number"
-              stroke="#ffffffb3"
-            />
+            <XAxis dataKey="percentage" type="number" stroke="#ffffffb3" />
             <Bar dataKey="percentage" layout="vertical" radius={5} />
-          </BarChart >
-        </ChartContainer >
-      </CardContent >
-    </Card >
-
-  )
+          </BarChart>
+        </ChartContainer>
+      </CardContent>
+    </Card>
+  );
 }
 
-export default ProjectChart
+export default ProjectChart;

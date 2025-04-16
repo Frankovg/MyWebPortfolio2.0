@@ -170,3 +170,18 @@ export const TECH_STACK_DATA = [
   { name: "Turborepo", value: "turborepo" },
   { name: "Vercel", value: "vercel" },
 ];
+
+export const MONTHS = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];

@@ -68,6 +68,7 @@ export default async function ProjectPage({
     title: project.title,
     gallery: project.gallery,
     description: project.description,
+    date: project.date,
     company: project.company,
     companyUrl: project.companyUrl,
     client: project.client,

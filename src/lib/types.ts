@@ -12,6 +12,7 @@ export type ProjectShort = Pick<
   Project,
   | "title"
   | "description"
+  | "date"
   | "company"
   | "companyUrl"
   | "client"
