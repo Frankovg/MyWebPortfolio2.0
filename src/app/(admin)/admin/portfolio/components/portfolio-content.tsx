@@ -16,6 +16,7 @@ import { ICategoryWithProjectsAdmin } from "@/lib/types";
 import { portfolioColumns } from "./portfolio-columns";
 import PortfolioTable from "./portfolio-table";
 import PortfolioTableTools from "./portfolio-table-tools";
+import { useProjectContext } from "@/hooks/use-project-context";
 
 type PortfolioContentProps = {
   content: ICategoryWithProjectsAdmin;
@@ -26,7 +27,9 @@ function PortfolioContent({ content }: PortfolioContentProps) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [globalFilter, setGlobalFilter] = useState<any>([]);
 
-  const columns = portfolioColumns();
+  const { handleDeleteProject } = useProjectContext();
+
+  const columns = portfolioColumns(handleDeleteProject);
 
   const table = useReactTable({
     data: content.projects,

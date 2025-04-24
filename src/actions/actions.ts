@@ -10,6 +10,7 @@ import { signIn, signOut } from "@/lib/auth";
 import { checkAuth } from "@/lib/check-auth";
 import { SAMPLE_ACTION } from "@/lib/constants";
 import prisma from "@/lib/db";
+import { getCategoryById, getProjectById } from "@/lib/server-utils-admin";
 import { getUserById } from "@/lib/server-utils-public";
 import { ProjectEssentials } from "@/lib/types";
 import { sleep } from "@/lib/utils";
@@ -18,8 +19,10 @@ import {
   emailSchema,
   isActiveSchema,
   projectFormSchema,
+  projectIdSchema,
   userIdSchema,
 } from "@/lib/validations";
+import { redirect } from "next/navigation";
 
 // --- user actions ---
 
@@ -190,25 +193,29 @@ export async function addProject(
   if (process.env.NODE_ENV === "development") {
     await sleep(1000);
   }
-
   const session = await checkAuth();
   if (!session?.user.isAdmin) {
     return {
       message: SAMPLE_ACTION,
     };
   }
-
   const validatedProject = projectFormSchema.safeParse(project);
   if (!validatedProject.success) {
     return {
       message: "Invalid project data.",
     };
   }
-
   const validateCategoryId = categoryIdSchema.safeParse(categoryId);
   if (!validateCategoryId.success) {
     return {
       message: "Invalid category data.",
+    };
+  }
+
+  const category = await getCategoryById(validateCategoryId.data);
+  if (!category) {
+    return {
+      message: "Category not found.",
     };
   }
 
@@ -240,8 +247,7 @@ export async function addProject(
       message: "Could not add project.",
     };
   }
-
-  revalidatePath("/admin", "layout");
+  redirect(`/admin/portfolio?category=${category.value}`);
 }
 
 export async function editProject(projectId: unknown, newProjectData: unknown) {
@@ -286,42 +292,53 @@ export async function editProject(projectId: unknown, newProjectData: unknown) {
   // revalidatePath('/app', 'layout')
 }
 
-export async function deleteProject(projectId: unknown) {
+export async function deleteProject(projectId: string) {
   if (process.env.NODE_ENV === "development") {
     await sleep(1000);
   }
+  const session = await checkAuth();
+  if (!session?.user.isAdmin) {
+    return {
+      message: SAMPLE_ACTION,
+    };
+  }
+  const validatedProjectId = projectIdSchema.safeParse(projectId);
+  if (!validatedProjectId.success) {
+    return {
+      message: "Invalid project ID.",
+    };
+  }
+  const project = await getProjectById(validatedProjectId.data);
+  if (!project) {
+    return {
+      message: "Project not found.",
+    };
+  }
 
-  // authentication check
-  // const session = await checkAuth()
-
-  // validation
-  // const validatedProjectId = projectIdSchema.safeParse(projectId)
-  // if (!validatedProjectId.success) {
-  //   return {
-  //     message: 'Invalid project data.'
-  //   }
-  // }
-
-  // authorization check
-  // const project = await getProjectById(validatedProjectId.data)
-  // if (!project) {
-  //   return {
-  //     message: 'Project not found.'
-  //   }
-  // }
-
-  // database mutation
-  // try {
-  //   await prisma.project.delete({
-  //     where: {
-  //       id: validatedProjectId.data
-  //     }
-  //   })
-  // } catch (error) {
-  //   return {
-  //     message: 'Could not delete project.'
-  //   }
-  // }
-
-  // revalidatePath('/app', 'layout')
+  try {
+    await prisma.$transaction([
+      prisma.gallery.deleteMany({
+        where: { projectId: project.id },
+      }),
+      prisma.role.deleteMany({
+        where: { projectId: project.id },
+      }),
+      prisma.project.update({
+        where: { id: project.id },
+        data: {
+          techStack: {
+            set: [],
+          },
+        },
+      }),
+      prisma.project.delete({
+        where: { id: project.id },
+      }),
+    ]);
+  } catch (error) {
+    return {
+      message: "Could not delete project.",
+    };
+  }
+  revalidatePath("/admin", "layout");
 }

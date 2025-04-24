@@ -39,3 +39,21 @@ export async function getCategoryBySlug(slug: string) {
   });
   return category;
 }
+
+export async function getCategoryById(id: string) {
+  const category = await prisma.category.findUnique({
+    where: {
+      id,
+    },
+  });
+  return category;
+}
+
+export async function getProjectById(id: string) {
+  const project = await prisma.project.findUnique({
+    where: {
+      id,
+    },
+  });
+  return project;
+}

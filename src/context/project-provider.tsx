@@ -1,7 +1,6 @@
 "use client";
 
-import { Project } from "@prisma/client";
-import { createContext, useOptimistic } from "react";
+import { createContext, startTransition, useOptimistic } from "react";
 import { toast } from "sonner";
 
 import { addProject, deleteProject, editProject } from "@/actions/actions";
@@ -11,27 +10,38 @@ import {
   ICategoryWithProjectsAdmin,
   ProjectEssentials,
 } from "@/lib/types";
-import { TProjectForm } from "@/lib/validations";
+
+const showErrorMessage = (error: { message: string }) => {
+  if (error.message === SAMPLE_ACTION) {
+    toast.warning("This is a sample action with no effects.");
+    console.warn(error.message);
+  } else {
+    toast.error(error.message);
+    console.error(error.message);
+  }
+};
 
 type ProjectContextProviderProps = {
-  data: Project[];
+  data: ICategoryWithProjectsAdmin[];
   children: React.ReactNode;
 };
 
 type TProjectContext = {
-  projects: Project[];
+  categories: ICategoryWithProjectsAdmin[];
   createProjectByCategoryId: (
     newProject: ProjectEssentials,
     categoryId: string
   ) => Promise<void>;
-  // handleDeleteProject: (projectId: Project["id"]) => Promise<void>;
+  handleDeleteProject: (projectId: string, categoryId: string) => Promise<void>;
   // handleEditProject: (
   //   projectId: Project["id"],
   //   newProjectData: ProjectEssentials
   // ) => Promise<void>;
 };
 
-type Payload = ProjectEssentials & { categoryId: string };
+type PayloadCreate = ProjectEssentials & { categoryId: string };
+type PayloadDelete = { projectId: string; categoryId: string };
+type Payload = PayloadCreate | PayloadDelete;
 
 export const ProjectContext = createContext<TProjectContext | null>(null);
 
@@ -39,32 +49,58 @@ const ProjectContextProvider = ({
   data,
   children,
 }: ProjectContextProviderProps) => {
-  //TODO: Take a look of this state
-  const [optimisticProjects, setOptimisticProjects] = useOptimistic(
+  const [optimisticCategories, setOptimisticCategories] = useOptimistic(
     data,
     (prev, { action, payload }: { action: Action; payload: Payload }) => {
       const now = new Date();
       switch (action) {
         case "add":
-          return [
-            ...prev,
-            {
-              ...payload,
-              id: Math.random().toString(),
-              categoryId: payload.categoryId || "",
-              createdAt: now,
-              updatedAt: now,
-            },
-          ];
-        case "edit":
-          return prev.map((project) => {
-            if (project.slug === payload.slug) {
-              return { ...project, ...payload, updatedAt: now };
+          return prev.map((category) => {
+            if (
+              !("projectId" in payload) &&
+              category.id === payload.categoryId
+            ) {
+              return {
+                ...category,
+                projects: [
+                  ...category.projects,
+                  {
+                    ...payload,
+                    id: Math.random().toString(),
+                    categoryId: payload.categoryId,
+                    createdAt: now,
+                    updatedAt: now,
+                  },
+                ],
+              };
             }
-            return project;
+            return category;
           });
+        // case "edit":
+        //   //TODO: check
+        //   return prev.map((category) => {
+        //     return {
+        //       ...category,
+        //       projects: category.projects.map((project) => {
+        //         if (project.slug === payload.slug) {
+        //           return { ...project, ...payload, updatedAt: now };
+        //         }
+        //         return project;
+        //       }),
+        //     };
+        //   });
         case "delete":
-          return prev.filter((project) => project.slug !== payload.slug);
+          return prev.map((category) => {
+            if ("projectId" in payload && category.id === payload.categoryId) {
+              return {
+                ...category,
+                projects: category.projects.filter(
+                  (project) => project.id !== payload.projectId
+                ),
+              };
+            }
+            return category;
+          });
         default:
           return prev;
       }
@@ -75,19 +111,29 @@ const ProjectContextProvider = ({
     newProject: ProjectEssentials,
     categoryId: string
   ) => {
-    setOptimisticProjects({
+    setOptimisticCategories({
       action: "add",
       payload: { ...newProject, categoryId },
     });
     const error = await addProject(newProject, categoryId);
     if (!!error) {
-      if (error.message === SAMPLE_ACTION) {
-        toast.warning("This is a sample action with no effects.");
-        console.warn(error.message);
-      } else {
-        toast.error(error.message);
-        console.error(error.message);
-      }
+      showErrorMessage(error);
+      return;
+    }
+  };
+
+  const handleDeleteProject = async (projectId: string, categoryId: string) => {
+    // Wrap the optimistic update in startTransition
+    startTransition(() => {
+      setOptimisticCategories({
+        action: "delete",
+        payload: { projectId, categoryId },
+      });
+    });
+
+    const error = await deleteProject(projectId);
+    if (!!error) {
+      showErrorMessage(error);
       return;
     }
   };
@@ -119,10 +165,10 @@ const ProjectContextProvider = ({
   return (
     <ProjectContext.Provider
       value={{
-        projects: optimisticProjects,
+        categories: optimisticCategories,
         createProjectByCategoryId,
         // handleEditProject,
-        // handleDeleteProject,
+        handleDeleteProject,
       }}
     >
       {children}

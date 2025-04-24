@@ -15,9 +15,12 @@ import Link from "next/link";
 import { GithubIcon } from "@/icons/social";
 import { DATE_FORMAT, DATE_LOCATION } from "@/lib/constants";
 
+//TODO: Sorting columns
 const dropdownLabels = { asc: "Asc", desc: "Desc" };
 
-export const portfolioColumns = (): ColumnDef<Project>[] => [
+export const portfolioColumns = (
+  handleDeleteProject: (projectId: string, categoryId: string) => Promise<void>
+): ColumnDef<Project>[] => [
   {
     accessorKey: "title",
     header: () => <div className="text-left">Project name</div>,
@@ -146,7 +149,9 @@ export const portfolioColumns = (): ColumnDef<Project>[] => [
         <button
           aria-label={`Delete ${row.original.title}`}
           className="opacity-0 group-hover/row:opacity-100 transition-opacity duration-200 hover:text-white"
-          onClick={() => {}}
+          onClick={async () =>
+            await handleDeleteProject(row.original.id, row.original.categoryId)
+          }
         >
           <Trash2 className="h-4 w-auto" />
         </button>

@@ -108,6 +108,7 @@ const gallerySchema = z.object({
 });
 
 export const categoryIdSchema = z.string().cuid();
+export const projectIdSchema = z.string().cuid();
 
 export const projectFormSchema = z
   .object({
