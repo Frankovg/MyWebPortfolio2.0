@@ -1,23 +1,23 @@
-'use client'
+"use client";
 
-import Link from "next/link"
-import { useTransition } from "react"
+import Link from "next/link";
+import { useTransition } from "react";
 
-import { logOut } from "@/actions/actions"
-import { UserSession } from "@/lib/types"
-import { cn } from "@/lib/utils"
+import { logOut } from "@/actions/actions";
+import { UserSession } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
-import LanguageSelector from "./language-selector"
-import LogOutOverlay from "./logout-overlay"
+import LanguageSelector from "./language-selector";
+import Overlay from "./primitives/overlay";
 
 type UserMainBarContentProps = {
-  isLogged: boolean
-  isAdmin: boolean
-}
+  isLogged: boolean;
+  isAdmin: boolean;
+};
 
 type UserMainBarProps = {
-  session: UserSession
-}
+  session: UserSession;
+};
 
 const LanguageSelectorContainer = () => {
   return (
@@ -25,32 +25,34 @@ const LanguageSelectorContainer = () => {
       <LanguageSelector />
       <span>|</span>
     </>
-  )
-}
+  );
+};
 
 const UserMainBarContent = ({ isLogged, isAdmin }: UserMainBarContentProps) => {
-  const [isPending, startTransition] = useTransition()
+  const [isPending, startTransition] = useTransition();
 
-  const hoverStyle = 'hover:underline'
-  const wrapperStyle = 'space-x-2.5 flex'
+  const hoverStyle = "hover:underline";
+  const wrapperStyle = "space-x-2.5 flex";
 
   if (!isLogged) {
     return (
       <div className={wrapperStyle}>
         <LanguageSelectorContainer />
-        <Link href='/login' className={hoverStyle}>
+        <Link href="/login" className={hoverStyle}>
           <span>Login</span>
         </Link>
       </div>
-    )
+    );
   }
 
-  const message = isAdmin ? 'Welcome back! You have admin access.' : 'Welcome! This is a demo account with restricted access.'
-  const mobileMessage = isAdmin ? 'Admin access.' : 'Demo account'
+  const message = isAdmin
+    ? "Welcome back! You have admin access."
+    : "Welcome! This is a demo account with restricted access.";
+  const mobileMessage = isAdmin ? "Admin access." : "Demo account";
 
   return (
     <>
-      {isPending && <LogOutOverlay />}
+      {isPending && <Overlay message="Good Bye!" />}
       <p
         data-mobile={mobileMessage}
         data-desktop={message}
@@ -58,38 +60,50 @@ const UserMainBarContent = ({ isLogged, isAdmin }: UserMainBarContentProps) => {
       />
       <div className={wrapperStyle}>
         <LanguageSelectorContainer />
-        <Link href='/admin' className={hoverStyle} >
+        <Link href="/admin" className={hoverStyle}>
           <span>Admin</span>
         </Link>
         <button
           className={hoverStyle}
           onClick={async () => {
             startTransition(async () => {
-              await logOut()
-            })
+              await logOut();
+            });
           }}
         >
           <span>Logout</span>
         </button>
       </div>
     </>
-  )
-}
+  );
+};
 
 function UserMainBar({ session }: UserMainBarProps) {
-  const user = session?.user
+  const user = session?.user;
 
-  const isLogged = !!user
-  const isAdmin = user?.isAdmin ?? false
-  const styles = isLogged ? 'bg-primary text-darkPrimary' : 'bg-transparent text-whiteText'
+  const isLogged = !!user;
+  const isAdmin = user?.isAdmin ?? false;
+  const styles = isLogged
+    ? "bg-primary text-darkPrimary"
+    : "bg-transparent text-whiteText";
 
   return (
-    <div className={cn("absolute top-0 w-screen h-6 z-50 flex items-center", styles)}>
-      <div className={cn("flex items-center w-full max-w-fa mx-auto pl-4 pr-6", isLogged ? 'justify-between' : 'justify-end')}>
+    <div
+      className={cn(
+        "absolute top-0 w-screen h-6 z-50 flex items-center",
+        styles
+      )}
+    >
+      <div
+        className={cn(
+          "flex items-center w-full max-w-fa mx-auto pl-4 pr-6",
+          isLogged ? "justify-between" : "justify-end"
+        )}
+      >
         <UserMainBarContent isLogged={isLogged} isAdmin={isAdmin} />
       </div>
     </div>
-  )
+  );
 }
 
-export default UserMainBar
+export default UserMainBar;

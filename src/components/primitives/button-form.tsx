@@ -1,11 +1,24 @@
-import { Action } from "@/lib/types"
+import { Action } from "@/lib/types";
 
-import ButtonWhite from "./button-white"
+import ButtonWhite from "./button-white";
 
-function ButtonForm({ actionType, className }: { actionType: Action, className?: string }) {
+function ButtonForm({
+  actionType,
+  loading = false,
+  className,
+}: {
+  actionType: Action;
+  loading: boolean;
+  className?: string;
+}) {
   return (
-    <ButtonWhite text={actionType === 'add' ? "Create" : "Save"} type="submit" className={className} />
-  )
+    <ButtonWhite
+      text={actionType === "add" ? "Create" : "Save"}
+      type="submit"
+      className={className}
+      loading={loading}
+    />
+  );
 }
 
-export default ButtonForm
+export default ButtonForm;

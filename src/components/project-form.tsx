@@ -5,7 +5,7 @@ import { format } from "date-fns";
 import { Calendar as CalendarIcon, PlusIcon, XCircle } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useTransition } from "react";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 
 import { Calendar } from "@/components/ui/calendar";
@@ -52,6 +52,7 @@ function ProjectForm({
   onFormSubmission,
 }: ProjectFormProps) {
   const router = useRouter();
+  const [isPending, startTransition] = useTransition();
 
   const { createProjectByCategoryId } = useProjectContext();
 
@@ -135,21 +136,23 @@ function ProjectForm({
 
   return (
     <form
-      className="flex flex-wrap gap-6"
-      action={async () => {
-        const result = await trigger();
-        if (!result) return;
+      className="relative flex flex-wrap gap-6"
+      action={() => {
+        startTransition(async () => {
+          const result = await trigger();
+          if (!result) return;
 
-        onFormSubmission();
+          onFormSubmission();
 
-        const project = getValues();
-        project.image = project.image || FALLBACK_IMG;
+          const project = getValues();
+          project.image = project.image || FALLBACK_IMG;
 
-        if (actionType === "add") {
-          await createProjectByCategoryId(project, categoryId);
-        } else if (actionType === "edit") {
-          //TODO: Add edit project by categoryId
-        }
+          if (actionType === "add") {
+            await createProjectByCategoryId(project, categoryId);
+          } else if (actionType === "edit") {
+            //TODO: Add edit project by categoryId
+          }
+        });
       }}
     >
       <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
@@ -248,7 +251,9 @@ function ProjectForm({
                     </PopoverContent>
                   </Popover>
                   {errors.date && (
-                    <span className="text-danger">{errors.date.message}</span>
+                    <span className="text-secondary">
+                      {errors.date.message}
+                    </span>
                   )}
                 </>
               )}
@@ -698,7 +703,11 @@ function ProjectForm({
       </section>
 
       <div className="w-full flex flex-col items-center gap-4 mt-10 mb-14">
-        <ButtonForm actionType={actionType} className="!w-full max-w-72" />
+        <ButtonForm
+          actionType={actionType}
+          className="!w-full max-w-72"
+          loading={isPending}
+        />
         <ButtonMinimal
           title="Cancel"
           onClick={() => router.back()}

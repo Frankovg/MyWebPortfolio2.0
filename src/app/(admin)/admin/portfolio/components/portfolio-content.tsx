@@ -16,20 +16,37 @@ import { ICategoryWithProjectsAdmin } from "@/lib/types";
 import { portfolioColumns } from "./portfolio-columns";
 import PortfolioTable from "./portfolio-table";
 import PortfolioTableTools from "./portfolio-table-tools";
-import { useProjectContext } from "@/hooks/use-project-context";
+import DeleteModal from "./delete-modal";
 
 type PortfolioContentProps = {
   content: ICategoryWithProjectsAdmin;
+};
+
+const initialModalState = {
+  isOpen: false,
+  projectId: "",
+  categoryId: "",
 };
 
 function PortfolioContent({ content }: PortfolioContentProps) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [globalFilter, setGlobalFilter] = useState<any>([]);
+  const [deleteModal, setDeleteModal] = useState(initialModalState);
 
-  const { handleDeleteProject } = useProjectContext();
+  const handleOpenDeleteModal = (projectId: string, categoryId: string) => {
+    setDeleteModal({
+      isOpen: true,
+      projectId,
+      categoryId,
+    });
+  };
 
-  const columns = portfolioColumns(handleDeleteProject);
+  const handleCloseDeleteModal = () => {
+    setDeleteModal(initialModalState);
+  };
+
+  const columns = portfolioColumns(handleOpenDeleteModal);
 
   const table = useReactTable({
     data: content.projects,
@@ -61,10 +78,20 @@ function PortfolioContent({ content }: PortfolioContentProps) {
   });
 
   return (
-    <TabsContent value={content.value}>
-      <PortfolioTableTools table={table} />
-      <PortfolioTable table={table} />
-    </TabsContent>
+    <>
+      <TabsContent value={content.value}>
+        <PortfolioTableTools table={table} />
+        <PortfolioTable table={table} />
+      </TabsContent>
+      <DeleteModal
+        close={handleCloseDeleteModal}
+        isOpen={deleteModal.isOpen}
+        data={{
+          projectId: deleteModal.projectId,
+          categoryId: deleteModal.categoryId,
+        }}
+      />
+    </>
   );
 }
 

@@ -19,7 +19,7 @@ import { DATE_FORMAT, DATE_LOCATION } from "@/lib/constants";
 const dropdownLabels = { asc: "Asc", desc: "Desc" };
 
 export const portfolioColumns = (
-  handleDeleteProject: (projectId: string, categoryId: string) => Promise<void>
+  handleOpenDeleteModal: (projectId: string, categoryId: string) => void
 ): ColumnDef<Project>[] => [
   {
     accessorKey: "title",
@@ -149,8 +149,8 @@ export const portfolioColumns = (
         <button
           aria-label={`Delete ${row.original.title}`}
           className="opacity-0 group-hover/row:opacity-100 transition-opacity duration-200 hover:text-white"
-          onClick={async () =>
-            await handleDeleteProject(row.original.id, row.original.categoryId)
+          onClick={() =>
+            handleOpenDeleteModal(row.original.id, row.original.categoryId)
           }
         >
           <Trash2 className="h-4 w-auto" />
