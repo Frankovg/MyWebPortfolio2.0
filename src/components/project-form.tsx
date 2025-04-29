@@ -159,60 +159,86 @@ function ProjectForm({
         <h2 className="text-xl font-bold">Project details</h2>
         <div className="w-full flex flex-col lg:flex-row gap-6">
           <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
-            <RequiredInputLabel htmlFor="title" label="Title" />
-            <Input id="title" {...register("title")} />
-            {errors.title && (
-              <span className="absolute -bottom-4 text-secondary text-xs">
-                {errors.title.message}
-              </span>
-            )}
+            <Controller
+              name="title"
+              control={control}
+              render={({ field }) => (
+                <>
+                  <RequiredInputLabel htmlFor="title" label="Title" />
+                  <Input id="title" {...field} />
+                  {errors.title && (
+                    <span className="absolute -bottom-4 text-secondary text-xs">
+                      {errors.title.message}
+                    </span>
+                  )}
+                </>
+              )}
+            />
           </div>
           <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
-            <RequiredInputLabel
-              htmlFor="image"
-              label={
+            <Controller
+              name="image"
+              control={control}
+              rules={{ validate: (value) => value.includes(DEFAULT_IMAGE_URL) }}
+              render={({ field }) => (
                 <>
-                  Hero image url
-                  {watch("image").includes(DEFAULT_IMAGE_URL) &&
-                    watch("image").length > DEFAULT_IMAGE_URL.length && (
-                      <span>
-                        {" > "}
-                        <Link
-                          href={getValues("image") || ""}
-                          target="_blank"
-                          className="text-primary hover:underline"
-                        >
-                          Open image
-                        </Link>
-                      </span>
-                    )}
+                  <RequiredInputLabel
+                    htmlFor="image"
+                    label={
+                      <>
+                        Hero image url
+                        {watch("image").includes(DEFAULT_IMAGE_URL) &&
+                          watch("image").length > DEFAULT_IMAGE_URL.length && (
+                            <span>
+                              {" > "}
+                              <Link
+                                href={getValues("image") || ""}
+                                target="_blank"
+                                className="text-primary hover:underline"
+                              >
+                                Open image
+                              </Link>
+                            </span>
+                          )}
+                      </>
+                    }
+                  />
+                  <Input
+                    id="image"
+                    placeholder={DEFAULT_IMAGE_URL}
+                    {...field}
+                  />
+                  {errors.image && (
+                    <span className="absolute -bottom-4 text-secondary text-xs">
+                      {errors.image.message}
+                    </span>
+                  )}
                 </>
-              }
+              )}
             />
-            <Input
-              id="image"
-              placeholder={DEFAULT_IMAGE_URL}
-              {...register("image", {
-                validate: (value) => value.includes(DEFAULT_IMAGE_URL),
-              })}
-            />
-            {errors.image && (
-              <span className="absolute -bottom-4 text-secondary text-xs">
-                {errors.image.message}
-              </span>
-            )}
           </div>
         </div>
 
         <div className="w-full flex flex-col lg:flex-row gap-6">
           <div className="relative flex flex-col gap-2 w-full lg:w-1/3">
-            <RequiredInputLabel htmlFor="slug" label="Unique identifier" />
-            <Input id="slug" {...register("slug")} />
-            {errors.slug && (
-              <span className="absolute -bottom-4 text-secondary text-xs">
-                {errors.slug.message}
-              </span>
-            )}
+            <Controller
+              name="slug"
+              control={control}
+              render={({ field }) => (
+                <>
+                  <RequiredInputLabel
+                    htmlFor="slug"
+                    label="Unique identifier"
+                  />
+                  <Input id="slug" {...field} />
+                  {errors.slug && (
+                    <span className="absolute -bottom-4 text-secondary text-xs">
+                      {errors.slug.message}
+                    </span>
+                  )}
+                </>
+              )}
+            />
           </div>
           <div className="flex flex-col gap-2 w-full lg:w-1/3">
             <Controller
@@ -280,34 +306,53 @@ function ProjectForm({
 
         <div className="w-full flex flex-col xl:flex-row gap-6">
           <div className="relative flex flex-col gap-2 w-full xl:w-1/2">
-            <RequiredInputLabel
-              htmlFor="shortDescription"
-              label="Short description"
+            <Controller
+              name="shortDescription"
+              control={control}
+              render={({ field }) => (
+                <>
+                  <RequiredInputLabel
+                    htmlFor="shortDescription"
+                    label="Short description"
+                  />
+                  <Textarea
+                    maxLength={200}
+                    id="shortDescription"
+                    {...field}
+                    className="bg-transparent min-h-36"
+                  />
+                  {errors.shortDescription && (
+                    <span className="absolute -bottom-4 text-secondary text-xs">
+                      {errors.shortDescription.message}
+                    </span>
+                  )}
+                </>
+              )}
             />
-            <Textarea
-              maxLength={200}
-              id="shortDescription"
-              {...register("shortDescription")}
-              className="bg-transparent min-h-36"
-            />
-            {errors.shortDescription && (
-              <span className="absolute -bottom-4 text-secondary text-xs">
-                {errors.shortDescription.message}
-              </span>
-            )}
           </div>
           <div className="relative flex flex-col gap-2 w-full xl:w-1/2">
-            <RequiredInputLabel htmlFor="description" label="Description" />
-            <Textarea
-              id="description"
-              {...register("description")}
-              className="bg-transparent min-h-36"
+            <Controller
+              name="description"
+              control={control}
+              render={({ field }) => (
+                <>
+                  <RequiredInputLabel
+                    htmlFor="description"
+                    label="Description"
+                  />
+                  <Textarea
+                    id="description"
+                    {...field}
+                    className="bg-transparent min-h-36"
+                  />
+                  {errors.description && (
+                    <span className="absolute -bottom-4 text-secondary text-xs">
+                      {errors.description.message}
+                    </span>
+                  )}
+                </>
+              )}
             />
-            {errors.description && (
-              <span className="absolute -bottom-4 text-secondary text-xs">
-                {errors.description.message}
-              </span>
-            )}
           </div>
         </div>
       </section>
@@ -321,38 +366,71 @@ function ProjectForm({
               className="flex flex-col lg:flex-row gap-4 lg:gap-2 items-end w-full"
             >
               <div className="relative w-full flex flex-col gap-2">
-                <RequiredInputLabel htmlFor="image-url" label="Url" />
-                <Input
-                  id="image-url"
-                  placeholder={DEFAULT_IMAGE_URL}
-                  {...register(`gallery.${index}.imageUrl`)}
+                <Controller
+                  name={`gallery.${index}.imageUrl`}
+                  control={control}
+                  render={({ field }) => (
+                    <>
+                      <RequiredInputLabel
+                        htmlFor={`image-url-${index}`}
+                        label="Url"
+                      />
+                      <Input
+                        id={`image-url-${index}`}
+                        placeholder={DEFAULT_IMAGE_URL}
+                        {...field}
+                      />
+                      {errors.gallery?.[index]?.imageUrl && (
+                        <span className="absolute -bottom-4 text-secondary text-xs">
+                          {errors.gallery?.[index]?.imageUrl.message}
+                        </span>
+                      )}
+                    </>
+                  )}
                 />
-                {errors.gallery?.[index]?.imageUrl && (
-                  <span className="absolute -bottom-4 text-secondary text-xs">
-                    {errors.gallery?.[index]?.imageUrl.message}
-                  </span>
-                )}
               </div>
               <div className="relative w-full flex flex-col gap-2">
-                <RequiredInputLabel htmlFor="image-alt" label="Alt" />
-                <Input id="image-alt" {...register(`gallery.${index}.alt`)} />
-                {errors.gallery?.[index]?.alt && (
-                  <span className="absolute -bottom-4 text-secondary text-xs">
-                    {errors.gallery?.[index]?.alt.message}
-                  </span>
-                )}
+                <Controller
+                  name={`gallery.${index}.alt`}
+                  control={control}
+                  render={({ field }) => (
+                    <>
+                      <RequiredInputLabel
+                        htmlFor={`image-alt-${index}`}
+                        label="Alt"
+                      />
+                      <Input id={`image-alt-${index}`} {...field} />
+                      {errors.gallery?.[index]?.alt && (
+                        <span className="absolute -bottom-4 text-secondary text-xs">
+                          {errors.gallery?.[index]?.alt.message}
+                        </span>
+                      )}
+                    </>
+                  )}
+                />
               </div>
               <div className="relative w-full flex flex-col gap-2">
-                <Label htmlFor="image-description">Description</Label>
-                <Input
-                  id="image-description"
-                  {...register(`gallery.${index}.description`)}
+                <Controller
+                  name={`gallery.${index}.description`}
+                  control={control}
+                  render={({ field }) => (
+                    <>
+                      <Label htmlFor={`image-description-${index}`}>
+                        Description
+                      </Label>
+                      <Input
+                        id={`image-description-${index}`}
+                        {...field}
+                        value={field.value ?? ""}
+                      />
+                      {errors.gallery?.[index]?.description && (
+                        <span className="absolute -bottom-4 text-secondary text-xs">
+                          {errors.gallery?.[index]?.description.message}
+                        </span>
+                      )}
+                    </>
+                  )}
                 />
-                {errors.gallery?.[index]?.description && (
-                  <span className="absolute -bottom-4 text-secondary text-xs">
-                    {errors.gallery?.[index]?.description.message}
-                  </span>
-                )}
               </div>
               <ButtonMinimal
                 className="w-full lg:w-auto"
@@ -435,6 +513,7 @@ function ProjectForm({
                 // defaultValue={field.value?.map((item) => item.value)}
                 placeholder=">"
                 maxCount={10}
+                value={field.value?.map((item) => item.value)}
               />
             )}
           />
@@ -455,41 +534,81 @@ function ProjectForm({
               className="flex flex-col lg:flex-row gap-4 lg:gap-2 items-end w-full"
             >
               <div className="relative w-full flex flex-col gap-2">
-                <RequiredInputLabel htmlFor="role-label" label="Name" />
-                <Input id="role-label" {...register(`roles.${index}.label`)} />
-                {errors.roles?.[index]?.label && (
-                  <span className="absolute -bottom-4 text-secondary text-xs">
-                    {errors.roles?.[index]?.label.message}
-                  </span>
-                )}
+                <Controller
+                  name={`roles.${index}.label`}
+                  control={control}
+                  render={({ field }) => (
+                    <>
+                      <RequiredInputLabel
+                        htmlFor={`role-label-${index}`}
+                        label="Name"
+                      />
+                      <Input id={`role-label-${index}`} {...field} />
+                      {errors.roles?.[index]?.label && (
+                        <span className="absolute -bottom-4 text-secondary text-xs">
+                          {errors.roles?.[index]?.label.message}
+                        </span>
+                      )}
+                    </>
+                  )}
+                />
               </div>
               <div className="relative w-full flex flex-col gap-2">
-                <RequiredInputLabel htmlFor="role-value" label="Value" />
-                <Input id="role-value" {...register(`roles.${index}.value`)} />
-                {errors.roles?.[index]?.value && (
-                  <span className="absolute -bottom-4 text-secondary text-xs">
-                    {errors.roles?.[index]?.value.message}
-                  </span>
-                )}
+                <Controller
+                  name={`roles.${index}.value`}
+                  control={control}
+                  render={({ field }) => (
+                    <>
+                      <RequiredInputLabel
+                        htmlFor={`role-value-${index}`}
+                        label="Value"
+                      />
+                      <Input id={`role-value-${index}`} {...field} />
+                      {errors.roles?.[index]?.value && (
+                        <span className="absolute -bottom-4 text-secondary text-xs">
+                          {errors.roles?.[index]?.value.message}
+                        </span>
+                      )}
+                    </>
+                  )}
+                />
               </div>
               <div className="relative w-full flex flex-col gap-2 max-w-18">
-                <Label htmlFor="role-percentage">%</Label>
-                <Input
-                  id="role-percentage"
-                  type="number"
-                  min={1}
-                  max={100}
-                  {...register(`roles.${index}.percentage`, {
-                    min: 1,
-                    max: 100,
-                    valueAsNumber: true,
-                  })}
+                <Controller
+                  name={`roles.${index}.percentage`}
+                  control={control}
+                  rules={{ min: 1, max: 100 }}
+                  render={({ field }) => (
+                    <>
+                      <Label htmlFor={`role-percentage-${index}`}>%</Label>
+                      <Input
+                        id={`role-percentage-${index}`}
+                        type="number"
+                        min={1}
+                        max={100}
+                        {...field}
+                        value={field.value ?? 0}
+                        onKeyDown={(e) => {
+                          if (["e", "E", "+", "-", "."].includes(e.key)) {
+                            e.preventDefault();
+                          }
+                        }}
+                        onChange={(e) => {
+                          let value = parseInt(e.target.value);
+                          if (isNaN(value)) value = 0;
+                          if (value > 100) value = 100;
+                          field.onChange(value);
+                        }}
+                        onClick={(e) => (e.target as HTMLInputElement).select()}
+                      />
+                      {errors.roles?.[index]?.percentage && (
+                        <span className="absolute -bottom-4 text-secondary text-xs">
+                          {errors.roles?.[index]?.percentage.message}
+                        </span>
+                      )}
+                    </>
+                  )}
                 />
-                {errors.roles?.[index]?.percentage && (
-                  <span className="absolute -bottom-4 text-secondary text-xs">
-                    {errors.roles?.[index]?.percentage.message}
-                  </span>
-                )}
               </div>
               <ButtonMinimal
                 className="w-full lg:w-auto"
@@ -541,70 +660,102 @@ function ProjectForm({
         <h2 className="text-xl font-bold">Entities</h2>
         <div className="w-full flex flex-col lg:flex-row gap-6">
           <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
-            <Label htmlFor="company">Company name</Label>
-            <Input id="company" {...register("company")} />
-            {errors.company && (
-              <span className="absolute -bottom-4 text-secondary text-xs">
-                {errors.company.message}
-              </span>
-            )}
+            <Controller
+              name="company"
+              control={control}
+              render={({ field }) => (
+                <>
+                  <Label htmlFor="company">Company name</Label>
+                  <Input id="company" {...field} value={field.value ?? ""} />
+                  {errors.company && (
+                    <span className="absolute -bottom-4 text-secondary text-xs">
+                      {errors.company.message}
+                    </span>
+                  )}
+                </>
+              )}
+            />
           </div>
           <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
-            <Label htmlFor="companyUrl">
-              Company Url
-              {watch("companyUrl")?.includes("https://") && (
-                <span>
-                  {" > "}
-                  <Link
-                    href={getValues("companyUrl") || ""}
-                    target="_blank"
-                    className="text-primary hover:underline"
-                  >
-                    Open Website
-                  </Link>
-                </span>
+            <Controller
+              name="companyUrl"
+              control={control}
+              render={({ field }) => (
+                <>
+                  <Label htmlFor="companyUrl">
+                    Company Url
+                    {watch("companyUrl")?.includes("https://") && (
+                      <span>
+                        {" > "}
+                        <Link
+                          href={getValues("companyUrl") || ""}
+                          target="_blank"
+                          className="text-primary hover:underline"
+                        >
+                          Open Website
+                        </Link>
+                      </span>
+                    )}
+                  </Label>
+                  <Input id="companyUrl" {...field} value={field.value ?? ""} />
+                  {errors.companyUrl && (
+                    <span className="absolute -bottom-4 text-secondary text-xs">
+                      {errors.companyUrl.message}
+                    </span>
+                  )}
+                </>
               )}
-            </Label>
-            <Input id="companyUrl" {...register("companyUrl")} />
-            {errors.companyUrl && (
-              <span className="absolute -bottom-4 text-secondary text-xs">
-                {errors.companyUrl.message}
-              </span>
-            )}
+            />
           </div>
         </div>
         <div className="w-full flex flex-col lg:flex-row gap-6">
           <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
-            <Label htmlFor="client">Client name</Label>
-            <Input id="client" {...register("client")} />
-            {errors.client && (
-              <span className="absolute -bottom-4 text-secondary text-xs">
-                {errors.client.message}
-              </span>
-            )}
+            <Controller
+              name="client"
+              control={control}
+              render={({ field }) => (
+                <>
+                  <Label htmlFor="client">Client name</Label>
+                  <Input id="client" {...field} value={field.value ?? ""} />
+                  {errors.client && (
+                    <span className="absolute -bottom-4 text-secondary text-xs">
+                      {errors.client.message}
+                    </span>
+                  )}
+                </>
+              )}
+            />
           </div>
           <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
-            <Label htmlFor="clientUrl">
-              Client Url
-              {watch("clientUrl")?.includes("https://") && (
-                <span>
-                  {" > "}
-                  <Link
-                    href={getValues("clientUrl") || ""}
-                    target="_blank"
-                    className="text-primary hover:underline"
-                  >
-                    Open Website
-                  </Link>
-                </span>
+            <Controller
+              name="clientUrl"
+              control={control}
+              render={({ field }) => (
+                <>
+                  <Label htmlFor="clientUrl">
+                    Client Url
+                    {watch("clientUrl")?.includes("https://") && (
+                      <span>
+                        {" > "}
+                        <Link
+                          href={getValues("clientUrl") || ""}
+                          target="_blank"
+                          className="text-primary hover:underline"
+                        >
+                          Open Website
+                        </Link>
+                      </span>
+                    )}
+                  </Label>
+                  <Input id="clientUrl" {...field} value={field.value ?? ""} />
+                  {errors.clientUrl && (
+                    <span className="absolute -bottom-4 text-secondary text-xs">
+                      {errors.clientUrl.message}
+                    </span>
+                  )}
+                </>
               )}
-            </Label>
-            <Input id="clientUrl" {...register("clientUrl")} />
-            {errors.clientUrl && (
-              <span className="absolute -bottom-4 text-secondary text-xs">
-                {errors.clientUrl.message}
-              </span>
-            )}
+            />
           </div>
         </div>
       </section>
@@ -612,93 +763,137 @@ function ProjectForm({
       <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
         <h2 className="text-xl font-bold">Extra content</h2>
         <div className="relative flex flex-col gap-2">
-          <Label htmlFor="repository">
-            Github Repository Url
-            {watch("repository")?.includes("https://github.com/") && (
-              <span>
-                {" > "}
-                <Link
-                  href={getValues("repository") || ""}
-                  target="_blank"
-                  className="text-primary hover:underline"
-                >
-                  Explore project
-                </Link>
-              </span>
+          <Controller
+            name="repository"
+            control={control}
+            render={({ field }) => (
+              <>
+                <Label htmlFor="repository">
+                  Github Repository Url
+                  {watch("repository")?.includes("https://github.com/") && (
+                    <span>
+                      {" > "}
+                      <Link
+                        href={getValues("repository") || ""}
+                        target="_blank"
+                        className="text-primary hover:underline"
+                      >
+                        Explore project
+                      </Link>
+                    </span>
+                  )}
+                </Label>
+                <Input id="repository" {...field} value={field.value ?? ""} />
+                {errors.repository && (
+                  <span className="absolute -bottom-4 text-secondary text-xs">
+                    {errors.repository.message}
+                  </span>
+                )}
+              </>
             )}
-          </Label>
-          <Input id="repository" {...register("repository")} />
-          {errors.repository && (
-            <span className="absolute -bottom-4 text-secondary text-xs">
-              {errors.repository.message}
-            </span>
-          )}
+          />
         </div>
         <div className="relative flex flex-col gap-2">
-          <Label htmlFor="websiteUrl">
-            Website Url
-            {watch("websiteUrl")?.includes("https://") && (
-              <span>
-                {" > "}
-                <Link
-                  href={getValues("websiteUrl") || ""}
-                  target="_blank"
-                  className="text-primary hover:underline"
-                >
-                  Open Website
-                </Link>
-              </span>
+          <Controller
+            name="websiteUrl"
+            control={control}
+            render={({ field }) => (
+              <>
+                <Label htmlFor="websiteUrl">
+                  Website Url
+                  {watch("websiteUrl")?.includes("https://") && (
+                    <span>
+                      {" > "}
+                      <Link
+                        href={getValues("websiteUrl") || ""}
+                        target="_blank"
+                        className="text-primary hover:underline"
+                      >
+                        Open Website
+                      </Link>
+                    </span>
+                  )}
+                </Label>
+                <Input id="websiteUrl" {...field} value={field.value ?? ""} />
+                {errors.websiteUrl && (
+                  <span className="absolute -bottom-4 text-secondary text-xs">
+                    {errors.websiteUrl.message}
+                  </span>
+                )}
+              </>
             )}
-          </Label>
-          <Input id="websiteUrl" {...register("websiteUrl")} />
-          {errors.websiteUrl && (
-            <span className="absolute -bottom-4 text-secondary text-xs">
-              {errors.websiteUrl.message}
-            </span>
-          )}
+          />
         </div>
         <div className="w-full flex flex-col lg:flex-row gap-6">
           <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
-            <Label htmlFor="videoTitle">Video Title</Label>
-            <Input id="videoTitle" {...register("videoTitle")} />
-            {errors.videoTitle && (
-              <span className="absolute -bottom-4 text-secondary text-xs">
-                {errors.videoTitle.message}
-              </span>
-            )}
+            <Controller
+              name="videoTitle"
+              control={control}
+              render={({ field }) => (
+                <>
+                  <Label htmlFor="videoTitle">Video Title</Label>
+                  <Input id="videoTitle" {...field} value={field.value ?? ""} />
+                  {errors.videoTitle && (
+                    <span className="absolute -bottom-4 text-secondary text-xs">
+                      {errors.videoTitle.message}
+                    </span>
+                  )}
+                </>
+              )}
+            />
           </div>
           <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
-            <Label htmlFor="videoDescription">Video Description</Label>
-            <Input id="videoDescription" {...register("videoDescription")} />
-            {errors.videoDescription && (
-              <span className="absolute -bottom-4 text-secondary text-xs">
-                {errors.videoDescription.message}
-              </span>
-            )}
+            <Controller
+              name="videoDescription"
+              control={control}
+              render={({ field }) => (
+                <>
+                  <Label htmlFor="videoDescription">Video Description</Label>
+                  <Input
+                    id="videoDescription"
+                    {...field}
+                    value={field.value ?? ""}
+                  />
+                  {errors.videoDescription && (
+                    <span className="absolute -bottom-4 text-secondary text-xs">
+                      {errors.videoDescription.message}
+                    </span>
+                  )}
+                </>
+              )}
+            />
           </div>
         </div>
         <div className="relative flex flex-col gap-2">
-          <Label htmlFor="videoUrl">
-            Youtube Video Url
-            {watch("videoUrl")?.includes("https://www.youtube.com/") && (
-              <span>
-                {" > "}
-                <Link
-                  href={getValues("videoUrl") || ""}
-                  target="_blank"
-                  className="text-primary hover:underline"
-                >
-                  Watch video
-                </Link>
-              </span>
+          <Controller
+            name="videoUrl"
+            control={control}
+            render={({ field }) => (
+              <>
+                <Label htmlFor="videoUrl">
+                  Youtube Video Url
+                  {watch("videoUrl")?.includes("https://www.youtube.com/") && (
+                    <span>
+                      {" > "}
+                      <Link
+                        href={getValues("videoUrl") || ""}
+                        target="_blank"
+                        className="text-primary hover:underline"
+                      >
+                        Watch video
+                      </Link>
+                    </span>
+                  )}
+                </Label>
+                <Input id="videoUrl" {...field} value={field.value ?? ""} />
+                {errors.videoUrl && (
+                  <span className="absolute -bottom-4 text-secondary text-xs">
+                    {errors.videoUrl.message}
+                  </span>
+                )}
+              </>
             )}
-          </Label>
-          <Input id="videoUrl" {...register("videoUrl")} />
-          {errors.videoUrl && (
-            <span className="absolute -bottom-4 text-secondary text-xs">
-              {errors.videoUrl.message}
-            </span>
-          )}
+          />
         </div>
       </section>
 
