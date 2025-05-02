@@ -1,14 +1,11 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { format } from "date-fns";
-import { Calendar as CalendarIcon, PlusIcon, XCircle } from "lucide-react";
-import Link from "next/link";
+import { PlusIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useTransition } from "react";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 
-import { Calendar } from "@/components/ui/calendar";
 import { useProjectContext } from "@/hooks/use-project-context";
 import {
   DEFAULT_IMAGE_URL,
@@ -16,21 +13,20 @@ import {
   TECH_STACK_DATA,
 } from "@/lib/constants";
 import { Action } from "@/lib/types";
-import { cn } from "@/lib/utils";
 import { projectFormSchema, TProjectForm } from "@/lib/validations";
 
-import { MultiSelect } from "./multi-select";
-import ButtonForm from "./primitives/button-form";
-import ButtonMinimal from "./primitives/button-minimal";
-import ImageWithFallback from "./primitives/image-with-fallback";
-import RequiredInputLabel from "./primitives/required-input-label";
-import { Badge } from "./ui/badge";
-import { Button } from "./ui/button";
-import { Checkbox } from "./ui/checkbox";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
-import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
-import { Textarea } from "./ui/textarea";
+import { MultiSelect } from "../multi-select";
+import ButtonForm from "../primitives/button-form";
+import ButtonMinimal from "../primitives/button-minimal";
+import RequiredInputLabel from "../primitives/required-input-label";
+import { Checkbox } from "../ui/checkbox";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
+import { Textarea } from "../ui/textarea";
+import { LabelLink } from "./label-link";
+import { DatePicker } from "../ui/date-picker";
+import { ProjectFormImagesViewer } from "./project-form-images-viewer";
+import { ProjectFormRolesViewer } from "./project-form-roles-viewer";
 
 type ProjectFormProps = {
   actionType: Action;
@@ -60,38 +56,17 @@ function ProjectForm({
     register,
     trigger,
     getValues,
-    setValue,
     watch,
     control,
     formState: { errors },
   } = useForm<TProjectForm>({
     resolver: zodResolver(projectFormSchema),
     defaultValues: {
-      image: "",
-      title: "",
-      shortDescription: "",
-      description: "",
-      slug: "",
       gallery: [
         {
           imageUrl: "",
           alt: "",
           description: null,
-        },
-      ],
-      date: new Date(),
-      repository: null,
-      websiteUrl: null,
-      videoUrl: null,
-      videoTitle: null,
-      videoDescription: null,
-      company: null,
-      companyUrl: null,
-      client: null,
-      clientUrl: null,
-      techStack: [
-        {
-          value: "",
         },
       ],
       roles: [
@@ -101,7 +76,6 @@ function ProjectForm({
           percentage: 50,
         },
       ],
-      published: true,
     },
   });
 
@@ -134,10 +108,17 @@ function ProjectForm({
     return () => subscription.unsubscribe();
   }, [watch]);
 
+  const hasImage =
+    watch("image")?.includes(DEFAULT_IMAGE_URL) &&
+    watch("image")?.length > DEFAULT_IMAGE_URL.length;
+
+  const hasGallery =
+    watch("gallery")?.length && watch("gallery")?.[0].imageUrl !== "";
+
   return (
     <form
       className="relative flex flex-wrap gap-6"
-      action={() => {
+      action={async () => {
         startTransition(async () => {
           const result = await trigger();
           if (!result) return;
@@ -175,6 +156,7 @@ function ProjectForm({
               )}
             />
           </div>
+
           <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
             <Controller
               name="image"
@@ -187,19 +169,12 @@ function ProjectForm({
                     label={
                       <>
                         Hero image url
-                        {watch("image").includes(DEFAULT_IMAGE_URL) &&
-                          watch("image").length > DEFAULT_IMAGE_URL.length && (
-                            <span>
-                              {" > "}
-                              <Link
-                                href={getValues("image") || ""}
-                                target="_blank"
-                                className="text-primary hover:underline"
-                              >
-                                Open image
-                              </Link>
-                            </span>
-                          )}
+                        {hasImage && (
+                          <LabelLink
+                            href={getValues("image") || ""}
+                            label="Open image"
+                          />
+                        )}
                       </>
                     }
                   />
@@ -240,42 +215,20 @@ function ProjectForm({
               )}
             />
           </div>
+
           <div className="flex flex-col gap-2 w-full lg:w-1/3">
             <Controller
               name="date"
               control={control}
+              defaultValue={new Date()}
               render={({ field }) => (
                 <>
                   <Label htmlFor="date">Release Date</Label>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button
-                        variant={"outline"}
-                        className={cn(
-                          "pl-3 text-left font-normal",
-                          !getValues("date") && "text-muted-foreground"
-                        )}
-                      >
-                        {getValues("date") ? (
-                          format(getValues("date"), "PPP")
-                        ) : (
-                          <span>Pick a date</span>
-                        )}
-                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0" align="start">
-                      <Calendar
-                        mode="single"
-                        selected={field.value}
-                        onSelect={field.onChange}
-                        disabled={(date) =>
-                          date > new Date() || date < new Date("1900-01-01")
-                        }
-                        initialFocus
-                      />
-                    </PopoverContent>
-                  </Popover>
+                  <DatePicker
+                    defaultValue={getValues("date")}
+                    selectedDate={field.value}
+                    onChange={field.onChange}
+                  />
                   {errors.date && (
                     <span className="text-secondary">
                       {errors.date.message}
@@ -285,10 +238,12 @@ function ProjectForm({
               )}
             />
           </div>
+
           <div className="flex flex-col justify-end items-start gap-2 w-full lg:w-1/3 mb-4">
             <Controller
               name="published"
               control={control}
+              defaultValue={true}
               render={({ field }) => (
                 <div className="flex flex-row-reverse gap-2 items-center">
                   <Label htmlFor="published">Publish the project</Label>
@@ -330,6 +285,7 @@ function ProjectForm({
               )}
             />
           </div>
+
           <div className="relative flex flex-col gap-2 w-full xl:w-1/2">
             <Controller
               name="description"
@@ -389,6 +345,7 @@ function ProjectForm({
                   )}
                 />
               </div>
+
               <div className="relative w-full flex flex-col gap-2">
                 <Controller
                   name={`gallery.${index}.alt`}
@@ -409,6 +366,7 @@ function ProjectForm({
                   )}
                 />
               </div>
+
               <div className="relative w-full flex flex-col gap-2">
                 <Controller
                   name={`gallery.${index}.description`}
@@ -432,6 +390,7 @@ function ProjectForm({
                   )}
                 />
               </div>
+
               <ButtonMinimal
                 className="w-full lg:w-auto"
                 title="Delete"
@@ -443,6 +402,7 @@ function ProjectForm({
         <p className="text-secondary text-xs">
           {errors.gallery?.root?.message}
         </p>
+
         <div className="w-full flex justify-center items-center">
           <ButtonMinimal
             title={<PlusIcon className="w-6 h-auto" />}
@@ -456,42 +416,22 @@ function ProjectForm({
             }
           />
         </div>
+
         <div className="flex flex-wrap gap-4">
-          {(watch("gallery")?.length &&
-            watch("gallery")[0].imageUrl !== "" &&
-            watch("gallery").map((image, index) => {
-              //TODO: Make this works for guest users and allow to upload images from other sites
-              //TODO: Add a script to modify the default drive url to the good one
-              if (
-                !image.imageUrl ||
-                !image.imageUrl.includes(DEFAULT_IMAGE_URL) ||
-                image.imageUrl.length === DEFAULT_IMAGE_URL.length
-              ) {
-                return (
-                  <div
-                    key={index}
-                    className="aspect-video max-sm:w-full sm:min-w-42 border border-darkPrimary flex items-center justify-center"
-                  />
-                );
-              }
-              return (
-                <div
-                  key={`${image.imageUrl}-${index}`}
-                  className="aspect-video w-full sm:w-42"
-                >
-                  <ImageWithFallback
-                    src={image.imageUrl}
-                    alt={image.alt}
-                    className="w-full h-full object-cover"
-                    width={0}
-                    height={0}
-                    sizes={"100%"}
-                    quality={40}
-                    fallbackSrc="/images/error-placeholder.svg"
-                  />
-                </div>
-              );
-            })) || <></>}
+          {/* //TODO: Make this works for guest users and allow to upload images from other sites 
+          //TODO: Add a script to modify the default drive url to the good one */}
+          {hasGallery ? (
+            watch("gallery")?.map((image, index) => (
+              <ProjectFormImagesViewer
+                key={`${image.imageUrl}-${index}`}
+                imageUrl={image.imageUrl}
+                imageAlt={image.alt}
+                index={index}
+              />
+            ))
+          ) : (
+            <></>
+          )}
         </div>
       </section>
 
@@ -510,7 +450,6 @@ function ProjectForm({
                     values?.map((value) => ({ value })) || [];
                   field.onChange(techStackValues);
                 }}
-                // defaultValue={field.value?.map((item) => item.value)}
                 placeholder=">"
                 maxCount={10}
                 value={field.value?.map((item) => item.value)}
@@ -553,6 +492,7 @@ function ProjectForm({
                   )}
                 />
               </div>
+
               <div className="relative w-full flex flex-col gap-2">
                 <Controller
                   name={`roles.${index}.value`}
@@ -573,6 +513,7 @@ function ProjectForm({
                   )}
                 />
               </div>
+
               <div className="relative w-full flex flex-col gap-2 max-w-18">
                 <Controller
                   name={`roles.${index}.percentage`}
@@ -619,6 +560,7 @@ function ProjectForm({
           ))}
         </ul>
         <p className="text-secondary text-xs">{errors.roles?.root?.message}</p>
+
         <div className="w-full flex justify-center items-center">
           <ButtonMinimal
             title={<PlusIcon className="w-6 h-auto" />}
@@ -632,27 +574,16 @@ function ProjectForm({
             }
           />
         </div>
+
         <div className="flex flex-wrap gap-4">
-          {watch("roles")?.map((role, index) => {
-            if (!role.value) return null;
-            return (
-              <div
-                key={`${role.value}-${index}`}
-                className="aspect-video w-full sm:w-42"
-              >
-                <Badge
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    rolesRemove(index);
-                  }}
-                  className="p-3 text-sm bg-darkPrimary cursor-pointer"
-                >
-                  {role.label}
-                  <XCircle className="ml-2 size-6 cursor-pointer" />
-                </Badge>
-              </div>
-            );
-          })}
+          {watch("roles")?.map((role, index) => (
+            <ProjectFormRolesViewer
+              key={`${role.value}-${index}`}
+              role={role.value}
+              label={role.label}
+              remove={() => rolesRemove(index)}
+            />
+          ))}
         </div>
       </section>
 
@@ -676,6 +607,7 @@ function ProjectForm({
               )}
             />
           </div>
+
           <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
             <Controller
               name="companyUrl"
@@ -685,16 +617,10 @@ function ProjectForm({
                   <Label htmlFor="companyUrl">
                     Company Url
                     {watch("companyUrl")?.includes("https://") && (
-                      <span>
-                        {" > "}
-                        <Link
-                          href={getValues("companyUrl") || ""}
-                          target="_blank"
-                          className="text-primary hover:underline"
-                        >
-                          Open Website
-                        </Link>
-                      </span>
+                      <LabelLink
+                        href={getValues("companyUrl") || ""}
+                        label="Open Website"
+                      />
                     )}
                   </Label>
                   <Input id="companyUrl" {...field} value={field.value ?? ""} />
@@ -708,6 +634,7 @@ function ProjectForm({
             />
           </div>
         </div>
+
         <div className="w-full flex flex-col lg:flex-row gap-6">
           <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
             <Controller
@@ -726,6 +653,7 @@ function ProjectForm({
               )}
             />
           </div>
+
           <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
             <Controller
               name="clientUrl"
@@ -735,16 +663,10 @@ function ProjectForm({
                   <Label htmlFor="clientUrl">
                     Client Url
                     {watch("clientUrl")?.includes("https://") && (
-                      <span>
-                        {" > "}
-                        <Link
-                          href={getValues("clientUrl") || ""}
-                          target="_blank"
-                          className="text-primary hover:underline"
-                        >
-                          Open Website
-                        </Link>
-                      </span>
+                      <LabelLink
+                        href={getValues("clientUrl") || ""}
+                        label="Open Website"
+                      />
                     )}
                   </Label>
                   <Input id="clientUrl" {...field} value={field.value ?? ""} />
@@ -771,16 +693,10 @@ function ProjectForm({
                 <Label htmlFor="repository">
                   Github Repository Url
                   {watch("repository")?.includes("https://github.com/") && (
-                    <span>
-                      {" > "}
-                      <Link
-                        href={getValues("repository") || ""}
-                        target="_blank"
-                        className="text-primary hover:underline"
-                      >
-                        Explore project
-                      </Link>
-                    </span>
+                    <LabelLink
+                      href={getValues("repository") || ""}
+                      label="Explore project"
+                    />
                   )}
                 </Label>
                 <Input id="repository" {...field} value={field.value ?? ""} />
@@ -793,6 +709,7 @@ function ProjectForm({
             )}
           />
         </div>
+
         <div className="relative flex flex-col gap-2">
           <Controller
             name="websiteUrl"
@@ -802,16 +719,10 @@ function ProjectForm({
                 <Label htmlFor="websiteUrl">
                   Website Url
                   {watch("websiteUrl")?.includes("https://") && (
-                    <span>
-                      {" > "}
-                      <Link
-                        href={getValues("websiteUrl") || ""}
-                        target="_blank"
-                        className="text-primary hover:underline"
-                      >
-                        Open Website
-                      </Link>
-                    </span>
+                    <LabelLink
+                      href={getValues("websiteUrl") || ""}
+                      label="Open Website"
+                    />
                   )}
                 </Label>
                 <Input id="websiteUrl" {...field} value={field.value ?? ""} />
@@ -824,6 +735,7 @@ function ProjectForm({
             )}
           />
         </div>
+
         <div className="w-full flex flex-col lg:flex-row gap-6">
           <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
             <Controller
@@ -842,6 +754,7 @@ function ProjectForm({
               )}
             />
           </div>
+
           <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
             <Controller
               name="videoDescription"
@@ -864,6 +777,7 @@ function ProjectForm({
             />
           </div>
         </div>
+
         <div className="relative flex flex-col gap-2">
           <Controller
             name="videoUrl"
@@ -873,16 +787,10 @@ function ProjectForm({
                 <Label htmlFor="videoUrl">
                   Youtube Video Url
                   {watch("videoUrl")?.includes("https://www.youtube.com/") && (
-                    <span>
-                      {" > "}
-                      <Link
-                        href={getValues("videoUrl") || ""}
-                        target="_blank"
-                        className="text-primary hover:underline"
-                      >
-                        Watch video
-                      </Link>
-                    </span>
+                    <LabelLink
+                      href={getValues("videoUrl") || ""}
+                      label="Watch video"
+                    />
                   )}
                 </Label>
                 <Input id="videoUrl" {...field} value={field.value ?? ""} />

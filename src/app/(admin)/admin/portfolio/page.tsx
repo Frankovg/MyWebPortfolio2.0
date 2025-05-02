@@ -2,7 +2,7 @@ import { Suspense } from "react";
 
 import AdminPageTitle from "@/components/admin/admin-page-title";
 import MainHeader from "@/components/admin/main-header";
-import AdminSection from "@/components/admin-section";
+import AdminSection from "@/components/admin/admin-section";
 import { checkAuth } from "@/lib/check-auth";
 
 import PortfolioExplorer from "./components/portfolio-explorer";
