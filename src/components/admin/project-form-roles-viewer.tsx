@@ -12,7 +12,7 @@ export const ProjectFormRolesViewer = ({
 }) => {
   if (!role) return null;
   return (
-    <div className="aspect-video w-full sm:w-42">
+    <div className="aspect-video w-fit">
       <Badge
         onClick={(event) => {
           event.stopPropagation();

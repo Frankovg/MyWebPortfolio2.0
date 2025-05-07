@@ -3,14 +3,15 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PlusIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect, useTransition } from "react";
+import { useTransition } from "react";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 
 import { useProjectContext } from "@/hooks/use-project-context";
 import {
   DEFAULT_IMAGE_URL,
+  DEFAULT_PROJECT_FORM,
+  DEFAULT_TECH_STACK,
   FALLBACK_IMG,
-  TECH_STACK_DATA,
 } from "@/lib/constants";
 import { Action } from "@/lib/types";
 import { projectFormSchema, TProjectForm } from "@/lib/validations";
@@ -27,20 +28,13 @@ import { LabelLink } from "./label-link";
 import { DatePicker } from "../ui/date-picker";
 import { ProjectFormImagesViewer } from "./project-form-images-viewer";
 import { ProjectFormRolesViewer } from "./project-form-roles-viewer";
+import { toast } from "sonner";
 
 type ProjectFormProps = {
   actionType: Action;
   categoryId: string;
   onFormSubmission: VoidFunction;
 };
-
-const getDefaultTechStack = () => {
-  return TECH_STACK_DATA.map((tech) => ({
-    label: tech.name,
-    value: tech.value,
-  }));
-};
-const DEFAULT_TECH_STACK = getDefaultTechStack();
 
 function ProjectForm({
   actionType,
@@ -61,26 +55,9 @@ function ProjectForm({
     formState: { errors },
   } = useForm<TProjectForm>({
     resolver: zodResolver(projectFormSchema),
-    defaultValues: {
-      gallery: [
-        {
-          imageUrl: "",
-          alt: "",
-          description: null,
-        },
-      ],
-      roles: [
-        {
-          label: "",
-          value: "",
-          percentage: 50,
-        },
-      ],
-    },
+    defaultValues: DEFAULT_PROJECT_FORM,
   });
 
-  // TODO: More info at https://react-hook-form.com/docs/usefieldarray
-  // TODO: Watch example at https://codesandbox.io/p/sandbox/usefieldarray-llp6lw?file=%2Fsrc%2FApp.tsx
   const {
     fields: galleryFields,
     append: galleryAppend,
@@ -101,13 +78,6 @@ function ProjectForm({
     control,
   });
 
-  useEffect(() => {
-    const subscription = watch((value, { name, type }) =>
-      console.log(value, name, type)
-    );
-    return () => subscription.unsubscribe();
-  }, [watch]);
-
   const hasImage =
     watch("image")?.includes(DEFAULT_IMAGE_URL) &&
     watch("image")?.length > DEFAULT_IMAGE_URL.length;
@@ -121,7 +91,13 @@ function ProjectForm({
       action={async () => {
         startTransition(async () => {
           const result = await trigger();
-          if (!result) return;
+          if (!result) {
+            const errorMessage =
+              "Form validation failed. Please check the highlighted fields and try again.";
+            toast.error(errorMessage);
+            console.warn(errorMessage);
+            return;
+          }
 
           onFormSubmission();
 
@@ -136,6 +112,7 @@ function ProjectForm({
         });
       }}
     >
+      {/* Project details */}
       <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
         <h2 className="text-xl font-bold">Project details</h2>
         <div className="w-full flex flex-col lg:flex-row gap-6">
@@ -313,6 +290,7 @@ function ProjectForm({
         </div>
       </section>
 
+      {/* Images */}
       <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
         <h2 className="text-xl font-bold">Images</h2>
         <ul className="w-full space-y-12 lg:space-y-6">
@@ -435,6 +413,7 @@ function ProjectForm({
         </div>
       </section>
 
+      {/* Tech stack */}
       <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
         <h2 className="text-xl font-bold">Tech stack</h2>
         <div className="relative flex flex-col gap-2">
@@ -464,6 +443,7 @@ function ProjectForm({
         </div>
       </section>
 
+      {/* Roles */}
       <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
         <h2 className="text-xl font-bold">Roles</h2>
         <ul className="w-full space-y-12 lg:space-y-6">
@@ -587,6 +567,7 @@ function ProjectForm({
         </div>
       </section>
 
+      {/* Entities */}
       <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
         <h2 className="text-xl font-bold">Entities</h2>
         <div className="w-full flex flex-col lg:flex-row gap-6">
@@ -682,6 +663,7 @@ function ProjectForm({
         </div>
       </section>
 
+      {/* Extra content */}
       <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
         <h2 className="text-xl font-bold">Extra content</h2>
         <div className="relative flex flex-col gap-2">
