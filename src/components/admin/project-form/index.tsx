@@ -1,91 +1,39 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
-import { useTransition } from "react";
-import { useFieldArray, useForm } from "react-hook-form";
-import { toast } from "sonner";
+import ButtonForm from "@/components/primitives/button-form";
+import ButtonMinimal from "@/components/primitives/button-minimal";
+import { useProjectFormContext } from "@/hooks/use-project-form";
+import { ProjectDetailsSection } from "./sections/project-details-section";
+import { ImagesSection } from "./sections/images-section";
+import { TechStackSection } from "./sections/tech-stack-section";
+import { RolesSection } from "./sections/roles-section";
+import { EntitiesSection } from "./sections/entities-section";
+import { ExtraContentSection } from "./sections/extra-content-section";
 
-import { useProjectContext } from "@/hooks/use-project-context";
-import { DEFAULT_PROJECT_FORM, FALLBACK_IMG } from "@/lib/constants";
-import { Action } from "@/lib/types";
-import { projectFormSchema, TProjectForm } from "@/lib/validations";
-
-import { ProjectFormProvider } from "../../../context/project-form-provider";
-import { ProjectFormContainer } from "./project-form-container";
-
-type ProjectFormProps = {
-  actionType: Action;
-  categoryId: string;
-  onFormSubmission: VoidFunction;
-};
-
-function ProjectForm({
-  actionType,
-  categoryId,
-  onFormSubmission,
-}: ProjectFormProps) {
-  const router = useRouter();
-  const [isPending, startTransition] = useTransition();
-  const { createProjectByCategoryId } = useProjectContext();
-
-  const {
-    register,
-    trigger,
-    getValues,
-    watch,
-    control,
-    formState: { errors },
-  } = useForm<TProjectForm>({
-    resolver: zodResolver(projectFormSchema),
-    defaultValues: DEFAULT_PROJECT_FORM,
-  });
-
-  const handleFormSubmit = async () => {
-    startTransition(async () => {
-      const result = await trigger();
-      if (!result) {
-        const errorMessage =
-          "Form validation failed. Please check the highlighted fields and try again.";
-        toast.error(errorMessage);
-        console.warn(errorMessage);
-        return;
-      }
-
-      onFormSubmission();
-
-      const project = getValues();
-      project.image = project.image || FALLBACK_IMG;
-
-      if (actionType === "add") {
-        await createProjectByCategoryId(project, categoryId);
-      } else if (actionType === "edit") {
-        //TODO: Add edit project by categoryId
-      }
-    });
-  };
-
-  const formContextValue = {
-    register,
-    control,
-    errors,
-    watch,
-    getValues,
-    trigger,
-    actionType,
-    categoryId,
-    isPending,
-  };
+export function ProjectForm() {
+  const { actionType, onSubmit, isPending, goBack } = useProjectFormContext();
 
   return (
-    <ProjectFormProvider value={formContextValue}>
-      <ProjectFormContainer
-        onSubmit={handleFormSubmit}
-        onCancel={() => router.back()}
-        isPending={isPending}
-      />
-    </ProjectFormProvider>
+    <form className="relative flex flex-wrap gap-6" action={onSubmit}>
+      <ProjectDetailsSection />
+      <ImagesSection />
+      <TechStackSection />
+      <RolesSection />
+      <EntitiesSection />
+      <ExtraContentSection />
+
+      <div className="w-full flex flex-col items-center gap-4 mt-10 mb-14">
+        <ButtonForm
+          actionType={actionType}
+          className="!w-full max-w-72"
+          loading={isPending}
+        />
+        <ButtonMinimal
+          title="Cancel"
+          onClick={goBack}
+          className="!w-full max-w-72 text-base"
+        />
+      </div>
+    </form>
   );
 }
-
-export default ProjectForm;

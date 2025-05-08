@@ -1,5 +1,5 @@
+import { Badge } from "@/components/ui/badge";
 import { XCircle } from "lucide-react";
-import { Badge } from "../ui/badge";
 
 export const ProjectFormRolesViewer = ({
   role,

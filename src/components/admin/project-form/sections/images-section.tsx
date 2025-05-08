@@ -4,11 +4,11 @@ import { Controller, useFieldArray } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
-import { ProjectFormImagesViewer } from "@/components/admin/project-form-images-viewer";
 import { DEFAULT_IMAGE_URL } from "@/lib/constants";
 import ButtonMinimal from "@/components/primitives/button-minimal";
 import { PlusIcon } from "lucide-react";
 import { useProjectFormContext } from "@/hooks/use-project-form";
+import { ProjectFormImagesViewer } from "./project-form-images-viewer";
 
 export function ImagesSection() {
   const { control, errors, watch } = useProjectFormContext();

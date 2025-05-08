@@ -1,5 +1,5 @@
+import ImageWithFallback from "@/components/primitives/image-with-fallback";
 import { DEFAULT_IMAGE_URL } from "@/lib/constants";
-import ImageWithFallback from "../primitives/image-with-fallback";
 
 export const ProjectFormImagesViewer = ({
   imageUrl,
