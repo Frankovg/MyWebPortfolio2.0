@@ -10,12 +10,21 @@ import { ImagesSection } from "./sections/images-section";
 import { ProjectDetailsSection } from "./sections/project-details-section";
 import { RolesSection } from "./sections/roles-section";
 import { TechStackSection } from "./sections/tech-stack-section";
+import { Action } from "@/lib/types";
 
-export function ProjectForm() {
-  const { actionType, onSubmit, isPending, goBack } = useProjectFormContext();
+type ProjectFormProps = {
+  actionType: Action;
+  categoryId: string;
+};
+
+export function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
+  const { onSubmit, isPending, goBack } = useProjectFormContext();
 
   return (
-    <form className="relative flex flex-wrap gap-6" action={onSubmit}>
+    <form
+      className="relative flex flex-wrap gap-6"
+      action={() => onSubmit(actionType, categoryId)}
+    >
       <ProjectDetailsSection />
       <ImagesSection />
       <TechStackSection />

@@ -4,11 +4,9 @@ import AdminPageTitle from "@/components/admin/admin-page-title";
 import AdminSection from "@/components/admin/admin-section";
 import MainHeader from "@/components/admin/main-header";
 import { ProjectForm } from "@/components/admin/project-form/index";
-import { ProjectFormProvider } from "@/context/project-form-provider";
 import { getCategoryBySlug } from "@/lib/server-utils-admin";
 
 import Loading from "./loading";
-
 
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -41,9 +39,7 @@ async function AddProject({ searchParams }: Props) {
       <Suspense fallback={<Loading />}>
         <AdminSection>
           <AdminPageTitle title="Add Project" showGoBack={true} />
-          <ProjectFormProvider value={{ actionType: "add", categoryId }}>
-            <ProjectForm />
-          </ProjectFormProvider>
+          <ProjectForm actionType="add" categoryId={categoryId} />
         </AdminSection>
       </Suspense>
     </>

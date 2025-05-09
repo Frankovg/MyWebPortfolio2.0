@@ -20,9 +20,9 @@ import { Action } from "@/lib/types";
 import { projectFormSchema, TProjectForm } from "@/lib/validations";
 
 type ProjectFormContextType = {
-  actionType: Action;
-  categoryId: string;
-  onSubmit: () => Promise<void>;
+  // actionType: Action;
+  // categoryId: string;
+  onSubmit: (actionType: Action, categoryId: string) => Promise<void>;
   isPending: boolean;
   register: UseFormRegister<TProjectForm>;
   control: Control<TProjectForm>;
@@ -39,14 +39,14 @@ export const ProjectFormContext = createContext<
 
 type ProjectFormProviderProps = {
   children: ReactNode;
-  value: Pick<ProjectFormContextType, "actionType" | "categoryId">;
+  // value: Pick<ProjectFormContextType, "actionType" | "categoryId">;
 };
 
 export function ProjectFormProvider({
   children,
-  value,
-}: ProjectFormProviderProps) {
-  const { actionType, categoryId } = value;
+}: // value,
+ProjectFormProviderProps) {
+  // const { actionType, categoryId } = value;
   const [isPending, startTransition] = useTransition();
   const { createProjectByCategoryId } = useProjectContext();
   const router = useRouter();
@@ -62,7 +62,7 @@ export function ProjectFormProvider({
     defaultValues: DEFAULT_PROJECT_FORM,
   });
 
-  const onSubmit = async () => {
+  const onSubmit = async (actionType: Action, categoryId: string) => {
     startTransition(async () => {
       const result = await trigger();
       if (!result) {
@@ -98,9 +98,9 @@ export function ProjectFormProvider({
         onSubmit,
         register,
         trigger,
-        actionType,
+        // actionType,
         isPending,
-        categoryId,
+        // categoryId,
         control,
         errors,
         watch,
