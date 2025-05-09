@@ -2,6 +2,7 @@
 
 import { User } from "@prisma/client";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { AuthError } from "next-auth";
 import nodemailer from "nodemailer";
 import SMTPTransport from "nodemailer/lib/smtp-transport";
@@ -22,7 +23,6 @@ import {
   projectIdSchema,
   userIdSchema,
 } from "@/lib/validations";
-import { redirect } from "next/navigation";
 
 // --- user actions ---
 

@@ -1,12 +1,14 @@
 "use client";
 
-import { Controller, useFieldArray } from "react-hook-form";
-import RequiredInputLabel from "@/components/primitives/required-input-label";
-import ButtonMinimal from "@/components/primitives/button-minimal";
 import { PlusIcon } from "lucide-react";
-import { Label } from "@/components/ui/label";
+import { Controller, useFieldArray } from "react-hook-form";
+
+import ButtonMinimal from "@/components/primitives/button-minimal";
+import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { useProjectFormContext } from "@/hooks/use-project-form";
+
 import { ProjectFormRolesViewer } from "./project-form-roles-viewer";
 
 export function RolesSection() {

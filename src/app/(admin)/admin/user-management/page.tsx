@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 
 import AdminPageTitle from "@/components/admin/admin-page-title";
-import MainHeader from "@/components/admin/main-header";
 import AdminSection from "@/components/admin/admin-section";
+import MainHeader from "@/components/admin/main-header";
 import { checkAuth } from "@/lib/check-auth";
 import { getUsersAdmin } from "@/lib/server-utils-admin";
 

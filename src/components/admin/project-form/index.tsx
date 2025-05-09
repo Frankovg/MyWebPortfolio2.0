@@ -3,12 +3,13 @@
 import ButtonForm from "@/components/primitives/button-form";
 import ButtonMinimal from "@/components/primitives/button-minimal";
 import { useProjectFormContext } from "@/hooks/use-project-form";
-import { ProjectDetailsSection } from "./sections/project-details-section";
-import { ImagesSection } from "./sections/images-section";
-import { TechStackSection } from "./sections/tech-stack-section";
-import { RolesSection } from "./sections/roles-section";
+
 import { EntitiesSection } from "./sections/entities-section";
 import { ExtraContentSection } from "./sections/extra-content-section";
+import { ImagesSection } from "./sections/images-section";
+import { ProjectDetailsSection } from "./sections/project-details-section";
+import { RolesSection } from "./sections/roles-section";
+import { TechStackSection } from "./sections/tech-stack-section";
 
 export function ProjectForm() {
   const { actionType, onSubmit, isPending, goBack } = useProjectFormContext();

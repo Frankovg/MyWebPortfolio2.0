@@ -1,10 +1,11 @@
 "use client";
 
 import { Controller } from "react-hook-form";
+
 import { MultiSelect } from "@/components/multi-select";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
-import { DEFAULT_TECH_STACK } from "@/lib/constants";
 import { useProjectFormContext } from "@/hooks/use-project-form";
+import { DEFAULT_TECH_STACK } from "@/lib/constants";
 
 export function TechStackSection() {
   const { control, errors } = useProjectFormContext();

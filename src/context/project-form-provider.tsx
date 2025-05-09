@@ -1,7 +1,8 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
 import { createContext, ReactNode, useTransition } from "react";
+import { flushSync } from "react-dom";
 import {
   Control,
   FieldErrors,
@@ -11,13 +12,12 @@ import {
   UseFormTrigger,
   UseFormWatch,
 } from "react-hook-form";
-import { projectFormSchema, TProjectForm } from "@/lib/validations";
-import { Action } from "@/lib/types";
-import { DEFAULT_PROJECT_FORM, FALLBACK_IMG } from "@/lib/constants";
 import { toast } from "sonner";
+
 import { useProjectContext } from "@/hooks/use-project-context";
-import { useRouter } from "next/navigation";
-import { flushSync } from "react-dom";
+import { DEFAULT_PROJECT_FORM, FALLBACK_IMG } from "@/lib/constants";
+import { Action } from "@/lib/types";
+import { projectFormSchema, TProjectForm } from "@/lib/validations";
 
 type ProjectFormContextType = {
   actionType: Action;

@@ -1,5 +1,9 @@
 "use client";
 
+import { useTransition } from "react";
+
+import { Spinner } from "@/components/primitives/spinner";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -8,10 +12,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import { useProjectContext } from "@/hooks/use-project-context";
-import { useTransition } from "react";
-import { Spinner } from "@/components/primitives/spinner";
+
+
 
 interface DeleteModalProps {
   close: () => void;

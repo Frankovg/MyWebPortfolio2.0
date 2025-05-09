@@ -1,9 +1,10 @@
 "use client";
 
 import { Controller } from "react-hook-form";
+
+import { LabelLink } from "@/components/admin/label-link";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { LabelLink } from "@/components/admin/label-link";
 import { useProjectFormContext } from "@/hooks/use-project-form";
 
 export function EntitiesSection() {

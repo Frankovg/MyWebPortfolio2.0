@@ -1,15 +1,17 @@
 "use client";
 
 import { Controller } from "react-hook-form";
+
+import RequiredInputLabel from "@/components/primitives/required-input-label";
+import { Checkbox } from "@/components/ui/checkbox";
+import { DatePicker } from "@/components/ui/date-picker";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { DatePicker } from "@/components/ui/date-picker";
-import { Checkbox } from "@/components/ui/checkbox";
-import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { useProjectFormContext } from "@/hooks/use-project-form";
-import { LabelLink } from "../../label-link";
 import { DEFAULT_IMAGE_URL } from "@/lib/constants";
+
+import { LabelLink } from "../../label-link";
 
 export function ProjectDetailsSection() {
   const { control, errors, getValues, register, watch } =

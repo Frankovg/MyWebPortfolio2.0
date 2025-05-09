@@ -1,13 +1,15 @@
 "use client";
 
+import { PlusIcon } from "lucide-react";
 import { Controller, useFieldArray } from "react-hook-form";
+
+import ButtonMinimal from "@/components/primitives/button-minimal";
+import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import RequiredInputLabel from "@/components/primitives/required-input-label";
-import { DEFAULT_IMAGE_URL } from "@/lib/constants";
-import ButtonMinimal from "@/components/primitives/button-minimal";
-import { PlusIcon } from "lucide-react";
 import { useProjectFormContext } from "@/hooks/use-project-form";
+import { DEFAULT_IMAGE_URL } from "@/lib/constants";
+
 import { ProjectFormImagesViewer } from "./project-form-images-viewer";
 
 export function ImagesSection() {
