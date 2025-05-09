@@ -1,5 +1,5 @@
-import H3 from "@/components/h3";
-import H4 from "@/components/h4";
+import H3 from "@/components/primitives/h3";
+import H4 from "@/components/primitives/h4";
 import Section from "@/components/section";
 import { getCategories } from "@/lib/server-utils-public";
 

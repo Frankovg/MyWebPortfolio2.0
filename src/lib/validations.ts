@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { FALLBACK_IMG } from "./constants";
+import { FALLBACK_IMG, TECH_STACK_DATA } from "./constants";
 
 const invalid_type_error = "Invalid type provided for this field.";
 const invalid_url_error = "Invalid url provided.";
@@ -21,6 +21,8 @@ const valid_email_address = "Please enter a valid email address.";
 const phoneValidation = new RegExp(
   /^(?:\+?\d{1,3})?[\s.-]?\(?\d{1,4}\)?[\s.-]?\d{1,4}[\s.-]?\d{1,4}[\s.-]?\d{1,4}$/
 );
+
+const validTechStackValues = TECH_STACK_DATA.map((tech) => tech.value);
 
 export const contactFormSchema = z
   .object({
@@ -79,29 +81,34 @@ export const userIdSchema = z.string().cuid();
 export const isActiveSchema = z.boolean();
 
 const techStackSchema = z.object({
-  // name: z.string().trim().min(1),
-  value: z.string().trim().min(1),
+  value: z
+    .string()
+    .trim()
+    .min(1, { message: required_error })
+    .refine((val) => validTechStackValues.includes(val), {
+      message: "Value must be one of the following in the list",
+    }),
 });
 
 const roleSchema = z.object({
-  label: z.string().trim().min(1),
-  value: z.string().trim().min(1),
-  percentage: z.number().min(1).max(100),
+  label: z.string().trim().min(1, { message: required_error }),
+  value: z.string().trim().min(1, { message: required_error }),
+  percentage: z.number().gte(1).lte(100).int().positive().finite(),
 });
 
 const gallerySchema = z.object({
   imageUrl: z.string().trim().url({ message: invalid_url_error }),
-  alt: z.string().trim().min(1),
+  alt: z.string().trim().min(1, { message: required_error }),
   description: z
     .string()
     .trim()
     .min(1)
     .max(200, value_too_long_error_200)
-    .optional()
     .nullable(),
 });
 
 export const categoryIdSchema = z.string().cuid();
+export const projectIdSchema = z.string().cuid();
 
 export const projectFormSchema = z
   .object({
@@ -124,55 +131,19 @@ export const projectFormSchema = z
     slug: z.string().trim().min(1, { message: required_error }),
     gallery: z.array(gallerySchema),
     date: z.date().default(() => new Date()),
-    repository: z
-      .string()
-      .url({ message: invalid_url_error })
-      .optional()
-      .nullable(),
-    websiteUrl: z
-      .string()
-      .url({ message: invalid_url_error })
-      .optional()
-      .nullable(),
-    videoUrl: z
-      .string()
-      .url({ message: invalid_url_error })
-      .optional()
-      .nullable(),
-    videoTitle: z
-      .string()
-      .trim()
-      .max(50, value_too_long_error_50)
-      .optional()
-      .nullable(),
+    repository: z.string().url({ message: invalid_url_error }).nullable(),
+    websiteUrl: z.string().url({ message: invalid_url_error }).nullable(),
+    videoUrl: z.string().url({ message: invalid_url_error }).nullable(),
+    videoTitle: z.string().trim().max(50, value_too_long_error_50).nullable(),
     videoDescription: z
       .string()
       .trim()
       .max(1000, value_too_long_error_1000)
-      .optional()
       .nullable(),
-    company: z
-      .string()
-      .trim()
-      .max(50, value_too_long_error_50)
-      .optional()
-      .nullable(),
-    companyUrl: z
-      .string()
-      .url({ message: invalid_url_error })
-      .optional()
-      .nullable(),
-    client: z
-      .string()
-      .trim()
-      .max(50, value_too_long_error_50)
-      .optional()
-      .nullable(),
-    clientUrl: z
-      .string()
-      .url({ message: invalid_url_error })
-      .optional()
-      .nullable(),
+    company: z.string().trim().max(50, value_too_long_error_50).nullable(),
+    companyUrl: z.string().url({ message: invalid_url_error }).nullable(),
+    client: z.string().trim().max(50, value_too_long_error_50).nullable(),
+    clientUrl: z.string().url({ message: invalid_url_error }).nullable(),
     techStack: z.array(techStackSchema),
     roles: z.array(roleSchema),
     published: z.boolean().default(true),

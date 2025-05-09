@@ -1,24 +1,22 @@
-import H3 from "@/components/h3"
-import H4 from "@/components/h4"
+import H3 from "@/components/primitives/h3";
+import H4 from "@/components/primitives/h4";
 
 type VideoData = {
-  title: string,
-  description: string,
-  url: string
-}
+  title: string;
+  description: string;
+  url: string;
+};
 
 type VideoComponentProps = {
-  videoData?: VideoData
-}
+  videoData?: VideoData;
+};
 
-//TODO: Fix the error ReferenceError: browser is not defined 
+//TODO: Fix the error ReferenceError: browser is not defined
 function VideoComponent({ videoData }: VideoComponentProps) {
   return (
     <>
       <H4 className="mt-12">{videoData?.title}</H4>
-      <H3 className="max-w-600 pt-0">
-        {videoData?.description}
-      </H3>
+      <H3 className="max-w-600 pt-0">{videoData?.description}</H3>
       <iframe
         className="mb-12 aspect-video w-full max-w-am"
         src={videoData?.url}
@@ -29,7 +27,7 @@ function VideoComponent({ videoData }: VideoComponentProps) {
         loading="lazy"
       />
     </>
-  )
+  );
 }
 
-export default VideoComponent
+export default VideoComponent;

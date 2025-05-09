@@ -11,10 +11,8 @@ function PortfolioTableTools({ table }: { table: TTable<Project> }) {
     <div className="w-full flex justify-between mt-10 pb-2 group">
       <Input
         placeholder="Search project..."
-        value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
-        onChange={(event) =>
-          table.getColumn("title")?.setFilterValue(event.target.value)
-        }
+        value={table.getState().globalFilter ?? ""}
+        onChange={(event) => table.setGlobalFilter(event.target.value)}
         className="h-full w-1/3 border-whiteText placeholder:text-whiteText placeholder:font-normal hover-table-buttons"
       />
 
@@ -23,9 +21,9 @@ function PortfolioTableTools({ table }: { table: TTable<Project> }) {
           id="filter-check"
           className="border-whiteText group-hover:border-white transition-colors ease-in-out duration-200"
           onCheckedChange={(checked) =>
-            typeof checked === "boolean" &&
-            checked &&
-            table.getColumn("published")?.setFilterValue(checked)
+            table
+              .getColumn("published")
+              ?.setFilterValue(checked ? true : undefined)
           }
         />
         <label

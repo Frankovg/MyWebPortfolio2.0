@@ -1,4 +1,4 @@
-import { Category, Gallery, Project, Tech } from "@prisma/client";
+import { Category, Gallery, Project, Role, Tech } from "@prisma/client";
 import { Session } from "next-auth";
 
 export type ProjectEssentials = Omit<
@@ -12,6 +12,7 @@ export type ProjectShort = Pick<
   Project,
   | "title"
   | "description"
+  | "date"
   | "company"
   | "companyUrl"
   | "client"
@@ -21,6 +22,12 @@ export type ProjectShort = Pick<
 > & {
   gallery: Gallery[];
 };
+
+export interface IProjectFull extends Project {
+  gallery: Gallery[];
+  techStack: Tech[];
+  roles: Role[];
+}
 
 export interface IProjectWithTechStack extends Project {
   techStack: Tech[];

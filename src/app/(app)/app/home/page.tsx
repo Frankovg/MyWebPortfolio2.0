@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 
-import AnimatedArrowRight from "@/components/animated-arrow-right";
-import H3 from "@/components/h3";
-import ScrollLink from "@/components/scroll-link";
+import AnimatedArrowRight from "@/components/primitives/animated-arrow-right";
+import H3 from "@/components/primitives/h3";
+import ScrollLink from "@/components/primitives/scroll-link";
 import Section from "@/components/section";
 
 import TextAnimation from "./components/text-animation";

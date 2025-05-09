@@ -2,19 +2,12 @@ import React from "react";
 
 import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import ProjectContextProvider from "@/context/project-provider";
-import { getCategoriesAdmin } from "@/lib/server-utils-admin";
 
-const Layout = async ({ children }: { children: React.ReactNode }) => {
-  const categories = await getCategoriesAdmin();
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <SidebarInset>
-        <ProjectContextProvider data={categories}>
-          {children}
-        </ProjectContextProvider>
-      </SidebarInset>
+      <SidebarInset>{children}</SidebarInset>
     </SidebarProvider>
   );
 };

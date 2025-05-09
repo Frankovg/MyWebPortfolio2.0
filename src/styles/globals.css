@@ -34,24 +34,27 @@
 
   --color-background: #121212;
   --color-primary: #5cedc2;
+  --color-primary-foreground: 0 0% 98%;
   --color-darkPrimary: #122f27;
   --color-secondary: #e453bc;
   --color-softGrey: #d9d9d91a;
   --color-darkGrey: #242424;
   --color-whiteText: #ffffffb3;
-  --color-success: #5cedc2;
-  --color-error: #e453bc;
+  --color-success: var(--color-primary);
+  --color-error: var(--color-secondary);
   --color-warning: #f5ec28;
   --color-textAnimation: #6666;
+  --color-muted-foreground: var(--color-whiteText);
+  --color-danger: #ff2301;
 
-  --color-sidebar: #121212;
+  --color-sidebar: var(--color-background);
   --color-sidebar-foreground: var(--color-whiteText);
-  --color-sidebar-primary: #5cedc2;
-  --color-sidebar-primary-foreground: #e453bc;
-  --color-sidebar-accent: #122f27;
+  --color-sidebar-primary: var(--color-primary);
+  --color-sidebar-primary-foreground: var(--color-secondary);
+  --color-sidebar-accent: var(--color-darkPrimary);
   --color-sidebar-accent-foreground: var(--color-whiteText);
-  --color-sidebar-border: #e453bc;
-  --color-sidebar-ring: #5cedc2;
+  --color-sidebar-border: var(--color-secondary);
+  --color-sidebar-ring: var(--color-primary);
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
@@ -164,13 +167,16 @@
 @layer base {
   :root {
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-foreground: var(--color-primary-foreground);
     --sidebar-primary: 240 5.9% 10%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent: var(--color-accent);
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --card: var(--color-background);
+    --card-foreground: var(--color-softGrey);
   }
 }
 

@@ -27,9 +27,9 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 
-import Isologo from "./isologo";
-import Logo from "./logo";
-import LogOutOverlay from "./logout-overlay";
+import Isologo from "./primitives/isologo";
+import Logo from "./primitives/logo";
+import Overlay from "./primitives/overlay";
 
 type SidebarLogoutProps = {
   handleLogout: () => void;
@@ -143,7 +143,7 @@ export function AppSidebar() {
 
   return (
     <>
-      {isPending && <LogOutOverlay />}
+      {isPending && <Overlay message="Good Bye!" />}
       <Sidebar collapsible="icon">
         <SidebarHeaderWithLogo isExpanded={state === "expanded"} />
         <SidebarContent>

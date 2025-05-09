@@ -1,22 +1,21 @@
 "use client";
 
-import { ICategoryWithProjectsAdmin } from "@/lib/types";
+import { useProjectContext } from "@/hooks/use-project-context";
 
 import PortfolioContent from "./portfolio-content";
 import PortfolioTabsList from "./portfolio-tabs-list";
 import PortfolioTabsWrapper from "./portfolio-tabs-wrapper";
 
 type PortfolioExplorerProps = {
-  categories: ICategoryWithProjectsAdmin[];
   isAdmin?: boolean;
   defaultCategory: string;
 };
 
 function PortfolioExplorer({
-  categories,
   isAdmin = false,
   defaultCategory,
 }: PortfolioExplorerProps) {
+  const { categories } = useProjectContext();
   return (
     <PortfolioTabsWrapper defaultCategory={defaultCategory}>
       <PortfolioTabsList tabs={categories} />
