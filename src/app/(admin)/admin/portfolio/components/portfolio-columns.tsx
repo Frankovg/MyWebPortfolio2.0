@@ -136,14 +136,14 @@ export const portfolioColumns = (
     accessorKey: "actions",
     header: () => <div className="text-center">Actions</div>,
     cell: ({ row }) => {
-      const editButton = (
-        <button
+      const editLink = (
+        <Link
+          href={`/admin/portfolio/edit/${row.original.id}`}
           aria-label={`Edit ${row.original.title}`}
           className="opacity-0 group-hover/row:opacity-100 transition-opacity duration-200 hover:text-white"
-          onClick={() => {}}
         >
           <Settings className="h-4 w-auto" />
-        </button>
+        </Link>
       );
       const deleteButton = (
         <button
@@ -158,7 +158,7 @@ export const portfolioColumns = (
       );
       return (
         <div className="flex justify-center items-center space-x-4">
-          {editButton}
+          {editLink}
           {deleteButton}
         </div>
       );

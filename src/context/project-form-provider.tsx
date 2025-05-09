@@ -15,13 +15,36 @@ import {
 import { toast } from "sonner";
 
 import { useProjectContext } from "@/hooks/use-project-context";
-import { DEFAULT_PROJECT_FORM, FALLBACK_IMG } from "@/lib/constants";
-import { Action } from "@/lib/types";
+import { FALLBACK_IMG } from "@/lib/constants";
+import { Action, IProjectFull } from "@/lib/types";
 import { projectFormSchema, TProjectForm } from "@/lib/validations";
 
+const getProjectImages = (project?: IProjectFull) => {
+  if (!project) return null;
+  return project.gallery.map((image) => ({
+    alt: image.alt,
+    description: image.description || null,
+    imageUrl: image.imageUrl,
+  }));
+};
+
+const getTechStack = (project?: IProjectFull) => {
+  if (!project) return null;
+  return project.techStack.map((tech) => ({
+    value: tech.value,
+  }));
+};
+
+const getRoles = (project?: IProjectFull) => {
+  if (!project) return null;
+  return project.roles.map((role) => ({
+    label: role.label,
+    value: role.value,
+    percentage: role.percentage,
+  }));
+};
+
 type ProjectFormContextType = {
-  // actionType: Action;
-  // categoryId: string;
   onSubmit: (actionType: Action, categoryId: string) => Promise<void>;
   isPending: boolean;
   register: UseFormRegister<TProjectForm>;
@@ -30,7 +53,6 @@ type ProjectFormContextType = {
   watch: UseFormWatch<TProjectForm>;
   getValues: UseFormGetValues<TProjectForm>;
   trigger: UseFormTrigger<TProjectForm>;
-  goBack: () => void;
 };
 
 export const ProjectFormContext = createContext<
@@ -39,17 +61,17 @@ export const ProjectFormContext = createContext<
 
 type ProjectFormProviderProps = {
   children: ReactNode;
-  // value: Pick<ProjectFormContextType, "actionType" | "categoryId">;
+  project?: IProjectFull;
 };
 
 export function ProjectFormProvider({
   children,
-}: // value,
-ProjectFormProviderProps) {
-  // const { actionType, categoryId } = value;
+  project,
+}: ProjectFormProviderProps) {
   const [isPending, startTransition] = useTransition();
   const { createProjectByCategoryId } = useProjectContext();
   const router = useRouter();
+
   const {
     register,
     trigger,
@@ -59,7 +81,39 @@ ProjectFormProviderProps) {
     formState: { errors },
   } = useForm<TProjectForm>({
     resolver: zodResolver(projectFormSchema),
-    defaultValues: DEFAULT_PROJECT_FORM,
+    defaultValues: {
+      title: project?.title || "",
+      image: project?.image || "",
+      slug: project?.slug || "",
+      date: project?.date || new Date(),
+      published: project?.published || false,
+      shortDescription: project?.shortDescription || "",
+      description: project?.description || "",
+      gallery: getProjectImages(project) || [
+        {
+          imageUrl: "",
+          alt: "",
+          description: null,
+        },
+      ],
+      techStack: getTechStack(project) || [{ value: "" }],
+      roles: getRoles(project) || [
+        {
+          label: "",
+          value: "",
+          percentage: 50,
+        },
+      ],
+      websiteUrl: project?.websiteUrl || null,
+      company: project?.company || null,
+      companyUrl: project?.companyUrl || null,
+      client: project?.client || null,
+      clientUrl: project?.clientUrl || null,
+      repository: project?.repository || null,
+      videoUrl: project?.videoUrl || null,
+      videoTitle: project?.videoTitle || null,
+      videoDescription: project?.videoDescription || null,
+    },
   });
 
   const onSubmit = async (actionType: Action, categoryId: string) => {
@@ -88,24 +142,17 @@ ProjectFormProviderProps) {
     });
   };
 
-  const goBack = () => {
-    router.back();
-  };
-
   return (
     <ProjectFormContext.Provider
       value={{
         onSubmit,
         register,
         trigger,
-        // actionType,
         isPending,
-        // categoryId,
         control,
         errors,
         watch,
         getValues,
-        goBack,
       }}
     >
       {children}

@@ -1,49 +1,22 @@
-"use client";
+import { ProjectFormProvider } from "@/context/project-form-provider";
+import { Action, IProjectFull } from "@/lib/types";
 
-import ButtonForm from "@/components/primitives/button-form";
-import ButtonMinimal from "@/components/primitives/button-minimal";
-import { useProjectFormContext } from "@/hooks/use-project-form";
-
-import { EntitiesSection } from "./sections/entities-section";
-import { ExtraContentSection } from "./sections/extra-content-section";
-import { ImagesSection } from "./sections/images-section";
-import { ProjectDetailsSection } from "./sections/project-details-section";
-import { RolesSection } from "./sections/roles-section";
-import { TechStackSection } from "./sections/tech-stack-section";
-import { Action } from "@/lib/types";
+import ProjectFormWrapper from "./sections/project-form-wrapper";
 
 type ProjectFormProps = {
   actionType: Action;
   categoryId: string;
+  project?: IProjectFull;
 };
 
-export function ProjectForm({ actionType, categoryId }: ProjectFormProps) {
-  const { onSubmit, isPending, goBack } = useProjectFormContext();
-
+export function ProjectForm({
+  actionType,
+  categoryId,
+  project,
+}: ProjectFormProps) {
   return (
-    <form
-      className="relative flex flex-wrap gap-6"
-      action={() => onSubmit(actionType, categoryId)}
-    >
-      <ProjectDetailsSection />
-      <ImagesSection />
-      <TechStackSection />
-      <RolesSection />
-      <EntitiesSection />
-      <ExtraContentSection />
-
-      <div className="w-full flex flex-col items-center gap-4 mt-10 mb-14">
-        <ButtonForm
-          actionType={actionType}
-          className="!w-full max-w-72"
-          loading={isPending}
-        />
-        <ButtonMinimal
-          title="Cancel"
-          onClick={goBack}
-          className="!w-full max-w-72 text-base"
-        />
-      </div>
-    </form>
+    <ProjectFormProvider project={project}>
+      <ProjectFormWrapper actionType={actionType} categoryId={categoryId} />
+    </ProjectFormProvider>
   );
 }

@@ -23,7 +23,7 @@ export async function getCategoriesAdmin() {
     include: {
       projects: {
         orderBy: {
-          date: "desc",
+          createdAt: "desc",
         },
       },
     },
@@ -53,6 +53,11 @@ export async function getProjectById(id: string) {
   const project = await prisma.project.findUnique({
     where: {
       id,
+    },
+    include: {
+      gallery: true,
+      roles: true,
+      techStack: true,
     },
   });
   return project;

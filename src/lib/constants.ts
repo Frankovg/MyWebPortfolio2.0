@@ -193,37 +193,3 @@ const getDefaultTechStack = () => {
   }));
 };
 export const DEFAULT_TECH_STACK = getDefaultTechStack();
-
-export const DEFAULT_PROJECT_FORM = {
-  title: "",
-  image: "",
-  slug: "",
-  date: new Date(),
-  published: false,
-  shortDescription: "",
-  description: "",
-  gallery: [
-    {
-      imageUrl: "",
-      alt: "",
-      description: null,
-    },
-  ],
-  techStack: [{ value: "" }],
-  roles: [
-    {
-      label: "",
-      value: "",
-      percentage: 50,
-    },
-  ],
-  websiteUrl: null,
-  company: null,
-  companyUrl: null,
-  client: null,
-  clientUrl: null,
-  repository: null,
-  videoUrl: null,
-  videoTitle: null,
-  videoDescription: null,
-};
