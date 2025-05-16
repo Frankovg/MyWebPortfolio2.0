@@ -250,46 +250,80 @@ export async function addProject(
   redirect(`/admin/portfolio?category=${category.value}`);
 }
 
-export async function editProject(projectId: unknown, newProjectData: unknown) {
+export async function editProject(
+  projectId: string,
+  project: ProjectEssentials,
+  categoryId: string
+) {
   if (process.env.NODE_ENV === "development") {
     await sleep(1000);
   }
 
-  // authentication check
-  // const session = await checkAuth()
+  const session = await checkAuth();
+  if (!session?.user.isAdmin) {
+    return {
+      message: SAMPLE_ACTION,
+    };
+  }
 
-  // validation
-  // const validatedProjectId = projectIdSchema.safeParse(projectId)
-  // const validatedProject = projectFormSchema.safeParse(newProjectData)
-  // if (!validatedProject.success || !validatedProjectId.success) {
-  //   return {
-  //     message: 'Invalid project data.'
-  //   }
-  // }
+  const validatedProjectId = projectIdSchema.safeParse(projectId);
+  if (!validatedProjectId.success) {
+    return {
+      message: "Invalid project ID.",
+    };
+  }
+  const validatedProject = projectFormSchema.safeParse(project);
+  if (!validatedProject.success) {
+    return {
+      message: "Invalid project data.",
+    };
+  }
+  const validateCategoryId = categoryIdSchema.safeParse(categoryId);
+  if (!validateCategoryId.success) {
+    return {
+      message: "Invalid category data.",
+    };
+  }
 
-  // authorization check
-  // const project = await getProjectById(validatedProjectId.data)
-  // if (!project) {
-  //   return {
-  //     message: 'Project not found.'
-  //   }
-  // }
+  const category = await getCategoryById(validateCategoryId.data);
+  if (!category) {
+    return {
+      message: "Category not found.",
+    };
+  }
 
-  // database mutation
-  // try {
-  //   await prisma.project.update({
-  //     where: {
-  //       id: validatedProjectId.data
-  //     },
-  //     data: validatedProject.data
-  //   })
-  // } catch (error) {
-  //   return {
-  //     message: 'Could not edit project.'
-  //   }
-  // }
-
-  // revalidatePath('/app', 'layout')
+  try {
+    await prisma.project.update({
+      where: {
+        id: validatedProjectId.data,
+      },
+      data: {
+        ...validatedProject.data,
+        categoryId: validateCategoryId.data,
+        gallery: {
+          create: validatedProject.data.gallery.map((item) => ({
+            imageUrl: item.imageUrl,
+            alt: item.alt,
+            description: item.description,
+          })),
+        },
+        techStack: {
+          connect: validatedProject.data.techStack.map((tech) => ({
+            value: tech.value,
+          })),
+        },
+        roles: {
+          create: validatedProject.data.roles,
+        },
+      },
+    });
+  } catch (error) {
+    console.error("Error editing project:", error);
+    return {
+      message: "Could not edit project.",
+    };
+  }
+  redirect(`/admin/portfolio?category=${category.value}`);
 }
 
 export async function deleteProject(projectId: string) {

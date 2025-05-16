@@ -23,6 +23,7 @@ async function EditProject({ params }: { params: Promise<{ id: string }> }) {
   ];
 
   const project = await getProjectById(id);
+  console.log(project);
 
   if (!project) {
     return <NotFound />;

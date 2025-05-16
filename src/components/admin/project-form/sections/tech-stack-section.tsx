@@ -29,6 +29,7 @@ export function TechStackSection() {
               placeholder=">"
               maxCount={10}
               value={field.value?.map((item) => item.value)}
+              defaultValue={field.value?.map((item) => item.value)}
             />
           )}
         />

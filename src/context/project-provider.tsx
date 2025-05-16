@@ -33,15 +33,20 @@ type TProjectContext = {
     categoryId: string
   ) => Promise<void>;
   handleDeleteProject: (projectId: string, categoryId: string) => Promise<void>;
-  // handleEditProject: (
-  //   projectId: Project["id"],
-  //   newProjectData: ProjectEssentials
-  // ) => Promise<void>;
+  handleEditProject: (
+    projectId: string,
+    project: ProjectEssentials,
+    categoryId: string
+  ) => Promise<void>;
 };
 
 type PayloadCreate = ProjectEssentials & { categoryId: string };
+type PayloadEdit = ProjectEssentials & {
+  projectId: string;
+  categoryId: string;
+};
 type PayloadDelete = { projectId: string; categoryId: string };
-type Payload = PayloadCreate | PayloadDelete;
+type Payload = PayloadCreate | PayloadEdit | PayloadDelete;
 
 export const ProjectContext = createContext<TProjectContext | null>(null);
 
@@ -76,19 +81,28 @@ const ProjectContextProvider = ({
             }
             return category;
           });
-        // case "edit":
-        //   //TODO: check
-        //   return prev.map((category) => {
-        //     return {
-        //       ...category,
-        //       projects: category.projects.map((project) => {
-        //         if (project.slug === payload.slug) {
-        //           return { ...project, ...payload, updatedAt: now };
-        //         }
-        //         return project;
-        //       }),
-        //     };
-        //   });
+        case "edit":
+          return prev.map((category) => {
+            if (
+              !!("projectId" in payload) &&
+              category.id === payload.categoryId
+            ) {
+              return {
+                ...category,
+                projects: category.projects.map((project) => {
+                  if (project.id === payload.projectId) {
+                    return {
+                      ...project,
+                      ...payload,
+                      updatedAt: new Date(),
+                    };
+                  }
+                  return project;
+                }),
+              };
+            }
+            return category;
+          });
         case "delete":
           return prev.map((category) => {
             if ("projectId" in payload && category.id === payload.categoryId) {
@@ -123,7 +137,6 @@ const ProjectContextProvider = ({
   };
 
   const handleDeleteProject = async (projectId: string, categoryId: string) => {
-    // Wrap the optimistic update in startTransition
     startTransition(() => {
       setOptimisticCategories({
         action: "delete",
@@ -138,36 +151,28 @@ const ProjectContextProvider = ({
     }
   };
 
-  // const handleEditProject = async (
-  //   projectId: Project["id"],
-  //   newProjectData: ProjectEssentials
-  // ) => {
-  //   setOptimisticProjects({
-  //     action: "edit",
-  //     payload: { id: projectId, newProjectData },
-  //   });
-  //   const error = await editProject(projectId, newProjectData);
-  //   // if (error) {
-  //   //   toast.warning(error.message)
-  //   //   return
-  //   // }
-  // };
-
-  // const handleDeleteProject = async (projectId: Project["id"]) => {
-  //   setOptimisticProjects({ action: "delete", payload: projectId });
-  //   const error = await deleteProject(projectId);
-  //   // if (error) {
-  //   //   toast.warning(error.message)
-  //   //   return
-  //   // }
-  // };
+  const handleEditProject = async (
+    projectId: string,
+    project: ProjectEssentials,
+    categoryId: string
+  ) => {
+    setOptimisticCategories({
+      action: "edit",
+      payload: { projectId, ...project, categoryId },
+    });
+    const error = await editProject(projectId, project, categoryId);
+    if (error) {
+      toast.warning(error.message);
+      return;
+    }
+  };
 
   return (
     <ProjectContext.Provider
       value={{
         categories: optimisticCategories,
         createProjectByCategoryId,
-        // handleEditProject,
+        handleEditProject,
         handleDeleteProject,
       }}
     >
