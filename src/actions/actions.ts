@@ -266,6 +266,13 @@ export async function editProject(
     };
   }
 
+  const category = await getCategoryById(categoryId);
+  if (!category) {
+    return {
+      message: "Category not found.",
+    };
+  }
+
   const validatedProjectId = projectIdSchema.safeParse(projectId);
   if (!validatedProjectId.success) {
     return {
@@ -285,14 +292,6 @@ export async function editProject(
     };
   }
 
-  // Get the existing project
-  const existingProject = await getProjectById(validatedProjectId.data);
-  if (!existingProject) {
-    return {
-      message: "Project not found.",
-    };
-  }
-
   try {
     await prisma.$transaction(async (tx) => {
       const originalProject = await tx.project.findUnique({
@@ -305,97 +304,77 @@ export async function editProject(
           roles: true,
         },
       });
-      
+
       if (!originalProject) {
         return {
           message: "Project not found.",
         };
       }
-      
-      // Create comparison-only structures for the original project
+
       const galleryForComparison = originalProject.gallery.map((item) => ({
         imageUrl: item.imageUrl,
         alt: item.alt,
         description: item.description,
       }));
-      
+
       const techStackForComparison = originalProject.techStack.map((item) => ({
         value: item.value,
       }));
-      
+
       const rolesForComparison = originalProject.roles.map((item) => ({
         label: item.label,
         value: item.value,
         percentage: item.percentage,
       }));
-      
-      // Check if gallery has changed
-      const galleryChanged = JSON.stringify(galleryForComparison) !== 
-                            JSON.stringify(validatedProject.data.gallery);
-      
-      // Check if tech stack has changed
-      const techStackChanged = JSON.stringify(techStackForComparison) !== 
-                              JSON.stringify(validatedProject.data.techStack);
-      
-      // Check if roles have changed
-      const rolesChanged = JSON.stringify(rolesForComparison) !== 
-                          JSON.stringify(validatedProject.data.roles);
-      
-      console.log("Gallery changed:", galleryChanged);
-      console.log("Tech stack changed:", techStackChanged);
-      console.log("Roles changed:", rolesChanged);
-      
-      // Prepare update data
+
+      const galleryChanged =
+        JSON.stringify(galleryForComparison) !==
+        JSON.stringify(validatedProject.data.gallery);
+
+      const techStackChanged =
+        JSON.stringify(techStackForComparison) !==
+        JSON.stringify(validatedProject.data.techStack);
+
+      const rolesChanged =
+        JSON.stringify(rolesForComparison) !==
+        JSON.stringify(validatedProject.data.roles);
+
       const updateData: any = {
         ...validatedProject.data,
-        // Keep the existing categoryId
         categoryId: originalProject.categoryId,
       };
-      
-      // Only update gallery if it has changed
+
       if (galleryChanged) {
-        // Delete existing gallery items
         await tx.gallery.deleteMany({
           where: { projectId: validatedProjectId.data },
         });
-        
-        // Add new gallery items
         updateData.gallery = {
           create: validatedProject.data.gallery,
         };
       } else {
-        // Remove gallery from update data if it hasn't changed
         delete updateData.gallery;
       }
-      
-      // Only update tech stack if it has changed
+
       if (techStackChanged) {
         updateData.techStack = {
-          set: [], // Disconnect all existing relationships
+          set: [],
           connect: validatedProject.data.techStack,
         };
       } else {
-        // Remove techStack from update data if it hasn't changed
         delete updateData.techStack;
       }
-      
-      // Only update roles if they have changed
+
       if (rolesChanged) {
-        // Delete existing roles
         await tx.role.deleteMany({
           where: { projectId: validatedProjectId.data },
         });
-        
-        // Add new roles
         updateData.roles = {
           create: validatedProject.data.roles,
         };
       } else {
-        // Remove roles from update data if they haven't changed
         delete updateData.roles;
       }
-      
-      // Update the project
+
       await tx.project.update({
         where: {
           id: validatedProjectId.data,
@@ -409,15 +388,7 @@ export async function editProject(
       message: "Could not edit project.",
     };
   }
-  
-  // Get the category for redirection
-  const category = await getCategoryById(existingProject.categoryId);
-  if (!category) {
-    return {
-      message: "Category not found.",
-    };
-  }
-  
+
   redirect(`/admin/portfolio?category=${category.value}`);
 }
 

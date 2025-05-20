@@ -16,7 +16,7 @@ import { GithubIcon } from "@/icons/social";
 import { DATE_FORMAT, DATE_LOCATION } from "@/lib/constants";
 
 //TODO: Sorting columns
-const dropdownLabels = { asc: "Asc", desc: "Desc" };
+// const dropdownLabels = { asc: "Asc", desc: "Desc" };
 
 export const portfolioColumns = (
   handleOpenDeleteModal: (projectId: string, categoryId: string) => void
