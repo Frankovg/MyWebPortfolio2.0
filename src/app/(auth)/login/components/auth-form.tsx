@@ -37,6 +37,7 @@ const AuthForm = () => {
       })}
 
       <ButtonWhite
+        loading={pending}
         disabled={pending}
         text="Log in"
         className="mt-4 md:w-full"

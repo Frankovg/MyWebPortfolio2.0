@@ -130,6 +130,7 @@ function ContactForm() {
           <ButtonWhite
             disabled={isPending}
             text={isPending ? "Sending..." : "Send"}
+            loading={isPending}
           />
         </div>
       </form>

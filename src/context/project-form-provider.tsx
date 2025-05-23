@@ -69,7 +69,7 @@ export function ProjectFormProvider({
   project,
 }: ProjectFormProviderProps) {
   const [isPending, startTransition] = useTransition();
-  const { createProjectByCategoryId } = useProjectContext();
+  const { createProjectByCategoryId, handleEditProject } = useProjectContext();
   const router = useRouter();
 
   const {
@@ -131,13 +131,13 @@ export function ProjectFormProvider({
         router.push("/admin/portfolio");
       });
 
-      const project = getValues();
-      project.image = project.image || FALLBACK_IMG;
+      const projectValues = getValues();
+      projectValues.image = projectValues.image || FALLBACK_IMG;
 
       if (actionType === "add") {
-        await createProjectByCategoryId(project, categoryId);
+        await createProjectByCategoryId(projectValues, categoryId);
       } else if (actionType === "edit") {
-        //TODO: Add edit project by categoryId
+        await handleEditProject(project?.id ?? "", projectValues, categoryId);
       }
     });
   };

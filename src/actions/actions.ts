@@ -250,46 +250,146 @@ export async function addProject(
   redirect(`/admin/portfolio?category=${category.value}`);
 }
 
-export async function editProject(projectId: unknown, newProjectData: unknown) {
+export async function editProject(
+  projectId: string,
+  project: ProjectEssentials,
+  categoryId: string
+) {
   if (process.env.NODE_ENV === "development") {
     await sleep(1000);
   }
 
-  // authentication check
-  // const session = await checkAuth()
+  const session = await checkAuth();
+  if (!session?.user.isAdmin) {
+    return {
+      message: SAMPLE_ACTION,
+    };
+  }
 
-  // validation
-  // const validatedProjectId = projectIdSchema.safeParse(projectId)
-  // const validatedProject = projectFormSchema.safeParse(newProjectData)
-  // if (!validatedProject.success || !validatedProjectId.success) {
-  //   return {
-  //     message: 'Invalid project data.'
-  //   }
-  // }
+  const category = await getCategoryById(categoryId);
+  if (!category) {
+    return {
+      message: "Category not found.",
+    };
+  }
 
-  // authorization check
-  // const project = await getProjectById(validatedProjectId.data)
-  // if (!project) {
-  //   return {
-  //     message: 'Project not found.'
-  //   }
-  // }
+  const validatedProjectId = projectIdSchema.safeParse(projectId);
+  if (!validatedProjectId.success) {
+    return {
+      message: "Invalid project ID.",
+    };
+  }
+  const validatedProject = projectFormSchema.safeParse(project);
+  if (!validatedProject.success) {
+    return {
+      message: "Invalid project data.",
+    };
+  }
+  const validateCategoryId = categoryIdSchema.safeParse(categoryId);
+  if (!validateCategoryId.success) {
+    return {
+      message: "Invalid category data.",
+    };
+  }
 
-  // database mutation
-  // try {
-  //   await prisma.project.update({
-  //     where: {
-  //       id: validatedProjectId.data
-  //     },
-  //     data: validatedProject.data
-  //   })
-  // } catch (error) {
-  //   return {
-  //     message: 'Could not edit project.'
-  //   }
-  // }
+  try {
+    await prisma.$transaction(async (tx) => {
+      const originalProject = await tx.project.findUnique({
+        where: {
+          id: validatedProjectId.data,
+        },
+        include: {
+          gallery: true,
+          techStack: true,
+          roles: true,
+        },
+      });
 
-  // revalidatePath('/app', 'layout')
+      if (!originalProject) {
+        return {
+          message: "Project not found.",
+        };
+      }
+
+      const galleryForComparison = originalProject.gallery.map((item) => ({
+        imageUrl: item.imageUrl,
+        alt: item.alt,
+        description: item.description,
+      }));
+
+      const techStackForComparison = originalProject.techStack.map((item) => ({
+        value: item.value,
+      }));
+
+      const rolesForComparison = originalProject.roles.map((item) => ({
+        label: item.label,
+        value: item.value,
+        percentage: item.percentage,
+      }));
+
+      const galleryChanged =
+        JSON.stringify(galleryForComparison) !==
+        JSON.stringify(validatedProject.data.gallery);
+
+      const techStackChanged =
+        JSON.stringify(techStackForComparison) !==
+        JSON.stringify(validatedProject.data.techStack);
+
+      const rolesChanged =
+        JSON.stringify(rolesForComparison) !==
+        JSON.stringify(validatedProject.data.roles);
+
+      const updateData: any = {
+        ...validatedProject.data,
+        categoryId: originalProject.categoryId,
+      };
+
+      if (galleryChanged) {
+        await tx.gallery.deleteMany({
+          where: { projectId: validatedProjectId.data },
+        });
+        updateData.gallery = {
+          create: validatedProject.data.gallery,
+        };
+      } else {
+        delete updateData.gallery;
+      }
+
+      if (techStackChanged) {
+        updateData.techStack = {
+          set: [],
+          connect: validatedProject.data.techStack,
+        };
+      } else {
+        delete updateData.techStack;
+      }
+
+      if (rolesChanged) {
+        await tx.role.deleteMany({
+          where: { projectId: validatedProjectId.data },
+        });
+        updateData.roles = {
+          create: validatedProject.data.roles,
+        };
+      } else {
+        delete updateData.roles;
+      }
+
+      await tx.project.update({
+        where: {
+          id: validatedProjectId.data,
+        },
+        data: updateData,
+      });
+    });
+  } catch (error) {
+    console.error("Error editing project:", error);
+    return {
+      message: "Could not edit project.",
+    };
+  }
+
+  redirect(`/admin/portfolio?category=${category.value}`);
 }
 
 export async function deleteProject(projectId: string) {
