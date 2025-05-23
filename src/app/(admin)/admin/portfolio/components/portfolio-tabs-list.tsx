@@ -1,8 +1,5 @@
-import { TabsTrigger } from "@radix-ui/react-tabs";
-
-import { TabsList } from "@/components/ui/tabs";
-
-import { ICategoryWithProjectsAdmin } from "../types/types";
+import { TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ICategoryWithProjectsAdmin } from "@/lib/types";
 
 function getFirstWord(text: string): string {
   return text.split(" ")[0];
@@ -18,8 +15,8 @@ function PortfolioTabsList({ tabs }: { tabs: ICategoryWithProjectsAdmin[] }) {
             value={tab.value}
             className="w-full h-full py-1.5 px-3 data-[state=active]:bg-darkGrey font-normal text-base hover:data-[state=inactive]:text-white first:border-l-2 border-r-2 border-darkPrimary"
           >
-            <span className="hidden min-430:block">{tab.name}</span>
-            <span className="block min-430:hidden">
+            <span className="hidden min-lg:block">{tab.name}</span>
+            <span className="block min-lg:hidden">
               {getFirstWord(tab.name)}
             </span>
           </TabsTrigger>

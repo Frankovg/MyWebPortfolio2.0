@@ -3,7 +3,7 @@
 import { ChevronLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-import H1Main from "@/components/h1-main";
+import H1Main from "@/components/primitives/h1-main";
 import { Button } from "@/components/ui/button";
 
 type AdminPageTitleProps = {

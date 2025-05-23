@@ -5,7 +5,7 @@ import { createContext, useOptimistic } from "react";
 import { toast } from "sonner";
 
 import { activateAccount } from "@/actions/actions";
-import { SAMPLE_ACTION } from "@/constants/admin-constants";
+import { SAMPLE_ACTION } from "@/lib/constants";
 
 type UserManagementProviderProps = {
   data: User[];

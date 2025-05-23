@@ -1,28 +1,28 @@
-import { Tabs } from "@/components/ui/tabs";
+"use client";
 
-import { ICategoryWithProjectsAdmin } from "../types/types";
+import { useProjectContext } from "@/hooks/use-project-context";
 
 import PortfolioContent from "./portfolio-content";
 import PortfolioTabsList from "./portfolio-tabs-list";
+import PortfolioTabsWrapper from "./portfolio-tabs-wrapper";
 
 type PortfolioExplorerProps = {
-  categories: ICategoryWithProjectsAdmin[];
   isAdmin?: boolean;
+  defaultCategory: string;
 };
 
 function PortfolioExplorer({
-  categories,
   isAdmin = false,
+  defaultCategory,
 }: PortfolioExplorerProps) {
+  const { categories } = useProjectContext();
   return (
-    <div className="w-full ">
-      <Tabs defaultValue="web-development" className="w-full">
-        <PortfolioTabsList tabs={categories} />
-        {categories.map((category) => (
-          <PortfolioContent key={category.id} content={category} />
-        ))}
-      </Tabs>
-    </div>
+    <PortfolioTabsWrapper defaultCategory={defaultCategory}>
+      <PortfolioTabsList tabs={categories} />
+      {categories.map((category) => (
+        <PortfolioContent key={category.id} content={category} />
+      ))}
+    </PortfolioTabsWrapper>
   );
 }
 

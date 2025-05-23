@@ -1,21 +1,19 @@
 import { Project } from "@prisma/client";
 import { Table as TTable } from "@tanstack/react-table";
-import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 
+import AddProjectButton from "./add-project-button";
+
 function PortfolioTableTools({ table }: { table: TTable<Project> }) {
   return (
-    <div className="w-full flex justify-between mt-10 pb-2 group">
+    <div className="w-full flex justify-between min-md:max-lg:flex-col min-md:max-lg:gap-5 min-md:max-lg:items-center max-600:flex-col max-600:gap-5 max-600:items-center mt-10 pb-2 group">
       <Input
         placeholder="Search project..."
-        value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
-        onChange={(event) =>
-          table.getColumn("title")?.setFilterValue(event.target.value)
-        }
-        className="h-full w-1/3 border-whiteText placeholder:text-whiteText placeholder:font-normal hover-table-buttons"
+        value={table.getState().globalFilter ?? ""}
+        onChange={(event) => table.setGlobalFilter(event.target.value)}
+        className="h-full w-1/3 max-600:w-full min-md:max-lg:w-full border-whiteText placeholder:text-whiteText placeholder:font-normal hover-table-buttons"
       />
 
       <div className="flex items-center space-x-2 group">
@@ -23,9 +21,9 @@ function PortfolioTableTools({ table }: { table: TTable<Project> }) {
           id="filter-check"
           className="border-whiteText group-hover:border-white transition-colors ease-in-out duration-200"
           onCheckedChange={(checked) =>
-            typeof checked === "boolean" &&
-            checked &&
-            table.getColumn("published")?.setFilterValue(checked)
+            table
+              .getColumn("published")
+              ?.setFilterValue(checked ? true : undefined)
           }
         />
         <label
@@ -36,15 +34,7 @@ function PortfolioTableTools({ table }: { table: TTable<Project> }) {
         </label>
       </div>
 
-      <Link href="/admin/portfolio/add">
-        <Button
-          className="font-normal border border-whiteText hover-table-buttons"
-          variant="outline"
-          size="default"
-        >
-          + Add new project
-        </Button>
-      </Link>
+      <AddProjectButton />
     </div>
   );
 }

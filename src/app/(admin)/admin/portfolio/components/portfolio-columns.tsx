@@ -15,9 +15,12 @@ import Link from "next/link";
 import { GithubIcon } from "@/icons/social";
 import { DATE_FORMAT, DATE_LOCATION } from "@/lib/constants";
 
-const dropdownLabels = { asc: "Asc", desc: "Desc" };
+//TODO: Sorting columns
+// const dropdownLabels = { asc: "Asc", desc: "Desc" };
 
-export const portfolioColumns = (): ColumnDef<Project>[] => [
+export const portfolioColumns = (
+  handleOpenDeleteModal: (projectId: string, categoryId: string) => void
+): ColumnDef<Project>[] => [
   {
     accessorKey: "title",
     header: () => <div className="text-left">Project name</div>,
@@ -26,13 +29,12 @@ export const portfolioColumns = (): ColumnDef<Project>[] => [
         <Link
           href={`/app/project/${row.original.slug}`}
           target="_blank"
-          className="text-left font-light text-textWhite hover:underline"
+          className="text-left font-light text-textWhite hover:text-white"
         >
           {row.getValue("title")}
         </Link>
       );
     },
-    enableColumnFilter: true,
     enableSorting: true,
   },
   {
@@ -45,6 +47,7 @@ export const portfolioColumns = (): ColumnDef<Project>[] => [
         <div className="text-left font-light text-textWhite">{company}</div>
       );
     },
+    enableSorting: true,
   },
   {
     accessorKey: "client",
@@ -56,6 +59,7 @@ export const portfolioColumns = (): ColumnDef<Project>[] => [
         <div className="text-left font-light text-textWhite">{client}</div>
       );
     },
+    enableSorting: true,
   },
   {
     accessorKey: "published",
@@ -130,29 +134,31 @@ export const portfolioColumns = (): ColumnDef<Project>[] => [
   },
   {
     accessorKey: "actions",
-    header: () => {},
+    header: () => <div className="text-center">Actions</div>,
     cell: ({ row }) => {
-      const editButton = (
-        <button
+      const editLink = (
+        <Link
+          href={`/admin/portfolio/edit/${row.original.id}`}
           aria-label={`Edit ${row.original.title}`}
           className="opacity-0 group-hover/row:opacity-100 transition-opacity duration-200 hover:text-white"
-          onClick={() => {}}
         >
           <Settings className="h-4 w-auto" />
-        </button>
+        </Link>
       );
       const deleteButton = (
         <button
           aria-label={`Delete ${row.original.title}`}
           className="opacity-0 group-hover/row:opacity-100 transition-opacity duration-200 hover:text-white"
-          onClick={() => {}}
+          onClick={() =>
+            handleOpenDeleteModal(row.original.id, row.original.categoryId)
+          }
         >
           <Trash2 className="h-4 w-auto" />
         </button>
       );
       return (
         <div className="flex justify-center items-center space-x-4">
-          {editButton}
+          {editLink}
           {deleteButton}
         </div>
       );

@@ -1,7 +1,7 @@
-import H4 from "@/components/h4"
-import Section from "@/components/section"
+import H4 from "@/components/primitives/h4";
+import Section from "@/components/section";
 
-import ContactForm from "./components/contact-form"
+import ContactForm from "./components/contact-form";
 
 function Contact() {
   return (
@@ -9,7 +9,7 @@ function Contact() {
       <H4>Get in Touch</H4>
       <ContactForm />
     </Section>
-  )
+  );
 }
 
-export default Contact
+export default Contact;

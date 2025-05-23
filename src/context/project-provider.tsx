@@ -1,88 +1,184 @@
-'use client'
+"use client";
 
-import { Project } from "@prisma/client"
-import { createContext, useOptimistic } from "react"
+import { createContext, startTransition, useOptimistic } from "react";
+import { toast } from "sonner";
 
-import { addProject, deleteProject, editProject } from "@/actions/actions"
-import { ProjectEssentials } from "@/lib/types"
+import { addProject, deleteProject, editProject } from "@/actions/actions";
+import { SAMPLE_ACTION } from "@/lib/constants";
+import {
+  Action,
+  ICategoryWithProjectsAdmin,
+  ProjectEssentials,
+} from "@/lib/types";
+
+const showErrorMessage = (error: { message: string }) => {
+  if (error.message === SAMPLE_ACTION) {
+    toast.warning("This is a sample action with no effects.");
+    console.warn(error.message);
+  } else {
+    toast.error(error.message);
+    console.error(error.message);
+  }
+};
 
 type ProjectContextProviderProps = {
-  data: Project[],
-  children: React.ReactNode,
-}
+  data: ICategoryWithProjectsAdmin[];
+  children: React.ReactNode;
+};
 
 type TProjectContext = {
-  projects: Project[],
-  handleCreateProject: (newProject: ProjectEssentials) => Promise<void>,
-  handleDeleteProject: (projectId: Project['id']) => Promise<void>,
-  handleEditProject: (projectId: Project['id'], newProjectData: ProjectEssentials) => Promise<void>,
-}
+  categories: ICategoryWithProjectsAdmin[];
+  createProjectByCategoryId: (
+    newProject: ProjectEssentials,
+    categoryId: string
+  ) => Promise<void>;
+  handleDeleteProject: (projectId: string, categoryId: string) => Promise<void>;
+  handleEditProject: (
+    projectId: string,
+    project: ProjectEssentials,
+    categoryId: string
+  ) => Promise<void>;
+};
 
-export const ProjectContext = createContext<TProjectContext | null>(null)
+type PayloadCreate = ProjectEssentials & { categoryId: string };
+type PayloadEdit = ProjectEssentials & {
+  projectId: string;
+  categoryId: string;
+};
+type PayloadDelete = { projectId: string; categoryId: string };
+type Payload = PayloadCreate | PayloadEdit | PayloadDelete;
 
+export const ProjectContext = createContext<TProjectContext | null>(null);
 
-// TODO: This is an example from other project
-
-const ProjectContextProvider = ({ data, children }: ProjectContextProviderProps) => {
-  // Optimistic UI -> to update automatically the UI (it works as a state)
-  const [optimisticProjects, setOptimisticProjects] = useOptimistic(
+const ProjectContextProvider = ({
+  data,
+  children,
+}: ProjectContextProviderProps) => {
+  const [optimisticCategories, setOptimisticCategories] = useOptimistic(
     data,
-    (prev, { action, payload }) => {
+    (prev, { action, payload }: { action: Action; payload: Payload }) => {
+      const now = new Date();
       switch (action) {
         case "add":
-          return [...prev, { ...payload, id: Math.random().toString() }]
-        case "edit":
-          return prev.map(project => {
-            if (project.id === payload.id) {
-              return { ...project, ...payload.newProjectData }
+          return prev.map((category) => {
+            if (
+              !("projectId" in payload) &&
+              category.id === payload.categoryId
+            ) {
+              return {
+                ...category,
+                projects: [
+                  ...category.projects,
+                  {
+                    ...payload,
+                    id: Math.random().toString(),
+                    categoryId: payload.categoryId,
+                    createdAt: now,
+                    updatedAt: now,
+                  },
+                ],
+              };
             }
-            return project
-          })
+            return category;
+          });
+        case "edit":
+          return prev.map((category) => {
+            if (
+              !!("projectId" in payload) &&
+              category.id === payload.categoryId
+            ) {
+              return {
+                ...category,
+                projects: category.projects.map((project) => {
+                  if (project.id === payload.projectId) {
+                    return {
+                      ...project,
+                      ...payload,
+                      updatedAt: new Date(),
+                    };
+                  }
+                  return project;
+                }),
+              };
+            }
+            return category;
+          });
         case "delete":
-          return prev.filter(project => project.id !== payload)
+          return prev.map((category) => {
+            if ("projectId" in payload && category.id === payload.categoryId) {
+              return {
+                ...category,
+                projects: category.projects.filter(
+                  (project) => project.id !== payload.projectId
+                ),
+              };
+            }
+            return category;
+          });
         default:
-          return prev
+          return prev;
       }
     }
-  )
+  );
 
-  const handleCreateProject = async (newProject: ProjectEssentials) => {
-    setOptimisticProjects({ action: "add", payload: newProject })
-    const error = await addProject(newProject)
-    // if (error) {
-    //   toast.warning(error.message)
-    //   return
-    // }
-  }
+  const createProjectByCategoryId = async (
+    newProject: ProjectEssentials,
+    categoryId: string
+  ) => {
+    setOptimisticCategories({
+      action: "add",
+      payload: { ...newProject, categoryId },
+    });
+    const error = await addProject(newProject, categoryId);
+    if (!!error) {
+      showErrorMessage(error);
+      return;
+    }
+  };
 
-  const handleEditProject = async (projectId: Project['id'], newProjectData: ProjectEssentials) => {
-    setOptimisticProjects({ action: "edit", payload: { id: projectId, newProjectData } })
-    const error = await editProject(projectId, newProjectData)
-    // if (error) {
-    //   toast.warning(error.message)
-    //   return
-    // }
-  }
+  const handleDeleteProject = async (projectId: string, categoryId: string) => {
+    startTransition(() => {
+      setOptimisticCategories({
+        action: "delete",
+        payload: { projectId, categoryId },
+      });
+    });
 
-  const handleDeleteProject = async (projectId: Project['id']) => {
-    setOptimisticProjects({ action: "delete", payload: projectId })
-    const error = await deleteProject(projectId)
-    // if (error) {
-    //   toast.warning(error.message)
-    //   return
-    // }
-  }
+    const error = await deleteProject(projectId);
+    if (!!error) {
+      showErrorMessage(error);
+      return;
+    }
+  };
+
+  const handleEditProject = async (
+    projectId: string,
+    project: ProjectEssentials,
+    categoryId: string
+  ) => {
+    setOptimisticCategories({
+      action: "edit",
+      payload: { projectId, ...project, categoryId },
+    });
+    const error = await editProject(projectId, project, categoryId);
+    if (error) {
+      toast.warning(error.message);
+      return;
+    }
+  };
 
   return (
-    <ProjectContext.Provider value={{
-      projects: optimisticProjects,
-      handleCreateProject,
-      handleEditProject,
-      handleDeleteProject,
-    }}>
+    <ProjectContext.Provider
+      value={{
+        categories: optimisticCategories,
+        createProjectByCategoryId,
+        handleEditProject,
+        handleDeleteProject,
+      }}
+    >
       {children}
     </ProjectContext.Provider>
-  )
-}
+  );
+};
 
-export default ProjectContextProvider
+export default ProjectContextProvider;

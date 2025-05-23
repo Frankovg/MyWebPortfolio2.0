@@ -1,5 +1,6 @@
+import { Checkbox } from "../ui/checkbox";
+
 import { Spinner } from "./spinner";
-import { Checkbox } from "./ui/checkbox";
 
 type CheckboxCellProps = {
   loading: boolean;

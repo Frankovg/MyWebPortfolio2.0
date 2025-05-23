@@ -1,13 +1,13 @@
-import H4 from "@/components/h4"
-import { ProjectShort } from "@/lib/types"
+import H4 from "@/components/primitives/h4";
+import { ProjectShort } from "@/lib/types";
 
-import MobileProjectImagesContainer from "./mobile-project-images-container"
-import ProjectCarousel from "./project-carousel"
-import ProjectInfo from "./project-info"
+import MobileProjectImagesContainer from "./mobile-project-images-container";
+import ProjectCarousel from "./project-carousel";
+import ProjectInfo from "./project-info";
 
 type ProjectMainInfoProps = {
-  project: ProjectShort
-}
+  project: ProjectShort;
+};
 
 function ProjectMainInfo({ project }: ProjectMainInfoProps) {
   return (
@@ -25,6 +25,6 @@ function ProjectMainInfo({ project }: ProjectMainInfoProps) {
         </div>
       </div>
     </>
-  )
+  );
 }
-export default ProjectMainInfo
+export default ProjectMainInfo;
