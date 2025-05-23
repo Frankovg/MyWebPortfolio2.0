@@ -1,17 +1,16 @@
-import Footer from "@/components/footer"
-import Navbar from "@/components/navbar"
-import UserDataContextProvider from "@/context/user-data-provider"
-import { checkAuth } from "@/lib/check-auth"
-import downloadCv from '@/public/download-cv.webp'
-import downloadPortfolio from '@/public/download-portfolio.webp'
-
+import Footer from "@/components/footer";
+import Navbar from "@/components/navbar";
+import UserDataContextProvider from "@/context/user-data-provider";
+import { checkAuth } from "@/lib/check-auth";
+import downloadCv from "@/public/download-cv.webp";
+import downloadPortfolio from "@/public/download-portfolio.webp";
 
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await checkAuth()
+  const session = await checkAuth();
 
   //TODO: Downloads should come from the DB
   const userData = {
@@ -19,15 +18,15 @@ export default async function RootLayout({
       {
         name: "Curriculum Vitae",
         href: process.env.DOWNLOAD_CV,
-        img: downloadCv
+        img: downloadCv,
       },
       {
         name: "Portfolio",
         href: process.env.DOWNLOAD_PORTFOLIO,
-        img: downloadPortfolio
+        img: downloadPortfolio,
       },
-    ]
-  }
+    ],
+  };
 
   return (
     <UserDataContextProvider data={userData}>
@@ -37,5 +36,5 @@ export default async function RootLayout({
       </div>
       <Footer />
     </UserDataContextProvider>
-  )
+  );
 }

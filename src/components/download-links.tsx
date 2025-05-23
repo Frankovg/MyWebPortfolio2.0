@@ -1,17 +1,22 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from "next/image";
+import Link from "next/link";
 
-import { useUserDataContext } from '@/hooks/use-user-data-context'
+import { useUserDataContext } from "@/hooks/use-user-data-context";
 
 function DownloadLinks() {
-  const { downloads } = useUserDataContext()
+  const { downloads } = useUserDataContext();
 
   return (
     <>
       {downloads.map((download) => (
-        <Link href={download.href || '#'} target="_blank" className="group relative overflow-hidden" key={download.name}>
+        <Link
+          href={download.href || "#"}
+          target="_blank"
+          className="group relative overflow-hidden"
+          key={download.name}
+        >
           <Image
             src={download.img}
             alt={download.name}
@@ -23,7 +28,7 @@ function DownloadLinks() {
         </Link>
       ))}
     </>
-  )
+  );
 }
 
-export default DownloadLinks
+export default DownloadLinks;

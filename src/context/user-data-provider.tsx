@@ -1,35 +1,40 @@
-'use client'
+"use client";
 
 import { StaticImageData } from "next/image";
-import { createContext, SVGProps } from "react"
+import { createContext, SVGProps } from "react";
 
 type Download = {
   name: string;
   href: string | undefined;
   img: StaticImageData;
-}
+};
 
 type UserDataContextProviderProps = {
   data: {
-    downloads: Download[]
-  },
-  children: React.ReactNode,
-}
+    downloads: Download[];
+  };
+  children: React.ReactNode;
+};
 
 type TUserDataContext = {
-  downloads: Download[],
-}
+  downloads: Download[];
+};
 
-export const UserDataContext = createContext<TUserDataContext | null>(null)
+export const UserDataContext = createContext<TUserDataContext | null>(null);
 
-const UserDataContextProvider = ({ data, children }: UserDataContextProviderProps) => {
+const UserDataContextProvider = ({
+  data,
+  children,
+}: UserDataContextProviderProps) => {
   return (
-    <UserDataContext.Provider value={{
-      downloads: data.downloads,
-    }}>
+    <UserDataContext.Provider
+      value={{
+        downloads: data.downloads,
+      }}
+    >
       {children}
     </UserDataContext.Provider>
-  )
-}
+  );
+};
 
-export default UserDataContextProvider
+export default UserDataContextProvider;
