@@ -13,11 +13,6 @@ export async function checkAuth() {
   return session;
 }
 
-export async function getUsersAdmin() {
-  const users = await prisma.user.findMany();
-  return users;
-}
-
 export async function getCategoriesAdmin() {
   const categories = await prisma.category.findMany({
     include: {
@@ -31,6 +26,15 @@ export async function getCategoriesAdmin() {
   return categories;
 }
 
+export async function getCategoryById(id: string) {
+  const category = await prisma.category.findUnique({
+    where: {
+      id,
+    },
+  });
+  return category;
+}
+
 export async function getCategoryBySlug(slug: string) {
   const category = await prisma.category.findUnique({
     where: {
@@ -40,13 +44,9 @@ export async function getCategoryBySlug(slug: string) {
   return category;
 }
 
-export async function getCategoryById(id: string) {
-  const category = await prisma.category.findUnique({
-    where: {
-      id,
-    },
-  });
-  return category;
+export async function getDownloadsContent() {
+  const downloads = await prisma.download.findMany();
+  return downloads;
 }
 
 export async function getProjectById(id: string) {
@@ -61,4 +61,9 @@ export async function getProjectById(id: string) {
     },
   });
   return project;
+}
+
+export async function getUsersAdmin() {
+  const users = await prisma.user.findMany();
+  return users;
 }

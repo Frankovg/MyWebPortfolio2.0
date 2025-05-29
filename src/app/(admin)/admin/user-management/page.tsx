@@ -7,8 +7,8 @@ import { checkAuth } from "@/lib/check-auth";
 import { getUsersAdmin } from "@/lib/server-utils-admin";
 
 import AccountsTable from "./components/accounts-table";
-import UserManagementProvider from "./context/user-management-provider";
 import Loading from "./loading";
+import UserManagementProvider from "@/context/user-management-provider";
 
 async function UserManagement() {
   const breadcrumbLinks = [

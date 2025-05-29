@@ -1,4 +1,4 @@
-import { TECH_STACK_DATA } from "@/lib/constants";
+import { TECH_STACK_DATA } from "./seed-constants";
 import { Prisma, PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 

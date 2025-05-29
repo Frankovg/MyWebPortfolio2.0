@@ -7,6 +7,7 @@ import BodyTable from "@/components/table/body-table";
 import HeaderTable from "@/components/table/header-table";
 import WrapperTable from "@/components/table/wrapper-table";
 import { Table } from "@/components/ui/table";
+import { useDownloadContext } from "@/hooks/use-download-context";
 
 type AccountsTableProps = {
   isAdmin?: boolean;
@@ -15,6 +16,8 @@ type AccountsTableProps = {
 function DownloadsTable({ isAdmin = false }: AccountsTableProps) {
   const [isPending, startTransition] = useTransition();
   const [pendingRowId, setPendingRowId] = useState<string | null>(null);
+
+  const { downloads } = useDownloadContext();
 
   const handleCheckboxChange = async (id: string, value: boolean) => {
     setPendingRowId(id);
