@@ -3,35 +3,32 @@ import { Suspense } from "react";
 import AdminPageTitle from "@/components/admin/admin-page-title";
 import AdminSection from "@/components/admin/admin-section";
 import MainHeader from "@/components/admin/main-header";
-import { checkAuth } from "@/lib/check-auth";
 
 import Loading from "./loading";
-import DownloadsTable from "./components/downloads-table";
-import { AddFileButton } from "./components/add-file-button";
+import { DownloadsForm } from "@/components/admin/downloads-form";
 
-async function Downloads() {
+async function AddFile() {
   const breadcrumbLinks = [
     {
       name: "Downloads",
+      href: "/admin/downloads",
+    },
+    {
+      name: "Add File",
     },
   ];
-
-  const session = await checkAuth();
 
   return (
     <>
       <MainHeader breadcrumbLinks={breadcrumbLinks} />
       <Suspense fallback={<Loading />}>
         <AdminSection>
-          <div className="w-full flex items-start justify-between">
-            <AdminPageTitle title="Downloads" />
-            <AddFileButton />
-          </div>
-          <DownloadsTable isAdmin={session?.user.isAdmin} />
+          <AdminPageTitle title="Add File" showGoBack={true} />
+          <DownloadsForm actionType="add" />
         </AdminSection>
       </Suspense>
     </>
   );
 }
 
-export default Downloads;
+export default AddFile;

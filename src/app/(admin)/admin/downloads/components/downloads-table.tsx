@@ -7,8 +7,10 @@ import BodyTable from "@/components/table/body-table";
 import HeaderTable from "@/components/table/header-table";
 import WrapperTable from "@/components/table/wrapper-table";
 import { Table } from "@/components/ui/table";
-import { useDownloadContext } from "@/hooks/use-download-context";
 import { downloadColumns } from "./download-columns";
+import { useUserDataContext } from "@/hooks/use-user-data-context";
+import Link from "next/link";
+import ButtonMinimal from "@/components/primitives/button-minimal";
 
 type AccountsTableProps = {
   isAdmin?: boolean;
@@ -22,7 +24,7 @@ const initialModalState = {
 function DownloadsTable({ isAdmin = false }: AccountsTableProps) {
   const [deleteModal, setDeleteModal] = useState(initialModalState);
 
-  const { downloads } = useDownloadContext();
+  const { downloads } = useUserDataContext();
 
   const handleOpenDeleteModal = (downloadId: string) => {
     setDeleteModal({
