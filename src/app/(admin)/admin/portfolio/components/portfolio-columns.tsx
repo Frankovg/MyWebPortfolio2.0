@@ -140,7 +140,7 @@ export const portfolioColumns = (
         <Link
           href={`/admin/portfolio/edit/${row.original.id}`}
           aria-label={`Edit ${row.original.title}`}
-          className="opacity-0 group-hover/row:opacity-100 transition-opacity duration-200 hover:text-white"
+          className="opacity-30 group-hover/row:opacity-100 transition-opacity duration-200 hover:text-white"
         >
           <Settings className="h-4 w-auto" />
         </Link>
@@ -148,7 +148,7 @@ export const portfolioColumns = (
       const deleteButton = (
         <button
           aria-label={`Delete ${row.original.title}`}
-          className="opacity-0 group-hover/row:opacity-100 transition-opacity duration-200 hover:text-white"
+          className="opacity-30 group-hover/row:opacity-100 transition-opacity duration-200 hover:text-white"
           onClick={() =>
             handleOpenDeleteModal(row.original.id, row.original.categoryId)
           }

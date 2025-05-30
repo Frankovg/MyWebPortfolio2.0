@@ -13,10 +13,15 @@ import { useState } from "react";
 import { TabsContent } from "@/components/ui/tabs";
 import { ICategoryWithProjectsAdmin } from "@/lib/types";
 
-import DeleteModal from "./delete-modal";
 import { portfolioColumns } from "./portfolio-columns";
 import PortfolioTable from "./portfolio-table";
 import PortfolioTableTools from "./portfolio-table-tools";
+import dynamic from "next/dynamic";
+
+const DeleteModal = dynamic(() => import("./delete-modal"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
 
 type PortfolioContentProps = {
   content: ICategoryWithProjectsAdmin;

@@ -18,7 +18,7 @@ function DownloadLinksFooter() {
     const links: TItem[] = [
       ...downloads.map((download) => ({
         name: download.name,
-        href: download.href,
+        href: download.fileHref,
       })),
     ];
     return links;

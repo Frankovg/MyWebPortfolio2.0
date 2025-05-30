@@ -26,7 +26,7 @@ async function Downloads() {
       <MainHeader breadcrumbLinks={breadcrumbLinks} />
       <Suspense fallback={<Loading />}>
         <AdminSection>
-          <AdminPageTitle title="User Management" />
+          <AdminPageTitle title="Downloads" />
           <DownloadProvider data={downloads}>
             <DownloadsTable isAdmin={session?.user.isAdmin} />
           </DownloadProvider>

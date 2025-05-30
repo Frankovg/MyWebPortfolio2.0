@@ -12,13 +12,13 @@ function DownloadLinks() {
     <>
       {downloads.map((download) => (
         <Link
-          href={download.href || "#"}
+          href={download.fileHref || "#"}
           target="_blank"
           className="group relative overflow-hidden"
           key={download.name}
         >
           <Image
-            src={download.img}
+            src={download.imageUrl}
             alt={download.name}
             width={200}
             height={133}

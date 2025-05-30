@@ -9,7 +9,7 @@ function HeaderTable<T>({ table }: { table: Table<T> }) {
         <TableRow key={headerGroup.id}>
           {headerGroup.headers.map((header) => {
             return (
-              <TableHead key={header.id} className="font-bold">
+              <TableHead key={header.id} className="font-bold h-fit py-2">
                 {header.isPlaceholder
                   ? null
                   : flexRender(

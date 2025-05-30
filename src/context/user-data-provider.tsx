@@ -1,17 +1,13 @@
 "use client";
 
-import { StaticImageData } from "next/image";
-import { createContext, SVGProps } from "react";
-
-type Download = {
-  name: string;
-  href: string | undefined;
-  img: StaticImageData;
-};
+import { Download } from "@prisma/client";
+import { createContext } from "react";
 
 type UserDataContextProviderProps = {
   data: {
-    downloads: Download[];
+    userData: {
+      downloads: Download[];
+    };
   };
   children: React.ReactNode;
 };
@@ -29,7 +25,7 @@ const UserDataContextProvider = ({
   return (
     <UserDataContext.Provider
       value={{
-        downloads: data.downloads,
+        downloads: data.userData.downloads,
       }}
     >
       {children}
