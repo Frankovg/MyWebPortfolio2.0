@@ -6,6 +6,8 @@ const invalid_type_error = "Invalid type provided for this field.";
 const invalid_url_error = "Invalid url provided.";
 const required_error = "This field cannot be blank.";
 const value_too_short_error = "This field is too short.";
+const value_too_long_error_10 =
+  "This field must not be greater than 10 characters.";
 const value_too_long_error_50 =
   "This field must not be greater than 50 characters.";
 const value_too_long_error_200 =
@@ -154,3 +156,32 @@ export const projectFormSchema = z
   }));
 
 export type TProjectForm = z.infer<typeof projectFormSchema>;
+
+export const downloadFormSchema = z
+  .object({
+    imageUrl: z.string().trim().url({ message: invalid_url_error }),
+    alt: z.string().trim().nullable(),
+    name: z
+      .string()
+      .trim()
+      .min(1, { message: required_error })
+      .max(50, value_too_long_error_50),
+    description: z
+      .string()
+      .trim()
+      .min(1, { message: required_error })
+      .max(2000, value_too_long_error_2000),
+    fileHref: z.string().trim().url({ message: invalid_url_error }),
+    format: z
+      .string()
+      .trim()
+      .min(1, { message: required_error })
+      .max(10, value_too_long_error_10),
+    isActive: z.boolean().default(false),
+  })
+  .transform((data) => ({
+    ...data,
+    image: data.imageUrl || FALLBACK_IMG,
+  }));
+
+export type TDownloadForm = z.infer<typeof downloadFormSchema>;

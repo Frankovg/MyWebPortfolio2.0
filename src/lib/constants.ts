@@ -137,6 +137,7 @@ export const SAMPLE_ACTION = "isSample";
 
 //Forms constants
 export const DEFAULT_IMAGE_URL = "https://drive.google.com/uc?export=view&id=";
+export const DEFAULT_FILE_URL = "https://drive.google.com/file/d/";
 
 export const TECH_STACK_DATA = [
   { name: "React", value: "react" },
