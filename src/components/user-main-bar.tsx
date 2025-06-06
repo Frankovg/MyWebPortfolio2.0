@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useTransition } from "react";
 
-import { logOut } from "@/actions/actions";
+import { logOut } from "@/actions/index";
 import { UserSession } from "@/lib/types";
 import { cn } from "@/lib/utils";
 

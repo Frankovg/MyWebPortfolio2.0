@@ -157,10 +157,12 @@ export const projectFormSchema = z
 
 export type TProjectForm = z.infer<typeof projectFormSchema>;
 
+export const downloadIdSchema = z.string().cuid();
+
 export const downloadFormSchema = z
   .object({
     imageUrl: z.string().trim().url({ message: invalid_url_error }),
-    alt: z.string().trim().nullable(),
+    alt: z.string().trim().min(1, { message: required_error }),
     name: z
       .string()
       .trim()

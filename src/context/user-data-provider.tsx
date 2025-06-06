@@ -1,8 +1,11 @@
 "use client";
 
+import { showErrorMessage } from "@/utils/showErrorMessage";
 import { Action, DownloadEssentials } from "@/lib/types";
 import { Download } from "@prisma/client";
-import { createContext, useOptimistic } from "react";
+import { createContext, startTransition, useOptimistic } from "react";
+import { toast } from "sonner";
+import { addFile, deleteFile, editFile } from "@/actions/index";
 
 type UserDataContextProviderProps = {
   data: {
@@ -15,11 +18,17 @@ type UserDataContextProviderProps = {
 
 type TUserDataContext = {
   downloads: Download[];
+  addNewFile: (newFile: DownloadEssentials) => Promise<void>;
+  handleDeleteFile: (downloadId: string) => Promise<void>;
+  handleEditFile: (
+    downloadId: string,
+    download: DownloadEssentials
+  ) => Promise<void>;
 };
 
 export const UserDataContext = createContext<TUserDataContext | null>(null);
 
-type PayloadCreate = DownloadEssentials & { isActive: boolean };
+type PayloadCreate = DownloadEssentials;
 type PayloadEdit = DownloadEssentials & {
   downloadId: string;
 };
@@ -73,10 +82,55 @@ const UserDataContextProvider = ({
     }
   );
 
+  const addNewFile = async (newFile: DownloadEssentials) => {
+    setOptimisticDownloads({
+      action: "add",
+      payload: { ...newFile },
+    });
+    const error = await addFile(newFile);
+    if (!!error) {
+      showErrorMessage(error);
+      return;
+    }
+  };
+
+  const handleDeleteFile = async (downloadId: string) => {
+    startTransition(() => {
+      setOptimisticDownloads({
+        action: "delete",
+        payload: { downloadId },
+      });
+    });
+
+    const error = await deleteFile(downloadId);
+    if (!!error) {
+      showErrorMessage(error);
+      return;
+    }
+  };
+
+  const handleEditFile = async (
+    downloadId: string,
+    download: DownloadEssentials
+  ) => {
+    setOptimisticDownloads({
+      action: "edit",
+      payload: { downloadId, ...download },
+    });
+    const error = await editFile(downloadId, download);
+    if (error) {
+      toast.warning(error.message);
+      return;
+    }
+  };
+
   return (
     <UserDataContext.Provider
       value={{
         downloads: data.userData.downloads,
+        addNewFile,
+        handleDeleteFile,
+        handleEditFile,
       }}
     >
       {children}

@@ -15,16 +15,13 @@ import {
 import { toast } from "sonner";
 
 import { Action } from "@/lib/types";
-import {
-  downloadFormSchema,
-  projectFormSchema,
-  TDownloadForm,
-  TProjectForm,
-} from "@/lib/validations";
+import { downloadFormSchema, TDownloadForm } from "@/lib/validations";
 import { Download } from "@prisma/client";
+import { FALLBACK_IMG } from "@/lib/constants";
+import { useUserDataContext } from "@/hooks/use-user-data-context";
 
 type DownloadFormContextType = {
-  onSubmit: () => Promise<void>;
+  onSubmit: (actionType: Action) => Promise<void>;
   isPending: boolean;
   register: UseFormRegister<TDownloadForm>;
   control: Control<TDownloadForm>;
@@ -48,6 +45,8 @@ export function DownloadFormProvider({
   download,
 }: DownloadFormProviderProps) {
   const [isPending, startTransition] = useTransition();
+  const { addNewFile, handleEditFile } = useUserDataContext();
+
   const router = useRouter();
 
   const {
@@ -61,7 +60,7 @@ export function DownloadFormProvider({
     resolver: zodResolver(downloadFormSchema),
     defaultValues: {
       imageUrl: download?.imageUrl || "",
-      alt: download?.alt || null,
+      alt: download?.alt || "",
       name: download?.name || "",
       description: download?.description || "",
       fileHref: download?.fileHref || "",
@@ -70,8 +69,30 @@ export function DownloadFormProvider({
     },
   });
 
-  const onSubmit = async () => {
-    startTransition(async () => {});
+  const onSubmit = async (actionType: Action) => {
+    startTransition(async () => {
+      const result = await trigger();
+      if (!result) {
+        const errorMessage =
+          "Form validation failed. Please check the highlighted fields and try again.";
+        toast.error(errorMessage);
+        console.warn(errorMessage);
+        return;
+      }
+
+      flushSync(() => {
+        router.push("/admin/downloads");
+      });
+
+      const downloadValues = getValues();
+      downloadValues.imageUrl = downloadValues.image || FALLBACK_IMG;
+
+      if (actionType === "add") {
+        await addNewFile(downloadValues);
+      } else if (actionType === "edit") {
+        await handleEditFile(download?.id ?? "", downloadValues);
+      }
+    });
   };
 
   return (

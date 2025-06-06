@@ -15,7 +15,7 @@ export type ProjectEssentials = Omit<
 
 export type DownloadEssentials = Omit<
   Download,
-  "id" | "createdAt" | "updatedAt" | "isActive"
+  "id" | "createdAt" | "updatedAt"
 >;
 
 export type UserSession = Session | null;

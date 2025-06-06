@@ -1,0 +1,12 @@
+import { SAMPLE_ACTION } from "@/lib/constants";
+import { toast } from "sonner";
+
+export const showErrorMessage = (error: { message: string }) => {
+  if (error.message === SAMPLE_ACTION) {
+    toast.warning("This is a sample action with no effects.");
+    console.warn(error.message);
+  } else {
+    toast.error(error.message);
+    console.error(error.message);
+  }
+};

@@ -21,7 +21,10 @@ export default function DownloadFormWrapper({
   };
 
   return (
-    <form className="relative flex flex-wrap gap-6" action={() => onSubmit()}>
+    <form
+      className="relative flex flex-wrap gap-6"
+      action={() => onSubmit(actionType)}
+    >
       <div className="w-full flex flex-col items-center gap-4 mt-10 mb-14">
         <FileSection />
         <ButtonForm

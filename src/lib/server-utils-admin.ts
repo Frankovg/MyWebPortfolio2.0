@@ -49,6 +49,15 @@ export async function getDownloadsContent() {
   return downloads;
 }
 
+export async function getDownloadFileById(id: string) {
+  const download = await prisma.download.findUnique({
+    where: {
+      id,
+    },
+  });
+  return download;
+}
+
 export async function getProjectById(id: string) {
   const project = await prisma.project.findUnique({
     where: {
