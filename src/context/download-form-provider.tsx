@@ -85,7 +85,7 @@ export function DownloadFormProvider({
       });
 
       const downloadValues = getValues();
-      downloadValues.imageUrl = downloadValues.image || FALLBACK_IMG;
+      downloadValues.imageUrl = downloadValues.imageUrl || FALLBACK_IMG;
 
       if (actionType === "add") {
         await addNewFile(downloadValues);

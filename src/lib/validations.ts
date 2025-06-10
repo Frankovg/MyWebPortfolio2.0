@@ -183,7 +183,7 @@ export const downloadFormSchema = z
   })
   .transform((data) => ({
     ...data,
-    image: data.imageUrl || FALLBACK_IMG,
+    imageUrl: data.imageUrl || FALLBACK_IMG,
   }));
 
 export type TDownloadForm = z.infer<typeof downloadFormSchema>;
