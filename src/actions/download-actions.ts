@@ -23,6 +23,8 @@ export async function addFile(newFile: DownloadEssentials) {
   }
   const validatedFile = downloadFormSchema.safeParse(newFile);
   if (!validatedFile.success) {
+    console.log(validatedFile.error);
+
     return {
       message: "Invalid file data.",
     };
