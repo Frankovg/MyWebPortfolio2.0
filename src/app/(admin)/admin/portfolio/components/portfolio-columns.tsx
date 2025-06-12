@@ -15,7 +15,7 @@ import Link from "next/link";
 import { GithubIcon } from "@/icons/social";
 import { DATE_FORMAT, DATE_LOCATION } from "@/lib/constants";
 
-//TODO: Sorting columns
+//TODO: Sorting columns, ver nuqs
 // const dropdownLabels = { asc: "Asc", desc: "Desc" };
 
 export const portfolioColumns = (

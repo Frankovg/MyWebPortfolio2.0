@@ -127,7 +127,7 @@ const UserDataContextProvider = ({
   return (
     <UserDataContext.Provider
       value={{
-        downloads: data.userData.downloads,
+        downloads: optimisticDownloads,
         addNewFile,
         handleDeleteFile,
         handleEditFile,

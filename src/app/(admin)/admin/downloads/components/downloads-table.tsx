@@ -9,8 +9,12 @@ import WrapperTable from "@/components/table/wrapper-table";
 import { Table } from "@/components/ui/table";
 import { downloadColumns } from "./download-columns";
 import { useUserDataContext } from "@/hooks/use-user-data-context";
-import Link from "next/link";
-import ButtonMinimal from "@/components/primitives/button-minimal";
+import dynamic from "next/dynamic";
+
+const DeleteModal = dynamic(() => import("./delete-modal"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
 
 type AccountsTableProps = {
   isAdmin?: boolean;
@@ -49,7 +53,14 @@ function DownloadsTable({ isAdmin = false }: AccountsTableProps) {
           <BodyTable table={table} />
         </Table>
       </WrapperTable>
-      {/* Import dynamic delete modal */}
+      <DeleteModal
+        close={handleCloseDeleteModal}
+        isOpen={deleteModal.isOpen}
+        data={{
+          projectId: deleteModal.projectId,
+          categoryId: deleteModal.categoryId,
+        }}
+      />
     </>
   );
 }

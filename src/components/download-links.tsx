@@ -8,9 +8,11 @@ import { useUserDataContext } from "@/hooks/use-user-data-context";
 function DownloadLinks() {
   const { downloads } = useUserDataContext();
 
+  const parsedDownloads = downloads.filter((file) => file.isActive);
+
   return (
     <>
-      {downloads.map((download) => (
+      {parsedDownloads.map((download) => (
         <Link
           href={download.fileHref || "#"}
           target="_blank"

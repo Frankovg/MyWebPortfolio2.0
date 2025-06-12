@@ -15,8 +15,9 @@ function DownloadLinksFooter() {
   const { downloads } = useUserDataContext();
 
   let _downloads = useMemo(() => {
+    const parsedDownloads = downloads.filter((file) => file.isActive);
     const links: TItem[] = [
-      ...downloads.map((download) => ({
+      ...parsedDownloads.map((download) => ({
         name: download.name,
         href: download.fileHref,
       })),

@@ -45,7 +45,9 @@ export async function getCategoryBySlug(slug: string) {
 }
 
 export async function getDownloadsContent() {
-  const downloads = await prisma.download.findMany();
+  const downloads = await prisma.download.findMany({
+    orderBy: { createdAt: "desc" },
+  });
   return downloads;
 }
 
