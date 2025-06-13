@@ -3,23 +3,13 @@
 import { createContext, startTransition, useOptimistic } from "react";
 import { toast } from "sonner";
 
-import { addProject, deleteProject, editProject } from "@/actions/actions";
-import { SAMPLE_ACTION } from "@/lib/constants";
+import { addProject, deleteProject, editProject } from "@/actions/index";
 import {
   Action,
   ICategoryWithProjectsAdmin,
   ProjectEssentials,
 } from "@/lib/types";
-
-const showErrorMessage = (error: { message: string }) => {
-  if (error.message === SAMPLE_ACTION) {
-    toast.warning("This is a sample action with no effects.");
-    console.warn(error.message);
-  } else {
-    toast.error(error.message);
-    console.error(error.message);
-  }
-};
+import { showErrorMessage } from "@/utils/showErrorMessage";
 
 type ProjectContextProviderProps = {
   data: ICategoryWithProjectsAdmin[];

@@ -5,7 +5,7 @@ import { useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
-import { sendMail } from "@/actions/actions";
+import { sendMail } from "@/actions/index";
 import ButtonWhite from "@/components/primitives/button-white";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Input } from "@/components/ui/input";
