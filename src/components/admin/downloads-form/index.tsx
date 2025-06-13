@@ -1,6 +1,8 @@
-import { Action } from "@/lib/types";
 import { Download } from "@prisma/client";
+
 import { DownloadFormProvider } from "@/context/download-form-provider";
+import { Action } from "@/lib/types";
+
 import DownloadFormWrapper from "./sections/download-form-wrapper";
 
 type DownloadsFormProps = {

@@ -1,8 +1,9 @@
 "use server";
 
-import { sleep } from "@/lib/utils";
-import { signIn, signOut } from "@/lib/auth";
 import { AuthError } from "next-auth";
+
+import { signIn, signOut } from "@/lib/auth";
+import { sleep } from "@/lib/utils";
 
 export async function logIn(prevState: unknown, formData: unknown) {
   if (process.env.NODE_ENV === "development") {

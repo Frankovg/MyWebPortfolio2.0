@@ -1,5 +1,6 @@
-import ButtonMinimal from "@/components/primitives/button-minimal";
 import Link from "next/link";
+
+import ButtonMinimal from "@/components/primitives/button-minimal";
 
 export const AddFileButton = () => {
   return (

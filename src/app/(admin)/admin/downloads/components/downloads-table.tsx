@@ -1,20 +1,24 @@
 "use client";
 
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
+import dynamic from "next/dynamic";
 import { useState } from "react";
 
 import BodyTable from "@/components/table/body-table";
 import HeaderTable from "@/components/table/header-table";
 import WrapperTable from "@/components/table/wrapper-table";
 import { Table } from "@/components/ui/table";
-import { downloadColumns } from "./download-columns";
 import { useUserDataContext } from "@/hooks/use-user-data-context";
-import dynamic from "next/dynamic";
 
-const DeleteModal = dynamic(() => import("./delete-modal"), {
-  ssr: false,
-  loading: () => <p>Loading...</p>,
-});
+import { downloadColumns } from "./download-columns";
+
+const DeleteModal = dynamic(
+  () => import("../../../../../components/admin/delete-modal"),
+  {
+    ssr: false,
+    loading: () => <p>Loading...</p>,
+  }
+);
 
 type AccountsTableProps = {
   isAdmin?: boolean;
@@ -28,13 +32,21 @@ const initialModalState = {
 function DownloadsTable({ isAdmin = false }: AccountsTableProps) {
   const [deleteModal, setDeleteModal] = useState(initialModalState);
 
-  const { downloads } = useUserDataContext();
+  const { downloads, handleDeleteFile } = useUserDataContext();
+
+  const handleCloseDeleteModal = () => {
+    setDeleteModal(initialModalState);
+  };
 
   const handleOpenDeleteModal = (downloadId: string) => {
     setDeleteModal({
       isOpen: true,
       downloadId,
     });
+  };
+
+  const handleDeleteDownload = async () => {
+    await handleDeleteFile(deleteModal.downloadId);
   };
 
   const columns = downloadColumns(handleOpenDeleteModal);
@@ -56,10 +68,9 @@ function DownloadsTable({ isAdmin = false }: AccountsTableProps) {
       <DeleteModal
         close={handleCloseDeleteModal}
         isOpen={deleteModal.isOpen}
-        data={{
-          projectId: deleteModal.projectId,
-          categoryId: deleteModal.categoryId,
-        }}
+        title="Are you sure you want to delete this file?"
+        subtitle="This action cannot be undone."
+        deleteFile={handleDeleteDownload}
       />
     </>
   );

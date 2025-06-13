@@ -3,13 +3,13 @@ import { SessionProvider } from "next-auth/react";
 import NextNProgress from "nextjs-toploader";
 import { Toaster } from "sonner";
 
+import UserDataContextProvider from "@/context/user-data-provider";
+import { getDownloadsContent } from "@/lib/server-utils-admin";
 import { cn } from "@/lib/utils";
 
 import type { Metadata } from "next";
 
 import "../styles/globals.css";
-import UserDataContextProvider from "@/context/user-data-provider";
-import { getDownloadsContent } from "@/lib/server-utils-admin";
 
 const fontSans = FontSans({
   subsets: ["latin"],

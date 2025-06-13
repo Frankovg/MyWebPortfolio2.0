@@ -5,9 +5,9 @@ import AdminSection from "@/components/admin/admin-section";
 import MainHeader from "@/components/admin/main-header";
 import { checkAuth } from "@/lib/check-auth";
 
-import Loading from "./loading";
-import DownloadsTable from "./components/downloads-table";
 import { AddFileButton } from "./components/add-file-button";
+import DownloadsTable from "./components/downloads-table";
+import Loading from "./loading";
 
 async function Downloads() {
   const breadcrumbLinks = [

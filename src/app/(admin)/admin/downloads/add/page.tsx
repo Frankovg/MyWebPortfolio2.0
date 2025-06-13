@@ -2,10 +2,10 @@ import { Suspense } from "react";
 
 import AdminPageTitle from "@/components/admin/admin-page-title";
 import AdminSection from "@/components/admin/admin-section";
+import { DownloadsForm } from "@/components/admin/downloads-form";
 import MainHeader from "@/components/admin/main-header";
 
 import Loading from "./loading";
-import { DownloadsForm } from "@/components/admin/downloads-form";
 
 async function AddFile() {
   const breadcrumbLinks = [

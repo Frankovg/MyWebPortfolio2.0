@@ -1,13 +1,14 @@
 "use server";
 
-import { sleep } from "@/lib/utils";
 import { User } from "@prisma/client";
-import { getUserById } from "@/lib/server-utils-public";
+import { revalidatePath } from "next/cache";
+
 import { checkAuth } from "@/lib/check-auth";
 import { SAMPLE_ACTION } from "@/lib/constants";
-import { isActiveSchema, userIdSchema } from "@/lib/validations";
 import prisma from "@/lib/db";
-import { revalidatePath } from "next/cache";
+import { getUserById } from "@/lib/server-utils-public";
+import { sleep } from "@/lib/utils";
+import { isActiveSchema, userIdSchema } from "@/lib/validations";
 
 export async function activateAccount(userId: User["id"], isActive: boolean) {
   if (process.env.NODE_ENV === "development") {

@@ -2,6 +2,7 @@
 
 import nodemailer from "nodemailer";
 import SMTPTransport from "nodemailer/lib/smtp-transport";
+
 import { sleep } from "@/lib/utils";
 import { emailSchema } from "@/lib/validations";
 
