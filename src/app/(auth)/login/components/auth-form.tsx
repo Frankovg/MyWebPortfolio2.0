@@ -3,7 +3,7 @@
 import React, { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 
-import { logIn } from "@/actions/actions";
+import { logIn } from "@/actions/index";
 import ButtonWhite from "@/components/primitives/button-white";
 
 import InputLogin from "./input-login";
@@ -41,6 +41,7 @@ const AuthForm = () => {
         disabled={pending}
         text="Log in"
         className="mt-4 md:w-full"
+        type="submit"
       />
 
       {logInError && (

@@ -12,7 +12,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTransition } from "react";
 
-import { logOut } from "@/actions/actions";
+import { logOut } from "@/actions/index";
 import {
   Sidebar,
   SidebarContent,

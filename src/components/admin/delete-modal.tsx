@@ -12,31 +12,30 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { useProjectContext } from "@/hooks/use-project-context";
-
-
 
 interface DeleteModalProps {
   close: () => void;
   isOpen: boolean;
-  data: {
-    projectId: string;
-    categoryId: string;
-  };
+  title: string;
+  subtitle: string;
+  deleteFile: () => Promise<void>;
 }
 
-export default function DeleteModal({ close, isOpen, data }: DeleteModalProps) {
+export default function DeleteModal({
+  close,
+  isOpen,
+  title,
+  subtitle,
+  deleteFile,
+}: DeleteModalProps) {
   const [isPending, startTransition] = useTransition();
-  const { handleDeleteProject } = useProjectContext();
 
   return (
     <Dialog open={isOpen} onOpenChange={close}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>
-            Are you sure you want to delete this project?
-          </DialogTitle>
-          <DialogDescription>This action cannot be undone.</DialogDescription>
+          <DialogTitle>{title}</DialogTitle>
+          <DialogDescription>{subtitle}</DialogDescription>
         </DialogHeader>
         <div></div>
         <DialogFooter>
@@ -47,7 +46,7 @@ export default function DeleteModal({ close, isOpen, data }: DeleteModalProps) {
             variant="secondary"
             onClick={() =>
               startTransition(async () => {
-                await handleDeleteProject(data.projectId, data.categoryId);
+                await deleteFile();
                 close();
               })
             }

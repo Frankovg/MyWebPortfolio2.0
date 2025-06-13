@@ -4,7 +4,7 @@ import { User } from "@prisma/client";
 import { createContext, useOptimistic } from "react";
 import { toast } from "sonner";
 
-import { activateAccount } from "@/actions/actions";
+import { activateAccount } from "@/actions/index";
 import { SAMPLE_ACTION } from "@/lib/constants";
 
 type UserManagementProviderProps = {

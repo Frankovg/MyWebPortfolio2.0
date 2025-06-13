@@ -3,6 +3,8 @@ import { SessionProvider } from "next-auth/react";
 import NextNProgress from "nextjs-toploader";
 import { Toaster } from "sonner";
 
+import UserDataContextProvider from "@/context/user-data-provider";
+import { getDownloadsContent } from "@/lib/server-utils-admin";
 import { cn } from "@/lib/utils";
 
 import type { Metadata } from "next";
@@ -42,6 +44,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const downloads = await getDownloadsContent();
+
   return (
     <html lang="en" suppressHydrationWarning>
       {/* //TODO: remove this script */}
@@ -67,7 +71,11 @@ export default async function RootLayout({
         />
         <div className="absolute inset-0 bg-linear-to-br to-darkPrimary via-background from-darkGrey animate-gradient bg-[length:400%_400%] z-0" />
         <div className="relative flex flex-col min-h-screen w-full z-10">
-          <SessionProvider>{children}</SessionProvider>
+          <SessionProvider>
+            <UserDataContextProvider data={{ userData: { downloads } }}>
+              {children}
+            </UserDataContextProvider>
+          </SessionProvider>
           <Toaster
             toastOptions={{
               classNames: {
