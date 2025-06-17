@@ -2,6 +2,7 @@
 
 import ButtonForm from "@/components/primitives/button-form";
 import { useChangePasswordContext } from "@/hooks/use-change-password-context";
+
 import { NewPasswordSection } from "./new-password-section";
 
 export const ChangePasswordFormWrapper = () => {
