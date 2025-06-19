@@ -49,7 +49,7 @@ function DesktopTechViewer() {
             <TechCard
               key={tech.value}
               tech={tech}
-              className="inline-block h-28 max-h-28 w-auto object-contain transition-all duration-200 ease-in-out group-hover:fill-primary group-hover:scale-105"
+              className="inline-block h-28 max-h-28 w-auto object-contain transition-all duration-200 ease-in-out group-hover:fill-primary group-hover:scale-[1.02]"
             />
           ))}
       </div>

@@ -8,7 +8,7 @@ import BreadcrumbContainer from "./breadcrumb-container";
 import SampleMessage from "./sample-message";
 
 type MainHeaderProps = {
-  breadcrumbLinks: BreadcrumbLinkObject[];
+  breadcrumbLinks?: BreadcrumbLinkObject[];
 };
 
 async function MainHeader({ breadcrumbLinks }: MainHeaderProps) {

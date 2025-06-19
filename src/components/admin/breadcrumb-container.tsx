@@ -10,7 +10,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 
-function BreadcrumbContainer({ links }: { links: BreadcrumbLinkObject[] }) {
+function BreadcrumbContainer({ links }: { links?: BreadcrumbLinkObject[] }) {
   return (
     <Breadcrumb>
       <BreadcrumbList>
@@ -18,7 +18,7 @@ function BreadcrumbContainer({ links }: { links: BreadcrumbLinkObject[] }) {
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
 
-        {links.map((link) => (
+        {links?.map((link) => (
           <Fragment key={link.name}>
             <BreadcrumbSeparator className="hidden md:block" />
             <BreadcrumbItem>
