@@ -5,8 +5,7 @@ import { Input } from "@/components/ui/input";
 import { useChangePasswordContext } from "@/hooks/use-change-password-context";
 
 export const NewPasswordSection = () => {
-  const { register, getValues, watch, control, errors } =
-    useChangePasswordContext();
+  const { register, errors } = useChangePasswordContext();
 
   return (
     <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">

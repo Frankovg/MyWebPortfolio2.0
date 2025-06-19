@@ -2,7 +2,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { createContext, ReactNode, useTransition } from "react";
-import { flushSync } from "react-dom";
 import {
   Control,
   FieldErrors,
@@ -19,6 +18,9 @@ import {
   changePasswordFormSchema,
   TChangePasswordForm,
 } from "@/lib/validations";
+import { showErrorMessage } from "@/utils/showErrorMessage";
+
+import { changePassword } from "../actions";
 
 type ChangePasswordContextType = {
   onSubmit: () => Promise<void>;
@@ -54,6 +56,7 @@ export function ChangePasswordProvider({
     watch,
     control,
     formState: { errors },
+    reset,
   } = useForm<TChangePasswordForm>({
     resolver: zodResolver(changePasswordFormSchema),
   });
@@ -69,11 +72,18 @@ export function ChangePasswordProvider({
         return;
       }
 
-      flushSync(() => {
-        router.push("/admin/change-password/success");
-      });
-
-      //Logic
+      const passwordValues = getValues();
+      if (passwordValues.password === passwordValues.confirmPassword) {
+        const error = await changePassword(passwordValues);
+        if (!!error) {
+          showErrorMessage(error);
+          return;
+        }
+        toast.success("Password changed successfully");
+      } else {
+        toast.error("Passwords do not match");
+        console.warn("Passwords do not match");
+      }
     });
   };
 
