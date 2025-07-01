@@ -39,7 +39,7 @@ export const multiSelectVariants = cva("m-1", {
 
 interface MultiSelectProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-  VariantProps<typeof multiSelectVariants> {
+    VariantProps<typeof multiSelectVariants> {
   options: {
     label: string;
     value: string;
@@ -145,6 +145,7 @@ export const MultiSelect = React.forwardRef<
                   {selectedValues.slice(0, maxCount).map((value) => {
                     const option = options.find((o) => o.value === value);
                     const IconComponent = option?.icon;
+                    if (!option?.label) return null;
                     return (
                       <Badge
                         key={value}
