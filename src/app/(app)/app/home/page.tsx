@@ -28,7 +28,7 @@ export default function Home() {
             <span className="font-semibold text-white">
               Front-End Developer with a solid design background
             </span>
-            , I bring a unique perspective to my work, crafting web apps that
+            , I bring a unique perspective to my work, creating web apps that
             look great and feel intuitive. Check out my work, and let&apos;s
             connect if you&apos;ve got questions or want to team up.
           </H3>

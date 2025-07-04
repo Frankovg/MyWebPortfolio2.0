@@ -187,3 +187,34 @@ export const downloadFormSchema = z
   }));
 
 export type TDownloadForm = z.infer<typeof downloadFormSchema>;
+
+const passwordSchema = z
+  .string()
+  .trim()
+  .min(8, { message: "Password must be at least 8 characters long" })
+  .max(20, { message: "Password must be at most 20 characters long" })
+  .refine((password) => /[A-Z]/.test(password), {
+    message: "Password must contain at least one uppercase letter",
+  })
+  .refine((password) => /[a-z]/.test(password), {
+    message: "Password must contain at least one lowercase letter",
+  })
+  .refine((password) => /[0-9]/.test(password), {
+    message: "Password must contain at least one number",
+  })
+  .refine((password) => /[^a-zA-Z0-9]/.test(password), {
+    message: "Password must contain at least one special character",
+  });
+
+export const changePasswordFormSchema = z
+  .object({
+    currentPassword: z.string().min(1, { message: required_error }).max(100),
+    password: passwordSchema,
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  });
+
+export type TChangePasswordForm = z.infer<typeof changePasswordFormSchema>;
