@@ -9,7 +9,7 @@ import { Check } from "lucide-react";
 
 export const SampleAccountStatus = ({ account }: { account: User }) => {
   return (
-    <Card className="border-darkPrimary border-2 rounded-md w-full">
+    <Card className="border-darkPrimary border-2 rounded-md w-full h-fit">
       <CardHeader>
         <div className="w-full flex justify-between items-center">
           <div>

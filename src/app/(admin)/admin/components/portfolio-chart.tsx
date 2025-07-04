@@ -52,7 +52,7 @@ export function PortfolioChart({
   }, [categories]);
 
   return (
-    <Card className="border-darkPrimary border-2 rounded-md w-full">
+    <Card className="border-darkPrimary border-2 rounded-md w-full h-full">
       <CardHeader>
         <CardTitle>Projects per category</CardTitle>
         <CardDescription>

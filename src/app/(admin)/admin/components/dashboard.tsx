@@ -11,11 +11,11 @@ export async function Dashboard({ isAdmin = false }: { isAdmin?: boolean }) {
   const downloads = await getDownloadsContent();
 
   return (
-    <div className="flex flex-wrap">
-      <div className="w-1/2 p-2">
+    <div className="flex flex-col-reverse max-1170:gap-4 shrink 1170:flex-row">
+      <div className="flex-1 1170:p-2">
         <PortfolioChart categories={categories} />
       </div>
-      <div className="w-1/2 flex flex-col gap-4 items-center p-2 h-max">
+      <div className="flex-1 flex flex-col gap-4 items-center 1170:p-2">
         {sampleAccountInfo && (
           <SampleAccountStatus account={sampleAccountInfo} />
         )}
