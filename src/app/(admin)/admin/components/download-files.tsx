@@ -1,3 +1,7 @@
+import { Download } from "@prisma/client";
+import { FileDown } from "lucide-react";
+import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -6,9 +10,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Download } from "@prisma/client";
-import { FileDown } from "lucide-react";
-import Link from "next/link";
 
 export const DownloadFiles = ({ downloads }: { downloads: Download[] }) => {
   return (

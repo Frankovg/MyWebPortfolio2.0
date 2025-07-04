@@ -78,7 +78,7 @@ const config = {
         token.isAdmin = user.isAdmin;
         token.exp = Math.floor(Date.now() / 1000) + 24 * 60 * 60;
       }
-      if (trigger === "update") {
+      if (trigger === "update" && token.email) {
         if (process.env.NODE_ENV === "development") {
           await sleep(1000);
         }
@@ -92,7 +92,8 @@ const config = {
       return token;
     },
     session: ({ session, token }) => {
-      (session.user.id = token.userId), (session.user.isAdmin = token.isAdmin);
+      (session.user.id = token.userId as string),
+        (session.user.isAdmin = token.isAdmin as boolean);
 
       return session;
     },
