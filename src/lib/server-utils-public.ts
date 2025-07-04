@@ -24,6 +24,15 @@ export async function getCategories() {
   return categories;
 }
 
+export async function getCategoriesForChart() {
+  const categories = await prisma.category.findMany({
+    include: {
+      projects: true,
+    },
+  });
+  return categories;
+}
+
 // export async function getProjects() {
 //   const projects = await prisma.project.findMany({
 //     include: {

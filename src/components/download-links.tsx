@@ -24,7 +24,7 @@ function DownloadLinks() {
             alt={download.name}
             width={200}
             height={133}
-            className="w-[200px] h-[133px] object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+            className="w-[200px] h-[133px] object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]"
           />
           <div className="absolute top-0 left-0 w-full h-full bg-linear-to-r from-transparent via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-[2000ms] animate-shiny"></div>
         </Link>

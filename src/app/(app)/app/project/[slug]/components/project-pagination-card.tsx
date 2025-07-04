@@ -17,7 +17,7 @@ function ProjectPaginationCard({ project, type }: ProjectPaginationCardProps) {
   return (
     <Link
       className={cn(
-        "w-full 800:max-w-1/2 h-full flex items-center overflow-hidden p-2 rounded-lg shadow-background border border-solid border-darkPrimary transition-all duration-300 ease-in-out bg-background hover:scale-[1.02] hover:shadow-lg",
+        "w-full 800:max-w-1/2 h-full flex items-center overflow-hidden p-2 rounded-lg shadow-background border border-solid border-darkPrimary transition-all duration-300 ease-in-out bg-background hover:scale-[1.005] hover:shadow-lg",
         isNext ? "800:ml-auto" : "800:mr-auto"
       )}
       href={`/app/project/${project?.slug}`}
