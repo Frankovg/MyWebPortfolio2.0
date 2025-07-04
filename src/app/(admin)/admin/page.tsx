@@ -1,10 +1,14 @@
+import { Suspense } from "react";
+
+import AdminPageTitle from "@/components/admin/admin-page-title";
+import AdminSection from "@/components/admin/admin-section";
 import MainHeader from "@/components/admin/main-header";
 import { checkAuth } from "@/lib/check-auth";
-import { Suspense } from "react";
-import Loading from "./downloads/loading";
-import AdminSection from "@/components/admin/admin-section";
-import AdminPageTitle from "@/components/admin/admin-page-title";
+
 import { Dashboard } from "./components/dashboard";
+import Loading from "./downloads/loading";
+
+
 
 async function Admin() {
   const breadcrumbLinks = [

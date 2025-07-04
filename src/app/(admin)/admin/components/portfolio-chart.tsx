@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { Bar, BarChart, LabelList, XAxis, YAxis } from "recharts";
 
 import {
@@ -11,7 +12,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";
-import { useMemo } from "react";
 import { ICategoryWithProjectsAdmin } from "@/lib/types";
 
 export const description = "A bar chart with a custom label";

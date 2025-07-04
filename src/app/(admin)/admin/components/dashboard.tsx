@@ -1,8 +1,9 @@
+import { getDownloadsContent, getUsersAdmin } from "@/lib/server-utils-admin";
 import { getCategoriesForChart } from "@/lib/server-utils-public";
+
+import { DownloadFiles } from "./download-files";
 import { PortfolioChart } from "./portfolio-chart";
 import { SampleAccountStatus } from "./sample-account-status";
-import { getDownloadsContent, getUsersAdmin } from "@/lib/server-utils-admin";
-import { DownloadFiles } from "./download-files";
 
 export async function Dashboard({ isAdmin = false }: { isAdmin?: boolean }) {
   const categories = await getCategoriesForChart();
