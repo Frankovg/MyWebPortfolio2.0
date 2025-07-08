@@ -1,5 +1,3 @@
-// Versión simplificada de constants.ts para el script de seed
-
 export const TECH_STACK_DATA = [
   { name: "React", value: "react" },
   { name: "Next.js", value: "nextjs" },

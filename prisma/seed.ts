@@ -11,6 +11,163 @@ const webDevelopment: Prisma.CategoryCreateInput = {
   projects: {
     create: [
       {
+        title: "Safeguru 2025",
+        shortDescription:
+          "Safeguru is an e-commerce platform offering workplace safety products and PPE, serving both B2C customers and B2B clients through Safeguru PRO. Operating in the Spain and Germany with plans for expansion.",
+        description: `Safeguru is an e-commerce platform focused on workplace safety products, including PPE and industrial safety gear.
+          The project is developed by A-SAFE Digital, part of the UK-based A-SAFE group, known for its innovative safety systems for industrial plants.
+          Safeguru serves industries like construction, healthcare, and manufacturing, and is operational in Spain and Germany, with plans for further international expansion.
+          In addition to the main platform, Safeguru features side projects such as a commerce admin tool for the sales and marketing team, and Safeguru PRO, a platform tailored for B2B users.
+          This combination of tools enhances the experience for both internal teams and business customers, supporting Safeguru’s growth within the A-SAFE group.
+          `,
+        image:
+          "https://drive.google.com/uc?export=view&id=1Mq26Ls9k632W6Bx9B13pyP3aZyXs0zyC",
+        slug: "safeguru-2025",
+        gallery: {
+          create: [
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W",
+              alt: "This is a meta description of the picture.",
+              description: "This is a description of the picture.",
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI",
+              alt: "This is a meta description of the picture.",
+              description: "This is a description of the picture.",
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx",
+              alt: "This is a meta description of the picture.",
+              description: "This is a description of the picture.",
+            },
+          ],
+        },
+        date: new Date("2025-02-15"),
+        websiteUrl: "https://safeguru.com",
+        company: "A-SAFE Digital",
+        companyUrl: "https://asafedigital.com/",
+        client: "Safeguru HQ, S.L",
+        clientUrl: "https://safeguru.com",
+        techStack: {
+          connect: [
+            { value: "react" },
+            { value: "typescript" },
+            { value: "nextjs" },
+            { value: "tailwind" },
+            { value: "storybook" },
+            { value: "playwright" },
+          ],
+        },
+        roles: {
+          create: [
+            {
+              label: "Project Lead",
+              value: "project-lead",
+              percentage: 100,
+            },
+            {
+              label: "Front-end",
+              value: "front-end",
+              percentage: 95,
+            },
+            {
+              label: "Back-end",
+              value: "back-end",
+              percentage: 5,
+            },
+            {
+              label: "UI/UX",
+              value: "ui-ux",
+              percentage: 25,
+            },
+            {
+              label: "QA",
+              value: "qa",
+              percentage: 50,
+            },
+          ],
+        },
+      },
+      {
+        title: "My Web/Portfolio 2.0",
+        shortDescription:
+          "Personal portfolio showcasing Franco Amoroso’s work as a front-end developer and former industrial designer. Explore web projects, UI/UX design, and creative experiments blending code and aesthetics.",
+        description: `Welcome to my personal website, a full-stack project built to showcase my skills as a front-end developer with a strong design background. 
+          This portfolio is developed using cutting-edge technologies like Next.js, TypeScript, Tailwind CSS, shadcn/ui, and Prisma ORM — providing a fast, modern, and fully responsive experience across devices. 
+          The site is more than just a static portfolio — it includes a fully featured admin interface, designed like a lightweight CMS. Through this dashboard, I can easily manage and update the content of the site, including projects, skills, and blog posts, without touching the codebase. It’s a custom solution that reflects my approach to building scalable, maintainable applications. 
+          If you're curious to see how the admin panel works, you can request access to a sample account. Just head over to the Contact section and drop me a message — I’ll be happy to share the credentials so you can explore the admin experience yourself. Whether you're here to check out my work, connect with me professionally, or test the tech behind the scenes, thanks for visiting!
+          `,
+        image:
+          "https://drive.google.com/uc?export=view&id=1FUMyGYXsD3NcVy293_5K5650JOcO2yqC",
+        slug: "safeguru",
+        gallery: {
+          create: [
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W",
+              alt: "This is a meta description of the picture.",
+              description: "This is a description of the picture.",
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI",
+              alt: "This is a meta description of the picture.",
+              description: "This is a description of the picture.",
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx",
+              alt: "This is a meta description of the picture.",
+              description: "This is a description of the picture.",
+            },
+          ],
+        },
+        date: new Date("2025-07-07"),
+        websiteUrl: "https://franamoroso.com",
+        repository: "https://github.com/Frankovg/MyWebPortfolio2.0",
+        techStack: {
+          connect: [
+            { value: "react" },
+            { value: "typescript" },
+            { value: "nextjs" },
+            { value: "tailwind" },
+            { value: "prisma" },
+            { value: "postgresql" },
+            { value: "javascript" },
+            { value: "playwright" },
+            { value: "shadcnui" },
+            { value: "javascript" },
+          ],
+        },
+        roles: {
+          create: [
+            {
+              label: "Front-end",
+              value: "front-end",
+              percentage: 100,
+            },
+            {
+              label: "UI/UX",
+              value: "ui-ux",
+              percentage: 100,
+            },
+            {
+              label: "DevOps",
+              value: "devops",
+              percentage: 100,
+            },
+            {
+              label: "Back-end",
+              value: "back-end",
+              percentage: 100,
+            },
+          ],
+        },
+      },
+      {
         title: "Safeguru",
         shortDescription:
           "Safeguru is an e-commerce platform offering workplace safety products, serving both B2C and B2B users, with dedicated tools for internal teams and business customers.",
