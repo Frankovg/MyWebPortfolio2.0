@@ -168,7 +168,7 @@ const webDevelopment: Prisma.CategoryCreateInput = {
         },
       },
       {
-        title: "Safeguru",
+        title: "Safeguru (Old version)",
         shortDescription:
           "Safeguru is an e-commerce platform offering workplace safety products, serving both B2C and B2B users, with dedicated tools for internal teams and business customers.",
         description: `Safeguru is an e-commerce platform focused on workplace safety products, including PPE and industrial safety gear.
@@ -219,6 +219,100 @@ const webDevelopment: Prisma.CategoryCreateInput = {
             { value: "typescript" },
             { value: "nextjs" },
             { value: "tailwind" },
+          ],
+        },
+        roles: {
+          create: [
+            {
+              label: "Front-end",
+              value: "front-end",
+              percentage: 100,
+            },
+            {
+              label: "UI/UX",
+              value: "ui-ux",
+              percentage: 40,
+            },
+            {
+              label: "Project Lead",
+              value: "project-lead",
+              percentage: 100,
+            },
+            {
+              label: "DevOps",
+              value: "devops",
+              percentage: 3,
+            },
+            {
+              label: "Back-end",
+              value: "back-end",
+              percentage: 5,
+            },
+            {
+              label: "Data Specialist",
+              value: "data-specialist",
+              percentage: 1,
+            },
+          ],
+        },
+      },
+      {
+        title: "Petsoft",
+        shortDescription:
+          "The Jokes API is a web app offering a selection of random jokes, allowing users to rate, filter by category, and even submit their own jokes for endless entertainment.",
+        description:
+          "The Jokes API is a web application that takes you on a journey through a world of randomly selected jokes. With the capability to present jokes with a simple click, the app offers a continuous source of amusement. Users can also rate jokes to provide feedback and filter them by categories based on personal preferences. Additionally, if users feel inclined, they can contribute to the collection by submitting their own jokes. In essence, 'The Jokes API' serves as a virtual platform to enjoy, evaluate, and share an endless array of laughter, with jokes selected randomly rather than being auto-generated.",
+        image:
+          "https://drive.google.com/uc?export=view&id=1apoVnfFU6vQwvyW5Po0rVGnHbmmuvEyJ",
+        slug: "the-jokes-api",
+        gallery: {
+          create: [
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W",
+              alt: "This is a meta description of the picture.",
+              description: "This is a description of the picture.",
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI",
+              alt: "This is a meta description of the picture.",
+              description: "This is a description of the picture.",
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx",
+              alt: "This is a meta description of the picture.",
+              description: "This is a description of the picture.",
+            },
+          ],
+        },
+        date: new Date("2022-12-16"),
+        repository: "https://github.com/Frankovg/theJokesAPI",
+        videoUrl:
+          "https://www.youtube.com/embed/ROJoLYIi0ZA?si=RPZ4DvrVug4e-pM9",
+        videoTitle: "A video title",
+        videoDescription: "A video description.",
+        techStack: {
+          connect: [
+            {
+              value: "react",
+            },
+            {
+              value: "javascript",
+            },
+            {
+              value: "bootstrap",
+            },
+            {
+              value: "sass",
+            },
+            {
+              value: "mysql",
+            },
+            {
+              value: "node",
+            },
           ],
         },
         roles: {
@@ -351,7 +445,7 @@ const webDevelopment: Prisma.CategoryCreateInput = {
         },
       },
       {
-        title: "My old personal web portfolio",
+        title: "My portfolio (first version)",
         shortDescription:
           "A portfolio highlighting my work as a front-end developer, built with React, while also showcasing my background in industrial design, graphic design, and UX/UI.",
         description:
@@ -398,459 +492,6 @@ const webDevelopment: Prisma.CategoryCreateInput = {
             },
             {
               value: "firebase",
-            },
-          ],
-        },
-        roles: {
-          create: [
-            {
-              label: "Front-end",
-              value: "front-end",
-              percentage: 100,
-            },
-            {
-              label: "UI/UX",
-              value: "ui-ux",
-              percentage: 40,
-            },
-            {
-              label: "Project Lead",
-              value: "project-lead",
-              percentage: 100,
-            },
-            {
-              label: "DevOps",
-              value: "devops",
-              percentage: 3,
-            },
-            {
-              label: "Back-end",
-              value: "back-end",
-              percentage: 5,
-            },
-            {
-              label: "Data Specialist",
-              value: "data-specialist",
-              percentage: 1,
-            },
-          ],
-        },
-      },
-      {
-        title: "Netfilm",
-        shortDescription:
-          "Netfilm is a Netflix clone built to enhance my front-end development skills, featuring a dynamic user interface for browsing and streaming movies and TV shows.",
-        description:
-          "Netfilm stands as a fully responsive emulation of Netflix, meticulously crafted using React.js and Redux. Notably, for the backend, Firebase was harnessed to facilitate user authentication, streamlining the development process. The movie API employed originates from the renowned 'The Movie Database' (TMDB), enhancing the project's content and functionality.",
-        image:
-          "https://drive.google.com/uc?export=view&id=1apoVnfFU6vQwvyW5Po0rVGnHbmmuvEyJ",
-        slug: "netfilm",
-        gallery: {
-          create: [
-            {
-              imageUrl:
-                "https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
-            },
-            {
-              imageUrl:
-                "https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
-            },
-            {
-              imageUrl:
-                "https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
-            },
-          ],
-        },
-        date: new Date("2023-10-18"),
-        repository: "https://github.com/Frankovg/netfilm",
-        videoUrl: "https://youtu.be/g6nDENxjK3c?si=zmwR7MVnSmXXKGNB",
-        videoTitle: "A video title",
-        videoDescription: "A video description.",
-        techStack: {
-          connect: [
-            {
-              value: "react",
-            },
-            {
-              value: "javascript",
-            },
-            {
-              value: "bootstrap",
-            },
-            {
-              value: "sass",
-            },
-            {
-              value: "firebase",
-            },
-          ],
-        },
-        roles: {
-          create: [
-            {
-              label: "Front-end",
-              value: "front-end",
-              percentage: 100,
-            },
-            {
-              label: "UI/UX",
-              value: "ui-ux",
-              percentage: 40,
-            },
-            {
-              label: "Project Lead",
-              value: "project-lead",
-              percentage: 100,
-            },
-            {
-              label: "DevOps",
-              value: "devops",
-              percentage: 3,
-            },
-            {
-              label: "Back-end",
-              value: "back-end",
-              percentage: 5,
-            },
-            {
-              label: "Data Specialist",
-              value: "data-specialist",
-              percentage: 1,
-            },
-          ],
-        },
-      },
-      {
-        title: "Coolx",
-        shortDescription:
-          "An MVP application that leverages AI and machine learning to optimize forestry project management by providing accurate land utilization and forest inventory data.",
-        description:
-          "This application, developed collaboratively with fellow students, is designed to enhance the management of forestry projects through the use of AI and machine learning technologies. By offering expedited and highly accurate information about land utilization and forest inventory, the application significantly improves overall efficiency in forestry management. Its user-friendly interface allows project managers to make informed decisions, streamline operations, and ultimately promote sustainable forestry practices.",
-        image:
-          "https://drive.google.com/uc?export=view&id=1apoVnfFU6vQwvyW5Po0rVGnHbmmuvEyJ",
-        slug: "coolx",
-        gallery: {
-          create: [
-            {
-              imageUrl:
-                "https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
-            },
-            {
-              imageUrl:
-                "https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
-            },
-            {
-              imageUrl:
-                "https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
-            },
-          ],
-        },
-        date: new Date("2023-08-09"),
-        repository: "https://github.com/Frankovg/MVP_Coolx",
-        videoUrl: "https://youtu.be/BGOv_VQLyyU?si=8wCn8xNe8F_54ulO",
-        videoTitle: "A video title",
-        videoDescription: "A video description.",
-        techStack: {
-          connect: [
-            {
-              value: "react",
-            },
-            {
-              value: "javascript",
-            },
-            {
-              value: "bootstrap",
-            },
-            {
-              value: "sass",
-            },
-            {
-              value: "mysql",
-            },
-            {
-              value: "node",
-            },
-            {
-              value: "express",
-            },
-          ],
-        },
-        roles: {
-          create: [
-            {
-              label: "Front-end",
-              value: "front-end",
-              percentage: 100,
-            },
-            {
-              label: "UI/UX",
-              value: "ui-ux",
-              percentage: 40,
-            },
-            {
-              label: "Project Lead",
-              value: "project-lead",
-              percentage: 100,
-            },
-            {
-              label: "DevOps",
-              value: "devops",
-              percentage: 3,
-            },
-            {
-              label: "Back-end",
-              value: "back-end",
-              percentage: 5,
-            },
-            {
-              label: "Data Specialist",
-              value: "data-specialist",
-              percentage: 1,
-            },
-          ],
-        },
-      },
-      {
-        title: "DigiArt",
-        shortDescription:
-          "A social network for digital artists. Users can create profiles, share their work, and connect with other artists, fostering a supportive community for creative collaboration.",
-        description:
-          "This represents my independent full-stack endeavor, developed over the span of 8 weeks during my bootcamp journey. Crafted solely by me, this project was successfully completed in a mere 3 days. Functioning as an assessment tool, it allows bootcamp participants to gauge their proficiency midway through the program, providing insights into their acquired knowledge.",
-        image:
-          "https://drive.google.com/uc?export=view&id=1apoVnfFU6vQwvyW5Po0rVGnHbmmuvEyJ",
-        slug: "digiart",
-        gallery: {
-          create: [
-            {
-              imageUrl:
-                "https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
-            },
-            {
-              imageUrl:
-                "https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
-            },
-            {
-              imageUrl:
-                "https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
-            },
-          ],
-        },
-        date: new Date("2023-06-15"),
-        company: "Socratech",
-        repository: "https://github.com/Frankovg/proyecto_socratech",
-        videoUrl: "https://youtu.be/x851u6-utEU?si=m8Zn362rN7g5YpMr",
-        videoTitle: "A video title",
-        videoDescription: "A video description.",
-        techStack: {
-          connect: [
-            {
-              value: "html",
-            },
-            {
-              value: "css",
-            },
-            {
-              value: "javascript",
-            },
-            {
-              value: "bootstrap",
-            },
-            {
-              value: "sass",
-            },
-            {
-              value: "mysql",
-            },
-            {
-              value: "node",
-            },
-            {
-              value: "express",
-            },
-          ],
-        },
-        roles: {
-          create: [
-            {
-              label: "Front-end",
-              value: "front-end",
-              percentage: 100,
-            },
-            {
-              label: "UI/UX",
-              value: "ui-ux",
-              percentage: 40,
-            },
-            {
-              label: "Project Lead",
-              value: "project-lead",
-              percentage: 100,
-            },
-            {
-              label: "DevOps",
-              value: "devops",
-              percentage: 3,
-            },
-            {
-              label: "Back-end",
-              value: "back-end",
-              percentage: 5,
-            },
-            {
-              label: "Data Specialist",
-              value: "data-specialist",
-              percentage: 1,
-            },
-          ],
-        },
-      },
-      {
-        title: "Calculator",
-        shortDescription:
-          "This is my own made calculator built with JavaScript. It has a simple design and is easy to use.",
-        description:
-          "A calculator meticulously crafted from scratch using JavaScript. This application adeptly handles fundamental mathematical operations such as addition, subtraction, multiplication, and division. Notably, the calculator's functionalities are implemented using pure Vanilla JavaScript, devoid of any reliance on the 'eval()' function for computation.",
-        image:
-          "https://drive.google.com/uc?export=view&id=1apoVnfFU6vQwvyW5Po0rVGnHbmmuvEyJ",
-        slug: "calculator",
-        gallery: {
-          create: [
-            {
-              imageUrl:
-                "https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
-            },
-            {
-              imageUrl:
-                "https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
-            },
-            {
-              imageUrl:
-                "https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
-            },
-          ],
-        },
-        date: new Date("2023-05-07"),
-        company: "Socratech",
-        companyUrl: "https://socratech.es/",
-        repository: "https://github.com/Frankovg/Calculator_JS",
-        websiteUrl: "https://frankovg.github.io/Calculator_JS/",
-        techStack: {
-          connect: [
-            {
-              value: "javascript",
-            },
-            {
-              value: "html",
-            },
-            {
-              value: "css",
-            },
-            { value: "sass" },
-          ],
-        },
-        roles: {
-          create: [
-            {
-              label: "Front-end",
-              value: "front-end",
-              percentage: 100,
-            },
-            {
-              label: "UI/UX",
-              value: "ui-ux",
-              percentage: 40,
-            },
-            {
-              label: "Project Lead",
-              value: "project-lead",
-              percentage: 100,
-            },
-            {
-              label: "DevOps",
-              value: "devops",
-              percentage: 3,
-            },
-            {
-              label: "Back-end",
-              value: "back-end",
-              percentage: 5,
-            },
-            {
-              label: "Data Specialist",
-              value: "data-specialist",
-              percentage: 1,
-            },
-          ],
-        },
-      },
-      {
-        title: "Video Player",
-        shortDescription:
-          "Made from scratch with JavaScript, this Video Player offers a range of functionalities, including automatic detection of video duration, playback control, and interactive timebar adjustment.",
-        description:
-          "The Video Player serves as an educational exercise for mastering Vanilla JavaScript. All functionalities within this project are meticulously crafted using JavaScript. Automatic detection of video duration is incorporated seamlessly. Noteworthy features include the ability to advance or rewind by 5 seconds, as well as play and pause functions. Additionally, the timebar is interactive, allowing users to adjust the playback position simply by clicking on it.",
-        image:
-          "https://drive.google.com/uc?export=view&id=1apoVnfFU6vQwvyW5Po0rVGnHbmmuvEyJ",
-        slug: "video-player",
-        gallery: {
-          create: [
-            {
-              imageUrl:
-                "https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
-            },
-            {
-              imageUrl:
-                "https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
-            },
-            {
-              imageUrl:
-                "https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
-            },
-          ],
-        },
-        date: new Date("2023-04-21"),
-        repository: "https://github.com/Frankovg/video-player",
-        websiteUrl: "https://frankovg.github.io/video-player/",
-        techStack: {
-          connect: [
-            {
-              value: "javascript",
-            },
-            {
-              value: "html",
-            },
-            {
-              value: "css",
             },
           ],
         },
