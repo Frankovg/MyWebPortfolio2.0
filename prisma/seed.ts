@@ -170,16 +170,14 @@ const webDevelopment: Prisma.CategoryCreateInput = {
       {
         title: "Safeguru (Old version)",
         shortDescription:
-          "Safeguru is an e-commerce platform offering workplace safety products, serving both B2C and B2B users, with dedicated tools for internal teams and business customers.",
-        description: `Safeguru is an e-commerce platform focused on workplace safety products, including PPE and industrial safety gear.
-          The project is developed by A-SAFE Digital, part of the UK-based A-SAFE group, known for its innovative safety systems for industrial plants.
-          Safeguru serves industries like construction, healthcare, and manufacturing, and is operational in Spain, the UK, and Germany, with plans for further international expansion.
-          In addition to the main platform, Safeguru features side projects such as a commerce admin tool for the sales and marketing team, and Safeguru PRO, a platform tailored for B2B users.
-          This combination of tools enhances the experience for both internal teams and business customers, supporting Safeguru’s growth within the A-SAFE group.
+          "Safeguru (deprecated) is the original version of the e-commerce platform for workplace safety products, which previously served B2C and B2B markets with first-generation tools for internal teams and business customers.",
+        description: `Safeguru is the original e-commerce platform for workplace safety products, including PPE and industrial safety gear, developed by A-SAFE Digital (part of the UK-based A-SAFE group). 
+          Launched nearly 5 years ago, this legacy version served industries such as construction, healthcare, and manufacturing across Spain, the UK, and Germany. 
+          Alongside the main platform, it included tools for internal teams and Safeguru PRO for B2B clients, supporting both business growth and operational needs within the A-SAFE group.
           `,
         image:
           "https://drive.google.com/uc?export=view&id=1cZFgjn05mh_NgbiCjhKKvDJQesahMbQ1",
-        slug: "safeguru",
+        slug: "safeguru-old",
         gallery: {
           create: [
             {
@@ -203,22 +201,20 @@ const webDevelopment: Prisma.CategoryCreateInput = {
           ],
         },
         date: new Date("2023-01-22"),
-        websiteUrl: "https://safeguru.co.uk",
         company: "A-SAFE Digital",
         companyUrl: "https://asafedigital.com/",
         client: "Safeguru",
-        clientUrl: "https://safeguru.co.uk",
-        repository: "https://github.com/Frankovg/theJokesAPI",
-        videoUrl:
-          "https://www.youtube.com/embed/ROJoLYIi0ZA?si=WJLVWg0SmaQMbOsm",
-        videoTitle: "A video title",
-        videoDescription: "A video description.",
+        clientUrl: "https://safeguru.com",
         techStack: {
           connect: [
             { value: "react" },
             { value: "typescript" },
             { value: "nextjs" },
             { value: "tailwind" },
+            { value: "styledcomponents" },
+            { value: "emotioncss" },
+            { value: "ladle" },
+            { value: "figma" },
           ],
         },
         roles: {
@@ -231,27 +227,17 @@ const webDevelopment: Prisma.CategoryCreateInput = {
             {
               label: "UI/UX",
               value: "ui-ux",
-              percentage: 40,
+              percentage: 80,
             },
             {
               label: "Project Lead",
               value: "project-lead",
-              percentage: 100,
-            },
-            {
-              label: "DevOps",
-              value: "devops",
-              percentage: 3,
+              percentage: 70,
             },
             {
               label: "Back-end",
               value: "back-end",
               percentage: 5,
-            },
-            {
-              label: "Data Specialist",
-              value: "data-specialist",
-              percentage: 1,
             },
           ],
         },
@@ -260,11 +246,14 @@ const webDevelopment: Prisma.CategoryCreateInput = {
         title: "Petsoft",
         shortDescription:
           "The Jokes API is a web app offering a selection of random jokes, allowing users to rate, filter by category, and even submit their own jokes for endless entertainment.",
-        description:
-          "The Jokes API is a web application that takes you on a journey through a world of randomly selected jokes. With the capability to present jokes with a simple click, the app offers a continuous source of amusement. Users can also rate jokes to provide feedback and filter them by categories based on personal preferences. Additionally, if users feel inclined, they can contribute to the collection by submitting their own jokes. In essence, 'The Jokes API' serves as a virtual platform to enjoy, evaluate, and share an endless array of laughter, with jokes selected randomly rather than being auto-generated.",
+        description: `This is a modern full-stack web application designed to help pet owners, veterinarians, and caretakers efficiently manage the animals under their care. 
+          With a clean, user-friendly interface, PetSoft allows users to keep track of medical records, visits, vaccinations, treatments, and more — all in one centralized and accessible place.
+          From a technical perspective, PetSoft is built using Next.js and TypeScript for a robust and scalable frontend architecture. Styling is handled with Tailwind CSS, ensuring a responsive and maintainable UI. The backend is powered by Prisma ORM, interfacing with a relational database to ensure secure and performant data handling.
+          A key feature of the app is its admin dashboard, which works as a custom CMS. Through this panel, administrators can manage pets, users, veterinarians, and view complete medical histories. Visitors can also request access to a sample account to explore the administrator panel and test its capabilities — just reach out via the contact section on the site.
+        `,
         image:
-          "https://drive.google.com/uc?export=view&id=1apoVnfFU6vQwvyW5Po0rVGnHbmmuvEyJ",
-        slug: "the-jokes-api",
+          "https://drive.google.com/uc?export=view&id=1dfIJ7iNWoOokTHsUQDan-qxWjIEoXe4T",
+        slug: "petsoft",
         gallery: {
           create: [
             {
@@ -287,31 +276,31 @@ const webDevelopment: Prisma.CategoryCreateInput = {
             },
           ],
         },
-        date: new Date("2022-12-16"),
-        repository: "https://github.com/Frankovg/theJokesAPI",
-        videoUrl:
-          "https://www.youtube.com/embed/ROJoLYIi0ZA?si=RPZ4DvrVug4e-pM9",
-        videoTitle: "A video title",
-        videoDescription: "A video description.",
+        date: new Date("2025-07-07"),
+        repository: "https://github.com/Frankovg/petsoft-fran",
+        websiteUrl: "https://petsoft-fran.vercel.app/",
         techStack: {
           connect: [
             {
               value: "react",
             },
             {
-              value: "javascript",
+              value: "typescript",
             },
             {
-              value: "bootstrap",
+              value: "tailwind",
             },
             {
-              value: "sass",
+              value: "nextjs",
             },
             {
-              value: "mysql",
+              value: "prisma",
             },
             {
-              value: "node",
+              value: "shadcnui",
+            },
+            {
+              value: "vercel",
             },
           ],
         },
@@ -325,27 +314,22 @@ const webDevelopment: Prisma.CategoryCreateInput = {
             {
               label: "UI/UX",
               value: "ui-ux",
-              percentage: 40,
-            },
-            {
-              label: "Project Lead",
-              value: "project-lead",
-              percentage: 100,
+              percentage: 10,
             },
             {
               label: "DevOps",
               value: "devops",
-              percentage: 3,
+              percentage: 100,
             },
             {
               label: "Back-end",
               value: "back-end",
-              percentage: 5,
+              percentage: 90,
             },
             {
               label: "Data Specialist",
               value: "data-specialist",
-              percentage: 1,
+              percentage: 80,
             },
           ],
         },
@@ -353,11 +337,13 @@ const webDevelopment: Prisma.CategoryCreateInput = {
       {
         title: "The Jokes API",
         shortDescription:
-          "The Jokes API is a web app offering a selection of random jokes, allowing users to rate, filter by category, and even submit their own jokes for endless entertainment.",
-        description:
-          "The Jokes API is a web application that takes you on a journey through a world of randomly selected jokes. With the capability to present jokes with a simple click, the app offers a continuous source of amusement. Users can also rate jokes to provide feedback and filter them by categories based on personal preferences. Additionally, if users feel inclined, they can contribute to the collection by submitting their own jokes. In essence, 'The Jokes API' serves as a virtual platform to enjoy, evaluate, and share an endless array of laughter, with jokes selected randomly rather than being auto-generated.",
+          "The Jokes API is a fun and interactive web app that delivers random jokes, lets users rate them, filter by category, and even contribute their own — making laughter just a click away.",
+        description: `It is a playful web app built with React that delivers a steady stream of randomly selected jokes. 
+          With a single click, users can discover new jokes, filter them by category to match their sense of humor, and rate each one to share feedback. 
+          Feeling inspired? Add your own punchlines to the mix and keep the laughs rolling. Whether you’re here to chuckle, contribute, or explore, The Jokes API turns humor into an easy‑to‑use, endlessly entertaining experience.
+        `,
         image:
-          "https://drive.google.com/uc?export=view&id=1apoVnfFU6vQwvyW5Po0rVGnHbmmuvEyJ",
+          "https://drive.google.com/uc?export=view&id=1ueG8BcTJdwuBof0SNlfmWFmXyNr4lwc9",
         slug: "the-jokes-api",
         gallery: {
           create: [
@@ -385,8 +371,9 @@ const webDevelopment: Prisma.CategoryCreateInput = {
         repository: "https://github.com/Frankovg/theJokesAPI",
         videoUrl:
           "https://www.youtube.com/embed/ROJoLYIi0ZA?si=RPZ4DvrVug4e-pM9",
-        videoTitle: "A video title",
-        videoDescription: "A video description.",
+        videoTitle: "Let's find some jokes!",
+        videoDescription:
+          "In this demo, you'll see how users can easily browse random jokes, filter them by category, rate their favorites, and even submit their own. The interface is simple, responsive, and designed for smooth interaction, offering a fun and engaging user experience. Whether you're just looking for a laugh or want to contribute to the collection, The Jokes API makes it easy and enjoyable.",
         techStack: {
           connect: [
             {
@@ -407,6 +394,15 @@ const webDevelopment: Prisma.CategoryCreateInput = {
             {
               value: "node",
             },
+            {
+              value: "express",
+            },
+            {
+              value: "figma",
+            },
+            {
+              value: "sql",
+            },
           ],
         },
         roles: {
@@ -419,27 +415,12 @@ const webDevelopment: Prisma.CategoryCreateInput = {
             {
               label: "UI/UX",
               value: "ui-ux",
-              percentage: 40,
-            },
-            {
-              label: "Project Lead",
-              value: "project-lead",
               percentage: 100,
-            },
-            {
-              label: "DevOps",
-              value: "devops",
-              percentage: 3,
             },
             {
               label: "Back-end",
               value: "back-end",
-              percentage: 5,
-            },
-            {
-              label: "Data Specialist",
-              value: "data-specialist",
-              percentage: 1,
+              percentage: 100,
             },
           ],
         },
@@ -447,11 +428,14 @@ const webDevelopment: Prisma.CategoryCreateInput = {
       {
         title: "My portfolio (first version)",
         shortDescription:
-          "A portfolio highlighting my work as a front-end developer, built with React, while also showcasing my background in industrial design, graphic design, and UX/UI.",
-        description:
-          "This is my old personal portfolio, developed to emphasize my skills as a front-end developer. It showcases my expertise in web development, including responsive design, user interfaces, and modern technologies like Next.js and Tailwind. In addition to my software development work, the portfolio reflects my background in industrial design, graphic design, and UX/UI design, offering a well-rounded perspective on creating functional and visually appealing digital products. This platform serves as both a professional showcase and a testament to my journey from design to software development.",
+          "A previous iteration of my personal website, highlighting my evolution and proficiency as a front-end developer. It stands as a testament to my expertise in web development with React, and integrates my background in industrial and graphic design, alongside UX/UI design.",
+        description: `This is a previous version of my personal portfolio, fully developed with React, created to showcase my evolution as a front-end developer.
+          It highlights key competencies in responsive web design, interactive user interfaces, and modern development tools and frameworks. 
+          While the site itself was built before my transition to Next.js and Tailwind, it demonstrates a solid grasp of component-based architecture and UI best practices.
+          Beyond code, this portfolio reflects my multidisciplinary background — combining experience in industrial design, graphic design, and UX/UI — to present a holistic view of how I approach digital product creation. It’s not only a record of my earlier work but also a visual narrative of my growth from creative design to full-fledged front-end development.
+          `,
         image:
-          "https://drive.google.com/uc?export=view&id=1apoVnfFU6vQwvyW5Po0rVGnHbmmuvEyJ",
+          "https://drive.google.com/uc?export=view&id=1-GhKyl6KZr10pCnTW07BDgINV_zMoDui",
         slug: "my-old-personal-web-portfolio",
         gallery: {
           create: [
@@ -476,6 +460,7 @@ const webDevelopment: Prisma.CategoryCreateInput = {
           ],
         },
         date: new Date("2023-08-04"),
+        repository: "https://github.com/Frankovg/MyWebPortfolio",
         techStack: {
           connect: [
             {
@@ -491,7 +476,16 @@ const webDevelopment: Prisma.CategoryCreateInput = {
               value: "sass",
             },
             {
+              value: "node",
+            },
+            {
+              value: "express",
+            },
+            {
               value: "firebase",
+            },
+            {
+              value: "figma",
             },
           ],
         },
@@ -505,27 +499,12 @@ const webDevelopment: Prisma.CategoryCreateInput = {
             {
               label: "UI/UX",
               value: "ui-ux",
-              percentage: 40,
-            },
-            {
-              label: "Project Lead",
-              value: "project-lead",
-              percentage: 100,
+              percentage: 80,
             },
             {
               label: "DevOps",
               value: "devops",
-              percentage: 3,
-            },
-            {
-              label: "Back-end",
-              value: "back-end",
-              percentage: 5,
-            },
-            {
-              label: "Data Specialist",
-              value: "data-specialist",
-              percentage: 1,
+              percentage: 40,
             },
           ],
         },
