@@ -19,6 +19,7 @@ const webDevelopment: Prisma.CategoryCreateInput = {
           Safeguru serves industries like construction, healthcare, and manufacturing, and is operational in Spain and Germany, with plans for further international expansion.
           In addition to the main platform, Safeguru features side projects such as a commerce admin tool for the sales and marketing team, and Safeguru PRO, a platform tailored for B2B users.
           This combination of tools enhances the experience for both internal teams and business customers, supporting Safeguru’s growth within the A-SAFE group.
+          As the Project Lead, I was responsible for overseeing the entire development lifecycle, coordinating a multidisciplinary team, and ensuring that project goals and deadlines were met. My role included defining technical requirements, managing task prioritization, and leading the development of the frontend to deliver a high-quality user experience.
           `,
         image:
           "https://drive.google.com/uc?export=view&id=1Mq26Ls9k632W6Bx9B13pyP3aZyXs0zyC",
@@ -27,21 +28,52 @@ const webDevelopment: Prisma.CategoryCreateInput = {
           create: [
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
+                "https://drive.google.com/uc?export=view&id=1dnv5iNhc5QMOBsv0y7qvhpyUJK8FRXd9",
+              alt: "Homepage of Safeguru website showcasing their video banner and navigation menu.",
+              description:
+                "The Safeguru homepage features a prominent hero section, followed by dedicated sections highlighting the company’s services and background. Visitors can easily explore featured products and top brands, while the navigation bar offers a comprehensive category explorer for seamless browsing.",
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
+                "https://drive.google.com/uc?export=view&id=1ETphpHNli9nnXOL3MewB-16NUg-5JtBz",
+              alt: "Product list page of Safeguru website showcasing their working clothes products.",
+              description:
+                "The Safeguru product list page displays a wide selection of workwear items, organized in a grid of product cards. At the top, users can browse subcategories with illustrated icons for different types of clothing.",
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
+                "https://drive.google.com/uc?export=view&id=1qs3fC3T85wWZrvGQUMKZr96xMxw7bh4U",
+              alt: "Product details page of Safeguru website showcasing a jacket and its details.",
+              description:
+                "The Safeguru product detail page showcases high-quality images of the selected item, along with detailed product information, pricing, and descriptions. Users can view and select from available color and size variants, and easily add the product to their cart.",
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=17DhzVaAiV6TPaXU93gTyW5F1Bo1jQd3J",
+              alt: "Cart page of Safeguru website.",
+              description:
+                "The Safeguru cart page streamlines the purchasing process, allowing users to review and manage their selected items before checkout. It emphasizes transparency in pricing and payment options, supports promotional discounts, and reinforces trust with secure payment integrations and customer guarantees.",
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1PeZaI49RSCXy3ZyhcuW-8Ynl3tBqA_4w",
+              alt: "Checkout page of Safeguru website.",
+              description:
+                "The Safeguru checkout page is designed to simplify order completion by guiding users through address confirmation, shipping selection, and secure payment options. The layout prioritizes clarity and efficiency, minimizing friction and building trust at the final stage of the purchase journey.",
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=11bKbPBZh3OkJ4Oi0V6gSuDKIGsye7cT4",
+              alt: "User account page of Safeguru website.",
+              description:
+                'The screenshot shows the Safeguru account page with the "My Orders" tab active, displaying a list of recent purchases and their statuses. In addition to tracking orders, users can also navigate to sections for managing personal details, viewing returns, and updating their address book, making account management simple and convenient.',
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=14ptwgmV8VyfuJOGP6kLZXOe4hSyeeLeW",
+              alt: "Homepage of Safeguru website with the main menu opened showing the product categories.",
+              description:
+                "The screenshot highlights the Safeguru category menu explorer, which provides users with a comprehensive, multi-column dropdown for quickly navigating the full range of product categories. This menu is designed to facilitate efficient product discovery, enabling users to browse by type, use case, or safety requirement directly from the main navigation bar.",
             },
           ],
         },
@@ -76,7 +108,7 @@ const webDevelopment: Prisma.CategoryCreateInput = {
             {
               label: "Back-end",
               value: "back-end",
-              percentage: 5,
+              percentage: 10,
             },
             {
               label: "UI/UX",
@@ -87,6 +119,16 @@ const webDevelopment: Prisma.CategoryCreateInput = {
               label: "QA",
               value: "qa",
               percentage: 50,
+            },
+            {
+              label: "Data Specialist",
+              value: "data-specialist",
+              percentage: 5,
+            },
+            {
+              label: "DevOps",
+              value: "devops",
+              percentage: 8,
             },
           ],
         },
@@ -162,7 +204,17 @@ const webDevelopment: Prisma.CategoryCreateInput = {
             {
               label: "Back-end",
               value: "back-end",
-              percentage: 100,
+              percentage: 80,
+            },
+            {
+              label: "Data Specialist",
+              value: "data-specialist",
+              percentage: 40,
+            },
+            {
+              label: "QA",
+              value: "qa",
+              percentage: 75,
             },
           ],
         },
@@ -172,8 +224,9 @@ const webDevelopment: Prisma.CategoryCreateInput = {
         shortDescription:
           "Safeguru (deprecated) is the original version of the e-commerce platform for workplace safety products, which previously served B2C and B2B markets with first-generation tools for internal teams and business customers.",
         description: `Safeguru is the original e-commerce platform for workplace safety products, including PPE and industrial safety gear, developed by A-SAFE Digital (part of the UK-based A-SAFE group). 
-          Launched nearly 5 years ago, this legacy version served industries such as construction, healthcare, and manufacturing across Spain, the UK, and Germany. 
+          Launched nearly 5 years ago, this legacy version served industries such as construction, healthcare, and manufacturing across Spain and Germany. 
           Alongside the main platform, it included tools for internal teams and Safeguru PRO for B2B clients, supporting both business growth and operational needs within the A-SAFE group.
+          I began my journey on this project as a junior frontend developer, contributing to the implementation of the user interface and collaborating closely with the development team. Over time, I took on increasing responsibility, ultimately advancing to the role of project lead. In this capacity, I oversaw the full development lifecycle, coordinated cross-functional teams, and guided the project through key milestones and platform evolution.
           `,
         image:
           "https://drive.google.com/uc?export=view&id=1cZFgjn05mh_NgbiCjhKKvDJQesahMbQ1",
@@ -238,6 +291,21 @@ const webDevelopment: Prisma.CategoryCreateInput = {
               label: "Back-end",
               value: "back-end",
               percentage: 5,
+            },
+            {
+              label: "DevOps",
+              value: "devops",
+              percentage: 5,
+            },
+            {
+              label: "Data Specialist",
+              value: "data-specialist",
+              percentage: 3,
+            },
+            {
+              label: "QA",
+              value: "qa",
+              percentage: 15,
             },
           ],
         },
@@ -331,6 +399,16 @@ const webDevelopment: Prisma.CategoryCreateInput = {
               value: "data-specialist",
               percentage: 80,
             },
+            {
+              label: "DevOps",
+              value: "devops",
+              percentage: 80,
+            },
+            {
+              label: "QA",
+              value: "qa",
+              percentage: 5,
+            },
           ],
         },
       },
@@ -422,6 +500,21 @@ const webDevelopment: Prisma.CategoryCreateInput = {
               value: "back-end",
               percentage: 100,
             },
+            {
+              label: "DevOps",
+              value: "devops",
+              percentage: 80,
+            },
+            {
+              label: "Data Specialist",
+              value: "data-specialist",
+              percentage: 40,
+            },
+            {
+              label: "QA",
+              value: "qa",
+              percentage: 5,
+            },
           ],
         },
       },
@@ -505,6 +598,21 @@ const webDevelopment: Prisma.CategoryCreateInput = {
               label: "DevOps",
               value: "devops",
               percentage: 40,
+            },
+            {
+              label: "Back-end",
+              value: "back-end",
+              percentage: 80,
+            },
+            {
+              label: "Data Specialist",
+              value: "data-specialist",
+              percentage: 3,
+            },
+            {
+              label: "QA",
+              value: "qa",
+              percentage: 5,
             },
           ],
         },
