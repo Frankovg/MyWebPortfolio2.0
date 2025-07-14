@@ -235,21 +235,39 @@ const webDevelopment: Prisma.CategoryCreateInput = {
           create: [
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
+                "https://drive.google.com/uc?export=view&id=12_E-ym_FBTlR0cXYTAh4MqakoEhIttdU",
+              alt: "Old Safeguru's homepage.",
+              description: "The homepage features a modern e-commerce design focused on workplace safety products. The overall layout is clean and professional, emphasizing safety equipment and easy navigation for users.",
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
+                "https://drive.google.com/uc?export=view&id=10Qm47Fxwzb9a0hIEIZYcJ9fqxZhewHyZ",
+              alt: "Products list page of the old Safeguru website.",
+              description: "The product list page displays a clean, grid-based layout. At the top, users can filter products by category, brand, color, size, and industry using prominent filter buttons. The design emphasizes clarity and ease of navigation, allowing users to quickly browse and compare workplace safety clothing options.",
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
+                "https://drive.google.com/uc?export=view&id=1a8w70V3k0AmZSJ8dYUPbapD644-9Ueq1",
+              alt: "Product detail page of the old Safeguru website.",
+              description: "The page features high-quality images and detailed product information. The design emphasizes clarity and ease of navigation, helping customers make informed purchasing decisions.",
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1qeWOl244IAcJ1YXJFqYNimv_dzCS_c8D",
+              alt: "Cart page of the old Safeguru website.",
+              description: "The cart page features a clean, user-friendly layout with a summary of the selected product.",
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1iDH1OcnVFPmgtvtQRerudYgnmh-SEk0q",
+              alt: "Checkout page of the old Safeguru website.",
+              description: "The checkout page provides a streamlined and intuitive experience, guiding users through each step of the purchase process.",
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1H41okP2Kh9NObG-2kv9gOiHpt97BYzEF",
+              alt: "My orders section of the old Safeguru website.",
+              description: "The use account page offers a centralized dashboard for managing personal information, viewing order history, handling returns, and maintaining address details. Users can easily access detailed order information and track updates, ensuring transparency and convenience throughout their shopping experience.",
             },
           ],
         },
@@ -318,6 +336,7 @@ const webDevelopment: Prisma.CategoryCreateInput = {
           With a clean, user-friendly interface, PetSoft allows users to keep track of medical records, visits, vaccinations, treatments, and more — all in one centralized and accessible place.
           From a technical perspective, PetSoft is built using Next.js and TypeScript for a robust and scalable frontend architecture. Styling is handled with Tailwind CSS, ensuring a responsive and maintainable UI. The backend is powered by Prisma ORM, interfacing with a relational database to ensure secure and performant data handling.
           A key feature of the app is its admin dashboard, which works as a custom CMS. Through this panel, administrators can manage pets, users, veterinarians, and view complete medical histories. Visitors can also request access to a sample account to explore the administrator panel and test its capabilities — just reach out via the contact section on the site.
+          Please note: PetSoft is a demo and training project, not a real commercial product.
         `,
         image:
           "https://drive.google.com/uc?export=view&id=1dfIJ7iNWoOokTHsUQDan-qxWjIEoXe4T",
@@ -326,21 +345,27 @@ const webDevelopment: Prisma.CategoryCreateInput = {
           create: [
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
+                "https://drive.google.com/uc?export=view&id=1WOiKZa67oYJo-feB5SGJV71JPkNhs8My",
+              alt: "Petsoft landing page.",
+              description: "The PetSoft landing page features a modern, minimalist design with a clear focus on usability.",
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
+                "https://drive.google.com/uc?export=view&id=1iiLFfiI_pvt_Bu3nh64XfUsRc7X8mQwn",
+              alt: "Petsoft main dashboard.",
+              description: "The main dashboard of PetSoft presents a clean, intuitive interface for managing pets in daycare. The design emphasizes usability and clarity, making it easy to view and update pet records.",
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
+                "https://drive.google.com/uc?export=view&id=16KcUWjWwvTGHPBGRn7-W-Dj6E68X2PUl",
+              alt: "Petsoft form to edit a pet detail.",
+              description: "The edit/add pet form is presented in a modal overlay, offering a straightforward interface for updating pet details. The design ensures quick, efficient management of pet records within the dashboard.",
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1qLL2DAMtiMp_eNfhj0mPo54KpETDd4uE",
+              alt: "Petsoft checkout.",
+              description: "The payment section provides a clear, secure checkout experience for purchasing access to the app. The interface is powered by Stripe and clearly marked as test mode, emphasizing that this is part of a demo and training project, not a real commercial product.",
             },
           ],
         },
@@ -427,21 +452,15 @@ const webDevelopment: Prisma.CategoryCreateInput = {
           create: [
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
+                "https://drive.google.com/uc?export=view&id=1aDuRWsQtfwbz45kNJBPWuLOBcgbB5XWE",
+              alt: "The Jokes API interface showcasing a random joke.",
+              description: 'The Jokes API interface features a playful, hand-drawn design with a simple layout. At the top, users can search for jokes by keyword, as shown in the right screenshot with the word "car." Jokes are displayed with their category and punchline, and users can reveal the punchline with a button (active in the left screenshot, disabled in the right after reveal).',
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
-            },
-            {
-              imageUrl:
-                "https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
+                "https://drive.google.com/uc?export=view&id=1p5IKqc2ErTS88qOB5CzKtNP4VSFQENuF",
+              alt: "A Figma screenshot of The Jokes API design.",
+              description: "The Jokes API design, as shown in the Figma screenshot, uses a playful, hand-drawn aesthetic with sketch-like borders and handwritten fonts. The interface is simple and approachable, featuring clear sections for searching, viewing, and submitting jokes. The overall style emphasizes fun and creativity, making the user experience lighthearted and engaging.",
             },
           ],
         },
