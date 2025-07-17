@@ -49,10 +49,10 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       {/* //TODO: remove this script */}
-      <script
+      {/* <script
         src="https://unpkg.com/react-scan/dist/auto.global.js"
         async
-      ></script>
+      ></script> */}
 
       <meta property="og:url" content="https://franamoroso.com/" />
       <meta property="og:type" content="website" />

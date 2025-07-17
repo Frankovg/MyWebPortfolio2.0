@@ -28,3 +28,4 @@ export { default as Ts } from './ts';
 export { default as Js } from './js';
 export { default as Express } from './express';
 export { default as Css } from './css';
+export { default as Jest } from './jest';

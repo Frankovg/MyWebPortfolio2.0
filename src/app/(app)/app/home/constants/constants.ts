@@ -28,7 +28,8 @@ import {
   Tailwind,
   Ts,
   Turborepo,
-  Vercel
+  Vercel,
+  Jest
 } from "@/icons/techs"
 
 export const BASICS_TECHS = {
@@ -218,6 +219,13 @@ export const TESTING_TECHS = {
     description: "An open source tool for developing UI components in isolation for React, Vue, and Angular.",
     link: "https://storybook.js.org/",
     icon: Storybook
+  },
+  jest: {
+    name: 'Jest',
+    value: 'jest',
+    description: "Jest is a JavaScript testing framework, primarily used for unit testing React and JavaScript codebases, including those built with React Native.",
+    link: "https://jestjs.io/",
+    icon: Jest
   }
 }
 
@@ -313,6 +321,7 @@ export const CATEGORIES = [
       TESTING_TECHS.playwright,
       TESTING_TECHS.ladle,
       TESTING_TECHS.storybook,
+      TESTING_TECHS.jest,
     ]
   },
   {

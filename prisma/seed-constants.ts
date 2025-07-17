@@ -29,6 +29,7 @@ export const TECH_STACK_DATA = [
   { name: "HTML", value: "html" },
   { name: "Turborepo", value: "turborepo" },
   { name: "Vercel", value: "vercel" },
+  { name: "Jest", value: "jest" },
 ];
 
 const getDefaultTechStack = () => {
