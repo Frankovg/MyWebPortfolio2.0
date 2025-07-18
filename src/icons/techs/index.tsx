@@ -29,3 +29,8 @@ export { default as Js } from './js';
 export { default as Express } from './express';
 export { default as Css } from './css';
 export { default as Jest } from './jest';
+export { default as VRay } from './vray';
+export { default as SolidWorks } from './solidworks';
+export { default as AutodeskMax } from './autodeskMax';
+export { default as Rhinoceros } from './rhinoceros';
+export { default as CorelDraw } from './corel';

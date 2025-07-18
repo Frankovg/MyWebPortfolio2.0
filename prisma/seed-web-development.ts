@@ -141,22 +141,39 @@ export const WEB_DEVELOPMENT = {
         gallery: {
           create: [
             {
-              imageUrl:
-                "https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
+              imageUrl: "https://drive.google.com/uc?export=view&id=1f0WjetTcKideoaJm4M4GV5l8hNmySrYb",
+              alt: "Homepage screenshot of Franco Amoroso's personal website.",
+              description: "The homepage showcases a modern, minimalist design built with Next.js and Tailwind CSS. The interface demonstrates responsive design principles with careful attention to typography, spacing, and visual hierarchy. The navigation is intuitive and accessible, while the overall layout emphasizes both technical proficiency and design sensibility, reflecting Franco's multidisciplinary background in development and design.",
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
+                "https://drive.google.com/uc?export=view&id=10nhIyclC8NZEr__vN88OByxHtoqAOOH9",
+              alt: "Projects section screenshot of Franco Amoroso's personal website.",
+              description: "The projects section demonstrates advanced frontend architecture with a responsive grid layout powered by CSS Grid and Tailwind CSS. Each project card implements lazy loading optimization, hover animations using CSS transforms, and dynamic content rendering from a headless CMS.",
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
+                "https://drive.google.com/uc?export=view&id=1rMA92rkLrzwEO2txxCsriAUMQf5moksB",
+              alt: "Screenshot of Franco Amoroso's personal website.",
+              description: "The design features a hero section with professional imagery, followed by well-organized content sections highlighting Franco's journey from industrial design to frontend development. The page implements smooth scrolling navigation, responsive typography scaling, and strategic use of whitespace to create an engaging reading experience.",
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=15GpZi6o_mMa6uk_3FfLLLPrI0TQygfGV",
+              alt: "Admin panel screenshot of Franco Amoroso's personal website.",
+              description: "The admin panel demonstrates a comprehensive content management system built with Next.js, TypeScript, and Prisma ORM. The interface showcases the portfolio management tab with a clean dashboard layout featuring project cards in a grid format.",
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1-HQzTCzorHorypeIAoh8hxuqS7O5PcQx",
+              alt: "Admin panel screenshot of Franco Amoroso's personal website.",
+              description: "The admin panel demonstrates a comprehensive content management system built with Next.js, TypeScript, and Prisma ORM. The interface showcases the portfolio management tab with a clean dashboard layout featuring project cards in a grid format.",
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=15GpZi6o_mMa6uk_3FfLLLPrI0TQygfGV",
+              alt: "Admin panel screenshot of Franco Amoroso's personal website logged as a sample.",
+              description: "Sample account functionality is clearly indicated with restricted permissions and read-only access to sensitive operations.",
             },
           ],
         },
