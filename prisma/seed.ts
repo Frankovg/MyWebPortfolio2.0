@@ -1,105 +1,14 @@
 import { TECH_STACK_DATA } from "./seed-constants";
 import { Prisma, PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
-import { WEB_DEVELOPMENT } from "./seed-web-development";
+import { WEB_DEVELOPMENT_SEED } from "./seed-web-development";
+import { GRAPHIC_AND_UX_UI_DESIGN_SEED } from "./seed-graphic-and-ux-ui-design";
 
 const prisma = new PrismaClient();
 
 // <--------------- PORTFOLIO --------------->
-const webDevelopment: Prisma.CategoryCreateInput = WEB_DEVELOPMENT
-
-const graphicAndUxUiDesign: Prisma.CategoryCreateInput = {
-  name: "Graphic & UX/UI Design",
-  value: "graphic-design",
-  projects: {
-    create: [
-      {
-        title: "Testing Data 3",
-        shortDescription: "This is a test 3 project",
-        description:
-          'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.',
-        image:
-          "https://drive.google.com/uc?export=view&id=1apoVnfFU6vQwvyW5Po0rVGnHbmmuvEyJ",
-        slug: "testing-data-3",
-        gallery: {
-          create: [
-            {
-              imageUrl:
-                "https://drive.google.com/uc?export=view&id=1W8j6OVaZpjLPzl3KvDXzR0xH1rHBFm-W",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
-            },
-            {
-              imageUrl:
-                "https://drive.google.com/uc?export=view&id=1s0HTMzJChlsEhnyBX5dNrRBXv-HVZAdI",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
-            },
-            {
-              imageUrl:
-                "https://drive.google.com/uc?export=view&id=1xsf1ISCp1t2dPvR_9Ds_Jj2t3vrXetdx",
-              alt: "This is a meta description of the picture.",
-              description: "This is a description of the picture.",
-            },
-          ],
-        },
-        date: new Date("2022-01-22"),
-        websiteUrl: "https://safeguru.co.uk",
-        company: "A-SAFE Digital",
-        companyUrl: "https://asafedigital.com/",
-        client: "Safeguru",
-        clientUrl: "https://safeguru.co.uk",
-        techStack: {
-          connect: [
-            {
-              value: "nextjs",
-            },
-            {
-              value: "typescript",
-            },
-            {
-              value: "tailwind",
-            },
-          ],
-        },
-        roles: {
-          create: [
-            {
-              label: "Front-end",
-              value: "front-end",
-              percentage: 100,
-            },
-            {
-              label: "UI/UX",
-              value: "ui-ux",
-              percentage: 40,
-            },
-            {
-              label: "Project Lead",
-              value: "project-lead",
-              percentage: 100,
-            },
-            {
-              label: "DevOps",
-              value: "devops",
-              percentage: 3,
-            },
-            {
-              label: "Back-end",
-              value: "back-end",
-              percentage: 5,
-            },
-            {
-              label: "Data Specialist",
-              value: "data-specialist",
-              percentage: 1,
-            },
-          ],
-        },
-      },
-    ],
-  },
-};
+const webDevelopment: Prisma.CategoryCreateInput = WEB_DEVELOPMENT_SEED
+const graphicAndUxUiDesign: Prisma.CategoryCreateInput = GRAPHIC_AND_UX_UI_DESIGN_SEED
 
 const industrialDesign: Prisma.CategoryCreateInput = {
   name: "Industrial Design",

@@ -1,4 +1,4 @@
-export const WEB_DEVELOPMENT = {
+export const WEB_DEVELOPMENT_SEED = {
   name: "Web development",
   value: "web-development",
   projects: {
