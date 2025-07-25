@@ -116,7 +116,6 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
               alt: "Cosmic mandala design with intricate geometric patterns and mystical elements for noRush wallet collection.",
               description: `Original mandala artwork featuring complex geometric patterns set against a cosmic gradient background. 
                 The design combines traditional mandala elements with contemporary digital art techniques, incorporating sharp linear details, ornate circular motifs, and mystical symbols. 
-                Created specifically for noRush wallet collection, this piece blends spiritual symbolism with modern aesthetic appeal, featuring bold contrasts between the white line work and the vibrant blue-to-purple cosmic backdrop with subtle star field effects.
               `,
             },
             {
@@ -124,8 +123,6 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
                 "https://drive.google.com/uc?export=view&id=1FpJCIu9NwHHuFJZ9CJ86STPwr6povhNX",
               alt: "Iconic geometric cube pattern design featuring vibrant isometric blocks for noRush brand identity.",
               description: `One of the most iconic designs created for noRush, featuring a dynamic pattern of colorful isometric cubes in various sizes and orientations. 
-                The composition uses a vibrant color palette including bright yellows, pinks, teals, oranges, and greens to create an energetic and playful visual identity. 
-                Each cube is rendered with distinct faces and edges, creating depth and dimension while maintaining a cohesive geometric aesthetic. 
                 This signature pattern became a cornerstone of noRush's visual branding, representing innovation, creativity, and modern digital design principles.
               `,
             },
@@ -134,7 +131,6 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
                 "https://drive.google.com/uc?export=view&id=1bmWoflv7vwcKFo9rNdkIl0L5r2IrpmTU",
               alt: "Contemporary art collage featuring street art elements, pop culture icons, and mixed media composition for noRush brand.",
               description: `Eclectic digital art collage that blends contemporary street art aesthetics with pop culture imagery and mixed media elements. 
-                The composition features a dynamic arrangement of visual elements including stylized eyes, purple lips, cartoon characters, urban graffiti elements, and portrait photography, all unified through vibrant color overlays and graphic treatments. 
                 Created for noRush brand identity, this piece represents the intersection of digital culture, street art, and contemporary design, showcasing a bold, rebellious aesthetic that appeals to modern creative audiences through its layered, experimental approach to visual storytelling.
               `,
             },
@@ -204,8 +200,7 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
                 "https://drive.google.com/uc?export=view&id=14p0fz-gyGyPMRhXE81nsgg4VQJqXzF38",
               alt: "Commercial store design manual for Tarjeta Shopping featuring technical specifications, floor plans, and brand guidelines with vibrant retail imagery.",
               description: `Comprehensive brand identity and technical manual created for Tarjeta Shopping commercial stores. 
-                This professional guideline document features detailed architectural floor plans, store layout specifications, and visual merchandising standards. 
-                The manual includes technical drawings showing fixture placement, dimensional requirements, and spatial planning for retail environments.
+                This guideline document features detailed architectural floor plans, store layout specifications, and visual merchandising standards. 
                 The document serves as a complete implementation guide for architects, contractors, and store designers, ensuring consistent brand application across all Tarjeta Shopping locations with clear visual examples and precise technical specifications.
               `,
             },
@@ -214,29 +209,33 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
                 "https://drive.google.com/uc?export=view&id=1cLzjo205WxJFP-f8jIZW9WRK2y9C5E4R",
               alt: "Residential maintenance manual showing modern apartment interior with usage and care instructions for new homeowners, featuring bright living spaces and technical guidelines.",
               description: `Comprehensive usage and maintenance manual created for new apartment owners, providing detailed instructions for property care and community spaces. 
-                This professional guide features modern residential photography showcasing bright, contemporary living spaces with natural lighting and minimalist design. 
                 The manual includes sections on structural elements (foundation, structure, and cladding), with specific maintenance recommendations and important safety notes. 
-                The document serves as an essential reference for homeowners, covering proper care of building components, avoiding moisture damage, and understanding load-bearing limitations. 
-                Designed with clear typography and organized layout, this instructional book helps residents maintain their properties effectively while preserving the building's structural integrity and aesthetic appeal.
               `,
             },
             {
               imageUrl:
                 "https://drive.google.com/uc?export=view&id=1kMyAAECe14WC3-yExW-PfwjsjbCZmIrd",
               alt: "Brand identity manual page for noRush showing logo construction guidelines, minimum size specifications, and application rules for print and digital media.",
-              description: `Professional brand identity manual page for noRush wallets demonstrating comprehensive logo usage guidelines and technical specifications. 
+              description: `Brand identity manual page for noRush wallets demonstrating comprehensive logo usage guidelines and technical specifications. 
                 The document details construction and application standards, featuring various logo configurations including the simple logotype, composite logos with star elements, and the complete 'noRush wallets' branding.
-                The manual emphasizes the importance of maintaining legibility across different reproduction systems, recommending larger sizes for low-quality printing methods. 
-                This technical guide ensures consistent brand application across all media, providing clear visual examples and specific measurements to maintain brand integrity in both print and digital environments.
               `,
             },
             {
-              imageUrl: //TODO: Mokasol buscar un mejor screenshot
-                "https://drive.google.com/uc?export=view&id=1ZpYX-BBuAfTG2Y5588svTpvfuN_O2RAp",
-              alt: "Vehicle vinyl graphics design for Mokasol, a regional coffee brand.",
-              description: "Commercial vehicle vinyl wrap design for Mokasol, a regional coffee brand specializing in artisanal coffee products. The design features high-quality product photography, brand messaging, and contact information with rich coffee imagery to communicate the premium nature of their products. Applied to company delivery van for mobile advertising and brand awareness throughout their distribution territory.",
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1BtlFM33m1TxRP2KrOzoEBXJOwgs3aJnE",
+              alt: "Airsoft Club corporate typography guidelines showing primary and secondary font specifications.",
+              description: `Comprehensive corporate brand identity manual created for Airsoft Club, establishing complete visual identity standards and brand guidelines for consistent application across all touchpoints.
+                The document features detailed sections on visual identity systems, brand positioning, logo variations and minimum size requirements, typography standards with complete character sets, and practical implementation guidelines for both digital and print applications.
+              `,
             },
-            //TODO: airsoft club manual
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1r6kcJSUkfuc5b3YCVU0SCuJsLLS4jFlL",
+              alt: "A-SAFE Digital brand identity applications showing logo implementation across business cards, letterheads, and digital mockups.",
+              description: `Brand identity applications for A-SAFE Digital demonstrating comprehensive logo implementation across various corporate touchpoints and marketing materials. 
+                This identity manual example illustrates proper logo usage, spacing guidelines, and color consistency across different media formats, providing a complete framework for brand implementation and ensuring recognizable visual identity across all business communications.
+              `,
+            },
           ],
         },
         date: new Date("2014-04-12"),
@@ -278,6 +277,101 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
               label: "Production Coordinator",
               value: "production-coordinator",
               percentage: 25,
+            },
+          ],
+        },
+      },
+      {
+        title: "Logo Design",
+        shortDescription: "Creating distinctive visual identities through strategic logo design that captures brand essence and communicates core values with memorable symbols.",
+        description: `I specialize in strategic logo design that transforms brand concepts into powerful visual symbols that resonate with target audiences and stand the test of time.
+          My logo design process begins with comprehensive brand discovery, analyzing company values, market positioning, target demographics, and competitive landscape to ensure the final design authentically represents the brand's unique identity.
+          Through iterative sketching, concept development, and digital refinement, I craft logos that balance creativity with strategic thinking, ensuring each design is not only visually compelling but also functionally effective across all applications.
+          My approach emphasizes simplicity and memorability, developing clean, distinctive marks that communicate brand personality while remaining timeless and avoiding trendy elements that may quickly become outdated.
+          Each logo project includes comprehensive exploration of typography, color psychology, and symbolic meaning, ensuring the final design creates emotional connections with audiences while supporting long-term brand recognition and recall.
+        `,
+        image: //TODO: fondo de mejor calidad
+          "https://drive.google.com/uc?export=view&id=1jBst0fTEzRSIG-sRjr4tNgqTYIPi8_Ee",
+        slug: "logos",
+        gallery: {
+          create: [
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1kU1HoIAJOTqyoV-WsWvf52xyesTn818V",
+              alt: "noRush brand identity manual page showing logo construction guidelines, minimum size specifications, and application rules for print and digital media.",
+              description: `The document details construction and application standards, featuring modular proportions, protective area requirements, and scaling guidelines to ensure consistent brand implementation.`,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1ryqR-P-aonRsrDWXziJ-EA-nsmvrqLjn",
+              alt: "Backdoor Studio (BDS) logo design variations showing circular and square formats in different color schemes including red, black and white versions.",
+              description: `Complete logo design system for Backdoor Studio (BDS) showcasing various logo configurations and color applications. 
+                Color variations include the primary red version, grayscale options, and high-contrast black and white treatments for maximum versatility across different applications and media requirements.
+              `,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1M4HSMlYMMy8at-feY-VUzKsKFDMw9JD9",
+              alt: "Raven Force airsoft team logo applications on tactical t-shirts showing brand implementation across apparel merchandise.",
+              description: `Brand application examples for Raven Force airsoft team demonstrating logo implementation across tactical apparel and merchandise design.`,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1B1qavBBgonG3Z70LDZK_H90rG-S9-0w5",
+              alt: "Le Brique logo design featuring modular orange brick pattern and VIP Geselinos event branding variations.",
+              description: `Logo design showcase featuring Le Brique with its distinctive modular brick pattern in vibrant orange, symbolizing construction and architectural excellence.
+                The design also displays VIP Geselinos event branding with multiple logo variations for "Tercera Edición" (Third Edition), demonstrating versatile brand applications across different event iterations.
+              `,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=176KWQpn2c-wgybjxhYYipr7Urs_q3JXf",
+              alt: "A-SAFE Digital logo rebranding exploration showing typography evolution, construction guidelines, and brand morphology development.",
+              description: `Logo rebranding project for A-SAFE Digital demonstrating comprehensive typography exploration and brand evolution process.
+                The design showcases the transformation from the original A-SAFE logotype to the new A-SAFE DIGITAL identity, featuring detailed construction guidelines with modular grid systems and precise scaling specifications.
+              `,
+            },
+          ],
+        },
+        date: new Date("2014-04-12"),
+        company: "Freelance",
+        client: "A-SAFE Digital and others",
+        techStack: {
+          connect: [
+            {
+              value: "ps",
+            },
+            {
+              value: "ai",
+            },
+          ],
+        },
+        roles: {
+          create: [
+            {
+              label: "Graphic Designer",
+              value: "graphic-designer",
+              percentage: 100,
+            },
+            {
+              label: "Brand Strategist",
+              value: "brand-strategist",
+              percentage: 85,
+            },
+            {
+              label: "Visual Identity Designer",
+              value: "visual-identity-designer",
+              percentage: 95,
+            },
+            {
+              label: "Client Relations",
+              value: "client-relations",
+              percentage: 80,
+            },
+            {
+              label: "Brand Consultant",
+              value: "brand-consultant",
+              percentage: 75,
             },
           ],
         },
