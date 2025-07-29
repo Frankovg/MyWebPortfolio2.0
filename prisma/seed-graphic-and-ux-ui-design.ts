@@ -4,7 +4,7 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
   projects: {
     create: [
       {
-        title: "OOH - Out of Home Advertising",
+        title: "Out of Home Advertising",
         shortDescription: "Advertisement displayed in public spaces in various formats like billboards, bus shelters, and posters, aiming to reach consumers while they are away from home.",
         description: `I developed high-impact visual campaigns for major brands across diverse outdoor media formats. 
           Working with leading companies like Pubext 2000, I created compelling billboard designs, transit advertising, street furniture graphics, and large-format displays that captured consumer attention in high-traffic urban environments. 
@@ -106,7 +106,7 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
           These pieces serve as creative explorations that complement my commercial design work, allowing for artistic freedom and the development of unique visual concepts that push creative boundaries.
           `,
         image:
-          "https://drive.google.com/uc?export=view&id=1GfWzJ6v-Xgo8HdJPgkKkBE-J861BRyLJ", //TODO: fondo de mejor calidad
+          "https://drive.google.com/uc?export=view&id=1C165aEW7yoqG_AuKO1r_IgGNOJjYi-S7",
         slug: "art-design",
         gallery: {
           create: [
@@ -238,7 +238,7 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
             },
           ],
         },
-        date: new Date("2014-04-12"),
+        date: new Date("2014-01-01"),
         company: "Grupo Quiero, Pubext 2000 and freelance",
         client: "L'Oréal Paris, Vía Célere, Movistar and others",
         techStack: {
@@ -290,8 +290,8 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
           My approach emphasizes simplicity and memorability, developing clean, distinctive marks that communicate brand personality while remaining timeless and avoiding trendy elements that may quickly become outdated.
           Each logo project includes comprehensive exploration of typography, color psychology, and symbolic meaning, ensuring the final design creates emotional connections with audiences while supporting long-term brand recognition and recall.
         `,
-        image: //TODO: fondo de mejor calidad
-          "https://drive.google.com/uc?export=view&id=1jBst0fTEzRSIG-sRjr4tNgqTYIPi8_Ee",
+        image:
+          "https://drive.google.com/uc?export=view&id=1zQTfkL7_Jxj9MUnpZjbLvXncKnc9Ny0z",
         slug: "logos",
         gallery: {
           create: [
@@ -333,7 +333,7 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
             },
           ],
         },
-        date: new Date("2014-04-12"),
+        date: new Date("2010-01-01"),
         company: "Freelance",
         client: "A-SAFE Digital and others",
         techStack: {
@@ -372,6 +372,105 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
               label: "Brand Consultant",
               value: "brand-consultant",
               percentage: 75,
+            },
+          ],
+        },
+      },
+      {
+        title: "UX/UI Design",
+        shortDescription: "Designing intuitive digital interfaces that translate brand DNA into seamless user experiences, focusing on accessibility, usability, and innovative interaction design for web and mobile applications.",
+        description: `I specialize in creating digital interfaces that seamlessly translate brand identity into functional, accessible, and engaging user experiences across web and mobile platforms.
+          My UX/UI design process begins with comprehensive user research, persona development, and user journey mapping to understand target audience needs, behaviors, and pain points within the digital ecosystem.
+          Through wireframing, prototyping, and iterative testing, I develop interface solutions that prioritize usability and accessibility while maintaining strong visual hierarchy and consistent brand expression.
+          My approach emphasizes inclusive design principles, ensuring interfaces are accessible to users with diverse abilities while implementing responsive design patterns that work flawlessly across all devices and screen sizes.
+          I focus on innovative interaction design, creating micro-interactions, animations, and user flows that enhance the overall experience while supporting business objectives and conversion goals.
+          Each project includes comprehensive design systems with reusable components, style guides, and detailed specifications that enable development teams to implement pixel-perfect interfaces while maintaining design consistency and scalability.
+        `,
+        image:
+          "https://drive.google.com/uc?export=view&id=1WhS00nF6dTPmM-VJy-5NJYUKqYqice9C",
+        slug: "ux-ui-design",
+        gallery: {
+          create: [
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1kU1HoIAJOTqyoV-WsWvf52xyesTn818V",
+              alt: "noRush brand identity manual page showing logo construction guidelines, minimum size specifications, and application rules for print and digital media.",
+              description: `The document details construction and application standards, featuring modular proportions, protective area requirements, and scaling guidelines to ensure consistent brand implementation.`,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1ryqR-P-aonRsrDWXziJ-EA-nsmvrqLjn",
+              alt: "Backdoor Studio (BDS) logo design variations showing circular and square formats in different color schemes including red, black and white versions.",
+              description: `Complete logo design system for Backdoor Studio (BDS) showcasing various logo configurations and color applications. 
+                Color variations include the primary red version, grayscale options, and high-contrast black and white treatments for maximum versatility across different applications and media requirements.
+              `,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1M4HSMlYMMy8at-feY-VUzKsKFDMw9JD9",
+              alt: "Raven Force airsoft team logo applications on tactical t-shirts showing brand implementation across apparel merchandise.",
+              description: `Brand application examples for Raven Force airsoft team demonstrating logo implementation across tactical apparel and merchandise design.`,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1B1qavBBgonG3Z70LDZK_H90rG-S9-0w5",
+              alt: "Le Brique logo design featuring modular orange brick pattern and VIP Geselinos event branding variations.",
+              description: `Logo design showcase featuring Le Brique with its distinctive modular brick pattern in vibrant orange, symbolizing construction and architectural excellence.
+                The design also displays VIP Geselinos event branding with multiple logo variations for "Tercera Edición" (Third Edition), demonstrating versatile brand applications across different event iterations.
+              `,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=176KWQpn2c-wgybjxhYYipr7Urs_q3JXf",
+              alt: "A-SAFE Digital logo rebranding exploration showing typography evolution, construction guidelines, and brand morphology development.",
+              description: `Logo rebranding project for A-SAFE Digital demonstrating comprehensive typography exploration and brand evolution process.
+                The design showcases the transformation from the original A-SAFE logotype to the new A-SAFE DIGITAL identity, featuring detailed construction guidelines with modular grid systems and precise scaling specifications.
+              `,
+            },
+          ],
+        },
+        date: new Date("2023-07-12"),
+        company: "A-SAFE Digital and freelance",
+        client: "A-SAFE Digital and others",
+        techStack: {
+          connect: [
+            {
+              value: "ps",
+            },
+            {
+              value: "ai",
+            },
+            {
+              value: "figma",
+            },
+          ],
+        },
+        roles: {
+          create: [
+            {
+              label: "UX Designer",
+              value: "ux-designer",
+              percentage: 95,
+            },
+            {
+              label: "UI Designer",
+              value: "ui-designer",
+              percentage: 90,
+            },
+            {
+              label: "Interaction Designer",
+              value: "interaction-designer",
+              percentage: 85,
+            },
+            {
+              label: "User Researcher",
+              value: "user-researcher",
+              percentage: 75,
+            },
+            {
+              label: "Usability Specialist",
+              value: "usability-specialist",
+              percentage: 80,
             },
           ],
         },
