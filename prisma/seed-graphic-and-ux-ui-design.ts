@@ -128,7 +128,7 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1bmWoflv7vwcKFo9rNdkIl0L5r2IrpmTU",
+                "https://drive.google.com/uc?export=view&id=18FpONVlM55jnaDKCxEjFCOXvwZCHjZoy",
               alt: "Contemporary art collage featuring street art elements, pop culture icons, and mixed media composition for noRush brand.",
               description: `Eclectic digital art collage that blends contemporary street art aesthetics with pop culture imagery and mixed media elements. 
                 Created for noRush brand identity, this piece represents the intersection of digital culture, street art, and contemporary design, showcasing a bold, rebellious aesthetic that appeals to modern creative audiences through its layered, experimental approach to visual storytelling.
