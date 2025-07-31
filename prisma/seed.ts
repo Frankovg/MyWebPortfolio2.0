@@ -3,17 +3,14 @@ import { Prisma, PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 import { WEB_DEVELOPMENT_SEED } from "./seed-web-development";
 import { GRAPHIC_AND_UX_UI_DESIGN_SEED } from "./seed-graphic-and-ux-ui-design";
+import { INDUSTRIAL_DESIGN_SEED } from "./seed-industrial-design";
 
 const prisma = new PrismaClient();
 
 // <--------------- PORTFOLIO --------------->
 const webDevelopment: Prisma.CategoryCreateInput = WEB_DEVELOPMENT_SEED
 const graphicAndUxUiDesign: Prisma.CategoryCreateInput = GRAPHIC_AND_UX_UI_DESIGN_SEED
-
-const industrialDesign: Prisma.CategoryCreateInput = {
-  name: "Industrial Design",
-  value: "industrial-design",
-};
+const industrialDesign: Prisma.CategoryCreateInput = INDUSTRIAL_DESIGN_SEED
 
 // <--------------- DOWNLOADS --------------->
 const downloadCVContent: Prisma.DownloadCreateInput = {
