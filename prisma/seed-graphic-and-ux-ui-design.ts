@@ -393,45 +393,54 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
           create: [
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1kU1HoIAJOTqyoV-WsWvf52xyesTn818V",
-              alt: "noRush brand identity manual page showing logo construction guidelines, minimum size specifications, and application rules for print and digital media.",
-              description: `The document details construction and application standards, featuring modular proportions, protective area requirements, and scaling guidelines to ensure consistent brand implementation.`,
-            },
-            {
-              imageUrl:
-                "https://drive.google.com/uc?export=view&id=1ryqR-P-aonRsrDWXziJ-EA-nsmvrqLjn",
-              alt: "Backdoor Studio (BDS) logo design variations showing circular and square formats in different color schemes including red, black and white versions.",
-              description: `Complete logo design system for Backdoor Studio (BDS) showcasing various logo configurations and color applications. 
-                Color variations include the primary red version, grayscale options, and high-contrast black and white treatments for maximum versatility across different applications and media requirements.
+                "https://drive.google.com/uc?export=view&id=11vvLJ5YqD-l0-nfuDuI4R3f4VUd8wcVz",
+              alt: "Safeguru mobile app interface.",
+              description: `Enhanced UX/UI design for Safeguru e-commerce platform showcasing new features and pages designed to improve user experience for safety equipment retail. 
+                The interface demonstrates improved usability through streamlined navigation, optimized product browsing flows, and enhanced checkout processes designed for both web and mobile platforms. 
+                My design work focused on creating intuitive user interfaces that maintain brand consistency while implementing modern interaction patterns and responsive design principles to support business objectives and improve conversion rates across all device types.
               `,
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1M4HSMlYMMy8at-feY-VUzKsKFDMw9JD9",
-              alt: "Raven Force airsoft team logo applications on tactical t-shirts showing brand implementation across apparel merchandise.",
-              description: `Brand application examples for Raven Force airsoft team demonstrating logo implementation across tactical apparel and merchandise design.`,
-            },
-            {
-              imageUrl:
-                "https://drive.google.com/uc?export=view&id=1B1qavBBgonG3Z70LDZK_H90rG-S9-0w5",
-              alt: "Le Brique logo design featuring modular orange brick pattern and VIP Geselinos event branding variations.",
-              description: `Logo design showcase featuring Le Brique with its distinctive modular brick pattern in vibrant orange, symbolizing construction and architectural excellence.
-                The design also displays VIP Geselinos event branding with multiple logo variations for "Tercera Edición" (Third Edition), demonstrating versatile brand applications across different event iterations.
+                "https://drive.google.com/uc?export=view&id=1NsEgGzKj1XS2Ziwh-Ekma7v9eSkwZ4by",
+              alt: "A-SAFE Digital website interface",
+              description: `The project involved developing the complete brand identity system, including the distinctive A-SAFE DIGITAL logotype and visual identity guidelines that reflect the company's expertise in digital innovation. 
+                The interface design emphasizes clean, professional aesthetics with intuitive navigation patterns, showcasing the agency's services.
+                The responsive design ensures optimal user experience across all devices while maintaining brand consistency.
               `,
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=176KWQpn2c-wgybjxhYYipr7Urs_q3JXf",
-              alt: "A-SAFE Digital logo rebranding exploration showing typography evolution, construction guidelines, and brand morphology development.",
-              description: `Logo rebranding project for A-SAFE Digital demonstrating comprehensive typography exploration and brand evolution process.
-                The design showcases the transformation from the original A-SAFE logotype to the new A-SAFE DIGITAL identity, featuring detailed construction guidelines with modular grid systems and precise scaling specifications.
+                "https://drive.google.com/uc?export=view&id=1dCTXlDPJnGKB-Jjga73IFkBLWZ8r32B6",
+              alt: "Personal portfolio website interface.",
+              description: `Comprehensive UX/UI design for my personal portfolio website built around the conceptual theme of exploring a creative universe. 
+                The design strategy focused on creating an immersive digital experience that invites users to journey through my creative mind and explore different dimensions of my work. 
+                The UX approach emphasizes storytelling through interaction design, using visual metaphors of space and discovery to guide users through various project categories. 
               `,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1IijC2aHWJlKXsQM_n3JAL2Pls8_Es5nm",
+              alt: "Airsoft Club mobile app interface showcasing social media features for airsoft community.",
+              description: `Mobile UX/UI design for Airsoft Club social media platform, creating a specialized community app for airsoft enthusiasts. 
+                  The design process focused on developing user-centered interfaces that facilitate equipment sharing, field discovery, team formation, and game coordination within the airsoft community.
+                  The visual design maintains the tactical aesthetic of airsoft culture while ensuring accessibility and usability across diverse user demographics. 
+                `,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1L_earOQw005RH28cOfTAXfZ66rGfKMY2",
+              alt: "Jokes app interface demonstrating UX/UI design principles and user interaction patterns.",
+              description: `A jokes application showcasing fundamental interaction design principles and user experience optimization. 
+                  The design process emphasized creating intuitive user flows with minimal cognitive load, implementing clear call-to-action patterns and streamlined navigation architecture. 
+                  My UX approach focused on reducing friction in content consumption through optimized touch targets, appropriate visual hierarchy, and responsive feedback mechanisms. 
+                `,
             },
           ],
         },
         date: new Date("2023-07-12"),
         company: "A-SAFE Digital and freelance",
-        client: "A-SAFE Digital and others",
+        client: "A-SAFE Digital, Safeguru and others",
         techStack: {
           connect: [
             {
