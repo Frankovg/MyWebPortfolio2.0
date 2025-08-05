@@ -6,7 +6,7 @@ export const INDUSTRIAL_DESIGN_SEED: Prisma.CategoryCreateInput = {
   projects: {
     create: [
       {
-        title: "noRush",
+        title: "noRush wallets",
         shortDescription: "Innovative wallet design using Tyvek® material, creating ultra-lightweight and extremely durable products with unique and original designs.",
         description: `noRush represents a pioneering approach to wallet design, developed as a collaborative venture focused on creating revolutionary accessories using Tyvek® material.
         The design challenge involved reimagining traditional wallet construction methods to accommodate Tyvek®'s distinctive characteristics, resulting in products that are significantly lighter than conventional leather wallets while being virtually tear-proof and weather-resistant.
@@ -15,7 +15,7 @@ export const INDUSTRIAL_DESIGN_SEED: Prisma.CategoryCreateInput = {
         The project required developing specialized production techniques that could be implemented efficiently while maintaining consistent quality standards, resulting in a scalable manufacturing process that supports the brand's growth objectives.
       `,
         image: "https://drive.google.com/uc?export=view&id=1K9sLyxC7sRRjSz6dlI1WAjHgP3ThQ15U",  //TODO: replace for a better one
-        slug: "norush",
+        slug: "norush-wallets",
         gallery: {
           create: [
             {
@@ -102,8 +102,8 @@ export const INDUSTRIAL_DESIGN_SEED: Prisma.CategoryCreateInput = {
         },
       },
       {
-        title: "Grupo Quiero",
-        shortDescription: "Industrial design specialist at LATAM retail design studio, creating innovative point-of-sale displays and retail furniture for major brands across the region.",
+        title: "Retail Design - Look & Feel",
+        shortDescription: "Industrial design specialist at LATAM retail design studio, creating innovative P.O.P displays and retail furniture for major brands across the region.",
         description: `As an Industrial Designer at Grupo Quiero, I contributed to Latin America's most comprehensive retail design studio, specializing in creating impactful point-of-sale displays, retail furniture, and commercial environments for major brands across the region.
           My role involved developing innovative display solutions that enhanced brand visibility and customer engagement in retail spaces, working with materials ranging from traditional wood and metal to cutting-edge plastics and composites.
           I collaborated closely with multidisciplinary teams including graphic designers, architects, and project managers to deliver integrated retail experiences that aligned with each client's brand identity and commercial objectives.
@@ -111,7 +111,7 @@ export const INDUSTRIAL_DESIGN_SEED: Prisma.CategoryCreateInput = {
           Working with high-profile clients, I developed expertise in translating brand strategies into physical retail elements that drive sales performance while maintaining the highest standards of design excellence and build quality.
         `,
         image: "https://drive.google.com/uc?export=view&id=1KF9RUtgh-cN5NRJep2llZRkqExx4Zd9K", //TODO: replace for a better one
-        slug: "grupo-quiero",
+        slug: "retail-design-look-and-feel",
         gallery: {
           create: [
             {
@@ -208,6 +208,110 @@ export const INDUSTRIAL_DESIGN_SEED: Prisma.CategoryCreateInput = {
               label: "Sketch Artist",
               value: "sketch-artist",
               percentage: 45,
+            },
+          ],
+        },
+      },
+      {
+        title: "Light displays",
+        shortDescription: "Prototype developer and industrial designer at specialized P.O.P solutions company, creating corrugated cardboard displays and packaging for major FMCG brands across Latin America.",
+        description: `As a Prototype Developer and Industrial Designer at Micropack Americas, I specialized in creating innovative point-of-purchase solutions and packaging using corrugated cardboard for major FMCG brands across Latin America.
+          My role combined hands-on prototyping with industrial design expertise, developing functional display solutions that met both aesthetic and structural requirements while optimizing manufacturing processes for corrugated cardboard production.
+          Working directly with CNC cutting equipment, I translated design concepts into precise prototypes, ensuring proper fit, functionality, and structural integrity before full-scale production. This hands-on approach allowed for rapid iteration and refinement of designs.
+          The position required deep understanding of corrugated cardboard properties, including grain direction, compression strength, and folding capabilities, enabling me to design displays that maximized material efficiency while maintaining visual impact.
+          My work bridged the gap between creative design vision and manufacturing reality, ensuring that innovative display concepts could be efficiently produced using Micropack's specialized corrugated cardboard manufacturing capabilities.
+        `,
+        image: "https://drive.google.com/uc?export=view&id=1KF9RUtgh-cN5NRJep2llZRkqExx4Zd9K", //TODO: replace for a better one
+        slug: "light-displays",
+        gallery: {
+          create: [
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1TFGAwUMMp4We1eMelXAP1YUvbF6uZ_rE",
+              alt: "Cadbury retail display featuring curved arch design showcasing various chocolate products.",
+              description: `Custom-designed Cadbury retail display prototype featuring an innovative curved arch configuration that maximizes product visibility while creating an eye-catching brand presence. 
+                Developed at Micropack, this prototype demonstrates advanced manufacturing techniques for creating complex curved surfaces while maintaining structural integrity and optimal product accessibility for retail environments.
+              `,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=12EEmNDwwxey_O7Hvv3oAJOBoKjwpf1ui",
+              alt: "Milka retail display prototype featuring distinctive purple branding and curved structural design showcasing various Milka chocolate products.",
+              description: `Custom-designed Milka retail display prototype featuring the brand's signature purple color scheme and innovative structural design that maximizes product visibility while creating strong brand recognition. 
+                Developed at Micropack, this corrugated cardboard prototype demonstrates specialized manufacturing techniques for incorporating brand-specific colors and graphics while maintaining structural integrity and optimal product accessibility for retail environments.
+              `,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1W75YqHK7aj0nc5UiBqtIOwiEHMP2aJbo",
+              alt: "L'Oréal Paris Elvive hair care display tower and Maybelline New York nail polish counter display showcasing organized product merchandising with brand-specific design elements.",
+              description: `Cosmetics retail displays designed for L'Oréal Paris Elvive and Maybelline New York, showcasing specialized merchandising solutions developed at Micropack. 
+                The L'Oréal tower display features a vertical multi-shelf configuration optimizing floor space while maximizing product visibility for hair care products. The Maybelline counter display presents nail polish collections in an organized tray system with brand graphics that enhance product appeal and accessibility for customers.
+              `,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1frev4MGM3n_HtDRpv3-TfhP3ZAxfcsD4",
+              alt: "BIC Evolution display featuring vibrant alongside white corrugated cardboard prototype showing castle-inspired morphology with multiple product shelves.",
+              description: `BIC retail displays showcasing the complete design development process at Micropack Americas. 
+                The left image shows the final production display for BIC Evolution products. The right image reveals the initial white corrugated cardboard prototype used for morphology exploration, featuring an innovative castle-inspired design
+              .`,
+            },
+          ],
+        },
+        date: new Date("2015-03-10"),
+        company: "Micropack Americas",
+
+        companyUrl: "https://micropacklatamamericas.godaddysites.com/",
+        client: "Unilever, Mondeléz, Coca-Cola among others",
+        techStack: {
+          connect: [
+            {
+              value: "ps",
+            },
+            {
+              value: "ai",
+            },
+            {
+              value: "coreldraw",
+            },
+            {
+              value: "rhinoceros",
+            },
+            {
+              value: "3dsmax",
+            },
+            {
+              value: "vray",
+            },
+          ],
+        },
+        roles: {
+          create: [
+            {
+              label: "Industrial Designer",
+              value: "industrial-designer",
+              percentage: 75,
+            },
+            {
+              label: "Technical Draftsman",
+              value: "technical-draftsman",
+              percentage: 25,
+            },
+            {
+              label: "Prototype Developer",
+              value: "prototype-developer",
+              percentage: 100,
+            },
+            {
+              label: "Concept Designer",
+              value: "concept-designer",
+              percentage: 5,
+            },
+            {
+              label: "CNC Operator",
+              value: "cnc-operator",
+              percentage: 90,
             },
           ],
         },
