@@ -14,7 +14,7 @@ export const INDUSTRIAL_DESIGN_SEED: Prisma.CategoryCreateInput = {
         Each wallet design incorporates unique graphic elements and color combinations that showcase Tyvek®'s printability, creating distinctive visual identities that appeal to modern consumers seeking both functionality and style.
         The project required developing specialized production techniques that could be implemented efficiently while maintaining consistent quality standards, resulting in a scalable manufacturing process that supports the brand's growth objectives.
       `,
-        image: "https://drive.google.com/uc?export=view&id=1K9sLyxC7sRRjSz6dlI1WAjHgP3ThQ15U",  //TODO: replace for a better one
+        image: "https://drive.google.com/uc?export=view&id=1nDAHtWlx8pmNoYnjbz-lRyzxp3UnFQFj",
         slug: "norush-wallets",
         gallery: {
           create: [
@@ -52,6 +52,14 @@ export const INDUSTRIAL_DESIGN_SEED: Prisma.CategoryCreateInput = {
               alt: "noRush Tyvek® wallet featuring iconic graffiti-style collage design with pop culture references and street art elements.",
               description: `The most famous noRush wallet design featuring an eclectic graffiti-style collage that became the brand's signature piece. 
                 This particular wallet design gained significant popularity for its rebellious artistic expression and became synonymous with the noRush brand identity.
+              `,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1zTcyvRXrYOY6mMr3YxMcPqAcXOwaNndc",
+              alt: "noRush Tyvek® wallet featuring tropical blue and green palm leaf pattern, displayed open on beach sand with ocean and coastal buildings in background.",
+              description: `noRush wallet showcasing a vibrant tropical palm leaf pattern in blue and green tones. 
+                The wallet's innovative Tyvek® construction is perfectly suited for coastal and outdoor activities, demonstrating its water-resistant properties and durability in sandy conditions.
               `,
             },
           ],
@@ -110,7 +118,7 @@ export const INDUSTRIAL_DESIGN_SEED: Prisma.CategoryCreateInput = {
           The projects required deep understanding of manufacturing processes, cost optimization, and logistics considerations specific to Latin American markets, ensuring designs were commercially viable.
           Working with high-profile clients, I developed expertise in translating brand strategies into physical retail elements that drive sales performance while maintaining the highest standards of design excellence and build quality.
         `,
-        image: "https://drive.google.com/uc?export=view&id=1KF9RUtgh-cN5NRJep2llZRkqExx4Zd9K", //TODO: replace for a better one
+        image: "https://drive.google.com/uc?export=view&id=1a86kXsro2-TjuSq4oKtuNyzhe-WYqFfe",
         slug: "retail-design-look-and-feel",
         gallery: {
           create: [
@@ -221,7 +229,7 @@ export const INDUSTRIAL_DESIGN_SEED: Prisma.CategoryCreateInput = {
           The position required deep understanding of corrugated cardboard properties, including grain direction, compression strength, and folding capabilities, enabling me to design displays that maximized material efficiency while maintaining visual impact.
           My work bridged the gap between creative design vision and manufacturing reality, ensuring that innovative display concepts could be efficiently produced using Micropack's specialized corrugated cardboard manufacturing capabilities.
         `,
-        image: "https://drive.google.com/uc?export=view&id=1KF9RUtgh-cN5NRJep2llZRkqExx4Zd9K", //TODO: replace for a better one
+        image: "https://drive.google.com/uc?export=view&id=1JNy47LkDZmmIxGr38hSId4M5hw5V6sBZ",
         slug: "light-displays",
         gallery: {
           create: [
@@ -261,7 +269,6 @@ export const INDUSTRIAL_DESIGN_SEED: Prisma.CategoryCreateInput = {
         },
         date: new Date("2015-03-10"),
         company: "Micropack Americas",
-
         companyUrl: "https://micropacklatamamericas.godaddysites.com/",
         client: "Unilever, Mondeléz, Coca-Cola among others",
         techStack: {
@@ -311,6 +318,101 @@ export const INDUSTRIAL_DESIGN_SEED: Prisma.CategoryCreateInput = {
             {
               label: "CNC Operator",
               value: "cnc-operator",
+              percentage: 90,
+            },
+          ],
+        },
+      },
+      {
+        title: "Engineering",
+        shortDescription: "Technical documentation and CAD engineering specialist, creating precise technical drawings, 3D models, and manufacturing specifications for industrial design projects across various sectors.",
+        description: `As a Technical Engineering specialist, I developed comprehensive technical documentation and CAD modeling expertise, translating conceptual designs into precise manufacturing specifications and detailed technical drawings.
+          My work encompassed creating accurate 3D models, generating technical drawings with proper dimensioning and tolerances, and developing manufacturing documentation that ensured seamless transition from design concept to production reality.
+          Working with advanced CAD systems, I specialized in creating detailed assembly drawings, exploded views, and technical specifications that facilitated clear communication between design teams, manufacturers, and quality control departments.
+          The role required deep understanding of manufacturing processes, material properties, and engineering standards, enabling me to optimize designs for producibility while maintaining design integrity and functionality.
+          My technical documentation work supported various industrial design projects, ensuring that creative concepts could be accurately reproduced in manufacturing environments while meeting quality standards and regulatory requirements.
+        `,
+        image: "https://drive.google.com/uc?export=view&id=1yyU0LQSv-FeJIEBjcJynOm9h0OYG_LnK",
+        slug: "engineering",
+        gallery: {
+          create: [
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1EEpI8IyjXjorF6CcaBcf9A_dNBm9bSYj",
+              alt: "Technical engineering drawings and exploded views of a vehicle, showing detailed assembly diagrams, component breakdowns, and manufacturing specifications.",
+              description: `Comprehensive technical documentation for a four-wheel drive vehicle featuring fiberglass body construction. 
+                The left sheet displays detailed exploded view diagrams showing the vehicle's component hierarchy and assembly sequence. 
+                The right sheet contains precise technical drawings with multiple views, cross-sections, and detailed specifications including dimensional tolerances, material callouts, and assembly instructions.
+              `,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1d8wn1sfrzmqIsdCH10rOAIq9nlk6BXpV",
+              alt: "Technical engineering drawings of leaf sweeper side component showing detailed measurements, cross-sections, and stress analysis simulation with color-coded stress mapping.",
+              description: `Comprehensive technical documentation for a critical side component of a leaf sweeper, featuring precise dimensional specifications and engineering analysis. 
+                The left panel displays a finite element analysis (FEA) simulation showing stress distribution under load conditions.
+              `,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1ad4z1IkaFgKhMJ_Q5-a93q1H91MUff4O",
+              alt: "Technical engineering drawings of wheelbarrow showing detailed assembly diagrams, exploded views, orthographic projections, and component specifications in professional CAD documentation format.",
+              description: `The left page displays detailed orthographic projections with precise dimensional specifications, cross-sectional views, and component details including the wheel assembly and structural framework. 
+                The right page showcases an exploded view diagram that clearly illustrates the hierarchical assembly sequence and individual component relationships, with numbered parts and detailed callouts. 
+                The documentation includes multiple viewing angles, technical specifications, and manufacturing details essential for production.
+              `,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1k7Iv6rqIeKVLEIW4I1EyRqlu9FwBFJL4",
+              alt: "Technical instruction manual page showing Vogue Cosmetics mobile retail cart with detailed assembly diagrams, opening/closing mechanisms, and step-by-step usage instructions.",
+              description: `This is an instruction manual, demonstrating the opening and closing system for this wheeled point-of-purchase display cart. 
+                The technical drawings show the multi-tiered cart in various operational states, including how to remove fixing bolts, lower the frame structure, and access different storage compartments.
+              .`,
+            },
+          ],
+        },
+        date: new Date("2010-06-22"),
+        company: "Grupo Quiero, noRush and freelance",
+        client: "L'Oréal Paris, Coty, Movistar among others",
+        techStack: {
+          connect: [
+            {
+              value: "ai",
+            },
+            {
+              value: "rhinoceros",
+            },
+            {
+              value: "solidworks",
+            },
+          ],
+        },
+        roles: {
+          create: [
+            {
+              label: "Industrial Designer",
+              value: "industrial-designer",
+              percentage: 90,
+            },
+            {
+              label: "Technical Draftsman",
+              value: "technical-draftsman",
+              percentage: 85,
+            },
+            {
+              label: "FEA Analyst",
+              value: "fea-analyst",
+              percentage: 70,
+            },
+            {
+              label: "CAD Engineer",
+              value: "cad-engineer",
+              percentage: 75,
+            },
+            {
+              label: "Documentation Specialist",
+              value: "documentation-specialist",
               percentage: 90,
             },
           ],
