@@ -368,7 +368,22 @@ export const INDUSTRIAL_DESIGN_SEED: Prisma.CategoryCreateInput = {
               alt: "Technical instruction manual page showing Vogue Cosmetics mobile retail cart with detailed assembly diagrams, opening/closing mechanisms, and step-by-step usage instructions.",
               description: `This is an instruction manual, demonstrating the opening and closing system for this wheeled point-of-purchase display cart. 
                 The technical drawings show the multi-tiered cart in various operational states, including how to remove fixing bolts, lower the frame structure, and access different storage compartments.
-              .`,
+              `,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1M7tB7Fdfa26qSPFvaG2MTBQRHN3p7Hd6",
+              alt: "Technical drawing of Maybelline wall display showing detailed construction specifications, material breakdown, and dimensional measurements for modular cosmetics retail unit.",
+              description: `Technical documentation for a Maybelline wall display featuring precise construction specifications and material breakdown.               `,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1zNjP0PEaN7FASYmpjKw9xLGqfYOZwldP",
+              alt: "noRush wallet printed dieline artwork featuring military camouflage pattern design with cut lines, fold marks, and branding elements for Tyvek® material production.",
+              description: `Printed dieline production artwork for a noRush wallet featuring military-inspired camouflage pattern. 
+                The design shows the complete wallet template with precise cut lines, fold markers, and strategic placement of the noRush branding elements. 
+                This production file showcases the technical precision required for Tyvek® material printing and the innovative folding techniques that make noRush wallets both functional and visually distinctive.
+              `,
             },
           ],
         },
@@ -414,6 +429,109 @@ export const INDUSTRIAL_DESIGN_SEED: Prisma.CategoryCreateInput = {
               label: "Documentation Specialist",
               value: "documentation-specialist",
               percentage: 90,
+            },
+          ],
+        },
+      },
+      {
+        title: "BUG",
+        shortDescription: "A mechanical leaf sweeper featuring innovative brush mechanism and collection system for sustainable garden maintenance.",
+        description: `BUG represents an innovative approach to garden maintenance, designed as a purely mechanical leaf sweeper that eliminates the need for electric motors or fuel consumption.
+          The design challenge involved creating an efficient leaf collection system powered entirely by manual operation, resulting in an eco-friendly solution that operates silently and requires minimal maintenance.
+          Through extensive prototyping and mechanical testing, I developed a unique brush mechanism that effectively sweeps and collects leaves while being pushed manually, incorporating ergonomic handle design for comfortable operation.
+          The sweeper features an innovative collection system with a hinged top-loading design that allows for easy emptying of collected debris, maximizing efficiency during garden cleanup tasks.
+          Multiple functional prototypes were developed to verify and refine the mechanical systems, testing different brush configurations and collection mechanisms to optimize performance across various terrain types and leaf conditions.
+          While the project successfully demonstrated functional viability through working prototypes, it remained in the development phase without progressing to commercial production, representing a complete design-to-prototype cycle that validated the innovative mechanical concepts.
+        `,
+        image: "https://drive.google.com/uc?export=view&id=1jdytfkjJjBqTThHEi3r9N6CpEw3apHy9",
+        slug: "bug",
+        gallery: {
+          create: [
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1RXeOYCkePyPj29M2zzXLW1T-Un7z-yxX",
+              alt: "Four BUG mechanical leaf sweepers in different colors - black, green, red, and orange -.",
+              description: `Product showcase featuring four color variations of the BUG mechanical leaf sweeper, demonstrating the design's versatility and consumer appeal.`,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1uCrxwK0MlfePTKYF2-5FE7Qys3Qbwpj9",
+              alt: "Technical cutaway diagram of BUG leaf sweeper showing internal brush mechanism and leaf collection system with colorful autumn leaves being swept from grass into collection chamber.",
+              description: `Technical cutaway illustration demonstrating the complete leaf collection cycle of the BUG mechanical sweeper. 
+                The transparent view reveals the internal brush mechanism that captures leaves from the ground and transfers them through the rotating brush system into the collection chamber.
+              `,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=11tHD0LAlVropVUsavWYq5S0BZF1BSPmW",
+              alt: "Two-panel demonstration of BUG mechanical leaf sweeper showing man using orange and black sweeper to clean garden lawn on left, and woman emptying collected leaves from hinged collection chamber on right.",
+              description: `The left panel shows a man efficiently sweeping autumn leaves, demonstrating the ergonomic push-operation and effective leaf collection.
+                The right panel displays the innovative hinged top-loading collection system, as a woman empties the gathered leaves by tilting the collection chamber.
+              `,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1smc9unJVspDlo6X3lgbbn92j5Ee3hiHh",
+              alt: "Technical 3D rendering of BUG leaf sweeper's internal mechanism showing gear system and encapsulated brush assembly.",
+              description: `Detailed technical visualization of the BUG mechanical leaf sweeper's core operating mechanism. 
+                The left component displays the cylindrical brush assembly with its protective encapsulation and integrated gear connections that transfer power from the wheel rotation.
+                The right component reveals the internal gear train and yellow brush housing system that captures and channels leaves into the collection chamber.
+              `,
+            },
+          ],
+        },
+        date: new Date("2014-12-14"),
+        company: "Freelance",
+        videoUrl: "https://www.youtube.com/embed/gl_RSSi1YCo?si=TTgwpr7JoYCgRSGv",
+        videoTitle: "BUG mechanical leaf sweeper demonstration",
+        videoDescription: "A demonstration of the BUG mechanical leaf sweeper, showcasing its innovative brush mechanism and collection system in action.",
+        techStack: {
+          connect: [
+            {
+              value: "ai",
+            },
+            {
+              value: "ps",
+            },
+            {
+              value: "rhinoceros",
+            },
+            {
+              value: "solidworks",
+            },
+          ],
+        },
+        roles: {
+          create: [
+            {
+              label: "Concept Designer",
+              value: "concept-designer",
+              percentage: 100,
+            },
+            {
+              label: "Industrial Designer",
+              value: "industrial-designer",
+              percentage: 100,
+            },
+            {
+              label: "Technical Draftsman",
+              value: "technical-draftsman",
+              percentage: 100,
+            },
+            {
+              label: "Documentation Specialist",
+              value: "documentation-specialist",
+              percentage: 80,
+            },
+            {
+              label: "Mechanical Engineer",
+              value: "mechanical-engineer",
+              percentage: 95,
+            },
+            {
+              label: "Prototype Developer",
+              value: "prototype-developer",
+              percentage: 75,
             },
           ],
         },
