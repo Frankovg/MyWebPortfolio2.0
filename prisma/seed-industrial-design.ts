@@ -536,6 +536,117 @@ export const INDUSTRIAL_DESIGN_SEED: Prisma.CategoryCreateInput = {
           ],
         },
       },
+      {
+        title: "Product Design",
+        shortDescription: "A mechanical leaf sweeper featuring innovative brush mechanism and collection system for sustainable garden maintenance.",
+        description: `As an Industrial Designer with specialized Product Design with background, I bridge the gap between creative vision and manufacturing reality, managing the complete product development process from initial concept to production launch.
+          My expertise encompasses conceptual design development, advanced CAD modeling, mechanical engineering, and manufacturing process optimization, ensuring products are both innovative and producible at scale.
+          Working across diverse industries and materials, I develop comprehensive technical documentation including detailed drawings, assembly instructions, and manufacturing specifications that facilitate seamless production implementation.
+          Through extensive prototyping experience, I optimize designs for functionality, cost-effectiveness, and manufacturing efficiency while maintaining aesthetic excellence and user-centered design principles.
+          My systematic approach combines creative problem-solving with engineering precision, delivering products that successfully transition from design concept to market-ready solutions.
+        `,
+        image: "https://drive.google.com/uc?export=view&id=1iFBc6MkpydZaYwZuf07ZS8DSDmAFWJnh",
+        slug: "product-design",
+        gallery: {
+          create: [
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1t4c9fHiLflOMiqfb4_ApnwCrJuCTr2Rr",
+              alt: "Mateable yerbero product family featuring white ceramic yerba mate containers with playful facial expressions, including main 500g capacity yerbero with wooden cork lid and smaller character variations in yellow, white, and blue colors.",
+              description: `Mateable yerbero collection showcasing an innovative approach to traditional yerba mate storage through playful character design and functional excellence. The main product features a 500-gram capacity ceramic container with distinctive facial expressions that bring personality to the mate drinking ritual.
+                The design incorporates a natural wooden cork lid with integrated note-pinning functionality, allowing users to attach reminders or personalize their yerbero with small mementos. The smooth ceramic construction ensures optimal yerba mate preservation while the ergonomic handle provides comfortable pouring and handling.
+              `,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1E1f9rlOf9jYkFG8YFBpV9-VrNtXZBX9S",
+              alt: "Pinkmask retail display featuring tiered black acrylic merchandising unit with pink nail mask bottles organized in rows, including branded header with usage instructions and website information.",
+              description: `Retail display designed for Pinkmask nail mask products, showcasing an elegant black acrylic tiered merchandising system that maximizes product visibility and accessibility in beauty retail environments.
+                The display features a sophisticated stepped configuration with multiple rows of pink nail mask bottles systematically organized to create visual impact while facilitating easy customer selection. Each tier is precisely positioned to ensure optimal product exposure and maintain clean sight lines throughout the display.
+              `,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1nd6ZRbbBs2sUYWk77Ns6TvkFO7sPOIPv",
+              alt: "Modular four-wheel drive utility vehicle design featuring fiberglass construction with multiple body configurations, exploded assembly views, technical drawings, and orange prototype model showcasing customizable platform for small-scale manufacturing.",
+              description: `Comprehensive modular utility vehicle design project featuring an innovative four-wheel drive platform engineered for cost-effective small-scale manufacturing using fiberglass construction methods.
+                The modular design system allows for multiple body configurations from the same base chassis, including pickup truck, cargo van, passenger vehicle, and specialized utility variants.
+                The project focuses specifically on chassis engineering, exterior body design, and interior layout optimization, while integrating standard third-party mechanical and electrical systems from established suppliers. This approach ensures reliability while minimizing development complexity and reducing overall manufacturing investment requirements.
+              `,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1lA1YFlpqwi-E7OOlPxUM9-QR0M_vgLka",
+              alt: "Heavy-duty wheelbarrow featuring innovative articulated handle system, demonstrating adjustable angle mechanism for ergonomic unloading and back injury prevention during heavy labor work.",
+              description: `Revolutionary heavy-duty wheelbarrow designed specifically for demanding construction and industrial applications, featuring an innovative articulated handle system that transforms how workers interact with heavy loads.
+                The breakthrough design centers on a unique handle mechanism that allows workers to adjust the handle angle during unloading operations, enabling them to leverage their leg strength rather than straining their back, shoulders, and arms when dumping heavy materials.
+                The ergonomic innovation includes an integrated brake system that automatically engages the wheel when the handle is lowered, securing the wheelbarrow in position during unloading operations. This prevents the wheelbarrow from rolling or shifting while workers dump heavy loads, providing additional safety and stability.
+              `,
+            },
+          ],
+        },
+        date: new Date("2013-04-10"),
+        company: "EstudioFix and Freelance",
+        techStack: {
+          connect: [
+            {
+              value: "ai",
+            },
+            {
+              value: "ps",
+            },
+            {
+              value: "rhinoceros",
+            },
+            {
+              value: "solidworks",
+            },
+            {
+              value: "vray",
+            },
+            {
+              value: "3dsmax",
+            },
+            {
+              value: "coreldraw",
+            },
+          ],
+        },
+        roles: {
+          create: [
+            {
+              label: "Concept Designer",
+              value: "concept-designer",
+              percentage: 100,
+            },
+            {
+              label: "Industrial Designer",
+              value: "industrial-designer",
+              percentage: 100,
+            },
+            {
+              label: "Technical Draftsman",
+              value: "technical-draftsman",
+              percentage: 90,
+            },
+            {
+              label: "Documentation Specialist",
+              value: "documentation-specialist",
+              percentage: 80,
+            },
+            {
+              label: "Mechanical Engineer",
+              value: "mechanical-engineer",
+              percentage: 65,
+            },
+            {
+              label: "Prototype Developer",
+              value: "prototype-developer",
+              percentage: 70,
+            },
+          ],
+        },
+      },
     ],
   },
 }
