@@ -27,7 +27,7 @@ const downloadCVContent: Prisma.DownloadCreateInput = {
 
 const downloadPortfolioContent: Prisma.DownloadCreateInput = {
   name: "Portfolio",
-  description: "Portfolio featuring my best design and development projects.",
+  description: "Portfolio featuring my best projects.",
   fileHref:
     "https://drive.google.com/file/d/1tz6N79mJ8EbAG5iS6VFSI797q8CxqTox/view?usp=sharing",
   format: "pdf",
