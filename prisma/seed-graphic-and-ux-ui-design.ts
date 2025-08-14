@@ -52,6 +52,22 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
                 Applied to company delivery van for mobile advertising and brand awareness throughout their distribution territory.
               `,
             },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1YmAOnzUZh1MZmYU_KXyPT8FicW1QQqP2",
+              alt: "Aelca real estate exhibition stand design featuring modern white display walls with property brochures, contemporary seating area, and branded elements for Spanish business event.",
+              description: `Modern exhibition stand design concept for Aelca, a Spanish real estate company, created for business trade shows and property exhibitions. 
+                The layout is optimized for effective customer engagement and property presentation in a professional trade show environment.
+              `,
+            },
+            {
+              imageUrl:
+                "https://drive.google.com/uc?export=view&id=1U9Qdkdx28Qs0UuyBU_a5jqLaL-wBi9z3",
+              alt: "CrossFit gym exterior facade design featuring bold yellow and black branding with fitness model imagery, promotional messaging, and gym logo for Alhaurín de la Torre location.",
+              description: `Exterior facade design for a CrossFit gym located in Alhaurín de la Torre, Spain. 
+                The design transforms the industrial building facade into an eye-catching marketing tool that attracts potential members while establishing the gym's professional credibility and fitness expertise in the local community.
+              `,
+            },
           ],
         },
         date: new Date("2021-05-09"),
