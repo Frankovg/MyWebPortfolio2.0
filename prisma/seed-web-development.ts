@@ -347,7 +347,7 @@ export const WEB_DEVELOPMENT_SEED = {
           With a clean, user-friendly interface, PetSoft allows users to keep track of medical records, visits, vaccinations, treatments, and more — all in one centralized and accessible place.
           From a technical perspective, PetSoft is built using Next.js and TypeScript for a robust and scalable frontend architecture. Styling is handled with Tailwind CSS, ensuring a responsive and maintainable UI. The backend is powered by Prisma ORM, interfacing with a relational database to ensure secure and performant data handling.
           A key feature of the app is its admin dashboard, which works as a custom CMS. Through this panel, administrators can manage pets, users, veterinarians, and view complete medical histories. Visitors can also request access to a sample account to explore the administrator panel and test its capabilities — just reach out via the contact section on the site.
-          Please note: PetSoft is a demo and training project, not a real commercial product.
+          Please note: PetSoft is a demo and training project created following the Professional React & Next.js course by ByteGrad, not a real commercial product.
         `,
         image:
           "https://drive.google.com/uc?export=view&id=1dfIJ7iNWoOokTHsUQDan-qxWjIEoXe4T",
@@ -549,7 +549,7 @@ export const WEB_DEVELOPMENT_SEED = {
         },
       },
       {
-        title: "My portfolio (first version)",
+        title: "My portfolio (old version)",
         shortDescription:
           "A previous iteration of my personal website, highlighting my evolution and proficiency as a front-end developer. It stands as a testament to my expertise in web development with React, and integrates my background in industrial and graphic design, alongside UX/UI design.",
         description: `This is a previous version of my personal portfolio, fully developed with React, created to showcase my evolution as a front-end developer.
