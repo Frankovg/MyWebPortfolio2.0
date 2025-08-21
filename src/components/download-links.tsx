@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { useUserDataContext } from "@/hooks/use-user-data-context";
-import H3 from "./primitives/h3";
 
 function DownloadLinks() {
   const { downloads } = useUserDataContext();
@@ -16,7 +15,7 @@ function DownloadLinks() {
       {parsedDownloads.map((download) => (
         <Link
           href={download.fileHref || "#"}
-          target="_blan"
+          target="_blank"
           className="group relative overflow-hidden flex max-w-[400px] items-center"
           key={download.name}
         >
