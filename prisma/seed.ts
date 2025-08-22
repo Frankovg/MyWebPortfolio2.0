@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import { WEB_DEVELOPMENT_SEED } from "./seed-web-development";
 import { GRAPHIC_AND_UX_UI_DESIGN_SEED } from "./seed-graphic-and-ux-ui-design";
 import { INDUSTRIAL_DESIGN_SEED } from "./seed-industrial-design";
+import { CV_EN_SEED, CV_ES_SEED, PORTFOLIO_EN_SEED } from "./seed-download-files";
 
 const prisma = new PrismaClient();
 
@@ -13,29 +14,9 @@ const graphicAndUxUiDesign: Prisma.CategoryCreateInput = GRAPHIC_AND_UX_UI_DESIG
 const industrialDesign: Prisma.CategoryCreateInput = INDUSTRIAL_DESIGN_SEED
 
 // <--------------- DOWNLOADS --------------->
-const downloadCVContent: Prisma.DownloadCreateInput = {
-  name: "Curriculum Vitae",
-  description: "Download my CV to view my experience and technical skills.",
-  fileHref:
-    "https://drive.google.com/file/d/1IOwsxqChdt0bWAtnU5dXfpqcK6L6ZKLG/view?usp=sharing",
-  format: "pdf",
-  imageUrl:
-    "https://drive.google.com/uc?export=view&id=1G2GI_0xFul8Q5BWFMzGQQa9uxulTFWN8",
-  alt: "Download Curriculum Vitae background",
-  isActive: true,
-};
-
-const downloadPortfolioContent: Prisma.DownloadCreateInput = {
-  name: "Portfolio",
-  description: "Portfolio featuring my best projects.",
-  fileHref:
-    "https://drive.google.com/file/d/1tz6N79mJ8EbAG5iS6VFSI797q8CxqTox/view?usp=sharing",
-  format: "pdf",
-  imageUrl:
-    "https://drive.google.com/uc?export=view&id=14_nyeEJF3As0lPMk3GCaY0uONRIOF1QN",
-  alt: "Download Portfolio background",
-  isActive: true,
-};
+const downloadCVContentEnglish: Prisma.DownloadCreateInput = CV_EN_SEED
+const downloadCVContentSpanish: Prisma.DownloadCreateInput = CV_ES_SEED
+const downloadPortfolioContentEnglish: Prisma.DownloadCreateInput = PORTFOLIO_EN_SEED
 
 // <--------------- ACCOUNTS --------------->
 const superUserAccount: Prisma.UserCreateInput = {
@@ -62,6 +43,7 @@ async function main() {
     });
   }
   console.log("Tech stack entries created successfully");
+
   console.log("Creating categories and projects...");
   await prisma.category.create({
     data: webDevelopment,
@@ -77,6 +59,7 @@ async function main() {
   });
   console.log("Categories and projects created successfully");
 
+  console.log("Creating accounts...");
   const hashedSuperuserPassword = await bcrypt.hash(
     superUserAccount.hashedpassword,
     10
@@ -96,14 +79,17 @@ async function main() {
   });
   console.log("Accounts created successfully");
 
-  console.log("Creating downloads...");
+  console.log("Creating download files...");
   await prisma.download.create({
-    data: downloadCVContent,
+    data: downloadCVContentEnglish,
   });
   await prisma.download.create({
-    data: downloadPortfolioContent,
+    data: downloadPortfolioContentEnglish,
   });
-  console.log("Downloads created successfully");
+  await prisma.download.create({
+    data: downloadCVContentSpanish,
+  });
+  console.log("Download files created successfully");
 
   console.log(`Seeding finished.`);
 }

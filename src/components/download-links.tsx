@@ -8,7 +8,8 @@ import { useUserDataContext } from "@/hooks/use-user-data-context";
 function DownloadLinks() {
   const { downloads } = useUserDataContext();
 
-  const parsedDownloads = downloads.filter((file) => file.isActive);
+  //TODO: Hardcoded filter per language. This should be change when i18n is implemented
+  const parsedDownloads = downloads.filter((file) => file.isActive && file.language === "en");
 
   return (
     <div className="flex flex-col gap-4 items-center w-max h-auto p-4">
