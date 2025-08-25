@@ -90,6 +90,7 @@ model Download {
   alt         String
   name        String
   description String
+  language    String
   fileHref    String
   format      String
   isActive    Boolean  @default(false)

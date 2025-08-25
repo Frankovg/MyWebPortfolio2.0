@@ -1,11 +1,12 @@
+import { User } from "@prisma/client";
+import { Check } from "lucide-react";
+
 import {
   Card,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { User } from "@prisma/client";
-import { Check } from "lucide-react";
 
 export const SampleAccountStatus = ({ account }: { account: User }) => {
   return (
