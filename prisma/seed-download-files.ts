@@ -32,7 +32,7 @@ export const PORTFOLIO_EN_SEED = {
   description: "Portfolio featuring my best projects.",
   language: "en",
   fileHref:
-    "https://drive.google.com/file/d/1tz6N79mJ8EbAG5iS6VFSI797q8CxqTox/view?usp=sharing",
+    "https://drive.google.com/file/d/1AyxWpCRJNua3MQX9CHRxbscEPcAsqGzI/view?usp=sharing",
   format: "pdf",
   imageUrl:
     "https://drive.google.com/uc?export=view&id=14_nyeEJF3As0lPMk3GCaY0uONRIOF1QN",
