@@ -28,7 +28,13 @@ import {
   Tailwind,
   Ts,
   Turborepo,
-  Vercel
+  Vercel,
+  Jest,
+  CorelDraw,
+  Rhinoceros,
+  AutodeskMax,
+  SolidWorks,
+  VRay
 } from "@/icons/techs"
 
 export const BASICS_TECHS = {
@@ -163,6 +169,41 @@ export const DESIGN_TECHS = {
     description: "A vector graphics editor and prototyping tool which is primarily web-based.",
     link: "https://www.adobe.com/products/illustrator.html",
     icon: Ai
+  },
+  corel: {
+    name: 'CorelDraw',
+    value: 'corel',
+    description: "Is a vector graphics editor primarily used for creating and editing vector-based illustrations, logos, brochures, and other graphic design materials.",
+    link: "https://www.coreldraw.com/la/",
+    icon: CorelDraw
+  },
+  rhinoceros: {
+    name: 'Rhinoceros',
+    value: 'rhinoceros',
+    description: "Is a 3D computer graphics and computer-aided design (CAD) application software.",
+    link: "https://www.rhino3d.com/es/",
+    icon: Rhinoceros
+  },
+  autodeskMax: {
+    name: 'Autodesk 3DS MAX',
+    value: 'autodeskMax',
+    description: "Is a professional 3D computer graphics program used for creating 3D animations, models, and images.",
+    link: "https://www.autodesk.com/es/products/3ds-max/overview",
+    icon: AutodeskMax
+  },
+  solidworks: {
+    name: 'SolidWorks',
+    value: 'solidworks',
+    description: "Is a 3D CAD (Computer-Aided Design) and CAE (Computer-Aided Engineering) software developed by Dassault Systèmes.",
+    link: "https://www.solidworks.com/",
+    icon: SolidWorks
+  },
+  vray: {
+    name: 'V-Ray',
+    value: 'vray',
+    description: " is a rendering engine, meaning it's software used to create realistic images from 3D models.",
+    link: "https://www.chaos.com/es/vray?srsltid=AfmBOoqkbEr8WmXtoEN3ZMW1-8LOsELH-ewx1wmVf6kx9S3mFFhbajaP",
+    icon: VRay
   }
 }
 
@@ -218,6 +259,13 @@ export const TESTING_TECHS = {
     description: "An open source tool for developing UI components in isolation for React, Vue, and Angular.",
     link: "https://storybook.js.org/",
     icon: Storybook
+  },
+  jest: {
+    name: 'Jest',
+    value: 'jest',
+    description: "Jest is a JavaScript testing framework, primarily used for unit testing React and JavaScript codebases, including those built with React Native.",
+    link: "https://jestjs.io/",
+    icon: Jest
   }
 }
 
@@ -294,6 +342,11 @@ export const CATEGORIES = [
       DESIGN_TECHS.figma,
       DESIGN_TECHS.ps,
       DESIGN_TECHS.ai,
+      DESIGN_TECHS.corel,
+      DESIGN_TECHS.rhinoceros,
+      DESIGN_TECHS.vray,
+      DESIGN_TECHS.autodeskMax,
+      DESIGN_TECHS.solidworks,
     ]
   },
   {
@@ -313,6 +366,7 @@ export const CATEGORIES = [
       TESTING_TECHS.playwright,
       TESTING_TECHS.ladle,
       TESTING_TECHS.storybook,
+      TESTING_TECHS.jest,
     ]
   },
   {
