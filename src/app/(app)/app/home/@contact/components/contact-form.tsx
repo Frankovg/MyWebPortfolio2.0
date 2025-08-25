@@ -39,6 +39,7 @@ function ContactForm() {
         subject: `Mensaje de ${messageData.email}`,
         text: mailText,
       };
+
       const response = await sendMail(mail);
 
       if (response?.messageId) {
@@ -131,6 +132,7 @@ function ContactForm() {
             disabled={isPending}
             text={isPending ? "Sending..." : "Send"}
             loading={isPending}
+            type="submit"
           />
         </div>
       </form>
