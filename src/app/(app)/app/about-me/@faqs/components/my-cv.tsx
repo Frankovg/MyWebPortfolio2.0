@@ -1,7 +1,8 @@
 'use client'
 
-import { useUserDataContext } from "@/hooks/use-user-data-context";
 import Link from "next/link";
+
+import { useUserDataContext } from "@/hooks/use-user-data-context";
 
 const languageDictionary = {
   en: "English",
