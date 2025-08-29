@@ -11,7 +11,7 @@ const Layout = ({ children, techStack, projects, contact }: LayoutProps) => {
   return (
     <Main className='pt-[25vh]'>
       {children}
-      {techStack}
+      {/* {techStack} */}
       {projects}
       {contact}
     </Main>
