@@ -52,7 +52,7 @@ export default function Loading() {
           <Skeleton className='rounded-xl w-full max-w-[500px] h-5 bg-softGrey' />
           <Skeleton className='rounded-xl w-full max-w-[450px] h-5 bg-softGrey' />
         </div>
-        <div className="items-center w-full flex flex-col lg:flex-row justify-around h-auto p-2 mb-8 space-x-2">
+        <div className="items-center w-full flex flex-col lg:flex-row justify-around h-auto p-2 mb-8 lg:space-x-2 max-lg:space-y-1.5">
           <Skeleton className='rounded-xl w-full h-12 bg-textAnimation' />
           <Skeleton className='rounded-xl w-full h-12 bg-softGrey' />
           <Skeleton className='rounded-xl w-full h-12 bg-softGrey' />
@@ -61,6 +61,42 @@ export default function Loading() {
           {Array.from({ length: 6 }).map((_, index) => (
             <ProjectCardSkeleton key={index} />
           ))}
+        </div>
+      </section>
+
+      <section className='pt-24 px-4'>
+        <Skeleton className='mx-auto rounded-xl w-full max-w-[300px] h-12 mt-8 mb-16 bg-textAnimation' />
+        <div className="w-full pb-24">
+          <div className="max-w-contact mx-auto">
+            <div className="space-y-4">
+              <div className="flex flex-col md:flex-row gap-3">
+                <div className="space-y-1 w-full">
+                  <Skeleton className='rounded-xl w-full max-w-[100px] h-2 bg-softGrey' />
+                  <Skeleton className='rounded-xl w-full h-10 bg-softGrey' />
+                </div>
+                <div className="space-y-1 w-full">
+                  <Skeleton className='rounded-xl w-full max-w-[100px] h-2 bg-softGrey' />
+                  <Skeleton className='rounded-xl w-full h-10 bg-softGrey' />
+                </div>
+              </div>
+              <div className="flex flex-col md:flex-row gap-3">
+                <div className="space-y-1 w-full">
+                  <Skeleton className='rounded-xl w-full max-w-[100px] h-2 bg-softGrey' />
+                  <Skeleton className='rounded-xl w-full h-10 bg-softGrey' />
+                </div>
+                <div className="space-y-1 w-full">
+                  <Skeleton className='rounded-xl w-full max-w-[100px] h-2 bg-softGrey' />
+                  <Skeleton className='rounded-xl w-full h-10 bg-softGrey' />
+                </div>
+              </div>
+              <div className="space-y-1">
+                <Skeleton className='rounded-xl w-full max-w-[100px] h-2 bg-softGrey' />
+                <Skeleton className='rounded-xl w-full h-36 bg-softGrey' />
+                <Skeleton className='rounded-xl w-full max-w-[300px] h-2 bg-softGrey' />
+              </div>
+              <Skeleton className='rounded-xl w-full max-w-[150px] h-12 bg-textAnimation' />
+            </div>
+          </div>
         </div>
       </section>
     </div>
