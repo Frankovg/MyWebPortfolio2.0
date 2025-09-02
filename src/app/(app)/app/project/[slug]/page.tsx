@@ -29,10 +29,10 @@ export default async function ProjectPage({
   const hasVideo = !!project.videoUrl;
   const videoData = hasVideo
     ? {
-        title: project.videoTitle || "",
-        description: project.videoDescription || "",
-        url: project.videoUrl || "",
-      }
+      title: project.videoTitle || "",
+      description: project.videoDescription || "",
+      url: project.videoUrl || "",
+    }
     : undefined;
 
   const filteredCategories = categories?.filter(
@@ -82,7 +82,7 @@ export default async function ProjectPage({
       <Section id={`project-slug:${project.slug}`}>
         <ProjectBanner image={project.image} />
         <ProjectMainInfo project={shortProjectInfo} />
-        <div className="my-16 w-full">
+        <div className=" 600:my-16 w-full">
           <div className="w-full flex flex-col 930:flex-row items-top p-0">
             <ProjectChart roles={project.roles} />
             <ProjectTechStack techStack={project.techStack} />

@@ -1,7 +1,7 @@
 "use client";
 
 import { Gallery } from "@prisma/client";
-import { DialogTrigger } from "@radix-ui/react-dialog";
+import { DialogDescription, DialogTrigger } from "@radix-ui/react-dialog";
 import Image from "next/image";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
@@ -96,9 +96,8 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
           onClick={() => handleClick(index)}
         >
           <ImageWithFallback
-            className={`${
-              index === current && "border-2"
-            } w-full h-full object-contain rounded-lg`}
+            className={`${index === current && "border-2"
+              } w-full h-full object-contain rounded-lg`}
             src={image.imageUrl}
             fallbackSrc={FALLBACK_IMG}
             alt={`Carousel Thumbnail Image ${index + 1}`}
@@ -111,7 +110,7 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
       )),
     [images, current]
   );
-  // TODO: Add alt/description image in the db model and in the dialog
+
   return (
     <Dialog>
       <div className="relative w-full">
@@ -125,17 +124,21 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
         />
       </div>
 
-      <DialogContent className="max-w-screen h-screen 1100:h-fit max-h-screen grid-cols-none grid-rows-none flex flex-col">
-        <DialogTitle>{images[current].description}</DialogTitle>
-        <Image
-          src={images[current].imageUrl}
-          alt={images[current].alt}
-          className="w-full h-full object-contain"
-          width={0}
-          height={0}
-          sizes={"100%"}
-          quality={60}
-        />
+      <DialogContent className="max-w-full h-full max-h-screen grid-cols-none grid-rows-none flex flex-col">
+        <DialogTitle className="max-w-[1000px]"></DialogTitle>
+        <DialogDescription className="max-w-[1000px]">{images[current].description}</DialogDescription>
+        <div className="w-full h-full">
+          <Image
+            src={images[current].imageUrl}
+            alt={images[current].alt}
+            className="w-auto h-full object-contain mx-auto"
+            width={0}
+            height={0}
+            sizes={"100%"}
+            quality={60}
+          />
+
+        </div>
       </DialogContent>
     </Dialog>
   );

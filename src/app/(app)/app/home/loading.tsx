@@ -41,7 +41,7 @@ export default function Loading() {
             </div>
           </div>
           <div className="sm:hidden w-full flex justify-center px-5">
-            {/* //TODO */}
+            {/* //TODO: Skeleton for mobile > techstack section */}
           </div>
         </div>
       </section>
