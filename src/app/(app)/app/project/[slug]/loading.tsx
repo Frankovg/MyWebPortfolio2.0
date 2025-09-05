@@ -1,3 +1,4 @@
+import { TechCardSkeleton } from "@/components/skeletons/tech-card-skeleton";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Loading() {
@@ -29,26 +30,13 @@ export default function Loading() {
               ))}
             </div>
             <div className="600:p-6 600:pt-0 max-600:px-0 space-y-6">
-              <div className="max-w-[500px] space-y-2">
-                <Skeleton className='rounded-xl w-full h-4 bg-softGrey' />
-                <Skeleton className='rounded-xl w-full h-4 bg-softGrey' />
-                <Skeleton className='rounded-xl w-2/3 h-4 bg-softGrey' />
-              </div>
-              <div className="max-w-[500px] space-y-2">
-                <Skeleton className='rounded-xl w-full h-4 bg-softGrey' />
-                <Skeleton className='rounded-xl w-full h-4 bg-softGrey' />
-                <Skeleton className='rounded-xl w-2/3 h-4 bg-softGrey' />
-              </div>
-              <div className="max-w-[500px] space-y-2">
-                <Skeleton className='rounded-xl w-full h-4 bg-softGrey' />
-                <Skeleton className='rounded-xl w-full h-4 bg-softGrey' />
-                <Skeleton className='rounded-xl w-2/3 h-4 bg-softGrey' />
-              </div>
-              <div className="max-w-[500px] space-y-2">
-                <Skeleton className='rounded-xl w-full h-4 bg-softGrey' />
-                <Skeleton className='rounded-xl w-full h-4 bg-softGrey' />
-                <Skeleton className='rounded-xl w-2/3 h-4 bg-softGrey' />
-              </div>
+              {Array.from({ length: 4 }).map((_, index) => (
+                <div key={index} className="max-w-[500px] space-y-2">
+                  <Skeleton className='rounded-xl w-full h-4 bg-softGrey' />
+                  <Skeleton className='rounded-xl w-full h-4 bg-softGrey' />
+                  <Skeleton className='rounded-xl w-2/3 h-4 bg-softGrey' />
+                </div>
+              ))}
             </div>
             <div className="flex items-center p-6 pt-0 gap-4 max-600:px-0">
               <Skeleton className='rounded-xl w-full max-w-40 h-12 mx-1 bg-textAnimation' />
@@ -69,20 +57,60 @@ export default function Loading() {
           </div>
         </section>
       </>
-      <div className="600:my-16 w-full">
+      <section className="600:my-16 w-full">
         <div className="w-full flex flex-col 930:flex-row items-top p-0">
           <div className="w-full 930:w-1/2 ">
             <div className="flex flex-col space-y-1.5 max-600:mx-0 m-6">
               <Skeleton className='rounded-xl w-[200px] h-4 bg-textAnimation' />
               <Skeleton className='rounded-xl w-[250px] h-2.5 bg-softGrey' />
             </div>
-            <div className="600:m-6 600:mt-0 min-h-[200px] w-full">
-              {/* //TODO: hacer chart lineal text + caja uno arriba de otro */}
+            <div className="600:p-6 600:pt-0 min-h-[200px] w-full space-y-3">
+              <div className="flex items-center w-full gap-4">
+                <Skeleton className='rounded-xl min-w-[80px] h-2 bg-softGrey' />
+                <Skeleton className='rounded-md w-full h-11 bg-textAnimation' />
+              </div>
+              <div className="flex items-center w-full gap-4">
+                <Skeleton className='rounded-xl min-w-[80px] h-2 bg-softGrey' />
+                <Skeleton className='rounded-md w-[70%] h-11 bg-textAnimation' />
+              </div>
+              <div className="flex items-center w-full gap-4">
+                <Skeleton className='rounded-xl min-w-[80px] h-2 bg-softGrey' />
+                <Skeleton className='rounded-md w-full h-11 bg-textAnimation' />
+              </div>
+              <div className="flex items-center w-full gap-4">
+                <Skeleton className='rounded-xl min-w-[80px] h-2 bg-softGrey' />
+                <Skeleton className='rounded-md w-[55%] h-11 bg-textAnimation' />
+              </div>
+              <div className="flex items-center w-full gap-4">
+                <Skeleton className='rounded-xl min-w-[80px] h-2 bg-softGrey' />
+                <Skeleton className='rounded-md w-[70%] h-11 bg-textAnimation' />
+              </div>
+            </div>
+          </div>
+          <div className="w-full 930:w-1/2">
+            <div className="flex flex-col space-y-1.5 max-600:mx-0 m-6">
+              <Skeleton className='rounded-xl w-[200px] h-4 bg-textAnimation' />
+              <Skeleton className='rounded-xl w-[250px] h-2.5 bg-softGrey' />
+            </div>
+            <div className="grid grid-cols-3 gap-8">
+              {Array.from({ length: 6 }).map((_, index) => (
+                <TechCardSkeleton key={index} />
+              ))}
             </div>
           </div>
         </div>
-      </div>
-
+      </section>
+      <>
+        <div className="mt-32 w-full flex flex-col 800:flex-row justify-between items-center gap-8 1100:gap-12">
+          <Skeleton className="800:mr-auto rounded-lg p-2 w-full 800:max-w-1/2 h-[234px] 800:h-[184px] 930:h-[237px] 1100:h-[14.62vw] flex items-center bg-softGrey" />
+          <Skeleton className="800:ml-auto rounded-lg p-2 w-full 800:max-w-1/2 h-[234px] 800:h-[184px] 930:h-[237px] 1100:h-[14.62vw] flex items-center bg-softGrey" />
+        </div>
+        <div className="mt-16 mb-32 w-full flex flex-col 800:flex-row justify-between items-center gap-8 1100:gap-12">
+          {Array.from({ length: 2 }).map((_, index) => (
+            <Skeleton key={index} className="rounded-lg p-2 800:max-w-1/2 w-full h-[82px] flex items-center bg-softGrey" />
+          ))}
+        </div>
+      </>
     </div>
   );
 }

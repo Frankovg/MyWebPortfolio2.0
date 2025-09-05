@@ -79,10 +79,9 @@ export default async function ProjectPage({
 
   return (
     <Suspense fallback={<Loading />}>
-      <Loading />
       <Section id={`project-slug:${project.slug}`}>
-        {/* <ProjectBanner image={project.image} /> */}
-        {/* <ProjectMainInfo project={shortProjectInfo} /> */}
+        <ProjectBanner image={project.image} />
+        <ProjectMainInfo project={shortProjectInfo} />
         <div className="600:my-16 w-full">
           <div className="w-full flex flex-col 930:flex-row items-top p-0">
             <ProjectChart roles={project.roles} />

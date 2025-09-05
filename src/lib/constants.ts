@@ -202,3 +202,8 @@ const getDefaultTechStack = () => {
   }));
 };
 export const DEFAULT_TECH_STACK = getDefaultTechStack();
+
+export const LANGUAGE_DICTIONARY = {
+  en: "English",
+  es: "Spanish",
+};

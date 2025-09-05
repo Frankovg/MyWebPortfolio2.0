@@ -3,11 +3,7 @@
 import Link from "next/link";
 
 import { useUserDataContext } from "@/hooks/use-user-data-context";
-
-const languageDictionary = {
-  en: "English",
-  es: "Spanish",
-};
+import { LANGUAGE_DICTIONARY } from "@/lib/constants";
 
 function MyCv() {
   const { downloads } = useUserDataContext();
@@ -19,8 +15,13 @@ function MyCv() {
       <ul className="space-y-1.5">
         {parsedDownloads.map((file) => (
           <li key={file.id}>
-            <Link href={file.fileHref} target="_blank" rel="noopener noreferrer" className="hover:underline">
-              {`> ${file.name} - ${languageDictionary[file.language as keyof typeof languageDictionary]}`}
+            <Link
+              href={file.fileHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              {`> ${file.name} - ${LANGUAGE_DICTIONARY[file.language as keyof typeof LANGUAGE_DICTIONARY]}`}
             </Link>
           </li>
         ))}
