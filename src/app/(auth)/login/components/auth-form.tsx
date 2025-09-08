@@ -1,17 +1,14 @@
 "use client";
 
 import React, { useActionState } from "react";
-import { useFormStatus } from "react-dom";
 
 import { logIn } from "@/actions/index";
-import ButtonWhite from "@/components/primitives/button-white";
 
 import InputLogin from "./input-login";
+import { SubmitButton } from "./submit-button";
 
 const AuthForm = () => {
   const [logInError, dispatchLogIn] = useActionState(logIn, undefined);
-
-  const { pending } = useFormStatus();
 
   const inputs = ["Email", "Password"];
 
@@ -35,15 +32,7 @@ const AuthForm = () => {
           />
         );
       })}
-
-      <ButtonWhite
-        loading={pending}
-        disabled={pending}
-        text="Log in"
-        className="mt-4 md:w-full"
-        type="submit"
-      />
-
+      <SubmitButton />
       {logInError && (
         <p className="text-red-500 text-sm mt-2">{logInError.message}</p>
       )}

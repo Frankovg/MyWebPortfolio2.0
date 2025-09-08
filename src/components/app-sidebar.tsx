@@ -88,7 +88,9 @@ const SidebarNavigation = () => {
               <SidebarMenuButton
                 asChild
                 tooltip={item.title}
-                isActive={pathname === item.url}
+                isActive={
+                  (item.url.includes('?') ? item.url.split('?')[0] : item.url) === pathname
+                }
               >
                 <Link href={item.url} onClick={handleItemClick}>
                   <item.icon />

@@ -6,17 +6,11 @@ import MainHeader from "@/components/admin/main-header";
 import { checkAuth } from "@/lib/check-auth";
 
 import { Dashboard } from "./components/dashboard";
-import Loading from "./downloads/loading";
+import Loading from "./loading";
 
 
 
 async function Admin() {
-  const breadcrumbLinks = [
-    {
-      name: "Dashboard",
-    },
-  ];
-
   const session = await checkAuth();
   return (
     <>

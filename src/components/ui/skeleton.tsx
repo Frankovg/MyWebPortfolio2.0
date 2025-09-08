@@ -1,7 +1,5 @@
 import { cn } from "@/lib/utils"
 
-// * This is the default skeleton for the shadcn sidebar
-
 function Skeleton({
   className,
   ...props

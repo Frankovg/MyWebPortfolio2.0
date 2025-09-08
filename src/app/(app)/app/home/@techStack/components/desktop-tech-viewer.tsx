@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 
+import TechCard from "@/components/tech-card";
+
 import { CATEGORIES } from "../utils/client-constants";
 
-import TechCard from "./tech-card";
 
 //TODO: Its probably better to use the tabs component here
 function DesktopTechViewer() {
@@ -61,9 +62,8 @@ function DesktopTechViewer() {
             type="button"
             title="Tech stack category"
             onClick={() => handleCategoryChange(cat.value)}
-            className={`text-left pt-3 mt-3 pb-2 pl-1 border-b border-solid transition-all duration-600 ease-in-out hover:bg-darkGrey ${
-              selectedCategory === cat.value && "bg-darkGrey text-xl text-white"
-            }`}
+            className={`text-left pt-3 mt-3 pb-2 pl-1 border-b border-solid transition-all duration-600 ease-in-out hover:bg-darkGrey ${selectedCategory === cat.value && "bg-darkGrey text-xl text-white"
+              }`}
           >
             {cat.label}
           </button>

@@ -4,11 +4,13 @@ import Link from "next/link";
 import { useMemo } from "react";
 
 import { useUserDataContext } from "@/hooks/use-user-data-context";
+import { LANGUAGE_DICTIONARY } from "@/lib/constants";
 
 type TItem = {
   name?: string;
   href?: string;
   title?: string;
+  language?: string;
 };
 
 function DownloadLinksFooter() {
@@ -20,6 +22,7 @@ function DownloadLinksFooter() {
       ...parsedDownloads.map((download) => ({
         name: download.name,
         href: download.fileHref,
+        language: download.language
       })),
     ];
     return links;
@@ -31,9 +34,11 @@ function DownloadLinksFooter() {
         <li className="max-sm:text-center" key={index}>
           <Link
             href={download.href || "#"}
+            target="_blank"
+            rel="noopener noreferrer"
             className="font-normal hover:text-white max-sm:text-lg"
           >
-            {download.name || ""}
+            {`${download.name} - ${LANGUAGE_DICTIONARY[download.language as keyof typeof LANGUAGE_DICTIONARY]}`}
           </Link>
         </li>
       ))}
