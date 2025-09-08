@@ -1,7 +1,7 @@
+import { PortfolioFormSkeleton } from "@/components/skeletons/portfolio-form-skeleton";
+
 export default function Loading() {
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <p>nana</p>
-    </div>
+    <PortfolioFormSkeleton />
   );
 }
