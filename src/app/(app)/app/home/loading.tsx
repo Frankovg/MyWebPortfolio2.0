@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Skeleton } from "@/components/ui/skeleton"
-import { TechCardSkeleton } from '@/components/skeletons/tech-card-skeleton';
 import { ProjectCardSkeleton } from '@/components/skeletons/project-card-skeleton';
+import { TechCardSkeleton } from '@/components/skeletons/tech-card-skeleton';
+import { Skeleton } from "@/components/ui/skeleton"
 
 export default function Loading() {
   return (

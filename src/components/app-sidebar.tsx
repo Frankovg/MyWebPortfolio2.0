@@ -77,9 +77,6 @@ const SidebarNavigation = () => {
       setOpenMobile(false);
     }
   };
-  // console.log(items);
-  console.log(pathname);
-  // console.log(pathname.includes('?') ? pathname.split('?')[0] : pathname);
 
   return (
     <>
