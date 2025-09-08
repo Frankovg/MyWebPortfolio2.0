@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-import { CATEGORIES } from "../utils/client-constants";
 import TechCard from "@/components/tech-card";
+
+import { CATEGORIES } from "../utils/client-constants";
 
 
 //TODO: Its probably better to use the tabs component here

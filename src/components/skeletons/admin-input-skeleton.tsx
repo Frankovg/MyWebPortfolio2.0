@@ -1,4 +1,5 @@
 import clsx from "clsx"
+
 import { Skeleton } from "../ui/skeleton"
 
 export const AdminInputSkeleton = ({ className }: { className?: string }) => {
