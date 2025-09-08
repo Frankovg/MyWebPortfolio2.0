@@ -63,6 +63,7 @@ export function DownloadFormProvider({
       alt: download?.alt || "",
       name: download?.name || "",
       description: download?.description || "",
+      language: download?.language || "en",
       fileHref: download?.fileHref || "",
       format: download?.format || "",
       isActive: download?.isActive || false,
@@ -86,6 +87,7 @@ export function DownloadFormProvider({
 
       const downloadValues = getValues();
       downloadValues.imageUrl = downloadValues.imageUrl || FALLBACK_IMG;
+      downloadValues.language = "en"
 
       if (actionType === "add") {
         await addNewFile(downloadValues);

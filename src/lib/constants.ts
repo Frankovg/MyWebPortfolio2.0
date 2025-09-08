@@ -11,6 +11,7 @@ import img1 from "@/public/images/in-profile-1.webp";
 import img2 from "@/public/images/in-profile-2.webp";
 import img3 from "@/public/images/in-profile-3.webp";
 import img4 from "@/public/images/in-profile-4.webp";
+import img5 from "@/public/images/in-profile-5.webp";
 
 // Navbar links
 export const ROUTES = [
@@ -79,6 +80,13 @@ export const REFERRALS = [
     name: "Pablo Daniel Pellizzoni",
     role: "Head of department at Grupo Developer",
     text: "Not only a great person, but also a great colleague and designer, and he has been an excellent student. Always showing the proactivity needed and seeking new horizons! Wishing you success in this new chapter, and you're missed here in Argentina. Great designer!",
+  },
+  {
+    id: 5,
+    img: img5,
+    name: "Patricio Gustavo Mariano",
+    role: "Associate Founder at Malawebs",
+    text: "I have had the privilege of knowing Franco since our time at industrial design university, and over the years, we have maintained a professional relationship and friendship that I deeply value. We have collaborated on various projects, and it is always a pleasure to share ideas and experiences with him. Franco stands out not only for his professionalism and commitment but also for his efficiency and remarkable ability to learn new tools.",
   },
 ];
 
@@ -194,3 +202,8 @@ const getDefaultTechStack = () => {
   }));
 };
 export const DEFAULT_TECH_STACK = getDefaultTechStack();
+
+export const LANGUAGE_DICTIONARY = {
+  en: "English",
+  es: "Spanish",
+};

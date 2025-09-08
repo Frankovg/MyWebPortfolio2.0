@@ -173,6 +173,10 @@ export const downloadFormSchema = z
       .trim()
       .min(1, { message: required_error })
       .max(2000, value_too_long_error_2000),
+    language: z.string()
+      .trim()
+      .min(1, { message: required_error })
+      .max(10, value_too_long_error_10),
     fileHref: z.string().trim().url({ message: invalid_url_error }),
     format: z
       .string()

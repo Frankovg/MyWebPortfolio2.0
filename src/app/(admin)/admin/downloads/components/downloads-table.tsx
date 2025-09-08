@@ -16,7 +16,6 @@ const DeleteModal = dynamic(
   () => import("../../../../../components/admin/delete-modal"),
   {
     ssr: false,
-    loading: () => <p>Loading...</p>,
   }
 );
 

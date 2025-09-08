@@ -10,8 +10,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ALL_TECHS } from "@/lib/client-constants";
+import TechCard from "@/components/tech-card";
 
-import TechCard from "../../../home/@techStack/components/tech-card";
 
 type ProjectTechStackProps = {
   techStack: Tech[];
