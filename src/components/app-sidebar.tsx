@@ -77,6 +77,9 @@ const SidebarNavigation = () => {
       setOpenMobile(false);
     }
   };
+  // console.log(items);
+  console.log(pathname);
+  // console.log(pathname.includes('?') ? pathname.split('?')[0] : pathname);
 
   return (
     <>
@@ -88,7 +91,9 @@ const SidebarNavigation = () => {
               <SidebarMenuButton
                 asChild
                 tooltip={item.title}
-                isActive={pathname === item.url}
+                isActive={
+                  (item.url.includes('?') ? item.url.split('?')[0] : item.url) === pathname
+                }
               >
                 <Link href={item.url} onClick={handleItemClick}>
                   <item.icon />
