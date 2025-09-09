@@ -17,7 +17,10 @@ export async function logIn(prevState: unknown, formData: unknown) {
   }
 
   try {
-    await signIn("credentials", formData);
+    await signIn("credentials", {
+      ...Object.fromEntries(formData),
+      redirectTo: "/admin"
+    });
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {

@@ -17,7 +17,7 @@ async function MainHeader({ breadcrumbLinks }: MainHeaderProps) {
 
   return (
     <>
-      <header className="sticky top-0 z-50 flex h-16 shrink-0 items-center gap-2 bg-background border-b border-darkPrimary px-4 overflow-hidden">
+      <header className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-2 bg-background border-b border-darkPrimary px-4 overflow-hidden">
         <SidebarTrigger className="-ml-1" />
         <Separator
           orientation="vertical"
