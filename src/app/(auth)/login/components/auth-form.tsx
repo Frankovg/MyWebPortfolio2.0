@@ -8,8 +8,7 @@ import InputLogin from "./input-login";
 import { SubmitButton } from "./submit-button";
 
 const AuthForm = () => {
-  const [logInError, dispatchLogIn] = useActionState(logIn, undefined);
-
+  const [logInError, dispatchLogIn, isPending] = useActionState(logIn, undefined);
   const inputs = ["Email", "Password"];
 
   return (
@@ -32,7 +31,7 @@ const AuthForm = () => {
           />
         );
       })}
-      <SubmitButton />
+      <SubmitButton isPending={isPending} />
       {logInError && (
         <p className="text-red-500 text-sm mt-2">{logInError.message}</p>
       )}

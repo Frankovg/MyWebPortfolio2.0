@@ -1,14 +1,10 @@
-'use client'
-import { useFormStatus } from "react-dom";
-
 import ButtonWhite from "@/components/primitives/button-white";
 
-export const SubmitButton = () => {
-  const { pending } = useFormStatus();
+export const SubmitButton = ({ isPending }: { isPending: boolean }) => {
   return (
     <ButtonWhite
-      loading={pending}
-      disabled={pending}
+      loading={isPending}
+      disabled={isPending}
       text="Log in"
       className="mt-4 md:w-full"
       type="submit"
