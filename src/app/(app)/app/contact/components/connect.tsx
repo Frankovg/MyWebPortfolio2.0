@@ -1,4 +1,4 @@
-import { MailIcon, MapIcon, MapPinIcon, PhoneIcon } from "lucide-react"
+import { MailIcon, MapPinIcon, PhoneIcon } from "lucide-react"
 
 import { GithubIcon, LinkedInIcon } from "@/icons/social"
 
@@ -26,7 +26,7 @@ export const Connect = () => {
         title="LinkedIn"
         icon={(<LinkedInIcon className="h-6 w-6" />)}
       />
-      <div className="border-b border-white w-full mt-6" />
+      <div className="border-b border-white w-full max-w-[450px] mt-6" />
       <h2 className="text-xl font-semibold mt-6">Contact information</h2>
       <ConnectItem
         href={`tel:${process.env.CONTACT_NUMBER ?? "#"}`}
