@@ -1,23 +1,9 @@
-"use client";
-
-import Link from "next/link";
+import { Link } from "lucide-react";
 import { useTransition } from "react";
 
-import { logOut } from "@/actions/index";
-import { UserSession } from "@/lib/types";
-import { cn } from "@/lib/utils";
-
-import LanguageSelector from "./language-selector";
-import Overlay from "./primitives/overlay";
-
-type UserMainBarContentProps = {
-  isLogged: boolean;
-  isAdmin: boolean;
-};
-
-type UserMainBarProps = {
-  session: UserSession;
-};
+import { logOut } from "@/actions/user-actions";
+import LanguageSelector from "@/components/language-selector";
+import Overlay from "@/components/primitives/overlay";
 
 const LanguageSelectorContainer = () => {
   return (
@@ -28,7 +14,12 @@ const LanguageSelectorContainer = () => {
   );
 };
 
-const UserMainBarContent = ({ isLogged, isAdmin }: UserMainBarContentProps) => {
+type UserMainBarContentProps = {
+  isLogged: boolean;
+  isAdmin: boolean;
+};
+
+export const UserMainBarContent = ({ isLogged, isAdmin }: UserMainBarContentProps) => {
   const [isPending, startTransition] = useTransition();
 
   const hoverStyle = "hover:underline";
@@ -77,33 +68,3 @@ const UserMainBarContent = ({ isLogged, isAdmin }: UserMainBarContentProps) => {
     </>
   );
 };
-
-function UserMainBar({ session }: UserMainBarProps) {
-  const user = session?.user;
-
-  const isLogged = !!user;
-  const isAdmin = user?.isAdmin ?? false;
-  const styles = isLogged
-    ? "bg-primary text-darkPrimary"
-    : "bg-transparent text-whiteText";
-
-  return (
-    <div
-      className={cn(
-        "absolute top-0 w-screen h-6 z-50 flex items-center",
-        styles
-      )}
-    >
-      <div
-        className={cn(
-          "flex items-center w-full max-w-fa mx-auto pl-4 pr-6",
-          isLogged ? "justify-between" : "justify-end"
-        )}
-      >
-        <UserMainBarContent isLogged={isLogged} isAdmin={isAdmin} />
-      </div>
-    </div>
-  );
-}
-
-export default UserMainBar;

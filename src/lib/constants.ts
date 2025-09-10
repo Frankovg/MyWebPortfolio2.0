@@ -113,7 +113,7 @@ export const FOOTER_LINKS = {
     },
     {
       name: "LinkedIn",
-      href: process.env.LINKEDIN_URL,
+      href: process.env.NEXT_PUBLIC_LINKEDIN_URL,
     },
   ],
 };

@@ -1,4 +1,5 @@
 import Main from "@/components/main"
+import HashScrollHandler from "@/utils/hashScrollHandler"
 
 type LayoutProps = {
   children: React.ReactNode,
@@ -10,6 +11,7 @@ type LayoutProps = {
 const Layout = ({ children, techStack, projects, contact }: LayoutProps) => {
   return (
     <Main className='pt-[25vh]'>
+      <HashScrollHandler />
       {children}
       {techStack}
       {projects}
