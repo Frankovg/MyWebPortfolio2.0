@@ -3,8 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+import { SAMPLE_ACTION } from "@/lib/action-constants";
 import { checkAuth } from "@/lib/check-auth";
-import { SAMPLE_ACTION } from "@/lib/constants";
 import prisma from "@/lib/db";
 import { getDownloadFileById } from "@/lib/server-utils-admin";
 import { DownloadEssentials } from "@/lib/types";
