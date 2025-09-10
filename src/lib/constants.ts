@@ -38,14 +38,14 @@ export const SOCIAL_ICONS = [
   {
     name: "LinkedIn",
     value: "linkedIn",
-    href: process.env.LINKEDIN_URL,
+    href: process.env.NEXT_PUBLIC_LINKEDIN_URL,
     alt: "LinkedIn icon",
     icon: LinkedInIcon,
   },
   {
     name: "Github",
     value: "gitHub",
-    href: process.env.GITHUB_URL,
+    href: process.env.NEXT_PUBLIC_GITHUB_URL,
     alt: "Github icon",
     icon: GithubIcon,
   },
@@ -113,7 +113,7 @@ export const FOOTER_LINKS = {
     },
     {
       name: "LinkedIn",
-      href: process.env.LINKEDIN_URL,
+      href: process.env.NEXT_PUBLIC_LINKEDIN_URL,
     },
   ],
 };
