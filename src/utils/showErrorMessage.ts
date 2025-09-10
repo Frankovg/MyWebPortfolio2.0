@@ -1,6 +1,6 @@
 import { toast } from "sonner";
 
-import { SAMPLE_ACTION } from "@/lib/constants";
+import { SAMPLE_ACTION } from "@/lib/action-constants";
 
 export const showErrorMessage = (error: { message: string }) => {
   if (error.message === SAMPLE_ACTION) {

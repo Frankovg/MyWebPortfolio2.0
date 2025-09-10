@@ -1,6 +1,6 @@
 import { toast } from "sonner";
 
-import { SAMPLE_ACTION } from "@/lib/constants";
+import { SAMPLE_ACTION } from "@/lib/action-constants";
 
 import { showErrorMessage } from "./showErrorMessage";
 

@@ -3,8 +3,8 @@
 import { User } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 
+import { SAMPLE_ACTION } from "@/lib/action-constants";
 import { checkAuth } from "@/lib/check-auth";
-import { SAMPLE_ACTION } from "@/lib/constants";
 import prisma from "@/lib/db";
 import { getUserById } from "@/lib/server-utils-public";
 import { sleep } from "@/lib/utils";

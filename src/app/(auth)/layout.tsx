@@ -4,7 +4,7 @@ import Logo from "@/components/primitives/logo";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <main className="flex flex-col gap-y-5 justify-center items-center min-h-screen">
+    <main className="relative flex flex-col gap-y-5 justify-center items-center min-h-screen">
       <Logo />
       {children}
     </main>
