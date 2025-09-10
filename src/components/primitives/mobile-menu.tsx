@@ -71,7 +71,7 @@ function MobileMenu({ open, close }: MobileMenuProps) {
               <div className="max-sm:border-b sm:border-r sm:h-8 border-solid border-primary" />
             </li>
             {SOCIAL_ICONS.map((socialIcon) => (
-              <li key={socialIcon.href}>
+              <li key={socialIcon.value}>
                 <Link href={socialIcon.href || "#"} className={linkStyles}>
                   {socialIcon.name}
                 </Link>
