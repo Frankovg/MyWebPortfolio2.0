@@ -1,5 +1,7 @@
-import { GithubIcon, LinkedInIcon } from "@/icons/social"
 import { MailIcon, MapIcon, MapPinIcon, PhoneIcon } from "lucide-react"
+
+import { GithubIcon, LinkedInIcon } from "@/icons/social"
+
 import { ConnectItem } from "./connect-item"
 
 export const Connect = () => {

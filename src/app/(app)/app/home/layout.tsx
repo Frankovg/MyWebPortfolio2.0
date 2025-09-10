@@ -1,5 +1,5 @@
+import HashScrollHandler from "@/utils/hashScrollHandler"
 import Main from "@/components/main"
-import HashScrollHandler from "@/components/hash-scroll-handler"
 
 type LayoutProps = {
   children: React.ReactNode,

@@ -3,9 +3,10 @@ import { Suspense } from "react";
 import H4 from "@/components/primitives/h4";
 import Section from "@/components/section";
 
-import Loading from "./loading";
 import ContactForm from "../home/@contact/components/contact-form";
+
 import { Connect } from "./components/connect";
+import Loading from "./loading";
 
 export default function AboutMe() {
   return (
