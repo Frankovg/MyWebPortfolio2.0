@@ -1,4 +1,6 @@
-import { Link } from "lucide-react";
+'use client'
+
+import Link from "next/link";
 import { useTransition } from "react";
 
 import { logOut } from "@/actions/user-actions";
