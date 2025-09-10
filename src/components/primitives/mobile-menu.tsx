@@ -41,29 +41,33 @@ function MobileMenu({ open, close }: MobileMenuProps) {
       >
         <div className="w-full h-full overflow-y-auto flex flex-col justify-between">
           <ul className="w-full h-fit text-right sm:text-left max-sm:space-y-5 text-2xl flex max-sm:flex-col flex-row sm:gap-6 sm:items-center sm:justify-center flex-wrap">
-            {ROUTES.map((route) => (
-              <li key={route.path}>
-                {route.path === "about-me" ? (
-                  <Link
-                    href={route.path}
-                    onClick={close}
-                    className={linkStyles}
-                  >
-                    {route.label}
-                  </Link>
-                ) : (
-                  <ScrollLink
-                    id={route.path}
-                    className={linkStyles}
-                    onClick={close}
-                  >
-                    {route.label}
-                  </ScrollLink>
-                )}
-              </li>
-            ))}
+            {ROUTES.map((route) => {
+              const isHomePath = route.path === "home";
+              const redirectPath = route.path === "about-me" || isHomePath
+              return (
+                <li key={route.path}>
+                  {redirectPath ? (
+                    <Link
+                      href={isHomePath ? "/" : route.path}
+                      onClick={close}
+                      className={linkStyles}
+                    >
+                      {route.label}
+                    </Link>
+                  ) : (
+                    <ScrollLink
+                      id={route.path}
+                      className={linkStyles}
+                      onClick={close}
+                    >
+                      {route.label}
+                    </ScrollLink>
+                  )}
+                </li>
+              )
+            })}
             <li>
-              <Link href="/#contact" className={linkStyles}>
+              <Link href="/app/contact" className={linkStyles}>
                 Contact
               </Link>
             </li>
