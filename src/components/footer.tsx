@@ -17,7 +17,7 @@ function Footer() {
       <Prefooter />
       <footer className="w-full h-auto bg-background py-12 pb-12">
         <div className="w-full flex flex-col sm:grid grid-cols-12 grid-flow-row gap-0 max-w-fa mx-auto px-4 max-sm:space-y-8">
-          <div className="max-sm:mx-auto col-span-2 scale-90">
+          <div className="max-sm:mx-auto col-span-2 scale-90 w-fit">
             <Logo />
           </div>
 
