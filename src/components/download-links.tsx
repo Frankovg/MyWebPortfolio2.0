@@ -20,7 +20,7 @@ function DownloadLinks() {
           className="group relative overflow-hidden flex max-w-[400px] items-center"
           key={download.name}
         >
-          <div className="w-2/5">
+          <div className="max-sm:w-full w-2/5">
             <Image
               src={download.imageUrl}
               alt={download.name}
@@ -30,7 +30,7 @@ function DownloadLinks() {
             />
             <div className="absolute top-0 left-0 w-full h-full bg-linear-to-r from-transparent via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-[2000ms] animate-shiny" />
           </div>
-          <div className="w-3/5 px-5">
+          <div className="w-3/5 px-5 max-sm:hidden">
             <h4 className="text-lg font-semibold group-hover:underline">{download.name}</h4>
             <p className="text-md text-muted-foreground">{download.description}</p>
           </div>
