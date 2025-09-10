@@ -2,10 +2,8 @@
 
 import { HomeIcon } from "lucide-react"
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 export const GoHome = () => {
-  const router = useRouter()
   return (
     <Link
       href="/"
