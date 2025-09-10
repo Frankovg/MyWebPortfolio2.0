@@ -66,7 +66,7 @@ function SocialNavLinks() {
       {SOCIAL_ICONS.map((socialIcon, index) => (
         <Link
           key={`${index}-${socialIcon.href}`}
-          href={socialIcon.href || "#"}
+          href={socialIcon.href ?? "#"}
           target="_blank"
           rel="noopener noreferrer"
           className="group relative inline-flex items-center justify-center bg-softGrey border border-solid border-whiteText rounded-full h-[42px] w-[42px] transition duration-300 ease-in hover:border-background"
