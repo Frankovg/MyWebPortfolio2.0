@@ -3,7 +3,7 @@ import Link from "next/link";
 import AnimatedArrowRight from "@/components/primitives/animated-arrow-right";
 
 function ToLinkedIn() {
-  const linkedinUrl = process.env.NEXT_PUBLIC_LINKEDIN_URL;
+  const linkedinUrl = process.env.LINKEDIN_URL;
   return (
     <div className="w-full h-auto space-y-2 px-2">
       <Link

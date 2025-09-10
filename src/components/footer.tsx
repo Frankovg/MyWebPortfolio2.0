@@ -4,12 +4,9 @@ import { FOOTER_LINKS } from "@/lib/constants";
 
 import packageJson from "../../package.json";
 
-//Components
 import DownloadLinksFooter from "./download-links-footer";
 import Prefooter from "./prefooter";
 import Logo from "./primitives/logo";
-
-//Constants
 
 function Footer() {
   return (

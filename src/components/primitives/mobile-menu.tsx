@@ -76,7 +76,7 @@ function MobileMenu({ open, close }: MobileMenuProps) {
             </li>
             {SOCIAL_ICONS.map((socialIcon) => (
               <li key={socialIcon.value}>
-                <Link href={socialIcon.href || "#"} className={linkStyles}>
+                <Link href={socialIcon.href || "#"} target="_blank" className={linkStyles}>
                   {socialIcon.name}
                 </Link>
               </li>
