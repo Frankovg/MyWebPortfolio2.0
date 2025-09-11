@@ -9,6 +9,8 @@ import { getUsersAdmin } from "@/lib/server-utils-admin";
 
 import Loading from "./loading";
 
+export const dynamic = 'force-dynamic';
+
 async function ChangePassword() {
   const breadcrumbLinks = [
     {

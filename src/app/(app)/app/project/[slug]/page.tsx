@@ -12,6 +12,9 @@ import VideoComponent from "./components/video-component";
 import Loading from "./loading";
 import { parseCategories } from "./utils/parse-categories";
 
+export const dynamic = 'force-static';
+export const revalidate = 3600;
+
 export default async function ProjectPage({
   params,
 }: {

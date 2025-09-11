@@ -2,7 +2,9 @@ import { redirect } from "next/navigation";
 
 import { getFirstSoftwareProject } from "@/lib/server-utils-public";
 
-//TODO: make this dynamic pages as static pages
+export const dynamic = 'force-static';
+export const revalidate = 3600;
+
 export default async function Project() {
   //TODO: add zod vaidations to every fetch
   const project = await getFirstSoftwareProject();

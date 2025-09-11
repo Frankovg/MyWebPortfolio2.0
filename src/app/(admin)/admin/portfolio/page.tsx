@@ -8,6 +8,8 @@ import { checkAuth } from "@/lib/check-auth";
 import PortfolioExplorer from "./components/portfolio-explorer";
 import Loading from "./loading";
 
+export const dynamic = 'force-dynamic';
+
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };

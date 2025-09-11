@@ -8,6 +8,9 @@ import ContactForm from "../home/@contact/components/contact-form";
 import { Connect } from "./components/connect";
 import Loading from "./loading";
 
+export const dynamic = 'force-static';
+export const revalidate = 3600;
+
 export default function AboutMe() {
   return (
     <Suspense fallback={<Loading />}>
