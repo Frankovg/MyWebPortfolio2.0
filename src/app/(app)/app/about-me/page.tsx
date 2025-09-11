@@ -8,9 +8,6 @@ import Section from "@/components/section";
 import { ABOUT_ME, ABOUT_ME_BANNER } from "./constants/constants";
 import Loading from "./loading";
 
-export const dynamic = 'force-static';
-export const revalidate = 3600;
-
 export default function AboutMe() {
   return (
     <Suspense fallback={<Loading />}>

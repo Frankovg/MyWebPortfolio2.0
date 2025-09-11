@@ -12,9 +12,6 @@ import VideoComponent from "./components/video-component";
 import Loading from "./loading";
 import { parseCategories } from "./utils/parse-categories";
 
-export const dynamic = 'force-static';
-export const revalidate = 3600;
-
 //TODO: add zod validations to every fetch
 
 export default async function ProjectPage({
@@ -29,6 +26,7 @@ export default async function ProjectPage({
     getCategories(),
   ]);
 
+  //TODO: Add a notFount() page
   if (!project) throw new Error("Project not found");
 
   const hasVideo = !!project.videoUrl;
