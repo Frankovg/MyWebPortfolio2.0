@@ -9,6 +9,8 @@ import { AddFileButton } from "./components/add-file-button";
 import DownloadsTable from "./components/downloads-table";
 import Loading from "./loading";
 
+export const dynamic = 'force-dynamic';
+
 async function Downloads() {
   const breadcrumbLinks = [
     {

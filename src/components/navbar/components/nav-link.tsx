@@ -1,4 +1,4 @@
-import { Link } from "lucide-react";
+import Link from "next/link";
 import { ReactNode } from "react";
 
 import ScrollLink from "@/components/primitives/scroll-link";
@@ -15,9 +15,12 @@ export function NavLink({ href, className, children }: NavLinkProps) {
     "text-lg hover:text-white transition-colors duration-300 ease-in-out",
     className
   );
+
+  const isAboutMePage = href === "/app/about-me";
+
   return (
     <li>
-      {!href.includes("about-me") ? (
+      {!isAboutMePage ? (
         <ScrollLink id={href} className={linkClassName}>
           {children}
         </ScrollLink>

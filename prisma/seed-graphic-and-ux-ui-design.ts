@@ -122,7 +122,7 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
           These pieces serve as creative explorations that complement my commercial design work, allowing for artistic freedom and the development of unique visual concepts that push creative boundaries.
           `,
         image:
-          "https://drive.google.com/uc?export=view&id=1C165aEW7yoqG_AuKO1r_IgGNOJjYi-S7",
+          "https://drive.google.com/uc?export=view&id=1nDAHtWlx8pmNoYnjbz-lRyzxp3UnFQFj",
         slug: "art-design",
         gallery: {
           create: [

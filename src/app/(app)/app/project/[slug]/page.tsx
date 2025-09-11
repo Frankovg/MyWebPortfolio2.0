@@ -12,6 +12,8 @@ import VideoComponent from "./components/video-component";
 import Loading from "./loading";
 import { parseCategories } from "./utils/parse-categories";
 
+//TODO: add zod validations to every fetch
+
 export default async function ProjectPage({
   params,
 }: {
@@ -24,6 +26,7 @@ export default async function ProjectPage({
     getCategories(),
   ]);
 
+  //TODO: Add a notFount() page
   if (!project) throw new Error("Project not found");
 
   const hasVideo = !!project.videoUrl;

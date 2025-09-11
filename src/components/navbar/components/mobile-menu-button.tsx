@@ -1,3 +1,5 @@
+'use client'
+
 import Burger from "@/icons/burger";
 
 type MobileMenuButtonProps = {

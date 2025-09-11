@@ -8,7 +8,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import ImageWithFallback from "@/components/primitives/image-with-fallback";
 import { CarouselApi, CarouselItem } from "@/components/ui/carousel";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { FALLBACK_IMG } from "@/lib/constants";
+import { FALLBACK_IMG } from "@/lib/client-constants";
 
 import CarouselThumbnail from "./carousel-thumbnail";
 import CarouselViewer from "./carousel-viewer";
@@ -18,7 +18,6 @@ type ProjectCarouselProps = {
   images: Gallery[];
 };
 
-//TODO: If it needs lazy loading look for more information here https://www.embla-carousel.com/examples/predefined/
 function ProjectCarousel({ images }: ProjectCarouselProps) {
   const mainApiRef = useRef<CarouselApi>(null);
   const thumbnailApiRef = useRef<CarouselApi>(null);
@@ -61,6 +60,8 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
       thumbnailApiRef.current?.off("select", handleBottomSelect);
     };
   }, []);
+
+
 
   const handleClick = (index: number) => {
     setCurrent(index);
@@ -137,7 +138,6 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
             sizes={"100%"}
             quality={60}
           />
-
         </div>
       </DialogContent>
     </Dialog>
