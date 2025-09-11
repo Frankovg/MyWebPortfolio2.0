@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 import AdminPageTitle from "@/components/admin/admin-page-title";
@@ -7,7 +8,8 @@ import { ProjectForm } from "@/components/admin/project-form/index";
 import { getProjectById } from "@/lib/server-utils-admin";
 
 import Loading from "./loading";
-import NotFound from "./not-found";
+
+export const dynamic = 'force-dynamic';
 
 async function EditProject({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -24,9 +26,7 @@ async function EditProject({ params }: { params: Promise<{ id: string }> }) {
 
   const project = await getProjectById(id);
 
-  if (!project) {
-    return <NotFound />;
-  }
+  if (!project) notFound()
 
   return (
     <>

@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 import Section from "@/components/section";
@@ -26,8 +27,7 @@ export default async function ProjectPage({
     getCategories(),
   ]);
 
-  //TODO: Add a notFount() page
-  if (!project) throw new Error("Project not found");
+  if (!project) notFound();
 
   const hasVideo = !!project.videoUrl;
   const videoData = hasVideo

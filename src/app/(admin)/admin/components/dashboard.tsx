@@ -8,8 +8,13 @@ import { SampleAccountStatus } from "./sample-account-status";
 export async function Dashboard({ isAdmin = false }: { isAdmin?: boolean }) {
   const categories = await getCategoriesForChart();
   const users = await getUsersAdmin();
-  const sampleAccountInfo = users.find((user) => !user.isAdmin);
   const downloads = await getDownloadsContent();
+
+  if (!categories || !users || !downloads) {
+    throw new Error("Error fetching the dashboard.")
+  }
+
+  const sampleAccountInfo = users.find((user) => !user.isAdmin);
 
   return (
     <div className="flex flex-col-reverse max-1170:gap-4 shrink 1170:flex-row">
