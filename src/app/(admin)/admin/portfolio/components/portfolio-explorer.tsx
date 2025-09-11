@@ -16,6 +16,9 @@ function PortfolioExplorer({
   defaultCategory,
 }: PortfolioExplorerProps) {
   const { categories } = useProjectContext();
+
+  if (!categories) throw new Error("Error fetching categories")
+
   return (
     <PortfolioTabsWrapper defaultCategory={defaultCategory}>
       <PortfolioTabsList tabs={categories} />

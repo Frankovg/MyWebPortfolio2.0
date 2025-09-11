@@ -1,27 +1,27 @@
-import { FrownIcon } from "lucide-react";
+import { TriangleAlertIcon } from "lucide-react";
 import Link from "next/link";
 
 import H3 from "./primitives/h3";
 
-export const ErrorPage = async () => {
+export function CustomGlobalError({ description, href, label }: { description: string, href: string, label: string }) {
   return (
-    <div className="absolute w-full h-full">
+    <div className="w-full h-full">
       <div className="w-full h-full flex flex-col justify-center items-center">
-        <FrownIcon size={170} />
-        <H3 className="text-3xl font-semibold text-danger">404 - Page not found</H3>
+        <TriangleAlertIcon size={170} />
+        <H3 className="text-3xl font-semibold text-warning">{description}</H3>
         <p className="text-3xl font-bold">
           The link might be corrupted.
         </p>
         <p className="text-lg">or the page may have been removed</p>
         <div className="my-10">
           <Link
-            href="/"
+            href={href}
             className="uppercase p-3 border border-white rounded-sm"
           >
-            go back home
+            {label}
           </Link>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

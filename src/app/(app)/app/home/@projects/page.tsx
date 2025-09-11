@@ -7,6 +7,9 @@ import Categories from "./components/categories";
 
 async function Projects() {
   const categories = await getCategories();
+
+  if (!categories) throw new Error("Error fetching categories.",)
+
   return (
     <Section id="projects" className="pt-24">
       <H4>Projects</H4>

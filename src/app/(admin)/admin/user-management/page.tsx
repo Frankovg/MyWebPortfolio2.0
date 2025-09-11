@@ -23,6 +23,8 @@ async function UserManagement() {
 
   const users = await getUsersAdmin();
 
+  if (!users) throw new Error("Error fetching users.")
+
   return (
     <>
       <MainHeader breadcrumbLinks={breadcrumbLinks} />

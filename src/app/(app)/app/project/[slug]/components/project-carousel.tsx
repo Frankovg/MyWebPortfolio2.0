@@ -61,8 +61,6 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
     };
   }, []);
 
-
-
   const handleClick = (index: number) => {
     setCurrent(index);
     mainApiRef.current?.scrollTo(index);
