@@ -1,3 +1,4 @@
+'use client'
 import Link from "next/link";
 
 import { SOCIAL_ICONS } from "@/lib/client-constants";

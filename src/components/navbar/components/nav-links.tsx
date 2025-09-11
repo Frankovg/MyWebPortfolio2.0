@@ -1,5 +1,6 @@
-import { ROUTES } from "@/lib/constants";
+'use client'
 
+import { ROUTES } from "@/lib/client-constants";
 import { NavLink } from "./nav-link";
 
 export function NavLinks() {

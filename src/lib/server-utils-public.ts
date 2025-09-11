@@ -44,21 +44,21 @@ export async function getCategoriesForChart() {
 //   return projects
 // }
 
-export async function getFirstSoftwareProject() {
-  const project = await prisma.project.findFirst({
-    where: {
-      category: {
-        value: "web-development",
-      },
-      published: true,
-    },
-  });
-  //TODO: implement not-found files
-  // if (!project) {
-  //   return notFound()
-  // }
-  return project;
-}
+// export async function getFirstSoftwareProject() {
+//   const project = await prisma.project.findFirst({
+//     where: {
+//       category: {
+//         value: "web-development",
+//       },
+//       published: true,
+//     },
+//   });
+//   //TODO: implement not-found files
+//   // if (!project) {
+//   //   return notFound()
+//   // }
+//   return project;
+// }
 
 // export async function getProjectById(projectId: Project['id']) {
 //   const project = await prisma.project.findUnique({

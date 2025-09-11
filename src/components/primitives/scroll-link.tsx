@@ -34,8 +34,10 @@ function ScrollLink({ id, children, className = '', onClick }: ScrollLinkProps) 
     !!onClick && onClick()
   }
 
+  const href = id === 'home' ? '/app/home' : `/app/home#${id}`
+
   return (
-    <Link href={id === 'home' ? '/app/home' : `/app/home#${id}`} className={className} passHref>
+    <Link href={href} className={className} passHref>
       <button title='Scroll button' type='button' onClick={handleClick}>{children}</button>
     </Link>
   )
