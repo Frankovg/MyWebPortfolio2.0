@@ -15,7 +15,6 @@ export function NavLink({ href, className, children }: NavLinkProps) {
     "text-lg hover:text-white transition-colors duration-300 ease-in-out",
     className
   );
-  console.log(href);
 
   const isAboutMePage = href === "/app/about-me";
 
