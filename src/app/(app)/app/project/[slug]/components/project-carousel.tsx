@@ -8,12 +8,11 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import ImageWithFallback from "@/components/primitives/image-with-fallback";
 import { CarouselApi, CarouselItem } from "@/components/ui/carousel";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { Skeleton } from "@/components/ui/skeleton";
+import { FALLBACK_IMG } from "@/lib/client-constants";
 
 import CarouselThumbnail from "./carousel-thumbnail";
 import CarouselViewer from "./carousel-viewer";
 import ExpanderButton from "./expander-button";
-import { FALLBACK_IMG } from "@/lib/client-constants";
 
 type ProjectCarouselProps = {
   images: Gallery[];
