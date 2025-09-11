@@ -15,6 +15,8 @@ import { parseCategories } from "./utils/parse-categories";
 export const dynamic = 'force-static';
 export const revalidate = 3600;
 
+//TODO: add zod validations to every fetch
+
 export default async function ProjectPage({
   params,
 }: {
