@@ -14,7 +14,7 @@ export const INDUSTRIAL_DESIGN_SEED: Prisma.CategoryCreateInput = {
         Each wallet design incorporates unique graphic elements and color combinations that showcase Tyvek®'s printability, creating distinctive visual identities that appeal to modern consumers seeking both functionality and style.
         The project required developing specialized production techniques that could be implemented efficiently while maintaining consistent quality standards, resulting in a scalable manufacturing process that supports the brand's growth objectives.
       `,
-        image: "https://drive.google.com/uc?export=view&id=1nDAHtWlx8pmNoYnjbz-lRyzxp3UnFQFj",
+        image: "https://drive.google.com/uc?export=view&id=1Ok_t5NdA6lNOA7YqbUZc2Zfxxpt-bljZ",
         slug: "norush-wallets",
         gallery: {
           create: [
