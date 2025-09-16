@@ -20,7 +20,7 @@ function Footer() {
 
           <ul className="max-sm:mx-auto col-start-4 col-span-2 row-start-1 row-span-1 space-y-2">
             <li>
-              <h6 className="max-sm:text-center font-medium underline mb-1.5 max-sm:text-xl text-base">
+              <h6 className="max-sm:text-center font-medium  mb-1.5 max-sm:text-xl text-base">
                 Sections
               </h6>
             </li>
@@ -38,7 +38,7 @@ function Footer() {
 
           <ul className="max-sm:mx-auto col-start-6 col-span-2 row-start-1 row-span-1 space-y-2">
             <li>
-              <h6 className="max-sm:text-center font-medium underline mb-1.5 max-sm:text-xl text-base">
+              <h6 className="max-sm:text-center font-medium  mb-1.5 max-sm:text-xl text-base">
                 Downloads
               </h6>
             </li>
@@ -47,7 +47,7 @@ function Footer() {
 
           <ul className="max-sm:mx-auto col-start-9 col-span-2 row-start-1 row-span-1 space-y-2">
             <li>
-              <h6 className="max-sm:text-center font-medium underline mb-1.5 max-sm:text-xl text-base">
+              <h6 className="max-sm:text-center font-medium  mb-1.5 max-sm:text-xl text-base">
                 Let&apos;s Talk
               </h6>
             </li>
@@ -65,7 +65,7 @@ function Footer() {
 
           <ul className="max-sm:mx-auto col-start-11 col-span-2 row-start-1 row-span-1 space-y-2">
             <li>
-              <h6 className="max-sm:text-center font-medium underline mb-1.5 max-sm:text-xl text-base">
+              <h6 className="max-sm:text-center font-medium  mb-1.5 max-sm:text-xl text-base">
                 Legals
               </h6>
             </li>
