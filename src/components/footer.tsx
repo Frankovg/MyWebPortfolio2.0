@@ -36,7 +36,7 @@ function Footer() {
             ))}
           </ul>
 
-          <ul className="max-sm:mx-auto col-start-7 col-span-2 row-start-1 row-span-1 space-y-2">
+          <ul className="max-sm:mx-auto col-start-6 col-span-2 row-start-1 row-span-1 space-y-2">
             <li>
               <h6 className="max-sm:text-center font-medium underline mb-1.5 max-sm:text-xl text-base">
                 Downloads
@@ -45,7 +45,7 @@ function Footer() {
             <DownloadLinksFooter />
           </ul>
 
-          <ul className="max-sm:mx-auto col-start-10 col-span-2 row-start-1 row-span-1 space-y-2">
+          <ul className="max-sm:mx-auto col-start-9 col-span-2 row-start-1 row-span-1 space-y-2">
             <li>
               <h6 className="max-sm:text-center font-medium underline mb-1.5 max-sm:text-xl text-base">
                 Let&apos;s Talk
@@ -61,6 +61,24 @@ function Footer() {
                 </Link>
               </li>
             ))}
+          </ul>
+
+          <ul className="max-sm:mx-auto col-start-11 col-span-2 row-start-1 row-span-1 space-y-2">
+            <li>
+              <h6 className="max-sm:text-center font-medium underline mb-1.5 max-sm:text-xl text-base">
+                Legals
+              </h6>
+            </li>
+            {/* {FOOTER_LINKS.letsTalk.map((item, index) => ( */}
+            <li className="max-sm:text-center">
+              <Link
+                href={"privacy-policy"}
+                className="font-normal hover:text-white max-sm:text-lg"
+              >
+                {"Privacy policy"}
+              </Link>
+            </li>
+            {/* ))} */}
           </ul>
 
           <div className="row-start-2 row-span-1 col-span-12 text-center pb-2 pt-24">
