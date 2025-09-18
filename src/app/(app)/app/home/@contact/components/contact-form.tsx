@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTransition } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 import { sendMail } from "@/actions/index";
@@ -12,6 +12,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { contactFormSchema, TContactForm } from "@/lib/validations";
+import { Checkbox } from "@/components/ui/checkbox";
+import Link from "next/link";
 
 function ContactForm() {
   const [isPending, startTransition] = useTransition();
@@ -22,12 +24,20 @@ function ContactForm() {
     getValues,
     formState: { errors },
     reset,
+    control,
+    setError
   } = useForm<TContactForm>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: undefined,
   });
 
   const handleAction = async () => {
+    const privacyPolicy = getValues("privacy_policy")
+    if (!privacyPolicy) {
+      setError("privacy_policy", { message: "Please accept the Privacy Policy to submit the form." })
+      return
+    }
+
     startTransition(async () => {
       const result = await trigger();
       if (!result) return;
@@ -125,6 +135,28 @@ function ContactForm() {
             </p>
             {errors.message && (
               <span className="text-error">{errors.message.message}</span>
+            )}
+          </div>
+
+          <div className="py-2">
+            <Controller
+              name="privacy_policy"
+              control={control}
+              defaultValue={false}
+              render={({ field }) => (
+                <div className="flex gap-2 items-center">
+                  <Checkbox
+                    defaultChecked={true}
+                    checked={field.value}
+                    {...register("privacy_policy")}
+                    onCheckedChange={field.onChange}
+                  />
+                  <Label htmlFor="isActive">I accept the <Link className="underline hover:text-white" href="/app/privacy-policy">Privacy Policy</Link>.</Label>
+                </div>
+              )}
+            />
+            {errors.privacy_policy && (
+              <span className="text-error">{errors.privacy_policy.message}</span>
             )}
           </div>
 
