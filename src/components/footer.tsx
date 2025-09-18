@@ -9,6 +9,8 @@ import Prefooter from "./prefooter";
 import Logo from "./primitives/logo";
 
 function Footer() {
+  const year = new Date().getFullYear();
+
   return (
     <>
       <Prefooter />
@@ -89,7 +91,7 @@ function Footer() {
           </div>
           <div className="row-start-3 row-span-1 col-start-5 col-span-4 text-center sm:space-y-1.5">
             <p className="w-full text-xs">
-              Copyright © 2024 Franco Gabriel Amoroso. All rights reserved.
+              Copyright © {year} Franco Gabriel Amoroso. All rights reserved.
             </p>
           </div>
         </div>
