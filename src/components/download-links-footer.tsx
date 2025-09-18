@@ -17,7 +17,7 @@ function DownloadLinksFooter() {
   const { downloads } = useUserDataContext();
 
   let _downloads = useMemo(() => {
-    const parsedDownloads = downloads.filter((file) => file.isActive);
+    const parsedDownloads = downloads.filter((file) => file.isActive).sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
     const links: TItem[] = [
       ...parsedDownloads.map((download) => ({
         name: download.name,

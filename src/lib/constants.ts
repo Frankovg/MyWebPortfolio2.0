@@ -116,6 +116,16 @@ export const FOOTER_LINKS = {
       href: process.env.NEXT_PUBLIC_LINKEDIN_URL,
     },
   ],
+  legals: [
+    {
+      name: "Cookies Policy",
+      href: "/app/cookies-policy"
+    },
+    {
+      name: "Privacy Policy",
+      href: "/app/privacy-policy"
+    },
+  ]
 };
 
 export const FALLBACK_IMG = "/images/project-placeholder.webp";

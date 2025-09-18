@@ -69,16 +69,16 @@ function Footer() {
                 Legals
               </h6>
             </li>
-            {/* {FOOTER_LINKS.letsTalk.map((item, index) => ( */}
-            <li className="max-sm:text-center">
-              <Link
-                href={"privacy-policy"}
-                className="font-normal hover:text-white max-sm:text-lg"
-              >
-                {"Privacy policy"}
-              </Link>
-            </li>
-            {/* ))} */}
+            {FOOTER_LINKS.legals.map((item, index) => (
+              <li className="max-sm:text-center" key={index}>
+                <Link
+                  href={item.href || "#"}
+                  className="font-normal hover:text-white max-sm:text-lg"
+                >
+                  {item.name || ""}
+                </Link>
+              </li>
+            ))}
           </ul>
 
           <div className="row-start-2 row-span-1 col-span-12 text-center pb-2 pt-24">
