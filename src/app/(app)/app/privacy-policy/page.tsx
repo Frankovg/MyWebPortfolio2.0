@@ -3,10 +3,10 @@ export const revalidate = 3600;
 
 import Section from "@/components/section";
 import H4 from "@/components/primitives/h4";
-import PrivacyPolicyHeader from "./components/privacy-policy-header";
 import DataProtectionSection from "./components/data-protection-section";
 import AcceptanceSection from "./components/acceptance-section";
 import privacyPolicyContent from './privacy-policy-content.json';
+import { LegalHeaders } from "@/components/legals-header";
 
 export default function PrivacyPolicy() {
   return (
@@ -14,7 +14,7 @@ export default function PrivacyPolicy() {
       <H4>{privacyPolicyContent.title}</H4>
 
       <div className="w-full max-w-[920px] mx-auto text-white space-y-8">
-        <PrivacyPolicyHeader />
+        <LegalHeaders title={privacyPolicyContent.websiteTitle} url={privacyPolicyContent.websiteUrl} />
         <DataProtectionSection />
         <AcceptanceSection />
       </div>
