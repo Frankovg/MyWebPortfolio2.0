@@ -1,5 +1,6 @@
-import Contact from "@/app/(app)/app/home/@contact/page"
 import Main from "@/components/main"
+
+import Contact from "../home/@contact/page"
 
 type LayoutProps = {
   children: React.ReactNode,

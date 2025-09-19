@@ -21,7 +21,7 @@ function MoreProjects({ data }: MoreProjectsProps) {
         <ProjectPaginationCard project={prevProject} type={PREV} />
         <ProjectPaginationCard project={nextProject} type={NEXT} />
       </div>
-      <div className="mt-16 mb-32 w-full flex flex-col 800:flex-row justify-between items-center gap-8 1100:gap-12">
+      <div className="my-16 w-full flex flex-col 800:flex-row justify-between items-center gap-8 1100:gap-12">
         {categories.map((category) => (
           <CategoryPaginationCard category={category} key={category.id} />
         ))}
