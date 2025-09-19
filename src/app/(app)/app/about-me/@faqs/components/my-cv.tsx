@@ -7,6 +7,9 @@ import { LANGUAGE_DICTIONARY } from "@/lib/constants";
 
 function MyCv() {
   const { downloads } = useUserDataContext();
+
+  if (!downloads) throw new Error("Error fetching downloads")
+
   const parsedDownloads = downloads.filter((file) => file.isActive);
 
   return (

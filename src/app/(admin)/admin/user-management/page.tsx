@@ -10,6 +10,8 @@ import { getUsersAdmin } from "@/lib/server-utils-admin";
 import AccountsTable from "./components/accounts-table";
 import Loading from "./loading";
 
+export const dynamic = 'force-dynamic';
+
 async function UserManagement() {
   const breadcrumbLinks = [
     {
@@ -20,6 +22,8 @@ async function UserManagement() {
   const session = await checkAuth();
 
   const users = await getUsersAdmin();
+
+  if (!users) throw new Error("Error fetching users.")
 
   return (
     <>

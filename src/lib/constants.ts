@@ -113,9 +113,19 @@ export const FOOTER_LINKS = {
     },
     {
       name: "LinkedIn",
-      href: process.env.LINKEDIN_URL,
+      href: process.env.NEXT_PUBLIC_LINKEDIN_URL,
     },
   ],
+  legals: [
+    {
+      name: "Cookies Policy",
+      href: "/app/cookies-policy"
+    },
+    {
+      name: "Privacy Policy",
+      href: "/app/privacy-policy"
+    },
+  ]
 };
 
 export const FALLBACK_IMG = "/images/project-placeholder.webp";
@@ -207,3 +217,5 @@ export const LANGUAGE_DICTIONARY = {
   en: "English",
   es: "Spanish",
 };
+
+export const ACCOUNT_REQUEST_MESSAGE = "Hello,\n\nI would like to request access to a demo account to explore the platform and its features.\n\nThank you,\nBest regards"

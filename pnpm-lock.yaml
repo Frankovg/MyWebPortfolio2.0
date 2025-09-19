@@ -84,7 +84,7 @@ dependencies:
     specifier: 15.2.4
     version: 15.2.4(@babel/core@7.28.0)(react-dom@19.1.0)(react@19.1.0)
   next-auth:
-    specifier: ^5.0.0-beta.25
+    specifier: 5.0.0-beta.29
     version: 5.0.0-beta.29(next@15.2.4)(nodemailer@6.10.1)(react@19.1.0)
   next-themes:
     specifier: ^0.4.4

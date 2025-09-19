@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  staticPageGenerationTimeout: 120,
   reactStrictMode: true,
   images: {
     remotePatterns: [
@@ -10,6 +14,9 @@ const nextConfig = {
         pathname: "/*",
       },
     ],
+    formats: ["image/webp", "image/avif"],
+    dangerouslyAllowSVG: false,
+    unoptimized: false,
   },
 };
 

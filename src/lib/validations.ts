@@ -54,6 +54,7 @@ export const contactFormSchema = z
       .trim()
       .min(10, { message: value_too_short_error_10 })
       .max(1000, value_too_long_error_1000),
+    privacy_policy: z.boolean()
   })
   .strict();
 

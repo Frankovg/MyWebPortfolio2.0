@@ -44,29 +44,28 @@ const config = {
   ],
   callbacks: {
     authorized: ({ auth, request }) => {
-      // runs on every request with middleware
       const isLoggedIn = !!auth?.user;
       const isSuperUser = auth?.user?.isAdmin ?? false;
       const isTryingToAccessAdmin = request.nextUrl.pathname.includes("/admin");
       const isTryingToAccessLogin = request.nextUrl.pathname.includes("/login");
 
-      // Case for non logged user trying to access to admin
-      if (!isLoggedIn && isTryingToAccessAdmin)
-        return Response.redirect(new URL("/login", request.nextUrl));
-      // Case for non logged user which is not navigating to admin
+      // Case for non logged user trying to access admin - deny access (middleware will handle redirect)
+      if (!isLoggedIn && isTryingToAccessAdmin) return false;
+
+      // Case for non logged user accessing public routes - allow
       if (!isLoggedIn && !isTryingToAccessAdmin) return true;
 
-      // Case for logged super user trying to access login
-      if (isLoggedIn && isSuperUser && isTryingToAccessLogin)
-        return Response.redirect(new URL("/admin", request.nextUrl));
-      // Case for logged super user trying to access admin
-      if (isLoggedIn && isSuperUser) return true;
+      // Case for logged user trying to access login - deny access (middleware will handle redirect)
+      if (isLoggedIn && isTryingToAccessLogin) return Response.redirect(new URL("/admin", request.nextUrl));
 
-      // Case for logged sample account trying to access login
-      if (isLoggedIn && !isSuperUser && isTryingToAccessLogin)
-        return Response.redirect(new URL("/admin", request.nextUrl));
-      // Case for logged sample account which is not navigating to admin
-      if (isLoggedIn && !isSuperUser) return true;
+      // Case for logged super user trying to access admin - allow
+      if (isLoggedIn && isSuperUser && isTryingToAccessAdmin) return true;
+
+      // Case for logged non-super user trying to access admin - deny
+      if (isLoggedIn && !isSuperUser && isTryingToAccessAdmin) return true;
+
+      // Case for logged user accessing other routes - allow
+      if (isLoggedIn) return true;
 
       return false;
     },

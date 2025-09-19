@@ -9,6 +9,8 @@ import { getUsersAdmin } from "@/lib/server-utils-admin";
 
 import Loading from "./loading";
 
+export const dynamic = 'force-dynamic';
+
 async function ChangePassword() {
   const breadcrumbLinks = [
     {
@@ -19,6 +21,8 @@ async function ChangePassword() {
   const session = await checkAuth();
 
   const users = await getUsersAdmin();
+
+  if (!users) throw new Error("Error fetching users.")
 
   return (
     <>

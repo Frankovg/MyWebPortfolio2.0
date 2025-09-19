@@ -8,7 +8,7 @@ import { checkAuth } from "@/lib/check-auth";
 import { Dashboard } from "./components/dashboard";
 import Loading from "./loading";
 
-
+export const dynamic = 'force-dynamic';
 
 async function Admin() {
   const session = await checkAuth();

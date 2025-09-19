@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 import Section from "@/components/section";
@@ -12,6 +13,8 @@ import VideoComponent from "./components/video-component";
 import Loading from "./loading";
 import { parseCategories } from "./utils/parse-categories";
 
+//TODO: add zod validations to every fetch
+
 export default async function ProjectPage({
   params,
 }: {
@@ -24,7 +27,7 @@ export default async function ProjectPage({
     getCategories(),
   ]);
 
-  if (!project) throw new Error("Project not found");
+  if (!project) notFound();
 
   const hasVideo = !!project.videoUrl;
   const videoData = hasVideo

@@ -1,0 +1,182 @@
+{
+  "title": "Privacy Policy",
+  "websiteTitle": "WEBSITE PRIVACY POLICY",
+  "websiteUrl": "www.franamoroso.com",
+  "sections": {
+    "dataProtection": {
+      "title": "I. PRIVACY POLICY AND DATA PROTECTION",
+      "intro": "Respecting the provisions of current legislation, Franco Gabriel Amoroso (hereinafter, also Website) undertakes to adopt the necessary technical and organizational measures, according to the appropriate level of security for the risk of the data collected.",
+      "subsections": {
+        "laws": {
+          "title": "Laws incorporated by this privacy policy",
+          "content": "This privacy policy is adapted to current Spanish and European regulations on the protection of personal data on the internet. Specifically, it respects the following standards:",
+          "items": [
+            "Regulation (EU) 2016/679 of the European Parliament and of the Council, of April 27, 2016, on the protection of natural persons with regard to the processing of personal data and on the free movement of such data (GDPR).",
+            "Organic Law 3/2018, of December 5, on Personal Data Protection and guarantee of digital rights (LOPD-GDD).",
+            "Royal Decree 1720/2007, of December 21, which approves the Regulation for the development of Organic Law 15/1999, of December 13, on the Protection of Personal Data (RDLOPD).",
+            "Law 34/2002, of July 11, on Information Society Services and Electronic Commerce (LSSI-CE)."
+          ]
+        },
+        "dataController": {
+          "title": "Identity of the data controller",
+          "content": "The controller of the personal data collected on Franco Gabriel Amoroso is: Franco Gabriel Amoroso, with NIF: Y8373614-H (hereinafter, Data Controller). Contact details are as follows:",
+          "contactInfo": {
+            "address": "Calle Muérdago 5, 29639, La Sierrazuela, Málaga, Spain",
+            "phone": "+34 608 59 72 85",
+            "email": "di.francoamoroso@gmail.com"
+          }
+        },
+        "dataRegistry": {
+          "title": "Personal Data Registry",
+          "content": "In compliance with the provisions of the GDPR and LOPD-GDD, we inform you that the personal data collected by Franco Gabriel Amoroso, through the forms extended on its pages, will be incorporated and processed in our file in order to facilitate, streamline and fulfill the commitments established between Franco Gabriel Amoroso and the User or the maintenance of the relationship established in the forms that they fill out, or to attend to a request or query from them. Likewise, in accordance with the provisions of the GDPR and LOPD-GDD, unless the exception provided for in article 30.5 of the GDPR applies, a record of processing activities is maintained that specifies, according to their purposes, the processing activities carried out and the other circumstances established in the GDPR."
+        },
+        "principles": {
+          "title": "Principles applicable to the processing of personal data",
+          "content": "The processing of the User's personal data will be subject to the following principles set out in article 5 of the GDPR and in article 4 and following of Organic Law 3/2018, of December 5, on Personal Data Protection and guarantee of digital rights:",
+          "items": [
+            {
+              "title": "Principle of lawfulness, fairness and transparency",
+              "description": "the User's consent will be required at all times with completely transparent prior information on the purposes for which personal data is collected."
+            },
+            {
+              "title": "Principle of purpose limitation",
+              "description": "personal data will be collected for specific, explicit and legitimate purposes."
+            },
+            {
+              "title": "Principle of data minimization",
+              "description": "the personal data collected will be only those strictly necessary in relation to the purposes for which they are processed."
+            },
+            {
+              "title": "Principle of accuracy",
+              "description": "personal data must be accurate and always up to date."
+            },
+            {
+              "title": "Principle of storage limitation",
+              "description": "personal data will only be kept in a way that allows the identification of the User for the time necessary for the purposes of their processing."
+            },
+            {
+              "title": "Principle of integrity and confidentiality",
+              "description": "personal data will be processed in a way that guarantees their security and confidentiality."
+            },
+            {
+              "title": "Principle of proactive responsibility",
+              "description": "the Data Controller will be responsible for ensuring that the above principles are met."
+            }
+          ]
+        },
+        "dataCategories": {
+          "title": "Categories of personal data",
+          "content": "The categories of data processed at Franco Gabriel Amoroso are only identifying data. In no case are special categories of personal data processed within the meaning of article 9 of the GDPR."
+        },
+        "legalBasis": {
+          "title": "Legal basis for the processing of personal data",
+          "content": [
+            "The legal basis for the processing of personal data is consent. Franco Gabriel Amoroso undertakes to obtain the express and verifiable consent of the User for the processing of their personal data for one or more specific purposes.",
+            "The User will have the right to withdraw their consent at any time. It will be as easy to withdraw consent as it is to give it. As a general rule, the withdrawal of consent will not condition the use of the Website.",
+            "On occasions when the User must or may provide their data through forms to make inquiries, request information or for reasons related to the content of the Website, they will be informed if the completion of any of them is mandatory because they are essential for the correct development of the operation performed."
+          ]
+        },
+        "purposes": {
+          "title": "Purposes of processing personal data",
+          "content": [
+            "Personal data is collected and managed by Franco Gabriel Amoroso in order to facilitate, streamline and fulfill the commitments established between the Website and the User or the maintenance of the relationship established in the forms that the latter fills out or to attend to a request or query.",
+            "Likewise, the data may be used for commercial purposes of personalization, operational and statistical, and activities related to the corporate purpose of Franco Gabriel Amoroso, as well as for the extraction, storage of data and marketing studies to adapt the Content offered to the User, as well as improve the quality, operation and navigation of the Website.",
+            "At the time personal data is obtained, the User will be informed about the specific purpose or purposes of the processing to which the personal data will be destined; that is, the use or uses that will be given to the information collected."
+          ]
+        },
+        "retention": {
+          "title": "Personal data retention periods",
+          "content": [
+            "Personal data will only be retained for the minimum time necessary for the purposes of their processing and, in any case, only for the following period: 12 months, or until the User requests their deletion.",
+            "At the time personal data is obtained, the User will be informed about the period during which the personal data will be kept or, when that is not possible, the criteria used to determine this period."
+          ]
+        },
+        "recipients": {
+          "title": "Recipients of personal data",
+          "content": [
+            "The User's personal data will not be shared with third parties.",
+            "In any case, at the time personal data is obtained, the User will be informed about the recipients or categories of recipients of the personal data."
+          ]
+        },
+        "minors": {
+          "title": "Personal data of minors",
+          "content": "Respecting the provisions of articles 8 of the GDPR and 7 of Organic Law 3/2018, of December 5, on Personal Data Protection and guarantee of digital rights, only those over 14 years of age may give their consent for the processing of their personal data lawfully by Franco Gabriel Amoroso. If it is a minor under 14 years of age, the consent of parents or guardians will be necessary for processing, and this will only be considered lawful to the extent that they have authorized it."
+        },
+        "security": {
+          "title": "Secrecy and security of personal data",
+          "content": [
+            "Franco Gabriel Amoroso undertakes to adopt the necessary technical and organizational measures, according to the appropriate level of security for the risk of the data collected, in order to guarantee the security of personal data and prevent the destruction, loss or accidental or unlawful alteration of personal data transmitted, stored or otherwise processed, or unauthorized communication or access to such data.",
+            "The Website has an SSL (Secure Socket Layer) certificate, which ensures that personal data is transmitted securely and confidentially, as the transmission of data between the server and the User, and in feedback, is completely encrypted.",
+            "However, because Franco Gabriel Amoroso cannot guarantee the impregnability of the internet or the total absence of hackers or others who access personal data fraudulently, the Data Controller undertakes to communicate to the User without undue delay when a personal data security breach occurs that is likely to result in a high risk to the rights and freedoms of natural persons. Following the provisions of article 4 of the GDPR, a personal data security breach is understood as any security breach that causes the destruction, loss or accidental or unlawful alteration of personal data transmitted, stored or otherwise processed, or unauthorized communication or access to such data.",
+            "Personal data will be treated as confidential by the Data Controller, who undertakes to inform and guarantee through a legal or contractual obligation that such confidentiality is respected by their employees, associates, and any person to whom they make the information accessible."
+          ]
+        },
+        "rights": {
+          "title": "Rights derived from the processing of personal data",
+          "intro": "The User has over Franco Gabriel Amoroso and may, therefore, exercise against the Data Controller the following rights recognized in the GDPR and Organic Law 3/2018, of December 5, on Personal Data Protection and guarantee of digital rights:",
+          "items": [
+            {
+              "title": "Right of access",
+              "description": "It is the User's right to obtain confirmation of whether Franco Gabriel Amoroso is processing their personal data or not and, if so, obtain information about their specific personal data and the processing that Franco Gabriel Amoroso has carried out or carries out, as well as, among others, the information available on the origin of such data and the recipients of the communications made or planned of the same."
+            },
+            {
+              "title": "Right of rectification",
+              "description": "It is the User's right to have their personal data that turns out to be inaccurate or, taking into account the purposes of the processing, incomplete modified."
+            },
+            {
+              "title": "Right of erasure (\"the right to be forgotten\")",
+              "description": "It is the User's right, provided that current legislation does not establish otherwise, to obtain the erasure of their personal data when they are no longer necessary for the purposes for which they were collected or processed; the User has withdrawn their consent to the processing and it does not have another legal basis; the User opposes the processing and there is no other legitimate reason to continue with it; the personal data have been processed unlawfully; the personal data must be erased in compliance with a legal obligation; or the personal data have been obtained as a result of a direct offer of information society services to a minor under 14 years of age."
+            },
+            {
+              "title": "Right to restriction of processing",
+              "description": "It is the User's right to restrict the processing of their personal data. The User has the right to obtain restriction of processing when they contest the accuracy of their personal data; the processing is unlawful; the Data Controller no longer needs the personal data, but the User needs it to make claims; and when the User has opposed the processing."
+            },
+            {
+              "title": "Right to data portability",
+              "description": "In case the processing is carried out by automated means, the User will have the right to receive from the Data Controller their personal data in a structured, commonly used and machine-readable format, and to transmit them to another data controller. Whenever technically possible, the Data Controller will transmit the data directly to that other controller."
+            },
+            {
+              "title": "Right of opposition",
+              "description": "It is the User's right that the processing of their personal data is not carried out or that the processing of the same by Franco Gabriel Amoroso ceases."
+            },
+            {
+              "title": "Right not to be subject to a decision based solely on automated processing, including profiling",
+              "description": "It is the User's right not to be subject to an individualized decision based solely on the automated processing of their personal data, including profiling, existing except when current legislation establishes otherwise."
+            }
+          ],
+          "exerciseRights": {
+            "intro": "Thus, the User may exercise their rights through written communication addressed to the Data Controller with the reference \"GDPR-www.franamoroso.com\", specifying:",
+            "requirements": [
+              "Name, surnames of the User and copy of the ID. In cases where representation is admitted, it will also be necessary to identify by the same means the person representing the User, as well as the document proving the representation. The photocopy of the ID may be replaced by any other valid means in law that proves identity.",
+              "Petition with the specific reasons for the request or information to be accessed.",
+              "Address for notification purposes.",
+              "Date and signature of the applicant.",
+              "Any document that proves the petition being made."
+            ],
+            "contactInfo": {
+              "address": "Calle Muérdago 5, 29639, La Sierrazuela, Málaga, Spain",
+              "email": "di.francoamoroso@gmail.com"
+            }
+          }
+        },
+        "thirdPartyLinks": {
+          "title": "Links to third-party websites",
+          "content": "The Website may include hyperlinks or links that allow access to third-party web pages other than Franco Gabriel Amoroso, and which are therefore not operated by Franco Gabriel Amoroso. The owners of such websites will have their own data protection policies, being themselves, in each case, responsible for their own files and their own privacy practices."
+        },
+        "complaints": {
+          "title": "Complaints before the supervisory authority",
+          "content": "In case the User considers that there is a problem or infringement of current regulations in the way their personal data is being processed, they will have the right to effective judicial protection and to file a complaint with a supervisory authority, in particular, in the State in which they have their habitual residence, place of work or place of the alleged infringement. In the case of Spain, the supervisory authority is the Spanish Data Protection Agency (https://www.aepd.es/)."
+        }
+      }
+    },
+    "acceptance": {
+      "title": "II. ACCEPTANCE AND CHANGES TO THIS PRIVACY POLICY",
+      "content": [
+        "It is necessary that the User has read and agrees with the conditions on the protection of personal data contained in this Privacy Policy, as well as accepts the processing of their personal data so that the Data Controller can proceed to it in the manner, during the periods and for the purposes indicated. The use of the Website will imply acceptance of the Privacy Policy of the same.",
+        "Franco Gabriel Amoroso reserves the right to modify its Privacy Policy, according to its own criteria, or motivated by a legislative, jurisprudential or doctrinal change of the Spanish Data Protection Agency. Changes or updates to this Privacy Policy will not be explicitly notified to the User. It is recommended that the User consult this page periodically to be aware of the latest changes or updates.",
+        "This Privacy Policy was updated to adapt to Regulation (EU) 2016/679 of the European Parliament and of the Council, of April 27, 2016, on the protection of natural persons with regard to the processing of personal data and on the free movement of such data (GDPR) and to Organic Law 3/2018, of December 5, on Personal Data Protection and guarantee of digital rights.",
+        "This website Privacy Policy document was created using the free online web privacy policy template generator on 16/09/2025."
+      ]
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "title": "Cookies Policy",
+  "websiteTitle": "WEBSITE COOKIES POLICY",
+  "websiteUrl": "www.franamoroso.com",
+  "sections": {
+    "subsections": {
+      "whatAreCookies": {
+        "title": "What are cookies?",
+        "content": [
+          "Access to this Website may involve the use of cookies. Cookies are small pieces of information stored in the browser of each User —on the different devices they may use to browse— so that the server remembers certain information which will later be read only by the server that implemented it. Cookies make browsing easier, more user-friendly, and do not harm the browsing device.",
+          "Cookies are automatic procedures for collecting information regarding the preferences determined by the User during their visit to the Website, in order to recognize them as a User and personalize their experience and use of the Website. They may also, for example, help identify and resolve errors.",
+          "The information collected through cookies may include the date and time of visits to the Website, the pages viewed, the time spent on the Website, and the sites visited immediately before and after it. However, no cookie allows it to contact the User’s phone number or any other personal means of contact. No cookie can extract information from the User’s hard drive or steal personal information. The only way a User’s private information can become part of the Cookie file is if the User personally provides that information to the server.",
+          "Cookies that allow a person to be identified are considered personal data. Therefore, they are subject to the Privacy Policy described above. In this regard, the use of such cookies requires the User’s consent. This consent will be communicated based on a genuine choice, provided through an affirmative and positive decision, before the initial processing, and it will be revocable and documented."
+        ]
+      },
+      "howWeUseCookies": {
+        "title": "How we use cookies",
+        "content": "We only use essential cookies for:",
+        "items": [
+          "Authentication: To keep you logged in securely and maintain your session.",
+          "Security: To help detect and prevent fraudulent activity.",
+          "Functionality: To remember your login state while you navigate the site."
+        ],
+        "conclusion": "These cookies are necessary for the website to function and cannot be disabled."
+      },
+      "fistPartyCookies": {
+        "title": "First-party cookies",
+        "content": "These are cookies sent to the User’s computer or device and managed exclusively by Franco Gabriel Amoroso for the proper functioning of the Website. The information collected is used to improve the quality of the Website, its content, and the User’s experience. These cookies allow the User to be recognized as a recurring visitor to the Website and to tailor the content to offer material suited to their preferences."
+      },
+      "thirdPartyCookies": {
+        "title": "Third-party cookies",
+        "content": "We do not use cookies for advertising or marketing. If in the future we add analytics or third-party integrations, this policy will be updated accordingly."
+      },
+      "disablingCookies": {
+        "title": "Disabling, rejecting, and deleting cookies",
+        "content": "The User may disable, reject, and delete cookies —in whole or in part— installed on their device by configuring their browser settings (including, for example, Chrome, Firefox, Safari, Explorer). The procedures for rejecting and deleting cookies may differ from one Internet browser to another. Consequently, the User should consult the instructions provided by the Internet browser they are using. If the use of cookies is rejected —in whole or in part— the User may continue to use the Website, although the use of some of its features may be limited."
+      },
+      "legend": "This Cookies Policy document was created using the free online website cookies policy generator on 18/09/2025."
+    }
+  }
+}

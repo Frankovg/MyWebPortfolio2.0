@@ -3,8 +3,8 @@
 import bcrypt from "bcryptjs";
 import { revalidatePath } from "next/cache";
 
+import { SAMPLE_ACTION } from "@/lib/action-constants";
 import { checkAuth } from "@/lib/check-auth";
-import { SAMPLE_ACTION } from "@/lib/constants";
 import prisma from "@/lib/db";
 import { getUserByEmail } from "@/lib/server-utils-public";
 import { sleep } from "@/lib/utils";

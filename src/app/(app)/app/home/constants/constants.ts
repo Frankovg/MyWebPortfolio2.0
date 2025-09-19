@@ -34,7 +34,9 @@ import {
   Rhinoceros,
   AutodeskMax,
   SolidWorks,
-  VRay
+  VRay,
+  Copilot,
+  ClaudeCode
 } from "@/icons/techs"
 
 export const BASICS_TECHS = {
@@ -65,6 +67,20 @@ export const BASICS_TECHS = {
     description: "A typed superset of JavaScript that compiles to plain JavaScript.",
     link: "https://www.typescriptlang.org/",
     icon: Ts
+  },
+  claudecode: {
+    name: 'Claude Code',
+    value: 'claudecode',
+    description: "Claude is a next generation AI assistant built by Anthropic and trained to be safe, accurate, and secure to help you do your best work.",
+    link: "https://claude.com/",
+    icon: ClaudeCode
+  },
+  copilot: {
+    name: 'Github Copilot',
+    value: 'copilot',
+    description: "GitHub Copilot is a coding assistant powered by Artificial Intelligence (AI), which can run in various environments and help you be more efficient in your daily coding tasks.",
+    link: "https://copilot.microsoft.com/",
+    icon: Copilot
   },
   javascript: {
     name: 'JavaScript',
@@ -317,6 +333,8 @@ export const CATEGORIES = [
       BASICS_TECHS.turborepo,
       BASICS_TECHS.typescript,
       BASICS_TECHS.javascript,
+      BASICS_TECHS.claudecode,
+      BASICS_TECHS.copilot,
       BASICS_TECHS.html,
       BASICS_TECHS.css,
       BASICS_TECHS.node,
