@@ -217,3 +217,5 @@ export const LANGUAGE_DICTIONARY = {
   en: "English",
   es: "Spanish",
 };
+
+export const ACCOUNT_REQUEST_MESSAGE = "Hello,\n\nI would like to request access to a demo account to explore the platform and its features.\n\nThank you,\nBest regards"

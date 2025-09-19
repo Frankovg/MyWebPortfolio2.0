@@ -6,7 +6,7 @@ export const SubmitButton = ({ isPending }: { isPending: boolean }) => {
       loading={isPending}
       disabled={isPending}
       text="Log in"
-      className="mt-4 md:w-full"
+      className="mt-2 md:w-full"
       type="submit"
     />
   );

@@ -6,6 +6,7 @@ import { logIn } from "@/actions/index";
 
 import InputLogin from "./input-login";
 import { SubmitButton } from "./submit-button";
+import Link from "next/link";
 
 const AuthForm = () => {
   const [logInError, dispatchLogIn, isPending] = useActionState(logIn, undefined);
@@ -35,6 +36,9 @@ const AuthForm = () => {
       {logInError && (
         <p className="text-red-500 text-sm mt-2">{logInError.message}</p>
       )}
+      <Link href="/app/contact?request-demo-account=true" className='border rounded-md w-full flex justify-center py-2.5 mt-10 hover:text-white hover:border-white'>
+        Request a demo account
+      </Link>
     </form>
   );
 };

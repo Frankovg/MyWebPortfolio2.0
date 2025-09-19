@@ -14,9 +14,15 @@ import { Textarea } from "@/components/ui/textarea";
 import { contactFormSchema, TContactForm } from "@/lib/validations";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { ACCOUNT_REQUEST_MESSAGE } from "@/lib/constants";
+import { RequestMessage } from "./request-message";
 
 function ContactForm() {
   const [isPending, startTransition] = useTransition();
+  const searchParams = useSearchParams();
+
+  const isAnAccountRequest = searchParams.get('request-demo-account')
 
   const {
     register,
@@ -46,7 +52,7 @@ function ContactForm() {
       const mailText = `Name: ${messageData.first_name} ${messageData.last_name}\n  Email: ${messageData.email}\n Message: ${messageData.message}`;
       const mail = {
         email: messageData.email,
-        subject: `Mensaje de ${messageData.email}`,
+        subject: isAnAccountRequest ? `Solicitud de ${messageData.email}` : `Mensaje de ${messageData.email}`,
         text: mailText,
       };
 
@@ -64,6 +70,7 @@ function ContactForm() {
 
   return (
     <div className="w-full pb-24">
+      {isAnAccountRequest && <RequestMessage />}
       <form className="max-w-contact mx-auto" action={handleAction}>
         <div className="space-y-4">
           <div className="flex flex-col md:flex-row gap-3">
@@ -129,6 +136,7 @@ function ContactForm() {
               id="message"
               placeholder="Type your message here."
               {...register("message")}
+              defaultValue={isAnAccountRequest ? ACCOUNT_REQUEST_MESSAGE : ""}
             />
             <p className="text-sm text-muted-foreground">
               También puedes escribirme en español.
