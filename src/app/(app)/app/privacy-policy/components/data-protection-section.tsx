@@ -1,4 +1,5 @@
 import privacyPolicyContent from '../privacy-policy-content.json';
+
 import ContactInfo from './contact-info';
 
 export default function DataProtectionSection() {

@@ -1,12 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import React, { useActionState } from "react";
 
 import { logIn } from "@/actions/index";
 
 import InputLogin from "./input-login";
 import { SubmitButton } from "./submit-button";
-import Link from "next/link";
 
 const AuthForm = () => {
   const [logInError, dispatchLogIn, isPending] = useActionState(logIn, undefined);

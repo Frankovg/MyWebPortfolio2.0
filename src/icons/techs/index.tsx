@@ -35,4 +35,4 @@ export { default as AutodeskMax } from './autodeskMax';
 export { default as Rhinoceros } from './rhinoceros';
 export { default as CorelDraw } from './corel';
 export { default as Copilot } from './copilot';
-export { default as ClaudeCode } from './claudeCode';
+export { default as ClaudeCode } from './claudecode';

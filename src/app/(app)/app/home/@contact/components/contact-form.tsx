@@ -1,6 +1,8 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useTransition } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -8,14 +10,14 @@ import { toast } from "sonner";
 import { sendMail } from "@/actions/index";
 import ButtonWhite from "@/components/primitives/button-white";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { contactFormSchema, TContactForm } from "@/lib/validations";
-import { Checkbox } from "@/components/ui/checkbox";
-import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { ACCOUNT_REQUEST_MESSAGE } from "@/lib/constants";
+import { contactFormSchema, TContactForm } from "@/lib/validations";
+
+
 import { RequestMessage } from "./request-message";
 
 function ContactForm() {

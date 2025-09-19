@@ -1,11 +1,13 @@
 export const dynamic = 'force-static';
 export const revalidate = 3600;
 
-import Section from "@/components/section";
+import { LegalHeaders } from "@/components/legals-header";
 import H4 from "@/components/primitives/h4";
+import Section from "@/components/section";
+
 import CookiesPolicyContent from "./components/cookies-policy-content";
 import cookiesPolicyContent from './cookies-policy-content.json';
-import { LegalHeaders } from "@/components/legals-header";
+
 
 export default function CookiesPolicy() {
   return (

@@ -1,4 +1,5 @@
 import Main from "@/components/main"
+
 import Contact from "../home/@contact/page"
 
 type LayoutProps = {
