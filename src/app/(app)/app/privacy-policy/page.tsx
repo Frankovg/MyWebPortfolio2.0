@@ -1,6 +1,8 @@
 export const dynamic = 'force-static';
 export const revalidate = 3600;
 
+import { Metadata } from "next";
+
 import { LegalHeaders } from "@/components/legals-header";
 import H4 from "@/components/primitives/h4";
 import Section from "@/components/section";
@@ -9,6 +11,11 @@ import AcceptanceSection from "./components/acceptance-section";
 import DataProtectionSection from "./components/data-protection-section";
 import privacyPolicyContent from './privacy-policy-content.json';
 
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://franamoroso.com/app/privacy-policy",
+  },
+}
 
 export default function PrivacyPolicy() {
   return (

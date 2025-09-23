@@ -1,6 +1,8 @@
 export const dynamic = 'force-static';
 export const revalidate = 3600;
 
+import { Metadata } from "next";
+
 import { LegalHeaders } from "@/components/legals-header";
 import H4 from "@/components/primitives/h4";
 import Section from "@/components/section";
@@ -8,6 +10,11 @@ import Section from "@/components/section";
 import CookiesPolicyContent from "./components/cookies-policy-content";
 import cookiesPolicyContent from './cookies-policy-content.json';
 
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://franamoroso.com/app/cookies-policy",
+  },
+}
 
 export default function CookiesPolicy() {
   return (
