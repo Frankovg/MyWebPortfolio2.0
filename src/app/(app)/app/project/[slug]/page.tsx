@@ -13,6 +13,38 @@ import VideoComponent from "./components/video-component";
 import Loading from "./loading";
 import { parseCategories } from "./utils/parse-categories";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const project = await getProjectBySlug(slug)
+
+  if (!project) {
+    return {
+      title: "FRAN's project",
+      description: "Project example",
+      alternates: {
+        canonical: "https://franamoroso.com/app/home#projects",
+      },
+    }
+  }
+
+  return {
+    title: project.title,
+    description: project.shortDescription,
+    alternates: {
+      canonical: `https://franamoroso.com/app/project/${slug}`,
+    },
+    openGraph: {
+      title: project.title,
+      description: project.shortDescription,
+      url: project.image,
+    },
+  }
+}
+
 //TODO: add zod validations to every fetch
 
 export default async function ProjectPage({
