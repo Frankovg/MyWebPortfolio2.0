@@ -3,22 +3,18 @@ import H3 from "@/components/primitives/h3";
 import ScrollLink from "@/components/primitives/scroll-link";
 import Section from "@/components/section";
 
-import TextAnimation from "./text-animation";
-
-const toRotate = [
-  "Front-End Developer",
-  "UX/UI Designer",
-  "Industrial Designer",
-  "Web App Developer",
-];
+import { AnimatedHero } from "./animated-hero";
 
 export const Hero = () => {
   return (
     <Section id="home" className="h-[50vh] pt-24">
       <div className="w-full text-center [&_h1]:text-white [&_h1]:text-3xl 550:[&_h1]:text-5xl 830:[&_h1]:text-7xl [&_h1]:font-semibold space-y-0 550:space-y-3">
         <h4>Welcome to my portfolio</h4>
-        <h1>Hi! I&apos;m Franco</h1>
-        <TextAnimation texts={toRotate} />
+        <h1>
+          <span>Hi! I&apos;m Franco</span>
+          <AnimatedHero />
+        </h1>
+        {/* <TextAnimation texts={toRotate} /> */}
         <H3>
           As a{" "}
           <span className="font-semibold text-white">
