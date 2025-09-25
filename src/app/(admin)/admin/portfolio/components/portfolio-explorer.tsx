@@ -7,12 +7,10 @@ import PortfolioTabsList from "./portfolio-tabs-list";
 import PortfolioTabsWrapper from "./portfolio-tabs-wrapper";
 
 type PortfolioExplorerProps = {
-  isAdmin?: boolean;
   defaultCategory: string;
 };
 
 function PortfolioExplorer({
-  isAdmin = false,
   defaultCategory,
 }: PortfolioExplorerProps) {
   const { categories } = useProjectContext();

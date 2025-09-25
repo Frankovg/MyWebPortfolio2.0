@@ -1,7 +1,6 @@
 "use client";
 
 import { createContext, startTransition, useOptimistic } from "react";
-import { toast } from "sonner";
 
 import { addProject, deleteProject, editProject } from "@/actions/index";
 import {
@@ -152,7 +151,7 @@ const ProjectContextProvider = ({
     });
     const error = await editProject(projectId, project, categoryId);
     if (error) {
-      toast.warning(error.message);
+      showErrorMessage(error);
       return;
     }
   };

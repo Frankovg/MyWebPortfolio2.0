@@ -106,7 +106,7 @@ const gallerySchema = z.object({
     .string()
     .trim()
     .min(1)
-    .max(200, value_too_long_error_200)
+    .max(1000, value_too_long_error_1000)
     .nullable(),
 });
 
