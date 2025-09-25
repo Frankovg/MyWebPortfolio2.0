@@ -2,7 +2,6 @@
 
 import { Download } from "@prisma/client";
 import { createContext, startTransition, useOptimistic } from "react";
-import { toast } from "sonner";
 
 import { addFile, deleteFile, editFile } from "@/actions/index";
 import { Action, DownloadEssentials } from "@/lib/types";
@@ -120,7 +119,7 @@ const UserDataContextProvider = ({
     });
     const error = await editFile(downloadId, download);
     if (error) {
-      toast.warning(error.message);
+      showErrorMessage(error);
       return;
     }
   };

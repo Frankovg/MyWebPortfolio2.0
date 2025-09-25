@@ -106,7 +106,7 @@ const gallerySchema = z.object({
     .string()
     .trim()
     .min(1)
-    .max(200, value_too_long_error_200)
+    .max(1000, value_too_long_error_1000)
     .nullable(),
 });
 
@@ -199,16 +199,16 @@ const passwordSchema = z
   .min(8, { message: "Password must be at least 8 characters long" })
   .max(20, { message: "Password must be at most 20 characters long" })
   .refine((password) => /[A-Z]/.test(password), {
-    message: "Password must contain at least one uppercase letter",
+    message: "Password must contain one uppercase letter",
   })
   .refine((password) => /[a-z]/.test(password), {
-    message: "Password must contain at least one lowercase letter",
+    message: "Password must contain one lowercase letter",
   })
   .refine((password) => /[0-9]/.test(password), {
-    message: "Password must contain at least one number",
+    message: "Password must contain one number",
   })
   .refine((password) => /[^a-zA-Z0-9]/.test(password), {
-    message: "Password must contain at least one special character",
+    message: "Password must contain one special character",
   });
 
 export const changePasswordFormSchema = z

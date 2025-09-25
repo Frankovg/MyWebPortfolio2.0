@@ -19,16 +19,12 @@ const DeleteModal = dynamic(
   }
 );
 
-type AccountsTableProps = {
-  isAdmin?: boolean;
-};
-
 const initialModalState = {
   isOpen: false,
   downloadId: "",
 };
 
-function DownloadsTable({ isAdmin = false }: AccountsTableProps) {
+function DownloadsTable() {
   const [deleteModal, setDeleteModal] = useState(initialModalState);
 
   const { downloads, handleDeleteFile } = useUserDataContext();
