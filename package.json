@@ -70,7 +70,7 @@
     "@types/bcrypt": "^5.0.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/jest": "29.2.3",
-    "@types/node": "^20",
+    "@types/node": "^24.5.2",
     "@types/nodemailer": "^6.4.16",
     "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
