@@ -19,7 +19,7 @@
     "test:coverage:open": "open coverage/lcov-report/index.html"
   },
   "dependencies": {
-    "@hookform/resolvers": "^3.9.0",
+    "@hookform/resolvers": "^5.2.2",
     "@prisma/client": "^5.19.1",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-checkbox": "^1.1.2",
@@ -53,7 +53,7 @@
     "react": "^19.0.0",
     "react-day-picker": "^8.10.1",
     "react-dom": "^19.0.0",
-    "react-hook-form": "^7.53.0",
+    "react-hook-form": "^7.63.0",
     "recharts": "^2.15.0",
     "server-only": "^0.0.1",
     "sonner": "^1.5.0",
