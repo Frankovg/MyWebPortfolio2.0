@@ -132,8 +132,8 @@ importers:
         specifier: ^1.1.2
         version: 1.1.2(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       zod:
-        specifier: ^3.23.8
-        version: 3.25.72
+        specifier: ^4.1.11
+        version: 4.1.11
     devDependencies:
       '@tailwindcss/postcss':
         specifier: ^4.0.0
@@ -4198,8 +4198,8 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  zod@3.25.72:
-    resolution: {integrity: sha512-Cl+fe4dNL4XumOBNBsr0lHfA80PQiZXHI4xEMTEr8gt6aGz92t3lBA32e71j9+JeF/VAYvdfBnuwJs+BMx/BrA==}
+  zod@4.1.11:
+    resolution: {integrity: sha512-WPsqwxITS2tzx1bzhIKsEs19ABD5vmCVa4xBo2tq/SrV4RNZtfws1EnCWQXM6yh8bD08a1idvkB5MZSBiZsjwg==}
 
 snapshots:
 
@@ -8713,4 +8713,4 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  zod@3.25.72: {}
+  zod@4.1.11: {}
