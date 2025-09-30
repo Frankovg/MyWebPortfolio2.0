@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
   staticPageGenerationTimeout: 120,
   reactStrictMode: true,
+  outputFileTracingRoot: path.join(__dirname),
   images: {
     remotePatterns: [
       {
