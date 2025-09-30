@@ -1,6 +1,6 @@
 "use server";
 
-import nodemailer from "nodemailer";
+import { createTransport } from "nodemailer";
 import SMTPTransport from "nodemailer/lib/smtp-transport";
 
 import { sleep } from "@/lib/utils";
@@ -11,7 +11,7 @@ const SMTP_SERVER_USERNAME = process.env.SMTP_SERVER_USERNAME;
 const SMTP_SERVER_PASSWORD = process.env.SMTP_SERVER_PASSWORD;
 const SITE_MAIL_RECEIVER = process.env.SITE_MAIL_RECEIVER;
 
-const transporter = nodemailer.createTransport({
+const transporter = createTransport({
   service: "gmail",
   host: SMTP_SERVER_HOST,
   port: 587,
@@ -64,8 +64,8 @@ export async function sendMail(mail: SendMailProps) {
       text: text,
       html: html ? html : "",
     });
-    console.log("Message Sent", info.messageId);
-    console.log("Mail sent to", SITE_MAIL_RECEIVER);
+    console.warn("Message Sent", info.messageId);
+    console.warn("Mail sent to", SITE_MAIL_RECEIVER);
   }
 
   return info;

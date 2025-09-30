@@ -42,7 +42,7 @@ export function PortfolioChart({
       };
     });
     return config;
-  }, [chartData, categories]);
+  }, [categories]);
 
   const totalProjects = useMemo(() => {
     return categories.reduce(

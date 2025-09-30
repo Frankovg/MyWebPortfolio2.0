@@ -114,7 +114,7 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
     <Dialog>
       <div className="relative w-full">
         <DialogTrigger asChild>
-          <ExpanderButton onClick={() => console.log("Open image")} />
+          <ExpanderButton onClick={() => console.warn("Open image")} />
         </DialogTrigger>
         <CarouselViewer images={mainImage} setMainApi={setMainApi} />
         <CarouselThumbnail

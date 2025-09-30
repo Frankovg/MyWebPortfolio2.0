@@ -21,11 +21,11 @@ export async function addFile(newFile: DownloadEssentials) {
       message: SAMPLE_ACTION,
     };
   }
-  console.log("NEW FILE ", newFile);
+  console.warn("NEW FILE ", newFile);
 
   const validatedFile = downloadFormSchema.safeParse(newFile);
   if (!validatedFile.success) {
-    console.log(validatedFile.error);
+    console.warn(validatedFile.error);
 
     return {
       message: "Invalid file data.",
