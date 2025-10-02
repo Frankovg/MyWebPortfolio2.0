@@ -9,8 +9,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "lint:fix": "next lint --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
     "postinstall": "prisma generate",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -87,7 +87,8 @@
     "tailwindcss": "^4.1.13",
     "ts-jest": "29.4.4",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "@eslint/eslintrc": "^3"
   },
   "overrides": {
     "react-is": "^19.0.0"

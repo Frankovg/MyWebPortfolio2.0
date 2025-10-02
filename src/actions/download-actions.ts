@@ -89,7 +89,7 @@ export async function editFile(
         };
       }
 
-      const updateData: any = {
+      const updateData = {
         ...validatedDownload.data,
       };
 
@@ -140,6 +140,7 @@ export async function deleteFile(downloadId: string) {
       }),
     ]);
   } catch (error) {
+    console.error("Error deleting the file:", error);
     return {
       message: "Could not delete the file.",
     };

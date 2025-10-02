@@ -1,10 +1,11 @@
-import { TECH_STACK_DATA } from "./seed-constants";
 import { Prisma, PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
-import { WEB_DEVELOPMENT_SEED } from "./seed-web-development";
+
+import { TECH_STACK_DATA } from "./seed-constants";
+import { CV_EN_SEED, CV_ES_SEED, PORTFOLIO_EN_SEED } from "./seed-download-files";
 import { GRAPHIC_AND_UX_UI_DESIGN_SEED } from "./seed-graphic-and-ux-ui-design";
 import { INDUSTRIAL_DESIGN_SEED } from "./seed-industrial-design";
-import { CV_EN_SEED, CV_ES_SEED, PORTFOLIO_EN_SEED } from "./seed-download-files";
+import { WEB_DEVELOPMENT_SEED } from "./seed-web-development";
 
 const prisma = new PrismaClient();
 

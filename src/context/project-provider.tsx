@@ -119,7 +119,7 @@ const ProjectContextProvider = ({
       payload: { ...newProject, categoryId },
     });
     const error = await addProject(newProject, categoryId);
-    if (!!error) {
+    if (error) {
       showErrorMessage(error);
       return;
     }
@@ -134,7 +134,7 @@ const ProjectContextProvider = ({
     });
 
     const error = await deleteProject(projectId);
-    if (!!error) {
+    if (error) {
       showErrorMessage(error);
       return;
     }

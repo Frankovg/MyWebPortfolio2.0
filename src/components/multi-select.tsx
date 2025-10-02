@@ -39,7 +39,7 @@ export const multiSelectVariants = cva("m-1", {
 
 interface MultiSelectProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof multiSelectVariants> {
+  VariantProps<typeof multiSelectVariants> {
   options: {
     label: string;
     value: string;
@@ -129,7 +129,7 @@ export const MultiSelect = React.forwardRef<
         onOpenChange={setIsPopoverOpen}
         modal={modalPopover}
       >
-        <PopoverTrigger asChild>
+        <PopoverTrigger asChild={asChild}>
           <Button
             ref={ref}
             {...props}

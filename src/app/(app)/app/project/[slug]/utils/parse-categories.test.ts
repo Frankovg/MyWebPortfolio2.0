@@ -1,3 +1,5 @@
+import { IProjectWithTechStack } from "@/lib/types"
+
 import { mockCategories } from "./__mocks__/categories"
 import { parseCategories } from "./parse-categories"
 
@@ -59,7 +61,7 @@ describe('parseCategories', () => {
         id: 'test-id',
         name: 'Test Category',
         value: 'test-value',
-        projects: null as any
+        projects: null as unknown as IProjectWithTechStack[]
       }
     ]
 
@@ -78,7 +80,7 @@ describe('parseCategories', () => {
           { slug: 'first-project', id: '1', title: 'First' },
           { slug: 'second-project', id: '2', title: 'Second' },
           { slug: 'third-project', id: '3', title: 'Third' }
-        ] as any[]
+        ] as unknown as IProjectWithTechStack[]
       }
     ]
 
