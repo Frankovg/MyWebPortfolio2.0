@@ -21,11 +21,11 @@ export async function addFile(newFile: DownloadEssentials) {
       message: SAMPLE_ACTION,
     };
   }
-  console.log("NEW FILE ", newFile);
+  console.warn("NEW FILE ", newFile);
 
   const validatedFile = downloadFormSchema.safeParse(newFile);
   if (!validatedFile.success) {
-    console.log(validatedFile.error);
+    console.warn(validatedFile.error);
 
     return {
       message: "Invalid file data.",
@@ -89,7 +89,7 @@ export async function editFile(
         };
       }
 
-      const updateData: any = {
+      const updateData = {
         ...validatedDownload.data,
       };
 
@@ -140,6 +140,7 @@ export async function deleteFile(downloadId: string) {
       }),
     ]);
   } catch (error) {
+    console.error("Error deleting the file:", error);
     return {
       message: "Could not delete the file.",
     };

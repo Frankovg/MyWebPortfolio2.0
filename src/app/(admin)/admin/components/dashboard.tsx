@@ -5,7 +5,7 @@ import { DownloadFiles } from "./download-files";
 import { PortfolioChart } from "./portfolio-chart";
 import { SampleAccountStatus } from "./sample-account-status";
 
-export async function Dashboard({ isAdmin = false }: { isAdmin?: boolean }) {
+export async function Dashboard() {
   const categories = await getCategoriesForChart();
   const users = await getUsersAdmin();
   const downloads = await getDownloadsContent();

@@ -59,14 +59,14 @@ export function DownloadFormProvider({
   } = useForm<TDownloadForm>({
     resolver: zodResolver(downloadFormSchema),
     defaultValues: {
-      imageUrl: download?.imageUrl || "",
-      alt: download?.alt || "",
-      name: download?.name || "",
-      description: download?.description || "",
-      language: download?.language || "en",
-      fileHref: download?.fileHref || "",
-      format: download?.format || "",
-      isActive: download?.isActive || false,
+      imageUrl: download?.imageUrl ?? "",
+      alt: download?.alt ?? "",
+      name: download?.name ?? "",
+      description: download?.description ?? "",
+      language: download?.language ?? "en",
+      fileHref: download?.fileHref ?? "",
+      format: download?.format ?? "",
+      isActive: download?.isActive ?? false,
     },
   });
 

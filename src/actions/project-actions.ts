@@ -66,7 +66,11 @@ export async function addProject(
           })),
         },
         roles: {
-          create: validatedProject.data.roles,
+          create: validatedProject.data.roles.map((role) => ({
+            label: role.label,
+            value: role.value,
+            percentage: role.percentage,
+          })),
         },
       },
     });
@@ -178,7 +182,11 @@ export async function editProject(
           where: { projectId: validatedProjectId.data },
         });
         updateData.gallery = {
-          create: validatedProject.data.gallery,
+          create: validatedProject.data.gallery.map((item) => ({
+            imageUrl: item.imageUrl,
+            alt: item.alt,
+            description: item.description,
+          })),
         };
       } else {
         delete updateData.gallery;
@@ -187,7 +195,9 @@ export async function editProject(
       if (techStackChanged) {
         updateData.techStack = {
           set: [],
-          connect: validatedProject.data.techStack,
+          connect: validatedProject.data.techStack.map((tech) => ({
+            value: tech.value,
+          })),
         };
       } else {
         delete updateData.techStack;
@@ -198,7 +208,11 @@ export async function editProject(
           where: { projectId: validatedProjectId.data },
         });
         updateData.roles = {
-          create: validatedProject.data.roles,
+          create: validatedProject.data.roles.map((role) => ({
+            label: role.label,
+            value: role.value,
+            percentage: role.percentage,
+          })),
         };
       } else {
         delete updateData.roles;
@@ -265,6 +279,7 @@ export async function deleteProject(projectId: string) {
       }),
     ]);
   } catch (error) {
+    console.error("Could not delete project.", error);
     return {
       message: "Could not delete project.",
     };

@@ -29,30 +29,41 @@ const validTechStackValues = TECH_STACK_DATA.map((tech) => tech.value);
 export const contactFormSchema = z
   .object({
     first_name: z
-      .string({ invalid_type_error, required_error })
+      .string({
+        error: (issue) => issue.input === undefined
+          ? required_error
+          : invalid_type_error
+      })
       .trim()
-      .min(1, { message: value_too_short_error })
+      .min(1, { error: value_too_short_error })
       .max(50, value_too_long_error_50),
     last_name: z
-      .string({ invalid_type_error, required_error })
+      .string({
+        error: (issue) => issue.input === undefined
+          ? required_error
+          : invalid_type_error
+      })
       .trim()
-      .min(1, { message: value_too_short_error })
+      .min(1, { error: value_too_short_error })
       .max(50, value_too_long_error_50),
     phone: z
       .string()
-      .min(6, { message: value_too_short_error })
+      .min(6, { error: value_too_short_error })
       .max(16)
-      .regex(phoneValidation, { message: "Invalid phone." })
+      .regex(phoneValidation, { error: "Invalid phone." })
       .optional()
       .or(z.literal("")),
     email: z
-      .string({ invalid_type_error, required_error })
-      .email({ message: valid_email_address })
-      .min(1, { message: value_too_short_error }),
+      .email({
+        error: (issue) => issue.input === undefined
+          ? required_error
+          : valid_email_address
+      })
+      .min(1, { error: value_too_short_error }),
     message: z
       .string()
       .trim()
-      .min(10, { message: value_too_short_error_10 })
+      .min(10, { error: value_too_short_error_10 })
       .max(1000, value_too_long_error_1000),
     privacy_policy: z.boolean()
   })
@@ -62,21 +73,24 @@ export type TContactForm = z.infer<typeof contactFormSchema>;
 
 export const emailSchema = z.object({
   email: z
-    .string({ invalid_type_error, required_error })
-    .email({ message: valid_email_address })
-    .min(1, { message: value_too_short_error }),
+    .email({
+      error: (issue) => issue.input === undefined
+        ? required_error
+        : valid_email_address
+    })
+    .min(1, { error: value_too_short_error }),
   sendTo: z.string().optional(),
-  subject: z.string().min(1, { message: value_too_short_error }),
+  subject: z.string().min(1, { error: value_too_short_error }),
   text: z
     .string()
     .trim()
-    .min(10, { message: value_too_short_error_10 })
+    .min(10, { error: value_too_short_error_10 })
     .max(1000),
   html: z.string().optional(),
 });
 
 export const authSchema = z.object({
-  email: z.string().email().max(100),
+  email: z.email().max(100),
   password: z.string().max(100),
 });
 
@@ -87,56 +101,56 @@ const techStackSchema = z.object({
   value: z
     .string()
     .trim()
-    .min(1, { message: required_error })
+    .min(1, { error: required_error })
     .refine((val) => validTechStackValues.includes(val), {
-      message: "Value must be one of the following in the list",
+      error: "Value must be one of the following in the list",
     }),
 });
 
 const roleSchema = z.object({
-  label: z.string().trim().min(1, { message: required_error }),
-  value: z.string().trim().min(1, { message: required_error }),
-  percentage: z.number().gte(1).lte(100).int().positive().finite(),
+  label: z.string().trim().min(1, { error: required_error }),
+  value: z.string().trim().min(1, { error: required_error }),
+  percentage: z.int().gte(1).lte(100).positive(),
 });
 
 const gallerySchema = z.object({
-  imageUrl: z.string().trim().url({ message: invalid_url_error }),
-  alt: z.string().trim().min(1, { message: required_error }),
+  imageUrl: z.url({ error: invalid_url_error }).trim(),
+  alt: z.string().trim().min(1, { error: required_error }),
   description: z
     .string()
     .trim()
     .min(1)
-    .max(200, value_too_long_error_200)
+    .max(1000, value_too_long_error_1000)
     .nullable(),
 });
 
-export const categoryIdSchema = z.string().cuid();
-export const projectIdSchema = z.string().cuid();
+export const categoryIdSchema = z.cuid();
+export const projectIdSchema = z.cuid();
 
 export const projectFormSchema = z
   .object({
     title: z
       .string()
       .trim()
-      .min(1, { message: required_error })
+      .min(1, { error: required_error })
       .max(50, value_too_long_error_50),
     shortDescription: z
       .string()
       .trim()
-      .min(1, { message: required_error })
+      .min(1, { error: required_error })
       .max(200, value_too_long_error_200),
     description: z
       .string()
       .trim()
-      .min(1, { message: required_error })
+      .min(1, { error: required_error })
       .max(2000, value_too_long_error_2000),
-    image: z.string().trim().url({ message: invalid_url_error }),
-    slug: z.string().trim().min(1, { message: required_error }),
+    image: z.url({ error: invalid_url_error }).trim(),
+    slug: z.string().trim().min(1, { error: required_error }),
     gallery: z.array(gallerySchema),
-    date: z.date().default(() => new Date()),
-    repository: z.string().url({ message: invalid_url_error }).nullable(),
-    websiteUrl: z.string().url({ message: invalid_url_error }).nullable(),
-    videoUrl: z.string().url({ message: invalid_url_error }).nullable(),
+    date: z.date(),
+    repository: z.url({ error: invalid_url_error }).nullable(),
+    websiteUrl: z.url({ error: invalid_url_error }).nullable(),
+    videoUrl: z.url({ error: invalid_url_error }).nullable(),
     videoTitle: z.string().trim().max(50, value_too_long_error_50).nullable(),
     videoDescription: z
       .string()
@@ -144,12 +158,12 @@ export const projectFormSchema = z
       .max(1000, value_too_long_error_1000)
       .nullable(),
     company: z.string().trim().max(50, value_too_long_error_50).nullable(),
-    companyUrl: z.string().url({ message: invalid_url_error }).nullable(),
+    companyUrl: z.url({ error: invalid_url_error }).nullable(),
     client: z.string().trim().max(50, value_too_long_error_50).nullable(),
-    clientUrl: z.string().url({ message: invalid_url_error }).nullable(),
+    clientUrl: z.url({ error: invalid_url_error }).nullable(),
     techStack: z.array(techStackSchema),
     roles: z.array(roleSchema),
-    published: z.boolean().default(true),
+    published: z.boolean(),
   })
   .transform((data) => ({
     ...data,
@@ -162,29 +176,29 @@ export const downloadIdSchema = z.string().cuid();
 
 export const downloadFormSchema = z
   .object({
-    imageUrl: z.string().trim().url({ message: invalid_url_error }),
-    alt: z.string().trim().min(1, { message: required_error }),
+    imageUrl: z.url({ error: invalid_url_error }).trim(),
+    alt: z.string().trim().min(1, { error: required_error }),
     name: z
       .string()
       .trim()
-      .min(1, { message: required_error })
+      .min(1, { error: required_error })
       .max(50, value_too_long_error_50),
     description: z
       .string()
       .trim()
-      .min(1, { message: required_error })
+      .min(1, { error: required_error })
       .max(2000, value_too_long_error_2000),
     language: z.string()
       .trim()
-      .min(1, { message: required_error })
+      .min(1, { error: required_error })
       .max(10, value_too_long_error_10),
-    fileHref: z.string().trim().url({ message: invalid_url_error }),
+    fileHref: z.url({ error: invalid_url_error }).trim(),
     format: z
       .string()
       .trim()
-      .min(1, { message: required_error })
+      .min(1, { error: required_error })
       .max(10, value_too_long_error_10),
-    isActive: z.boolean().default(false),
+    isActive: z.boolean(),
   })
   .transform((data) => ({
     ...data,
@@ -196,29 +210,29 @@ export type TDownloadForm = z.infer<typeof downloadFormSchema>;
 const passwordSchema = z
   .string()
   .trim()
-  .min(8, { message: "Password must be at least 8 characters long" })
-  .max(20, { message: "Password must be at most 20 characters long" })
+  .min(8, { error: "Password must be at least 8 characters long" })
+  .max(20, { error: "Password must be at most 20 characters long" })
   .refine((password) => /[A-Z]/.test(password), {
-    message: "Password must contain at least one uppercase letter",
+    error: "Password must contain one uppercase letter",
   })
   .refine((password) => /[a-z]/.test(password), {
-    message: "Password must contain at least one lowercase letter",
+    error: "Password must contain one lowercase letter",
   })
   .refine((password) => /[0-9]/.test(password), {
-    message: "Password must contain at least one number",
+    error: "Password must contain one number",
   })
   .refine((password) => /[^a-zA-Z0-9]/.test(password), {
-    message: "Password must contain at least one special character",
+    error: "Password must contain one special character",
   });
 
 export const changePasswordFormSchema = z
   .object({
-    currentPassword: z.string().min(1, { message: required_error }).max(100),
+    currentPassword: z.string().min(1, { error: required_error }).max(100),
     password: passwordSchema,
     confirmPassword: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match",
+    error: "Passwords do not match",
     path: ["confirmPassword"],
   });
 

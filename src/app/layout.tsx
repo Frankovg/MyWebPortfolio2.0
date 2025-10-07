@@ -7,37 +7,49 @@ import UserDataContextProvider from "@/context/user-data-provider";
 import { getDownloadsContent } from "@/lib/server-utils-admin";
 import { cn } from "@/lib/utils";
 
-import type { Metadata } from "next";
-
 import "../styles/globals.css";
+
+export async function generateMetadata() {
+  return {
+    title: "FRAN Front-end Developer & Designer",
+    description: "Hi! This is my Web-Portfolio, I hope you like it!",
+    metadataBase: new URL("https://franamoroso.com/"),
+    keywords: [
+      "software development",
+      "software",
+      "web development",
+      "mobile development",
+      "digital transformation",
+      "application development",
+    ],
+    authors: [{ name: "Franco Gabriel Amoroso" }],
+    creator: "Franco Gabriel Amoroso",
+    publisher: "Franco Gabriel Amoroso",
+    applicationName: "My Web Portfolio 2.0",
+    generator: "Next.js",
+    robots: '/robots.txt',
+    icons: {
+      icon: '/icon.svg',
+    },
+    manifest: '/manifest.webmanifest',
+    other: {
+      'sitemap': '/sitemap.xml',
+    },
+    alternates: {
+      canonical: "https://franamoroso.com/app/home",
+    },
+    openGraph: {
+      title: "Franco Gabriel Amoroso",
+      description: "Hi! This is my Web-Portfolio, I hope you like it!",
+      url: "https://drive.google.com/file/d/1OoH2gdSw9MpyeO24ydz0qQMFHlZiKbdL/view?usp=drive_link",
+    },
+  }
+}
 
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 });
-
-export const metadata: Metadata = {
-  metadataBase: new URL("https://franamoroso.com/"),
-  title: "FRAN Front-end Developer & Designer",
-  description: "Hi! This is my Web-Portfolio, I hope you like it!",
-  keywords: [
-    "software development",
-    "software",
-    "web development",
-    "mobile development",
-    "digital transformation",
-    "application development",
-  ],
-  authors: [{ name: "Franco Gabriel Amoroso" }],
-  creator: "Franco Gabriel Amoroso",
-  publisher: "Franco Gabriel Amoroso",
-  applicationName: "My Web Portfolio 2.0",
-  generator: "Next.js",
-  //TODO: Add openGraph
-  // openGraph: {
-  //   images: '/og-image.png',
-  // },
-};
 
 export default async function RootLayout({
   children,
@@ -48,12 +60,6 @@ export default async function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      {/* //TODO: remove this script */}
-      {/* <script
-        src="https://unpkg.com/react-scan/dist/auto.global.js"
-        async
-      ></script> */}
-
       <meta property="og:url" content="https://franamoroso.com/" />
       <meta property="og:type" content="website" />
       <body

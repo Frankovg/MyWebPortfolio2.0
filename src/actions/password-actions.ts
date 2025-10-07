@@ -73,6 +73,7 @@ export async function changePassword(passwordValues: TChangePasswordForm) {
       },
     });
   } catch (error) {
+    console.error("Could not change the password", error);
     return {
       message: "Could not change the password.",
     };

@@ -2,7 +2,6 @@
 
 import { Download } from "@prisma/client";
 import { createContext, startTransition, useOptimistic } from "react";
-import { toast } from "sonner";
 
 import { addFile, deleteFile, editFile } from "@/actions/index";
 import { Action, DownloadEssentials } from "@/lib/types";
@@ -45,7 +44,7 @@ const UserDataContextProvider = ({
     (prev, { action, payload }: { action: Action; payload: Payload }) => {
       const now = new Date();
       switch (action) {
-        case "add":
+        case "add": {
           const addPayload = payload as PayloadCreate;
           return [
             ...prev,
@@ -56,10 +55,11 @@ const UserDataContextProvider = ({
               updatedAt: now,
             },
           ];
-        case "edit":
+        }
+        case "edit": {
           return prev.map((download) => {
             if (
-              !!("downloadId" in payload) &&
+              "downloadId" in payload &&
               download.id === payload.downloadId
             ) {
               return {
@@ -70,13 +70,15 @@ const UserDataContextProvider = ({
             }
             return download;
           });
-        case "delete":
-          if (!!("downloadId" in payload)) {
+        }
+        case "delete": {
+          if ("downloadId" in payload) {
             return prev.filter(
               (download) => download.id !== payload.downloadId
             );
           }
           return prev;
+        }
         default:
           return prev;
       }
@@ -89,7 +91,7 @@ const UserDataContextProvider = ({
       payload: { ...newFile },
     });
     const error = await addFile(newFile);
-    if (!!error) {
+    if (error) {
       showErrorMessage(error);
       return;
     }
@@ -104,7 +106,7 @@ const UserDataContextProvider = ({
     });
 
     const error = await deleteFile(downloadId);
-    if (!!error) {
+    if (error) {
       showErrorMessage(error);
       return;
     }
@@ -120,7 +122,7 @@ const UserDataContextProvider = ({
     });
     const error = await editFile(downloadId, download);
     if (error) {
-      toast.warning(error.message);
+      showErrorMessage(error);
       return;
     }
   };

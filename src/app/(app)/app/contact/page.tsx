@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { Suspense } from "react";
 
 import H4 from "@/components/primitives/h4";
@@ -10,6 +11,12 @@ import Loading from "./loading";
 
 export const dynamic = 'force-static';
 export const revalidate = 3600;
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://franamoroso.com/app/contact",
+  },
+}
 
 export default function AboutMe() {
   return (

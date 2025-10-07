@@ -8,6 +8,19 @@ import Section from "@/components/section";
 import { ABOUT_ME, ABOUT_ME_BANNER } from "./constants/constants";
 import Loading from "./loading";
 
+export async function generateMetadata() {
+  return {
+    alternates: {
+      canonical: "https://franamoroso.com/app/about-me",
+    },
+    openGraph: {
+      title: "Franco Gabriel Amoroso",
+      description: "Hi! This is my Web-Portfolio, I hope you like it!",
+      url: ABOUT_ME_BANNER,
+    },
+  }
+}
+
 export default function AboutMe() {
   return (
     <Suspense fallback={<Loading />}>

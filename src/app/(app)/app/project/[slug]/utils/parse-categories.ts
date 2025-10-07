@@ -6,7 +6,7 @@ export const parseCategories = (categories: ICategoryWithProjects[]) => {
       id: cat.id,
       name: cat.name,
       value: cat.value,
-      firstProjectSlug: cat.projects[0]?.slug,
+      firstProjectSlug: cat.projects?.[0]?.slug,
     }))
     : []
 }

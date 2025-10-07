@@ -5,7 +5,7 @@ import { createContext, useOptimistic } from "react";
 import { toast } from "sonner";
 
 import { activateAccount } from "@/actions/index";
-import { SAMPLE_ACTION } from "@/lib/constants";
+import { showErrorMessage } from "@/utils/showErrorMessage";
 
 type UserManagementProviderProps = {
   data: User[];
@@ -42,14 +42,8 @@ const UserManagementProvider = ({
   const handleActiveAccount = async (userId: User["id"], isActive: boolean) => {
     setOptimisticUsers({ action: "edit", payload: { id: userId, isActive } });
     const error = await activateAccount(userId, isActive);
-    if (!!error) {
-      if (error.message === SAMPLE_ACTION) {
-        toast.warning("This is a sample action with no effects.");
-        console.warn(error.message);
-      } else {
-        toast.error(error.message);
-        console.error(error.message);
-      }
+    if (error) {
+      showErrorMessage(error)
       return;
     }
     const successMessage = isActive
