@@ -50,7 +50,8 @@ export const DatePicker = ({
           disabled={(date) =>
             date > new Date() || date < new Date("1900-01-01")
           }
-          initialFocus
+          autoFocus
+          captionLayout="dropdown"
         />
       </PopoverContent>
     </Popover>

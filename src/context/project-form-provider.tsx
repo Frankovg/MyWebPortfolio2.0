@@ -23,7 +23,7 @@ const getProjectImages = (project?: IProjectFull) => {
   if (!project) return null;
   return project.gallery.map((image) => ({
     alt: image.alt,
-    description: image.description || null,
+    description: image.description ?? null,
     imageUrl: image.imageUrl,
   }));
 };
@@ -82,37 +82,37 @@ export function ProjectFormProvider({
   } = useForm<TProjectForm>({
     resolver: zodResolver(projectFormSchema),
     defaultValues: {
-      title: project?.title || "",
-      image: project?.image || "",
-      slug: project?.slug || "",
-      date: project?.date || new Date(),
-      published: project?.published || false,
-      shortDescription: project?.shortDescription || "",
-      description: project?.description || "",
-      gallery: getProjectImages(project) || [
+      title: project?.title ?? "",
+      image: project?.image ?? "",
+      slug: project?.slug ?? "",
+      date: project?.date ?? new Date(),
+      published: project?.published ?? false,
+      shortDescription: project?.shortDescription ?? "",
+      description: project?.description ?? "",
+      gallery: getProjectImages(project) ?? [
         {
           imageUrl: "",
           alt: "",
           description: null,
         },
       ],
-      techStack: getTechStack(project) || [{ value: "" }],
-      roles: getRoles(project) || [
+      techStack: getTechStack(project) ?? [{ value: "" }],
+      roles: getRoles(project) ?? [
         {
           label: "",
           value: "",
           percentage: 50,
         },
       ],
-      websiteUrl: project?.websiteUrl || null,
-      company: project?.company || null,
-      companyUrl: project?.companyUrl || null,
-      client: project?.client || null,
-      clientUrl: project?.clientUrl || null,
-      repository: project?.repository || null,
-      videoUrl: project?.videoUrl || null,
-      videoTitle: project?.videoTitle || null,
-      videoDescription: project?.videoDescription || null,
+      websiteUrl: project?.websiteUrl ?? null,
+      company: project?.company ?? null,
+      companyUrl: project?.companyUrl ?? null,
+      client: project?.client ?? null,
+      clientUrl: project?.clientUrl ?? null,
+      repository: project?.repository ?? null,
+      videoUrl: project?.videoUrl ?? null,
+      videoTitle: project?.videoTitle ?? null,
+      videoDescription: project?.videoDescription ?? null,
     },
   });
 
@@ -132,7 +132,7 @@ export function ProjectFormProvider({
       });
 
       const projectValues = getValues();
-      projectValues.image = projectValues.image || FALLBACK_IMG;
+      projectValues.image = projectValues.image ?? FALLBACK_IMG;
 
       if (actionType === "add") {
         await createProjectByCategoryId(projectValues, categoryId);

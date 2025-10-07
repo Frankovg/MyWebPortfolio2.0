@@ -15,6 +15,7 @@ const defaultProject = {
   client: 'client name',
   clientUrl: 'clientURl',
   categoryId: 'cm6q3wlfp0033y1owm11xlr9a',
+  date: new Date("2025-02-04T00:00:00.000Z"),
   updatedAt: new Date("2025-02-04T06:36:24.326Z"),
   createdAt: new Date("2025-02-04T06:36:24.326Z"),
   published: true,

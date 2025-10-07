@@ -1,6 +1,5 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
 import { createContext, ReactNode, useTransition } from "react";
 import {
   Control,
@@ -13,7 +12,6 @@ import {
 } from "react-hook-form";
 import { toast } from "sonner";
 
-import { useUserDataContext } from "@/hooks/use-user-data-context";
 import {
   changePasswordFormSchema,
   TChangePasswordForm,
@@ -45,9 +43,6 @@ export function ChangePasswordProvider({
   children,
 }: ChangePasswordProviderProps) {
   const [isPending, startTransition] = useTransition();
-  const {} = useUserDataContext();
-
-  const router = useRouter();
 
   const {
     register,
@@ -56,7 +51,6 @@ export function ChangePasswordProvider({
     watch,
     control,
     formState: { errors },
-    reset,
   } = useForm<TChangePasswordForm>({
     resolver: zodResolver(changePasswordFormSchema),
   });
@@ -75,7 +69,7 @@ export function ChangePasswordProvider({
       const passwordValues = getValues();
       if (passwordValues.password === passwordValues.confirmPassword) {
         const error = await changePassword(passwordValues);
-        if (!!error) {
+        if (error) {
           showErrorMessage(error);
           return;
         }

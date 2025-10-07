@@ -52,6 +52,7 @@ export async function activateAccount(userId: User["id"], isActive: boolean) {
       },
     });
   } catch (error) {
+    console.error("Could not edit the account.", error)
     return {
       message: "Could not edit the account.",
     };

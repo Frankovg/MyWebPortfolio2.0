@@ -73,7 +73,7 @@ function ProjectChart({ roles }: { roles: Role[] }) {
               stroke="#ffffffb3"
             />
             <XAxis dataKey="percentage" type="number" stroke="#ffffffb3" />
-            <Bar dataKey="percentage" layout="vertical" radius={5} />
+            <Bar dataKey="percentage" radius={5} />
           </BarChart>
         </ChartContainer>
       </CardContent>
