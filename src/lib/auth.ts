@@ -1,4 +1,4 @@
-import bcrypt from "bcryptjs";
+import { compare } from "bcryptjs";
 import NextAuth, { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
@@ -29,7 +29,7 @@ const config = {
           return null;
         }
 
-        const passwordsMatch = await bcrypt.compare(
+        const passwordsMatch = await compare(
           password,
           user.hashedpassword
         );
