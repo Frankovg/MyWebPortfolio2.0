@@ -42,7 +42,7 @@ export function PortfolioChart({
       };
     });
     return config;
-  }, [chartData, categories]);
+  }, [categories]);
 
   const totalProjects = useMemo(() => {
     return categories.reduce(
@@ -82,7 +82,7 @@ export function PortfolioChart({
               }
             />
             <XAxis dataKey="quantity" type="number" hide />
-            <Bar dataKey="quantity" layout="vertical" fill="#5cedc1" radius={5}>
+            <Bar dataKey="quantity" fill="#5cedc1" radius={5}>
               <LabelList
                 dataKey="quantity"
                 position="right"

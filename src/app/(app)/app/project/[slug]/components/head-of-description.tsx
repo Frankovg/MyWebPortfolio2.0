@@ -12,7 +12,7 @@ function HeadOfDescription({ data }: HeadOfDescriptionProps) {
   return (
     <div className="w-fit">
       {data.map((item, index) => {
-        if (!!item.url) {
+        if (item.url) {
           return (
             <Link
               key={index}

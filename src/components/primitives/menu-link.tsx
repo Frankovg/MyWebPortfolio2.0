@@ -4,7 +4,6 @@ import {
   NavigationMenuContent,
   NavigationMenuIndicator,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "../ui/navigation-menu";

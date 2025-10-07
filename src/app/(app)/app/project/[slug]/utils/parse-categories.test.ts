@@ -1,14 +1,15 @@
+import { IProjectWithTechStack } from "@/lib/types"
+
 import { mockCategories } from "./__mocks__/categories"
 import { parseCategories } from "./parse-categories"
 
-
 describe('parseCategories', () => {
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
+  // The clearMocks option in jest.config.ts automatically clears mocks
+  // No need for manual afterEach with jest.clearAllMocks() anymore
 
-  it("should return the category data with only one project", () => {
-    const parsedResult = [
+  it("should return the category data with multiple projects", () => {
+    // Arrange
+    const expectedResult = [
       {
         id: 'cm6q3wlfp0033y1owm11xlr9a',
         name: 'Test Category',
@@ -22,15 +23,22 @@ describe('parseCategories', () => {
         firstProjectSlug: 'testing-data-3'
       }
     ]
-    expect(parseCategories(mockCategories.categoryData)).toEqual(parsedResult)
+
+    // Act
+    const result = parseCategories(mockCategories.categoryData)
+
+    // Assert
+    expect(result).toEqual(expectedResult)
   })
 
-  it("should return an empty array", () => {
+  it("should return an empty array when given empty input", () => {
+    // Act & Assert
     expect(parseCategories([])).toEqual([])
   })
 
-  it("should return a category data with undefined projects", () => {
-    const parsedResultWithoutProjects = [
+  it("should return category data with undefined firstProjectSlug when projects array is empty", () => {
+    // Arrange
+    const expectedResult = [
       {
         id: 'cm6q3wlfp0033y1owm11xlr9a',
         name: 'Test Category',
@@ -38,6 +46,48 @@ describe('parseCategories', () => {
         firstProjectSlug: undefined
       },
     ]
-    expect(parseCategories(mockCategories.categoryWithoutProjects)).toEqual(parsedResultWithoutProjects)
+
+    // Act
+    const result = parseCategories(mockCategories.categoryWithoutProjects)
+
+    // Assert
+    expect(result).toEqual(expectedResult)
+  })
+
+  it("should handle categories with null or undefined projects gracefully", () => {
+    // Arrange
+    const categoriesWithNullProjects = [
+      {
+        id: 'test-id',
+        name: 'Test Category',
+        value: 'test-value',
+        projects: null as unknown as IProjectWithTechStack[]
+      }
+    ]
+
+    // Act & Assert
+    expect(() => parseCategories(categoriesWithNullProjects)).not.toThrow()
+  })
+
+  it("should only extract the first project slug from each category", () => {
+    // Arrange
+    const categoryWithMultipleProjects = [
+      {
+        id: 'test-id',
+        name: 'Test Category',
+        value: 'test-value',
+        projects: [
+          { slug: 'first-project', id: '1', title: 'First' },
+          { slug: 'second-project', id: '2', title: 'Second' },
+          { slug: 'third-project', id: '3', title: 'Third' }
+        ] as unknown as IProjectWithTechStack[]
+      }
+    ]
+
+    // Act
+    const result = parseCategories(categoryWithMultipleProjects)
+
+    // Assert
+    expect(result[0].firstProjectSlug).toBe('first-project')
   })
 })
