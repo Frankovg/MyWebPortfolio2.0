@@ -1,12 +1,13 @@
+import nextJest from 'next/jest.js'
+
 import type { Config } from 'jest'
-import nextJest from 'next/jest'
 
 const createJestConfig = nextJest({
   dir: './',
 })
 
 const config: Config = {
-  displayName: '@f3d-commerce/b2b',
+  displayName: 'fran-web',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   testEnvironment: 'jest-environment-jsdom',
   moduleNameMapper: {
@@ -14,17 +15,23 @@ const config: Config = {
     '^@/(.*)$': '<rootDir>/src/$1'
   },
   testPathIgnorePatterns: [
-    '<rootDir>/node_modules/', 
+    '<rootDir>/node_modules/',
     '<rootDir>/.next/',
     '<rootDir>/dist/'
   ],
   moduleDirectories: ['node_modules', '<rootDir>/'],
   testMatch: [
-    '**/__tests__/**/*.[jt]s?(x)', 
+    '**/__tests__/**/*.[jt]s?(x)',
     '**/?(*.)+(spec|test).[jt]s?(x)'
   ],
   transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest'
+    '^.+\\.(ts|tsx)$': ['ts-jest', {
+      tsconfig: {
+        jsx: 'react',
+        esModuleInterop: true,
+        moduleResolution: 'node'
+      }
+    }]
   },
   collectCoverageFrom: [
     'src/**/*.{js,jsx,ts,tsx}',
@@ -45,7 +52,10 @@ const config: Config = {
     }
   },
   coverageDirectory: 'coverage',
-  coverageReporters: ['text', 'lcov', 'html']
+  coverageReporters: ['text', 'lcov', 'html'],
+  clearMocks: true,
+  resetMocks: true,
+  restoreMocks: true
 }
 
 export default createJestConfig(config)

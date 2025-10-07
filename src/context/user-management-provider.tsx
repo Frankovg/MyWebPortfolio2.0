@@ -42,7 +42,7 @@ const UserManagementProvider = ({
   const handleActiveAccount = async (userId: User["id"], isActive: boolean) => {
     setOptimisticUsers({ action: "edit", payload: { id: userId, isActive } });
     const error = await activateAccount(userId, isActive);
-    if (!!error) {
+    if (error) {
       showErrorMessage(error)
       return;
     }
