@@ -1,15 +1,19 @@
 import bcrypt from "bcryptjs";
-import NextAuth, { NextAuthConfig } from "next-auth";
+import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
+import authConfig from "./auth.config";
 import { getUserByEmail } from "./server-utils-public";
 import { sleep } from "./utils";
 import { authSchema } from "./validations";
 
-const config = {
-  pages: {
-    signIn: "/login",
-  },
+export const {
+  auth,
+  signIn,
+  signOut,
+  handlers: { GET, POST },
+} = NextAuth({
+  ...authConfig,
   providers: [
     Credentials({
       async authorize(credentials) {
@@ -43,32 +47,7 @@ const config = {
     }),
   ],
   callbacks: {
-    authorized: ({ auth, request }) => {
-      const isLoggedIn = !!auth?.user;
-      const isSuperUser = auth?.user?.isAdmin ?? false;
-      const isTryingToAccessAdmin = request.nextUrl.pathname.includes("/admin");
-      const isTryingToAccessLogin = request.nextUrl.pathname.includes("/login");
-
-      // Case for non logged user trying to access admin - deny access (middleware will handle redirect)
-      if (!isLoggedIn && isTryingToAccessAdmin) return false;
-
-      // Case for non logged user accessing public routes - allow
-      if (!isLoggedIn && !isTryingToAccessAdmin) return true;
-
-      // Case for logged user trying to access login - deny access (middleware will handle redirect)
-      if (isLoggedIn && isTryingToAccessLogin) return Response.redirect(new URL("/admin", request.nextUrl));
-
-      // Case for logged super user trying to access admin - allow
-      if (isLoggedIn && isSuperUser && isTryingToAccessAdmin) return true;
-
-      // Case for logged non-super user trying to access admin - deny
-      if (isLoggedIn && !isSuperUser && isTryingToAccessAdmin) return true;
-
-      // Case for logged user accessing other routes - allow
-      if (isLoggedIn) return true;
-
-      return false;
-    },
+    ...authConfig.callbacks,
     jwt: async ({ token, user, trigger }) => {
       if (user) {
         // on sign in
@@ -81,7 +60,7 @@ const config = {
         if (process.env.NODE_ENV === "development") {
           await sleep(1000);
         }
-        // on every request
+        // on every request - this requires database access
         const userFromDb = await getUserByEmail(token.email);
         if (userFromDb) {
           token.isAdmin = userFromDb.isAdmin;
@@ -90,18 +69,5 @@ const config = {
 
       return token;
     },
-    session: ({ session, token }) => {
-      (session.user.id = token.userId as string),
-        (session.user.isAdmin = token.isAdmin as boolean);
-
-      return session;
-    },
   },
-} satisfies NextAuthConfig;
-
-export const {
-  auth,
-  signIn,
-  signOut,
-  handlers: { GET, POST },
-} = NextAuth(config);
+});
