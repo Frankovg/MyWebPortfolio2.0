@@ -323,10 +323,23 @@ export const DEPLOYMENT_TECHS = {
   }
 }
 
+const BASICS = "basics"
+const BASICS_LABEL = 'Essentials for Web App Development'
+const STYLING = "styling"
+const STYLING_LABEL = 'Styling and Related Libraries'
+const DESIGN = "design"
+const DESIGN_LABEL = 'Design and UX/UI tools'
+const DB = "db"
+const DB_LABEL = 'Database Management'
+const TESTING = "testing"
+const TESTING_LABEL = 'Testing and QA'
+const DEPLOYMENT = "deployment"
+const DEPLOYMENT_LABEL = 'Version Control and Deployment'
+
 export const CATEGORIES = [
   {
-    label: 'Essentials for Web App Development',
-    value: 'basics',
+    label: BASICS_LABEL,
+    value: BASICS,
     techs: [
       BASICS_TECHS.react,
       BASICS_TECHS.nextjs,
@@ -342,8 +355,8 @@ export const CATEGORIES = [
     ]
   },
   {
-    label: 'Styling and Related Libraries',
-    value: 'styling',
+    label: STYLING_LABEL,
+    value: STYLING,
     techs: [
       STYLING_TECHS.tailwind,
       STYLING_TECHS.sass,
@@ -354,8 +367,8 @@ export const CATEGORIES = [
     ]
   },
   {
-    label: 'Design and UX/UI tools',
-    value: 'design',
+    label: DESIGN_LABEL,
+    value: DESIGN,
     techs: [
       DESIGN_TECHS.figma,
       DESIGN_TECHS.ps,
@@ -368,8 +381,8 @@ export const CATEGORIES = [
     ]
   },
   {
-    label: 'Database Management',
-    value: 'db',
+    label: DB_LABEL,
+    value: DB,
     techs: [
       DB_TECHS.sql,
       DB_TECHS.postgresql,
@@ -378,8 +391,8 @@ export const CATEGORIES = [
     ]
   },
   {
-    label: 'Testing and QA',
-    value: 'testing',
+    label: TESTING_LABEL,
+    value: TESTING,
     techs: [
       TESTING_TECHS.playwright,
       TESTING_TECHS.ladle,
@@ -388,8 +401,8 @@ export const CATEGORIES = [
     ]
   },
   {
-    label: 'Version Control and Deployment',
-    value: 'deployment',
+    label: DEPLOYMENT_LABEL,
+    value: DEPLOYMENT,
     techs: [
       DEPLOYMENT_TECHS.vercel,
       DEPLOYMENT_TECHS.firebase,
@@ -397,5 +410,43 @@ export const CATEGORIES = [
       DEPLOYMENT_TECHS.github,
       DEPLOYMENT_TECHS.git,
     ]
+  }
+]
+
+export const MOBILE_CATEGORIES = [
+  {
+    label: BASICS_LABEL,
+    value: BASICS,
+    techs: CATEGORIES[0].techs.slice(0, 6)
+  },
+  {
+    label: BASICS_LABEL,
+    value: `${BASICS}-2`,
+    techs: CATEGORIES[0].techs.slice(6, 12)
+  },
+  {
+    label: STYLING_LABEL,
+    value: STYLING,
+    techs: CATEGORIES[1].techs
+  },
+  {
+    label: DESIGN_LABEL,
+    value: DESIGN,
+    techs: CATEGORIES[2].techs.slice(0, 6)
+  },
+  {
+    label: DB_LABEL,
+    value: DB,
+    techs: CATEGORIES[3].techs
+  },
+  {
+    label: TESTING_LABEL,
+    value: TESTING,
+    techs: CATEGORIES[4].techs
+  },
+  {
+    label: DEPLOYMENT_LABEL,
+    value: DEPLOYMENT,
+    techs: CATEGORIES[5].techs
   }
 ]
