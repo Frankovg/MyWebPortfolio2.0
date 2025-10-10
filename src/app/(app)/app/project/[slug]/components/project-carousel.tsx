@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import ImageWithFallback from "@/components/primitives/image-with-fallback";
+import { ProjectCarouselSkeleton } from "@/components/skeletons/project-carousel-skeleton";
 import { CarouselApi, CarouselItem } from "@/components/ui/carousel";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { FALLBACK_IMG } from "@/lib/client-constants";
@@ -23,20 +24,27 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
   const thumbnailApiRef = useRef<CarouselApi>(null);
 
   const [current, setCurrent] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   const setMainApi = useCallback((api: CarouselApi) => {
     mainApiRef.current = api;
+    if (api && thumbnailApiRef.current) {
+      setIsLoading(false);
+    }
   }, []);
 
   const setThumbnailApi = useCallback((api: CarouselApi) => {
     thumbnailApiRef.current = api;
+    if (api && mainApiRef.current) {
+      setIsLoading(false);
+    }
   }, []);
 
   useEffect(() => {
     if (!mainApiRef.current || !thumbnailApiRef.current) {
       return;
     }
-    // Initialize both carousels to index 0
+
     setCurrent(0);
     mainApiRef.current.scrollTo(0);
     thumbnailApiRef.current.scrollTo(0);
@@ -72,7 +80,7 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
       images.map((image, index) => (
         <CarouselItem key={index}>
           <ImageWithFallback
-            className="object-cover md:object-contain bg-softGrey rounded-lg w-full h-full max-h-[80vh]"
+            className="object-cover md:object-contain bg-softGrey rounded-lg size-full max-h-[80vh]"
             src={image.imageUrl}
             fallbackSrc={FALLBACK_IMG}
             alt={`Carousel Main Image ${index + 1}`}
@@ -111,34 +119,37 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
   );
 
   return (
-    <Dialog>
-      <div className="relative w-full">
-        <DialogTrigger asChild>
-          <ExpanderButton onClick={() => console.warn("Open image")} />
-        </DialogTrigger>
-        <CarouselViewer images={mainImage} setMainApi={setMainApi} />
-        <CarouselThumbnail
-          images={thumbnailImages}
-          setThumbnailApi={setThumbnailApi}
-        />
-      </div>
-
-      <DialogContent className="max-w-full h-full max-h-screen grid-cols-none grid-rows-none flex flex-col">
-        <DialogTitle className="max-w-[1000px]"></DialogTitle>
-        <DialogDescription className="max-w-[1000px]">{images[current].description}</DialogDescription>
-        <div className="w-full h-full">
-          <Image
-            src={images[current].imageUrl}
-            alt={images[current].alt}
-            className="w-auto h-full object-contain mx-auto"
-            width={0}
-            height={0}
-            sizes={"100%"}
-            quality={60}
+    <>
+      {isLoading && <ProjectCarouselSkeleton />}
+      <Dialog>
+        <div className={`relative w-full ${isLoading ? 'hidden' : ''}`}>
+          <DialogTrigger asChild>
+            <ExpanderButton onClick={() => console.warn("Open image")} />
+          </DialogTrigger>
+          <CarouselViewer images={mainImage} setMainApi={setMainApi} />
+          <CarouselThumbnail
+            images={thumbnailImages}
+            setThumbnailApi={setThumbnailApi}
           />
         </div>
-      </DialogContent>
-    </Dialog>
+
+        <DialogContent className="max-w-full h-full max-h-screen grid-cols-none grid-rows-none flex flex-col">
+          <DialogTitle className="max-w-[1000px]"></DialogTitle>
+          <DialogDescription className="max-w-[1000px]">{images[current].description}</DialogDescription>
+          <div className="w-full h-full">
+            <Image
+              src={images[current].imageUrl}
+              alt={images[current].alt}
+              className="w-auto h-full object-contain mx-auto"
+              width={0}
+              height={0}
+              sizes={"100%"}
+              quality={60}
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }
 
