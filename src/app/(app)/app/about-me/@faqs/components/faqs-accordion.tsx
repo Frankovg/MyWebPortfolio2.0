@@ -18,7 +18,7 @@ function FaqsAccordion({ items }: FaqsAccordionProps) {
     <Accordion type="single" collapsible className="w-full divide-y-[1px] text-base lg:text-lg transition-all duration-300 ease-in-out">
       {items.map((item) => (
         <AccordionItem key={item.id} value={item.id}>
-          <AccordionTrigger className="hover:text-[1.15rem] hover:no-underline data-[state=open]:text-xl data-[state=open]:text-primary w-full" >
+          <AccordionTrigger className="hover:text-[1.15rem] hover:no-underline data-[state=open]:text-xl data-[state=open]:text-primary w-full text-left" >
             {item.trigger}
           </AccordionTrigger>
           <AccordionContent>

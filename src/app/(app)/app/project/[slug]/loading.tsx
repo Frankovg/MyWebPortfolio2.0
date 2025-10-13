@@ -1,3 +1,4 @@
+import { ProjectCarouselSkeleton } from "@/components/skeletons/project-carousel-skeleton";
 import { TechCardSkeleton } from "@/components/skeletons/tech-card-skeleton";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -13,16 +14,7 @@ export default function Loading() {
       <>
         <Skeleton className='mx-auto rounded-xl w-full max-w-[500px] h-12 mt-8 600:mt-24 mb-16 bg-textAnimation' />
         <section className="w-full grid grid-cols-12 grid-flow-row gap-0 mb-12">
-          <div className="max-600:hidden 1100:col-span-7 col-span-12">
-            <div className="w-full">
-              <Skeleton className="flex mb-4 h-[53.1vw] 1100:h-[29.1vw] rounded-lg w-full bg-softGrey" />
-              <div className="flex -ml-4">
-                {Array.from({ length: 4 }).map((_, index) => (
-                  <Skeleton key={index} className="rounded-lg w-full h-[12.83vw] 1100:h-[7vw] bg-softGrey ml-4" />
-                ))}
-              </div>
-            </div>
-          </div>
+          <ProjectCarouselSkeleton />
           <div className="1100:col-start-8 1100:col-span-5 1100:ml-8 col-span-12 600:max-1100:mt-24 space-y-6">
             <div className="flex flex-col space-y-1.5 px-6 pb-6 pt-0 max-600:px-0">
               {Array.from({ length: 2 }).map((_, index) => (

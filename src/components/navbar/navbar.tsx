@@ -45,7 +45,7 @@ export default function Navbar({ session }: NavbarProps) {
         )}
       >
         <UserMainBar session={session} />
-        <div className="flex items-center justify-between w-full max-w-fa mx-auto px-4 mt-6">
+        <div className="flex items-center justify-between w-full max-w-fa mx-auto px-4 mt-8 1100:mt-6">
           <div className="flex items-center gap-8 w-fit">
             <Logo />
             <ul className={cn(ulStyles, "max-1100:hidden")}>

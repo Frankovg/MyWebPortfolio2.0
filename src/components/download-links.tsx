@@ -12,13 +12,13 @@ function DownloadLinks() {
   const parsedDownloads = downloads.filter((file) => file.isActive && file.language === "en");
 
   return (
-    <div className="flex flex-col gap-4 items-center w-max h-auto p-4">
-      {parsedDownloads.map((download) => (
+    <div className="flex max-sm:flex-wrap sm:flex-col gap-4 items-center max-sm:justify-end w-full sm:w-max h-auto p-4">
+      {parsedDownloads.map((download, index) => (
         <Link
           href={download.fileHref || "#"}
           target="_blank"
           className="group relative overflow-hidden flex max-w-[400px] items-center"
-          key={download.name}
+          key={index}
         >
           <div className="max-sm:w-full w-2/5">
             <Image
@@ -26,7 +26,7 @@ function DownloadLinks() {
               alt={download.name}
               width={200}
               height={133}
-              className="w-[200px] h-[133px] object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]"
+              className="w-34 h-24 sm:w-[200px] sm:h-[133px] object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]"
             />
             <div className="absolute top-0 left-0 w-full h-full bg-linear-to-r from-transparent via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-[2000ms] animate-shiny" />
           </div>

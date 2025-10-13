@@ -10,7 +10,7 @@ function WorkedWith() {
       {WORKED_WITH.map((company) => (
         <HoverCard key={company.value} openDelay={200} closeDelay={150}>
           <HoverCardTrigger asChild className="group">
-            <div className="flex justify-center h-auto cursor-default p-2.5">
+            <div className="flex justify-start sm:justify-center h-auto cursor-default p-2.5">
               <company.icon className='object-contain transition-all duration-200 ease-in-out group-hover:fill-primary group-hover:scale-105' />
             </div>
           </HoverCardTrigger>
