@@ -40,34 +40,23 @@ function MobileMenu({ open, close }: MobileMenuProps) {
         className="max-sm:w-screen [&_svg]:w-6 [&_svg]:h-6 [&_button]:focus:ring-softGrey max-sm:border-none border-primary pt-[10vh] sm:pt-12 px-8 pb-8 bg-background"
       >
         <div className="w-full h-full overflow-y-auto flex flex-col justify-between">
-          <ul className="w-full h-fit text-right sm:text-left max-sm:space-y-5 text-2xl flex max-sm:flex-col flex-row sm:gap-6 sm:items-center sm:justify-center flex-wrap">
+          <ul className="w-full h-fit text-right sm:text-left max-sm:space-y-5 text-2xl flex max-sm:flex-col max-sm:pr-4 flex-row sm:gap-6 sm:items-center sm:justify-center flex-wrap">
             {ROUTES.map((route) => {
-              const isHomePath = route.path === "home";
-              const redirectPath = route.path === "about-me" || isHomePath
+              const scrollLink = route.path === "projects" || route.path === "tech-stack"
               return (
                 <li key={route.path}>
-                  {redirectPath ? (
-                    <Link
-                      href={isHomePath ? "/" : route.path}
-                      onClick={close}
-                      className={linkStyles}
-                    >
-                      {route.label}
-                    </Link>
-                  ) : (
-                    <ScrollLink
-                      id={route.path}
-                      className={linkStyles}
-                      onClick={close}
-                    >
-                      {route.label}
-                    </ScrollLink>
-                  )}
+                  <Link
+                    href={scrollLink ? `/app/home#${route.path}` : `/app/${route.path}`}
+                    onClick={close}
+                    className={linkStyles}
+                  >
+                    {route.label}
+                  </Link>
                 </li>
               )
             })}
             <li>
-              <Link href="/app/contact" className={linkStyles}>
+              <Link href="/app/contact" className={linkStyles} onClick={close}>
                 Contact
               </Link>
             </li>
@@ -82,7 +71,7 @@ function MobileMenu({ open, close }: MobileMenuProps) {
               </li>
             ))}
           </ul>
-          <div className="flex flex-col sm:flex-row gap-6 w-full h-full items-end justify-center sm:pt-16">
+          <div className="flex flex-col sm:flex-row gap-6 w-full h-full items-center justify-center sm:pt-16 max-sm:pr-4 max-sm:pt-5">
             <h2 className="text-2xl sm:hidden">Downloads</h2>
             <DownloadLinks />
           </div>
