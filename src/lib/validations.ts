@@ -20,6 +20,26 @@ const value_too_short_error_10 =
   "Please make sure your message is at least 10 characters long.";
 const valid_email_address = "Please enter a valid email address.";
 
+// Helper function for optional URL fields that can be empty strings
+const optionalUrlSchema = () =>
+  z.union([
+    z.literal(""),
+    z.url({ message: invalid_url_error }),
+    z.null(),
+  ]).transform(val => val === "" ? null : val);
+
+// Helper function for optional string fields that can be empty strings
+const optionalStringSchema = (maxLength?: number, errorMessage?: string) => {
+  const baseSchema = z.string().trim();
+  const withMax = maxLength ? baseSchema.max(maxLength, errorMessage) : baseSchema;
+
+  return z.union([
+    z.literal(""),
+    withMax,
+    z.null(),
+  ]).transform(val => val === "" ? null : val);
+};
+
 const phoneValidation = new RegExp(
   /^(?:\+?\d{1,3})?[\s.-]?\(?\d{1,4}\)?[\s.-]?\d{1,4}[\s.-]?\d{1,4}[\s.-]?\d{1,4}$/
 );
@@ -116,12 +136,11 @@ const roleSchema = z.object({
 const gallerySchema = z.object({
   imageUrl: z.url({ error: invalid_url_error }).trim(),
   alt: z.string().trim().min(1, { error: required_error }),
-  description: z
-    .string()
-    .trim()
-    .min(1)
-    .max(1000, value_too_long_error_1000)
-    .nullable(),
+  description: z.union([
+    z.literal(""),
+    z.string().trim().min(1).max(1000, value_too_long_error_1000),
+    z.null(),
+  ]).transform(val => val === "" ? null : val),
 });
 
 export const categoryIdSchema = z.cuid();
@@ -148,19 +167,15 @@ export const projectFormSchema = z
     slug: z.string().trim().min(1, { error: required_error }),
     gallery: z.array(gallerySchema),
     date: z.date(),
-    repository: z.url({ error: invalid_url_error }).nullable(),
-    websiteUrl: z.url({ error: invalid_url_error }).nullable(),
-    videoUrl: z.url({ error: invalid_url_error }).nullable(),
-    videoTitle: z.string().trim().max(50, value_too_long_error_50).nullable(),
-    videoDescription: z
-      .string()
-      .trim()
-      .max(1000, value_too_long_error_1000)
-      .nullable(),
-    company: z.string().trim().max(50, value_too_long_error_50).nullable(),
-    companyUrl: z.url({ error: invalid_url_error }).nullable(),
-    client: z.string().trim().max(50, value_too_long_error_50).nullable(),
-    clientUrl: z.url({ error: invalid_url_error }).nullable(),
+    repository: optionalUrlSchema(),
+    websiteUrl: optionalUrlSchema(),
+    videoUrl: optionalUrlSchema(),
+    videoTitle: optionalStringSchema(50, value_too_long_error_50),
+    videoDescription: optionalStringSchema(1000, value_too_long_error_1000),
+    company: optionalStringSchema(50, value_too_long_error_50),
+    companyUrl: optionalUrlSchema(),
+    client: optionalStringSchema(50, value_too_long_error_50),
+    clientUrl: optionalUrlSchema(),
     techStack: z.array(techStackSchema),
     roles: z.array(roleSchema),
     published: z.boolean(),

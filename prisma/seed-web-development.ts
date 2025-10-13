@@ -382,7 +382,6 @@ export const WEB_DEVELOPMENT_SEED = {
         },
         date: new Date("2024-08-12"),
         repository: "https://github.com/Frankovg/petsoft-fran",
-        websiteUrl: "https://petsoft-fran.vercel.app/",
         techStack: {
           connect: [
             {

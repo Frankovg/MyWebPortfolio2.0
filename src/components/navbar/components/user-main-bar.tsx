@@ -21,7 +21,7 @@ function UserMainBar({ session }: UserMainBarProps) {
   return (
     <div
       className={cn(
-        "absolute top-0 w-screen h-6 z-50 flex items-center",
+        "absolute top-0 w-screen min-h-6 z-50 flex items-center py-3 1100:py-0 1100:mb-0",
         styles
       )}
     >

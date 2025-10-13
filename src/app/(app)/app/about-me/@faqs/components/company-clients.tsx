@@ -10,7 +10,7 @@ function CompanyClients() {
       {COMPANY_CLIENTS.map((brand) => (
         <HoverCard key={brand.value} openDelay={200} closeDelay={150}>
           <HoverCardTrigger asChild className="group">
-            <div className="flex justify-center h-auto cursor-default p-2.5">
+            <div className="flex justify-start sm:justify-center h-auto cursor-default p-2.5">
               <brand.icon className='object-contain transition-all duration-200 ease-in-out group-hover:fill-primary group-hover:scale-105' />
             </div>
           </HoverCardTrigger>

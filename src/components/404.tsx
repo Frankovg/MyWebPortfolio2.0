@@ -9,7 +9,7 @@ export const ErrorPage = async () => {
       <div className="w-full h-full flex flex-col justify-center items-center">
         <FrownIcon size={170} />
         <H3 className="text-3xl font-semibold text-danger">404 - Page not found</H3>
-        <p className="text-3xl font-bold">
+        <p className="text-3xl font-bold text-center">
           The link might be corrupted.
         </p>
         <p className="text-lg">or the page may have been removed</p>

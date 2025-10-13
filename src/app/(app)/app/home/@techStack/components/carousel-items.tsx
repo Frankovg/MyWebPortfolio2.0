@@ -1,11 +1,11 @@
 import { CarouselItem } from "@/components/ui/carousel"
 
-import { CATEGORIES } from "../../constants/constants"
+import { MOBILE_CATEGORIES } from "../../constants/constants"
 
 function CarouselItems() {
   return (
     <>
-      {CATEGORIES.map((cat) => (
+      {MOBILE_CATEGORIES.map((cat) => (
         <CarouselItem key={cat.value} className="flex items-center">
           <div className="w-full grid grid-cols-2">
             <h5 className="col-start-1 col-span-2 text-center font-bold text-base pb-6">
