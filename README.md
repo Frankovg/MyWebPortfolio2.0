@@ -368,7 +368,7 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 
 ## 📝 Changelog
 
-### [1.0.0] - 2025-01-14
+### [1.0.1] - 2025-01-14
 
 #### 🎉 Initial Release
 
