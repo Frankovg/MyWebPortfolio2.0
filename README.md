@@ -11,7 +11,7 @@
   
   **A modern, full-stack portfolio application showcasing web development, industrial design, and UX/UI projects**
   
-  [View Live Demo](https://your-portfolio-url.com) • [Request Demo Account](#-request-demo-account) • [Report Bug](https://github.com/yourusername/fran-web/issues)
+  [View Live Demo](https://www.franamoroso.com/app/home) • [Request Demo Account](https://www.franamoroso.com/app/contact) • [Report Bug](https://github.com/Frankovg/MyWebPortfolio2.0/issues)
 </div>
 
 ---
@@ -334,7 +334,7 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
    Best regards
    ```
 
-2. **Via Email**: Send an email to `di.francoamoroso@gmail.com.com` with the subject "Demo Account Request"
+2. **Via Email**: Send an email to `di.francoamoroso@gmail.com` with the subject "Demo Account Request"
 
 3. **Via LinkedIn**: Connect with me on [LinkedIn](https://www.linkedin.com/in/francoamoroso/) and send a message
 
@@ -352,8 +352,8 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 
 **Franco Amoroso** - Full-Stack Developer
 
-- 🌐 **Portfolio**: [your-portfolio-url.com](https://www.franamoroso.com/)
-- 💼 **LinkedIn**: [linkedin.com/in/your-profile](https://www.linkedin.com/in/francoamoroso/)
+- 🌐 **Portfolio**: [www.franamoroso.com](https://www.franamoroso.com/)
+- 💼 **LinkedIn**: [francoamoroso](https://www.linkedin.com/in/francoamoroso/)
 - 📧 **Email**: di.francoamoroso@gmail.com
 - 📍 **Location**: Málaga, Spain
 
@@ -419,69 +419,6 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 - Server-only critical operations
 - Role-based access control
 - Environment variable validation
-
----
-
-## 🗺 Roadmap
-
-### 🚀 Upcoming Features
-
-#### Q1 2025
-
-- [ ] **Analytics Dashboard**
-
-  - Project view statistics
-  - Contact form submissions tracking
-  - Download metrics
-  - User engagement analytics
-  - Admin dashboard with charts
-
-- [ ] **Enhanced Search**
-  - Full-text search across projects
-  - Filter by multiple criteria
-  - Search suggestions
-  - Recent searches
-
-#### Q2 2025
-
-#### Q3 2025
-
-- [ ] **Advanced Media Management**
-
-  - Direct file uploads (not just Google Drive)
-  - Video hosting integration
-  - CDN integration for better performance
-
-- [ ] **Internationalization Expansion**
-  - Additional languages (English and Spanish)
-  - RTL language support
-  - Locale-specific content
-  - Currency and date formatting
-
-#### Q4 2025
-
-### 🔧 Technical Improvements
-
-- [ ] **Performance Optimization**
-
-  - Implement ISR (Incremental Static Regeneration)
-  - Add Redis caching layer
-  - Optimize database queries
-  - Implement lazy loading for images
-
-- [ ] **Testing Enhancement**
-
-  - E2E tests with Playwright
-  - Visual regression testing
-  - Performance testing
-  - Accessibility testing automation
-
-- [ ] **DevOps**
-
-  - Docker containerization
-  - CI/CD pipeline improvements
-  - Automated backups
-  - Monitoring and alerting
 
 ---
 
