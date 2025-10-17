@@ -18,7 +18,7 @@ export const Hero = () => {
         <H3>
           As a{" "}
           <span className="font-semibold text-white">
-            Front-End Developer with a solid design background
+            Full-Stack Developer with a solid design background
           </span>
           , I bring a unique perspective to my work, creating web apps that
           look great and feel intuitive. Check out my work, and let&apos;s

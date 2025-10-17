@@ -14,7 +14,7 @@ async function Projects() {
     <Section id="projects" className="pt-24">
       <H4>Projects</H4>
       <H3 className="max-w-600 pt-0">
-        A short exploration of my present as a Front-end Developer and my past
+        A short exploration of my present as a Full-Stack Developer and my past
         as a Designer.
       </H3>
       <Categories categories={categories} />
