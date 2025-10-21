@@ -7,7 +7,7 @@ function AnimatedHero() {
   const [titleNumber, setTitleNumber] = useState(0);
   const titles = useMemo(
     () => [
-      "Front-End Developer",
+      "Full-Stack Developer",
       "UX/UI Designer",
       "Industrial Designer",
       "Web App Developer",
