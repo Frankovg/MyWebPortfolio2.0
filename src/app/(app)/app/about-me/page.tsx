@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Image from "next/image";
 import { Suspense } from "react";
 
@@ -8,17 +9,26 @@ import Section from "@/components/section";
 import { ABOUT_ME, ABOUT_ME_BANNER } from "./constants/constants";
 import Loading from "./loading";
 
-export async function generateMetadata() {
-  return {
-    alternates: {
-      canonical: "https://franamoroso.com/app/about-me",
-    },
-    openGraph: {
-      title: "Franco Gabriel Amoroso",
-      description: "Hi! This is my Web-Portfolio, I hope you like it!",
-      url: ABOUT_ME_BANNER,
-    },
-  }
+export const metadata: Metadata = {
+  title: "About Me",
+  description: "Full-stack developer with a background in Industrial Design. From Argentina to Australia to Spain, blending creativity with code to build meaningful digital experiences.",
+  alternates: {
+    canonical: "https://franamoroso.com/app/about-me",
+  },
+  openGraph: {
+    title: "Franco Gabriel Amoroso",
+    description: "Hi! This is my Web-Portfolio, I hope you like it!",
+    url: "https://franamoroso.com/app/about-me",
+    type: "website",
+    images: [
+      {
+        url: ABOUT_ME_BANNER,
+        width: 1200,
+        height: 630,
+        alt: "Franco Gabriel Amoroso - Full-Stack Developer & Designer",
+      },
+    ],
+  },
 }
 
 export default function AboutMe() {
