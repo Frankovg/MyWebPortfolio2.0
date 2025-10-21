@@ -1,8 +1,7 @@
-import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 import Section from "@/components/section";
-import { getCategories, getProjectBySlug } from "@/lib/server-utils-public";
+import { getCategories } from "@/lib/server-utils-public";
 
 import MoreProjects from "./components/more-projects";
 import ProjectBanner from "./components/project-banner";
@@ -11,6 +10,7 @@ import ProjectMainInfo from "./components/project-main-info";
 import ProjectTechStack from "./components/project-tech-stack";
 import VideoComponent from "./components/video-component";
 import Loading from "./loading";
+import { getCachedProject } from "./utils/cached-project";
 import { parseCategories } from "./utils/parse-categories";
 
 export async function generateMetadata({
@@ -19,17 +19,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const project = await getProjectBySlug(slug)
-
-  if (!project) {
-    return {
-      title: "FRAN's project",
-      description: "Project example",
-      alternates: {
-        canonical: "https://franamoroso.com/app/home#projects",
-      },
-    }
-  }
+  const project = await getCachedProject(slug)
 
   return {
     title: project.title,
@@ -40,7 +30,16 @@ export async function generateMetadata({
     openGraph: {
       title: project.title,
       description: project.shortDescription,
-      url: project.image,
+      url: `https://franamoroso.com/app/project/${slug}`,
+      type: "website",
+      images: [
+        {
+          url: project.image,
+          width: 1200,
+          height: 630,
+          alt: project.title,
+        },
+      ],
     },
   }
 }
@@ -55,11 +54,9 @@ export default async function ProjectPage({
   const { slug } = await params;
 
   const [project, categories] = await Promise.all([
-    getProjectBySlug(slug),
+    getCachedProject(slug),
     getCategories(),
   ]);
-
-  if (!project) notFound();
 
   const hasVideo = !!project.videoUrl;
   const videoData = hasVideo

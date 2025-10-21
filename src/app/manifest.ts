@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'FRAN Front-end Developer & Designer',
+    name: 'FRAN Full-Stack Developer & Designer',
     short_name: 'FRAN Portfolio',
     description: 'Hi! This is my Web-Portfolio, I hope you like it!',
     start_url: '/',
