@@ -27,7 +27,7 @@ export const portfolioColumns = (
     cell: ({ row }) => {
       return (
         <Link
-          href={`/app/project/${row.original.slug}`}
+          href={`/project/${row.original.slug}`}
           target="_blank"
           className="text-left font-light text-textWhite hover:text-white"
         >

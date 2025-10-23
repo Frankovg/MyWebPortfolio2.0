@@ -10,7 +10,7 @@ function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <Link
-      href={`/app/project/${project.slug}`}
+      href={`/project/${project.slug}`}
       className="w-full h-full flex flex-col justify-between overflow-hidden p-2 rounded-sm shadow-background border border-solid border-darkPrimary transition-all duration-300 ease-in-out hover:bg-background hover:scale-[1.005] hover:shadow-lg"
     >
       <div className="w-full min-h-62.5">
