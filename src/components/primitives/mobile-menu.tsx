@@ -9,8 +9,6 @@ import { ROUTES } from "@/lib/constants";
 import DownloadLinks from "../download-links";
 import { Sheet, SheetContent, SheetTitle } from "../ui/sheet";
 
-import ScrollLink from "./scroll-link";
-
 type MobileMenuProps = {
   open: boolean;
   close: VoidFunction;
@@ -46,7 +44,7 @@ function MobileMenu({ open, close }: MobileMenuProps) {
               return (
                 <li key={route.path}>
                   <Link
-                    href={scrollLink ? `/app/home#${route.path}` : `/app/${route.path}`}
+                    href={scrollLink ? `/home#${route.path}` : `/${route.path}`}
                     onClick={close}
                     className={linkStyles}
                   >
@@ -56,7 +54,7 @@ function MobileMenu({ open, close }: MobileMenuProps) {
               )
             })}
             <li>
-              <Link href="/app/contact" className={linkStyles} onClick={close}>
+              <Link href="/contact" className={linkStyles} onClick={close}>
                 Contact
               </Link>
             </li>

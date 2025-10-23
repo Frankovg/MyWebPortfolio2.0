@@ -25,12 +25,12 @@ export async function generateMetadata({
     title: project.title,
     description: project.shortDescription,
     alternates: {
-      canonical: `https://franamoroso.com/app/project/${slug}`,
+      canonical: `https://franamoroso.com/project/${slug}`,
     },
     openGraph: {
       title: project.title,
       description: project.shortDescription,
-      url: `https://franamoroso.com/app/project/${slug}`,
+      url: `https://franamoroso.com/project/${slug}`,
       type: "website",
       images: [
         {

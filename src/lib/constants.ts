@@ -5,7 +5,7 @@ import {
   DESIGN_TECHS,
   STYLING_TECHS,
   TESTING_TECHS,
-} from "@/app/(app)/app/home/constants/constants";
+} from "@/app/(app)/home/constants/constants";
 import { GithubIcon, LinkedInIcon } from "@/icons/social";
 import img1 from "@/public/images/in-profile-1.webp";
 import img2 from "@/public/images/in-profile-2.webp";
@@ -119,11 +119,11 @@ export const FOOTER_LINKS = {
   legals: [
     {
       name: "Cookies Policy",
-      href: "/app/cookies-policy"
+      href: "/cookies-policy"
     },
     {
       name: "Privacy Policy",
-      href: "/app/privacy-policy"
+      href: "/privacy-policy"
     },
   ]
 };

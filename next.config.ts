@@ -21,6 +21,45 @@ const nextConfig: NextConfig = {
     dangerouslyAllowSVG: false,
     unoptimized: false,
   },
+  async redirects() {
+    return [
+      {
+        source: "/app/home",
+        destination: "/home",
+        permanent: true,
+      },
+      {
+        source: "/app/about-me",
+        destination: "/about-me",
+        permanent: true,
+      },
+      {
+        source: "/app/contact",
+        destination: "/contact",
+        permanent: true,
+      },
+      {
+        source: "/app/project",
+        destination: "/project",
+        permanent: true,
+      },
+      {
+        source: "/app/project/:slug",
+        destination: "/project/:slug",
+        permanent: true,
+      },
+      {
+        source: "/app/privacy-policy",
+        destination: "/privacy-policy",
+        permanent: true,
+      },
+      {
+        source: "/app/cookies-policy",
+        destination: "/cookies-policy",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

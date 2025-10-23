@@ -13,7 +13,7 @@ import cookiesPolicyContent from './cookies-policy-content.json';
 export const metadata: Metadata = {
   title: "Cookies Policy",
   alternates: {
-    canonical: "https://franamoroso.com/app/cookies-policy",
+    canonical: "https://franamoroso.com/cookies-policy",
   },
 }
 

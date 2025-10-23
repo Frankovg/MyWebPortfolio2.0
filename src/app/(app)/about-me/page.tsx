@@ -13,12 +13,12 @@ export const metadata: Metadata = {
   title: "About Me",
   description: "Full-stack developer with a background in Industrial Design. From Argentina to Australia to Spain, blending creativity with code to build meaningful digital experiences.",
   alternates: {
-    canonical: "https://franamoroso.com/app/about-me",
+    canonical: "https://franamoroso.com/about-me",
   },
   openGraph: {
     title: "Franco Gabriel Amoroso",
     description: "Hi! This is my Web-Portfolio, I hope you like it!",
-    url: "https://franamoroso.com/app/about-me",
+    url: "https://franamoroso.com/about-me",
     type: "website",
     images: [
       {

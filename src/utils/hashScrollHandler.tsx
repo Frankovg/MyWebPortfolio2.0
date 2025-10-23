@@ -7,7 +7,7 @@ export default function HashScrollHandler() {
   const pathname = usePathname()
 
   useEffect(() => {
-    if (pathname !== '/app/home' && pathname !== '/') return
+    if (pathname !== '/home' && pathname !== '/') return
 
     const handleHashScroll = () => {
       const hash = window.location.hash.replace('#', '')

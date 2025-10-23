@@ -16,7 +16,7 @@ export function NavLink({ href, className, children }: NavLinkProps) {
     className
   );
 
-  const isAboutMePage = href === "/app/about-me";
+  const isAboutMePage = href === "/about-me";
 
   return (
     <li>
