@@ -17,7 +17,7 @@ function ScrollLink({ id, children, className = '', onClick }: ScrollLinkProps) 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
-    const isOnHomePage = pathname === '/app/home' || pathname === '/'
+    const isOnHomePage = pathname === '/home' || pathname === '/'
 
     if (isOnHomePage) {
       const element = document.getElementById(id)
@@ -27,14 +27,14 @@ function ScrollLink({ id, children, className = '', onClick }: ScrollLinkProps) 
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }
     } else {
-      const targetUrl = id === 'home' ? '/app/home' : `/app/home#${id}`
+      const targetUrl = id === 'home' ? '/home' : `/home#${id}`
       router.push(targetUrl)
     }
 
     !!onClick && onClick()
   }
 
-  const href = id === 'home' ? '/app/home' : `/app/home#${id}`
+  const href = id === 'home' ? '/home' : `/home#${id}`
 
   return (
     <Link href={href} className={className} passHref>

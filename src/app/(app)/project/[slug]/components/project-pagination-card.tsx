@@ -20,7 +20,7 @@ function ProjectPaginationCard({ project, type }: ProjectPaginationCardProps) {
         "w-full 800:max-w-1/2 h-full flex items-center overflow-hidden p-2 rounded-lg shadow-background border border-solid border-darkPrimary transition-all duration-300 ease-in-out bg-background hover:scale-[1.005] hover:shadow-lg",
         isNext ? "800:ml-auto" : "800:mr-auto"
       )}
-      href={`/app/project/${project?.slug}`}
+      href={`/project/${project?.slug}`}
     >
       <div className="w-full p-2 max-550:flex flex-col-reverse 550:grid grid-cols-12 gap-8 550:gap-0 550:items-center">
         <ArrowLeft

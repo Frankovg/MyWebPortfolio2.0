@@ -14,7 +14,7 @@ import privacyPolicyContent from './privacy-policy-content.json';
 export const metadata: Metadata = {
   title: "Privacy Policy",
   alternates: {
-    canonical: "https://franamoroso.com/app/privacy-policy",
+    canonical: "https://franamoroso.com/privacy-policy",
   },
 }
 

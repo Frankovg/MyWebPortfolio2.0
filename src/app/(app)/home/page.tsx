@@ -6,7 +6,7 @@ import Loading from "./loading";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "https://franamoroso.com/app/home",
+    canonical: "https://franamoroso.com/home",
   },
 }
 

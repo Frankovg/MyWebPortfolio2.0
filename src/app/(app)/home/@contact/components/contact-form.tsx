@@ -161,7 +161,7 @@ function ContactForm() {
                     {...register("privacy_policy")}
                     onCheckedChange={field.onChange}
                   />
-                  <Label htmlFor="isActive">I accept the <Link className="underline hover:text-white" href="/app/privacy-policy">Privacy Policy</Link>.</Label>
+                  <Label htmlFor="isActive">I accept the <Link className="underline hover:text-white" href="/privacy-policy">Privacy Policy</Link>.</Label>
                 </div>
               )}
             />
