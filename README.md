@@ -44,11 +44,11 @@ This is a comprehensive portfolio web application built with modern technologies
 - **🎨 Multi-Disciplinary Portfolio**: Showcases projects across Web Development, Industrial Design, and UX/UI Design
 - **🔐 Secure Authentication**: Built with NextAuth.js v5 for robust user management
 - **📱 Fully Responsive**: Mobile-first design approach ensuring perfect display on all devices
-<!-- - **🌐 Internationalization**: Multi-language support (English/Spanish) -->
 - **⚡ Performance Optimized**: Server-side rendering, image optimization, and efficient data fetching
 - **🎭 Admin CMS**: Complete content management system for non-technical content updates
-<!-- - **📊 Analytics Ready**: Built-in tracking and monitoring capabilities -->
 - **♿ Accessible**: WCAG compliant with semantic HTML and ARIA labels
+<!-- - **📊 Analytics Ready**: Built-in tracking and monitoring capabilities -->
+<!-- - **🌐 Internationalization**: Multi-language support (English/Spanish) -->
 
 ---
 

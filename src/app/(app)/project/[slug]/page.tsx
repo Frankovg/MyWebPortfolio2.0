@@ -31,6 +31,8 @@ export async function generateMetadata({
       title: project.title,
       description: project.shortDescription,
       url: `https://franamoroso.com/project/${slug}`,
+      siteName: "Franco Gabriel Amoroso",
+      locale: "en_US",
       type: "website",
       images: [
         {
@@ -40,6 +42,13 @@ export async function generateMetadata({
           alt: project.title,
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: project.title,
+      description: project.shortDescription,
+      creator: "@frankovg",
+      images: [project.image],
     },
   }
 }
