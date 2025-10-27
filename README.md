@@ -47,8 +47,8 @@ This is a comprehensive portfolio web application built with modern technologies
 <!-- - **🌐 Internationalization**: Multi-language support (English/Spanish) -->
 - **⚡ Performance Optimized**: Server-side rendering, image optimization, and efficient data fetching
 - **🎭 Admin CMS**: Complete content management system for non-technical content updates
+- - **♿ Accessible**: WCAG compliant with semantic HTML and ARIA labels
 <!-- - **📊 Analytics Ready**: Built-in tracking and monitoring capabilities -->
-- **♿ Accessible**: WCAG compliant with semantic HTML and ARIA labels
 
 ---
 
