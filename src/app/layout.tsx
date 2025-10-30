@@ -97,6 +97,8 @@ export default async function RootLayout({
             </UserDataContextProvider>
           </SessionProvider>
           <Toaster
+            richColors
+            closeButton
             toastOptions={{
               classNames: {
                 toast: "bg-background",
