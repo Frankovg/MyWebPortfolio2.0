@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { LANGUAGE_DICTIONARY } from "@/lib/constants";
 
 export const DownloadFiles = ({ downloads }: { downloads: Download[] }) => {
   return (
@@ -20,7 +21,7 @@ export const DownloadFiles = ({ downloads }: { downloads: Download[] }) => {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="flex flex-col justify-center items-start gap-3 1170:pl-4">
+        <div className="flex flex-col justify-center items-start gap-3 max-600:p-5 1170:pl-4">
           {downloads?.map((file) => (
             <Link
               href={file.fileHref || "#"}
@@ -29,7 +30,9 @@ export const DownloadFiles = ({ downloads }: { downloads: Download[] }) => {
               <div className="flex items-center justify-center py-2 px-1 bg-primary rounded-md">
                 <FileDown size={42} className="stroke-background " />
               </div>
-              <span className="text-white">{file.name}</span>
+              <span className="text-white">
+                {`${file.name} - ${LANGUAGE_DICTIONARY[file.language as keyof typeof LANGUAGE_DICTIONARY]}`}
+              </span>
             </Link>
           ))}
         </div>
