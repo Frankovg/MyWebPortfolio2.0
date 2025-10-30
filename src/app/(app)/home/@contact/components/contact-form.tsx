@@ -62,7 +62,7 @@ function ContactForm() {
 
       if (response?.messageId) {
         reset();
-        toast.success("Application submitted successfully");
+        toast.success("Message submitted successfully");
       } else {
         toast.error("Failed to send application");
         console.error("Failed to send application");
