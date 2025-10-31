@@ -1,3 +1,7 @@
+'use client'
+
+import WheelGesturesPlugin from "embla-carousel-wheel-gestures";
+
 import { Carousel, CarouselContent, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 import CarouselItems from "./carousel-items";
@@ -5,7 +9,10 @@ import CarouselItems from "./carousel-items";
 function MobileTechViewer() {
   return (
     <section className="sm:hidden w-full flex justify-center px-5">
-      <Carousel className="w-full mx-10" opts={{ loop: true }}>
+      <Carousel
+        plugins={[WheelGesturesPlugin()]}
+        className="w-full mx-10" opts={{ loop: true }}
+      >
         <CarouselContent>
           <CarouselItems />
         </CarouselContent>

@@ -110,7 +110,7 @@ const SidebarHeaderWithLogo = ({ isExpanded }: SidebarHeaderWithLogoProps) => {
   if (isExpanded) {
     return (
       <SidebarHeader className={headerStyle}>
-        <div className="flex flex-col gap-2.5 items-center">
+        <div className="flex flex-col gap-2.5 items-center opacity-0 animate-fade-in-delayed">
           <Logo />
           <h4 className="text-xs font-light">Content Management System</h4>
         </div>

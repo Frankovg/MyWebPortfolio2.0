@@ -124,7 +124,7 @@ export default async function ProjectPage({
         <ProjectBanner image={project.image} />
         <ProjectMainInfo project={shortProjectInfo} />
         <div className="600:my-16 w-full">
-          <div className="w-full flex flex-col 930:flex-row items-top p-0">
+          <div className="w-full flex flex-col max-930:space-y-8 930:flex-row items-top p-0">
             <ProjectChart roles={project.roles} />
             <ProjectTechStack techStack={project.techStack} />
           </div>
