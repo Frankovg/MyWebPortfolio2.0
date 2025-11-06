@@ -187,3 +187,14 @@
     cursor: pointer;
   }
 }
+
+media-play-button,
+media-time-range,
+media-volume-range,
+media-fullscreen-button,
+media-mute-button {
+  --media-icon-color: var(--color-primary);
+  --media-primary-color: var(--color-primary);
+  --media-control-background: var(--color-darkGrey);
+  --media-control-hover-background: var(--color-darkPrimary);
+}

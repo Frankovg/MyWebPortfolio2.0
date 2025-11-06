@@ -20,6 +20,7 @@ const nextConfig: NextConfig = {
     formats: ["image/webp", "image/avif"],
     dangerouslyAllowSVG: false,
     unoptimized: false,
+    qualities: [40, 50, 60, 75, 100],
   },
   async redirects() {
     return [
