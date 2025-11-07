@@ -156,8 +156,8 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
         </div>
 
         <DialogContent className="max-w-full h-full max-h-screen grid-cols-none grid-rows-none flex flex-col">
-          <DialogTitle className="max-w-[1000px]"></DialogTitle>
-          <DialogDescription className="max-w-[1000px]">{images[current].description}</DialogDescription>
+          <DialogTitle className="max-w-1000"></DialogTitle>
+          <DialogDescription className="max-w-1000">{images[current].description}</DialogDescription>
           <div className="w-full h-full relative">
             {dialogImageLoading && (
               <div className="absolute inset-0 flex items-center justify-center bg-softGrey/50">
