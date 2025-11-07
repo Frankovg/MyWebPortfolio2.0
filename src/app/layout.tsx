@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   generator: "Next.js",
   robots: '/robots.txt',
   icons: {
-    icon: '/icon.svg',
+    icon: '/favicon.svg',
   },
   manifest: '/manifest.webmanifest',
   other: {
