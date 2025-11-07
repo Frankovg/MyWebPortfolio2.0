@@ -1,5 +1,7 @@
+'use client'
+
 import { AccordionItem } from "@radix-ui/react-accordion"
-import { JSX } from "react";
+import { JSX, useRef } from "react";
 
 import { Accordion, AccordionContent, AccordionTrigger } from "@/components/ui/accordion"
 
@@ -14,11 +16,37 @@ type FaqsAccordionProps = {
 }
 
 function FaqsAccordion({ items }: FaqsAccordionProps) {
+  const itemRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
+  const handleValueChange = (value: string[]) => {
+    const lastOpenedItem = value[value.length - 1];
+    if (lastOpenedItem && itemRefs.current[lastOpenedItem]) {
+      setTimeout(() => {
+        itemRefs.current[lastOpenedItem]?.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+      }, 100);
+    }
+  };
+
   return (
-    <Accordion type="single" collapsible className="w-full divide-y-[1px] text-base lg:text-lg transition-all duration-300 ease-in-out">
+    <Accordion
+      type="multiple"
+      onValueChange={handleValueChange}
+      className="w-full divide-y text-base lg:text-lg transition-all duration-300 ease-in-out"
+    >
       {items.map((item) => (
-        <AccordionItem key={item.id} value={item.id}>
-          <AccordionTrigger className="hover:text-[1.15rem] hover:no-underline data-[state=open]:text-xl data-[state=open]:text-primary w-full text-left" >
+        <AccordionItem
+          key={item.id}
+          value={item.id}
+          ref={(el) => {
+            itemRefs.current[item.id] = el;
+          }}
+        >
+          <AccordionTrigger
+            className="hover:text-[1.15rem] hover:no-underline data-[state=open]:text-xl data-[state=open]:text-primary w-full text-left"
+          >
             {item.trigger}
           </AccordionTrigger>
           <AccordionContent>
