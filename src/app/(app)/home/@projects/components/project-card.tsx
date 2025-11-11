@@ -1,4 +1,3 @@
-import { PlayIcon } from "lucide-react";
 import Link from "next/link";
 
 import ImageWithFallback from "@/components/primitives/image-with-fallback";
@@ -6,9 +5,10 @@ import { FALLBACK_IMG } from "@/lib/constants";
 
 import { ProjectCardProps } from "../types/types";
 
+import { ProjectCardMedia } from "./project-card-media";
+
 function ProjectCard({ project }: ProjectCardProps) {
   const techStackString = project.techStack.map((tech) => tech.name).join(", ");
-  //TODO: Continue working here
   return (
     <Link
       href={`/project/${project.slug}`}
@@ -19,9 +19,7 @@ function ProjectCard({ project }: ProjectCardProps) {
       "
     >
       <div className="relative w-full min-h-62.5">
-        <div className="hidden group-hover:flex absolute top-2 right-3 items-center gap-2">
-          <PlayIcon />
-        </div>
+        <ProjectCardMedia website={project.websiteUrl} repository={project.repository} video={project.videoUrl} />
         <ImageWithFallback
           className="size-full object-cover"
           src={project.image}
