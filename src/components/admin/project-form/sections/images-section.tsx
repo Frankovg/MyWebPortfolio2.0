@@ -108,7 +108,7 @@ export function ImagesSection() {
             </div>
 
             <ButtonMinimal
-              className="w-full lg:w-auto"
+              className="w-full lg:w-auto h-full"
               title="Delete"
               onClick={() => galleryRemove(index)}
             />
@@ -119,8 +119,8 @@ export function ImagesSection() {
 
       <div className="w-full flex justify-center items-center">
         <ButtonMinimal
-          title={<PlusIcon className="w-6 h-auto" />}
-          className="py-6 max-lg:my-6"
+          title={<PlusIcon className="size-4" />}
+          className="size-10 max-lg:my-6"
           onClick={() =>
             galleryAppend({
               description: "",

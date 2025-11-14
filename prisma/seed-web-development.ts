@@ -1,5 +1,5 @@
 export const WEB_DEVELOPMENT_SEED = {
-  name: "Web development",
+  name: "Web Development",
   value: "web-development",
   projects: {
     create: [

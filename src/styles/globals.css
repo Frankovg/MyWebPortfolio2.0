@@ -187,6 +187,11 @@
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-darkPrimary) var(--color-whiteText);
+  }
 }
 
 media-play-button,
