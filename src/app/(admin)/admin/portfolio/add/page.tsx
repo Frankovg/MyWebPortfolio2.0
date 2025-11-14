@@ -6,6 +6,7 @@ import MainHeader from "@/components/admin/main-header";
 import { ProjectForm } from "@/components/admin/project-form/index";
 import { getCategoryBySlug } from "@/lib/server-utils-admin";
 
+import { CAT_NAME } from "./dictionary";
 import Loading from "./loading";
 
 type Props = {
@@ -15,6 +16,8 @@ type Props = {
 async function AddProject({ searchParams }: Props) {
   const params = await searchParams;
   const category = params.category as string;
+  const categoryName = category in CAT_NAME ? CAT_NAME[category as keyof typeof CAT_NAME] : ""
+  const pageName = `Add Project to ${categoryName}`
 
   const breadcrumbLinks = [
     {
@@ -22,7 +25,7 @@ async function AddProject({ searchParams }: Props) {
       href: "/admin/portfolio",
     },
     {
-      name: "Add Project",
+      name: pageName,
     },
   ];
 
@@ -38,7 +41,7 @@ async function AddProject({ searchParams }: Props) {
       <MainHeader breadcrumbLinks={breadcrumbLinks} />
       <Suspense fallback={<Loading />}>
         <AdminSection>
-          <AdminPageTitle title="Add Project" showGoBack={true} />
+          <AdminPageTitle title={pageName} showGoBack={true} />
           <ProjectForm actionType="add" categoryId={categoryId} />
         </AdminSection>
       </Suspense>
