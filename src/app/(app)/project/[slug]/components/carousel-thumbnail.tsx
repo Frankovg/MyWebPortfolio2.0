@@ -1,3 +1,4 @@
+import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures"
 import { JSX } from "react"
 
 import { Carousel, CarouselApi, CarouselContent } from "@/components/ui/carousel"
@@ -15,6 +16,7 @@ function CarouselThumbnail({
   return (
     <Carousel
       setApi={setThumbnailApi}
+      plugins={[WheelGesturesPlugin()]}
       opts={{
         align: "start",
         dragFree: true,

@@ -1,4 +1,3 @@
-//Components
 import H3 from "@/components/primitives/h3";
 import H4 from "@/components/primitives/h4";
 import Section from "@/components/section";

@@ -65,14 +65,15 @@ function PortfolioContent({ content }: PortfolioContentProps) {
   const table = useReactTable({
     data: content.projects,
     columns,
+    onSortingChange: setSorting,
     state: {
       sorting,
       columnFilters,
       globalFilter,
     },
     enableColumnFilters: true,
-    manualSorting: true,
     getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     onColumnFiltersChange: setColumnFilters,
     onGlobalFilterChange: setGlobalFilter,
@@ -87,8 +88,6 @@ function PortfolioContent({ content }: PortfolioContentProps) {
         client.includes(searchValue)
       );
     },
-    onSortingChange: setSorting,
-    getSortedRowModel: getSortedRowModel(),
   });
 
   return (

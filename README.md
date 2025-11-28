@@ -47,8 +47,8 @@ This is a comprehensive portfolio web application built with modern technologies
 - **⚡ Performance Optimized**: Server-side rendering, image optimization, and efficient data fetching
 - **🎭 Admin CMS**: Complete content management system for non-technical content updates
 - **♿ Accessible**: WCAG compliant with semantic HTML and ARIA labels
-<!-- - **📊 Analytics Ready**: Built-in tracking and monitoring capabilities -->
-<!-- - **🌐 Internationalization**: Multi-language support (English/Spanish) -->
+  <!-- - **📊 Analytics Ready**: Built-in tracking and monitoring capabilities -->
+  <!-- - **🌐 Internationalization**: Multi-language support (English/Spanish) -->
 
 ---
 
@@ -368,7 +368,23 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 
 ## 📝 Changelog
 
-### [1.0.1] - 2025-01-14
+### [1.1.0] - 28-11-2025
+
+#### New Features
+
+**Added**
+
+- The image carousel allows wheel, touch and keyboard scrolling.
+- Projects table has a sorting by name.
+- Fixed the vertical shift when opens an accordion item in /about-me.
+- Added direct links in the project card when hovering.
+- Customized video player.
+- Added colors to the toast component.
+- Fixed a weird animation in the sidebar when it's open and close.
+- Adjusted styles of the mobile menu.
+- General issues has been fixed.
+
+### [1.0.1] - 14-01-2025
 
 #### 🎉 Initial Release
 

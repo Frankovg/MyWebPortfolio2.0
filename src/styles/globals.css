@@ -19,6 +19,7 @@
   --breakpoint-1170: 1170px;
 
   --spacing-600: 600px;
+  --spacing-1000: 1000px;
 
   --container-fa: 1320px;
   --container-am: 920px;
@@ -60,6 +61,7 @@
   --animate-accordion-up: accordion-up 0.2s ease-out;
   --animate-shiny: shiny 3s linear infinite;
   --animate-fade-in: fadeIn 0.5s ease-out forwards;
+  --animate-fade-in-delayed: fadeIn 0.3s ease-in 0.15s forwards;
   --animate-slide-up: slideUp 0.6s ease-out forwards;
 
   @keyframes accordion-down {
@@ -185,4 +187,20 @@
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-darkPrimary) var(--color-whiteText);
+  }
+}
+
+media-play-button,
+media-time-range,
+media-volume-range,
+media-fullscreen-button,
+media-mute-button {
+  --media-icon-color: var(--color-primary);
+  --media-primary-color: var(--color-primary);
+  --media-control-background: var(--color-darkGrey);
+  --media-control-hover-background: var(--color-darkPrimary);
 }

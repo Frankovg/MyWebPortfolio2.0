@@ -7,7 +7,7 @@ import { SOCIAL_ICONS } from "@/lib/client-constants";
 import { ROUTES } from "@/lib/constants";
 
 import DownloadLinks from "../download-links";
-import { Sheet, SheetContent, SheetTitle } from "../ui/sheet";
+import { Sheet, SheetContent, SheetDescription, SheetTitle } from "../ui/sheet";
 
 type MobileMenuProps = {
   open: boolean;
@@ -33,6 +33,9 @@ function MobileMenu({ open, close }: MobileMenuProps) {
   return (
     <Sheet open={open} onOpenChange={close}>
       <SheetTitle className="sr-only">Menu</SheetTitle>
+      <SheetDescription className="sr-only">
+        Navigation menu with links to all pages and social profiles
+      </SheetDescription>
       <SheetContent
         side={isMobile ? "right" : "top"}
         className="max-sm:w-screen [&_svg]:w-6 [&_svg]:h-6 [&_button]:focus:ring-softGrey max-sm:border-none border-primary pt-[10vh] sm:pt-12 px-8 pb-8 bg-background"

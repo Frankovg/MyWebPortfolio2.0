@@ -29,25 +29,35 @@ export const metadata: Metadata = {
   generator: "Next.js",
   robots: '/robots.txt',
   icons: {
-    icon: '/icon.svg',
+    icon: '/favicon.svg',
   },
   manifest: '/manifest.webmanifest',
   other: {
     'sitemap': '/sitemap.xml',
   },
   openGraph: {
-    title: "Franco Gabriel Amoroso",
+    title: "Franco Gabriel Amoroso - Full-Stack Developer & Designer",
     description: "Hi! This is my Web-Portfolio, I hope you like it!",
     url: "https://franamoroso.com/",
+    siteName: "Franco Gabriel Amoroso",
+    locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://drive.google.com/file/d/1OoH2gdSw9MpyeO24ydz0qQMFHlZiKbdL/view?usp=drive_link",
+        url: "https://drive.google.com/uc?export=view&id=1OoH2gdSw9MpyeO24ydz0qQMFHlZiKbdL",
         width: 1200,
         height: 630,
         alt: "Franco Gabriel Amoroso - Full-Stack Developer & Designer",
+        type: "image/png",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Franco Gabriel Amoroso - Full-Stack Developer & Designer",
+    description: "Hi! This is my Web-Portfolio, I hope you like it!",
+    creator: "@frankovg",
+    images: ["https://drive.google.com/uc?export=view&id=1OoH2gdSw9MpyeO24ydz0qQMFHlZiKbdL"],
   },
 }
 
@@ -87,6 +97,8 @@ export default async function RootLayout({
             </UserDataContextProvider>
           </SessionProvider>
           <Toaster
+            richColors
+            closeButton
             toastOptions={{
               classNames: {
                 toast: "bg-background",

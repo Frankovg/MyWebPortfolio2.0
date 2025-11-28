@@ -31,6 +31,8 @@ export async function generateMetadata({
       title: project.title,
       description: project.shortDescription,
       url: `https://franamoroso.com/project/${slug}`,
+      siteName: "Franco Gabriel Amoroso",
+      locale: "en_US",
       type: "website",
       images: [
         {
@@ -40,6 +42,13 @@ export async function generateMetadata({
           alt: project.title,
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: project.title,
+      description: project.shortDescription,
+      creator: "@frankovg",
+      images: [project.image],
     },
   }
 }
@@ -115,7 +124,7 @@ export default async function ProjectPage({
         <ProjectBanner image={project.image} />
         <ProjectMainInfo project={shortProjectInfo} />
         <div className="600:my-16 w-full">
-          <div className="w-full flex flex-col 930:flex-row items-top p-0">
+          <div className="w-full flex flex-col max-930:space-y-8 930:flex-row items-top p-0">
             <ProjectChart roles={project.roles} />
             <ProjectTechStack techStack={project.techStack} />
           </div>

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import ImageWithFallback from "@/components/primitives/image-with-fallback";
+import { Spinner } from "@/components/primitives/spinner";
 import { ProjectCarouselSkeleton } from "@/components/skeletons/project-carousel-skeleton";
 import { CarouselApi, CarouselItem } from "@/components/ui/carousel";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
@@ -20,59 +21,76 @@ type ProjectCarouselProps = {
 };
 
 function ProjectCarousel({ images }: ProjectCarouselProps) {
-  const mainApiRef = useRef<CarouselApi>(null);
-  const thumbnailApiRef = useRef<CarouselApi>(null);
+  const [mainApi, setMainApi] = useState<CarouselApi>(undefined);
+  const [thumbnailApi, setThumbnailApi] = useState<CarouselApi>(undefined);
 
   const [current, setCurrent] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [dialogImageLoading, setDialogImageLoading] = useState(false);
 
-  const setMainApi = useCallback((api: CarouselApi) => {
-    mainApiRef.current = api;
-    if (api && thumbnailApiRef.current) {
-      setIsLoading(false);
-    }
-  }, []);
+  const carouselContainerRef = useRef<HTMLDivElement>(null);
 
-  const setThumbnailApi = useCallback((api: CarouselApi) => {
-    thumbnailApiRef.current = api;
-    if (api && mainApiRef.current) {
-      setIsLoading(false);
+  const handleKeyDown = useCallback((event: KeyboardEvent) => {
+    if (!mainApi) return;
+
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      mainApi.scrollPrev();
+    } else if (event.key === "ArrowRight") {
+      event.preventDefault();
+      mainApi.scrollNext();
     }
-  }, []);
+  }, [mainApi]);
 
   useEffect(() => {
-    if (!mainApiRef.current || !thumbnailApiRef.current) {
+    if (!mainApi || !thumbnailApi) {
       return;
     }
 
+    setIsLoading(false);
     setCurrent(0);
-    mainApiRef.current.scrollTo(0);
-    thumbnailApiRef.current.scrollTo(0);
+    mainApi.scrollTo(0);
+    thumbnailApi.scrollTo(0);
 
     const handleTopSelect = () => {
-      const selected = mainApiRef.current!.selectedScrollSnap();
+      const selected = mainApi.selectedScrollSnap();
       setCurrent(selected);
-      thumbnailApiRef.current!.scrollTo(selected);
+      thumbnailApi.scrollTo(selected);
     };
     const handleBottomSelect = () => {
-      const selected = thumbnailApiRef.current!.selectedScrollSnap();
+      const selected = thumbnailApi.selectedScrollSnap();
       setCurrent(selected);
-      mainApiRef.current!.scrollTo(selected);
+      mainApi.scrollTo(selected);
     };
 
-    mainApiRef.current.on("select", handleTopSelect);
-    thumbnailApiRef.current.on("select", handleBottomSelect);
+    mainApi.on("select", handleTopSelect);
+    thumbnailApi.on("select", handleBottomSelect);
 
     return () => {
-      mainApiRef.current?.off("select", handleTopSelect);
-      thumbnailApiRef.current?.off("select", handleBottomSelect);
+      mainApi.off("select", handleTopSelect);
+      thumbnailApi.off("select", handleBottomSelect);
     };
-  }, []);
+  }, [mainApi, thumbnailApi]);
+
+  useEffect(() => {
+    const container = carouselContainerRef.current;
+    if (!container) return;
+
+    container.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      container.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [handleKeyDown]);
+
+  useEffect(() => {
+    setDialogImageLoading(true);
+  }, [current]);
 
   const handleClick = (index: number) => {
     setCurrent(index);
-    mainApiRef.current?.scrollTo(index);
-    thumbnailApiRef.current?.scrollTo(index);
+    mainApi?.scrollTo(index);
+    thumbnailApi?.scrollTo(index);
   };
 
   const mainImage = useMemo(
@@ -104,7 +122,7 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
         >
           <ImageWithFallback
             className={`${index === current && "border-2"
-              } w-full h-full object-contain rounded-lg`}
+              } w-full h-full object-contain rounded-lg transition-none`}
             src={image.imageUrl}
             fallbackSrc={FALLBACK_IMG}
             alt={`Carousel Thumbnail Image ${index + 1}`}
@@ -122,7 +140,11 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
     <>
       {isLoading && <ProjectCarouselSkeleton />}
       <Dialog>
-        <div className={`relative w-full ${isLoading ? 'hidden' : ''}`}>
+        <div
+          ref={carouselContainerRef}
+          tabIndex={0}
+          className={`relative w-full focus:outline-none ${isLoading ? 'hidden' : ''}`}
+        >
           <DialogTrigger asChild>
             <ExpanderButton onClick={() => console.warn("Open image")} />
           </DialogTrigger>
@@ -134,9 +156,14 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
         </div>
 
         <DialogContent className="max-w-full h-full max-h-screen grid-cols-none grid-rows-none flex flex-col">
-          <DialogTitle className="max-w-[1000px]"></DialogTitle>
-          <DialogDescription className="max-w-[1000px]">{images[current].description}</DialogDescription>
-          <div className="w-full h-full">
+          <DialogTitle className="max-w-1000"></DialogTitle>
+          <DialogDescription className="max-w-1000">{images[current].description}</DialogDescription>
+          <div className="w-full h-full relative">
+            {dialogImageLoading && (
+              <div className="absolute inset-0 flex items-center justify-center bg-softGrey/50">
+                <Spinner size="lg" className="text-white" />
+              </div>
+            )}
             <Image
               src={images[current].imageUrl}
               alt={images[current].alt}
@@ -145,6 +172,9 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
               height={0}
               sizes={"100%"}
               quality={60}
+              onLoadStart={() => setDialogImageLoading(true)}
+              onLoad={() => setDialogImageLoading(false)}
+              onError={() => setDialogImageLoading(false)}
             />
           </div>
         </DialogContent>
