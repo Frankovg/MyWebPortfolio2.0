@@ -2,7 +2,6 @@ import { render, act } from '@testing-library/react'
 
 import HashScrollHandler from './hashScrollHandler'
 
-// Mock next/navigation
 const mockUsePathname = jest.fn()
 jest.mock('next/navigation', () => ({
   usePathname: () => mockUsePathname(),
@@ -17,7 +16,6 @@ describe('HashScrollHandler', () => {
     mockScrollIntoView = jest.fn()
     hashChangeListeners = []
 
-    // Mock addEventListener and removeEventListener
     jest.spyOn(window, 'addEventListener').mockImplementation((event, handler) => {
       if (event === 'hashchange') {
         hashChangeListeners.push(handler as (event: Event) => void)
@@ -35,7 +33,6 @@ describe('HashScrollHandler', () => {
 
     mockUsePathname.mockReturnValue('/')
 
-    // Reset location hash using the proper jsdom way
     window.location.hash = ''
   })
 
@@ -61,7 +58,6 @@ describe('HashScrollHandler', () => {
 
     render(<HashScrollHandler />)
 
-    // Should scroll immediately without waiting for timer
     expect(mockScrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' })
 
     document.body.removeChild(mockElement)
@@ -109,29 +105,23 @@ describe('HashScrollHandler', () => {
 
     render(<HashScrollHandler />)
 
-    // Element doesn't exist yet, so no scroll
     expect(mockScrollIntoView).not.toHaveBeenCalled()
 
-    // Advance timer for first retry attempt
     act(() => {
       jest.advanceTimersByTime(100)
     })
 
-    // Still no element
     expect(mockScrollIntoView).not.toHaveBeenCalled()
 
-    // Now add the element
     const mockElement = document.createElement('div')
     mockElement.id = 'delayed-section'
     mockElement.scrollIntoView = mockScrollIntoView
     document.body.appendChild(mockElement)
 
-    // Advance timer for next retry
     act(() => {
       jest.advanceTimersByTime(100)
     })
 
-    // Now it should have scrolled
     expect(mockScrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' })
 
     document.body.removeChild(mockElement)
@@ -143,7 +133,6 @@ describe('HashScrollHandler', () => {
 
     render(<HashScrollHandler />)
 
-    // Advance through all retry attempts (10 attempts * 100ms each)
     act(() => {
       jest.advanceTimersByTime(1000)
     })
@@ -200,7 +189,6 @@ describe('HashScrollHandler', () => {
 
     render(<HashScrollHandler />)
 
-    // Simulate hash change
     window.location.hash = '#contact'
     hashChangeListeners.forEach(listener => listener(new Event('hashchange')))
 
@@ -226,11 +214,9 @@ describe('HashScrollHandler', () => {
 
     expect(mockScrollIntoView).not.toHaveBeenCalled()
 
-    // Change pathname to home
     mockUsePathname.mockReturnValue('/')
     rerender(<HashScrollHandler />)
 
-    // Should scroll immediately since element exists
     expect(mockScrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' })
 
     document.body.removeChild(mockElement)
@@ -241,7 +227,6 @@ describe('HashScrollHandler', () => {
 
     render(<HashScrollHandler />)
 
-    // The listener should not be added for non-home paths
     expect(hashChangeListeners.length).toBe(0)
   })
 
@@ -251,19 +236,16 @@ describe('HashScrollHandler', () => {
 
     render(<HashScrollHandler />)
 
-    // Simulate hash change to a section that doesn't exist yet
     window.location.hash = '#lazy-section'
     hashChangeListeners.forEach(listener => listener(new Event('hashchange')))
 
     expect(mockScrollIntoView).not.toHaveBeenCalled()
 
-    // Add the element after a delay
     const mockElement = document.createElement('div')
     mockElement.id = 'lazy-section'
     mockElement.scrollIntoView = mockScrollIntoView
     document.body.appendChild(mockElement)
 
-    // Advance timer to allow retry
     act(() => {
       jest.advanceTimersByTime(100)
     })

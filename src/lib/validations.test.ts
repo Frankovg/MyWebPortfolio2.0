@@ -1,7 +1,6 @@
 import { projectFormSchema } from './validations';
 
-// Test data for validation
-const baseProjectData = {
+const mockedProjectData = {
   title: "Test Project",
   shortDescription: "A test project",
   description: "This is a test project description",
@@ -34,12 +33,12 @@ const baseProjectData = {
 
 describe('Project Form URL Validation', () => {
   it('should accept null for optional URL fields', () => {
-    const result = projectFormSchema.safeParse(baseProjectData);
+    const result = projectFormSchema.safeParse(mockedProjectData);
     expect(result.success).toBe(true);
   });
 
   it('should accept empty string for websiteUrl and transform to null', () => {
-    const data = { ...baseProjectData, websiteUrl: "" };
+    const data = { ...mockedProjectData, websiteUrl: "" };
     const result = projectFormSchema.safeParse(data);
     expect(result.success).toBe(true);
     if (result.success) {
@@ -48,7 +47,7 @@ describe('Project Form URL Validation', () => {
   });
 
   it('should accept valid URL for websiteUrl', () => {
-    const data = { ...baseProjectData, websiteUrl: "https://example.com" };
+    const data = { ...mockedProjectData, websiteUrl: "https://example.com" };
     const result = projectFormSchema.safeParse(data);
     expect(result.success).toBe(true);
     if (result.success) {
@@ -57,7 +56,7 @@ describe('Project Form URL Validation', () => {
   });
 
   it('should reject invalid URL for websiteUrl', () => {
-    const data = { ...baseProjectData, websiteUrl: "not-a-url" };
+    const data = { ...mockedProjectData, websiteUrl: "not-a-url" };
     const result = projectFormSchema.safeParse(data);
     expect(result.success).toBe(false);
     if (!result.success) {
@@ -69,24 +68,21 @@ describe('Project Form URL Validation', () => {
     const urlFields = ['repository', 'websiteUrl', 'videoUrl', 'companyUrl', 'clientUrl'];
 
     urlFields.forEach(field => {
-      // Test empty string
-      const emptyData = { ...baseProjectData, [field]: "" };
+      const emptyData = { ...mockedProjectData, [field]: "" };
       const emptyResult = projectFormSchema.safeParse(emptyData);
       expect(emptyResult.success).toBe(true);
       if (emptyResult.success) {
         expect(emptyResult.data[field as keyof typeof emptyResult.data]).toBe(null);
       }
 
-      // Test valid URL
-      const validData = { ...baseProjectData, [field]: "https://example.com" };
+      const validData = { ...mockedProjectData, [field]: "https://example.com" };
       const validResult = projectFormSchema.safeParse(validData);
       expect(validResult.success).toBe(true);
       if (validResult.success) {
         expect(validResult.data[field as keyof typeof validResult.data]).toBe("https://example.com");
       }
 
-      // Test invalid URL
-      const invalidData = { ...baseProjectData, [field]: "invalid-url" };
+      const invalidData = { ...mockedProjectData, [field]: "invalid-url" };
       const invalidResult = projectFormSchema.safeParse(invalidData);
       expect(invalidResult.success).toBe(false);
     });
@@ -96,24 +92,21 @@ describe('Project Form URL Validation', () => {
     const stringFields = ['videoTitle', 'videoDescription', 'company', 'client'];
 
     stringFields.forEach(field => {
-      // Test empty string transforms to null
-      const emptyData = { ...baseProjectData, [field]: "" };
+      const emptyData = { ...mockedProjectData, [field]: "" };
       const emptyResult = projectFormSchema.safeParse(emptyData);
       expect(emptyResult.success).toBe(true);
       if (emptyResult.success) {
         expect(emptyResult.data[field as keyof typeof emptyResult.data]).toBe(null);
       }
 
-      // Test valid string
-      const validData = { ...baseProjectData, [field]: "Valid content" };
+      const validData = { ...mockedProjectData, [field]: "Valid content" };
       const validResult = projectFormSchema.safeParse(validData);
       expect(validResult.success).toBe(true);
       if (validResult.success) {
         expect(validResult.data[field as keyof typeof validResult.data]).toBe("Valid content");
       }
 
-      // Test null value
-      const nullData = { ...baseProjectData, [field]: null };
+      const nullData = { ...mockedProjectData, [field]: null };
       const nullResult = projectFormSchema.safeParse(nullData);
       expect(nullResult.success).toBe(true);
       if (nullResult.success) {
@@ -123,9 +116,8 @@ describe('Project Form URL Validation', () => {
   });
 
   it('should handle gallery description field as optional', () => {
-    // Test with empty description
     const emptyDescData = {
-      ...baseProjectData,
+      ...mockedProjectData,
       gallery: [{
         imageUrl: "https://example.com/gallery.jpg",
         alt: "Gallery image",
@@ -138,9 +130,8 @@ describe('Project Form URL Validation', () => {
       expect(emptyDescResult.data.gallery[0].description).toBe(null);
     }
 
-    // Test with valid description
     const validDescData = {
-      ...baseProjectData,
+      ...mockedProjectData,
       gallery: [{
         imageUrl: "https://example.com/gallery.jpg",
         alt: "Gallery image",
