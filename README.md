@@ -230,23 +230,14 @@ npm run build
 # Start production server
 npm start
 
+# Start development server
+npm run dev
+
 # Run linter
 npm run lint
 
-# Fix linting issues
-npm run lint:fix
-
 # Run tests
 npm test
-
-# Run tests in watch mode
-npm test:watch
-
-# Generate coverage report
-npm run test:coverage
-
-# Open coverage report in browser (macOS)
-npm run test:coverage:open
 ```
 
 ---
