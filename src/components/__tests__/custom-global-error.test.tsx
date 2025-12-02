@@ -1,13 +1,10 @@
 import { render, screen } from '@testing-library/react';
 
+import { mockNextLink } from '@/__mocks__/test-utils';
+
 import { CustomGlobalError } from '../custom-global-error';
 
-jest.mock('next/link', () => ({
-  __esModule: true,
-  default: function MockLink({ children, href }: { children: React.ReactNode; href: string }) {
-    return <a href={href}>{children}</a>;
-  },
-}));
+jest.mock('next/link', () => mockNextLink);
 
 describe('CustomGlobalError', () => {
   const defaultProps = {

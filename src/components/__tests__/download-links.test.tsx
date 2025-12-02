@@ -1,21 +1,11 @@
 import { render, screen } from '@testing-library/react';
 
+import { mockNextImage, mockNextLink } from '@/__mocks__/test-utils';
+
 import DownloadLinks from '../download-links';
 
-jest.mock('next/image', () => ({
-  __esModule: true,
-  default: function MockImage({ src, alt }: { src: string; alt: string }) {
-    // eslint-disable-next-line @next/next/no-img-element
-    return <img src={src} alt={alt} />;
-  },
-}));
-
-jest.mock('next/link', () => ({
-  __esModule: true,
-  default: function MockLink({ children, href, target }: { children: React.ReactNode; href: string; target?: string }) {
-    return <a href={href} target={target}>{children}</a>;
-  },
-}));
+jest.mock('next/image', () => mockNextImage);
+jest.mock('next/link', () => mockNextLink);
 
 const mockDownloads = [
   {

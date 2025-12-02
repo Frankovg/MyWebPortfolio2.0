@@ -1,21 +1,17 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+import {
+  mockNextLink,
+  mockSonner,
+  setupResizeObserverMock,
+} from '@/__mocks__/test-utils';
+
 import ContactForm from '../contact-form';
 
-class ResizeObserverMock {
-  observe() { }
-  unobserve() { }
-  disconnect() { }
-}
-global.ResizeObserver = ResizeObserverMock;
+setupResizeObserverMock();
 
-jest.mock('next/link', () => ({
-  __esModule: true,
-  default: function MockLink({ children, href }: { children: React.ReactNode; href: string }) {
-    return <a href={href}>{children}</a>;
-  },
-}));
+jest.mock('next/link', () => mockNextLink);
 
 let mockSearchParams = new URLSearchParams();
 jest.mock('next/navigation', () => ({
@@ -26,12 +22,7 @@ jest.mock('@/actions/index', () => ({
   sendMail: jest.fn(),
 }));
 
-jest.mock('sonner', () => ({
-  toast: {
-    success: jest.fn(),
-    error: jest.fn(),
-  },
-}));
+jest.mock('sonner', () => mockSonner);
 
 describe('ContactForm', () => {
   beforeEach(() => {

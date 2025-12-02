@@ -1,6 +1,12 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+import {
+  mockNextImage,
+  mockNextLink,
+  setupMatchMediaMock,
+  setupScrollYMock,
+} from '@/__mocks__/test-utils';
 import { ROUTES, SOCIAL_ICONS } from '@/lib/constants';
 
 import Navbar from '../navbar';
@@ -13,29 +19,8 @@ jest.mock('next/navigation', () => ({
   usePathname: () => '/home',
 }));
 
-jest.mock('next/image', () => ({
-  __esModule: true,
-  default: function MockImage(props: Record<string, unknown>) {
-    const { src, alt, priority: _priority, ...rest } = props;
-    const imgSrc = typeof src === 'object' && src !== null && 'src' in src
-      ? (src as { src: string }).src
-      : src as string;
-    // eslint-disable-next-line @next/next/no-img-element
-    return <img src={imgSrc} alt={alt as string} {...rest} />;
-  },
-}));
-
-jest.mock('next/link', () => ({
-  __esModule: true,
-  default: function MockLink(props: Record<string, unknown>) {
-    const { children, href, passHref: _passHref, ...rest } = props;
-    return (
-      <a href={href as string} {...rest}>
-        {children as React.ReactNode}
-      </a>
-    );
-  },
-}));
+jest.mock('next/image', () => mockNextImage);
+jest.mock('next/link', () => mockNextLink);
 
 jest.mock('@/hooks/use-user-data-context', () => ({
   useUserDataContext: () => ({
@@ -76,25 +61,8 @@ describe('Navbar', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-
-    Object.defineProperty(window, 'matchMedia', {
-      writable: true,
-      value: jest.fn().mockImplementation((query: string) => ({
-        matches: false,
-        media: query,
-        onchange: null,
-        addListener: jest.fn(),
-        removeListener: jest.fn(),
-        addEventListener: jest.fn(),
-        removeEventListener: jest.fn(),
-        dispatchEvent: jest.fn(),
-      })),
-    });
-
-    Object.defineProperty(window, 'scrollY', {
-      writable: true,
-      value: 0,
-    });
+    setupMatchMediaMock();
+    setupScrollYMock(0);
   });
 
   describe('Rendering', () => {

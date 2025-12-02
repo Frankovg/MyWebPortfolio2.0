@@ -1,14 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+import { mockNextLink } from '@/__mocks__/test-utils';
+
 import TechCard from '../tech-card';
 
-jest.mock('next/link', () => ({
-  __esModule: true,
-  default: function MockLink({ children, href, target }: { children: React.ReactNode; href: string; target?: string }) {
-    return <a href={href} target={target}>{children}</a>;
-  },
-}));
+jest.mock('next/link', () => mockNextLink);
 
 const MockIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg data-testid="tech-icon" {...props}>

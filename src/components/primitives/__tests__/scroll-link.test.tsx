@@ -1,34 +1,21 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+import { mockNextLink, mockRouter } from '@/__mocks__/test-utils';
+
 import ScrollLink from '../scroll-link';
 
-const mockPush = jest.fn();
-let mockPathname = '/home';
-
 jest.mock('next/navigation', () => ({
-  useRouter: () => ({
-    push: mockPush,
-  }),
-  usePathname: () => mockPathname,
+  useRouter: () => mockRouter,
+  usePathname: () => mockRouter.pathname,
 }));
 
-jest.mock('next/link', () => ({
-  __esModule: true,
-  default: function MockLink(props: Record<string, unknown>) {
-    const { children, href, passHref: _passHref, ...rest } = props;
-    return (
-      <a href={href as string} {...rest}>
-        {children as React.ReactNode}
-      </a>
-    );
-  },
-}));
+jest.mock('next/link', () => mockNextLink);
 
 describe('ScrollLink', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    mockPathname = '/home';
+    mockRouter.pathname = '/home';
   });
 
   describe('Rendering', () => {
@@ -68,7 +55,7 @@ describe('ScrollLink', () => {
 
   describe('Click behavior on home page', () => {
     beforeEach(() => {
-      mockPathname = '/home';
+      mockRouter.pathname = '/home';
     });
 
     it('should scroll to element when on home page', async () => {
@@ -81,7 +68,7 @@ describe('ScrollLink', () => {
       await user.click(screen.getByRole('button'));
 
       expect(mockElement.scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' });
-      expect(mockPush).not.toHaveBeenCalled();
+      expect(mockRouter.push).not.toHaveBeenCalled();
     });
 
     it('should scroll to top when id is home', async () => {
@@ -111,7 +98,7 @@ describe('ScrollLink', () => {
 
   describe('Click behavior on other pages', () => {
     beforeEach(() => {
-      mockPathname = '/about';
+      mockRouter.pathname = '/about';
     });
 
     it('should navigate using router when not on home page', async () => {
@@ -121,7 +108,7 @@ describe('ScrollLink', () => {
 
       await user.click(screen.getByRole('button'));
 
-      expect(mockPush).toHaveBeenCalledWith('/home#projects');
+      expect(mockRouter.push).toHaveBeenCalledWith('/home#projects');
     });
 
     it('should navigate to /home when id is home', async () => {
@@ -131,13 +118,13 @@ describe('ScrollLink', () => {
 
       await user.click(screen.getByRole('button'));
 
-      expect(mockPush).toHaveBeenCalledWith('/home');
+      expect(mockRouter.push).toHaveBeenCalledWith('/home');
     });
   });
 
   describe('Root path handling', () => {
     it('should treat / as home page', async () => {
-      mockPathname = '/';
+      mockRouter.pathname = '/';
       const user = userEvent.setup();
       const scrollToMock = jest.fn();
       window.scrollTo = scrollToMock;
@@ -147,7 +134,7 @@ describe('ScrollLink', () => {
       await user.click(screen.getByRole('button'));
 
       expect(scrollToMock).toHaveBeenCalledWith({ top: 0, behavior: 'smooth' });
-      expect(mockPush).not.toHaveBeenCalled();
+      expect(mockRouter.push).not.toHaveBeenCalled();
     });
   });
 });

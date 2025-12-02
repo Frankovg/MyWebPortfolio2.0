@@ -1,16 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+import { setupResizeObserverMock } from '@/__mocks__/test-utils';
+
 import { MultiSelect } from '../multi-select';
 
-// Mock ResizeObserver and scrollIntoView for cmdk
-class ResizeObserverMock {
-  observe() {}
-  unobserve() {}
-  disconnect() {}
-}
-global.ResizeObserver = ResizeObserverMock;
-
+// Setup mocks for cmdk library
+setupResizeObserverMock();
 Element.prototype.scrollIntoView = jest.fn();
 
 const mockOptions = [

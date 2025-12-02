@@ -1,13 +1,10 @@
 import { render, screen } from '@testing-library/react';
 
+import { mockNextLink } from '@/__mocks__/test-utils';
+
 import { ErrorPage } from '../404';
 
-jest.mock('next/link', () => ({
-  __esModule: true,
-  default: function MockLink({ children, href }: { children: React.ReactNode; href: string }) {
-    return <a href={href}>{children}</a>;
-  },
-}));
+jest.mock('next/link', () => mockNextLink);
 
 describe('ErrorPage', () => {
   it('should render 404 error message', async () => {
