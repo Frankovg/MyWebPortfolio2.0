@@ -1,13 +1,10 @@
-'use client'
-import Link from "next/link";
-
 import { SOCIAL_ICONS } from "@/lib/client-constants";
 
 export function SocialNavLinks() {
   return (
     <li className="flex items-center gap-6 600:gap-1.5">
       {SOCIAL_ICONS.map((socialIcon, index) => (
-        <Link
+        <a
           key={`${index}-${socialIcon.href}`}
           href={socialIcon.href ?? "#"}
           target="_blank"
@@ -16,7 +13,7 @@ export function SocialNavLinks() {
         >
           <span className="absolute inset-0 bg-primary rounded-full transform scale-0 transition-transform duration-300 ease-in-out group-hover:scale-100" />
           <socialIcon.icon />
-        </Link>
+        </a>
       ))}
     </li>
   );

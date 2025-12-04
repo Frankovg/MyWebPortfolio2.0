@@ -10,6 +10,7 @@ import Logo from "./primitives/logo";
 
 function Footer() {
   const year = new Date().getFullYear();
+  const linkStyles = 'font-normal hover:text-white max-sm:text-lg'
 
   return (
     <>
@@ -30,7 +31,7 @@ function Footer() {
               <li className="max-sm:text-center" key={index}>
                 <Link
                   href={section.href || "#"}
-                  className="font-normal hover:text-white max-sm:text-lg"
+                  className={linkStyles}
                 >
                   {section.name || ""}
                 </Link>
@@ -53,16 +54,19 @@ function Footer() {
                 Let&apos;s Talk
               </h6>
             </li>
-            {FOOTER_LINKS.letsTalk.map((item, index) => (
-              <li className="max-sm:text-center" key={index}>
-                <Link
-                  href={item.href || "#"}
-                  className="font-normal hover:text-white max-sm:text-lg"
-                >
-                  {item.name || ""}
-                </Link>
-              </li>
-            ))}
+            {FOOTER_LINKS.letsTalk.map((item, index) => {
+              const linkText = item.name || ""
+              const linkHref = item.href || "#"
+              return (
+                <li className="max-sm:text-center" key={index}>
+                  {item.name.includes('LinkedIn') ? (
+                    <a href={linkHref} className={linkStyles} >{linkText}</a>
+                  ) : (
+                    <Link href={linkHref} className={linkStyles} >{linkText}</Link>
+                  )}
+                </li>
+              )
+            })}
           </ul>
 
           <ul className="max-sm:mx-auto col-start-11 col-span-2 row-start-1 row-span-1 space-y-2">
@@ -75,7 +79,7 @@ function Footer() {
               <li className="max-sm:text-center" key={index}>
                 <Link
                   href={item.href || "#"}
-                  className="font-normal hover:text-white max-sm:text-lg"
+                  className={linkStyles}
                 >
                   {item.name || ""}
                 </Link>

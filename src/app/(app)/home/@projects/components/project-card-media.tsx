@@ -45,6 +45,7 @@ export const ProjectCardMedia = ({ website, repository, video }: ProjectCardMedi
                   e.preventDefault()
                   window.open(b.url ?? "", "_blank", "noopener,noreferrer")
                 }}
+                className="hover:text-white transition-colors duration-200"
               >
                 {b.icon}
               </button>

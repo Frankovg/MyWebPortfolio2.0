@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo } from "react";
 
 import { useUserDataContext } from "@/hooks/use-user-data-context";
@@ -32,14 +31,14 @@ function DownloadLinksFooter() {
     <>
       {_downloads.map((download, index) => (
         <li className="max-sm:text-center" key={index}>
-          <Link
+          <a
             href={download.href || "#"}
             target="_blank"
             rel="noopener noreferrer"
             className="font-normal hover:text-white max-sm:text-lg"
           >
             {`${download.name} - ${LANGUAGE_DICTIONARY[download.language as keyof typeof LANGUAGE_DICTIONARY]}`}
-          </Link>
+          </a>
         </li>
       ))}
     </>
