@@ -1,20 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 
 import { useUserDataContext } from "@/hooks/use-user-data-context";
 
 function DownloadLinks() {
   const { downloads } = useUserDataContext();
 
-  //TODO: Hardcoded filter per language. This should be change when i18n is implemented
   const parsedDownloads = downloads.filter((file) => file.isActive && file.language === "en");
 
   return (
     <div className="flex max-sm:flex-wrap sm:flex-col gap-4 items-center max-sm:justify-end w-full sm:w-max h-auto p-4">
       {parsedDownloads.map((download, index) => (
-        <Link
+        <a
           href={download.fileHref || "#"}
           target="_blank"
           className="group relative overflow-hidden flex max-w-[400px] items-center"
@@ -34,7 +32,7 @@ function DownloadLinks() {
             <h4 className="text-lg font-semibold group-hover:underline">{download.name}</h4>
             <p className="text-md text-muted-foreground">{download.description}</p>
           </div>
-        </Link>
+        </a>
       ))}
     </div>
   );

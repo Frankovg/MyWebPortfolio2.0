@@ -1,6 +1,6 @@
 {
   "name": "fran-web",
-  "version": "1.1.0",
+  "version": "1.1.7",
   "private": true,
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
@@ -47,14 +47,14 @@
     "framer-motion": "^12.23.21",
     "lucide-react": "^0.544.0",
     "media-chrome": "^4.15.1",
-    "next": "15.5.4",
+    "next": "15.5.7",
     "next-auth": "5.0.0-beta.29",
     "next-themes": "^0.4.6",
     "nextjs-toploader": "^3.9.17",
     "nodemailer": "^7.0.6",
-    "react": "^19.1.1",
+    "react": "^19.2.1",
     "react-day-picker": "^9.11.0",
-    "react-dom": "^19.1.1",
+    "react-dom": "^19.2.1",
     "react-hook-form": "^7.63.0",
     "react-player": "^3.3.3",
     "recharts": "^3.2.1",
