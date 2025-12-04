@@ -368,7 +368,7 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 
 ## 📝 Changelog
 
-### [1.1.5] - 04-12-2025
+### [1.1.7] - 04-12-2025
 
 #### New Features
 
@@ -379,6 +379,8 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 - Fixed the auto scrolling when navigating between pages.
 - Added a hover to the project card links.
 - Fixed links: external links as normal anchor tags.
+- Categories are sorted by name.
+- Fixed YouTube external links.
 
 ### [1.1.0] - 28-11-2025
 
