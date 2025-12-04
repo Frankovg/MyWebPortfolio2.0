@@ -1,5 +1,3 @@
-import Link from "next/link"
-
 type ConnectItemProps = {
   href: string,
   title: string,
@@ -10,7 +8,7 @@ type ConnectItemProps = {
 export const ConnectItem = ({ href, title, name, icon }: ConnectItemProps) => {
   return (
     <div className="w-fit py-2">
-      <Link
+      <a
         href={href}
         target="_blank"
       >
@@ -23,7 +21,7 @@ export const ConnectItem = ({ href, title, name, icon }: ConnectItemProps) => {
             </p>
           </div>
         </div>
-      </Link>
+      </a>
     </div>
   )
 }
