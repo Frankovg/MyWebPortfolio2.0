@@ -123,22 +123,23 @@ export const portfolioColumns = (
         const gitHub = row.original.repository;
         const website = row.original.websiteUrl;
         const video = row.original.videoUrl;
+
         return (
           <div className="flex justify-start items-center space-x-2 [&_svg]:h-4 [&_svg]:w-auto">
             {gitHub && (
-              <Link href={gitHub} target="_blank">
+              <a href={gitHub} target="_blank">
                 <GithubIcon className="fill-whiteText hover:fill-white transition-colors ease-in-out duration-200" />
-              </Link>
+              </a>
             )}
             {website && (
-              <Link href={website} target="_blank">
+              <a href={website} target="_blank">
                 <TvMinimalPlay className="hover:stroke-white transition-colors ease-in-out duration-200" />
-              </Link>
+              </a>
             )}
             {video && (
-              <Link href={video} target="_blank">
+              <a href={video} target="_blank">
                 <PlayIcon className="hover:stroke-white transition-colors ease-in-out duration-200" />
-              </Link>
+              </a>
             )}
           </div>
         );
