@@ -15,6 +15,9 @@ export async function checkAuth() {
 
 export async function getCategoriesAdmin() {
   const categories = await prisma.category.findMany({
+    orderBy: {
+      name: 'desc'
+    },
     include: {
       projects: {
         orderBy: {
