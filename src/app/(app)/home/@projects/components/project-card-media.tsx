@@ -4,7 +4,7 @@ import { ExternalLink, SquarePlayIcon } from "lucide-react"
 import { useMemo } from "react"
 
 import { GithubIcon } from "@/icons/social"
-
+import { getYouTubeUrl } from "@/utils/getYouTubeUrl"
 
 type ProjectCardMediaProps = {
   website?: string | null,
@@ -36,14 +36,16 @@ export const ProjectCardMedia = ({ website, repository, video }: ProjectCardMedi
     return (
       <div className="hidden group-hover:flex absolute top-2 right-3 items-center gap-2 bg-background rounded-md p-1.5">
         {buttons.map((b) => {
-          if (b.url) {
+          const url = b.url?.includes('youtube') ? getYouTubeUrl(b.url) : b.url
+
+          if (url) {
             return (
               <button
-                key={b.url}
+                key={url}
                 onClick={(e) => {
                   e.stopPropagation()
                   e.preventDefault()
-                  window.open(b.url ?? "", "_blank", "noopener,noreferrer")
+                  window.open(url ?? "", "_blank", "noopener,noreferrer")
                 }}
                 className="hover:text-white transition-colors duration-200"
               >
