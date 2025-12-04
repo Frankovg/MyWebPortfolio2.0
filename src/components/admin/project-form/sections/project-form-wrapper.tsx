@@ -46,13 +46,13 @@ export default function ProjectFormWrapper({
       <div className="w-full flex flex-col items-center gap-4 mt-10 mb-14">
         <ButtonForm
           actionType={actionType}
-          className="!w-full max-w-72"
+          className="w-full! max-w-72"
           loading={isPending}
         />
         <ButtonMinimal
           title="Cancel"
           onClick={goBack}
-          className="!w-full max-w-72 text-base"
+          className="w-full! max-w-72 text-base"
         />
       </div>
     </form>

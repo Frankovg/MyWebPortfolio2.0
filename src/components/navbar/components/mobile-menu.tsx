@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 import { SOCIAL_ICONS } from "@/lib/client-constants";
 import { ROUTES } from "@/lib/constants";
 
-import DownloadLinks from "../download-links";
-import { Sheet, SheetContent, SheetDescription, SheetTitle } from "../ui/sheet";
+import DownloadLinks from "../../download-links";
+import { Sheet, SheetContent, SheetDescription, SheetTitle } from "../../ui/sheet";
 
 type MobileMenuProps = {
   open: boolean;
@@ -66,9 +66,9 @@ function MobileMenu({ open, close }: MobileMenuProps) {
             </li>
             {SOCIAL_ICONS.map((socialIcon) => (
               <li key={socialIcon.value}>
-                <Link href={socialIcon.href || "#"} target="_blank" className={linkStyles}>
+                <a href={socialIcon.href || "#"} target="_blank" className={linkStyles}>
                   {socialIcon.name}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>

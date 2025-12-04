@@ -1,5 +1,3 @@
-import Link from "next/link"
-
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
 
 import { WORKED_WITH } from "../constants/constants"
@@ -16,9 +14,9 @@ function WorkedWith() {
           </HoverCardTrigger>
           <HoverCardContent className="w-80 bg-background" sideOffset={10}>
             <div className="flex flex-col items-start justify-between space-x-4 space-y-1">
-              <Link href={company.link} target='_blank' className="text-sm font-semibold text-primary hover:underline">
+              <a href={company.link} target='_blank' className="text-sm font-semibold text-primary hover:underline">
                 @{company.value}
-              </Link>
+              </a>
               <p className="text-sm">{company.description}</p>
             </div>
           </HoverCardContent>

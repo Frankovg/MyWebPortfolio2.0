@@ -1,5 +1,3 @@
-import Link from "next/link"
-
 type HeadOfDescriptionProps = {
   data: {
     type: string
@@ -14,7 +12,7 @@ function HeadOfDescription({ data }: HeadOfDescriptionProps) {
       {data.map((item, index) => {
         if (item.url) {
           return (
-            <Link
+            <a
               key={index}
               href={item.url}
               target="_blank"
@@ -23,7 +21,7 @@ function HeadOfDescription({ data }: HeadOfDescriptionProps) {
               <p>
                 {item.type} <span className="font-bold hover:underline text-white">{item.name}</span>
               </p>
-            </Link>
+            </a>
           )
         }
 

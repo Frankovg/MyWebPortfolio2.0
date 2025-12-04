@@ -7,10 +7,9 @@ import { cn } from "@/lib/utils";
 
 import Logo from "../primitives/logo";
 import MenuLink from "../primitives/menu-link";
-import MobileMenu from "../primitives/mobile-menu";
-
 
 import { LetsConnectLink } from "./components/lets-connect-link";
+import MobileMenu from "./components/mobile-menu";
 import { MobileMenuButton } from "./components/mobile-menu-button";
 import { NavLink } from "./components/nav-link";
 import { NavLinks } from "./components/nav-links";
