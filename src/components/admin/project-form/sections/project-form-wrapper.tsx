@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 import ButtonForm from "@/components/primitives/button-form";
 import ButtonMinimal from "@/components/primitives/button-minimal";
-import { useProjectFormContext } from "@/hooks/use-project-form";
+import { useProjectForm } from "@/hooks/use-project-form";
 import { Action } from "@/lib/types";
 
 import { EntitiesSection } from "../sections/entities-section";
@@ -24,17 +24,18 @@ export default function ProjectFormWrapper({
   categoryId,
 }: ProjectFormWrapperProps) {
   const router = useRouter();
-
-  const { onSubmit, isPending } = useProjectFormContext();
+  const { onSubmit, isPending, isReady } = useProjectForm();
 
   const goBack = () => {
     router.back();
   };
 
+  if (!isReady) return null;
+
   return (
     <form
       className="relative flex flex-wrap gap-6"
-      action={() => onSubmit(actionType, categoryId)}
+      action={() => onSubmit(actionType, categoryId, router)}
     >
       <ProjectDetailsSection />
       <ImagesSection />

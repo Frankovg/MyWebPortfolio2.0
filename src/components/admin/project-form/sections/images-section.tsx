@@ -7,13 +7,13 @@ import ButtonMinimal from "@/components/primitives/button-minimal";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useProjectFormContext } from "@/hooks/use-project-form";
+import { useProjectForm } from "@/hooks/use-project-form";
 import { DEFAULT_IMAGE_URL } from "@/lib/constants";
 
 import { ProjectFormImagesViewer } from "./project-form-images-viewer";
 
 export function ImagesSection() {
-  const { control, errors, watch } = useProjectFormContext();
+  const { control, errors, watch, isReady } = useProjectForm();
 
   const {
     fields: galleryFields,
@@ -24,6 +24,8 @@ export function ImagesSection() {
     name: "gallery",
     control,
   });
+
+  if (!isReady) return null;
 
   const hasGallery =
     watch("gallery")?.length && watch("gallery")?.[0].imageUrl !== "";
