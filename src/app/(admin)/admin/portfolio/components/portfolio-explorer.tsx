@@ -1,6 +1,6 @@
 "use client";
 
-import { useProjectContext } from "@/hooks/use-project-context";
+import { useProjectStore } from "@/stores/use-project-store";
 
 import PortfolioContent from "./portfolio-content";
 import PortfolioTabsList from "./portfolio-tabs-list";
@@ -13,7 +13,7 @@ type PortfolioExplorerProps = {
 function PortfolioExplorer({
   defaultCategory,
 }: PortfolioExplorerProps) {
-  const { categories } = useProjectContext();
+  const categories = useProjectStore((state) => state.categories);
 
   if (!categories) throw new Error("Error fetching categories")
 
