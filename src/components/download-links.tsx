@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 
-import { useUserDataContext } from "@/hooks/use-user-data-context";
+import { useDownloadsStore } from "@/stores/use-downloads-store";
 
 function DownloadLinks() {
-  const { downloads } = useUserDataContext();
+  const downloads = useDownloadsStore((state) => state.downloads);
 
   const parsedDownloads = downloads.filter((file) => file.isActive && file.language === "en");
 

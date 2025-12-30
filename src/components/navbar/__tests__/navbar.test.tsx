@@ -22,25 +22,28 @@ jest.mock('next/navigation', () => ({
 jest.mock('next/image', () => mockNextImage);
 jest.mock('next/link', () => mockNextLink);
 
-jest.mock('@/hooks/use-user-data-context', () => ({
-  useUserDataContext: () => ({
-    downloads: [
-      {
-        id: '1',
-        name: 'CV',
-        description: 'My resume',
-        fileHref: 'https://example.com/cv.pdf',
-        imageUrl: '/images/cv.png',
-        isActive: true,
-        language: 'en',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-    ],
-    addNewFile: jest.fn(),
-    handleDeleteFile: jest.fn(),
-    handleEditFile: jest.fn(),
-  }),
+jest.mock('@/stores/use-downloads-store', () => ({
+  useDownloadsStore: (selector?: (state: unknown) => unknown) => {
+    const state = {
+      downloads: [
+        {
+          id: '1',
+          name: 'CV',
+          description: 'My resume',
+          fileHref: 'https://example.com/cv.pdf',
+          imageUrl: '/images/cv.png',
+          isActive: true,
+          language: 'en',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+      ],
+      addNewFile: jest.fn(),
+      handleDeleteFile: jest.fn(),
+      handleEditFile: jest.fn(),
+    };
+    return selector ? selector(state) : state;
+  },
 }));
 
 jest.mock('@/actions/user-actions', () => ({

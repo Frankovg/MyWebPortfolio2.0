@@ -15,10 +15,10 @@ import {
 } from "react-hook-form";
 import { toast } from "sonner";
 
-import { useUserDataContext } from "@/hooks/use-user-data-context";
 import { FALLBACK_IMG } from "@/lib/constants";
 import { Action } from "@/lib/types";
 import { downloadFormSchema, TDownloadForm } from "@/lib/validations";
+import { useDownloadsStore } from "@/stores/use-downloads-store";
 
 type DownloadFormContextType = {
   onSubmit: (actionType: Action) => Promise<void>;
@@ -45,7 +45,7 @@ export function DownloadFormProvider({
   download,
 }: DownloadFormProviderProps) {
   const [isPending, startTransition] = useTransition();
-  const { addNewFile, handleEditFile } = useUserDataContext();
+  const { addNewFile, handleEditFile } = useDownloadsStore();
 
   const router = useRouter();
 

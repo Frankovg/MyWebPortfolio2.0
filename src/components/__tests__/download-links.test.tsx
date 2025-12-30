@@ -54,13 +54,16 @@ const mockDownloads = [
   },
 ];
 
-jest.mock('@/hooks/use-user-data-context', () => ({
-  useUserDataContext: () => ({
-    downloads: mockDownloads,
-    addNewFile: jest.fn(),
-    handleDeleteFile: jest.fn(),
-    handleEditFile: jest.fn(),
-  }),
+jest.mock('@/stores/use-downloads-store', () => ({
+  useDownloadsStore: (selector?: (state: unknown) => unknown) => {
+    const state = {
+      downloads: mockDownloads,
+      addNewFile: jest.fn(),
+      handleDeleteFile: jest.fn(),
+      handleEditFile: jest.fn(),
+    };
+    return selector ? selector(state) : state;
+  },
 }));
 
 describe('DownloadLinks', () => {
