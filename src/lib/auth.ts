@@ -51,8 +51,8 @@ export const {
     jwt: async ({ token, user, trigger }) => {
       if (user) {
         // on sign in
-        token.userId = user.id!; //TODO: fix this type
-        token.email = user.email!; //TODO: fix this type
+        token.userId = user.id!;
+        token.email = user.email!;
         token.isAdmin = user.isAdmin;
         token.exp = Math.floor(Date.now() / 1000) + 24 * 60 * 60;
       }

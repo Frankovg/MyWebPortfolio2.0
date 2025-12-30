@@ -7,9 +7,6 @@ import Link from "next/link";
 
 import { DATE_FORMAT, DATE_LOCATION, LANGUAGE_DICTIONARY } from "@/lib/constants";
 
-//TODO: Sorting columns
-// const dropdownLabels = { asc: "Asc", desc: "Desc" };
-
 export const downloadColumns = (
   handleOpenDeleteModal: (downloadId: string) => void
 ): ColumnDef<Download>[] => [
