@@ -7,13 +7,15 @@ import ButtonMinimal from "@/components/primitives/button-minimal";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useProjectForm } from "@/hooks/use-project-form";
+import { useProjectFormMethods } from "@/hooks/use-project-form-methods";
 import { DEFAULT_IMAGE_URL } from "@/lib/constants";
+import { useProjectFormStore } from "@/stores/use-project-form-store";
 
 import { ProjectFormImagesViewer } from "./project-form-images-viewer";
 
 export function ImagesSection() {
-  const { control, errors, watch, isReady } = useProjectForm();
+  const formMethods = useProjectFormMethods();
+  const errors = useProjectFormStore((s) => s.errors);
 
   const {
     fields: galleryFields,
@@ -22,10 +24,12 @@ export function ImagesSection() {
   } = useFieldArray({
     rules: { minLength: 1, required: "Please add at least 1 picture." },
     name: "gallery",
-    control,
+    control: formMethods?.control,
   });
 
-  if (!isReady) return null;
+  if (!formMethods) return null;
+
+  const { control, watch } = formMethods;
 
   const hasGallery =
     watch("gallery")?.length && watch("gallery")?.[0].imageUrl !== "";
@@ -134,7 +138,7 @@ export function ImagesSection() {
       </div>
 
       <div className="flex flex-wrap gap-4">
-        {/* //TODO: Make this works for guest users and allow to upload images from other sites 
+        {/* //TODO: Make this works for guest users and allow to upload images from other sites
           //TODO: Add a script to modify the default drive url to the good one */}
         {hasGallery ? (
           watch("gallery")?.map((image, index) => (

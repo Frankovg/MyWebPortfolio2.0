@@ -16,7 +16,6 @@ import { create } from "zustand";
 
 import { FALLBACK_IMG } from "@/lib/constants";
 
-
 import { useProjectStore } from "./use-project-store";
 
 import type { Action, IProjectFull } from "@/lib/types";

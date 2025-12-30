@@ -4,13 +4,17 @@ import { Controller } from "react-hook-form";
 
 import { MultiSelect } from "@/components/multi-select";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
-import { useProjectForm } from "@/hooks/use-project-form";
+import { useProjectFormMethods } from "@/hooks/use-project-form-methods";
 import { DEFAULT_TECH_STACK } from "@/lib/constants";
+import { useProjectFormStore } from "@/stores/use-project-form-store";
 
 export function TechStackSection() {
-  const { control, errors, isReady } = useProjectForm();
+  const formMethods = useProjectFormMethods();
+  const errors = useProjectFormStore((s) => s.errors);
 
-  if (!isReady) return null;
+  if (!formMethods) return null;
+
+  const { control } = formMethods;
 
   return (
     <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">

@@ -5,12 +5,16 @@ import { Controller } from "react-hook-form";
 import { LabelLink } from "@/components/admin/label-link";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useProjectForm } from "@/hooks/use-project-form";
+import { useProjectFormMethods } from "@/hooks/use-project-form-methods";
+import { useProjectFormStore } from "@/stores/use-project-form-store";
 
 export function ExtraContentSection() {
-  const { control, errors, watch, getValues, isReady } = useProjectForm();
+  const formMethods = useProjectFormMethods();
+  const errors = useProjectFormStore((s) => s.errors);
 
-  if (!isReady) return null;
+  if (!formMethods) return null;
+
+  const { control, watch, getValues } = formMethods;
 
   return (
     <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
