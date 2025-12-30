@@ -76,6 +76,11 @@ export default async function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script src="https://unpkg.com/react-scan/dist/auto.global.js" async></script>
+        {/* rest of your scripts go under */}
+      </head>
+
       <body
         className={cn(
           "text-sm min-h-screen text-whiteText relative font-sans antialiased",

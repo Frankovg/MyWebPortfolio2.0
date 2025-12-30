@@ -15,71 +15,12 @@ import { toast } from "sonner";
 import { create } from "zustand";
 
 import { FALLBACK_IMG } from "@/lib/constants";
-import { Action, IProjectFull } from "@/lib/types";
-import { TProjectForm } from "@/lib/validations";
+
 
 import { useProjectStore } from "./use-project-store";
 
-//TODO: Separar funciones a utils y agregar tests unitarios
-
-const getProjectImages = (project?: IProjectFull) => {
-  if (!project) return null;
-  return project.gallery.map((image) => ({
-    alt: image.alt,
-    description: image.description ?? null,
-    imageUrl: image.imageUrl,
-  }));
-};
-
-const getTechStack = (project?: IProjectFull) => {
-  if (!project) return null;
-  return project.techStack.map((tech) => ({
-    value: tech.value,
-  }));
-};
-
-const getRoles = (project?: IProjectFull) => {
-  if (!project) return null;
-  return project.roles.map((role) => ({
-    label: role.label,
-    value: role.value,
-    percentage: role.percentage,
-  }));
-};
-
-export const getDefaultFormValues = (project?: IProjectFull): TProjectForm => ({
-  title: project?.title ?? "",
-  image: project?.image ?? "",
-  slug: project?.slug ?? "",
-  date: project?.date ?? new Date(),
-  published: project?.published ?? false,
-  shortDescription: project?.shortDescription ?? "",
-  description: project?.description ?? "",
-  gallery: getProjectImages(project) ?? [
-    {
-      imageUrl: "",
-      alt: "",
-      description: null,
-    },
-  ],
-  techStack: getTechStack(project) ?? [{ value: "" }],
-  roles: getRoles(project) ?? [
-    {
-      label: "",
-      value: "",
-      percentage: 50,
-    },
-  ],
-  websiteUrl: project?.websiteUrl ?? null,
-  company: project?.company ?? null,
-  companyUrl: project?.companyUrl ?? null,
-  client: project?.client ?? null,
-  clientUrl: project?.clientUrl ?? null,
-  repository: project?.repository ?? null,
-  videoUrl: project?.videoUrl ?? null,
-  videoTitle: project?.videoTitle ?? null,
-  videoDescription: project?.videoDescription ?? null,
-});
+import type { Action, IProjectFull } from "@/lib/types";
+import type { TProjectForm } from "@/lib/validations";
 
 type ProjectFormState = {
   isPending: boolean;

@@ -6,10 +6,8 @@ import { useForm } from "react-hook-form";
 
 import { IProjectFull } from "@/lib/types";
 import { projectFormSchema, TProjectForm } from "@/lib/validations";
-import {
-  getDefaultFormValues,
-  useProjectFormStore,
-} from "@/stores/use-project-form-store";
+import { useProjectFormStore } from "@/stores/use-project-form-store";
+import { getDefaultProjectFormValues } from "@/utils/getDefaultProjectFormValues";
 
 type ProjectFormInitializerProps = {
   project?: IProjectFull;
@@ -37,7 +35,7 @@ export function ProjectFormInitializer({
     formState: { errors },
   } = useForm<TProjectForm>({
     resolver: zodResolver(projectFormSchema),
-    defaultValues: getDefaultFormValues(project),
+    defaultValues: getDefaultProjectFormValues(project),
   });
 
   useLayoutEffect(() => {
