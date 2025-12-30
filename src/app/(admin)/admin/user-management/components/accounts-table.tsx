@@ -7,7 +7,7 @@ import BodyTable from "@/components/table/body-table";
 import HeaderTable from "@/components/table/header-table";
 import WrapperTable from "@/components/table/wrapper-table";
 import { Table } from "@/components/ui/table";
-import { useUserManagementContext } from "@/hooks/use-user-management-context";
+import { useUserManagementStore } from "@/stores/use-user-management-store";
 
 import { accountsColumns } from "./accounts-columns";
 
@@ -19,7 +19,10 @@ function AccountsTable({ isAdmin = false }: AccountsTableProps) {
   const [isPending, startTransition] = useTransition();
   const [pendingRowId, setPendingRowId] = useState<string | null>(null);
 
-  const { handleActiveAccount, users } = useUserManagementContext();
+  const users = useUserManagementStore((state) => state.users);
+  const handleActiveAccount = useUserManagementStore(
+    (state) => state.handleActiveAccount
+  );
 
   const handleCheckboxChange = async (id: string, value: boolean) => {
     setPendingRowId(id);
