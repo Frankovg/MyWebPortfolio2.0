@@ -1,6 +1,6 @@
-import { ProjectFormProvider } from "@/context/project-form-provider";
 import { Action, IProjectFull } from "@/lib/types";
 
+import { ProjectFormInitializer } from "./project-form-initializer";
 import ProjectFormWrapper from "./sections/project-form-wrapper";
 
 type ProjectFormProps = {
@@ -15,8 +15,8 @@ export function ProjectForm({
   project,
 }: ProjectFormProps) {
   return (
-    <ProjectFormProvider project={project}>
+    <ProjectFormInitializer project={project}>
       <ProjectFormWrapper actionType={actionType} categoryId={categoryId} />
-    </ProjectFormProvider>
+    </ProjectFormInitializer>
   );
 }

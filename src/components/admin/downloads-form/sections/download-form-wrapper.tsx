@@ -4,8 +4,8 @@ import { useRouter } from "next/navigation";
 
 import ButtonForm from "@/components/primitives/button-form";
 import ButtonMinimal from "@/components/primitives/button-minimal";
-import { useDownloadFormContext } from "@/hooks/use-download-form";
 import { Action } from "@/lib/types";
+import { useDownloadFormStore } from "@/stores/use-download-form-store";
 
 import { FileSection } from "./file-section";
 
@@ -16,7 +16,7 @@ export default function DownloadFormWrapper({
 }) {
   const router = useRouter();
 
-  const { isPending, onSubmit } = useDownloadFormContext();
+  const { isPending, onSubmit } = useDownloadFormStore();
 
   const goBack = () => {
     router.back();
@@ -25,19 +25,19 @@ export default function DownloadFormWrapper({
   return (
     <form
       className="relative flex flex-wrap gap-6"
-      action={() => onSubmit(actionType)}
+      action={() => onSubmit(actionType, router)}
     >
       <div className="w-full flex flex-col items-center gap-4 mt-10 mb-14">
         <FileSection />
         <ButtonForm
           actionType={actionType}
-          className="!w-full max-w-72"
+          className="w-full! max-w-72"
           loading={isPending}
         />
         <ButtonMinimal
           title="Cancel"
           onClick={goBack}
-          className="!w-full max-w-72 text-base"
+          className="w-full! max-w-72 text-base"
         />
       </div>
     </form>

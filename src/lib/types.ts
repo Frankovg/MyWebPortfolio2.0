@@ -58,3 +58,11 @@ export interface ICategoryWithProjectsAdmin extends Category {
 }
 
 export type Action = "add" | "delete" | "edit";
+
+type PayloadCreate = ProjectEssentials & { categoryId: string };
+type PayloadEdit = ProjectEssentials & {
+  projectId: string;
+  categoryId: string;
+};
+type PayloadDelete = { projectId: string; categoryId: string };
+export type Payload = PayloadCreate | PayloadEdit | PayloadDelete;

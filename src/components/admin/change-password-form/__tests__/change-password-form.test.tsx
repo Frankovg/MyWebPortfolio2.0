@@ -13,8 +13,8 @@ let mockErrors: Record<string, { message: string }> = {};
 let mockIsPending = false;
 const mockOnSubmit = jest.fn();
 
-jest.mock('@/hooks/use-change-password-context', () => ({
-  useChangePasswordContext: () => ({
+jest.mock('@/stores/use-change-password-store', () => ({
+  useChangePasswordStore: () => ({
     register: mockRegister,
     errors: mockErrors,
     isPending: mockIsPending,

@@ -1,8 +1,8 @@
 import { Download } from "@prisma/client";
 
-import { DownloadFormProvider } from "@/context/download-form-provider";
 import { Action } from "@/lib/types";
 
+import { DownloadFormInitializer } from "./download-form-initializer";
 import DownloadFormWrapper from "./sections/download-form-wrapper";
 
 type DownloadsFormProps = {
@@ -12,8 +12,8 @@ type DownloadsFormProps = {
 
 export const DownloadsForm = ({ actionType, download }: DownloadsFormProps) => {
   return (
-    <DownloadFormProvider download={download}>
+    <DownloadFormInitializer download={download}>
       <DownloadFormWrapper actionType={actionType} />
-    </DownloadFormProvider>
+    </DownloadFormInitializer>
   );
 };

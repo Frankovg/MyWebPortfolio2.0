@@ -8,7 +8,7 @@ import BodyTable from "@/components/table/body-table";
 import HeaderTable from "@/components/table/header-table";
 import WrapperTable from "@/components/table/wrapper-table";
 import { Table } from "@/components/ui/table";
-import { useUserDataContext } from "@/hooks/use-user-data-context";
+import { useDownloadsStore } from "@/stores/use-downloads-store";
 
 import { downloadColumns } from "./download-columns";
 
@@ -27,7 +27,7 @@ const initialModalState = {
 function DownloadsTable() {
   const [deleteModal, setDeleteModal] = useState(initialModalState);
 
-  const { downloads, handleDeleteFile } = useUserDataContext();
+  const { downloads, handleDeleteFile } = useDownloadsStore();
 
   const handleCloseDeleteModal = () => {
     setDeleteModal(initialModalState);

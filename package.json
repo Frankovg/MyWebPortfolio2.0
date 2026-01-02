@@ -1,6 +1,6 @@
 {
   "name": "fran-web",
-  "version": "1.1.7",
+  "version": "1.2.0",
   "private": true,
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
@@ -47,14 +47,14 @@
     "framer-motion": "^12.23.21",
     "lucide-react": "^0.544.0",
     "media-chrome": "^4.15.1",
-    "next": "15.5.7",
+    "next": "15.5.9",
     "next-auth": "5.0.0-beta.29",
     "next-themes": "^0.4.6",
     "nextjs-toploader": "^3.9.17",
     "nodemailer": "^7.0.6",
-    "react": "^19.2.1",
+    "react": "^19.2.3",
     "react-day-picker": "^9.11.0",
-    "react-dom": "^19.2.1",
+    "react-dom": "^19.2.3",
     "react-hook-form": "^7.63.0",
     "react-player": "^3.3.3",
     "recharts": "^3.2.1",
@@ -63,7 +63,8 @@
     "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^1.1.2",
-    "zod": "^4.1.11"
+    "zod": "^4.1.11",
+    "zustand": "^5.0.9"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -75,8 +76,8 @@
     "@types/jest": "30.0.0",
     "@types/node": "^24.5.2",
     "@types/nodemailer": "^7.0.2",
-    "@types/react": "^19.1.13",
-    "@types/react-dom": "^19.1.9",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^8.45.0",
     "@typescript-eslint/parser": "^8.45.0",
     "eslint": "^9.36.0",
