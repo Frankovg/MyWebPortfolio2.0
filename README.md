@@ -368,6 +368,14 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 
 ## 📝 Changelog
 
+### [1.2.0] - 02-01-2026
+
+#### New Features
+
+**Added**
+
+- Migrated state management from React Context to Zustand for improved performance and simpler API.
+
 ### [1.1.7] - 04-12-2025
 
 #### New Features
