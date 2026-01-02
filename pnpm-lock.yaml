@@ -138,8 +138,8 @@ dependencies:
     specifier: ^1.1.2
     version: 1.1.2(@types/react-dom@19.2.3)(@types/react@19.2.7)(react-dom@19.2.3)(react@19.2.3)
   zod:
-    specifier: ^4.1.11
-    version: 4.1.13
+    specifier: ^4.3.4
+    version: 4.3.4
   zustand:
     specifier: ^5.0.9
     version: 5.0.9(@types/react@19.2.7)(react@19.2.3)
@@ -9227,8 +9227,8 @@ packages:
     resolution: {integrity: sha512-+5UuAGaj+5AnBf39huLVpy/4dLtR0rmJP1TxOHVZ81bac4ZHFpTtQ4Dz2FAn2GPnfXISezvUEaQoAdFW4hH9Xg==}
     dev: false
 
-  /zod@4.1.13:
-    resolution: {integrity: sha512-AvvthqfqrAhNH9dnfmrfKzX5upOdjUVJYFqNSlkmGf64gRaTzlPwz99IHYnVs28qYAybvAlBV+H7pn0saFY4Ig==}
+  /zod@4.3.4:
+    resolution: {integrity: sha512-Zw/uYiiyF6pUT1qmKbZziChgNPRu+ZRneAsMUDU6IwmXdWt5JwcUfy2bvLOCUtz5UniaN/Zx5aFttZYbYc7O/A==}
     dev: false
 
   /zustand@5.0.9(@types/react@19.2.7)(react@19.2.3):
