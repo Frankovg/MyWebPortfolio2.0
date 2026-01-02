@@ -8,7 +8,7 @@ jest.mock('@/lib/constants', () => ({
   DEFAULT_FILE_URL: 'https://example.com/files/',
 }));
 
-// Mock form context values
+// Mock form store values
 const mockRegister = jest.fn().mockReturnValue({});
 const mockTrigger = jest.fn();
 const mockGetValues = jest.fn().mockReturnValue({
@@ -21,8 +21,8 @@ let mockErrors: Record<string, { message: string }> = {};
 let mockIsPending = false;
 const mockOnSubmit = jest.fn();
 
-jest.mock('@/hooks/use-download-form', () => ({
-  useDownloadFormContext: () => ({
+jest.mock('@/stores/use-download-form-store', () => ({
+  useDownloadFormStore: () => ({
     register: mockRegister,
     errors: mockErrors,
     isPending: mockIsPending,
