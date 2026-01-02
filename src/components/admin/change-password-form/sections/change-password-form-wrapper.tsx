@@ -14,7 +14,7 @@ export const ChangePasswordFormWrapper = () => {
         <NewPasswordSection />
         <ButtonForm
           actionType="edit"
-          className="!w-full max-w-72"
+          className="w-full! max-w-72"
           loading={isPending}
         />
       </div>
