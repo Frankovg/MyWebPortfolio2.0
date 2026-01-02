@@ -8,19 +8,15 @@ import { DatePicker } from "@/components/ui/date-picker";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { useProjectFormMethods } from "@/hooks/use-project-form-methods";
 import { DEFAULT_IMAGE_URL } from "@/lib/constants";
 import { useProjectFormStore } from "@/stores/use-project-form-store";
 
 import { LabelLink } from "../../label-link";
 
 export function ProjectDetailsSection() {
-  const formMethods = useProjectFormMethods();
-  const errors = useProjectFormStore((s) => s.errors);
+  const { control, register, watch, getValues, errors } = useProjectFormStore();
 
-  if (!formMethods) return null;
-
-  const { control, register, watch, getValues } = formMethods;
+  if (!control || !register || !watch || !getValues) return null;
 
   const hasImage =
     watch("image")?.includes(DEFAULT_IMAGE_URL) &&

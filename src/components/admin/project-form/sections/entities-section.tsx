@@ -5,16 +5,12 @@ import { Controller } from "react-hook-form";
 import { LabelLink } from "@/components/admin/label-link";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useProjectFormMethods } from "@/hooks/use-project-form-methods";
 import { useProjectFormStore } from "@/stores/use-project-form-store";
 
 export function EntitiesSection() {
-  const formMethods = useProjectFormMethods();
-  const errors = useProjectFormStore((s) => s.errors);
+  const { control, watch, getValues, errors } = useProjectFormStore();
 
-  if (!formMethods) return null;
-
-  const { control, watch, getValues } = formMethods;
+  if (!control || !watch || !getValues) return null;
 
   return (
     <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">

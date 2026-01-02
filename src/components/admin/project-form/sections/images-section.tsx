@@ -7,15 +7,13 @@ import ButtonMinimal from "@/components/primitives/button-minimal";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useProjectFormMethods } from "@/hooks/use-project-form-methods";
 import { DEFAULT_IMAGE_URL } from "@/lib/constants";
 import { useProjectFormStore } from "@/stores/use-project-form-store";
 
 import { ProjectFormImagesViewer } from "./project-form-images-viewer";
 
 export function ImagesSection() {
-  const formMethods = useProjectFormMethods();
-  const errors = useProjectFormStore((s) => s.errors);
+  const { control, watch, errors } = useProjectFormStore();
 
   const {
     fields: galleryFields,
@@ -24,12 +22,10 @@ export function ImagesSection() {
   } = useFieldArray({
     rules: { minLength: 1, required: "Please add at least 1 picture." },
     name: "gallery",
-    control: formMethods?.control,
+    control: control ?? undefined,
   });
 
-  if (!formMethods) return null;
-
-  const { control, watch } = formMethods;
+  if (!control || !watch) return null;
 
   const hasGallery =
     watch("gallery")?.length && watch("gallery")?.[0].imageUrl !== "";

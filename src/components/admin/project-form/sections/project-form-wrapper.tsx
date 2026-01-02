@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 
 import ButtonForm from "@/components/primitives/button-form";
 import ButtonMinimal from "@/components/primitives/button-minimal";
-import { useProjectFormMethods } from "@/hooks/use-project-form-methods";
 import { Action } from "@/lib/types";
 import { useProjectFormStore } from "@/stores/use-project-form-store";
 
@@ -25,15 +24,11 @@ export default function ProjectFormWrapper({
   categoryId,
 }: ProjectFormWrapperProps) {
   const router = useRouter();
-  const formMethods = useProjectFormMethods();
-  const onSubmit = useProjectFormStore((s) => s.onSubmit);
-  const isPending = useProjectFormStore((s) => s.isPending);
+  const { onSubmit, isPending } = useProjectFormStore();
 
   const goBack = () => {
     router.back();
   };
-
-  if (!formMethods) return null;
 
   return (
     <form
