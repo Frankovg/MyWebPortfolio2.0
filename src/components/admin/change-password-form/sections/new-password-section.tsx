@@ -2,10 +2,12 @@
 
 import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Input } from "@/components/ui/input";
-import { useChangePasswordContext } from "@/hooks/use-change-password-context";
+import { useChangePasswordStore } from "@/stores/use-change-password-store";
 
 export const NewPasswordSection = () => {
-  const { register, errors } = useChangePasswordContext();
+  const { register, errors } = useChangePasswordStore();
+
+  if (!register) return null;
 
   return (
     <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">

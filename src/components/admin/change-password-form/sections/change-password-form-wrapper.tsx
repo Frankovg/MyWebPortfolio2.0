@@ -1,12 +1,12 @@
 "use client";
 
 import ButtonForm from "@/components/primitives/button-form";
-import { useChangePasswordContext } from "@/hooks/use-change-password-context";
+import { useChangePasswordStore } from "@/stores/use-change-password-store";
 
 import { NewPasswordSection } from "./new-password-section";
 
 export const ChangePasswordFormWrapper = () => {
-  const { isPending, onSubmit } = useChangePasswordContext();
+  const { isPending, onSubmit } = useChangePasswordStore();
 
   return (
     <form className="relative flex flex-wrap gap-6" action={onSubmit}>
