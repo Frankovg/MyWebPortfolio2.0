@@ -207,7 +207,12 @@ export const TECH_STACK_DATA = [
   { name: "HTML", value: "html" },
   { name: "Turborepo", value: "turborepo" },
   { name: "Vercel", value: "vercel" },
-
+  { name: "Jest", value: "jest" },
+  { name: "CorelDraw", value: "coreldraw" },
+  { name: "Rhinoceros", value: "rhinoceros" },
+  { name: "Autodesk 3DS MAX", value: "3dsmax" },
+  { name: "SolidWorks", value: "solidworks" },
+  { name: "V-Ray", value: "vray" },
 ];
 
 export const MONTHS = [
