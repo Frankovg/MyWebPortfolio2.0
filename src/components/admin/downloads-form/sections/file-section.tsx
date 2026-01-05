@@ -6,7 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { DEFAULT_FILE_URL, DEFAULT_IMAGE_URL } from "@/lib/constants";
+import { DEFAULT_FILE_URL, getImageUrlPlaceholder, IMAGE_URL_PREFIXES, isValidImageUrl } from "@/lib/constants";
 import { useDownloadFormStore } from "@/stores/use-download-form-store";
 
 import { LabelLink } from "../../label-link";
@@ -22,9 +22,7 @@ export function FileSection() {
   const imageUrl = watch("imageUrl");
   const fileHref = watch("fileHref");
 
-  const hasImage =
-    imageUrl?.includes(DEFAULT_IMAGE_URL) &&
-    imageUrl?.length > DEFAULT_IMAGE_URL.length;
+  const hasImage = isValidImageUrl(imageUrl);
   const hasFile =
     fileHref?.includes(DEFAULT_FILE_URL) &&
     fileHref?.length > DEFAULT_FILE_URL.length;
@@ -134,7 +132,7 @@ export function FileSection() {
             name="imageUrl"
             control={control}
             rules={{
-              validate: (value) => value.includes(DEFAULT_IMAGE_URL),
+              validate: (value) => IMAGE_URL_PREFIXES.some(prefix => value.startsWith(prefix)),
             }}
             render={({ field }) => (
               <>
@@ -154,7 +152,7 @@ export function FileSection() {
                 />
                 <Input
                   id="imageUrl"
-                  placeholder={DEFAULT_IMAGE_URL}
+                  placeholder={getImageUrlPlaceholder()}
                   {...field}
                 />
                 {errors.imageUrl && (

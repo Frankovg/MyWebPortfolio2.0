@@ -151,8 +151,30 @@ export const DATE_FORMAT = {
 export const DATE_LOCATION = "es-ES";
 
 //Forms constants
-export const DEFAULT_IMAGE_URL = "https://drive.google.com/uc?export=view&id=";
+export const GOOGLE_DRIVE_IMAGE_URL = "https://drive.google.com/uc?export=view&id=";
+export const CLOUDINARY_IMAGE_URL = "https://res.cloudinary.com/webportfolio/image/upload/";
 export const DEFAULT_FILE_URL = "https://drive.google.com/file/d/";
+
+// Supported image URL prefixes
+export const IMAGE_URL_PREFIXES = [GOOGLE_DRIVE_IMAGE_URL, CLOUDINARY_IMAGE_URL] as const;
+
+/**
+ * Check if a URL is a valid image URL from supported providers (Google Drive or Cloudinary)
+ */
+export const isValidImageUrl = (url: string | undefined | null): boolean => {
+  if (!url) return false;
+  return IMAGE_URL_PREFIXES.some(prefix => url.startsWith(prefix) && url.length > prefix.length);
+};
+
+/**
+ * Get the placeholder text for image URL inputs
+ */
+export const getImageUrlPlaceholder = (): string => {
+  return `${GOOGLE_DRIVE_IMAGE_URL} or ${CLOUDINARY_IMAGE_URL}`;
+};
+
+// Legacy export for backwards compatibility during migration
+export const DEFAULT_IMAGE_URL = GOOGLE_DRIVE_IMAGE_URL;
 
 export const TECH_STACK_DATA = [
   { name: "React", value: "react" },
@@ -185,6 +207,7 @@ export const TECH_STACK_DATA = [
   { name: "HTML", value: "html" },
   { name: "Turborepo", value: "turborepo" },
   { name: "Vercel", value: "vercel" },
+
 ];
 
 export const MONTHS = [
