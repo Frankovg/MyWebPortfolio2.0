@@ -8,7 +8,7 @@ import { DatePicker } from "@/components/ui/date-picker";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { DEFAULT_IMAGE_URL } from "@/lib/constants";
+import { getImageUrlPlaceholder, IMAGE_URL_PREFIXES, isValidImageUrl } from "@/lib/constants";
 import { useProjectFormStore } from "@/stores/use-project-form-store";
 
 import { LabelLink } from "../../label-link";
@@ -18,9 +18,7 @@ export function ProjectDetailsSection() {
 
   if (!control || !register || !watch || !getValues) return null;
 
-  const hasImage =
-    watch("image")?.includes(DEFAULT_IMAGE_URL) &&
-    watch("image")?.length > DEFAULT_IMAGE_URL.length;
+  const hasImage = isValidImageUrl(watch("image"));
 
   return (
     <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
@@ -48,7 +46,7 @@ export function ProjectDetailsSection() {
           <Controller
             name="image"
             control={control}
-            rules={{ validate: (value) => value.includes(DEFAULT_IMAGE_URL) }}
+            rules={{ validate: (value) => IMAGE_URL_PREFIXES.some(prefix => value.startsWith(prefix)) }}
             render={({ field }) => (
               <>
                 <RequiredInputLabel
@@ -65,7 +63,7 @@ export function ProjectDetailsSection() {
                     </>
                   }
                 />
-                <Input id="image" placeholder={DEFAULT_IMAGE_URL} {...field} />
+                <Input id="image" placeholder={getImageUrlPlaceholder()} {...field} />
                 {errors.image && (
                   <span className="absolute -bottom-4 text-secondary text-xs">
                     {errors.image.message}

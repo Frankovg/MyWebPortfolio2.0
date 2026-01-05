@@ -368,6 +368,19 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 
 ## 📝 Changelog
 
+### [1.3.0] - 02-01-2026
+
+#### New Features
+
+**Added**
+
+- Added images config for Cloudinary.
+- Started migration of the images from Google Drive to Cloudinary.
+
+**Fixes**
+
+- Fixed the tech stack input in the project form page where some techs were missed.
+
 ### [1.2.0] - 02-01-2026
 
 #### New Features
@@ -384,11 +397,14 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 
 - Updated React and Next.js to fix a React vulnerability.
 - Unit tests have been added.
-- Fixed the auto scrolling when navigating between pages.
 - Added a hover to the project card links.
-- Fixed links: external links as normal anchor tags.
 - Categories are sorted by name.
+
+**Fixes**
+
 - Fixed YouTube external links.
+- Fixed links: external links as normal anchor tags.
+- Fixed the auto scrolling when navigating between pages.
 
 ### [1.1.0] - 28-11-2025
 
@@ -398,10 +414,13 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 
 - The image carousel allows wheel, touch and keyboard scrolling.
 - Projects table has a sorting by name.
-- Fixed the vertical shift when opens an accordion item in /about-me.
 - Added direct links in the project card when hovering.
 - Customized video player.
 - Added colors to the toast component.
+
+**Fixes**
+
+- Fixed the vertical shift when opens an accordion item in /about-me.
 - Fixed a weird animation in the sidebar when it's open and close.
 - Adjusted styles of the mobile menu.
 - General issues has been fixed.

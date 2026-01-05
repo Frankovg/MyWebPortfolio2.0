@@ -4,8 +4,17 @@ import { FileSection } from '../sections/file-section';
 
 // Mock constants
 jest.mock('@/lib/constants', () => ({
-  DEFAULT_IMAGE_URL: 'https://example.com/images/',
   DEFAULT_FILE_URL: 'https://example.com/files/',
+  GOOGLE_DRIVE_IMAGE_URL: 'https://example.com/images/',
+  CLOUDINARY_IMAGE_URL: 'https://cloudinary.com/images/',
+  IMAGE_URL_PREFIXES: ['https://example.com/images/', 'https://cloudinary.com/images/'],
+  isValidImageUrl: (url: string | undefined | null) => {
+    if (!url) return false;
+    return ['https://example.com/images/', 'https://cloudinary.com/images/'].some(
+      prefix => url.startsWith(prefix) && url.length > prefix.length
+    );
+  },
+  getImageUrlPlaceholder: () => 'https://example.com/images/ or https://cloudinary.com/images/',
 }));
 
 // Mock form store values
@@ -127,7 +136,7 @@ describe('DownloadsForm', () => {
       it('should render placeholder for image url', () => {
         render(<FileSection />);
 
-        expect(screen.getByPlaceholderText('https://example.com/images/')).toBeInTheDocument();
+        expect(screen.getByPlaceholderText('https://example.com/images/ or https://cloudinary.com/images/')).toBeInTheDocument();
       });
     });
 

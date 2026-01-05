@@ -1,5 +1,5 @@
 import ImageWithFallback from "@/components/primitives/image-with-fallback";
-import { DEFAULT_IMAGE_URL } from "@/lib/constants";
+import { isValidImageUrl } from "@/lib/constants";
 
 export const ProjectFormImagesViewer = ({
   imageUrl,
@@ -10,11 +10,7 @@ export const ProjectFormImagesViewer = ({
   imageAlt?: string;
   index: number;
 }) => {
-  if (
-    !imageUrl ||
-    !imageUrl.includes(DEFAULT_IMAGE_URL) ||
-    imageUrl.length === DEFAULT_IMAGE_URL.length
-  ) {
+  if (!isValidImageUrl(imageUrl)) {
     return (
       <div
         key={index}
@@ -26,7 +22,7 @@ export const ProjectFormImagesViewer = ({
   return (
     <div className="aspect-video w-full sm:w-42">
       <ImageWithFallback
-        src={imageUrl}
+        src={imageUrl as string}
         alt={imageAlt || "This is a meta description of the picture."}
         className="w-full h-full object-cover"
         width={0}
