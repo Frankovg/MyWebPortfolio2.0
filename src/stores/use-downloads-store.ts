@@ -1,9 +1,10 @@
-import { Download } from "@prisma/client";
 import { create } from "zustand";
 
 import { addFile, deleteFile, editFile } from "@/actions/index";
-import { DownloadEssentials } from "@/lib/types";
 import { showErrorMessage } from "@/utils/showErrorMessage";
+
+import type { Download } from "@/generated/prisma/client";
+import type { DownloadEssentials } from "@/lib/types";
 
 type DownloadsState = {
   downloads: Download[];

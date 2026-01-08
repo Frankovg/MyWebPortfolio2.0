@@ -1,6 +1,5 @@
 "use client";
 
-import { Project } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import {
   ArrowDownUpIcon,
@@ -16,6 +15,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { GithubIcon } from "@/icons/social";
 import { DATE_FORMAT, DATE_LOCATION } from "@/lib/constants";
+
+import type { Project } from "@/generated/prisma/client";
 
 export const portfolioColumns = (
   handleOpenDeleteModal: (projectId: string, categoryId: string) => void

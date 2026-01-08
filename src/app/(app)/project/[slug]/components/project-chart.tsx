@@ -1,6 +1,5 @@
 "use client";
 
-import { Role } from "@prisma/client";
 import { useMemo } from "react";
 import { Bar, BarChart, XAxis, YAxis } from "recharts";
 
@@ -12,6 +11,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";
+
+import type { Role } from "@/generated/prisma/client";
 
 function ProjectChart({ roles }: { roles: Role[] }) {
   const chartData = useMemo(() => {

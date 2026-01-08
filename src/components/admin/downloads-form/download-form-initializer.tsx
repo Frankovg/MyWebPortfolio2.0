@@ -1,12 +1,13 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Download } from "@prisma/client";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { downloadFormSchema, TDownloadForm } from "@/lib/validations";
 import { useDownloadFormStore } from "@/stores/use-download-form-store";
+
+import type { Download } from "@/generated/prisma/client";
 
 type DownloadFormInitializerProps = {
   download?: Download;

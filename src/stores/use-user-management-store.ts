@@ -1,9 +1,10 @@
-import { user as User } from "@prisma/client";
 import { toast } from "sonner";
 import { create } from "zustand";
 
 import { activateAccount } from "@/actions/index";
 import { showErrorMessage } from "@/utils/showErrorMessage";
+
+import type { user as User } from "@/generated/prisma/client";
 
 type UserManagementState = {
   users: User[];

@@ -5,7 +5,7 @@ import {
   Project,
   Role,
   Tech,
-} from "@prisma/client";
+} from "@/generated/prisma/client";
 
 import { auth } from "./auth";
 

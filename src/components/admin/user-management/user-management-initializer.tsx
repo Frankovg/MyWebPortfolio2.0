@@ -1,9 +1,10 @@
 "use client";
 
-import { user as User } from "@prisma/client";
 import { useLayoutEffect, useRef } from "react";
 
 import { useUserManagementStore } from "@/stores/use-user-management-store";
+
+import type { user as User } from "@/generated/prisma/client";
 
 type UserManagementInitializerProps = {
   users: User[];

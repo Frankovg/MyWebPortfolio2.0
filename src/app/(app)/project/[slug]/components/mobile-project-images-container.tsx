@@ -1,5 +1,6 @@
-import { Gallery } from "@prisma/client"
 import Image from "next/image"
+
+import type { Gallery } from "@/generated/prisma/client"
 
 type ProjectImagesContainerProps = {
   images: Gallery[]
