@@ -368,7 +368,7 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 
 ## 📝 Changelog
 
-### [1.3.0] - 02-01-2026
+### [1.2.1] - 02-01-2026
 
 #### New Features
 
