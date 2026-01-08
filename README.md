@@ -366,7 +366,8 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 
 ---
 
-## 📝 Changelog
+<details>
+<summary><h2>📝 Changelog</h2></summary>
 
 ### [1.2.2] - 08-01-2026
 
@@ -484,6 +485,8 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 - Server-only critical operations
 - Role-based access control
 - Environment variable validation
+
+</details>
 
 ---
 
