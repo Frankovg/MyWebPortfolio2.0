@@ -1,9 +1,10 @@
 "use client";
 
-import { Download } from "@prisma/client";
 import { useLayoutEffect, useRef } from "react";
 
 import { useDownloadsStore } from "@/stores/use-downloads-store";
+
+import type { Download } from "@/generated/prisma/client";
 
 type DownloadsInitializerProps = {
   downloads: Download[];

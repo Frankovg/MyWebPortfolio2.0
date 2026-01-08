@@ -1,8 +1,9 @@
 import "server-only";
 
-import { Project, user as User } from "@prisma/client";
-
 import prisma from "./db";
+
+import type { Project, user as User } from "@/generated/prisma/client";
+
 
 export async function getCategories() {
   const categories = await prisma.category.findMany({

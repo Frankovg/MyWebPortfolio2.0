@@ -1,9 +1,9 @@
-import { Download } from "@prisma/client";
-
-import { Action } from "@/lib/types";
 
 import { DownloadFormInitializer } from "./download-form-initializer";
 import DownloadFormWrapper from "./sections/download-form-wrapper";
+
+import type { Download } from "@/generated/prisma/client";
+import type { Action } from "@/lib/types";
 
 type DownloadsFormProps = {
   actionType: Action;

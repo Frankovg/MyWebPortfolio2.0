@@ -1,5 +1,5 @@
+import type { Gallery, Role, Tech } from "@/generated/prisma/client";
 import type { IProjectFull } from "@/lib/types";
-import type { Gallery, Role, Tech } from "@prisma/client";
 
 const mockDate = new Date("2024-01-15T10:00:00Z");
 

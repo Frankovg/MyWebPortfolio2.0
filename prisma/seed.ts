@@ -1,7 +1,12 @@
+import 'dotenv/config'
 import { randomUUID } from "crypto";
 
-import { Prisma, PrismaClient } from "@prisma/client";
+import { PrismaPg } from '@prisma/adapter-pg'
 import bcrypt from "bcrypt";
+import { Pool } from 'pg'
+
+import { Prisma, PrismaClient } from "../src/generated/prisma/client.js";
+
 
 import { TECH_STACK_DATA } from "./seed-constants";
 import { CV_EN_SEED, CV_ES_SEED, PORTFOLIO_EN_SEED } from "./seed-download-files";
@@ -9,7 +14,11 @@ import { GRAPHIC_AND_UX_UI_DESIGN_SEED } from "./seed-graphic-and-ux-ui-design";
 import { INDUSTRIAL_DESIGN_SEED } from "./seed-industrial-design";
 import { WEB_DEVELOPMENT_SEED } from "./seed-web-development";
 
-const prisma = new PrismaClient();
+// Use direct URL for seeding (non-pooling connection)
+const connectionString = process.env.POSTGRES_URL_NON_POOLING || process.env.DATABASE_URL
+const pool = new Pool({ connectionString })
+const adapter = new PrismaPg(pool)
+const prisma = new PrismaClient({ adapter })
 
 // <--------------- PORTFOLIO --------------->
 const webDevelopment: Prisma.CategoryCreateInput = WEB_DEVELOPMENT_SEED
@@ -150,9 +159,11 @@ async function main() {
 main()
   .then(async () => {
     await prisma.$disconnect();
+    await pool.end();
   })
   .catch(async (e) => {
     console.error(e);
     await prisma.$disconnect();
+    await pool.end();
     process.exit(1);
   });

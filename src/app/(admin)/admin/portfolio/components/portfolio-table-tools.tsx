@@ -1,10 +1,12 @@
-import { Project } from "@prisma/client";
 import { Table as TTable } from "@tanstack/react-table";
 
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 
 import AddProjectButton from "./add-project-button";
+
+import type { Project } from "@/generated/prisma/client";
+
 
 function PortfolioTableTools({ table }: { table: TTable<Project> }) {
   return (

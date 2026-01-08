@@ -1,9 +1,19 @@
 "use client";
 
-import { Download } from "@prisma/client";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { flushSync } from "react-dom";
-import {
+import { toast } from "sonner";
+import { create } from "zustand";
+
+import { FALLBACK_IMG } from "@/lib/constants";
+import { Action } from "@/lib/types";
+
+
+import { useDownloadsStore } from "./use-downloads-store";
+
+import type { Download } from "@/generated/prisma/client";
+import type { TDownloadForm } from "@/lib/validations";
+import type {
   Control,
   FieldErrors,
   UseFormGetValues,
@@ -11,14 +21,6 @@ import {
   UseFormTrigger,
   UseFormWatch,
 } from "react-hook-form";
-import { toast } from "sonner";
-import { create } from "zustand";
-
-import { FALLBACK_IMG } from "@/lib/constants";
-import { Action } from "@/lib/types";
-import { TDownloadForm } from "@/lib/validations";
-
-import { useDownloadsStore } from "./use-downloads-store";
 
 type DownloadFormState = {
   isPending: boolean;
