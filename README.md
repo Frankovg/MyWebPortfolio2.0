@@ -366,9 +366,18 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 
 ---
 
-## 📝 Changelog
+<details>
+<summary><h2>📝 Changelog</h2></summary>
 
-### [1.3.0] - 02-01-2026
+### [1.2.2] - 08-01-2026
+
+#### New Features
+
+**Migration**
+
+- Migrated NextAuth to BetterAuth.
+
+### [1.2.1] - 02-01-2026
 
 #### New Features
 
@@ -385,7 +394,7 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 
 #### New Features
 
-**Added**
+**Migration**
 
 - Migrated state management from React Context to Zustand for improved performance and simpler API.
 
@@ -476,6 +485,8 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 - Server-only critical operations
 - Role-based access control
 - Environment variable validation
+
+</details>
 
 ---
 

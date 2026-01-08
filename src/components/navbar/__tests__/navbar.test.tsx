@@ -52,12 +52,25 @@ jest.mock('@/actions/user-actions', () => ({
 
 describe('Navbar', () => {
   const mockSessionWithUser = {
-    user: {
-      email: 'test@example.com',
-      isAdmin: true,
-      id: '1',
+    session: {
+      id: 'session-1',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      userId: '1',
+      expiresAt: new Date('2099-12-31'),
+      token: 'mock-token',
     },
-    expires: '2099-12-31',
+    user: {
+      id: '1',
+      email: 'test@example.com',
+      name: 'Test User',
+      emailVerified: true,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      isAdmin: true,
+      isActive: true,
+      image: null,
+    },
   };
 
   const mockSessionWithoutUser = null;
@@ -185,12 +198,25 @@ describe('Navbar', () => {
 
   describe('User session - Logged in as non-admin', () => {
     const nonAdminSession = {
-      user: {
-        email: 'demo@example.com',
-        isAdmin: false,
-        id: '2',
+      session: {
+        id: 'session-2',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        userId: '2',
+        expiresAt: new Date('2099-12-31'),
+        token: 'mock-token-2',
       },
-      expires: '2099-12-31',
+      user: {
+        id: '2',
+        email: 'demo@example.com',
+        name: 'Demo User',
+        emailVerified: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        isAdmin: false,
+        isActive: true,
+        image: null,
+      },
     };
 
     it('should display demo account message for non-admin users', () => {

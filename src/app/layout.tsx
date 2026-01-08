@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { Readex_Pro as FontSans } from "next/font/google";
-import { SessionProvider } from "next-auth/react";
 import NextNProgress from "nextjs-toploader";
 import { Toaster } from "sonner";
 
@@ -91,11 +90,9 @@ export default async function RootLayout({
         />
         <div className="absolute inset-0 bg-linear-to-br to-darkPrimary via-background from-darkGrey animate-gradient bg-size-[400%_400%] z-0" />
         <div className="relative flex flex-col min-h-screen w-full z-10">
-          <SessionProvider>
-            <DownloadsInitializer downloads={downloads}>
-              {children}
-            </DownloadsInitializer>
-          </SessionProvider>
+          <DownloadsInitializer downloads={downloads}>
+            {children}
+          </DownloadsInitializer>
           <Toaster
             richColors
             closeButton

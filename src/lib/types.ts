@@ -6,7 +6,8 @@ import {
   Role,
   Tech,
 } from "@prisma/client";
-import { Session } from "next-auth";
+
+import { auth } from "./auth";
 
 export type ProjectEssentials = Omit<
   Project,
@@ -18,7 +19,7 @@ export type DownloadEssentials = Omit<
   "id" | "createdAt" | "updatedAt"
 >;
 
-export type UserSession = Session | null;
+export type UserSession = typeof auth.$Infer.Session | null;
 
 export type ProjectShort = Pick<
   Project,

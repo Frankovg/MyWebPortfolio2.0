@@ -32,7 +32,7 @@ async function UserManagement() {
         <AdminSection>
           <AdminPageTitle title="User Management" />
           <UserManagementInitializer users={users}>
-            <AccountsTable isAdmin={session?.user.isAdmin} />
+            <AccountsTable isAdmin={session?.user.isAdmin ?? false} />
           </UserManagementInitializer>
         </AdminSection>
       </Suspense>

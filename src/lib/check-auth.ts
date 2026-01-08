@@ -1,9 +1,13 @@
-import 'server-only'
+import "server-only";
 
-import { auth } from "./auth"
+import { headers } from "next/headers";
+
+import { auth } from "./auth";
 
 export async function checkAuth() {
-  const session = await auth()
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
 
-  return session
+  return session;
 }
