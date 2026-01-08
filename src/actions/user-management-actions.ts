@@ -1,6 +1,6 @@
 "use server";
 
-import { User } from "@prisma/client";
+import { user as User } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 
 import { SAMPLE_ACTION } from "@/lib/action-constants";

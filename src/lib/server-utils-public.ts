@@ -1,6 +1,6 @@
 import "server-only";
 
-import { Project, User } from "@prisma/client";
+import { Project, user as User } from "@prisma/client";
 
 import prisma from "./db";
 

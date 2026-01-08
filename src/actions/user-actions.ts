@@ -1,11 +1,12 @@
 "use server";
 
-import { AuthError } from "next-auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
-import { signIn, signOut } from "@/lib/auth";
+import { auth } from "@/lib/auth";
 import { sleep } from "@/lib/utils";
 
-export async function logIn(prevState: unknown, formData: unknown) {
+export async function logIn(_prevState: unknown, formData: unknown) {
   if (process.env.NODE_ENV === "development") {
     await sleep(1000);
   }
@@ -16,33 +17,47 @@ export async function logIn(prevState: unknown, formData: unknown) {
     };
   }
 
-  try {
-    await signIn("credentials", {
-      ...Object.fromEntries(formData),
-      redirectTo: "/admin"
-    });
-  } catch (error) {
-    if (error instanceof AuthError) {
-      switch (error.type) {
-        case "CredentialsSignin": {
-          return {
-            message: "Invalid credentials.",
-          };
-        }
-        default: {
-          return {
-            message: "Error. Could not sign in.",
-          };
-        }
-      }
-    }
-    throw error; // nextjs redirects throw error, so we need rethrow it
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
+
+  if (!email || !password) {
+    return {
+      message: "Email and password are required.",
+    };
   }
+
+  try {
+    const result = await auth.api.signInEmail({
+      body: {
+        email,
+        password,
+      },
+      headers: await headers(),
+    });
+
+    if (!result) {
+      return {
+        message: "Invalid credentials.",
+      };
+    }
+  } catch (error) {
+    console.error("Login error:", error);
+    return {
+      message: "Invalid credentials.",
+    };
+  }
+
+  redirect("/admin");
 }
 
 export async function logOut() {
   if (process.env.NODE_ENV === "development") {
     await sleep(1000);
   }
-  await signOut({ redirectTo: "/" });
+
+  await auth.api.signOut({
+    headers: await headers(),
+  });
+
+  redirect("/");
 }

@@ -6,7 +6,6 @@ import { revalidatePath } from "next/cache";
 import { SAMPLE_ACTION } from "@/lib/action-constants";
 import { checkAuth } from "@/lib/check-auth";
 import prisma from "@/lib/db";
-import { getUserByEmail } from "@/lib/server-utils-public";
 import { sleep } from "@/lib/utils";
 import {
   changePasswordFormSchema,
@@ -32,27 +31,31 @@ export async function changePassword(passwordValues: TChangePasswordForm) {
   }
 
   const { currentPassword, password } = validatedPasswordValues.data;
-  const email = session.user.email;
+  const userId = session.user.id;
 
-  if (!email) {
+  if (!userId) {
     return {
-      message: "Account email not found.",
+      message: "Account not found.",
     };
   }
 
-  const user = await getUserByEmail(email);
-  if (!user || !user.isActive) {
-    const message = "User not found";
+  // Get the credential account for this user
+  const account = await prisma.account.findFirst({
+    where: {
+      userId,
+      providerId: "credential",
+    },
+  });
+
+  if (!account || !account.password) {
+    const message = "Account not found or no password set";
     console.error(message);
     return {
       message,
     };
   }
 
-  const passwordsMatch = await bcrypt.compare(
-    currentPassword,
-    user.hashedpassword
-  );
+  const passwordsMatch = await bcrypt.compare(currentPassword, account.password);
   if (!passwordsMatch) {
     const message = "Invalid credentials";
     console.warn(message);
@@ -61,15 +64,15 @@ export async function changePassword(passwordValues: TChangePasswordForm) {
     };
   }
 
-  const hashedSuperuserPassword = await bcrypt.hash(password, 10);
+  const hashedNewPassword = await bcrypt.hash(password, 10);
 
   try {
-    await prisma.user.update({
+    await prisma.account.update({
       where: {
-        id: session.user.id,
+        id: account.id,
       },
       data: {
-        hashedpassword: hashedSuperuserPassword,
+        password: hashedNewPassword,
       },
     });
   } catch (error) {

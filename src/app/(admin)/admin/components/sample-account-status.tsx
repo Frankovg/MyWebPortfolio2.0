@@ -1,4 +1,4 @@
-import { User } from "@prisma/client";
+import { user as User } from "@prisma/client";
 import { Check } from "lucide-react";
 
 import {

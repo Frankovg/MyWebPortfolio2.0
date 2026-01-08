@@ -1,73 +1,49 @@
 import bcrypt from "bcryptjs";
-import NextAuth from "next-auth";
-import Credentials from "next-auth/providers/credentials";
+import { betterAuth } from "better-auth";
+import { prismaAdapter } from "better-auth/adapters/prisma";
+import { nextCookies } from "better-auth/next-js";
 
-import authConfig from "./auth.config";
-import { getUserByEmail } from "./server-utils-public";
-import { sleep } from "./utils";
-import { authSchema } from "./validations";
+import prisma from "./db";
 
-export const {
-  auth,
-  signIn,
-  signOut,
-  handlers: { GET, POST },
-} = NextAuth({
-  ...authConfig,
-  providers: [
-    Credentials({
-      async authorize(credentials) {
-        // runs on logIn
-
-        // validation
-        const validatedFormData = authSchema.safeParse(credentials);
-        if (!validatedFormData.success) {
-          return null;
-        }
-
-        // extract values
-        const { email, password } = validatedFormData.data;
-        const user = await getUserByEmail(email);
-        if (!user || !user.isActive) {
-          console.error("User not found");
-          return null;
-        }
-
-        const passwordsMatch = await bcrypt.compare(
-          password,
-          user.hashedpassword
-        );
-        if (!passwordsMatch) {
-          console.error("Invalid credentials");
-          return null;
-        }
-
-        return user;
+export const auth = betterAuth({
+  database: prismaAdapter(prisma, {
+    provider: "postgresql",
+  }),
+  emailAndPassword: {
+    enabled: true,
+    password: {
+      // Use bcrypt for password hashing
+      hash: async (password) => {
+        return await bcrypt.hash(password, 10);
       },
-    }),
-  ],
-  callbacks: {
-    ...authConfig.callbacks,
-    jwt: async ({ token, user, trigger }) => {
-      if (user) {
-        // on sign in
-        token.userId = user.id!;
-        token.email = user.email!;
-        token.isAdmin = user.isAdmin;
-        token.exp = Math.floor(Date.now() / 1000) + 24 * 60 * 60;
-      }
-      if (trigger === "update" && token.email) {
-        if (process.env.NODE_ENV === "development") {
-          await sleep(1000);
-        }
-        // on every request - this requires database access
-        const userFromDb = await getUserByEmail(token.email);
-        if (userFromDb) {
-          token.isAdmin = userFromDb.isAdmin;
-        }
-      }
-
-      return token;
+      verify: async ({ hash, password }) => {
+        return await bcrypt.compare(password, hash);
+      },
     },
   },
+  session: {
+    expiresIn: 60 * 60 * 24, // 24 hours (matching previous JWT expiry)
+    cookieCache: {
+      enabled: true,
+      maxAge: 60 * 5, // 5 minutes
+    },
+  },
+  user: {
+    additionalFields: {
+      isAdmin: {
+        type: "boolean",
+        required: false,
+        defaultValue: false,
+        input: false,
+      },
+      isActive: {
+        type: "boolean",
+        required: false,
+        defaultValue: true,
+        input: false,
+      },
+    },
+  },
+  trustedOrigins: [process.env.BETTER_AUTH_URL || "http://localhost:3000"],
+  plugins: [nextCookies()], // Required for Server Actions to set cookies
 });

@@ -1,4 +1,4 @@
-import { User } from "@prisma/client";
+import { user as User } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 
 import CheckboxCell from "@/components/primitives/checkbox-cell";
