@@ -369,38 +369,28 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 <details>
 <summary><h2>📝 Changelog</h2></summary>
 
-### [1.2.3] - 08-01-2026
-
-#### New Features
-
-**Migration**
-
-- Migrated NextAuth to BetterAuth.
-
-**Update**
-
-- Prisma updated to version 7.
-
-### [1.2.1] - 02-01-2026
-
-#### New Features
-
-**Added**
-
-- Added images config for Cloudinary.
-- Started migration of the images from Google Drive to Cloudinary.
-
-**Fixes**
-
-- Fixed the tech stack input in the project form page where some techs were missed.
-
-### [1.2.0] - 02-01-2026
+### [1.2.4] - 09-01-2026
 
 #### New Features
 
 **Migration**
 
 - Migrated state management from React Context to Zustand for improved performance and simpler API.
+- Migrated NextAuth to BetterAuth since NextAuth is deprecated.
+
+**Added**
+
+- Added images config for Cloudinary.
+- Started migration of the images from Google Drive to Cloudinary.
+
+**Update**
+
+- Prisma updated to version 7.
+- Nextjs updated to version 16.
+
+**Fixes**
+
+- Fixed the tech stack input in the project form page where some techs were missed.
 
 ### [1.1.7] - 04-12-2025
 
