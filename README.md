@@ -369,7 +369,7 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 <details>
 <summary><h2>📝 Changelog</h2></summary>
 
-### [1.2.3] - 08-01-2026
+### [1.2.4] - 09-01-2026
 
 #### New Features
 
@@ -386,6 +386,7 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 **Update**
 
 - Prisma updated to version 7.
+- Nextjs updated to version 16.
 
 **Fixes**
 

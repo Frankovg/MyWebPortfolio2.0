@@ -74,7 +74,7 @@ export default async function RootLayout({
   const downloads = await getDownloadsContent();
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <body
         className={cn(
           "text-sm min-h-screen text-whiteText relative font-sans antialiased",
