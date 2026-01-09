@@ -2,8 +2,8 @@
 
 import { useMemo } from "react";
 
-import { useUserDataContext } from "@/hooks/use-user-data-context";
 import { LANGUAGE_DICTIONARY } from "@/lib/constants";
+import { useDownloadsStore } from "@/stores/use-downloads-store";
 
 type TItem = {
   name?: string;
@@ -13,7 +13,7 @@ type TItem = {
 };
 
 function DownloadLinksFooter() {
-  const { downloads } = useUserDataContext();
+  const downloads = useDownloadsStore((state) => state.downloads);
 
   let _downloads = useMemo(() => {
     const parsedDownloads = downloads.filter((file) => file.isActive).sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));

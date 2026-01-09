@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 
-import { useUserDataContext } from "@/hooks/use-user-data-context";
+import { useDownloadsStore } from "@/stores/use-downloads-store";
 
 function DownloadLinks() {
-  const { downloads } = useUserDataContext();
+  const downloads = useDownloadsStore((state) => state.downloads);
 
   const parsedDownloads = downloads.filter((file) => file.isActive && file.language === "en");
 
@@ -26,7 +26,7 @@ function DownloadLinks() {
               height={133}
               className="w-34 h-24 sm:w-[200px] sm:h-[133px] object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]"
             />
-            <div className="absolute top-0 left-0 w-full h-full bg-linear-to-r from-transparent via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-[2000ms] animate-shiny" />
+            <div className="absolute top-0 left-0 w-full h-full bg-linear-to-r from-transparent via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-2000 animate-shiny" />
           </div>
           <div className="w-3/5 px-5 max-sm:hidden">
             <h4 className="text-lg font-semibold group-hover:underline">{download.name}</h4>

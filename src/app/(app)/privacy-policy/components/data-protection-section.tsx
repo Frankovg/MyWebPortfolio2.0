@@ -152,7 +152,6 @@ export default function DataProtectionSection() {
           This request and any other attached document may be sent to the following address and/or email:
         </p>
         <div className="bg-gray-800 p-4 rounded-lg space-y-2">
-          <p><strong>Postal address:</strong> {dataProtection.subsections.rights.exerciseRights.contactInfo.address}</p>
           <p><strong>Email:</strong> {dataProtection.subsections.rights.exerciseRights.contactInfo.email}</p>
         </div>
       </div>

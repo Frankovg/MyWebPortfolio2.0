@@ -1,11 +1,10 @@
-import { ChangePasswordProvider } from "@/context/change-password-provider";
-
+import { ChangePasswordFormInitializer } from "./change-password-form-initializer";
 import { ChangePasswordFormWrapper } from "./sections/change-password-form-wrapper";
 
 export const ChangePasswordForm = () => {
   return (
-    <ChangePasswordProvider>
+    <ChangePasswordFormInitializer>
       <ChangePasswordFormWrapper />
-    </ChangePasswordProvider>
+    </ChangePasswordFormInitializer>
   );
 };

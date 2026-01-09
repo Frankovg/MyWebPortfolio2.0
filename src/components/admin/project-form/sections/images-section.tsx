@@ -7,13 +7,13 @@ import ButtonMinimal from "@/components/primitives/button-minimal";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useProjectFormContext } from "@/hooks/use-project-form";
-import { DEFAULT_IMAGE_URL } from "@/lib/constants";
+import { getImageUrlPlaceholder } from "@/lib/constants";
+import { useProjectFormStore } from "@/stores/use-project-form-store";
 
 import { ProjectFormImagesViewer } from "./project-form-images-viewer";
 
 export function ImagesSection() {
-  const { control, errors, watch } = useProjectFormContext();
+  const { control, watch, errors } = useProjectFormStore();
 
   const {
     fields: galleryFields,
@@ -22,8 +22,10 @@ export function ImagesSection() {
   } = useFieldArray({
     rules: { minLength: 1, required: "Please add at least 1 picture." },
     name: "gallery",
-    control,
+    control: control ?? undefined,
   });
+
+  if (!control || !watch) return null;
 
   const hasGallery =
     watch("gallery")?.length && watch("gallery")?.[0].imageUrl !== "";
@@ -49,7 +51,7 @@ export function ImagesSection() {
                     />
                     <Input
                       id={`image-url-${index}`}
-                      placeholder={DEFAULT_IMAGE_URL}
+                      placeholder={getImageUrlPlaceholder()}
                       {...field}
                     />
                     {errors.gallery?.[index]?.imageUrl && (
@@ -132,7 +134,7 @@ export function ImagesSection() {
       </div>
 
       <div className="flex flex-wrap gap-4">
-        {/* //TODO: Make this works for guest users and allow to upload images from other sites 
+        {/* //TODO: Make this works for guest users and allow to upload images from other sites
           //TODO: Add a script to modify the default drive url to the good one */}
         {hasGallery ? (
           watch("gallery")?.map((image, index) => (

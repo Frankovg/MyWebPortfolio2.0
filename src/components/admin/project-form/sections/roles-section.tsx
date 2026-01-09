@@ -7,12 +7,12 @@ import ButtonMinimal from "@/components/primitives/button-minimal";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useProjectFormContext } from "@/hooks/use-project-form";
+import { useProjectFormStore } from "@/stores/use-project-form-store";
 
 import { ProjectFormRolesViewer } from "./project-form-roles-viewer";
 
 export function RolesSection() {
-  const { control, errors, watch } = useProjectFormContext();
+  const { control, watch, errors } = useProjectFormStore();
 
   const {
     fields: rolesFields,
@@ -21,8 +21,10 @@ export function RolesSection() {
   } = useFieldArray({
     rules: { minLength: 1, required: "Please add at least 1 role." },
     name: "roles",
-    control,
+    control: control ?? undefined,
   });
+
+  if (!control || !watch) return null;
 
   return (
     <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">

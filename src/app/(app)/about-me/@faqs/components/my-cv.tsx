@@ -1,10 +1,10 @@
 'use client'
 
-import { useUserDataContext } from "@/hooks/use-user-data-context";
 import { LANGUAGE_DICTIONARY } from "@/lib/constants";
+import { useDownloadsStore } from "@/stores/use-downloads-store";
 
 function MyCv() {
-  const { downloads } = useUserDataContext();
+  const downloads = useDownloadsStore((state) => state.downloads);
 
   if (!downloads) throw new Error("Error fetching downloads")
 

@@ -5,8 +5,9 @@ import {
   Project,
   Role,
   Tech,
-} from "@prisma/client";
-import { Session } from "next-auth";
+} from "@/generated/prisma/client";
+
+import { auth } from "./auth";
 
 export type ProjectEssentials = Omit<
   Project,
@@ -18,7 +19,7 @@ export type DownloadEssentials = Omit<
   "id" | "createdAt" | "updatedAt"
 >;
 
-export type UserSession = Session | null;
+export type UserSession = typeof auth.$Infer.Session | null;
 
 export type ProjectShort = Pick<
   Project,
@@ -58,3 +59,11 @@ export interface ICategoryWithProjectsAdmin extends Category {
 }
 
 export type Action = "add" | "delete" | "edit";
+
+type PayloadCreate = ProjectEssentials & { categoryId: string };
+type PayloadEdit = ProjectEssentials & {
+  projectId: string;
+  categoryId: string;
+};
+type PayloadDelete = { projectId: string; categoryId: string };
+export type Payload = PayloadCreate | PayloadEdit | PayloadDelete;

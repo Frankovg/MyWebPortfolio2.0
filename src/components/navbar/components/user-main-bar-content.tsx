@@ -4,18 +4,7 @@ import Link from "next/link";
 import { useTransition } from "react";
 
 import { logOut } from "@/actions/user-actions";
-// import LanguageSelector from "@/components/language-selector";
 import Overlay from "@/components/primitives/overlay";
-
-//TODO: Add translations and language selector
-// const LanguageSelectorContainer = () => {
-//   return (
-//     <>
-//       <LanguageSelector />
-//       <span>|</span>
-//     </>
-//   );
-// };
 
 type UserMainBarContentProps = {
   isLogged: boolean;
@@ -31,7 +20,6 @@ export const UserMainBarContent = ({ isLogged, isAdmin }: UserMainBarContentProp
   if (!isLogged) {
     return (
       <div className={wrapperStyle}>
-        {/* <LanguageSelectorContainer /> */}
         <Link href="/login" className={hoverStyle}>
           <span>Login</span>
         </Link>
@@ -53,7 +41,6 @@ export const UserMainBarContent = ({ isLogged, isAdmin }: UserMainBarContentProp
         className="before:content-[attr(data-mobile)] md:before:content-none md:before:hidden md:after:content-[attr(data-desktop)] before:block after:hidden md:after:block"
       />
       <div className={wrapperStyle}>
-        {/* <LanguageSelectorContainer /> */}
         <Link href="/admin" className={hoverStyle}>
           <span>Admin</span>
         </Link>

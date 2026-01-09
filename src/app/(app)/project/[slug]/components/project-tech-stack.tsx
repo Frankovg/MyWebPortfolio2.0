@@ -1,7 +1,5 @@
 "use client";
 
-import { Tech } from "@prisma/client";
-
 import TechCard from "@/components/tech-card";
 import {
   Card,
@@ -11,6 +9,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ALL_TECHS } from "@/lib/client-constants";
+
+import type { Tech } from "@/generated/prisma/client";
 
 
 type ProjectTechStackProps = {

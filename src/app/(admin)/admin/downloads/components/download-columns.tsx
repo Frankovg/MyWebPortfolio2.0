@@ -1,14 +1,11 @@
 "use client";
 
-import { Download } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import { CheckIcon, Settings, Trash2, XIcon } from "lucide-react";
 import Link from "next/link";
 
+import { Download } from "@/generated/prisma/client";
 import { DATE_FORMAT, DATE_LOCATION, LANGUAGE_DICTIONARY } from "@/lib/constants";
-
-//TODO: Sorting columns
-// const dropdownLabels = { asc: "Asc", desc: "Desc" };
 
 export const downloadColumns = (
   handleOpenDeleteModal: (downloadId: string) => void

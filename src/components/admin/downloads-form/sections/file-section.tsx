@@ -6,21 +6,26 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { useDownloadFormContext } from "@/hooks/use-download-form";
-import { DEFAULT_FILE_URL, DEFAULT_IMAGE_URL } from "@/lib/constants";
+import { DEFAULT_FILE_URL, getImageUrlPlaceholder, IMAGE_URL_PREFIXES, isValidImageUrl } from "@/lib/constants";
+import { useDownloadFormStore } from "@/stores/use-download-form-store";
 
 import { LabelLink } from "../../label-link";
 
 export function FileSection() {
   const { register, getValues, watch, control, errors } =
-    useDownloadFormContext();
+    useDownloadFormStore();
 
-  const hasImage =
-    watch("imageUrl")?.includes(DEFAULT_IMAGE_URL) &&
-    watch("imageUrl")?.length > DEFAULT_IMAGE_URL.length;
+  if (!register || !getValues || !watch || !control) {
+    return null;
+  }
+
+  const imageUrl = watch("imageUrl");
+  const fileHref = watch("fileHref");
+
+  const hasImage = isValidImageUrl(imageUrl);
   const hasFile =
-    watch("fileHref")?.includes(DEFAULT_FILE_URL) &&
-    watch("fileHref")?.length > DEFAULT_FILE_URL.length;
+    fileHref?.includes(DEFAULT_FILE_URL) &&
+    fileHref?.length > DEFAULT_FILE_URL.length;
 
   return (
     <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
@@ -127,7 +132,7 @@ export function FileSection() {
             name="imageUrl"
             control={control}
             rules={{
-              validate: (value) => value.includes(DEFAULT_IMAGE_URL),
+              validate: (value) => IMAGE_URL_PREFIXES.some(prefix => value.startsWith(prefix)),
             }}
             render={({ field }) => (
               <>
@@ -147,7 +152,7 @@ export function FileSection() {
                 />
                 <Input
                   id="imageUrl"
-                  placeholder={DEFAULT_IMAGE_URL}
+                  placeholder={getImageUrlPlaceholder()}
                   {...field}
                 />
                 {errors.imageUrl && (

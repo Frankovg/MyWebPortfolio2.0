@@ -12,8 +12,8 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 
 import { TabsContent } from "@/components/ui/tabs";
-import { useProjectContext } from "@/hooks/use-project-context";
 import { ICategoryWithProjectsAdmin } from "@/lib/types";
+import { useProjectStore } from "@/stores/use-project-store";
 
 import { portfolioColumns } from "./portfolio-columns";
 import PortfolioTable from "./portfolio-table";
@@ -42,7 +42,7 @@ function PortfolioContent({ content }: PortfolioContentProps) {
   const [globalFilter, setGlobalFilter] = useState<any>([]);
   const [deleteModal, setDeleteModal] = useState(initialModalState);
 
-  const { handleDeleteProject } = useProjectContext();
+  const handleDeleteProject = useProjectStore((state) => state.handleDeleteProject);
 
   const handleOpenDeleteModal = (projectId: string, categoryId: string) => {
     setDeleteModal({

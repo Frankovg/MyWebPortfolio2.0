@@ -1,4 +1,3 @@
-import { Download } from "@prisma/client";
 import { FileDown } from "lucide-react";
 import Link from "next/link";
 
@@ -10,6 +9,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { LANGUAGE_DICTIONARY } from "@/lib/constants";
+
+import type { Download } from "@/generated/prisma/client";
 
 export const DownloadFiles = ({ downloads }: { downloads: Download[] }) => {
   return (

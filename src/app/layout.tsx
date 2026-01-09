@@ -1,10 +1,9 @@
 import { Metadata } from "next";
 import { Readex_Pro as FontSans } from "next/font/google";
-import { SessionProvider } from "next-auth/react";
 import NextNProgress from "nextjs-toploader";
 import { Toaster } from "sonner";
 
-import UserDataContextProvider from "@/context/user-data-provider";
+import { DownloadsInitializer } from "@/components/downloads-initializer";
 import { getDownloadsContent } from "@/lib/server-utils-admin";
 import { cn } from "@/lib/utils";
 
@@ -75,7 +74,7 @@ export default async function RootLayout({
   const downloads = await getDownloadsContent();
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <body
         className={cn(
           "text-sm min-h-screen text-whiteText relative font-sans antialiased",
@@ -89,13 +88,11 @@ export default async function RootLayout({
           showSpinner={false}
           height={4}
         />
-        <div className="absolute inset-0 bg-linear-to-br to-darkPrimary via-background from-darkGrey animate-gradient bg-[length:400%_400%] z-0" />
+        <div className="absolute inset-0 bg-linear-to-br to-darkPrimary via-background from-darkGrey animate-gradient bg-size-[400%_400%] z-0" />
         <div className="relative flex flex-col min-h-screen w-full z-10">
-          <SessionProvider>
-            <UserDataContextProvider data={{ userData: { downloads } }}>
-              {children}
-            </UserDataContextProvider>
-          </SessionProvider>
+          <DownloadsInitializer downloads={downloads}>
+            {children}
+          </DownloadsInitializer>
           <Toaster
             richColors
             closeButton

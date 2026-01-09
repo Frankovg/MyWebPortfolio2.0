@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client";
+import { Prisma } from "../src/generated/prisma/client.js";
 
 
 export const CV_EN_SEED: Prisma.DownloadCreateInput = {
