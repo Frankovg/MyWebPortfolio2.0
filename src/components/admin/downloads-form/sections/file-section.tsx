@@ -6,7 +6,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { DEFAULT_FILE_URL, getImageUrlPlaceholder, IMAGE_URL_PREFIXES, isValidImageUrl } from "@/lib/constants";
+import { IMAGE_URL_PREFIXES } from "@/lib/constants";
+import { getFileUrlPlaceholder, getImageUrlPlaceholder } from "@/lib/utils";
+import { isValidFileUrl, isValidImageUrl } from "@/lib/validations";
 import { useDownloadFormStore } from "@/stores/use-download-form-store";
 
 import { LabelLink } from "../../label-link";
@@ -23,9 +25,7 @@ export function FileSection() {
   const fileHref = watch("fileHref");
 
   const hasImage = isValidImageUrl(imageUrl);
-  const hasFile =
-    fileHref?.includes(DEFAULT_FILE_URL) &&
-    fileHref?.length > DEFAULT_FILE_URL.length;
+  const hasFile = isValidFileUrl(fileHref);
 
   return (
     <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
@@ -74,7 +74,7 @@ export function FileSection() {
             name="fileHref"
             control={control}
             rules={{
-              validate: (value) => value.includes(DEFAULT_FILE_URL),
+              validate: (value) => isValidFileUrl(value),
             }}
             render={({ field }) => (
               <>
@@ -94,7 +94,7 @@ export function FileSection() {
                 />
                 <Input
                   id="fileHref"
-                  placeholder={DEFAULT_FILE_URL}
+                  placeholder={getFileUrlPlaceholder()}
                   {...field}
                 />
                 {errors.fileHref && (

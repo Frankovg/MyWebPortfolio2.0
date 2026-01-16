@@ -48,7 +48,6 @@ This is a comprehensive portfolio web application built with modern technologies
 - **🎭 Admin CMS**: Complete content management system for non-technical content updates
 - **♿ Accessible**: WCAG compliant with semantic HTML and ARIA labels
   <!-- - **📊 Analytics Ready**: Built-in tracking and monitoring capabilities -->
-  <!-- - **🌐 Internationalization**: Multi-language support (English/Spanish) -->
 
 ---
 
@@ -79,10 +78,11 @@ This is a comprehensive portfolio web application built with modern technologies
 
 ### Frontend
 
-- **Framework**: [Next.js 15.5.4](https://nextjs.org/) (App Router)
-- **UI Library**: [React 19.1.1](https://reactjs.org/)
-- **Language**: [TypeScript 5.9.2](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS 4.1.13](https://tailwindcss.com/)
+- **Framework**: [Next.js 16](https://nextjs.org/)
+- **UI Library**: [React 19](https://reactjs.org/)
+- **Language**: [TypeScript 5](https://www.typescriptlang.org/)
+- **State Management**: [Zustand 5](https://zustand-demo.pmnd.rs/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
 - **UI Components**: [shadcn/ui](https://ui.shadcn.com/) + [Radix UI](https://www.radix-ui.com/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
 - **Forms**: [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
@@ -90,22 +90,22 @@ This is a comprehensive portfolio web application built with modern technologies
 ### Backend
 
 - **Runtime**: [Node.js](https://nodejs.org/)
-- **Authentication**: [NextAuth.js v5](https://next-auth.js.org/)
-- **Database ORM**: [Prisma 6.16.2](https://www.prisma.io/)
-- **Database**: PostgreSQL (Production) / SQLite (Development)
+- **Authentication**: [BetterAuth](https://www.better-auth.com/)
+- **Database ORM**: [Prisma 7](https://www.prisma.io/)
+- **Database**: [PostgreSQL](https://www.postgresql.org/) (Production) / [SQLite](https://sqlite.org/) (Development)
 - **Email**: [Nodemailer](https://nodemailer.com/)
 - **Password Hashing**: [bcrypt](https://www.npmjs.com/package/bcrypt)
 
 ### Development & Testing
 
-- **Testing Framework**: [Jest 30.2.0](https://jestjs.io/)
+- **Testing Framework**: [Jest](https://jestjs.io/)
 - **Testing Library**: [@testing-library/react](https://testing-library.com/react)
 - **Linting**: [ESLint](https://eslint.org/) with TypeScript support
 
 ### Deployment
 
 - **Platform**: [Vercel](https://vercel.com/)
-- **Database**: Vercel Postgres (Production)
+- **Database**: [Neon](https://neon.com/)
 
 ---
 
@@ -145,7 +145,7 @@ Before you begin, ensure you have the following installed:
 2. **Configure your environment variables** in `.env`:
 
 3. **Important Notes**:
-   - **AUTH_SECRET**: Generate using `openssl rand -base64 32` in your terminal
+   - **BETTER_AUTH_SECRET**: Generate using `openssl rand -base64 32` in your terminal
    - **SMTP Configuration**: For Gmail, you need to create an [App Password](https://support.google.com/accounts/answer/185833)
    - **Database**: The project uses SQLite for development and PostgreSQL for production
    - **Super Admin**: This account is created automatically on first database seed
@@ -230,23 +230,14 @@ npm run build
 # Start production server
 npm start
 
+# Start development server
+npm run dev
+
 # Run linter
 npm run lint
 
-# Fix linting issues
-npm run lint:fix
-
 # Run tests
 npm test
-
-# Run tests in watch mode
-npm test:watch
-
-# Generate coverage report
-npm run test:coverage
-
-# Open coverage report in browser (macOS)
-npm run test:coverage:open
 ```
 
 ---
@@ -342,7 +333,6 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 
 - **Sample Account**: View-only access to the admin panel
 - **Production Data**: Explore the live portfolio content and CMS interface
-<!-- - **Guided Tour**: Documentation on how to use the CMS -->
 
 **Note**: Sample accounts are read-only for evaluation purposes and cannot modify the database.
 
@@ -368,6 +358,22 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 
 <details>
 <summary><h2>📝 Changelog</h2></summary>
+
+### [1.2.6] - 16-01-2026
+
+**Migration**
+
+- Images and files were moved to a Cloudinary server.
+
+**Added**
+
+- Nextjs cache data for better performance.
+
+**Fixes**
+
+- File upload and images validations to accept Cloudinary url's.
+
+#### New Features
 
 ### [1.2.4] - 09-01-2026
 
@@ -489,7 +495,7 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 If you're interested in using this project as a template or reference for your own portfolio:
 
 1. **Contact me** for permission at di.francoamoros@gmail.com
-2. **Attribution** is required if permission is graonted
+2. **Attribution** is required if permission is granted
 
 ### Third-Party Licenses
 

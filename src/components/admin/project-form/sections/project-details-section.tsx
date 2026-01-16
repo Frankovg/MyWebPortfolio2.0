@@ -8,7 +8,9 @@ import { DatePicker } from "@/components/ui/date-picker";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { getImageUrlPlaceholder, IMAGE_URL_PREFIXES, isValidImageUrl } from "@/lib/constants";
+import { IMAGE_URL_PREFIXES } from "@/lib/constants";
+import { getImageUrlPlaceholder } from "@/lib/utils";
+import { isValidImageUrl } from "@/lib/validations";
 import { useProjectFormStore } from "@/stores/use-project-form-store";
 
 import { LabelLink } from "../../label-link";
