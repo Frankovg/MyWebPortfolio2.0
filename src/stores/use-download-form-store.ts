@@ -106,8 +106,8 @@ export const useDownloadFormStore = create<DownloadFormStore>((set, get) => ({
       });
 
       const downloadValues = getValues();
+
       downloadValues.imageUrl = downloadValues.imageUrl || FALLBACK_IMG;
-      downloadValues.language = "en";
 
       const { addNewFile, handleEditFile } = useDownloadsStore.getState();
 
