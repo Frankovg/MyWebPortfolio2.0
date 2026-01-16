@@ -359,6 +359,22 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 <details>
 <summary><h2>📝 Changelog</h2></summary>
 
+### [1.2.6] - 16-01-2026
+
+**Migration**
+
+- Images and files were moved to a Cloudinary server.
+
+**Added**
+
+- Nextjs cache data for better performance.
+
+**Fixes**
+
+- File upload and images validations to accept Cloudinary url's.
+
+#### New Features
+
 ### [1.2.4] - 09-01-2026
 
 #### New Features
