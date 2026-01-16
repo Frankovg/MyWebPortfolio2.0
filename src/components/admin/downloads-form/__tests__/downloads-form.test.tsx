@@ -4,17 +4,35 @@ import { FileSection } from '../sections/file-section';
 
 // Mock constants
 jest.mock('@/lib/constants', () => ({
-  DEFAULT_FILE_URL: 'https://example.com/files/',
-  GOOGLE_DRIVE_IMAGE_URL: 'https://example.com/images/',
-  CLOUDINARY_IMAGE_URL: 'https://cloudinary.com/images/',
-  IMAGE_URL_PREFIXES: ['https://example.com/images/', 'https://cloudinary.com/images/'],
+  GOOGLE_DRIVE_FILE_URL: 'https://drive.google.com/file/d/',
+  CLOUDINARY_FILE_URL: 'https://res.cloudinary.com/webportfolio/image/upload/',
+  GOOGLE_DRIVE_IMAGE_URL: 'https://drive.google.com/uc?export=view&id=',
+  CLOUDINARY_IMAGE_URL: 'https://res.cloudinary.com/webportfolio/image/upload/',
+  IMAGE_URL_PREFIXES: ['https://drive.google.com/uc?export=view&id=', 'https://res.cloudinary.com/webportfolio/image/upload/'],
+  FILE_URL_PREFIXES: ['https://drive.google.com/file/d/', 'https://res.cloudinary.com/webportfolio/image/upload/'],
+}));
+
+// Mock validations
+jest.mock('@/lib/validations', () => ({
   isValidImageUrl: (url: string | undefined | null) => {
     if (!url) return false;
-    return ['https://example.com/images/', 'https://cloudinary.com/images/'].some(
+    return ['https://drive.google.com/uc?export=view&id=', 'https://res.cloudinary.com/webportfolio/image/upload/'].some(
       prefix => url.startsWith(prefix) && url.length > prefix.length
     );
   },
-  getImageUrlPlaceholder: () => 'https://example.com/images/ or https://cloudinary.com/images/',
+  isValidFileUrl: (url: string | undefined | null) => {
+    if (!url) return false;
+    return ['https://drive.google.com/file/d/', 'https://res.cloudinary.com/webportfolio/image/upload/'].some(
+      prefix => url.startsWith(prefix) && url.length > prefix.length
+    );
+  },
+}));
+
+// Mock utils - spread actual implementation to keep cn and other functions
+jest.mock('@/lib/utils', () => ({
+  ...jest.requireActual('@/lib/utils'),
+  getImageUrlPlaceholder: () => 'https://drive.google.com/uc?export=view&id= or https://res.cloudinary.com/webportfolio/image/upload/',
+  getFileUrlPlaceholder: () => 'https://drive.google.com/file/d/ or https://res.cloudinary.com/webportfolio/image/upload/',
 }));
 
 // Mock form store values
@@ -130,13 +148,13 @@ describe('DownloadsForm', () => {
       it('should render placeholder for file url', () => {
         render(<FileSection />);
 
-        expect(screen.getByPlaceholderText('https://example.com/files/')).toBeInTheDocument();
+        expect(screen.getByPlaceholderText('https://drive.google.com/file/d/ or https://res.cloudinary.com/webportfolio/image/upload/')).toBeInTheDocument();
       });
 
       it('should render placeholder for image url', () => {
         render(<FileSection />);
 
-        expect(screen.getByPlaceholderText('https://example.com/images/ or https://cloudinary.com/images/')).toBeInTheDocument();
+        expect(screen.getByPlaceholderText('https://drive.google.com/uc?export=view&id= or https://res.cloudinary.com/webportfolio/image/upload/')).toBeInTheDocument();
       });
     });
 
