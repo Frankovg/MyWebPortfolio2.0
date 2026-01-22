@@ -12,13 +12,13 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
           I collaborated closely with clients to ensure brand consistency across multi-format campaigns while adapting designs for various outdoor advertising placements including highways, bus stops, metro stations, and commercial districts. This experience honed my skills in large-scale design thinking, brand adaptation, and creating memorable visual impact within the constraints of outdoor advertising regulations and production requirements.
           `,
         image:
-          "https://drive.google.com/uc?export=view&id=118ERZTXT6dlFQWLfaZu5SOyEb3FRnhNm",
+          "https://res.cloudinary.com/webportfolio/image/upload/v1768285763/Untitled-1_1_arbs8q.webp",
         slug: "ooh",
         gallery: {
           create: [
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1NzhBF4Y7z82bb-BSdvmUySn7psrwyxcH",
+                "https://res.cloudinary.com/webportfolio/image/upload/v1768285763/pub-exterior-1_rlmxy2.webp",
               alt: "Billboard design for Vía Célere outdoor advertising campaign.",
               description: `Large-format billboard design for Via Célere real estate development featuring new residential properties. 
                 The design showcases modern housing units with compelling messaging to attract potential homebuyers. 
@@ -27,7 +27,7 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1JCawZ9y-IjuraA1K7XZRRPuNUlTuKmHx",
+                "https://res.cloudinary.com/webportfolio/image/upload/v1768285762/pub-exterior-2_fomjvx.webp",
               alt: "Vehicle vinyl graphics design for micasamovil.es mobile homes company.",
               description: `Commercial vehicle vinyl wrap design for micasamovil.es, a company specializing in factory-built prefabricated homes. 
                 The design features the company's branding, contact information, and visual representation of their mobile home products. 
@@ -36,7 +36,7 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1bmWoflv7vwcKFo9rNdkIl0L5r2IrpmTU",
+                "https://res.cloudinary.com/webportfolio/image/upload/v1768285762/pub-exterior-3_o442fs.webp",
               alt: "Admiral Entertainment storefront design and branding implementation.",
               description: `Commercial storefront design for Admiral Entertainment, a German gaming company with multiple locations across Spain. 
                 The project involved creating cohesive visual branding for the exterior facade, including signage design, window graphics, and brand identity implementation. 
@@ -45,7 +45,7 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1ZpYX-BBuAfTG2Y5588svTpvfuN_O2RAp",
+                "https://res.cloudinary.com/webportfolio/image/upload/v1768285763/pub-exterior-4_ktrbot.webp",
               alt: "Vehicle vinyl graphics design for Mokasol, a regional coffee brand.",
               description: `Commercial vehicle vinyl wrap design for Mokasol, a regional coffee brand specializing in artisanal coffee products. 
                 The design features high-quality product photography, brand messaging, and contact information with rich coffee imagery to communicate the premium nature of their products. 
@@ -54,7 +54,7 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1YmAOnzUZh1MZmYU_KXyPT8FicW1QQqP2",
+                "https://res.cloudinary.com/webportfolio/image/upload/v1768285762/aelca_cguvt7.webp",
               alt: "Aelca real estate exhibition stand design featuring modern white display walls with property brochures, contemporary seating area, and branded elements for Spanish business event.",
               description: `Modern exhibition stand design concept for Aelca, a Spanish real estate company, created for business trade shows and property exhibitions. 
                 The layout is optimized for effective customer engagement and property presentation in a professional trade show environment.
@@ -62,7 +62,7 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1U9Qdkdx28Qs0UuyBU_a5jqLaL-wBi9z3",
+                "https://res.cloudinary.com/webportfolio/image/upload/v1768285762/crossfit_gbqckg.webp",
               alt: "CrossFit gym exterior facade design featuring bold yellow and black branding with fitness model imagery, promotional messaging, and gym logo for Alhaurín de la Torre location.",
               description: `Exterior facade design for a CrossFit gym located in Alhaurín de la Torre, Spain. 
                 The design transforms the industrial building facade into an eye-catching marketing tool that attracts potential members while establishing the gym's professional credibility and fitness expertise in the local community.
@@ -122,13 +122,13 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
           These pieces serve as creative explorations that complement my commercial design work, allowing for artistic freedom and the development of unique visual concepts that push creative boundaries.
           `,
         image:
-          "https://drive.google.com/uc?export=view&id=1nDAHtWlx8pmNoYnjbz-lRyzxp3UnFQFj",
+          "https://res.cloudinary.com/webportfolio/image/upload/v1767341574/norush2_qsowbt.webp",
         slug: "art-design",
         gallery: {
           create: [
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1N0FVsRkqqh-nUDvWPd_W28waLJytsk3s",
+                "https://res.cloudinary.com/webportfolio/image/upload/v1767341572/art-1_yfdnyf.webp",
               alt: "Cosmic mandala design with intricate geometric patterns and mystical elements for noRush wallet collection.",
               description: `Original mandala artwork featuring complex geometric patterns set against a cosmic gradient background. 
                 The design combines traditional mandala elements with contemporary digital art techniques, incorporating sharp linear details, ornate circular motifs, and mystical symbols. 
@@ -136,7 +136,7 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1FpJCIu9NwHHuFJZ9CJ86STPwr6povhNX",
+                "https://res.cloudinary.com/webportfolio/image/upload/v1767341573/art-2_tqza6n.webp",
               alt: "Iconic geometric cube pattern design featuring vibrant isometric blocks for noRush brand identity.",
               description: `One of the most iconic designs created for noRush, featuring a dynamic pattern of colorful isometric cubes in various sizes and orientations. 
                 This signature pattern became a cornerstone of noRush's visual branding, representing innovation, creativity, and modern digital design principles.
@@ -144,7 +144,7 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=18FpONVlM55jnaDKCxEjFCOXvwZCHjZoy",
+                "https://res.cloudinary.com/webportfolio/image/upload/v1767341573/art-3_pyfh9c.webp",
               alt: "Contemporary art collage featuring street art elements, pop culture icons, and mixed media composition for noRush brand.",
               description: `Eclectic digital art collage that blends contemporary street art aesthetics with pop culture imagery and mixed media elements. 
                 Created for noRush brand identity, this piece represents the intersection of digital culture, street art, and contemporary design, showcasing a bold, rebellious aesthetic that appeals to modern creative audiences through its layered, experimental approach to visual storytelling.
@@ -207,13 +207,13 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
           These comprehensive documents include examples of correct and incorrect usage, spacing guidelines, minimum size requirements, and adaptation rules for different contexts, providing organizations with the tools they need for successful brand management and consistent visual communication.
         `,
         image:
-          "https://drive.google.com/uc?export=view&id=1jBst0fTEzRSIG-sRjr4tNgqTYIPi8_Ee",
+          "https://res.cloudinary.com/webportfolio/image/upload/v1768286180/Untitled-1_1_meklao.webp",
         slug: "books",
         gallery: {
           create: [
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=14p0fz-gyGyPMRhXE81nsgg4VQJqXzF38",
+                "https://res.cloudinary.com/webportfolio/image/upload/v1768286179/manual-4_i7o3lb.webp",
               alt: "Commercial store design manual for Tarjeta Shopping featuring technical specifications, floor plans, and brand guidelines with vibrant retail imagery.",
               description: `Comprehensive brand identity and technical manual created for Tarjeta Shopping commercial stores. 
                 This guideline document features detailed architectural floor plans, store layout specifications, and visual merchandising standards. 
@@ -222,7 +222,7 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1cLzjo205WxJFP-f8jIZW9WRK2y9C5E4R",
+                "https://res.cloudinary.com/webportfolio/image/upload/v1768286178/manual-2_w6k1u6.webp",
               alt: "Residential maintenance manual showing modern apartment interior with usage and care instructions for new homeowners, featuring bright living spaces and technical guidelines.",
               description: `Comprehensive usage and maintenance manual created for new apartment owners, providing detailed instructions for property care and community spaces. 
                 The manual includes sections on structural elements (foundation, structure, and cladding), with specific maintenance recommendations and important safety notes. 
@@ -230,7 +230,7 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1kMyAAECe14WC3-yExW-PfwjsjbCZmIrd",
+                "https://res.cloudinary.com/webportfolio/image/upload/v1768286177/manual-1_e9t0mu.webp",
               alt: "Brand identity manual page for noRush showing logo construction guidelines, minimum size specifications, and application rules for print and digital media.",
               description: `Brand identity manual page for noRush wallets demonstrating comprehensive logo usage guidelines and technical specifications. 
                 The document details construction and application standards, featuring various logo configurations including the simple logotype, composite logos with star elements, and the complete 'noRush wallets' branding.
@@ -238,7 +238,7 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1BtlFM33m1TxRP2KrOzoEBXJOwgs3aJnE",
+                "https://res.cloudinary.com/webportfolio/image/upload/v1768286178/manual-5_cbp91i.webp",
               alt: "Airsoft Club corporate typography guidelines showing primary and secondary font specifications.",
               description: `Comprehensive corporate brand identity manual created for Airsoft Club, establishing complete visual identity standards and brand guidelines for consistent application across all touchpoints.
                 The document features detailed sections on visual identity systems, brand positioning, logo variations and minimum size requirements, typography standards with complete character sets, and practical implementation guidelines for both digital and print applications.
@@ -246,7 +246,7 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1r6kcJSUkfuc5b3YCVU0SCuJsLLS4jFlL",
+                "https://res.cloudinary.com/webportfolio/image/upload/v1768286179/manual-6_cgxuhp.webp",
               alt: "A-SAFE Digital brand identity applications showing logo implementation across business cards, letterheads, and digital mockups.",
               description: `Brand identity applications for A-SAFE Digital demonstrating comprehensive logo implementation across various corporate touchpoints and marketing materials. 
                 This identity manual example illustrates proper logo usage, spacing guidelines, and color consistency across different media formats, providing a complete framework for brand implementation and ensuring recognizable visual identity across all business communications.
@@ -307,19 +307,19 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
           Each logo project includes comprehensive exploration of typography, color psychology, and symbolic meaning, ensuring the final design creates emotional connections with audiences while supporting long-term brand recognition and recall.
         `,
         image:
-          "https://drive.google.com/uc?export=view&id=1zQTfkL7_Jxj9MUnpZjbLvXncKnc9Ny0z",
+          "https://res.cloudinary.com/webportfolio/image/upload/v1768286466/logos_header_Mesa_de_trabajo_1_n1d3dl.webp",
         slug: "logos",
         gallery: {
           create: [
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1kU1HoIAJOTqyoV-WsWvf52xyesTn818V",
+                "https://res.cloudinary.com/webportfolio/image/upload/v1768286467/logos-1_nhbds0.webp",
               alt: "noRush brand identity manual page showing logo construction guidelines, minimum size specifications, and application rules for print and digital media.",
               description: `The document details construction and application standards, featuring modular proportions, protective area requirements, and scaling guidelines to ensure consistent brand implementation.`,
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1ryqR-P-aonRsrDWXziJ-EA-nsmvrqLjn",
+                "https://res.cloudinary.com/webportfolio/image/upload/v1768286468/logos-2_acwano.webp",
               alt: "Backdoor Studio (BDS) logo design variations showing circular and square formats in different color schemes including red, black and white versions.",
               description: `Complete logo design system for Backdoor Studio (BDS) showcasing various logo configurations and color applications. 
                 Color variations include the primary red version, grayscale options, and high-contrast black and white treatments for maximum versatility across different applications and media requirements.
@@ -327,13 +327,13 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1M4HSMlYMMy8at-feY-VUzKsKFDMw9JD9",
+                "https://res.cloudinary.com/webportfolio/image/upload/v1768286469/logos-3_p2l6ns.webp",
               alt: "Raven Force airsoft team logo applications on tactical t-shirts showing brand implementation across apparel merchandise.",
               description: `Brand application examples for Raven Force airsoft team demonstrating logo implementation across tactical apparel and merchandise design.`,
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1B1qavBBgonG3Z70LDZK_H90rG-S9-0w5",
+                "https://res.cloudinary.com/webportfolio/image/upload/v1768286471/logos-5_jynmom.webp",
               alt: "Le Brique logo design featuring modular orange brick pattern and VIP Geselinos event branding variations.",
               description: `Logo design showcase featuring Le Brique with its distinctive modular brick pattern in vibrant orange, symbolizing construction and architectural excellence.
                 The design also displays VIP Geselinos event branding with multiple logo variations for "Tercera Edición" (Third Edition), demonstrating versatile brand applications across different event iterations.
@@ -403,13 +403,13 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
           Each project includes comprehensive design systems with reusable components, style guides, and detailed specifications that enable development teams to implement pixel-perfect interfaces while maintaining design consistency and scalability.
         `,
         image:
-          "https://drive.google.com/uc?export=view&id=1WhS00nF6dTPmM-VJy-5NJYUKqYqice9C",
+          "https://res.cloudinary.com/webportfolio/image/upload/v1768286711/Untitled-1_1_fb7tep.webp",
         slug: "ux-ui-design",
         gallery: {
           create: [
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=11vvLJ5YqD-l0-nfuDuI4R3f4VUd8wcVz",
+                "https://res.cloudinary.com/webportfolio/image/upload/v1768286710/old_sg_jkiyao.webp",
               alt: "Safeguru mobile app interface.",
               description: `Enhanced UX/UI design for Safeguru e-commerce platform showcasing new features and pages designed to improve user experience for safety equipment retail. 
                 The interface demonstrates improved usability through streamlined navigation, optimized product browsing flows, and enhanced checkout processes designed for both web and mobile platforms. 
@@ -418,7 +418,7 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1NsEgGzKj1XS2Ziwh-Ekma7v9eSkwZ4by",
+                "https://res.cloudinary.com/webportfolio/image/upload/v1768286706/asafedigital_lvwnbu.webp",
               alt: "A-SAFE Digital website interface",
               description: `The project involved developing the complete brand identity system, including the distinctive A-SAFE DIGITAL logotype and visual identity guidelines that reflect the company's expertise in digital innovation. 
                 The interface design emphasizes clean, professional aesthetics with intuitive navigation patterns, showcasing the agency's services.
@@ -427,7 +427,7 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1dCTXlDPJnGKB-Jjga73IFkBLWZ8r32B6",
+                "https://res.cloudinary.com/webportfolio/image/upload/v1768286709/old_portfolio_zhrzvo.webp",
               alt: "Personal portfolio website interface.",
               description: `Comprehensive UX/UI design for my personal portfolio website built around the conceptual theme of exploring a creative universe. 
                 The design strategy focused on creating an immersive digital experience that invites users to journey through my creative mind and explore different dimensions of my work. 
@@ -436,7 +436,7 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1IijC2aHWJlKXsQM_n3JAL2Pls8_Es5nm",
+                "https://res.cloudinary.com/webportfolio/image/upload/v1768286705/airsoftclub_asdyvg.webp",
               alt: "Airsoft Club mobile app interface showcasing social media features for airsoft community.",
               description: `Mobile UX/UI design for Airsoft Club social media platform, creating a specialized community app for airsoft enthusiasts. 
                   The design process focused on developing user-centered interfaces that facilitate equipment sharing, field discovery, team formation, and game coordination within the airsoft community.
@@ -445,7 +445,7 @@ export const GRAPHIC_AND_UX_UI_DESIGN_SEED = {
             },
             {
               imageUrl:
-                "https://drive.google.com/uc?export=view&id=1L_earOQw005RH28cOfTAXfZ66rGfKMY2",
+                "https://res.cloudinary.com/webportfolio/image/upload/v1768286708/jokes_y5ez2p.webp",
               alt: "Jokes app interface demonstrating UX/UI design principles and user interaction patterns.",
               description: `A jokes application showcasing fundamental interaction design principles and user experience optimization. 
                   The design process emphasized creating intuitive user flows with minimal cognitive load, implementing clear call-to-action patterns and streamlined navigation architecture. 

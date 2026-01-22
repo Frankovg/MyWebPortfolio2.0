@@ -136,6 +136,8 @@ describe('User Actions', () => {
       });
 
       it('should return error message when signInEmail throws', async () => {
+        const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
         const formData = new FormData();
         formData.append('email', 'test@example.com');
         formData.append('password', 'password123');
@@ -145,6 +147,9 @@ describe('User Actions', () => {
         const result = await logIn(undefined, formData);
 
         expect(result).toEqual({ message: 'Invalid credentials.' });
+        expect(consoleErrorSpy).toHaveBeenCalledWith('Login error:', expect.any(Error));
+
+        consoleErrorSpy.mockRestore();
       });
     });
 

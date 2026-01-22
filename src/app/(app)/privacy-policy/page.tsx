@@ -23,7 +23,7 @@ export default function PrivacyPolicy() {
     <Section id="privacy-policy" className="max-w-4xl mx-auto">
       <H4>{privacyPolicyContent.title}</H4>
 
-      <div className="w-full max-w-[920px] mx-auto text-white space-y-8">
+      <div className="w-full max-w-am mx-auto text-white space-y-8">
         <LegalHeaders title={privacyPolicyContent.websiteTitle} url={privacyPolicyContent.websiteUrl} />
         <DataProtectionSection />
         <AcceptanceSection />

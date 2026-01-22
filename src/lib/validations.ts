@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { FALLBACK_IMG, TECH_STACK_DATA } from "./constants";
+import { FALLBACK_IMG, FILE_URL_PREFIXES, IMAGE_URL_PREFIXES, TECH_STACK_DATA } from "./constants";
 
 const invalid_type_error = "Invalid type provided for this field.";
 const invalid_url_error = "Invalid url provided.";
@@ -252,3 +252,12 @@ export const changePasswordFormSchema = z
   });
 
 export type TChangePasswordForm = z.infer<typeof changePasswordFormSchema>;
+
+export const isValidImageUrl = (url: string | undefined | null): boolean => {
+  if (!url) return false;
+  return IMAGE_URL_PREFIXES.some(prefix => url.startsWith(prefix) && url.length > prefix.length);
+};
+export const isValidFileUrl = (url: string | undefined | null): boolean => {
+  if (!url) return false;
+  return FILE_URL_PREFIXES.some(prefix => url.startsWith(prefix) && url.length > prefix.length);
+};

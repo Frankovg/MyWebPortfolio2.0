@@ -1,5 +1,5 @@
 import ImageWithFallback from "@/components/primitives/image-with-fallback";
-import { isValidImageUrl } from "@/lib/constants";
+import { isValidImageUrl } from "@/lib/validations";
 
 export const ProjectFormImagesViewer = ({
   imageUrl,

@@ -7,7 +7,7 @@ import ButtonMinimal from "@/components/primitives/button-minimal";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { getImageUrlPlaceholder } from "@/lib/constants";
+import { getImageUrlPlaceholder } from "@/lib/utils";
 import { useProjectFormStore } from "@/stores/use-project-form-store";
 
 import { ProjectFormImagesViewer } from "./project-form-images-viewer";
