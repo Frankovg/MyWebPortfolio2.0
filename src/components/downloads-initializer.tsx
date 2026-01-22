@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import { useDownloadsStore } from "@/stores/use-downloads-store";
 
@@ -15,24 +15,19 @@ export function DownloadsInitializer({
   downloads,
   children,
 }: DownloadsInitializerProps) {
-  const isInitialized = useRef(false);
-  const { setDownloads, reset } = useDownloadsStore();
+  const isFirstRender = useRef(true);
+  const setDownloads = useDownloadsStore((state) => state.setDownloads);
 
-  useLayoutEffect(() => {
-    if (!isInitialized.current) {
-      setDownloads(downloads);
-      isInitialized.current = true;
-    }
-
-    return () => {
-      reset();
-      isInitialized.current = false;
-    };
-  }, [downloads, setDownloads, reset]);
-
-  if (!isInitialized.current) {
-    return null;
+  // Sync on first render (before paint) to avoid hydration mismatch
+  if (isFirstRender.current) {
+    setDownloads(downloads);
+    isFirstRender.current = false;
   }
+
+  // Sync when downloads prop changes (after navigation/revalidation)
+  useEffect(() => {
+    setDownloads(downloads);
+  }, [downloads, setDownloads]);
 
   return <>{children}</>;
 }

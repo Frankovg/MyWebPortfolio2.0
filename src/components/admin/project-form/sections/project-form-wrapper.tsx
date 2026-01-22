@@ -33,7 +33,7 @@ export default function ProjectFormWrapper({
   return (
     <form
       className="relative flex flex-wrap gap-6"
-      action={() => onSubmit(actionType, categoryId, router)}
+      action={() => onSubmit(actionType, categoryId)}
     >
       <ProjectDetailsSection />
       <ImagesSection />

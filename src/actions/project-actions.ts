@@ -83,6 +83,7 @@ export async function addProject(
   }
   revalidateTag(CACHE_TAGS.categories, "max");
   revalidateTag(CACHE_TAGS.projects, "max");
+  revalidatePath("/", "layout");
   redirect(`/admin/portfolio?category=${category.value}`);
 }
 
@@ -237,6 +238,7 @@ export async function editProject(
 
   revalidateTag(CACHE_TAGS.categories, "max");
   revalidateTag(CACHE_TAGS.projects, "max");
+  revalidatePath("/", "layout");
   redirect(`/admin/portfolio?category=${category.value}`);
 }
 
@@ -291,5 +293,5 @@ export async function deleteProject(projectId: string) {
   }
   revalidateTag(CACHE_TAGS.categories, "max");
   revalidateTag(CACHE_TAGS.projects, "max");
-  revalidatePath("/admin", "layout");
+  revalidatePath("/", "layout");
 }

@@ -1,7 +1,5 @@
 "use client";
 
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import { flushSync } from "react-dom";
 import {
   Control,
   FieldErrors,
@@ -46,11 +44,7 @@ type ProjectFormActions = {
     resetForm: UseFormReset<TProjectForm>;
   }) => void;
   setErrors: (errors: FieldErrors<TProjectForm>) => void;
-  onSubmit: (
-    actionType: Action,
-    categoryId: string,
-    router: AppRouterInstance
-  ) => Promise<void>;
+  onSubmit: (actionType: Action, categoryId: string) => Promise<void>;
   reset: () => void;
 };
 
@@ -88,7 +82,7 @@ export const useProjectFormStore = create<ProjectFormStore>((set, get) => ({
 
   setErrors: (errors) => set({ errors }),
 
-  onSubmit: async (actionType, categoryId, router) => {
+  onSubmit: async (actionType, categoryId) => {
     const { trigger, getValues, project } = get();
 
     if (!trigger || !getValues) {
@@ -107,10 +101,6 @@ export const useProjectFormStore = create<ProjectFormStore>((set, get) => ({
         console.warn(errorMessage);
         return;
       }
-
-      flushSync(() => {
-        router.push("/admin/portfolio");
-      });
 
       const projectValues = getValues();
       projectValues.image = projectValues.image ?? FALLBACK_IMG;

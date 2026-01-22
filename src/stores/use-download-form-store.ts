@@ -1,13 +1,10 @@
 "use client";
 
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import { flushSync } from "react-dom";
 import { toast } from "sonner";
 import { create } from "zustand";
 
 import { FALLBACK_IMG } from "@/lib/constants";
 import { Action } from "@/lib/types";
-
 
 import { useDownloadsStore } from "./use-downloads-store";
 
@@ -45,7 +42,7 @@ type DownloadFormActions = {
     trigger: UseFormTrigger<TDownloadForm>;
   }) => void;
   setErrors: (errors: FieldErrors<TDownloadForm>) => void;
-  onSubmit: (actionType: Action, router: AppRouterInstance) => Promise<void>;
+  onSubmit: (actionType: Action) => Promise<void>;
   reset: () => void;
 };
 
@@ -81,7 +78,7 @@ export const useDownloadFormStore = create<DownloadFormStore>((set, get) => ({
 
   setErrors: (errors) => set({ errors }),
 
-  onSubmit: async (actionType, router) => {
+  onSubmit: async (actionType) => {
     const { trigger, getValues, download } = get();
 
     if (!trigger || !getValues) {
@@ -100,10 +97,6 @@ export const useDownloadFormStore = create<DownloadFormStore>((set, get) => ({
         console.warn(errorMessage);
         return;
       }
-
-      flushSync(() => {
-        router.push("/admin/downloads");
-      });
 
       const downloadValues = getValues();
 
