@@ -72,8 +72,7 @@ function MobileMenu({ open, close }: MobileMenuProps) {
               </li>
             ))}
           </ul>
-          <div className="flex flex-col sm:flex-row gap-6 w-full h-full items-center justify-center sm:pt-16 max-sm:pr-4 max-sm:pt-5">
-            <h2 className="text-2xl sm:hidden">Downloads</h2>
+          <div className="flex flex-row gap-6 w-full h-full items-center justify-center sm:pt-16 max-sm:pr-4 max-sm:pt-5">
             <DownloadLinks />
           </div>
         </div>
