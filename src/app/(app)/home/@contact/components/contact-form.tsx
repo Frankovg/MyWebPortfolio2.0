@@ -33,23 +33,17 @@ function ContactForm() {
     formState: { errors },
     reset,
     control,
-    setError
   } = useForm<TContactForm>({
     resolver: zodResolver(contactFormSchema),
-    defaultValues: undefined,
   });
 
-  const handleAction = async () => {
-    const privacyPolicy = getValues("privacy_policy")
-    if (!privacyPolicy) {
-      setError("privacy_policy", { message: "Please accept the Privacy Policy to submit the form." })
-      return
-    }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const isValid = await trigger();
+    if (!isValid) return;
 
     startTransition(async () => {
-      const result = await trigger();
-      if (!result) return;
-
       const messageData = getValues();
       const mailText = `Name: ${messageData.first_name} ${messageData.last_name}\n  Email: ${messageData.email}\n Message: ${messageData.message}`;
       const mail = {
@@ -73,7 +67,7 @@ function ContactForm() {
   return (
     <div className="w-full pb-24">
       {isAnAccountRequest && <RequestMessage />}
-      <form className="max-w-contact mx-auto" action={handleAction}>
+      <form className="max-w-contact mx-auto" onSubmit={handleSubmit}>
         <div className="space-y-4">
           <div className="flex flex-col md:flex-row gap-3">
             <div className="space-y-1 w-full">
