@@ -4,13 +4,20 @@ import Image from "next/image";
 
 import { useDownloadsStore } from "@/stores/use-downloads-store";
 
+import { DownloadLinksSkeleton } from "./skeletons/download-links-skeleton";
+
 function DownloadLinks() {
   const downloads = useDownloadsStore((state) => state.downloads);
+  const isHydrated = useDownloadsStore((state) => state.isHydrated);
 
   const parsedDownloads = downloads.filter((file) => file.isActive && file.language === "en").reverse().slice(0, 2);
 
+  if (!isHydrated) {
+    return <DownloadLinksSkeleton />;
+  }
+
   return (
-    <div className="flex max-sm:flex-wrap gap-4 items-center max-sm:justify-end w-full sm:w-max h-auto p-4">
+    <div className="flex max-sm:flex-wrap gap-4 1100:flex-col items-center max-sm:justify-end w-full sm:w-max h-auto p-4">
       {parsedDownloads.map((download, index) => (
         <a
           href={download.fileHref || "#"}
