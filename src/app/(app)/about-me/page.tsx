@@ -41,7 +41,7 @@ export default function AboutMe() {
           height={0}
           sizes={"100%"}
           quality={50}
-          priority
+          preload
         />
       </BannerContainer>
       <H4>About me</H4>

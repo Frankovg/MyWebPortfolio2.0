@@ -4,12 +4,13 @@ import clsx from "clsx"
 import Image, { ImageProps } from "next/image"
 import { useEffect, useState } from "react"
 
-interface ImageWithFallbackProps extends ImageProps {
+interface ImageWithFallbackProps extends Omit<ImageProps, 'onLoad'> {
   fallbackSrc: string
+  onLoad?: () => void
 }
 
 const ImageWithFallback = (props: ImageWithFallbackProps) => {
-  const { src, fallbackSrc, alt, className, ...rest } = props
+  const { src, fallbackSrc, alt, className, onLoad, ...rest } = props
 
   const [imgSrc, setImgSrc] = useState(src)
   const [isLoading, setIsLoading] = useState(true)
@@ -18,6 +19,11 @@ const ImageWithFallback = (props: ImageWithFallbackProps) => {
     setImgSrc(src)
     setIsLoading(true)
   }, [src])
+
+  const handleLoad = () => {
+    setIsLoading(false)
+    onLoad?.()
+  }
 
   return (
     <Image
@@ -28,7 +34,7 @@ const ImageWithFallback = (props: ImageWithFallbackProps) => {
         isLoading && "bg-softGrey animate-pulse",
         className,
       )}
-      onLoad={() => setIsLoading(false)}
+      onLoad={handleLoad}
       onError={() => {
         setImgSrc(fallbackSrc);
         setIsLoading(false);
