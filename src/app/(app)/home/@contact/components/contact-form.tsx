@@ -59,7 +59,9 @@ function ContactForm() {
         toast.success("Message submitted successfully");
       } else {
         toast.error("Failed to send application");
-        console.error("Failed to send application");
+        if (process.env.NODE_ENV === "development") {
+          console.error("Failed to send application");
+        }
       }
     });
   };

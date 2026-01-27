@@ -3,7 +3,10 @@
 import NextError from "next/error";
 
 export default function GlobalError({ error }: { error: Error }) {
-  console.error(error)
+  if (process.env.NODE_ENV === "development") {
+    console.error(error)
+  }
+
   return (
     <html>
       <body>

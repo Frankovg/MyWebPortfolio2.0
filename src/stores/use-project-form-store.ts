@@ -86,7 +86,9 @@ export const useProjectFormStore = create<ProjectFormStore>((set, get) => ({
     const { trigger, getValues, project } = get();
 
     if (!trigger || !getValues) {
-      console.error("Form methods not initialized");
+      if (process.env.NODE_ENV === "development") {
+        console.error("Form methods not initialized");
+      }
       return;
     }
 

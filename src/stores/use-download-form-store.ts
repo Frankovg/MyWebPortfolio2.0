@@ -82,7 +82,9 @@ export const useDownloadFormStore = create<DownloadFormStore>((set, get) => ({
     const { trigger, getValues, download } = get();
 
     if (!trigger || !getValues) {
-      console.error("Form methods not initialized");
+      if (process.env.NODE_ENV === "development") {
+        console.error("Form methods not initialized");
+      }
       return;
     }
 
