@@ -34,7 +34,7 @@ function ProjectInfo({ project }: ProjectInfoProps) {
   const getHeaderData = (project: ProjectShort) => {
     const data = [];
     if (project.date) {
-      const date = project.date;
+      const date = new Date(project.date);
       const monthYear = `${MONTHS[date.getMonth()]} ${date.getFullYear()}`;
       data.push({ type: "Date:", name: monthYear });
     }
