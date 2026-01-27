@@ -27,9 +27,10 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 
-import Isologo from "./primitives/isologo";
-import Logo from "./primitives/logo";
-import Overlay from "./primitives/overlay";
+import Isologo from "../primitives/isologo";
+import Logo from "../primitives/logo";
+import Overlay from "../primitives/overlay";
+
 
 type SidebarLogoutProps = {
   handleLogout: () => void;
@@ -78,6 +79,16 @@ const SidebarNavigation = () => {
     }
   };
 
+  const getBasePath = (url: string) => url.split("?")[0];
+
+  const isItemActive = (itemUrl: string) => {
+    const basePath = getBasePath(itemUrl);
+    if (basePath === "/admin") {
+      return pathname === "/admin";
+    }
+    return pathname.startsWith(basePath);
+  };
+
   return (
     <>
       <SidebarGroupLabel>Tools</SidebarGroupLabel>
@@ -88,9 +99,7 @@ const SidebarNavigation = () => {
               <SidebarMenuButton
                 asChild
                 tooltip={item.title}
-                isActive={
-                  (item.url.includes('?') ? item.url.split('?')[0] : item.url) === pathname
-                }
+                isActive={isItemActive(item.url)}
               >
                 <Link href={item.url} onClick={handleItemClick}>
                   <item.icon />
