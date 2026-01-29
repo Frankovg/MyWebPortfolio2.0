@@ -63,7 +63,7 @@ function ProjectInfo({ project }: ProjectInfoProps) {
           description={getFormattedDescription(project.description)}
         />
       </CardContent>
-      <CardFooter className="flex gap-4 max-600:px-0">
+      <CardFooter className="flex gap-4 max-600:px-0 max-600:mt-8 max-600:justify-center">
         <LinkButtons data={getLinkButtons(project)} />
       </CardFooter>
     </Card>
