@@ -134,8 +134,6 @@ export function ImagesSection() {
       </div>
 
       <div className="flex flex-wrap gap-4">
-        {/* //TODO: Make this works for guest users and allow to upload images from other sites
-          //TODO: Add a script to modify the default drive url to the good one */}
         {hasGallery ? (
           watch("gallery")?.map((image, index) => (
             <ProjectFormImagesViewer
