@@ -32,6 +32,7 @@ const ImageWithFallback = (props: ImageWithFallbackProps) => {
       src={imgSrc}
       className={clsx("transition-all duration-300",
         isLoading && "bg-softGrey animate-pulse",
+        imgSrc === fallbackSrc && "object-cover!",
         className,
       )}
       onLoad={handleLoad}
