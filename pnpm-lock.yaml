@@ -8,6 +8,9 @@ dependencies:
   '@hookform/resolvers':
     specifier: ^5.2.2
     version: 5.2.2(react-hook-form@7.67.0)
+  '@playwright/test':
+    specifier: ^1.58.0
+    version: 1.58.0
   '@prisma/adapter-pg':
     specifier: ^7.0.0
     version: 7.2.0
@@ -100,7 +103,7 @@ dependencies:
     version: 4.16.1(react@19.2.3)
   next:
     specifier: 16.1.2
-    version: 16.1.2(@babel/core@7.28.5)(react-dom@19.2.3)(react@19.2.3)
+    version: 16.1.2(@babel/core@7.28.5)(@playwright/test@1.58.0)(react-dom@19.2.3)(react@19.2.3)
   next-themes:
     specifier: ^0.4.6
     version: 0.4.6(react-dom@19.2.3)(react@19.2.3)
@@ -2365,6 +2368,14 @@ packages:
     resolution: {integrity: sha512-QNqXyfVS2wm9hweSYD2O7F0G06uurj9kZ96TRQE5Y9hU7+tgdZwIkbAKc5Ocy1HxEY2kuDQa6cQ1WRs/O5LFKA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
     dev: true
+
+  /@playwright/test@1.58.0:
+    resolution: {integrity: sha512-fWza+Lpbj6SkQKCrU6si4iu+fD2dD3gxNHFhUPxsfXBPhnv3rRSQVd0NtBUT9Z/RhF/boCBcuUaMUSTRTopjZg==}
+    engines: {node: '>=18'}
+    hasBin: true
+    dependencies:
+      playwright: 1.58.0
+    dev: false
 
   /@prisma/adapter-pg@7.2.0:
     resolution: {integrity: sha512-euIdQ13cRB2wZ3jPsnDnFhINquo1PYFPCg6yVL8b2rp3EdinQHsX9EDdCtRr489D5uhphcRk463OdQAFlsCr0w==}
@@ -5116,7 +5127,7 @@ packages:
       jose: 6.1.2
       kysely: 0.28.9
       nanostores: 1.1.0
-      next: 16.1.2(@babel/core@7.28.5)(react-dom@19.2.3)(react@19.2.3)
+      next: 16.1.2(@babel/core@7.28.5)(@playwright/test@1.58.0)(react-dom@19.2.3)(react@19.2.3)
       pg: 8.16.3
       prisma: 7.2.0(@types/react@19.2.7)(react-dom@19.2.3)(react@19.2.3)(typescript@5.9.3)
       react: 19.2.3
@@ -6560,6 +6571,14 @@ packages:
   /fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
     dev: true
+
+  /fsevents@2.3.2:
+    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
+    os: [darwin]
+    requiresBuild: true
+    dev: false
+    optional: true
 
   /fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
@@ -8215,7 +8234,7 @@ packages:
       react-dom: 19.2.3(react@19.2.3)
     dev: false
 
-  /next@16.1.2(@babel/core@7.28.5)(react-dom@19.2.3)(react@19.2.3):
+  /next@16.1.2(@babel/core@7.28.5)(@playwright/test@1.58.0)(react-dom@19.2.3)(react@19.2.3):
     resolution: {integrity: sha512-SVSWX7wjUUDrIDVqhl4xm/jiOrvYGMG7NzVE/dGzzgs7r3dFGm4V19ia0xn3GDNtHCKM7C9h+5BoimnJBhmt9A==}
     engines: {node: '>=20.9.0'}
     hasBin: true
@@ -8237,6 +8256,7 @@ packages:
         optional: true
     dependencies:
       '@next/env': 16.1.2
+      '@playwright/test': 1.58.0
       '@swc/helpers': 0.5.15
       baseline-browser-mapping: 2.8.32
       caniuse-lite: 1.0.30001757
@@ -8266,7 +8286,7 @@ packages:
       react: '>= 16.0.0'
       react-dom: '>= 16.0.0'
     dependencies:
-      next: 16.1.2(@babel/core@7.28.5)(react-dom@19.2.3)(react@19.2.3)
+      next: 16.1.2(@babel/core@7.28.5)(@playwright/test@1.58.0)(react-dom@19.2.3)(react@19.2.3)
       nprogress: 0.2.0
       prop-types: 15.8.1
       react: 19.2.3
@@ -8624,6 +8644,22 @@ packages:
       media-chrome: 4.14.0(react@19.2.3)
     transitivePeerDependencies:
       - react
+    dev: false
+
+  /playwright-core@1.58.0:
+    resolution: {integrity: sha512-aaoB1RWrdNi3//rOeKuMiS65UCcgOVljU46At6eFcOFPFHWtd2weHRRow6z/n+Lec0Lvu0k9ZPKJSjPugikirw==}
+    engines: {node: '>=18'}
+    hasBin: true
+    dev: false
+
+  /playwright@1.58.0:
+    resolution: {integrity: sha512-2SVA0sbPktiIY/MCOPX8e86ehA/e+tDNq+e5Y8qjKYti2Z/JG7xnronT/TXTIkKbYGWlCbuucZ6dziEgkoEjQQ==}
+    engines: {node: '>=18'}
+    hasBin: true
+    dependencies:
+      playwright-core: 1.58.0
+    optionalDependencies:
+      fsevents: 2.3.2
     dev: false
 
   /possible-typed-array-names@1.1.0:
