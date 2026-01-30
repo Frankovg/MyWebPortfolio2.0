@@ -14,6 +14,7 @@ export async function logIn(_prevState: unknown, formData: unknown) {
   if (!(formData instanceof FormData)) {
     return {
       message: "Invalid form data.",
+      email: "",
     };
   }
 
@@ -23,6 +24,7 @@ export async function logIn(_prevState: unknown, formData: unknown) {
   if (!email || !password) {
     return {
       message: "Email and password are required.",
+      email: email || "",
     };
   }
 
@@ -38,12 +40,14 @@ export async function logIn(_prevState: unknown, formData: unknown) {
     if (!result) {
       return {
         message: "Invalid credentials.",
+        email,
       };
     }
   } catch (error) {
     console.error("Login error:", error);
     return {
       message: "Invalid credentials.",
+      email,
     };
   }
 

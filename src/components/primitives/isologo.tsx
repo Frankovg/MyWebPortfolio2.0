@@ -10,7 +10,7 @@ export default function Isologo() {
         src={isologo}
         alt="Franco Amoroso Web Portfolio isologo"
         className="w-full max-w-max h-auto"
-        priority
+        preload
       />
     </Link>
   );

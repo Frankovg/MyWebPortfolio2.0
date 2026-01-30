@@ -28,6 +28,7 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
   const [current, setCurrent] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [dialogImageLoading, setDialogImageLoading] = useState(false);
+  const [firstImageLoaded, setFirstImageLoaded] = useState(false);
 
   const carouselContainerRef = useRef<HTMLDivElement>(null);
 
@@ -43,14 +44,19 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
     }
   }, [mainApi]);
 
+  // Show carousel when main API is ready AND first image has loaded
   useEffect(() => {
-    if (!mainApi || !thumbnailApi) {
-      return;
-    }
+    if (!mainApi || !firstImageLoaded) return;
 
     setIsLoading(false);
     setCurrent(0);
     mainApi.scrollTo(0);
+  }, [mainApi, firstImageLoaded]);
+
+  // Sync between main and thumbnail carousels when both are ready
+  useEffect(() => {
+    if (!mainApi || !thumbnailApi) return;
+
     thumbnailApi.scrollTo(0);
 
     const handleTopSelect = () => {
@@ -107,6 +113,8 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
             height={0}
             sizes={"100%"}
             quality={50}
+            loading={index === 0 ? "eager" : "lazy"}
+            onLoad={index === 0 ? () => setFirstImageLoaded(true) : undefined}
           />
         </CarouselItem>
       )),
@@ -122,8 +130,7 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
           onClick={() => handleClick(index)}
         >
           <ImageWithFallback
-            className={`${index === current && "border-2"
-              } w-full h-full object-contain rounded-lg transition-none`}
+            className={`${index === current && "border-2"} w-full h-full object-contain rounded-lg transition-none`}
             src={image.imageUrl}
             fallbackSrc={FALLBACK_IMG}
             alt={`Carousel Thumbnail Image ${index + 1}`}
@@ -176,6 +183,7 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
               onLoadStart={() => setDialogImageLoading(true)}
               onLoad={() => setDialogImageLoading(false)}
               onError={() => setDialogImageLoading(false)}
+              preload
             />
           </div>
         </DialogContent>

@@ -10,6 +10,8 @@ jest.mock('@/lib/constants', () => ({
   CLOUDINARY_IMAGE_URL: 'https://res.cloudinary.com/webportfolio/image/upload/',
   IMAGE_URL_PREFIXES: ['https://drive.google.com/uc?export=view&id=', 'https://res.cloudinary.com/webportfolio/image/upload/'],
   FILE_URL_PREFIXES: ['https://drive.google.com/file/d/', 'https://res.cloudinary.com/webportfolio/image/upload/'],
+  IMAGE_PLACEHOLDER: 'Enter Cloudinary image URL',
+  FILE_PLACEHOLDER: 'Enter Cloudinary file URL',
 }));
 
 // Mock validations
@@ -31,8 +33,6 @@ jest.mock('@/lib/validations', () => ({
 // Mock utils - spread actual implementation to keep cn and other functions
 jest.mock('@/lib/utils', () => ({
   ...jest.requireActual('@/lib/utils'),
-  getImageUrlPlaceholder: () => 'https://drive.google.com/uc?export=view&id= or https://res.cloudinary.com/webportfolio/image/upload/',
-  getFileUrlPlaceholder: () => 'https://drive.google.com/file/d/ or https://res.cloudinary.com/webportfolio/image/upload/',
 }));
 
 // Mock form store values
@@ -148,13 +148,13 @@ describe('DownloadsForm', () => {
       it('should render placeholder for file url', () => {
         render(<FileSection />);
 
-        expect(screen.getByPlaceholderText('https://drive.google.com/file/d/ or https://res.cloudinary.com/webportfolio/image/upload/')).toBeInTheDocument();
+        expect(screen.getByPlaceholderText('Enter Cloudinary file URL')).toBeInTheDocument();
       });
 
       it('should render placeholder for image url', () => {
         render(<FileSection />);
 
-        expect(screen.getByPlaceholderText('https://drive.google.com/uc?export=view&id= or https://res.cloudinary.com/webportfolio/image/upload/')).toBeInTheDocument();
+        expect(screen.getByPlaceholderText('Enter Cloudinary image URL')).toBeInTheDocument();
       });
     });
 

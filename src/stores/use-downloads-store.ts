@@ -9,6 +9,7 @@ import type { DownloadEssentials } from "@/lib/types";
 type DownloadsState = {
   downloads: Download[];
   originalDownloads: Download[];
+  isHydrated: boolean;
 };
 
 type DownloadsActions = {
@@ -28,6 +29,7 @@ type DownloadsStore = DownloadsState & DownloadsActions;
 const initialState: DownloadsState = {
   downloads: [],
   originalDownloads: [],
+  isHydrated: false,
 };
 
 export const useDownloadsStore = create<DownloadsStore>((set, get) => ({
@@ -37,6 +39,7 @@ export const useDownloadsStore = create<DownloadsStore>((set, get) => ({
     set({
       downloads,
       originalDownloads: downloads,
+      isHydrated: true,
     }),
 
   applyOptimisticAdd: (newFile) =>

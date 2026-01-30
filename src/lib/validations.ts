@@ -114,7 +114,7 @@ export const authSchema = z.object({
   password: z.string().max(100),
 });
 
-export const userIdSchema = z.string().cuid();
+export const userIdSchema = z.string().min(1);
 export const isActiveSchema = z.boolean();
 
 const techStackSchema = z.object({

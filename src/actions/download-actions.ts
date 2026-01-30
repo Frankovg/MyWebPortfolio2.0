@@ -46,6 +46,7 @@ export async function addFile(newFile: DownloadEssentials) {
     };
   }
   revalidateTag(CACHE_TAGS.downloads, "max");
+  revalidatePath("/", "layout");
   redirect(`/admin/downloads`);
 }
 
@@ -110,6 +111,7 @@ export async function editFile(
   }
 
   revalidateTag(CACHE_TAGS.downloads, "max");
+  revalidatePath("/", "layout");
   redirect(`/admin/downloads`);
 }
 
@@ -149,5 +151,5 @@ export async function deleteFile(downloadId: string) {
     };
   }
   revalidateTag(CACHE_TAGS.downloads, "max");
-  revalidatePath("/admin", "layout");
+  revalidatePath("/", "layout");
 }

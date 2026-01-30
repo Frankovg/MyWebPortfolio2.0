@@ -48,8 +48,6 @@ export async function sendMail(mail: SendMailProps) {
   } catch (error) {
     console.error(
       "Something Went Wrong",
-      SMTP_SERVER_USERNAME,
-      SMTP_SERVER_PASSWORD,
       error
     );
     return;

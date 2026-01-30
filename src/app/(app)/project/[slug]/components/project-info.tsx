@@ -34,7 +34,7 @@ function ProjectInfo({ project }: ProjectInfoProps) {
   const getHeaderData = (project: ProjectShort) => {
     const data = [];
     if (project.date) {
-      const date = project.date;
+      const date = new Date(project.date);
       const monthYear = `${MONTHS[date.getMonth()]} ${date.getFullYear()}`;
       data.push({ type: "Date:", name: monthYear });
     }
@@ -63,7 +63,7 @@ function ProjectInfo({ project }: ProjectInfoProps) {
           description={getFormattedDescription(project.description)}
         />
       </CardContent>
-      <CardFooter className="flex gap-4 max-600:px-0">
+      <CardFooter className="flex gap-4 max-600:px-0 max-600:mt-8 max-600:justify-center">
         <LinkButtons data={getLinkButtons(project)} />
       </CardFooter>
     </Card>

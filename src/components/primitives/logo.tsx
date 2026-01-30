@@ -10,7 +10,7 @@ export default function Logo() {
         src={logo}
         alt="Franco Amoroso Web Portfolio logo"
         className="w-full max-w-logo h-auto"
-        priority
+        preload
       />
     </Link>
   );

@@ -22,7 +22,7 @@ export default function CookiesPolicy() {
     <Section id="cookies-policy" className="max-w-4xl mx-auto">
       <H4>{cookiesPolicyContent.title}</H4>
 
-      <div className="w-full max-w-[920px] mx-auto text-white space-y-8">
+      <div className="w-full max-w-am mx-auto text-white space-y-8">
         <LegalHeaders title={cookiesPolicyContent.websiteTitle} url={cookiesPolicyContent.websiteUrl} />
         <CookiesPolicyContent />
       </div>
