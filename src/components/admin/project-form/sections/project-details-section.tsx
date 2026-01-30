@@ -8,8 +8,7 @@ import { DatePicker } from "@/components/ui/date-picker";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { IMAGE_URL_PREFIXES } from "@/lib/constants";
-import { getImageUrlPlaceholder } from "@/lib/utils";
+import { IMAGE_PLACEHOLDER, IMAGE_URL_PREFIXES } from "@/lib/constants";
 import { isValidImageUrl } from "@/lib/validations";
 import { useProjectFormStore } from "@/stores/use-project-form-store";
 
@@ -65,7 +64,7 @@ export function ProjectDetailsSection() {
                     </>
                   }
                 />
-                <Input id="image" placeholder={getImageUrlPlaceholder()} {...field} />
+                <Input id="image" placeholder={IMAGE_PLACEHOLDER} {...field} />
                 {errors.image && (
                   <span className="absolute -bottom-4 text-secondary text-xs">
                     {errors.image.message}

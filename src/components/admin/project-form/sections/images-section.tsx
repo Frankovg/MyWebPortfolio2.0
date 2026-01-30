@@ -7,7 +7,7 @@ import ButtonMinimal from "@/components/primitives/button-minimal";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { getImageUrlPlaceholder } from "@/lib/utils";
+import { IMAGE_PLACEHOLDER } from "@/lib/constants";
 import { useProjectFormStore } from "@/stores/use-project-form-store";
 
 import { ProjectFormImagesViewer } from "./project-form-images-viewer";
@@ -51,7 +51,7 @@ export function ImagesSection() {
                     />
                     <Input
                       id={`image-url-${index}`}
-                      placeholder={getImageUrlPlaceholder()}
+                      placeholder={IMAGE_PLACEHOLDER}
                       {...field}
                     />
                     {errors.gallery?.[index]?.imageUrl && (

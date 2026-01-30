@@ -7,8 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { IMAGE_URL_PREFIXES } from "@/lib/constants";
-import { getFileUrlPlaceholder, getImageUrlPlaceholder } from "@/lib/utils";
+import { FILE_PLACEHOLDER, IMAGE_PLACEHOLDER, IMAGE_URL_PREFIXES } from "@/lib/constants";
 import { isValidFileUrl, isValidImageUrl } from "@/lib/validations";
 import { useDownloadFormStore } from "@/stores/use-download-form-store";
 
@@ -95,7 +94,7 @@ export function FileSection() {
                 />
                 <Input
                   id="fileHref"
-                  placeholder={getFileUrlPlaceholder()}
+                  placeholder={FILE_PLACEHOLDER}
                   {...field}
                 />
                 {errors.fileHref && (
@@ -183,7 +182,7 @@ export function FileSection() {
                 />
                 <Input
                   id="imageUrl"
-                  placeholder={getImageUrlPlaceholder()}
+                  placeholder={IMAGE_PLACEHOLDER}
                   {...field}
                 />
                 {errors.imageUrl && (

@@ -156,14 +156,14 @@ export const CLOUDINARY_IMAGE_URL = "https://res.cloudinary.com/webportfolio/ima
 export const GOOGLE_DRIVE_FILE_URL = "https://drive.google.com/file/d/";
 export const CLOUDINARY_FILE_URL = "https://res.cloudinary.com/webportfolio/image/upload/";
 
+export const IMAGE_PLACEHOLDER = "Enter Cloudinary image URL";
+export const FILE_PLACEHOLDER = "Enter Cloudinary file URL";
+
 // Supported image URL prefixes
 export const IMAGE_URL_PREFIXES = [GOOGLE_DRIVE_IMAGE_URL, CLOUDINARY_IMAGE_URL] as const;
 
 // Supported file URL prefixes
 export const FILE_URL_PREFIXES = [GOOGLE_DRIVE_FILE_URL, CLOUDINARY_FILE_URL] as const;
-
-// Legacy export for backwards compatibility during migration
-export const DEFAULT_IMAGE_URL = GOOGLE_DRIVE_IMAGE_URL;
 
 export const TECH_STACK_DATA = [
   { name: "React", value: "react" },
