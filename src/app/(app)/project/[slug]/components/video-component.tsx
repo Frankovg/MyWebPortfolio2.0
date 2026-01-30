@@ -9,6 +9,7 @@ import {
   MediaMuteButton,
   MediaFullscreenButton,
 } from "media-chrome/react";
+import { useEffect, useState } from "react";
 import ReactPlayer from 'react-player'
 
 import H3 from "@/components/primitives/h3";
@@ -27,6 +28,12 @@ type VideoComponentProps = {
 };
 
 function VideoComponent({ videoData }: VideoComponentProps) {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <>
       <H4 className="mt-12">{videoData?.title}</H4>
@@ -39,18 +46,19 @@ function VideoComponent({ videoData }: VideoComponentProps) {
           marginBottom: "3rem",
         }}
       >
-        <ReactPlayer
-          slot="media"
-          src={videoData?.url}
-          style={{
-            width: "100%",
-            height: "100%",
-          }}
-          controls={false}
-          fallback={
-            <Skeleton className="aspect-video size-full max-w-am bg-softGrey" />
-          }
-        />
+        {isMounted ? (
+          <ReactPlayer
+            slot="media"
+            src={videoData?.url}
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+            controls={false}
+          />
+        ) : (
+          <Skeleton className="aspect-video size-full max-w-am bg-softGrey" />
+        )}
         <MediaControlBar >
           <MediaPlayButton className="p-2" />
           <MediaTimeRange className="p-2" />

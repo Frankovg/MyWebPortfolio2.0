@@ -13,17 +13,28 @@ jest.mock("sonner", () => ({
 
 const originalConsoleError = console.error;
 const originalConsoleWarn = console.warn;
+const originalNodeEnv = process.env.NODE_ENV;
+
+const setNodeEnv = (value: string) => {
+  Object.defineProperty(process.env, "NODE_ENV", {
+    value,
+    writable: true,
+    configurable: true,
+  });
+};
 
 describe("showErrorMessage", () => {
   beforeEach(() => {
     jest.clearAllMocks();
     console.error = jest.fn();
     console.warn = jest.fn();
+    setNodeEnv("development");
   });
 
   afterAll(() => {
     console.error = originalConsoleError;
     console.warn = originalConsoleWarn;
+    setNodeEnv(originalNodeEnv || "test");
   });
 
   it("should show warning toast and log warning for sample actions", () => {

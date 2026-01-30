@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://drive.google.com/uc?export=view&id=1OoH2gdSw9MpyeO24ydz0qQMFHlZiKbdL",
+        url: "https://res.cloudinary.com/webportfolio/image/upload/v1769754427/in-banner_zs98mr.png",
         width: 1200,
         height: 630,
         alt: "Franco Gabriel Amoroso - Full-Stack Developer & Designer",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     title: "Franco Gabriel Amoroso - Full-Stack Developer & Designer",
     description: "Hi! This is my Web-Portfolio, I hope you like it!",
     creator: "@frankovg",
-    images: ["https://drive.google.com/uc?export=view&id=1OoH2gdSw9MpyeO24ydz0qQMFHlZiKbdL"],
+    images: ["https://res.cloudinary.com/webportfolio/image/upload/v1769754427/in-banner_zs98mr.png"],
   },
 }
 

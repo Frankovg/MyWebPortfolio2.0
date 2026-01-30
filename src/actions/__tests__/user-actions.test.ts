@@ -47,35 +47,35 @@ describe('User Actions', () => {
       it('should return error for non-FormData input', async () => {
         const result = await logIn(undefined, 'not-form-data');
 
-        expect(result).toEqual({ message: 'Invalid form data.' });
+        expect(result).toEqual({ message: 'Invalid form data.', email: '' });
         expect(mockSignInEmail).not.toHaveBeenCalled();
       });
 
       it('should return error for null input', async () => {
         const result = await logIn(undefined, null);
 
-        expect(result).toEqual({ message: 'Invalid form data.' });
+        expect(result).toEqual({ message: 'Invalid form data.', email: '' });
         expect(mockSignInEmail).not.toHaveBeenCalled();
       });
 
       it('should return error for undefined input', async () => {
         const result = await logIn(undefined, undefined);
 
-        expect(result).toEqual({ message: 'Invalid form data.' });
+        expect(result).toEqual({ message: 'Invalid form data.', email: '' });
         expect(mockSignInEmail).not.toHaveBeenCalled();
       });
 
       it('should return error for object input', async () => {
         const result = await logIn(undefined, { email: 'test@example.com', password: 'password' });
 
-        expect(result).toEqual({ message: 'Invalid form data.' });
+        expect(result).toEqual({ message: 'Invalid form data.', email: '' });
         expect(mockSignInEmail).not.toHaveBeenCalled();
       });
 
       it('should return error for array input', async () => {
         const result = await logIn(undefined, ['test@example.com', 'password']);
 
-        expect(result).toEqual({ message: 'Invalid form data.' });
+        expect(result).toEqual({ message: 'Invalid form data.', email: '' });
         expect(mockSignInEmail).not.toHaveBeenCalled();
       });
 
@@ -85,7 +85,7 @@ describe('User Actions', () => {
 
         const result = await logIn(undefined, formData);
 
-        expect(result).toEqual({ message: 'Email and password are required.' });
+        expect(result).toEqual({ message: 'Email and password are required.', email: '' });
         expect(mockSignInEmail).not.toHaveBeenCalled();
       });
 
@@ -95,7 +95,7 @@ describe('User Actions', () => {
 
         const result = await logIn(undefined, formData);
 
-        expect(result).toEqual({ message: 'Email and password are required.' });
+        expect(result).toEqual({ message: 'Email and password are required.', email: 'test@example.com' });
         expect(mockSignInEmail).not.toHaveBeenCalled();
       });
     });
@@ -132,10 +132,12 @@ describe('User Actions', () => {
 
         const result = await logIn(undefined, formData);
 
-        expect(result).toEqual({ message: 'Invalid credentials.' });
+        expect(result).toEqual({ message: 'Invalid credentials.', email: 'test@example.com' });
       });
 
       it('should return error message when signInEmail throws', async () => {
+        const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
         const formData = new FormData();
         formData.append('email', 'test@example.com');
         formData.append('password', 'password123');
@@ -144,7 +146,10 @@ describe('User Actions', () => {
 
         const result = await logIn(undefined, formData);
 
-        expect(result).toEqual({ message: 'Invalid credentials.' });
+        expect(result).toEqual({ message: 'Invalid credentials.', email: 'test@example.com' });
+        expect(consoleErrorSpy).toHaveBeenCalledWith('Login error:', expect.any(Error));
+
+        consoleErrorSpy.mockRestore();
       });
     });
 

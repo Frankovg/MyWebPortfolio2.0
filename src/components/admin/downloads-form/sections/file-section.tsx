@@ -5,8 +5,10 @@ import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { DEFAULT_FILE_URL, getImageUrlPlaceholder, IMAGE_URL_PREFIXES, isValidImageUrl } from "@/lib/constants";
+import { FILE_PLACEHOLDER, IMAGE_PLACEHOLDER, IMAGE_URL_PREFIXES } from "@/lib/constants";
+import { isValidFileUrl, isValidImageUrl } from "@/lib/validations";
 import { useDownloadFormStore } from "@/stores/use-download-form-store";
 
 import { LabelLink } from "../../label-link";
@@ -23,9 +25,7 @@ export function FileSection() {
   const fileHref = watch("fileHref");
 
   const hasImage = isValidImageUrl(imageUrl);
-  const hasFile =
-    fileHref?.includes(DEFAULT_FILE_URL) &&
-    fileHref?.length > DEFAULT_FILE_URL.length;
+  const hasFile = isValidFileUrl(fileHref);
 
   return (
     <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
@@ -51,7 +51,7 @@ export function FileSection() {
         </div>
       </div>
       <div className="w-full flex flex-col lg:flex-row gap-6">
-        <div className="relative flex flex-col gap-2 w-full lg:w-2/5">
+        <div className="relative flex flex-col gap-2 w-full lg:w-2/6">
           <Controller
             name="name"
             control={control}
@@ -69,12 +69,12 @@ export function FileSection() {
           />
         </div>
 
-        <div className="relative flex flex-col gap-2 w-full lg:w-2/5">
+        <div className="relative flex flex-col gap-2 w-full lg:w-2/6">
           <Controller
             name="fileHref"
             control={control}
             rules={{
-              validate: (value) => value.includes(DEFAULT_FILE_URL),
+              validate: (value) => isValidFileUrl(value),
             }}
             render={({ field }) => (
               <>
@@ -94,7 +94,7 @@ export function FileSection() {
                 />
                 <Input
                   id="fileHref"
-                  placeholder={DEFAULT_FILE_URL}
+                  placeholder={FILE_PLACEHOLDER}
                   {...field}
                 />
                 {errors.fileHref && (
@@ -107,7 +107,7 @@ export function FileSection() {
           />
         </div>
 
-        <div className="relative flex flex-col gap-2 w-full lg:w-1/5">
+        <div className="relative flex flex-col gap-2 w-full lg:w-1/6">
           <Controller
             name="format"
             control={control}
@@ -118,6 +118,36 @@ export function FileSection() {
                 {errors.format && (
                   <span className="absolute -bottom-4 text-secondary text-xs">
                     {errors.format.message}
+                  </span>
+                )}
+              </>
+            )}
+          />
+        </div>
+
+        <div className="relative flex flex-col gap-2 w-full lg:w-1/6">
+          <Controller
+            name="language"
+            control={control}
+            render={({ field }) => (
+              <>
+                <RequiredInputLabel htmlFor="language" label="Language" />
+                <Select
+                  value={field.value}
+                  onValueChange={field.onChange}
+                  {...register("language")}
+                >
+                  <SelectTrigger id="language">
+                    <SelectValue placeholder="Language" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="en">English</SelectItem>
+                    <SelectItem value="es">Spanish</SelectItem>
+                  </SelectContent>
+                </Select>
+                {errors.language && (
+                  <span className="absolute -bottom-4 text-secondary text-xs">
+                    {errors.language.message}
                   </span>
                 )}
               </>
@@ -152,7 +182,7 @@ export function FileSection() {
                 />
                 <Input
                   id="imageUrl"
-                  placeholder={getImageUrlPlaceholder()}
+                  placeholder={IMAGE_PLACEHOLDER}
                   {...field}
                 />
                 {errors.imageUrl && (

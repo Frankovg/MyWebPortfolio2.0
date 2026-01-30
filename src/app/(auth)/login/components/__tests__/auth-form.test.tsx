@@ -90,6 +90,7 @@ describe('AuthForm', () => {
 
       const passwordInput = screen.getByLabelText('Password');
       expect(passwordInput).toHaveAttribute('name', 'password');
+      // Password initially has type="password" but can be toggled
       expect(passwordInput).toHaveAttribute('type', 'password');
       expect(passwordInput).toHaveAttribute('required');
       expect(passwordInput).toHaveAttribute('maxLength', '100');
@@ -161,7 +162,7 @@ describe('AuthForm', () => {
       mockIsPending = true;
       render(<AuthForm />);
 
-      const submitButton = screen.getByRole('button');
+      const submitButton = screen.getByRole('button', { name: /loading/i });
       expect(submitButton).toBeDisabled();
     });
 
@@ -170,6 +171,34 @@ describe('AuthForm', () => {
       render(<AuthForm />);
 
       expect(screen.queryByText('Log in')).not.toBeInTheDocument();
+    });
+  });
+
+  describe('Password visibility toggle', () => {
+    it('should render password toggle button', () => {
+      render(<AuthForm />);
+
+      const toggleButton = screen.getByRole('button', { name: '' }); // Empty accessible name for toggle
+      expect(toggleButton).toBeInTheDocument();
+    });
+
+    it('should toggle password visibility when clicked', async () => {
+      const user = userEvent.setup();
+      render(<AuthForm />);
+
+      const passwordInput = screen.getByLabelText('Password');
+      expect(passwordInput).toHaveAttribute('type', 'password');
+
+      // Find the toggle button (the one that is not submit)
+      const buttons = screen.getAllByRole('button');
+      const toggleButton = buttons.find(btn => btn.getAttribute('type') === 'button');
+      expect(toggleButton).toBeDefined();
+
+      await user.click(toggleButton!);
+      expect(passwordInput).toHaveAttribute('type', 'text');
+
+      await user.click(toggleButton!);
+      expect(passwordInput).toHaveAttribute('type', 'password');
     });
   });
 

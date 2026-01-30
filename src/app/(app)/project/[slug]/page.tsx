@@ -53,8 +53,6 @@ export async function generateMetadata({
   }
 }
 
-//TODO: add zod validations to every fetch
-
 export default async function ProjectPage({
   params,
 }: {

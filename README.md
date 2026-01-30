@@ -48,7 +48,6 @@ This is a comprehensive portfolio web application built with modern technologies
 - **🎭 Admin CMS**: Complete content management system for non-technical content updates
 - **♿ Accessible**: WCAG compliant with semantic HTML and ARIA labels
   <!-- - **📊 Analytics Ready**: Built-in tracking and monitoring capabilities -->
-  <!-- - **🌐 Internationalization**: Multi-language support (English/Spanish) -->
 
 ---
 
@@ -79,10 +78,11 @@ This is a comprehensive portfolio web application built with modern technologies
 
 ### Frontend
 
-- **Framework**: [Next.js 15.5.4](https://nextjs.org/) (App Router)
-- **UI Library**: [React 19.1.1](https://reactjs.org/)
-- **Language**: [TypeScript 5.9.2](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS 4.1.13](https://tailwindcss.com/)
+- **Framework**: [Next.js 16](https://nextjs.org/)
+- **UI Library**: [React 19](https://reactjs.org/)
+- **Language**: [TypeScript 5](https://www.typescriptlang.org/)
+- **State Management**: [Zustand 5](https://zustand-demo.pmnd.rs/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
 - **UI Components**: [shadcn/ui](https://ui.shadcn.com/) + [Radix UI](https://www.radix-ui.com/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
 - **Forms**: [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
@@ -90,22 +90,22 @@ This is a comprehensive portfolio web application built with modern technologies
 ### Backend
 
 - **Runtime**: [Node.js](https://nodejs.org/)
-- **Authentication**: [NextAuth.js v5](https://next-auth.js.org/)
-- **Database ORM**: [Prisma 6.16.2](https://www.prisma.io/)
-- **Database**: PostgreSQL (Production) / SQLite (Development)
+- **Authentication**: [BetterAuth](https://www.better-auth.com/)
+- **Database ORM**: [Prisma 7](https://www.prisma.io/)
+- **Database**: [PostgreSQL](https://www.postgresql.org/) (Production) / [SQLite](https://sqlite.org/) (Development)
 - **Email**: [Nodemailer](https://nodemailer.com/)
 - **Password Hashing**: [bcrypt](https://www.npmjs.com/package/bcrypt)
 
 ### Development & Testing
 
-- **Testing Framework**: [Jest 30.2.0](https://jestjs.io/)
+- **Testing Framework**: [Jest](https://jestjs.io/)
 - **Testing Library**: [@testing-library/react](https://testing-library.com/react)
 - **Linting**: [ESLint](https://eslint.org/) with TypeScript support
 
 ### Deployment
 
 - **Platform**: [Vercel](https://vercel.com/)
-- **Database**: Vercel Postgres (Production)
+- **Database**: [Neon](https://neon.com/)
 
 ---
 
@@ -145,7 +145,7 @@ Before you begin, ensure you have the following installed:
 2. **Configure your environment variables** in `.env`:
 
 3. **Important Notes**:
-   - **AUTH_SECRET**: Generate using `openssl rand -base64 32` in your terminal
+   - **BETTER_AUTH_SECRET**: Generate using `openssl rand -base64 32` in your terminal
    - **SMTP Configuration**: For Gmail, you need to create an [App Password](https://support.google.com/accounts/answer/185833)
    - **Database**: The project uses SQLite for development and PostgreSQL for production
    - **Super Admin**: This account is created automatically on first database seed
@@ -190,7 +190,6 @@ Before you begin, ensure you have the following installed:
    ```
 
    This will create:
-
    - Super admin user (from your `.env` credentials)
    - Sample projects across all categories
    - Tech stack data
@@ -280,13 +279,11 @@ The application includes a powerful Content Management System accessible at `/ad
 ### Admin Access Levels
 
 1. **Super Admin** (Created via environment variables)
-
    - Full access to all features
    - Cannot be deleted or deactivated
    - User management privileges
 
 2. **Sample User** (Demo account for showcasing)
-
    - View-only access to admin panel
    - Cannot edit or create data
    - Can explore all CMS features without making changes
@@ -333,7 +330,6 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 
 - **Sample Account**: View-only access to the admin panel
 - **Production Data**: Explore the live portfolio content and CMS interface
-<!-- - **Guided Tour**: Documentation on how to use the CMS -->
 
 **Note**: Sample accounts are read-only for evaluation purposes and cannot modify the database.
 
@@ -360,7 +356,40 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 <details>
 <summary><h2>📝 Changelog</h2></summary>
 
-### [1.2.4] - 09-01-2026
+### [1.2.20] - 30-01-2026
+
+**Migration**
+
+- Images and files were moved to a Cloudinary server.
+- Tech Stack component reworked with Shadcn Tabs and Framer Motion.
+
+**Features**
+
+- Added Nextjs cache data for better performance.
+- Added show and hide password button in the password inputs.
+- Added show and hide button into the password inputs.
+- Added a select input.
+- Added a language field to the add/edit download form.
+- Added skeletons to the download links.
+- Added a tech stack skeleton for mobile.
+- Added a downloads skeleton in the mobile menu.
+- Added an image zoom for mobile.
+
+**Fixes**
+
+- File upload and images validations to accept Cloudinary url's.
+- Login state management when managing an error.
+- Longer login inputs.
+- Now the contact form preserves the input values after an error.
+- Fixed the size and order of the download links.
+- Fixed the loading skeleton at the about me page.
+- Marked option in the admin sidebar when navigating to /add or /edit pages.
+- Fixed the way the carousel is loaded for the first time.
+- Fixed the size of the image placeholder in the project carousel.
+
+#### New Features
+
+### [1.2.6] - 22-01-2026
 
 #### New Features
 
@@ -369,12 +398,11 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 - Migrated state management from React Context to Zustand for improved performance and simpler API.
 - Migrated NextAuth to BetterAuth since NextAuth is deprecated.
 
-**Added**
+**Features**
 
 - Added images config for Cloudinary.
 - Started migration of the images from Google Drive to Cloudinary.
-
-**Update**
+- **Update**
 
 - Prisma updated to version 7.
 - Nextjs updated to version 16.
@@ -382,12 +410,14 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 **Fixes**
 
 - Fixed the tech stack input in the project form page where some techs were missed.
+- Fixed the optimistic update after editing data from the tables.
+- Fixed the activation and deactivation of the accounts at the user-management table.
 
 ### [1.1.7] - 04-12-2025
 
 #### New Features
 
-**Added**
+**Features**
 
 - Updated React and Next.js to fix a React vulnerability.
 - Unit tests have been added.
@@ -404,7 +434,7 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 
 #### New Features
 
-**Added**
+**Features**
 
 - The image carousel allows wheel, touch and keyboard scrolling.
 - Projects table has a sorting by name.
@@ -423,7 +453,7 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 
 #### 🎉 Initial Release
 
-**Added**
+**Features**
 
 - Complete portfolio website with multi-category project showcase
 - Admin CMS for content management without code deployments
@@ -480,7 +510,7 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 If you're interested in using this project as a template or reference for your own portfolio:
 
 1. **Contact me** for permission at di.francoamoros@gmail.com
-2. **Attribution** is required if permission is graonted
+2. **Attribution** is required if permission is granted
 
 ### Third-Party Licenses
 

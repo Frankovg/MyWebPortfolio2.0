@@ -14,6 +14,7 @@ function ProjectBanner({ image }: { image: string }) {
         height={0}
         sizes={"100%"}
         quality={50}
+        preload
       />
     </BannerContainer>
   );

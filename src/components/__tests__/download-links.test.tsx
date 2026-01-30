@@ -58,6 +58,7 @@ jest.mock('@/stores/use-downloads-store', () => ({
   useDownloadsStore: (selector?: (state: unknown) => unknown) => {
     const state = {
       downloads: mockDownloads,
+      isHydrated: true,
       addNewFile: jest.fn(),
       handleDeleteFile: jest.fn(),
       handleEditFile: jest.fn(),
@@ -96,9 +97,10 @@ describe('DownloadLinks', () => {
   it('should render links with correct href', () => {
     render(<DownloadLinks />);
 
+    // Component reverses the downloads, so Portfolio comes first
     const links = screen.getAllByRole('link');
-    expect(links[0]).toHaveAttribute('href', 'https://example.com/resume.pdf');
-    expect(links[1]).toHaveAttribute('href', 'https://example.com/portfolio.pdf');
+    expect(links[0]).toHaveAttribute('href', 'https://example.com/portfolio.pdf');
+    expect(links[1]).toHaveAttribute('href', 'https://example.com/resume.pdf');
   });
 
   it('should open links in new tab', () => {

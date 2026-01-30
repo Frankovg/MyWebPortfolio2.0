@@ -24,9 +24,11 @@ export const DownloadFiles = ({ downloads }: { downloads: Download[] }) => {
       <CardContent>
         <div className="flex flex-col justify-center items-start gap-3 max-600:p-5 1170:pl-4">
           {downloads?.map((file) => (
-            <Link
+            <a
               href={file.fileHref || "#"}
-              key={file.id} className="p-2 flex items-center justify-start gap-4 h-fit w-full hover:bg-softGrey rounded-md"
+              key={file.id}
+              className="p-2 flex items-center justify-start gap-4 h-fit w-full hover:bg-softGrey rounded-md"
+              target="_blank"
             >
               <div className="flex items-center justify-center py-2 px-1 bg-primary rounded-md">
                 <FileDown size={42} className="stroke-background " />
@@ -34,7 +36,7 @@ export const DownloadFiles = ({ downloads }: { downloads: Download[] }) => {
               <span className="text-white">
                 {`${file.name} - ${LANGUAGE_DICTIONARY[file.language as keyof typeof LANGUAGE_DICTIONARY]}`}
               </span>
-            </Link>
+            </a>
           ))}
         </div>
       </CardContent>

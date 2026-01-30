@@ -1,12 +1,13 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { SAMPLE_ACTION } from "@/lib/action-constants";
 import { checkAuth } from "@/lib/check-auth";
 import prisma from "@/lib/db";
 import { getCategoryById, getProjectById } from "@/lib/server-utils-admin";
+import { CACHE_TAGS } from "@/lib/server-utils-public";
 import { ProjectEssentials } from "@/lib/types";
 import { sleep } from "@/lib/utils";
 import {
@@ -80,6 +81,9 @@ export async function addProject(
       message: "Could not add project.",
     };
   }
+  revalidateTag(CACHE_TAGS.categories, "max");
+  revalidateTag(CACHE_TAGS.projects, "max");
+  revalidatePath("/", "layout");
   redirect(`/admin/portfolio?category=${category.value}`);
 }
 
@@ -232,6 +236,9 @@ export async function editProject(
     };
   }
 
+  revalidateTag(CACHE_TAGS.categories, "max");
+  revalidateTag(CACHE_TAGS.projects, "max");
+  revalidatePath("/", "layout");
   redirect(`/admin/portfolio?category=${category.value}`);
 }
 
@@ -284,5 +291,7 @@ export async function deleteProject(projectId: string) {
       message: "Could not delete project.",
     };
   }
-  revalidatePath("/admin", "layout");
+  revalidateTag(CACHE_TAGS.categories, "max");
+  revalidateTag(CACHE_TAGS.projects, "max");
+  revalidatePath("/", "layout");
 }

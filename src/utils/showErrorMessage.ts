@@ -8,6 +8,8 @@ export const showErrorMessage = (error: { message: string }) => {
     console.warn(error.message);
   } else {
     toast.error(error.message);
-    console.error(error.message);
+    if (process.env.NODE_ENV === "development") {
+      console.error(error.message);
+    }
   }
 };

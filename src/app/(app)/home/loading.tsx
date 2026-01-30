@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ContactFormSkeleton } from '@/components/skeletons/contact-form-skeleton';
 import { ProjectCardSkeleton } from '@/components/skeletons/project-card-skeleton';
 import { TechCardSkeleton } from '@/components/skeletons/tech-card-skeleton';
@@ -42,7 +40,13 @@ export default function Loading() {
             </div>
           </div>
           <div className="sm:hidden w-full flex justify-center px-5">
-            {/* //TODO: Skeleton for mobile > techstack section */}
+            <div
+              className="w-full px-12 grid grid-cols-2 grid-rows-3 gap-8"
+            >
+              {Array.from({ length: 6 }).map((_, index) => (
+                <TechCardSkeleton key={index} />
+              ))}
+            </div>
           </div>
         </div>
       </section>

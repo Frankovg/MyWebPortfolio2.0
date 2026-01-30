@@ -1,3 +1,5 @@
+//TODO: images to cloudinary
+
 export const WEB_DEVELOPMENT_SEED = {
   name: "Web Development",
   value: "web-development",

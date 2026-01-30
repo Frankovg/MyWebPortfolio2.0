@@ -1,12 +1,13 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { SAMPLE_ACTION } from "@/lib/action-constants";
 import { checkAuth } from "@/lib/check-auth";
 import prisma from "@/lib/db";
 import { getDownloadFileById } from "@/lib/server-utils-admin";
+import { CACHE_TAGS } from "@/lib/server-utils-public";
 import { DownloadEssentials } from "@/lib/types";
 import { sleep } from "@/lib/utils";
 import { downloadFormSchema, downloadIdSchema } from "@/lib/validations";
@@ -44,6 +45,8 @@ export async function addFile(newFile: DownloadEssentials) {
       message: "Could not add the file.",
     };
   }
+  revalidateTag(CACHE_TAGS.downloads, "max");
+  revalidatePath("/", "layout");
   redirect(`/admin/downloads`);
 }
 
@@ -107,6 +110,8 @@ export async function editFile(
     };
   }
 
+  revalidateTag(CACHE_TAGS.downloads, "max");
+  revalidatePath("/", "layout");
   redirect(`/admin/downloads`);
 }
 
@@ -145,5 +150,6 @@ export async function deleteFile(downloadId: string) {
       message: "Could not delete the file.",
     };
   }
-  revalidatePath("/admin", "layout");
+  revalidateTag(CACHE_TAGS.downloads, "max");
+  revalidatePath("/", "layout");
 }
