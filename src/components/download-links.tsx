@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
-
+import ImageWithFallback from "@/components/primitives/image-with-fallback";
+import { FALLBACK_IMG } from "@/lib/client-constants";
 import { useDownloadsStore } from "@/stores/use-downloads-store";
 
 import { DownloadLinksSkeleton } from "./skeletons/download-links-skeleton";
@@ -26,8 +26,9 @@ function DownloadLinks() {
           key={index}
         >
           <div className="max-lg:w-full w-2/5">
-            <Image
+            <ImageWithFallback
               src={download.imageUrl}
+              fallbackSrc={FALLBACK_IMG}
               alt={download.name}
               width={200}
               height={133}
