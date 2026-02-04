@@ -8,6 +8,7 @@
   [![TypeScript](https://img.shields.io/badge/TypeScript-5.9.2-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
   [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1.13-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
   [![Prisma](https://img.shields.io/badge/Prisma-6.16.2-2D3748?style=for-the-badge&logo=prisma)](https://www.prisma.io/)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
   
   **A modern, full-stack portfolio application showcasing web development, industrial design, and UX/UI projects**
   
@@ -511,16 +512,16 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 
 ---
 
-### Permissions
+## 📄 License
 
-If you're interested in using this project as a template or reference for your own portfolio:
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
-1. **Contact me** for permission at di.francoamoros@gmail.com
-2. **Attribution** is required if permission is granted
+You are free to:
+- Use this code for personal or commercial projects
+- Modify and adapt the code
+- Distribute copies
 
-### Third-Party Licenses
-
-This project uses various open-source packages. See [`package.json`](package.json) for a complete list of dependencies and their respective licenses.
+The only requirement is to include the original copyright notice and license.
 
 ---
 
