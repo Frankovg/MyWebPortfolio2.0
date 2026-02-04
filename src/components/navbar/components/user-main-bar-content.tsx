@@ -34,7 +34,7 @@ export const UserMainBarContent = ({ isLogged, isAdmin }: UserMainBarContentProp
 
   return (
     <>
-      {isPending && <Overlay message="Good Bye!" />}
+      {isPending && <Overlay message="Goodbye!" />}
       <p
         data-mobile={mobileMessage}
         data-desktop={message}
