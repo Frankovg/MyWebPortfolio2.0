@@ -8,7 +8,10 @@
   [![TypeScript](https://img.shields.io/badge/TypeScript-5.9.2-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
   [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1.13-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
   [![Prisma](https://img.shields.io/badge/Prisma-7.0.0-2D3748?style=for-the-badge&logo=prisma)](https://www.prisma.io/)
-  [![Zustand](https://img.shields.io/badge/Zustand-5.0.9-433E38?style=for-the-badge&logo=react)](https://zustand-demo.pmnd.rs/)
+  [![Zod](https://img.shields.io/badge/Zod-4.3.4-3E67B1?style=for-the-badge&logo=zod)](https://zod.dev/)
+  [![Zustand](https://img.shields.io/badge/Zustand-5.0.9-433E38?style=for-the-badge)](https://zustand-demo.pmnd.rs/)
+  [![BetterAuth](https://img.shields.io/badge/BetterAuth-1.4.10-000000?style=for-the-badge)](https://www.better-auth.com/)
+  [![shadcn/ui](https://img.shields.io/badge/shadcn/ui-latest-000000?style=for-the-badge)](https://ui.shadcn.com/)
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
   
   **A modern, full-stack portfolio application showcasing web development, industrial design, and UX/UI projects**
