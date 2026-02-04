@@ -3,11 +3,12 @@
   
   # Franco Amoroso - Portfolio & Web Development Showcase
   
-  [![Next.js](https://img.shields.io/badge/Next.js-15.5.4-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-  [![React](https://img.shields.io/badge/React-19.1.1-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
+  [![Next.js](https://img.shields.io/badge/Next.js-16.1.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+  [![React](https://img.shields.io/badge/React-19.2.3-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
   [![TypeScript](https://img.shields.io/badge/TypeScript-5.9.2-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
   [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1.13-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-  [![Prisma](https://img.shields.io/badge/Prisma-6.16.2-2D3748?style=for-the-badge&logo=prisma)](https://www.prisma.io/)
+  [![Prisma](https://img.shields.io/badge/Prisma-7.0.0-2D3748?style=for-the-badge&logo=prisma)](https://www.prisma.io/)
+  [![Zustand](https://img.shields.io/badge/Zustand-5.0.9-433E38?style=for-the-badge&logo=react)](https://zustand-demo.pmnd.rs/)
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
   
   **A modern, full-stack portfolio application showcasing web development, industrial design, and UX/UI projects**
