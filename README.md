@@ -356,6 +356,12 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 <details>
 <summary><h2>📝 Changelog</h2></summary>
 
+### [1.2.21] - 4-02-2026
+
+**Fixes**
+
+- Fixed the overlay size and text.
+
 ### [1.2.20] - 30-01-2026
 
 **Migration**

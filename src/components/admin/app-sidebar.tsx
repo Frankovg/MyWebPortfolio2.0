@@ -154,7 +154,7 @@ export function AppSidebar() {
 
   return (
     <>
-      {isPending && <Overlay message="Good Bye!" />}
+      {isPending && <Overlay message="Goodbye!" />}
       <Sidebar collapsible="icon">
         <SidebarHeaderWithLogo isExpanded={state === "expanded"} />
         <SidebarContent>
