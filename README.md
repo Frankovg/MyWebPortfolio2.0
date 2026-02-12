@@ -361,7 +361,11 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 <details>
 <summary><h2>📝 Changelog</h2></summary>
 
-### [1.2.21] - 4-02-2026
+### [1.2.22] - 5-02-2026
+
+**Features**
+
+- Added a timeline for personal experience in the about me page.
 
 **Fixes**
 
@@ -521,6 +525,7 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 You are free to:
+
 - Use this code for personal or commercial projects
 - Modify and adapt the code
 - Distribute copies

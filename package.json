@@ -1,6 +1,6 @@
 {
   "name": "fran-web",
-  "version": "1.2.21",
+  "version": "1.2.22",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -46,7 +46,7 @@
     "embla-carousel-fade": "8.6.0",
     "embla-carousel-react": "8.6.0",
     "embla-carousel-wheel-gestures": "^8.1.0",
-    "framer-motion": "^12.23.21",
+    "framer-motion": "^12.23.25",
     "lucide-react": "^0.544.0",
     "media-chrome": "^4.15.1",
     "next": "16.1.2",
