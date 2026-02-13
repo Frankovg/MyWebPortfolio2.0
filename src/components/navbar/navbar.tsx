@@ -65,7 +65,7 @@ export default function Navbar({ session }: NavbarProps) {
               </NavLink>
               <SocialNavLinks />
               <LetsConnectLink />
-              <MobileMenuButton open={handleOpenMenu} />
+              <MobileMenuButton open={handleOpenMenu} isOpen={openMenu} />
             </ul>
           </div>
         </div>
