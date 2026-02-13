@@ -3,6 +3,7 @@
 import { Controller } from "react-hook-form";
 
 import { LabelLink } from "@/components/admin/label-link";
+import FormFieldError from "@/components/primitives/form-field-error";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useProjectFormStore } from "@/stores/use-project-form-store";
@@ -30,12 +31,18 @@ export function ExtraContentSection() {
                   />
                 )}
               </Label>
-              <Input id="repository" {...field} value={field.value ?? ""} />
-              {errors.repository && (
-                <span className="absolute -bottom-4 text-secondary text-xs">
-                  {errors.repository.message}
-                </span>
-              )}
+              <Input
+                id="repository"
+                {...field}
+                value={field.value ?? ""}
+                aria-invalid={!!errors.repository}
+                aria-describedby={errors.repository ? "repository-error" : undefined}
+              />
+              <FormFieldError
+                id="repository-error"
+                message={errors.repository?.message}
+                className="absolute -bottom-4 text-secondary text-xs"
+              />
             </>
           )}
         />
@@ -56,12 +63,18 @@ export function ExtraContentSection() {
                   />
                 )}
               </Label>
-              <Input id="websiteUrl" {...field} value={field.value ?? ""} />
-              {errors.websiteUrl && (
-                <span className="absolute -bottom-4 text-secondary text-xs">
-                  {errors.websiteUrl.message}
-                </span>
-              )}
+              <Input
+                id="websiteUrl"
+                {...field}
+                value={field.value ?? ""}
+                aria-invalid={!!errors.websiteUrl}
+                aria-describedby={errors.websiteUrl ? "websiteUrl-error" : undefined}
+              />
+              <FormFieldError
+                id="websiteUrl-error"
+                message={errors.websiteUrl?.message}
+                className="absolute -bottom-4 text-secondary text-xs"
+              />
             </>
           )}
         />
@@ -75,12 +88,18 @@ export function ExtraContentSection() {
             render={({ field }) => (
               <>
                 <Label htmlFor="videoTitle">Video Title</Label>
-                <Input id="videoTitle" {...field} value={field.value ?? ""} />
-                {errors.videoTitle && (
-                  <span className="absolute -bottom-4 text-secondary text-xs">
-                    {errors.videoTitle.message}
-                  </span>
-                )}
+                <Input
+                  id="videoTitle"
+                  {...field}
+                  value={field.value ?? ""}
+                  aria-invalid={!!errors.videoTitle}
+                  aria-describedby={errors.videoTitle ? "videoTitle-error" : undefined}
+                />
+                <FormFieldError
+                  id="videoTitle-error"
+                  message={errors.videoTitle?.message}
+                  className="absolute -bottom-4 text-secondary text-xs"
+                />
               </>
             )}
           />
@@ -97,12 +116,14 @@ export function ExtraContentSection() {
                   id="videoDescription"
                   {...field}
                   value={field.value ?? ""}
+                  aria-invalid={!!errors.videoDescription}
+                  aria-describedby={errors.videoDescription ? "videoDescription-error" : undefined}
                 />
-                {errors.videoDescription && (
-                  <span className="absolute -bottom-4 text-secondary text-xs">
-                    {errors.videoDescription.message}
-                  </span>
-                )}
+                <FormFieldError
+                  id="videoDescription-error"
+                  message={errors.videoDescription?.message}
+                  className="absolute -bottom-4 text-secondary text-xs"
+                />
               </>
             )}
           />
@@ -124,12 +145,18 @@ export function ExtraContentSection() {
                   />
                 )}
               </Label>
-              <Input id="videoUrl" {...field} value={field.value ?? ""} />
-              {errors.videoUrl && (
-                <span className="absolute -bottom-4 text-secondary text-xs">
-                  {errors.videoUrl.message}
-                </span>
-              )}
+              <Input
+                id="videoUrl"
+                {...field}
+                value={field.value ?? ""}
+                aria-invalid={!!errors.videoUrl}
+                aria-describedby={errors.videoUrl ? "videoUrl-error" : undefined}
+              />
+              <FormFieldError
+                id="videoUrl-error"
+                message={errors.videoUrl?.message}
+                className="absolute -bottom-4 text-secondary text-xs"
+              />
             </>
           )}
         />
