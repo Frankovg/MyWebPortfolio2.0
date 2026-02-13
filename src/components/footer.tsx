@@ -95,7 +95,7 @@ function Footer() {
           </div>
           <div className="row-start-3 row-span-1 col-start-5 col-span-4 text-center sm:space-y-1.5">
             <p className="w-full text-xs">
-              Copyright © {year} Franco Gabriel Amoroso. All rights reserved.
+              Copyright © {year} Franco Gabriel Amoroso.
             </p>
           </div>
         </div>
