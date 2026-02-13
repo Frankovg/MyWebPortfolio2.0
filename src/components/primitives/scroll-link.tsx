@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
 
 type ScrollLinkProps = {
@@ -14,14 +13,16 @@ function ScrollLink({ id, children, className = '', onClick }: ScrollLinkProps) 
   const router = useRouter()
   const pathname = usePathname()
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const href = id === 'home' ? '/home' : `/home#${id}`
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
 
     const isOnHomePage = pathname === '/home' || pathname === '/'
 
     if (isOnHomePage) {
       const element = document.getElementById(id)
-      if (!!element && id !== 'home') {
+      if (element && id !== 'home') {
         element.scrollIntoView({ behavior: 'smooth' })
       } else if (id === 'home') {
         window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -31,15 +32,18 @@ function ScrollLink({ id, children, className = '', onClick }: ScrollLinkProps) 
       router.push(targetUrl)
     }
 
-    !!onClick && onClick()
+    onClick?.()
   }
 
-  const href = id === 'home' ? '/home' : `/home#${id}`
-
   return (
-    <Link href={href} className={className} passHref>
-      <button title='Scroll button' type='button' onClick={handleClick}>{children}</button>
-    </Link>
+    <a
+      href={href}
+      className={className}
+      onClick={handleClick}
+      aria-label={`Scroll to ${id}`}
+    >
+      {children}
+    </a>
   )
 }
 
