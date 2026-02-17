@@ -38,35 +38,41 @@ function VideoComponent({ videoData }: VideoComponentProps) {
     <>
       <H4 className="mt-12">{videoData?.title}</H4>
       <H3 className="max-w-600 pt-0">{videoData?.description}</H3>
-      <MediaController
-        style={{
-          width: "100%",
-          maxWidth: "920px",
-          aspectRatio: "16/9",
-          marginBottom: "3rem",
-        }}
-      >
-        {isMounted ? (
-          <ReactPlayer
-            slot="media"
-            src={videoData?.url}
-            style={{
-              width: "100%",
-              height: "100%",
-            }}
-            controls={false}
-          />
-        ) : (
-          <Skeleton className="aspect-video size-full max-w-am bg-softGrey" />
-        )}
-        <MediaControlBar >
-          <MediaPlayButton className="p-2" />
-          <MediaTimeRange className="p-2" />
-          <MediaMuteButton className="p-2" />
-          <MediaVolumeRange className="p-2" />
-          <MediaFullscreenButton className="p-2" />
-        </MediaControlBar>
-      </MediaController>
+      <figure className="size-full flex justify-center">
+        <MediaController
+          aria-label={`Video player: ${videoData?.title || "Project video"}`}
+          style={{
+            width: "100%",
+            maxWidth: "920px",
+            aspectRatio: "16/9",
+            marginBottom: "3rem",
+          }}
+        >
+          {isMounted ? (
+            <ReactPlayer
+              slot="media"
+              src={videoData?.url}
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
+              controls={false}
+            />
+          ) : (
+            <Skeleton className="aspect-video size-full max-w-am bg-softGrey" />
+          )}
+          <MediaControlBar >
+            <MediaPlayButton className="p-2" />
+            <MediaTimeRange className="p-2" />
+            <MediaMuteButton className="p-2" />
+            <MediaVolumeRange className="p-2" />
+            <MediaFullscreenButton className="p-2" />
+          </MediaControlBar>
+        </MediaController>
+        <figcaption className="sr-only">
+          {videoData?.title}: {videoData?.description}
+        </figcaption>
+      </figure>
     </>
   );
 }

@@ -3,6 +3,7 @@
 import { Controller } from "react-hook-form";
 
 import { MultiSelect } from "@/components/multi-select";
+import FormFieldError from "@/components/primitives/form-field-error";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { DEFAULT_TECH_STACK } from "@/lib/constants";
 import { useProjectFormStore } from "@/stores/use-project-form-store";
@@ -35,11 +36,7 @@ export function TechStackSection() {
             />
           )}
         />
-        {errors.techStack?.[0]?.value && (
-          <span className="absolute -bottom-4 text-secondary text-xs">
-            {errors.techStack?.[0]?.value.message}
-          </span>
-        )}
+        <FormFieldError id="techStack-error" message={errors.techStack?.[0]?.value?.message} className="absolute -bottom-4 text-secondary text-xs" />
       </div>
     </section>
   );

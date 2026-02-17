@@ -19,15 +19,18 @@ export const ProjectCardMedia = ({ website, repository, video }: ProjectCardMedi
     [
       {
         url: website,
-        icon: <GithubIcon className="size-6 fill-current" />
+        icon: <GithubIcon className="size-6 fill-current" aria-hidden="true" />,
+        label: "View repository"
       },
       {
         url: repository,
-        icon: <ExternalLink className="size-6" />
+        icon: <ExternalLink className="size-6" aria-hidden="true" />,
+        label: "Visit website"
       },
       {
         url: video,
-        icon: <SquarePlayIcon className="size-6" />
+        icon: <SquarePlayIcon className="size-6" aria-hidden="true" />,
+        label: "Watch video"
       }
     ]
   ), [website, repository, video])
@@ -47,6 +50,7 @@ export const ProjectCardMedia = ({ website, repository, video }: ProjectCardMedi
                   e.preventDefault()
                   window.open(url ?? "", "_blank", "noopener,noreferrer")
                 }}
+                aria-label={b.label}
                 className="hover:text-white transition-colors duration-200"
               >
                 {b.icon}

@@ -4,6 +4,7 @@ import { PlusIcon } from "lucide-react";
 import { Controller, useFieldArray } from "react-hook-form";
 
 import ButtonMinimal from "@/components/primitives/button-minimal";
+import FormFieldError from "@/components/primitives/form-field-error";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -52,13 +53,11 @@ export function ImagesSection() {
                     <Input
                       id={`image-url-${index}`}
                       placeholder={IMAGE_PLACEHOLDER}
+                      aria-invalid={!!errors.gallery?.[index]?.imageUrl}
+                      aria-describedby={errors.gallery?.[index]?.imageUrl ? `gallery-${index}-imageUrl-error` : undefined}
                       {...field}
                     />
-                    {errors.gallery?.[index]?.imageUrl && (
-                      <span className="absolute -bottom-4 text-secondary text-xs">
-                        {errors.gallery?.[index]?.imageUrl.message}
-                      </span>
-                    )}
+                    <FormFieldError id={`gallery-${index}-imageUrl-error`} message={errors.gallery?.[index]?.imageUrl?.message} className="absolute -bottom-4 text-secondary text-xs" />
                   </>
                 )}
               />
@@ -74,12 +73,13 @@ export function ImagesSection() {
                       htmlFor={`image-alt-${index}`}
                       label="Alt"
                     />
-                    <Input id={`image-alt-${index}`} {...field} />
-                    {errors.gallery?.[index]?.alt && (
-                      <span className="absolute -bottom-4 text-secondary text-xs">
-                        {errors.gallery?.[index]?.alt.message}
-                      </span>
-                    )}
+                    <Input
+                      id={`image-alt-${index}`}
+                      aria-invalid={!!errors.gallery?.[index]?.alt}
+                      aria-describedby={errors.gallery?.[index]?.alt ? `gallery-${index}-alt-error` : undefined}
+                      {...field}
+                    />
+                    <FormFieldError id={`gallery-${index}-alt-error`} message={errors.gallery?.[index]?.alt?.message} className="absolute -bottom-4 text-secondary text-xs" />
                   </>
                 )}
               />
@@ -96,14 +96,12 @@ export function ImagesSection() {
                     </Label>
                     <Input
                       id={`image-description-${index}`}
+                      aria-invalid={!!errors.gallery?.[index]?.description}
+                      aria-describedby={errors.gallery?.[index]?.description ? `gallery-${index}-description-error` : undefined}
                       {...field}
                       value={field.value ?? ""}
                     />
-                    {errors.gallery?.[index]?.description && (
-                      <span className="absolute -bottom-4 text-secondary text-xs">
-                        {errors.gallery?.[index]?.description.message}
-                      </span>
-                    )}
+                    <FormFieldError id={`gallery-${index}-description-error`} message={errors.gallery?.[index]?.description?.message} className="absolute -bottom-4 text-secondary text-xs" />
                   </>
                 )}
               />

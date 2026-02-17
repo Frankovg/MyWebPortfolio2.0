@@ -4,6 +4,7 @@ import { PlusIcon } from "lucide-react";
 import { Controller, useFieldArray } from "react-hook-form";
 
 import ButtonMinimal from "@/components/primitives/button-minimal";
+import FormFieldError from "@/components/primitives/form-field-error";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -45,12 +46,17 @@ export function RolesSection() {
                       htmlFor={`role-label-${index}`}
                       label="Name"
                     />
-                    <Input id={`role-label-${index}`} {...field} />
-                    {errors.roles?.[index]?.label && (
-                      <span className="absolute -bottom-4 text-secondary text-xs">
-                        {errors.roles?.[index]?.label.message}
-                      </span>
-                    )}
+                    <Input
+                      id={`role-label-${index}`}
+                      {...field}
+                      aria-invalid={!!errors.roles?.[index]?.label}
+                      aria-describedby={errors.roles?.[index]?.label ? `roles-${index}-label-error` : undefined}
+                    />
+                    <FormFieldError
+                      id={`roles-${index}-label-error`}
+                      message={errors.roles?.[index]?.label?.message}
+                      className="absolute -bottom-4 text-secondary text-xs"
+                    />
                   </>
                 )}
               />
@@ -66,12 +72,17 @@ export function RolesSection() {
                       htmlFor={`role-value-${index}`}
                       label="Value"
                     />
-                    <Input id={`role-value-${index}`} {...field} />
-                    {errors.roles?.[index]?.value && (
-                      <span className="absolute -bottom-4 text-secondary text-xs">
-                        {errors.roles?.[index]?.value.message}
-                      </span>
-                    )}
+                    <Input
+                      id={`role-value-${index}`}
+                      {...field}
+                      aria-invalid={!!errors.roles?.[index]?.value}
+                      aria-describedby={errors.roles?.[index]?.value ? `roles-${index}-value-error` : undefined}
+                    />
+                    <FormFieldError
+                      id={`roles-${index}-value-error`}
+                      message={errors.roles?.[index]?.value?.message}
+                      className="absolute -bottom-4 text-secondary text-xs"
+                    />
                   </>
                 )}
               />
@@ -92,6 +103,8 @@ export function RolesSection() {
                       max={100}
                       {...field}
                       value={field.value ?? 0}
+                      aria-invalid={!!errors.roles?.[index]?.percentage}
+                      aria-describedby={errors.roles?.[index]?.percentage ? `roles-${index}-percentage-error` : undefined}
                       onKeyDown={(e) => {
                         if (["e", "E", "+", "-", "."].includes(e.key)) {
                           e.preventDefault();
@@ -105,11 +118,11 @@ export function RolesSection() {
                       }}
                       onClick={(e) => (e.target as HTMLInputElement).select()}
                     />
-                    {errors.roles?.[index]?.percentage && (
-                      <span className="absolute -bottom-4 text-secondary text-xs">
-                        {errors.roles?.[index]?.percentage.message}
-                      </span>
-                    )}
+                    <FormFieldError
+                      id={`roles-${index}-percentage-error`}
+                      message={errors.roles?.[index]?.percentage?.message}
+                      className="absolute -bottom-4 text-secondary text-xs"
+                    />
                   </>
                 )}
               />

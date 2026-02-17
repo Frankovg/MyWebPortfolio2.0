@@ -9,6 +9,7 @@ import { toast } from "sonner";
 
 import { sendMail } from "@/actions/index";
 import ButtonWhite from "@/components/primitives/button-white";
+import FormFieldError from "@/components/primitives/form-field-error";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -78,11 +79,11 @@ function ContactForm() {
                 className="bg-transparent"
                 id="first_name"
                 placeholder="John"
+                aria-invalid={!!errors.first_name}
+                aria-describedby={errors.first_name ? "first_name-error" : undefined}
                 {...register("first_name")}
               />
-              {errors.first_name && (
-                <span className="text-error">{errors.first_name.message}</span>
-              )}
+              <FormFieldError id="first_name-error" message={errors.first_name?.message} />
             </div>
             <div className="space-y-1 w-full">
               <RequiredInputLabel htmlFor="last_name" label="Last name" />
@@ -90,11 +91,11 @@ function ContactForm() {
                 className="bg-transparent"
                 id="last_name"
                 placeholder="Doe"
+                aria-invalid={!!errors.last_name}
+                aria-describedby={errors.last_name ? "last_name-error" : undefined}
                 {...register("last_name")}
               />
-              {errors.last_name && (
-                <span className="text-error">{errors.last_name.message}</span>
-              )}
+              <FormFieldError id="last_name-error" message={errors.last_name?.message} />
             </div>
           </div>
 
@@ -106,11 +107,11 @@ function ContactForm() {
                 type="tel"
                 id="phone"
                 placeholder="+34 608 222 555"
+                aria-invalid={!!errors.phone}
+                aria-describedby={errors.phone ? "phone-error" : undefined}
                 {...register("phone")}
               />
-              {errors.phone && (
-                <span className="text-error">{errors.phone.message}</span>
-              )}
+              <FormFieldError id="phone-error" message={errors.phone?.message} />
             </div>
             <div className="space-y-1 w-full">
               <RequiredInputLabel htmlFor="email" label="Email" />
@@ -119,11 +120,11 @@ function ContactForm() {
                 type="email"
                 id="email"
                 placeholder="john.doe@email.com"
+                aria-invalid={!!errors.email}
+                aria-describedby={errors.email ? "email-error" : undefined}
                 {...register("email")}
               />
-              {errors.email && (
-                <span className="text-error">{errors.email.message}</span>
-              )}
+              <FormFieldError id="email-error" message={errors.email?.message} />
             </div>
           </div>
 
@@ -133,15 +134,15 @@ function ContactForm() {
               className="bg-transparent min-h-36"
               id="message"
               placeholder="Type your message here."
+              aria-invalid={!!errors.message}
+              aria-describedby={errors.message ? "message-error" : undefined}
               {...register("message")}
               defaultValue={isAnAccountRequest ? ACCOUNT_REQUEST_MESSAGE : ""}
             />
             <p className="text-sm text-muted-foreground">
               También puedes escribirme en español.
             </p>
-            {errors.message && (
-              <span className="text-error">{errors.message.message}</span>
-            )}
+            <FormFieldError id="message-error" message={errors.message?.message} />
           </div>
 
           <div className="py-2">
@@ -152,18 +153,17 @@ function ContactForm() {
               render={({ field }) => (
                 <div className="flex gap-2 items-center">
                   <Checkbox
+                    id="privacy_policy"
                     defaultChecked={true}
                     checked={field.value}
                     {...register("privacy_policy")}
                     onCheckedChange={field.onChange}
                   />
-                  <Label htmlFor="isActive">I accept the <Link className="underline hover:text-white" href="/privacy-policy">Privacy Policy</Link>.</Label>
+                  <Label htmlFor="privacy_policy">I accept the <Link className="underline hover:text-white" href="/privacy-policy">Privacy Policy</Link>.</Label>
                 </div>
               )}
             />
-            {errors.privacy_policy && (
-              <span className="text-error">{errors.privacy_policy.message}</span>
-            )}
+            <FormFieldError id="privacy_policy-error" message={errors.privacy_policy?.message} />
           </div>
 
           <ButtonWhite

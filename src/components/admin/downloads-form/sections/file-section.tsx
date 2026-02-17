@@ -1,6 +1,7 @@
 "use client";
 import { Controller } from "react-hook-form";
 
+import FormFieldError from "@/components/primitives/form-field-error";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -58,12 +59,13 @@ export function FileSection() {
             render={({ field }) => (
               <>
                 <RequiredInputLabel htmlFor="name" label="Name" />
-                <Input id="name" {...field} />
-                {errors.name && (
-                  <span className="absolute -bottom-4 text-secondary text-xs">
-                    {errors.name.message}
-                  </span>
-                )}
+                <Input
+                  id="name"
+                  {...field}
+                  aria-invalid={!!errors.name}
+                  aria-describedby={errors.name ? "name-error" : undefined}
+                />
+                <FormFieldError id="name-error" message={errors.name?.message} className="absolute -bottom-4 text-secondary text-xs" />
               </>
             )}
           />
@@ -96,12 +98,10 @@ export function FileSection() {
                   id="fileHref"
                   placeholder={FILE_PLACEHOLDER}
                   {...field}
+                  aria-invalid={!!errors.fileHref}
+                  aria-describedby={errors.fileHref ? "fileHref-error" : undefined}
                 />
-                {errors.fileHref && (
-                  <span className="absolute -bottom-4 text-secondary text-xs">
-                    {errors.fileHref.message}
-                  </span>
-                )}
+                <FormFieldError id="fileHref-error" message={errors.fileHref?.message} className="absolute -bottom-4 text-secondary text-xs" />
               </>
             )}
           />
@@ -114,12 +114,13 @@ export function FileSection() {
             render={({ field }) => (
               <>
                 <RequiredInputLabel htmlFor="format" label="Format" />
-                <Input id="format" {...field} />
-                {errors.format && (
-                  <span className="absolute -bottom-4 text-secondary text-xs">
-                    {errors.format.message}
-                  </span>
-                )}
+                <Input
+                  id="format"
+                  {...field}
+                  aria-invalid={!!errors.format}
+                  aria-describedby={errors.format ? "format-error" : undefined}
+                />
+                <FormFieldError id="format-error" message={errors.format?.message} className="absolute -bottom-4 text-secondary text-xs" />
               </>
             )}
           />
@@ -137,7 +138,11 @@ export function FileSection() {
                   onValueChange={field.onChange}
                   {...register("language")}
                 >
-                  <SelectTrigger id="language">
+                  <SelectTrigger
+                    id="language"
+                    aria-invalid={!!errors.language}
+                    aria-describedby={errors.language ? "language-error" : undefined}
+                  >
                     <SelectValue placeholder="Language" />
                   </SelectTrigger>
                   <SelectContent>
@@ -145,11 +150,7 @@ export function FileSection() {
                     <SelectItem value="es">Spanish</SelectItem>
                   </SelectContent>
                 </Select>
-                {errors.language && (
-                  <span className="absolute -bottom-4 text-secondary text-xs">
-                    {errors.language.message}
-                  </span>
-                )}
+                <FormFieldError id="language-error" message={errors.language?.message} className="absolute -bottom-4 text-secondary text-xs" />
               </>
             )}
           />
@@ -184,12 +185,10 @@ export function FileSection() {
                   id="imageUrl"
                   placeholder={IMAGE_PLACEHOLDER}
                   {...field}
+                  aria-invalid={!!errors.imageUrl}
+                  aria-describedby={errors.imageUrl ? "imageUrl-error" : undefined}
                 />
-                {errors.imageUrl && (
-                  <span className="absolute -bottom-4 text-secondary text-xs">
-                    {errors.imageUrl.message}
-                  </span>
-                )}
+                <FormFieldError id="imageUrl-error" message={errors.imageUrl?.message} className="absolute -bottom-4 text-secondary text-xs" />
               </>
             )}
           />
@@ -202,12 +201,14 @@ export function FileSection() {
             render={({ field }) => (
               <>
                 <RequiredInputLabel htmlFor="alt" label="Alternative text" />
-                <Input id="alt" {...field} value={field.value ?? ""} />
-                {errors.alt && (
-                  <span className="absolute -bottom-4 text-secondary text-xs">
-                    {errors.alt.message}
-                  </span>
-                )}
+                <Input
+                  id="alt"
+                  {...field}
+                  value={field.value ?? ""}
+                  aria-invalid={!!errors.alt}
+                  aria-describedby={errors.alt ? "alt-error" : undefined}
+                />
+                <FormFieldError id="alt-error" message={errors.alt?.message} className="absolute -bottom-4 text-secondary text-xs" />
               </>
             )}
           />
@@ -225,12 +226,10 @@ export function FileSection() {
                 id="description"
                 {...field}
                 className="bg-transparent min-h-36"
+                aria-invalid={!!errors.description}
+                aria-describedby={errors.description ? "description-error" : undefined}
               />
-              {errors.description && (
-                <span className="absolute -bottom-4 text-secondary text-xs">
-                  {errors.description.message}
-                </span>
-              )}
+              <FormFieldError id="description-error" message={errors.description?.message} className="absolute -bottom-4 text-secondary text-xs" />
             </>
           )}
         />
