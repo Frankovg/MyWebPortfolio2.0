@@ -10,8 +10,8 @@ describe('Overlay', () => {
   });
 
   it('should display different messages', () => {
-    const { rerender } = render(<Overlay message="Good Bye!" />);
-    expect(screen.getByText('Good Bye!')).toBeInTheDocument();
+    const { rerender } = render(<Overlay message="Goodbye!" />);
+    expect(screen.getByText('Goodbye!')).toBeInTheDocument();
 
     rerender(<Overlay message="Welcome!" />);
     expect(screen.getByText('Welcome!')).toBeInTheDocument();

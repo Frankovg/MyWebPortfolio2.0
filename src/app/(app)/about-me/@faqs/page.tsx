@@ -53,7 +53,7 @@ async function Faqs() {
   ];
 
   return (
-    <Section id="projects" className="pt-24">
+    <Section id="faqs" className="pt-24">
       <H4>FAQ&apos;s</H4>
       <H3 className="max-w-600 pt-0">
         If you&apos;re interested in reaching out, feel free to use the contact

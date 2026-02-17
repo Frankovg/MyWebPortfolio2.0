@@ -2,6 +2,7 @@
 
 import { Controller } from "react-hook-form";
 
+import FormFieldError from "@/components/primitives/form-field-error";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { DatePicker } from "@/components/ui/date-picker";
@@ -32,12 +33,17 @@ export function ProjectDetailsSection() {
             render={({ field }) => (
               <>
                 <RequiredInputLabel htmlFor="title" label="Title" />
-                <Input id="title" {...field} />
-                {errors.title && (
-                  <span className="absolute -bottom-4 text-secondary text-xs">
-                    {errors.title.message}
-                  </span>
-                )}
+                <Input
+                  id="title"
+                  {...field}
+                  aria-invalid={!!errors.title}
+                  aria-describedby={errors.title ? "title-error" : undefined}
+                />
+                <FormFieldError
+                  id="title-error"
+                  message={errors.title?.message}
+                  className="absolute -bottom-4 text-secondary text-xs"
+                />
               </>
             )}
           />
@@ -64,12 +70,18 @@ export function ProjectDetailsSection() {
                     </>
                   }
                 />
-                <Input id="image" placeholder={IMAGE_PLACEHOLDER} {...field} />
-                {errors.image && (
-                  <span className="absolute -bottom-4 text-secondary text-xs">
-                    {errors.image.message}
-                  </span>
-                )}
+                <Input
+                  id="image"
+                  placeholder={IMAGE_PLACEHOLDER}
+                  {...field}
+                  aria-invalid={!!errors.image}
+                  aria-describedby={errors.image ? "image-error" : undefined}
+                />
+                <FormFieldError
+                  id="image-error"
+                  message={errors.image?.message}
+                  className="absolute -bottom-4 text-secondary text-xs"
+                />
               </>
             )}
           />
@@ -84,12 +96,17 @@ export function ProjectDetailsSection() {
             render={({ field }) => (
               <>
                 <RequiredInputLabel htmlFor="slug" label="Unique identifier" />
-                <Input id="slug" {...field} />
-                {errors.slug && (
-                  <span className="absolute -bottom-4 text-secondary text-xs">
-                    {errors.slug.message}
-                  </span>
-                )}
+                <Input
+                  id="slug"
+                  {...field}
+                  aria-invalid={!!errors.slug}
+                  aria-describedby={errors.slug ? "slug-error" : undefined}
+                />
+                <FormFieldError
+                  id="slug-error"
+                  message={errors.slug?.message}
+                  className="absolute -bottom-4 text-secondary text-xs"
+                />
               </>
             )}
           />
@@ -108,9 +125,11 @@ export function ProjectDetailsSection() {
                   selectedDate={field.value}
                   onChange={field.onChange}
                 />
-                {errors.date && (
-                  <span className="text-secondary">{errors.date.message}</span>
-                )}
+                <FormFieldError
+                  id="date-error"
+                  message={errors.date?.message}
+                  className="text-secondary"
+                />
               </>
             )}
           />
@@ -152,12 +171,14 @@ export function ProjectDetailsSection() {
                   id="shortDescription"
                   {...field}
                   className="bg-transparent min-h-36"
+                  aria-invalid={!!errors.shortDescription}
+                  aria-describedby={errors.shortDescription ? "shortDescription-error" : undefined}
                 />
-                {errors.shortDescription && (
-                  <span className="absolute -bottom-4 text-secondary text-xs">
-                    {errors.shortDescription.message}
-                  </span>
-                )}
+                <FormFieldError
+                  id="shortDescription-error"
+                  message={errors.shortDescription?.message}
+                  className="absolute -bottom-4 text-secondary text-xs"
+                />
               </>
             )}
           />
@@ -174,12 +195,14 @@ export function ProjectDetailsSection() {
                   id="description"
                   {...field}
                   className="bg-transparent min-h-36"
+                  aria-invalid={!!errors.description}
+                  aria-describedby={errors.description ? "description-error" : undefined}
                 />
-                {errors.description && (
-                  <span className="absolute -bottom-4 text-secondary text-xs">
-                    {errors.description.message}
-                  </span>
-                )}
+                <FormFieldError
+                  id="description-error"
+                  message={errors.description?.message}
+                  className="absolute -bottom-4 text-secondary text-xs"
+                />
               </>
             )}
           />

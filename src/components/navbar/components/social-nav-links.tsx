@@ -9,10 +9,11 @@ export function SocialNavLinks() {
           href={socialIcon.href ?? "#"}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label={socialIcon.name}
           className="group relative inline-flex items-center justify-center 600:bg-softGrey border border-solid border-whiteText rounded-full size-10.5 transition duration-300 ease-in hover:border-background"
         >
           <span className="absolute inset-0 bg-primary rounded-full transform scale-0 transition-transform duration-300 ease-in-out group-hover:scale-100" />
-          <socialIcon.icon />
+          <socialIcon.icon aria-hidden="true" />
         </a>
       ))}
     </li>
