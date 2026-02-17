@@ -26,10 +26,6 @@ function TechCard({ tech, className = '' }: TechCardProps) {
         >
           <tech.icon className={className} aria-hidden="true" />
         </button>
-        //TODO: Fix hover, some of them are not well done
-        {/* <div className="flex justify-center h-auto cursor-default p-0">
-          <tech.icon className={className} />
-        </div> */}
       </HoverCardTrigger>
       <HoverCardContent className="w-80 bg-background" sideOffset={10}>
         <div className="flex flex-col items-start justify-between space-x-4 space-y-1">
