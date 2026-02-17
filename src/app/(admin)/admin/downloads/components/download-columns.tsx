@@ -15,9 +15,13 @@ export const downloadColumns = (
       header: () => <div className="text-left">File name</div>,
       cell: ({ row }) => {
         return (
-          <div className="text-start font-light text-textWhite">
+          <a
+            href={row.original.fileHref}
+            target="_blank"
+            className="text-left font-light text-textWhite hover:text-white"
+          >
             {row.getValue("name")}
-          </div>
+          </a>
         );
       },
       enableSorting: true,
