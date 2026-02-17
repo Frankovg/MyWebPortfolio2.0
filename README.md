@@ -361,7 +361,7 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 <details>
 <summary><h2>📝 Changelog</h2></summary>
 
-### [1.2.22] - 5-02-2026
+### [1.2.24] - 5-02-2026
 
 **Features**
 
@@ -370,6 +370,8 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 **Fixes**
 
 - Fixed the overlay size and text.
+- Fixed accessibility.
+- Fixed tech stack icons hovering.
 
 ### [1.2.20] - 30-01-2026
 
