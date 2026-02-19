@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 
 import { auth } from "@/lib/auth";
 import { sleep } from "@/lib/utils";
+import { handleError } from "@/utils/handle-error";
 
 export async function logIn(_prevState: unknown, formData: unknown) {
   if (process.env.NODE_ENV === "development") {
@@ -44,7 +45,7 @@ export async function logIn(_prevState: unknown, formData: unknown) {
       };
     }
   } catch (error) {
-    console.error("Login error:", error);
+    handleError(error, "Login error:");
     return {
       message: "Invalid credentials.",
       email,

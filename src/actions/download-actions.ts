@@ -11,6 +11,7 @@ import { CACHE_TAGS } from "@/lib/server-utils-public";
 import { DownloadEssentials } from "@/lib/types";
 import { sleep } from "@/lib/utils";
 import { downloadFormSchema, downloadIdSchema } from "@/lib/validations";
+import { handleError } from "@/utils/handle-error";
 
 export async function addFile(newFile: DownloadEssentials) {
   if (process.env.NODE_ENV === "development") {
@@ -40,7 +41,7 @@ export async function addFile(newFile: DownloadEssentials) {
       },
     });
   } catch (error) {
-    console.error("Error adding a file:", error);
+    handleError(error, "Error adding a file:");
     return {
       message: "Could not add the file.",
     };
@@ -104,7 +105,7 @@ export async function editFile(
       });
     });
   } catch (error) {
-    console.error("Error editing the file:", error);
+    handleError(error, "Error editing the file:");
     return {
       message: "Could not edit the file.",
     };
@@ -145,7 +146,7 @@ export async function deleteFile(downloadId: string) {
       }),
     ]);
   } catch (error) {
-    console.error("Error deleting the file:", error);
+    handleError(error, "Error deleting the file:");
     return {
       message: "Could not delete the file.",
     };
