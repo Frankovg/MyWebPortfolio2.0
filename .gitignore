@@ -43,3 +43,6 @@ next-env.d.ts
 CLAUDE.md
 .claude/
 .mcp.json
+
+# Sentry Config File
+.env.sentry-build-plugin

@@ -5,6 +5,7 @@ import SMTPTransport from "nodemailer/lib/smtp-transport";
 
 import { sleep } from "@/lib/utils";
 import { emailSchema } from "@/lib/validations";
+import { handleError } from "@/utils/handle-error";
 
 const SMTP_SERVER_HOST = process.env.SMTP_SERVER_HOST;
 const SMTP_SERVER_USERNAME = process.env.SMTP_SERVER_USERNAME;
@@ -46,10 +47,7 @@ export async function sendMail(mail: SendMailProps) {
   try {
     isVerified = await transporter.verify();
   } catch (error) {
-    console.error(
-      "Something Went Wrong",
-      error
-    );
+    handleError(error, "Something Went Wrong");
     return;
   }
 
