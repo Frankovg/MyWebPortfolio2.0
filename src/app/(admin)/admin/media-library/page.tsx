@@ -3,36 +3,26 @@ import { Suspense } from "react";
 import AdminPageTitle from "@/components/admin/admin-page-title";
 import AdminSection from "@/components/admin/admin-section";
 import MainHeader from "@/components/admin/main-header";
-import { getUsersAdmin } from "@/lib/server-utils-admin";
 
+import MediaLibraryClient from "./components/media-library-client";
 import Loading from "./loading";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
-async function UserManagement() {
-  const title = "Media Library"
+const title = "Media Library";
 
-  const breadcrumbLinks = [
-    {
-      name: title,
-    },
-  ];
+const breadcrumbLinks = [{ name: title }];
 
-  const users = await getUsersAdmin();
-
-  if (!users) throw new Error("Error fetching users.")
-
+export default function MediaLibraryPage() {
   return (
     <>
       <MainHeader breadcrumbLinks={breadcrumbLinks} />
       <Suspense fallback={<Loading />}>
         <AdminSection>
           <AdminPageTitle title={title} />
-
+          <MediaLibraryClient />
         </AdminSection>
       </Suspense>
     </>
   );
 }
-
-export default UserManagement;
