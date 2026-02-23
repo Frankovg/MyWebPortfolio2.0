@@ -77,7 +77,7 @@ export default withSentryConfig(nextConfig, {
 
   org: "fran-amoroso",
 
-  project: "javascript-nextjs",
+  project: "mywebportfolio-2",
 
   // Only print logs for uploading source maps in CI
   silent: !process.env.CI,
