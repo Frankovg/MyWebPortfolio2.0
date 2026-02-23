@@ -66,3 +66,37 @@ export async function sendMail(mail: SendMailProps) {
 
   return info;
 }
+
+// --- Contact form submission with honeypot protection ---
+
+type SubmitContactFormProps = {
+  email: string;
+  subject: string;
+  text: string;
+  honeypot?: string;
+};
+
+type SubmitContactFormResult = {
+  messageId?: string;
+  error?: "send_failed";
+};
+
+export async function submitContactForm(
+  data: SubmitContactFormProps
+): Promise<SubmitContactFormResult> {
+  if (data.honeypot) {
+    return { messageId: "sent" };
+  }
+
+  const result = await sendMail({
+    email: data.email,
+    subject: data.subject,
+    text: data.text,
+  });
+
+  if (result?.messageId) {
+    return { messageId: result.messageId };
+  }
+
+  return { error: "send_failed" };
+}
