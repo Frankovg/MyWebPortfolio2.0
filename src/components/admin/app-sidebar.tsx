@@ -7,6 +7,7 @@ import {
   KeyRound,
   LogOut,
   Briefcase,
+  FileImage,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -56,6 +57,11 @@ const items = [
     title: "Downloads",
     url: "/admin/downloads",
     icon: CloudDownload,
+  },
+  {
+    title: "Media Library",
+    url: "/admin/media-library",
+    icon: FileImage,
   },
   {
     title: "User Management",
