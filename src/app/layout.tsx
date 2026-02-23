@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next"
 import { Metadata } from "next";
 import { Readex_Pro as FontSans } from "next/font/google";
 import NextNProgress from "nextjs-toploader";
@@ -107,6 +108,7 @@ export default async function RootLayout({
             }}
           />
         </div>
+        <Analytics />
       </body>
     </html>
   );
