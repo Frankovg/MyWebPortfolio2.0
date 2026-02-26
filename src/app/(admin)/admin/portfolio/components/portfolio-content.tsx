@@ -20,7 +20,7 @@ import PortfolioTable from "./portfolio-table";
 import PortfolioTableTools from "./portfolio-table-tools";
 
 const DeleteModal = dynamic(
-  () => import("../../../../../components/admin/delete-modal"),
+  () => import("@/components/admin/delete-modal"),
   {
     ssr: false,
   }
