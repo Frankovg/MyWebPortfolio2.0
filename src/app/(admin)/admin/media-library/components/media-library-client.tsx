@@ -1,6 +1,5 @@
 "use client";
 
-import { Search } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useRef, useState, useTransition } from "react";
 
@@ -9,7 +8,7 @@ import {
   getMediaLibraryData,
   searchMedia,
 } from "@/actions/media-library-actions";
-import { Input } from "@/components/ui/input";
+import { SearchInput } from "@/components/ui/search-input";
 import { showErrorMessage } from "@/utils/showErrorMessage";
 
 import AddFolderDialog from "./add-folder-dialog";
@@ -101,15 +100,11 @@ export default function MediaLibraryClient() {
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-3">
-        <div className="relative flex-1 max-w-sm">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-          <Input
-            placeholder="Search images..."
-            value={searchQuery}
-            onChange={(e) => handleSearch(e.target.value)}
-            className="pl-9"
-          />
-        </div>
+        <SearchInput
+          placeholder="Search images..."
+          value={searchQuery}
+          onChange={(e) => handleSearch(e.target.value)}
+        />
         <UploadDialog
           currentFolder={folder}
           onUploadComplete={() => fetchData(folder)}
