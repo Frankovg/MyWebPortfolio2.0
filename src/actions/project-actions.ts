@@ -15,6 +15,7 @@ import {
   projectFormSchema,
   projectIdSchema,
 } from "@/lib/validations";
+import { handleError } from "@/utils/handle-error";
 
 export async function addProject(
   project: ProjectEssentials,
@@ -76,7 +77,7 @@ export async function addProject(
       },
     });
   } catch (error) {
-    console.error("Error adding project:", error);
+    handleError(error, "Error adding project:");
     return {
       message: "Could not add project.",
     };
@@ -230,7 +231,7 @@ export async function editProject(
       });
     });
   } catch (error) {
-    console.error("Error editing project:", error);
+    handleError(error, "Error editing project:");
     return {
       message: "Could not edit project.",
     };
@@ -286,7 +287,7 @@ export async function deleteProject(projectId: string) {
       }),
     ]);
   } catch (error) {
-    console.error("Could not delete project.", error);
+    handleError(error, "Error deleting the project.");
     return {
       message: "Could not delete project.",
     };

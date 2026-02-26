@@ -110,6 +110,14 @@
             "Personal data will be treated as confidential by the Data Controller, who undertakes to inform and guarantee through a legal or contractual obligation that such confidentiality is respected by their employees, associates, and any person to whom they make the information accessible."
           ]
         },
+        "botProtection": {
+          "title": "Bot protection",
+          "content": [
+            "This website uses Cloudflare Turnstile to protect its forms from automated abuse and spam. Cloudflare Turnstile is a privacy-focused CAPTCHA alternative that verifies whether a visitor is a real person without tracking users or collecting personal data for advertising purposes.",
+            "When you interact with a form on this website, Cloudflare may collect limited interaction data (such as browser type and interaction patterns) solely for the purpose of determining whether the visitor is human. This data is processed by Cloudflare, Inc. in accordance with their privacy policy, available at https://www.cloudflare.com/privacypolicy/.",
+            "Cloudflare Turnstile does not use cookies for tracking and does not collect personal data beyond what is strictly necessary for bot detection. The legal basis for this processing is the legitimate interest of the Data Controller in protecting the website from abuse (Article 6(1)(f) GDPR)."
+          ]
+        },
         "rights": {
           "title": "Rights derived from the processing of personal data",
           "intro": "The User has over Franco Gabriel Amoroso and may, therefore, exercise against the Data Controller the following rights recognized in the GDPR and Organic Law 3/2018, of December 5, on Personal Data Protection and guarantee of digital rights:",

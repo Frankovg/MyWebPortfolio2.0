@@ -9,6 +9,7 @@ import prisma from "@/lib/db";
 import { getUserById } from "@/lib/server-utils-public";
 import { sleep } from "@/lib/utils";
 import { isActiveSchema, userIdSchema } from "@/lib/validations";
+import { handleError } from "@/utils/handle-error";
 
 export async function activateAccount(userId: User["id"], isActive: boolean) {
   if (process.env.NODE_ENV === "development") {
@@ -52,7 +53,7 @@ export async function activateAccount(userId: User["id"], isActive: boolean) {
       },
     });
   } catch (error) {
-    console.error("Could not edit the account.", error)
+    handleError(error, "Error editing the account.")
     return {
       message: "Could not edit the account.",
     };

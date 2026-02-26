@@ -3,8 +3,10 @@
 import { createTransport } from "nodemailer";
 import SMTPTransport from "nodemailer/lib/smtp-transport";
 
+import { isTurnstileEnabled, verifyTurnstile } from "@/lib/turnstile";
 import { sleep } from "@/lib/utils";
 import { emailSchema } from "@/lib/validations";
+import { handleError } from "@/utils/handle-error";
 
 const SMTP_SERVER_HOST = process.env.SMTP_SERVER_HOST;
 const SMTP_SERVER_USERNAME = process.env.SMTP_SERVER_USERNAME;
@@ -46,10 +48,7 @@ export async function sendMail(mail: SendMailProps) {
   try {
     isVerified = await transporter.verify();
   } catch (error) {
-    console.error(
-      "Something Went Wrong",
-      error
-    );
+    handleError(error, "Something Went Wrong");
     return;
   }
 
@@ -67,4 +66,44 @@ export async function sendMail(mail: SendMailProps) {
   }
 
   return info;
+}
+
+type SubmitContactFormProps = {
+  email: string;
+  subject: string;
+  text: string;
+  honeypot?: string;
+  turnstileToken?: string;
+};
+
+type SubmitContactFormResult = {
+  messageId?: string;
+  error?: "turnstile_failed" | "send_failed";
+};
+
+export async function submitContactForm(
+  data: SubmitContactFormProps
+): Promise<SubmitContactFormResult> {
+  if (data.honeypot) {
+    return { messageId: "sent" };
+  }
+
+  if (isTurnstileEnabled()) {
+    const result = await verifyTurnstile(data.turnstileToken || "");
+    if (!result.success) {
+      return { error: "turnstile_failed" };
+    }
+  }
+
+  const result = await sendMail({
+    email: data.email,
+    subject: data.subject,
+    text: data.text,
+  });
+
+  if (result?.messageId) {
+    return { messageId: result.messageId };
+  }
+
+  return { error: "send_failed" };
 }

@@ -11,6 +11,7 @@ import {
   changePasswordFormSchema,
   TChangePasswordForm,
 } from "@/lib/validations";
+import { handleError } from "@/utils/handle-error";
 
 export async function changePassword(passwordValues: TChangePasswordForm) {
   if (process.env.NODE_ENV === "development") {
@@ -76,7 +77,7 @@ export async function changePassword(passwordValues: TChangePasswordForm) {
       },
     });
   } catch (error) {
-    console.error("Could not change the password", error);
+    handleError(error, " Error changing the password");
     return {
       message: "Could not change the password.",
     };
