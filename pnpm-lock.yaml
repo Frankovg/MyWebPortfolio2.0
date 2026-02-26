@@ -8,6 +8,9 @@ dependencies:
   '@hookform/resolvers':
     specifier: ^5.2.2
     version: 5.2.2(react-hook-form@7.67.0)
+  '@marsidev/react-turnstile':
+    specifier: ^1.4.2
+    version: 1.4.2(react-dom@19.2.3)(react@19.2.3)
   '@playwright/test':
     specifier: ^1.58.0
     version: 1.58.0
@@ -2191,6 +2194,16 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
     dev: true
+
+  /@marsidev/react-turnstile@1.4.2(react-dom@19.2.3)(react@19.2.3):
+    resolution: {integrity: sha512-xs1qOuyeMOz6t9BXXCXWiukC0/0+48vR08B7uwNdG05wCMnbcNgxiFmdFKDOFbM76qFYFRYlGeRfhfq1U/iZmA==}
+    peerDependencies:
+      react: ^17.0.2 || ^18.0.0 || ^19.0
+      react-dom: ^17.0.2 || ^18.0.0 || ^19.0
+    dependencies:
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
+    dev: false
 
   /@mrleebo/prisma-ast@0.12.1:
     resolution: {integrity: sha512-JwqeCQ1U3fvccttHZq7Tk0m/TMC6WcFAQZdukypW3AzlJYKYTGNVd1ANU2GuhKnv4UQuOFj3oAl0LLG/gxFN1w==}
