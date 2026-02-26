@@ -1,13 +1,14 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Turnstile } from "@marsidev/react-turnstile";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useTransition } from "react";
+import { useRef, useState, useTransition } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
-import { sendMail } from "@/actions/index";
+import { submitContactForm } from "@/actions/index";
 import ButtonWhite from "@/components/primitives/button-white";
 import FormFieldError from "@/components/primitives/form-field-error";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
@@ -18,12 +19,15 @@ import { Textarea } from "@/components/ui/textarea";
 import { ACCOUNT_REQUEST_MESSAGE } from "@/lib/constants";
 import { contactFormSchema, TContactForm } from "@/lib/validations";
 
-
 import { RequestMessage } from "./request-message";
+
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
 function ContactForm() {
   const [isPending, startTransition] = useTransition();
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const searchParams = useSearchParams();
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   const isAnAccountRequest = searchParams.get('request-demo-account')
 
@@ -47,17 +51,20 @@ function ContactForm() {
     startTransition(async () => {
       const messageData = getValues();
       const mailText = `Name: ${messageData.first_name} ${messageData.last_name}\n  Email: ${messageData.email}\n Message: ${messageData.message}`;
-      const mail = {
+
+      const response = await submitContactForm({
         email: messageData.email,
         subject: isAnAccountRequest ? `Solicitud de ${messageData.email}` : `Mensaje de ${messageData.email}`,
         text: mailText,
-      };
-
-      const response = await sendMail(mail);
+        honeypot: honeypotRef.current?.value || "",
+        turnstileToken: turnstileToken || "",
+      });
 
       if (response?.messageId) {
         reset();
         toast.success("Message submitted successfully");
+      } else if (response?.error === "turnstile_failed") {
+        toast.error("Verification failed. Please try again.");
       } else {
         toast.error("Failed to send application");
         if (process.env.NODE_ENV === "development") {
@@ -70,8 +77,21 @@ function ContactForm() {
   return (
     <div className="w-full pb-24">
       {isAnAccountRequest && <RequestMessage />}
+
       <form className="max-w-contact mx-auto" onSubmit={handleSubmit}>
         <div className="space-y-4">
+          <div className="absolute -left-2499.75 h-0 w-0 overflow-hidden" aria-hidden="true">
+            <label htmlFor="website">Website</label>
+            <input
+              ref={honeypotRef}
+              type="text"
+              id="website"
+              name="website"
+              autoComplete="off"
+              tabIndex={-1}
+            />
+          </div>
+
           <div className="flex flex-col md:flex-row gap-3">
             <div className="space-y-1 w-full">
               <RequiredInputLabel htmlFor="first_name" label="First name" />
@@ -165,6 +185,15 @@ function ContactForm() {
             />
             <FormFieldError id="privacy_policy-error" message={errors.privacy_policy?.message} />
           </div>
+
+          {TURNSTILE_SITE_KEY && (
+            <Turnstile
+              siteKey={TURNSTILE_SITE_KEY}
+              onSuccess={setTurnstileToken}
+              onExpire={() => setTurnstileToken(null)}
+              options={{ theme: "dark", language: "en", size: "invisible" }}
+            />
+          )}
 
           <ButtonWhite
             disabled={isPending}
