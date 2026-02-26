@@ -125,6 +125,16 @@ export default function DataProtectionSection() {
         ))}
       </div>
 
+      {/* Bot Protection Section */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-medium">{dataProtection.subsections.botProtection.title}</h3>
+        {dataProtection.subsections.botProtection.content.map((paragraph, index) => (
+          <p key={index} className="text-base leading-relaxed">
+            {paragraph}
+          </p>
+        ))}
+      </div>
+
       {/* Rights Section */}
       <div className="space-y-4">
         <h3 className="text-lg font-medium">{dataProtection.subsections.rights.title}</h3>
