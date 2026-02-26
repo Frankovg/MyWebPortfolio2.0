@@ -10,13 +10,13 @@ import {
   searchMedia,
 } from "@/actions/media-library-actions";
 import { Input } from "@/components/ui/input";
-import { Skeleton } from "@/components/ui/skeleton";
 import { showErrorMessage } from "@/utils/showErrorMessage";
 
 import AddFolderDialog from "./add-folder-dialog";
 import EditFolderDialog from "./edit-folder-dialog";
 import FolderNav from "./folder-nav";
 import ImageGrid from "./image-grid";
+import { LoadingSkeleton } from "./loading-skeleton";
 import UploadDialog from "./upload-dialog";
 
 import type { MediaLibraryData } from "../types";
@@ -28,7 +28,9 @@ export default function MediaLibraryClient() {
 
   const [data, setData] = useState<MediaLibraryData | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+
   const [isLoading, startTransition] = useTransition();
+
   const debounceRef = useRef<ReturnType<typeof setTimeout>>(null);
 
   const fetchData = useCallback(
@@ -89,9 +91,9 @@ export default function MediaLibraryClient() {
     setData((prev) =>
       prev
         ? {
-            ...prev,
-            resources: prev.resources.filter((r) => r.public_id !== publicId),
-          }
+          ...prev,
+          resources: prev.resources.filter((r) => r.public_id !== publicId),
+        }
         : null
     );
   };
@@ -136,26 +138,6 @@ export default function MediaLibraryClient() {
           <ImageGrid resources={data.resources} onDelete={handleDelete} />
         </>
       )}
-    </div>
-  );
-}
-
-function LoadingSkeleton() {
-  return (
-    <div className="space-y-6">
-      <div className="flex gap-2">
-        {Array.from({ length: 3 }).map((_, i) => (
-          <Skeleton key={i} className="h-9 w-24 rounded-md bg-textAnimation" />
-        ))}
-      </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-        {Array.from({ length: 8 }).map((_, i) => (
-          <Skeleton
-            key={i}
-            className="aspect-square rounded-lg bg-textAnimation"
-          />
-        ))}
-      </div>
     </div>
   );
 }
