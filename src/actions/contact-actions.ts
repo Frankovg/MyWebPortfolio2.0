@@ -68,8 +68,6 @@ export async function sendMail(mail: SendMailProps) {
   return info;
 }
 
-// --- Contact form submission with security layers ---
-
 type SubmitContactFormProps = {
   email: string;
   subject: string;
@@ -86,12 +84,10 @@ type SubmitContactFormResult = {
 export async function submitContactForm(
   data: SubmitContactFormProps
 ): Promise<SubmitContactFormResult> {
-  // 1. Honeypot — bots fill hidden fields, humans don't
   if (data.honeypot) {
     return { messageId: "sent" };
   }
 
-  // 2. Cloudflare Turnstile — required when secret key is configured
   if (isTurnstileEnabled()) {
     const result = await verifyTurnstile(data.turnstileToken || "");
     if (!result.success) {
@@ -99,7 +95,6 @@ export async function submitContactForm(
     }
   }
 
-  // 3. Send the email
   const result = await sendMail({
     email: data.email,
     subject: data.subject,

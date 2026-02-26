@@ -80,7 +80,6 @@ function ContactForm() {
 
       <form className="max-w-contact mx-auto" onSubmit={handleSubmit}>
         <div className="space-y-4">
-          {/* Honeypot — invisible to humans, bots fill it */}
           <div className="absolute -left-2499.75 h-0 w-0 overflow-hidden" aria-hidden="true">
             <label htmlFor="website">Website</label>
             <input
