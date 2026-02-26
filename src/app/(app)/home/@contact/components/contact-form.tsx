@@ -1,9 +1,10 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Turnstile } from "@marsidev/react-turnstile";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useRef, useTransition } from "react";
+import { useRef, useState, useTransition } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -20,8 +21,11 @@ import { contactFormSchema, TContactForm } from "@/lib/validations";
 
 import { RequestMessage } from "./request-message";
 
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
 function ContactForm() {
   const [isPending, startTransition] = useTransition();
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const searchParams = useSearchParams();
   const honeypotRef = useRef<HTMLInputElement>(null);
 
@@ -53,11 +57,14 @@ function ContactForm() {
         subject: isAnAccountRequest ? `Solicitud de ${messageData.email}` : `Mensaje de ${messageData.email}`,
         text: mailText,
         honeypot: honeypotRef.current?.value || "",
+        turnstileToken: turnstileToken || "",
       });
 
       if (response?.messageId) {
         reset();
         toast.success("Message submitted successfully");
+      } else if (response?.error === "turnstile_failed") {
+        toast.error("Verification failed. Please try again.");
       } else {
         toast.error("Failed to send application");
         if (process.env.NODE_ENV === "development") {
@@ -179,6 +186,15 @@ function ContactForm() {
             />
             <FormFieldError id="privacy_policy-error" message={errors.privacy_policy?.message} />
           </div>
+
+          {TURNSTILE_SITE_KEY && (
+            <Turnstile
+              siteKey={TURNSTILE_SITE_KEY}
+              onSuccess={setTurnstileToken}
+              onExpire={() => setTurnstileToken(null)}
+              options={{ theme: "dark", language: "en", size: "invisible" }}
+            />
+          )}
 
           <ButtonWhite
             disabled={isPending}

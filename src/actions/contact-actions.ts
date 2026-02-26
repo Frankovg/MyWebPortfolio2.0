@@ -3,6 +3,7 @@
 import { createTransport } from "nodemailer";
 import SMTPTransport from "nodemailer/lib/smtp-transport";
 
+import { isTurnstileEnabled, verifyTurnstile } from "@/lib/turnstile";
 import { sleep } from "@/lib/utils";
 import { emailSchema } from "@/lib/validations";
 import { handleError } from "@/utils/handle-error";
@@ -67,27 +68,38 @@ export async function sendMail(mail: SendMailProps) {
   return info;
 }
 
-// --- Contact form submission with honeypot protection ---
+// --- Contact form submission with security layers ---
 
 type SubmitContactFormProps = {
   email: string;
   subject: string;
   text: string;
   honeypot?: string;
+  turnstileToken?: string;
 };
 
 type SubmitContactFormResult = {
   messageId?: string;
-  error?: "send_failed";
+  error?: "turnstile_failed" | "send_failed";
 };
 
 export async function submitContactForm(
   data: SubmitContactFormProps
 ): Promise<SubmitContactFormResult> {
+  // 1. Honeypot — bots fill hidden fields, humans don't
   if (data.honeypot) {
     return { messageId: "sent" };
   }
 
+  // 2. Cloudflare Turnstile — required when secret key is configured
+  if (isTurnstileEnabled()) {
+    const result = await verifyTurnstile(data.turnstileToken || "");
+    if (!result.success) {
+      return { error: "turnstile_failed" };
+    }
+  }
+
+  // 3. Send the email
   const result = await sendMail({
     email: data.email,
     subject: data.subject,
