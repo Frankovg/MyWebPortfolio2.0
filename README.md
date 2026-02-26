@@ -365,10 +365,15 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 
 **Features**
 
-- Added a timeline for personal experience in the about me page.
-- File names as links in the downloads table.
 - Added Sentry error monitoring and performance tracing for server actions and client-side exceptions.
 - Added Cloudflare Turnstile Captcha.
+
+### [1.2.25] - 5-02-2026
+
+**Features**
+
+- Added a timeline for personal experience in the about me page.
+- File names as links in the downloads table.
 
 **Fixes**
 
