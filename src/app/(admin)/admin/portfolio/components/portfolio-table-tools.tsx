@@ -1,7 +1,7 @@
 import { Table as TTable } from "@tanstack/react-table";
 
 import { Checkbox } from "@/components/ui/checkbox";
-import { SearchInput } from "@/components/ui/search-input";
+import { SearchInput } from "@/components/primitives/search-input";
 
 import AddProjectButton from "./add-project-button";
 

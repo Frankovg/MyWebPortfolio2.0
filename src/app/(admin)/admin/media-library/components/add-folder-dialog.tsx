@@ -5,6 +5,7 @@ import { useState, useTransition } from "react";
 import { toast } from "sonner";
 
 import { createFolder } from "@/actions/media-library-actions";
+import ButtonMinimal from "@/components/primitives/button-minimal";
 import { Spinner } from "@/components/primitives/spinner";
 import { Button } from "@/components/ui/button";
 import {
@@ -58,10 +59,7 @@ export default function AddFolderDialog({
   return (
     <Dialog open={isOpen} onOpenChange={(open) => (open ? setIsOpen(true) : handleClose())}>
       <DialogTrigger asChild>
-        <Button variant="outline" size="sm" className="gap-2">
-          <FolderPlus className="size-4" />
-          Add folder
-        </Button>
+        <ButtonMinimal title="+ Add folder" />
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

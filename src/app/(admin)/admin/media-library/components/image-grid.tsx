@@ -4,7 +4,7 @@ import { ImageOff } from "lucide-react";
 
 import ImageCard from "./image-card";
 
-import type { MediaResource } from "../types";
+import type { MediaResource } from "../types/types";
 
 type ImageGridProps = {
   resources: MediaResource[];

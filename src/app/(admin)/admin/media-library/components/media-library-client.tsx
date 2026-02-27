@@ -8,7 +8,7 @@ import {
   getMediaLibraryData,
   searchMedia,
 } from "@/actions/media-library-actions";
-import { SearchInput } from "@/components/ui/search-input";
+import { SearchInput } from "@/components/primitives/search-input";
 import { showErrorMessage } from "@/utils/showErrorMessage";
 
 import AddFolderDialog from "./add-folder-dialog";
@@ -16,9 +16,9 @@ import EditFolderDialog from "./edit-folder-dialog";
 import FolderNav from "./folder-nav";
 import ImageGrid from "./image-grid";
 import { LoadingSkeleton } from "./loading-skeleton";
-import UploadDialog from "./upload-dialog";
+import UploadModal from "./upload-modal";
 
-import type { MediaLibraryData } from "../types";
+import type { MediaLibraryData } from "../types/types";
 
 export default function MediaLibraryClient() {
   const router = useRouter();
@@ -99,26 +99,34 @@ export default function MediaLibraryClient() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center gap-3">
+      <div className="flex items-center justify-between gap-3">
         <SearchInput
           placeholder="Search images..."
           value={searchQuery}
           onChange={(e) => handleSearch(e.target.value)}
         />
-        <UploadDialog
-          currentFolder={folder}
-          onUploadComplete={() => fetchData(folder)}
-        />
-        <AddFolderDialog
-          currentFolder={folder}
-          onFolderCreated={() => fetchData(folder)}
-        />
-        {folder && (
-          <EditFolderDialog
+        <div className="space-x-4 flex items-center">
+          <UploadModal
             currentFolder={folder}
-            onFolderUpdated={(newPath) => handleNavigate(newPath ?? "")}
+            onUploadComplete={(newResources) =>
+              setData((prev) =>
+                prev
+                  ? { ...prev, resources: [...newResources, ...prev.resources] }
+                  : null
+              )
+            }
           />
-        )}
+          <AddFolderDialog
+            currentFolder={folder}
+            onFolderCreated={() => fetchData(folder)}
+          />
+          {folder && (
+            <EditFolderDialog
+              currentFolder={folder}
+              onFolderUpdated={(newPath) => handleNavigate(newPath ?? "")}
+            />
+          )}
+        </div>
       </div>
 
       {isLoading || !data ? (

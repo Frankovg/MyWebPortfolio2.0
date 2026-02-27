@@ -9,7 +9,9 @@ import DeleteModal from "@/components/admin/delete-modal";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
-import type { MediaResource } from "../types";
+import PdfCard from "./pdf-card";
+
+import type { MediaResource } from "../types/types";
 
 type ImageCardProps = {
   resource: MediaResource;
@@ -30,13 +32,17 @@ export default function ImageCard({ resource, onDelete }: ImageCardProps) {
     <>
       <div className="group relative rounded-lg border border-darkPrimary overflow-hidden bg-background">
         <div className="relative aspect-square">
-          <Image
-            src={resource.secure_url}
-            alt={displayName}
-            fill
-            className="object-cover"
-            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-          />
+          {resource.format === "pdf" ? (
+            <PdfCard fileName={displayName} />
+          ) : (
+            <Image
+              src={resource.secure_url}
+              alt={displayName}
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            />
+          )}
           <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
             <Button
               variant="secondary"

@@ -39,7 +39,11 @@ export default function DeleteModal({
         </DialogHeader>
         <div></div>
         <DialogFooter>
-          <Button variant="secondary" onClick={close} className="w-24">
+          <Button
+            variant="secondary"
+            onClick={close}
+            className="w-24"
+          >
             Cancel
           </Button>
           <Button

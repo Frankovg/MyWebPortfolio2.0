@@ -19,3 +19,8 @@ export type MediaLibraryData = {
   folders: MediaFolder[];
   currentFolder: string;
 };
+
+export type FilePreview = {
+  file: File;
+  previewUrl: string;
+};

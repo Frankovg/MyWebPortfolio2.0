@@ -7,6 +7,11 @@ import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "5mb",
+    },
+  },
   staticPageGenerationTimeout: 120,
   reactStrictMode: true,
   outputFileTracingRoot: path.join(__dirname),

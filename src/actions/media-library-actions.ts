@@ -1,5 +1,6 @@
 "use server";
 
+import { MAX_FILE_SIZE } from "@/app/(admin)/admin/media-library/constants/constants";
 import { SAMPLE_ACTION } from "@/lib/action-constants";
 import { checkAuth } from "@/lib/check-auth";
 import cloudinary from "@/lib/cloudinary";
@@ -9,18 +10,12 @@ import type {
   MediaFolder,
   MediaLibraryData,
   MediaResource,
-} from "@/app/(admin)/admin/media-library/types";
+} from "@/app/(admin)/admin/media-library/types/types";
 
-const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 
 export async function getMediaLibraryData(
   folder: string
 ): Promise<MediaLibraryData | { message: string }> {
-  const session = await checkAuth();
-  if (!session?.user.isAdmin) {
-    return { message: SAMPLE_ACTION };
-  }
-
   try {
     if (!folder) {
       const [foldersResult, searchResult] = await Promise.all([
@@ -106,12 +101,12 @@ export async function uploadMedia(
     return { message: "No file provided." };
   }
 
-  if (!file.type.startsWith("image/")) {
-    return { message: "Only image files are allowed." };
+  if (!file.type.startsWith("image/") && file.type !== "application/pdf") {
+    return { message: "Only image and PDF files are allowed." };
   }
 
   if (file.size > MAX_FILE_SIZE) {
-    return { message: "File size must be less than 10MB." };
+    return { message: "File size must be less than 4.5MB." };
   }
 
   try {
@@ -272,10 +267,6 @@ export async function searchMedia(
   query: string,
   folder: string
 ): Promise<{ resources: MediaResource[] } | { message: string }> {
-  const session = await checkAuth();
-  if (!session?.user.isAdmin) {
-    return { message: SAMPLE_ACTION };
-  }
 
   if (!query.trim()) {
     return { message: "Search query is required." };
