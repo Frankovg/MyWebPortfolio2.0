@@ -9,6 +9,7 @@ import {
   renameFolder,
 } from "@/actions/media-library-actions";
 import DeleteModal from "@/components/admin/delete-modal";
+import ButtonMinimal from "@/components/primitives/button-minimal";
 import { Spinner } from "@/components/primitives/spinner";
 import { Button } from "@/components/ui/button";
 import {
@@ -28,7 +29,7 @@ type EditFolderDialogProps = {
   onFolderUpdated: (newPath?: string) => void;
 };
 
-export default function EditFolderDialog({
+export default function EditFolderModal({
   currentFolder,
   onFolderUpdated,
 }: EditFolderDialogProps) {
@@ -79,12 +80,19 @@ export default function EditFolderDialog({
 
   return (
     <>
-      <Dialog open={isOpen} onOpenChange={(open) => (open ? setIsOpen(true) : handleClose())}>
+      <Dialog
+        open={isOpen}
+        onOpenChange={(open) => (open ? setIsOpen(true) : handleClose())}
+      >
         <DialogTrigger asChild>
-          <Button variant="outline" size="sm" className="gap-2">
-            <FolderPen className="size-4" />
-            Edit folder
-          </Button>
+          <ButtonMinimal
+            title={(
+              <>
+                <FolderPen />
+                <span>Edit folder</span>
+              </>
+            )}
+          />
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
@@ -102,19 +110,25 @@ export default function EditFolderDialog({
           />
           <DialogFooter className="flex justify-between!">
             <Button
-              variant="secondary"
-              className="hover:bg-danger"
+              variant="destructive"
+              className="hover:bg-danger underline"
               onClick={() => setIsDeleteOpen(true)}
             >
               Delete folder
             </Button>
             <div className="flex gap-2">
-              <Button variant="secondary" onClick={handleClose}>
+              <Button
+                variant="secondary"
+                onClick={handleClose}
+                className="w-24"
+              >
                 Cancel
               </Button>
               <Button
+                variant="secondary"
                 onClick={handleRename}
                 disabled={!name.trim() || name.trim() === folderName || isPending}
+                className="w-24"
               >
                 {isPending ? <Spinner /> : "Rename"}
               </Button>

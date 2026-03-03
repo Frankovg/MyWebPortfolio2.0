@@ -1,6 +1,5 @@
 "use client";
 
-import { FolderPlus } from "lucide-react";
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
 
@@ -25,7 +24,7 @@ type AddFolderDialogProps = {
   onFolderCreated: () => void;
 };
 
-export default function AddFolderDialog({
+export default function AddFolderModal({
   currentFolder,
   onFolderCreated,
 }: AddFolderDialogProps) {
@@ -57,7 +56,10 @@ export default function AddFolderDialog({
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={(open) => (open ? setIsOpen(true) : handleClose())}>
+    <Dialog
+      open={isOpen}
+      onOpenChange={(open) => (open ? setIsOpen(true) : handleClose())}
+    >
       <DialogTrigger asChild>
         <ButtonMinimal title="+ Add folder" />
       </DialogTrigger>
@@ -78,10 +80,19 @@ export default function AddFolderDialog({
           autoFocus
         />
         <DialogFooter>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button
+            variant="secondary"
+            onClick={handleClose}
+            className="w-24"
+          >
             Cancel
           </Button>
-          <Button onClick={handleCreate} disabled={!name.trim() || isPending}>
+          <Button
+            variant="secondary"
+            onClick={handleCreate}
+            disabled={!name.trim() || isPending}
+            className="w-24"
+          >
             {isPending ? <Spinner /> : "Create"}
           </Button>
         </DialogFooter>

@@ -11,8 +11,8 @@ import {
 import { SearchInput } from "@/components/primitives/search-input";
 import { showErrorMessage } from "@/utils/showErrorMessage";
 
-import AddFolderDialog from "./add-folder-dialog";
-import EditFolderDialog from "./edit-folder-dialog";
+import AddFolderModal from "./add-folder-modal";
+import EditFolderModal from "./edit-folder-modal";
 import FolderNav from "./folder-nav";
 import ImageGrid from "./image-grid";
 import { LoadingSkeleton } from "./loading-skeleton";
@@ -116,16 +116,16 @@ export default function MediaLibraryClient() {
               )
             }
           />
-          <AddFolderDialog
-            currentFolder={folder}
-            onFolderCreated={() => fetchData(folder)}
-          />
           {folder && (
-            <EditFolderDialog
+            <EditFolderModal
               currentFolder={folder}
               onFolderUpdated={(newPath) => handleNavigate(newPath ?? "")}
             />
           )}
+          <AddFolderModal
+            currentFolder={folder}
+            onFolderCreated={() => fetchData(folder)}
+          />
         </div>
       </div>
 
