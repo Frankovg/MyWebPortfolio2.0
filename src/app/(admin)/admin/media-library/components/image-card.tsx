@@ -43,11 +43,11 @@ export default function ImageCard({ resource, onDelete }: ImageCardProps) {
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
             />
           )}
-          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+          <div className="absolute inset-0 bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
             <Button
-              variant="secondary"
+              variant="outline"
               size="icon"
-              className="size-9"
+              className="size-9 border-none hover:[&_svg]:text-white"
               asChild
             >
               <a
@@ -59,17 +59,17 @@ export default function ImageCard({ resource, onDelete }: ImageCardProps) {
               </a>
             </Button>
             <Button
-              variant="secondary"
+              variant="outline"
               size="icon"
-              className="size-9"
+              className="size-9 border-none hover:[&_svg]:text-white"
               onClick={handleCopyUrl}
             >
               <Copy className="size-4" />
             </Button>
             <Button
-              variant="secondary"
+              variant="outline"
               size="icon"
-              className="size-9 hover:bg-danger"
+              className="size-9 hover:bg-danger border-none"
               onClick={() => setIsDeleteOpen(true)}
             >
               <Trash2 className="size-4" />

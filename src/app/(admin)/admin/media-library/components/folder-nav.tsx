@@ -1,6 +1,6 @@
 "use client";
 
-import { Folder, Home } from "lucide-react";
+import { ChevronRight, Folder } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
@@ -28,7 +28,6 @@ export default function FolderNav({
           className="gap-1 px-2"
           onClick={() => onNavigate("")}
         >
-          <Home className="size-4" />
           Root
         </Button>
         {segments.map((segment, i) => {
@@ -36,7 +35,7 @@ export default function FolderNav({
           const isLast = i === segments.length - 1;
           return (
             <span key={path} className="flex items-center gap-1">
-              <span className="text-muted-foreground">/</span>
+              <ChevronRight className="size-3.5" />
               {isLast ? (
                 <span className="px-2 font-medium">{segment}</span>
               ) : (
@@ -61,7 +60,7 @@ export default function FolderNav({
               key={folder.path}
               variant="outline"
               size="sm"
-              className="gap-2"
+              className="gap-2 rounded-none opacity-75 hover:opacity-100"
               onClick={() => onNavigate(folder.path)}
             >
               <Folder className="size-4" />
