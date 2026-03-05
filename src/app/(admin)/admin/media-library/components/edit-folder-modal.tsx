@@ -107,8 +107,9 @@ export default function EditFolderModal({
             onChange={(e) => setName(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleRename()}
             autoFocus
+            className="my-4"
           />
-          <DialogFooter className="flex justify-between!">
+          <DialogFooter className="flex sm:justify-between! gap-4">
             <Button
               variant="destructive"
               className="hover:bg-danger underline"
@@ -116,11 +117,11 @@ export default function EditFolderModal({
             >
               Delete folder
             </Button>
-            <div className="flex gap-2">
+            <div className="flex gap-2 flex-col sm:flex-row">
               <Button
                 variant="secondary"
                 onClick={handleClose}
-                className="w-24"
+                className="w-24 max-sm:w-full"
               >
                 Cancel
               </Button>
@@ -128,7 +129,7 @@ export default function EditFolderModal({
                 variant="secondary"
                 onClick={handleRename}
                 disabled={!name.trim() || name.trim() === folderName || isPending}
-                className="w-24"
+                className="w-24 max-sm:w-full"
               >
                 {isPending ? <Spinner /> : "Rename"}
               </Button>

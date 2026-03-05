@@ -27,13 +27,13 @@ export default function ImageCard({ resource, onDelete }: ImageCardProps) {
     await navigator.clipboard.writeText(resource.secure_url);
     toast.success("URL copied to clipboard");
   };
-
+  //TODO: Add a switch to show or hide buttons 
   return (
     <>
       <div className="group relative rounded-lg border border-darkPrimary overflow-hidden bg-background">
         <div className="relative aspect-square">
           {resource.format === "pdf" ? (
-            <PdfCard fileName={displayName} />
+            <PdfCard />
           ) : (
             <Image
               src={resource.secure_url}

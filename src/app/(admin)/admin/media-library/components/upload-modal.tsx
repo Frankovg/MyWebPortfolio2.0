@@ -107,11 +107,11 @@ export default function UploadModal({
           setSizeError={setSizeError}
           sizeError={sizeError ?? undefined}
         />
-        <DialogFooter>
+        <DialogFooter className="gap-4">
           <Button
             variant="secondary"
             onClick={handleClose}
-            className="w-24"
+            className="w-24 max-sm:w-full"
           >
             Cancel
           </Button>
@@ -119,7 +119,7 @@ export default function UploadModal({
             variant="secondary"
             onClick={handleUpload}
             disabled={files.length === 0 || isPending}
-            className="w-24"
+            className="w-24 max-sm:w-full"
           >
             {isPending ? <Spinner /> : `Upload ${files.length || ""}`}
           </Button>

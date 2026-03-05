@@ -78,12 +78,13 @@ export default function AddFolderModal({
           onChange={(e) => setName(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleCreate()}
           autoFocus
+          className="my-4"
         />
-        <DialogFooter>
+        <DialogFooter className="gap-4">
           <Button
             variant="secondary"
             onClick={handleClose}
-            className="w-24"
+            className="w-24 max-sm:w-full"
           >
             Cancel
           </Button>
@@ -91,7 +92,7 @@ export default function AddFolderModal({
             variant="secondary"
             onClick={handleCreate}
             disabled={!name.trim() || isPending}
-            className="w-24"
+            className="w-24 max-sm:w-full"
           >
             {isPending ? <Spinner /> : "Create"}
           </Button>

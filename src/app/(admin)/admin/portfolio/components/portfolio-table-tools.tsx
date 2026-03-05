@@ -1,7 +1,7 @@
 import { Table as TTable } from "@tanstack/react-table";
 
-import { Checkbox } from "@/components/ui/checkbox";
 import { SearchInput } from "@/components/primitives/search-input";
+import { Checkbox } from "@/components/ui/checkbox";
 
 import AddProjectButton from "./add-project-button";
 
@@ -10,7 +10,7 @@ import type { Project } from "@/generated/prisma/client";
 
 function PortfolioTableTools({ table }: { table: TTable<Project> }) {
   return (
-    <div className="w-full flex justify-between md:max-lg:flex-col md:max-lg:gap-5 md:max-lg:items-center max-600:flex-col max-600:gap-5 max-600:items-center mt-10 pb-2 group">
+    <div className="w-full flex justify-between md:max-lg:flex-col md:max-lg:gap-5 md:max-lg:items-end max-600:flex-col max-600:gap-5 max-600:items-end mt-10 pb-2 group">
       <SearchInput
         placeholder="Search project..."
         value={table.getState().globalFilter ?? ""}

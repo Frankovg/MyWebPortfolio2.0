@@ -99,13 +99,13 @@ export default function MediaLibraryClient() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between gap-3">
+      <div className="w-full flex justify-between gap-3 md:max-lg:flex-col md:max-lg:gap-5 md:max-lg:items-end max-600:flex-col max-600:gap-5 max-600:items-end">
         <SearchInput
           placeholder="Search images..."
           value={searchQuery}
           onChange={(e) => handleSearch(e.target.value)}
         />
-        <div className="space-x-4 flex items-center">
+        <div className="gap-4 flex items-start justify-end flex-wrap">
           <UploadModal
             currentFolder={folder}
             onUploadComplete={(newResources) =>
