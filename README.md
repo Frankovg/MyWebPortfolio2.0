@@ -361,6 +361,12 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 <details>
 <summary><h2>📝 Changelog</h2></summary>
 
+### [1.3.0] - 26-02-2026
+
+**Features**
+
+- Added a Cloudinary Media Library.
+
 ### [1.2.27] - 26-02-2026
 
 **Features**

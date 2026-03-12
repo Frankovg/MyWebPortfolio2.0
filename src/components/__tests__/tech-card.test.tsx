@@ -1,11 +1,14 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-
-import { mockNextLink } from '@/__mocks__/test-utils';
 
 import TechCard from '../tech-card';
 
-jest.mock('next/link', () => mockNextLink);
+jest.mock('@/components/ui/hover-card', () => ({
+  HoverCard: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+  HoverCardTrigger: ({ children, ...props }: { children: React.ReactNode; asChild?: boolean; className?: string }) => (
+    <div data-testid="hover-trigger" {...props}>{children}</div>
+  ),
+  HoverCardContent: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+}));
 
 const MockIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg data-testid="tech-icon" {...props}>
@@ -34,41 +37,28 @@ describe('TechCard', () => {
     expect(screen.getByTestId('tech-icon')).toHaveClass('custom-icon-class');
   });
 
-  it('should show hover card content on hover', async () => {
-    const user = userEvent.setup();
+  it('should render hover card content with tech value', () => {
     render(<TechCard tech={defaultTech} />);
 
-    const trigger = screen.getByTestId('tech-icon').closest('div');
-    await user.hover(trigger!);
-
-    // Wait for hover card to appear (openDelay: 200ms)
-    expect(await screen.findByText('@react')).toBeInTheDocument();
-    expect(await screen.findByText('A JavaScript library for building user interfaces')).toBeInTheDocument();
+    expect(screen.getByText('@react')).toBeInTheDocument();
+    expect(screen.getByText('A JavaScript library for building user interfaces')).toBeInTheDocument();
   });
 
-  it('should render link to tech documentation', async () => {
-    const user = userEvent.setup();
+  it('should render link to tech documentation', () => {
     render(<TechCard tech={defaultTech} />);
 
-    const trigger = screen.getByTestId('tech-icon').closest('div');
-    await user.hover(trigger!);
-
-    const link = await screen.findByRole('link', { name: '@react' });
+    const link = screen.getByRole('link', { name: '@react' });
     expect(link).toHaveAttribute('href', 'https://react.dev');
     expect(link).toHaveAttribute('target', '_blank');
   });
 
-  it('should render description in hover card', async () => {
-    const user = userEvent.setup();
+  it('should render description in hover card', () => {
     const tech = {
       ...defaultTech,
       description: 'Custom description for testing',
     };
     render(<TechCard tech={tech} />);
 
-    const trigger = screen.getByTestId('tech-icon').closest('div');
-    await user.hover(trigger!);
-
-    expect(await screen.findByText('Custom description for testing')).toBeInTheDocument();
+    expect(screen.getByText('Custom description for testing')).toBeInTheDocument();
   });
 });

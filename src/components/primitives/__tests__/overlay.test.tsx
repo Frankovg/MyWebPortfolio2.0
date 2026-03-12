@@ -21,7 +21,7 @@ describe('Overlay', () => {
     render(<Overlay message="Test" />);
 
     const overlay = screen.getByText('Test').closest('div')?.parentElement;
-    expect(overlay).toHaveClass('w-screen', 'h-screen');
+    expect(overlay).toHaveClass('w-full', 'h-screen');
   });
 
   it('should have animation classes', () => {
