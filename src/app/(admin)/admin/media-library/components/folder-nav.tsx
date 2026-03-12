@@ -54,7 +54,7 @@ export default function FolderNav({
       </nav>
 
       {folders.length > 0 && (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-4 lg:gap-2">
           {folders.map((folder) => (
             <Button
               key={folder.path}

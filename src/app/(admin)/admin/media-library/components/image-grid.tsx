@@ -1,6 +1,9 @@
 "use client";
 
 import { ImageOff } from "lucide-react";
+import { useEffect, useState } from "react";
+
+import { Switch } from "@/components/ui/switch";
 
 import ImageCard from "./image-card";
 
@@ -12,6 +15,18 @@ type ImageGridProps = {
 };
 
 export default function ImageGrid({ resources, onDelete }: ImageGridProps) {
+  const [showButtons, setShowButtons] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia("(min-width: 1024px)");
+    const handleChange = (e: MediaQueryListEvent | MediaQueryList) => {
+      setShowButtons(!e.matches);
+    };
+    handleChange(mql);
+    mql.addEventListener("change", handleChange);
+    return () => mql.removeEventListener("change", handleChange);
+  }, []);
+
   if (resources.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-muted-foreground gap-3">
@@ -22,14 +37,30 @@ export default function ImageGrid({ resources, onDelete }: ImageGridProps) {
   }
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-      {resources.map((resource) => (
-        <ImageCard
-          key={resource.public_id}
-          resource={resource}
-          onDelete={onDelete}
+    <div className="max-lg:space-y-4">
+      <div className="lg:hidden w-full h-auto flex justify-end items-center space-x-2">
+        <Switch
+          checked={showButtons}
+          className="enabled:bg-whiteText "
+          onCheckedChange={(checked) => setShowButtons(checked)}
         />
-      ))}
+        <p
+          onClick={() => setShowButtons(!showButtons)}
+          className="text-base hover:cursor-pointer"
+        >
+          Show buttons
+        </p>
+      </div>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        {resources.map((resource) => (
+          <ImageCard
+            key={resource.public_id}
+            resource={resource}
+            onDelete={onDelete}
+            showButtons={showButtons}
+          />
+        ))}
+      </div>
     </div>
   );
 }
