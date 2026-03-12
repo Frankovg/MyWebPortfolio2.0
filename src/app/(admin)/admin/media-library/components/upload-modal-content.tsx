@@ -80,7 +80,7 @@ export default function UploadModalContent({
           {files.map((preview, i) => (
             <div key={i} className="relative aspect-square rounded-md border border-softGrey overflow-hidden">
               {preview.file.type === "application/pdf" ? (
-                <PdfCard fileName={preview.file.name} />
+                <PdfCard />
               ) : (
                 <Image
                   src={preview.previewUrl}
