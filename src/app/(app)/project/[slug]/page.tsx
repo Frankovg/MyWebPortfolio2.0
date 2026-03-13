@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
 import Section from "@/components/section";
@@ -6,6 +5,7 @@ import { getCategories } from "@/lib/server-utils-public";
 
 import MoreProjects from "./components/more-projects";
 import ProjectBanner from "./components/project-banner";
+import ProjectChartLoader from "./components/project-chart-loader";
 import ProjectMainInfo from "./components/project-main-info";
 import ProjectTechStack from "./components/project-tech-stack";
 import VideoComponent from "./components/video-component";
@@ -13,7 +13,6 @@ import Loading from "./loading";
 import { getCachedProject } from "./utils/cached-project";
 import { parseCategories } from "./utils/parse-categories";
 
-const ProjectChart = dynamic(() => import("./components/project-chart"));
 
 export async function generateMetadata({
   params,
@@ -125,7 +124,7 @@ export default async function ProjectPage({
         <ProjectMainInfo project={shortProjectInfo} />
         <div className="600:my-16 w-full">
           <div className="w-full flex flex-col max-930:space-y-8 930:flex-row items-top p-0">
-            <ProjectChart roles={project.roles} />
+            <ProjectChartLoader roles={project.roles} />
             <ProjectTechStack techStack={project.techStack} />
           </div>
         </div>
