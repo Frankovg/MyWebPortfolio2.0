@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, LazyMotion, domAnimation, m, useReducedMotion } from "framer-motion";
 import { useState } from "react";
 
 import TechCard from "@/components/tech-card";
@@ -23,8 +23,9 @@ function DesktopTechViewer() {
       className="max-sm:hidden w-full flex items-start"
     >
       <div className="w-1/2 930:w-3/5 px-12">
+        <LazyMotion features={domAnimation}>
         <AnimatePresence mode="wait" initial={false}>
-          <motion.div
+          <m.div
             key={activeTab}
             role="tabpanel"
             aria-labelledby={`tab-${activeTab}`}
@@ -41,8 +42,9 @@ function DesktopTechViewer() {
                 className="inline-block h-28 max-h-28 w-auto object-contain transition-all duration-200 ease-in-out text-white group-hover:fill-primary group-hover:text-primary group-hover:scale-[1.02]"
               />
             ))}
-          </motion.div>
+          </m.div>
         </AnimatePresence>
+        </LazyMotion>
       </div>
 
       <TabsList

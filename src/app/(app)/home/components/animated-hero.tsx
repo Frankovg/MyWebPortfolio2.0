@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useReducedMotion } from "framer-motion";
+import { LazyMotion, domAnimation, m, useReducedMotion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 
 function AnimatedHero() {
@@ -22,10 +22,11 @@ function AnimatedHero() {
   }, [titleNumber, titles]);
 
   return (
+    <LazyMotion features={domAnimation}>
     <span className="relative flex w-full justify-center overflow-hidden text-center md:pb-4 md:pt-1">
       &nbsp;
       {titles.map((title, index) => (
-        <motion.span
+        <m.span
           key={title + index}
           className="absolute font-semibold"
           initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -100 }}
@@ -43,9 +44,10 @@ function AnimatedHero() {
           }
         >
           {title}
-        </motion.span>
+        </m.span>
       ))}
     </span>
+    </LazyMotion>
   );
 }
 
