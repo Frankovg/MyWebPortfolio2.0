@@ -106,7 +106,6 @@ export default function EditFolderModal({
             value={name}
             onChange={(e) => setName(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleRename()}
-            autoFocus
             className="my-4"
           />
           <DialogFooter className="flex sm:justify-between! gap-4">
