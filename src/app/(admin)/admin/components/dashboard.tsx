@@ -6,9 +6,11 @@ import { PortfolioChart } from "./portfolio-chart";
 import { SampleAccountStatus } from "./sample-account-status";
 
 export async function Dashboard() {
-  const categories = await getCategoriesForChart();
-  const users = await getUsersAdmin();
-  const downloads = await getDownloadsContent();
+  const [categories, users, downloads] = await Promise.all([
+    getCategoriesForChart(),
+    getUsersAdmin(),
+    getDownloadsContent(),
+  ]);
 
   if (!categories || !users || !downloads) {
     throw new Error("Error fetching the dashboard.")
