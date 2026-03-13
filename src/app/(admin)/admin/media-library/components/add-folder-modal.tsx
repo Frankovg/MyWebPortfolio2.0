@@ -77,7 +77,6 @@ export default function AddFolderModal({
           value={name}
           onChange={(e) => setName(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleCreate()}
-          autoFocus
           className="my-4"
         />
         <DialogFooter className="gap-4">

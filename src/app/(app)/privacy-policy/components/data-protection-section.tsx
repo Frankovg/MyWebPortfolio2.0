@@ -22,7 +22,7 @@ export default function DataProtectionSection() {
         </p>
         <ul className="list-disc list-inside space-y-2 ml-4 text-base">
           {dataProtection.subsections.laws.items.map((item, index) => (
-            <li key={index}>{item}</li>
+            <li key={item + index}>{item}</li>
           ))}
         </ul>
       </div>
@@ -52,7 +52,7 @@ export default function DataProtectionSection() {
         </p>
         <ul className="list-disc list-inside space-y-2 ml-4 text-base">
           {dataProtection.subsections.principles.items.map((item, index) => (
-            <li key={index}>
+            <li key={item.title + index}>
               <strong>{item.title}:</strong> {item.description}
             </li>
           ))}
@@ -71,7 +71,7 @@ export default function DataProtectionSection() {
       <div className="space-y-4">
         <h3 className="text-lg font-medium">{dataProtection.subsections.legalBasis.title}</h3>
         {dataProtection.subsections.legalBasis.content.map((paragraph, index) => (
-          <p key={index} className="text-base leading-relaxed">
+          <p key={paragraph + index} className="text-base leading-relaxed">
             {paragraph}
           </p>
         ))}
@@ -81,7 +81,7 @@ export default function DataProtectionSection() {
       <div className="space-y-4">
         <h3 className="text-lg font-medium">{dataProtection.subsections.purposes.title}</h3>
         {dataProtection.subsections.purposes.content.map((paragraph, index) => (
-          <p key={index} className="text-base leading-relaxed">
+          <p key={paragraph + index} className="text-base leading-relaxed">
             {paragraph}
           </p>
         ))}
@@ -91,7 +91,7 @@ export default function DataProtectionSection() {
       <div className="space-y-4">
         <h3 className="text-lg font-medium">{dataProtection.subsections.retention.title}</h3>
         {dataProtection.subsections.retention.content.map((paragraph, index) => (
-          <p key={index} className="text-base leading-relaxed">
+          <p key={paragraph + index} className="text-base leading-relaxed">
             {paragraph}
           </p>
         ))}
@@ -101,7 +101,7 @@ export default function DataProtectionSection() {
       <div className="space-y-4">
         <h3 className="text-lg font-medium">{dataProtection.subsections.recipients.title}</h3>
         {dataProtection.subsections.recipients.content.map((paragraph, index) => (
-          <p key={index} className="text-base leading-relaxed">
+          <p key={paragraph + index} className="text-base leading-relaxed">
             {paragraph}
           </p>
         ))}
@@ -119,7 +119,7 @@ export default function DataProtectionSection() {
       <div className="space-y-4">
         <h3 className="text-lg font-medium">{dataProtection.subsections.security.title}</h3>
         {dataProtection.subsections.security.content.map((paragraph, index) => (
-          <p key={index} className="text-base leading-relaxed">
+          <p key={paragraph + index} className="text-base leading-relaxed">
             {paragraph}
           </p>
         ))}
@@ -129,7 +129,7 @@ export default function DataProtectionSection() {
       <div className="space-y-4">
         <h3 className="text-lg font-medium">{dataProtection.subsections.botProtection.title}</h3>
         {dataProtection.subsections.botProtection.content.map((paragraph, index) => (
-          <p key={index} className="text-base leading-relaxed">
+          <p key={paragraph + index} className="text-base leading-relaxed">
             {paragraph}
           </p>
         ))}
@@ -143,7 +143,7 @@ export default function DataProtectionSection() {
         </p>
         <ul className="list-disc list-inside space-y-2 ml-4 text-base">
           {dataProtection.subsections.rights.items.map((item, index) => (
-            <li key={index}>
+            <li key={item.title + index}>
               <strong>{item.title}:</strong> {item.description}
             </li>
           ))}
@@ -154,7 +154,7 @@ export default function DataProtectionSection() {
         </p>
         <ul className="list-disc list-inside space-y-2 ml-4 text-base">
           {dataProtection.subsections.rights.exerciseRights.requirements.map((requirement, index) => (
-            <li key={index}>{requirement}</li>
+            <li key={requirement + index}>{requirement}</li>
           ))}
         </ul>
 

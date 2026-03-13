@@ -11,7 +11,7 @@ export default function CookiesPolicyContent() {
           {subsections.whatAreCookies.title}
         </h3>
         {subsections.whatAreCookies.content.map((paragraph, index) => (
-          <p key={index} className="text-base leading-relaxed">
+          <p key={paragraph + index} className="text-base leading-relaxed">
             {paragraph}
           </p>
         ))}
@@ -27,7 +27,7 @@ export default function CookiesPolicyContent() {
         </p>
         <ul className="list-disc list-inside space-y-2 ml-4 text-base">
           {subsections.howWeUseCookies.items.map((item, index) => (
-            <li key={index}>{item}</li>
+            <li key={item + index}>{item}</li>
           ))}
         </ul>
         <p className="text-base leading-relaxed font-medium">

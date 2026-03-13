@@ -2,7 +2,7 @@
 
 import clsx from "clsx"
 import Image, { ImageProps } from "next/image"
-import { useEffect, useState } from "react"
+import { useRef, useState } from "react"
 
 interface ImageWithFallbackProps extends Omit<ImageProps, 'onLoad'> {
   fallbackSrc: string
@@ -15,10 +15,13 @@ const ImageWithFallback = (props: ImageWithFallbackProps) => {
   const [imgSrc, setImgSrc] = useState(src)
   const [isLoading, setIsLoading] = useState(true)
 
-  useEffect(() => {
+  // Reset state during render when src changes (avoids extra re-render from useEffect)
+  const prevSrc = useRef(src)
+  if (prevSrc.current !== src) {
+    prevSrc.current = src
     setImgSrc(src)
     setIsLoading(true)
-  }, [src])
+  }
 
   const handleLoad = () => {
     setIsLoading(false)

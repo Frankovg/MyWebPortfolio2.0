@@ -1,10 +1,10 @@
 import { Analytics } from "@vercel/analytics/next"
 import { Metadata } from "next";
 import { Readex_Pro as FontSans } from "next/font/google";
-import NextNProgress from "nextjs-toploader";
 import { Toaster } from "sonner";
 
 import { DownloadsInitializer } from "@/components/downloads-initializer";
+import { ProgressBar } from "@/components/progress-bar";
 import { getDownloadsContent } from "@/lib/server-utils-admin";
 import { cn } from "@/lib/utils";
 
@@ -82,13 +82,7 @@ export default async function RootLayout({
           fontSans.variable
         )}
       >
-        <NextNProgress
-          color="#e453bc"
-          initialPosition={0.2}
-          crawlSpeed={300}
-          showSpinner={false}
-          height={4}
-        />
+        <ProgressBar />
         <div className="absolute inset-0 bg-linear-to-br to-darkPrimary via-background from-darkGrey animate-gradient bg-size-[400%_400%] z-0" />
         <div className="relative flex flex-col min-h-screen w-full z-10">
           <DownloadsInitializer downloads={downloads}>

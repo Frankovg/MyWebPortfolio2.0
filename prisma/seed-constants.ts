@@ -36,12 +36,3 @@ export const TECH_STACK_DATA = [
   { name: "SolidWorks", value: "solidworks" },
   { name: "V-Ray", value: "vray" },
 ];
-
-const getDefaultTechStack = () => {
-  return TECH_STACK_DATA.map((tech) => ({
-    label: tech.name,
-    value: tech.value,
-  }));
-};
-
-export const DEFAULT_TECH_STACK = getDefaultTechStack();

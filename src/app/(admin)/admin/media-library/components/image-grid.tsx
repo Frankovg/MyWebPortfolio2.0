@@ -44,12 +44,13 @@ export default function ImageGrid({ resources, onDelete }: ImageGridProps) {
           className="enabled:bg-whiteText "
           onCheckedChange={(checked) => setShowButtons(checked)}
         />
-        <p
+        <button
+          type="button"
           onClick={() => setShowButtons(!showButtons)}
           className="text-base hover:cursor-pointer"
         >
           Show buttons
-        </p>
+        </button>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {resources.map((resource) => (

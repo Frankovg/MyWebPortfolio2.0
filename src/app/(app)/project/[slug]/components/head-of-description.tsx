@@ -13,7 +13,7 @@ function HeadOfDescription({ data }: HeadOfDescriptionProps) {
         if (item.url) {
           return (
             <a
-              key={index}
+              key={item.url}
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
@@ -26,7 +26,7 @@ function HeadOfDescription({ data }: HeadOfDescriptionProps) {
         }
 
         return (
-          <p key={index}>
+          <p key={`${item.name}-${index}`}>
             {item.type} <span className="font-bold">{item.name}</span>
           </p>
         )

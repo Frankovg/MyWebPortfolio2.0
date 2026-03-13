@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import H4 from "@/components/primitives/h4";
 import Section from "@/components/section";
 
@@ -7,7 +9,9 @@ function Contact() {
   return (
     <Section id="contact" className="pt-24">
       <H4>Get in Touch</H4>
-      <ContactForm />
+      <Suspense>
+        <ContactForm />
+      </Suspense>
     </Section>
   );
 }

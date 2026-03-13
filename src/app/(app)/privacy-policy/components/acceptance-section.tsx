@@ -8,7 +8,7 @@ export default function AcceptanceSection() {
       <h2 className="text-xl font-semibold">{acceptance.title}</h2>
       {acceptance.content.map((paragraph, index) => (
         <p
-          key={index}
+          key={paragraph + index}
           className={`text-base leading-relaxed ${index === acceptance.content.length - 1 ? 'text-gray-400' : ''
             }`}
         >
