@@ -80,15 +80,6 @@ export const getProjectBySlug = (slug: Project["slug"]) =>
     { revalidate: CACHE_DURATION.projects, tags: [CACHE_TAGS.projects] }
   )();
 
-export async function getUserByEmail(email: User["email"]) {
-  const user = await prisma.user.findUnique({
-    where: {
-      email,
-    },
-  });
-  return user;
-}
-
 export async function getUserById(id: User["id"]) {
   const user = await prisma.user.findUnique({
     where: {
