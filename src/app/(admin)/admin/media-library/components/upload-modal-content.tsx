@@ -86,6 +86,7 @@ export default function UploadModalContent({
                   src={preview.previewUrl}
                   alt={preview.file.name}
                   fill
+                  sizes="33vw"
                   className="object-cover"
                 />
               )}
