@@ -16,11 +16,7 @@ function AnimatedHero() {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if (titleNumber === titles.length - 1) {
-        setTitleNumber(0);
-      } else {
-        setTitleNumber(titleNumber + 1);
-      }
+      setTitleNumber(prev => prev === titles.length - 1 ? 0 : prev + 1);
     }, 2000);
     return () => clearTimeout(timeoutId);
   }, [titleNumber, titles]);
