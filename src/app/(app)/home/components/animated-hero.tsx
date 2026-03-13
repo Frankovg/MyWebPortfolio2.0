@@ -1,9 +1,10 @@
 'use client'
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 
 function AnimatedHero() {
+  const shouldReduceMotion = useReducedMotion();
   const [titleNumber, setTitleNumber] = useState(0);
   const titles = useMemo(
     () => [
@@ -31,8 +32,8 @@ function AnimatedHero() {
         <motion.span
           key={title + index}
           className="absolute font-semibold"
-          initial={{ opacity: 0, y: -100 }}
-          transition={{ type: "spring", stiffness: 50 }}
+          initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -100 }}
+          transition={shouldReduceMotion ? { duration: 0.15 } : { type: "spring", stiffness: 50 }}
           animate={
             titleNumber === index
               ? {
@@ -40,7 +41,7 @@ function AnimatedHero() {
                 opacity: 1,
               }
               : {
-                y: titleNumber > index ? -150 : 150,
+                y: shouldReduceMotion ? 0 : (titleNumber > index ? -150 : 150),
                 opacity: 0,
               }
           }

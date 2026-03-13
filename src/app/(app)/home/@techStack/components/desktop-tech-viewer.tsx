@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
 
 import TechCard from "@/components/tech-card";
@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import { CATEGORIES } from "../utils/client-constants";
 
 function DesktopTechViewer() {
+  const shouldReduceMotion = useReducedMotion();
   const [activeTab, setActiveTab] = useState("basics");
 
   const activeCategory = CATEGORIES.find((cat) => cat.value === activeTab);
@@ -27,10 +28,10 @@ function DesktopTechViewer() {
             key={activeTab}
             role="tabpanel"
             aria-labelledby={`tab-${activeTab}`}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 8 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
+            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 8 }}
+            animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 8 }}
+            transition={shouldReduceMotion ? { duration: 0.15 } : { duration: 0.4, ease: "easeInOut" }}
             className="grid grid-cols-3 sm:max-799:grid-cols-2 800:max-929:grid-cols-3 930:grid-cols-4 grid-rows-3 gap-8"
           >
             {activeCategory?.techs.map((tech) => (
