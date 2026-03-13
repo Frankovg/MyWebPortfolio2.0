@@ -31,7 +31,7 @@ type ChartContextProps = {
   config: ChartConfig
 }
 
-export type CustomTooltipProps = TooltipContentProps<ValueType, NameType> & {
+type CustomTooltipProps = TooltipContentProps<ValueType, NameType> & {
   className?: string
   hideLabel?: boolean
   hideIndicator?: boolean
@@ -53,7 +53,7 @@ export type CustomTooltipProps = TooltipContentProps<ValueType, NameType> & {
   color?: string
 }
 
-export type ChartLegendContentProps = {
+type ChartLegendContentProps = {
   className?: string
   hideIcon?: boolean
   verticalAlign?: LegendProps["verticalAlign"]
