@@ -90,9 +90,12 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
     };
   }, [handleKeyDown]);
 
-  useEffect(() => {
+  // Reset dialog loading state during render when slide changes (avoids extra re-render from useEffect)
+  const prevCurrent = useRef(current);
+  if (prevCurrent.current !== current) {
+    prevCurrent.current = current;
     setDialogImageLoading(true);
-  }, [current]);
+  }
 
   const handleClick = (index: number) => {
     setCurrent(index);
