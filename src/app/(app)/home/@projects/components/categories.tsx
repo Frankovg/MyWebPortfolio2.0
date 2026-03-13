@@ -12,23 +12,20 @@ import ProjectTabsList from "./project-tabs-list";
 function Categories({ categories }: CategoriesProps) {
   const [currentTab, setCurrentTab] = useState("web-development");
   const [nextTab, setNextTab] = useState<string | null>(null);
-  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
-    if (isTransitioning) {
-      const timer = setTimeout(() => {
-        setCurrentTab(nextTab!);
-        setNextTab(null);
-        setIsTransitioning(false);
-      }, 400);
+    if (!nextTab) return;
 
-      return () => clearTimeout(timer);
-    }
-  }, [isTransitioning, nextTab]);
+    const timer = setTimeout(() => {
+      setCurrentTab(nextTab);
+      setNextTab(null);
+    }, 400);
+
+    return () => clearTimeout(timer);
+  }, [nextTab]);
 
   const handleTabChange = (value: string) => {
     setNextTab(value);
-    setIsTransitioning(true);
   };
 
   return (
