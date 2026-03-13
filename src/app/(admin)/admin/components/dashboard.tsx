@@ -1,9 +1,12 @@
+import dynamic from "next/dynamic";
+
 import { getDownloadsContent, getUsersAdmin } from "@/lib/server-utils-admin";
 import { getCategoriesForChart } from "@/lib/server-utils-public";
 
 import { DownloadFiles } from "./download-files";
-import { PortfolioChart } from "./portfolio-chart";
 import { SampleAccountStatus } from "./sample-account-status";
+
+const PortfolioChart = dynamic(() => import("./portfolio-chart").then(mod => ({ default: mod.PortfolioChart })));
 
 export async function Dashboard() {
   const [categories, users, downloads] = await Promise.all([

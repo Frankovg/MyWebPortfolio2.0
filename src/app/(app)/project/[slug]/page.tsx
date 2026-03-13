@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
 import Section from "@/components/section";
@@ -5,13 +6,14 @@ import { getCategories } from "@/lib/server-utils-public";
 
 import MoreProjects from "./components/more-projects";
 import ProjectBanner from "./components/project-banner";
-import ProjectChart from "./components/project-chart";
 import ProjectMainInfo from "./components/project-main-info";
 import ProjectTechStack from "./components/project-tech-stack";
 import VideoComponent from "./components/video-component";
 import Loading from "./loading";
 import { getCachedProject } from "./utils/cached-project";
 import { parseCategories } from "./utils/parse-categories";
+
+const ProjectChart = dynamic(() => import("./components/project-chart"));
 
 export async function generateMetadata({
   params,
