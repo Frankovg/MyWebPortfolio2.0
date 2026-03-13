@@ -103,7 +103,7 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
   const mainImage = useMemo(
     () =>
       images.map((image, index) => (
-        <CarouselItem key={index}>
+        <CarouselItem key={image.id}>
           <ImageWithFallback
             className="object-cover md:object-contain bg-softGrey rounded-lg size-full max-h-[80vh]"
             src={image.imageUrl}
@@ -125,7 +125,7 @@ function ProjectCarousel({ images }: ProjectCarouselProps) {
     () =>
       images.map((image, index) => (
         <CarouselItem
-          key={index}
+          key={image.id}
           className="basis-1/4 hover:cursor-pointer"
           onClick={() => handleClick(index)}
         >

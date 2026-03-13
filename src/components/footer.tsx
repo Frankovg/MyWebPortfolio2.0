@@ -27,8 +27,8 @@ function Footer() {
                 Sections
               </h6>
             </li>
-            {FOOTER_LINKS.sections.map((section, index) => (
-              <li className="max-sm:text-center" key={index}>
+            {FOOTER_LINKS.sections.map((section) => (
+              <li className="max-sm:text-center" key={section.href}>
                 <Link
                   href={section.href || "#"}
                   className={linkStyles}
@@ -58,7 +58,7 @@ function Footer() {
               const linkText = item.name || ""
               const linkHref = item.href || "#"
               return (
-                <li className="max-sm:text-center" key={index}>
+                <li className="max-sm:text-center" key={item.href ?? `${item.name}-${index}`}>
                   {item.name.includes('LinkedIn') ? (
                     <a href={linkHref} className={linkStyles} >{linkText}</a>
                   ) : (
@@ -75,8 +75,8 @@ function Footer() {
                 Legals
               </h6>
             </li>
-            {FOOTER_LINKS.legals.map((item, index) => (
-              <li className="max-sm:text-center" key={index}>
+            {FOOTER_LINKS.legals.map((item) => (
+              <li className="max-sm:text-center" key={item.href}>
                 <Link
                   href={item.href || "#"}
                   className={linkStyles}

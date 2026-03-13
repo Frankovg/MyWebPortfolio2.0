@@ -78,7 +78,10 @@ export default function UploadModalContent({
       {files.length > 0 && (
         <div className="grid grid-cols-3 gap-2 max-h-60 overflow-y-auto">
           {files.map((preview, i) => (
-            <div key={i} className="relative aspect-square rounded-md border border-softGrey overflow-hidden">
+            <div
+              key={preview.previewUrl}
+              className="relative aspect-square rounded-md border border-softGrey overflow-hidden"
+            >
               {preview.file.type === "application/pdf" ? (
                 <PdfCard />
               ) : (

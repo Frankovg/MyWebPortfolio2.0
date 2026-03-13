@@ -29,7 +29,7 @@ function AnimatedHero() {
       &nbsp;
       {titles.map((title, index) => (
         <motion.span
-          key={index}
+          key={title + index}
           className="absolute font-semibold"
           initial={{ opacity: 0, y: -100 }}
           transition={{ type: "spring", stiffness: 50 }}

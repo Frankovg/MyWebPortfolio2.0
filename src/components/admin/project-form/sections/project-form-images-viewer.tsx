@@ -4,16 +4,13 @@ import { isValidImageUrl } from "@/lib/validations";
 export const ProjectFormImagesViewer = ({
   imageUrl,
   imageAlt,
-  index,
 }: {
   imageUrl?: string;
   imageAlt?: string;
-  index: number;
 }) => {
   if (!isValidImageUrl(imageUrl)) {
     return (
       <div
-        key={index}
         className="aspect-video max-sm:w-full sm:min-w-42 border border-darkPrimary flex items-center justify-center"
       />
     );

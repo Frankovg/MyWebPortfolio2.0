@@ -135,10 +135,9 @@ export function ImagesSection() {
         {hasGallery ? (
           watch("gallery")?.map((image, index) => (
             <ProjectFormImagesViewer
-              key={`${image.imageUrl}-${index}`}
+              key={galleryFields[index]?.id ?? image.imageUrl}
               imageUrl={image.imageUrl}
               imageAlt={image.alt}
-              index={index}
             />
           ))
         ) : (
