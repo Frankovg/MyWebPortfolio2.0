@@ -119,6 +119,7 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
 
   return (
     <style
+      // eslint-disable-next-line react/no-danger -- CSS variables from internal config, no user input
       dangerouslySetInnerHTML={{
         __html: Object.entries(THEMES)
           .map(
