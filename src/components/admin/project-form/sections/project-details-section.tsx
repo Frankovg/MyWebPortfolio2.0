@@ -24,7 +24,7 @@ export function ProjectDetailsSection() {
 
   return (
     <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
-      <h2 className="text-xl font-bold">Project details</h2>
+      <h2 className="text-xl font-bold">Project Details</h2>
       <div className="w-full flex flex-col lg:flex-row gap-6">
         <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
           <Controller

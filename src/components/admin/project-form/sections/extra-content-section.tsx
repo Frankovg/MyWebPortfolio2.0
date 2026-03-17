@@ -15,7 +15,7 @@ export function ExtraContentSection() {
 
   return (
     <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
-      <h2 className="text-xl font-bold">Extra content</h2>
+      <h2 className="text-xl font-bold">Extra Content</h2>
       <div className="relative flex flex-col gap-2">
         <Controller
           name="repository"
