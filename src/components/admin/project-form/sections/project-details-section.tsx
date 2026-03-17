@@ -60,7 +60,7 @@ export function ProjectDetailsSection() {
                   htmlFor="image"
                   label={
                     <>
-                      Hero image url
+                      Hero Image Url
                       {hasImage && (
                         <LabelLink
                           href={getValues("image") || ""}
@@ -95,7 +95,7 @@ export function ProjectDetailsSection() {
             control={control}
             render={({ field }) => (
               <>
-                <RequiredInputLabel htmlFor="slug" label="Unique identifier" />
+                <RequiredInputLabel htmlFor="slug" label="Unique Identifier" />
                 <Input
                   id="slug"
                   {...field}
@@ -164,7 +164,7 @@ export function ProjectDetailsSection() {
               <>
                 <RequiredInputLabel
                   htmlFor="shortDescription"
-                  label="Short description"
+                  label="Short Description"
                 />
                 <Textarea
                   maxLength={200}

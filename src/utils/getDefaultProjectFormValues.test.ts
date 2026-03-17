@@ -71,7 +71,7 @@ describe("getDefaultProjectFormValues", () => {
       const project = createMockProjectFull({
         title: "Test Project",
         slug: "test-project",
-        shortDescription: "Short description",
+        shortDescription: "Short Description",
         description: "Full description",
         image: "https://example.com/image.jpg",
       });
@@ -79,7 +79,7 @@ describe("getDefaultProjectFormValues", () => {
 
       expect(result.title).toBe("Test Project");
       expect(result.slug).toBe("test-project");
-      expect(result.shortDescription).toBe("Short description");
+      expect(result.shortDescription).toBe("Short Description");
       expect(result.description).toBe("Full description");
       expect(result.image).toBe("https://example.com/image.jpg");
     });

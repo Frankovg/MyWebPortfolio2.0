@@ -171,7 +171,7 @@ export function FileSection() {
                   htmlFor="imageUrl"
                   label={
                     <>
-                      Hero image url
+                      Hero Image Url
                       {hasImage && (
                         <LabelLink
                           href={getValues("imageUrl") || ""}
