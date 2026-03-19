@@ -2,6 +2,7 @@
 
 import { Controller, useWatch } from "react-hook-form";
 
+import MediaPickerModal from "@/components/admin/media-picker/media-picker-modal";
 import FormFieldError from "@/components/primitives/form-field-error";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -15,7 +16,7 @@ import { useProjectFormStore } from "@/stores/use-project-form-store";
 
 import { LabelLink } from "../../label-link";
 
-import MediaPickerModal from "@/components/admin/media-picker/media-picker-modal";
+
 
 export function ProjectDetailsSection() {
   const { control, register, getValues, errors } = useProjectFormStore();
