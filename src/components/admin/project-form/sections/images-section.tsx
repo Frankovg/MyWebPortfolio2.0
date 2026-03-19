@@ -3,9 +3,11 @@
 import { PlusIcon } from "lucide-react";
 import { Controller, useFieldArray, useWatch } from "react-hook-form";
 
+import MediaPickerModal from "@/components/admin/media-picker/media-picker-modal";
 import ButtonMinimal from "@/components/primitives/button-minimal";
 import FormFieldError from "@/components/primitives/form-field-error";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { IMAGE_PLACEHOLDER } from "@/lib/constants";
@@ -13,7 +15,6 @@ import { useProjectFormStore } from "@/stores/use-project-form-store";
 
 import { ProjectFormImagesViewer } from "./project-form-images-viewer";
 
-import MediaPickerModal from "@/components/admin/media-picker/media-picker-modal";
 
 export function ImagesSection() {
   const { control, errors } = useProjectFormStore();
@@ -34,9 +35,30 @@ export function ImagesSection() {
   const hasGallery =
     galleryValue?.length && galleryValue?.[0].imageUrl !== "";
 
+  const handleSelectMultipleImages = (urls: string[]) => {
+    const lastIndex = galleryFields.length - 1;
+    if (lastIndex >= 0 && !galleryValue?.[lastIndex]?.imageUrl) {
+      galleryRemove(lastIndex);
+    }
+    urls.forEach((url) =>
+      galleryAppend({ description: "", imageUrl: url, alt: "" })
+    );
+  }
+
   return (
     <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
-      <h2 className="text-xl font-bold">Images</h2>
+      <div className="w-full flex items-center justify-between">
+        <h2 className="text-xl font-bold">Images</h2>
+        <MediaPickerModal
+          multiple
+          onSelectMultiple={handleSelectMultipleImages}
+          trigger={
+            <Button variant="ghost" className="p-0 hover:underline">
+              + Add Images
+            </Button>
+          }
+        />
+      </div>
       <ul className="w-full space-y-12 lg:space-y-6">
         {galleryFields.map((field, index) => (
           <li

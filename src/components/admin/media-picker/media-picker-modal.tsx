@@ -22,13 +22,21 @@ import { MediaSearchInput } from "./media-search-input";
 import PickerImageGrid from "./picker-image-grid";
 
 import type { MediaResource } from "@/app/(admin)/admin/media-library/types/types";
+import type { ReactNode } from "react";
+
 
 type MediaPickerModalProps = {
-  onSelect: (url: string) => void;
+  onSelect?: (url: string) => void;
+  onSelectMultiple?: (urls: string[]) => void;
+  multiple?: boolean;
+  trigger?: ReactNode;
 };
 
 export default function MediaPickerModal({
   onSelect,
+  onSelectMultiple,
+  multiple = false,
+  trigger,
 }: MediaPickerModalProps) {
   const [open, setOpen] = useState(false);
   const [currentFolder, setCurrentFolder] = useState("");
@@ -67,14 +75,29 @@ export default function MediaPickerModal({
 
   const handleToggle = (resource: MediaResource) => {
     const url = resource.secure_url;
-    setSelected((prev) => (prev.has(url) ? new Set() : new Set([url])));
+
+    if (multiple) {
+      setSelected((prev) => {
+        const next = new Set(prev);
+        if (next.has(url)) next.delete(url);
+        else next.add(url);
+        return next;
+      });
+    } else {
+      setSelected((prev) => (prev.has(url) ? new Set() : new Set([url])));
+    }
   };
 
   const handleConfirm = () => {
-    const [firstUrl] = selected;
-    if (!firstUrl) return;
+    if (selected.size === 0) return;
 
-    onSelect(firstUrl);
+    if (multiple && onSelectMultiple) {
+      onSelectMultiple([...selected]);
+    } else {
+      const [firstUrl] = selected;
+      if (firstUrl) onSelect?.(firstUrl);
+    }
+
     setOpen(false);
     setSelected(new Set());
   };
@@ -90,15 +113,17 @@ export default function MediaPickerModal({
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
-        <Button
-          type="button"
-          variant="ghost"
-          size="icon"
-          title="Browse media library"
-          aria-label="Browse media library"
-        >
-          <ImagePlus className="size-4" />
-        </Button>
+        {trigger ?? (
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            title="Browse media library"
+            aria-label="Browse media library"
+          >
+            <ImagePlus className="size-4" />
+          </Button>
+        )}
       </DialogTrigger>
 
       <DialogContent className="max-w-4xl h-[80vh] flex flex-col overflow-hidden">
@@ -149,7 +174,9 @@ export default function MediaPickerModal({
             disabled={selected.size === 0}
             className="w-24 max-sm:w-full"
           >
-            Select
+            {multiple && selected.size > 0
+              ? `Select (${selected.size})`
+              : "Select"}
           </Button>
         </DialogFooter>
       </DialogContent>
