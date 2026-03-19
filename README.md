@@ -361,11 +361,12 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 <details>
 <summary><h2>📝 Changelog</h2></summary>
 
-### [1.3.1] - 26-02-2026
+### [1.3.2] - 19-03-2026
 
 **Features**
 
 - Added a Cloudinary Media Library.
+- Added Media Library to the portfolio form.
 
 **Fixes**
 
