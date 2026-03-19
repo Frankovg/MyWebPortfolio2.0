@@ -5,9 +5,12 @@ import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
+import PdfCard from "../pdf-card";
+
 import { ImageCardName } from "./image-card-name";
 
-import type { MediaResource } from "@/app/(admin)/admin/media-library/types/types";
+import type { MediaResource } from "@/lib/types";
+
 
 type PickerImageCardProps = {
   resource: MediaResource;
@@ -33,13 +36,17 @@ export default function PickerImageCard({
       )}
     >
       <div className="relative aspect-square">
-        <Image
-          src={resource.secure_url}
-          alt={displayName}
-          fill
-          className="object-cover"
-          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-        />
+        {resource.format === "pdf" ? (
+          <PdfCard />
+        ) : (
+          <Image
+            src={resource.secure_url}
+            alt={displayName}
+            fill
+            className="object-cover"
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          />
+        )}
 
         <div
           className={cn(

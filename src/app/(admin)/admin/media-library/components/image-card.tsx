@@ -8,12 +8,13 @@ import { toast } from "sonner";
 
 import DeleteModal from "@/components/admin/delete-modal";
 import { ImageCardName } from "@/components/admin/media-picker/image-card-name";
+import PdfCard from "@/components/admin/pdf-card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-import PdfCard from "./pdf-card";
+import type { MediaResource } from "@/lib/types";
 
-import type { MediaResource } from "../types/types";
+
 
 type ImageCardProps = {
   resource: MediaResource;

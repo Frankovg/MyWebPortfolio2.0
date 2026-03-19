@@ -83,7 +83,7 @@ export function ProjectDetailsSection() {
                     aria-invalid={!!errors.image}
                     aria-describedby={errors.image ? "image-error" : undefined}
                   />
-                  <div className="absolute right-1 top-1/2 -translate-y-1/2">
+                  <div className="absolute right-1 top-1/2 -translate-y-1/2 bg-background">
                     <MediaPickerModal onSelect={(url) => field.onChange(url)} />
                   </div>
                 </div>

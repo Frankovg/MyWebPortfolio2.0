@@ -3,7 +3,8 @@
 import { NoImages } from "./no-images";
 import PickerImageCard from "./picker-image-card";
 
-import type { MediaResource } from "@/app/(admin)/admin/media-library/types/types";
+import type { MediaResource } from "@/lib/types";
+
 
 type PickerImageGridProps = {
   resources: MediaResource[];

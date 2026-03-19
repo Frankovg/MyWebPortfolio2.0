@@ -2,10 +2,11 @@ import { X } from "lucide-react";
 import Image from "next/image";
 import { Dispatch, RefObject, SetStateAction } from "react";
 
+import PdfCard from "@/components/admin/pdf-card";
+
 import { MAX_FILE_SIZE } from "../constants/constants";
 import { FilePreview } from "../types/types";
 
-import PdfCard from "./pdf-card";
 
 type UploadModalContentProps = {
   setFiles: Dispatch<SetStateAction<FilePreview[]>>

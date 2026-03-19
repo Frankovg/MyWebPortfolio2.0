@@ -1,6 +1,6 @@
 "use client";
 
-import { ImagePlus } from "lucide-react";
+import { FilePlus, ImagePlus } from "lucide-react";
 import { useState } from "react";
 
 import FolderNav from "@/components/admin/media-picker/folder-nav";
@@ -21,15 +21,18 @@ import { showErrorMessage } from "@/utils/showErrorMessage";
 import { MediaSearchInput } from "./media-search-input";
 import PickerImageGrid from "./picker-image-grid";
 
-import type { MediaResource } from "@/app/(admin)/admin/media-library/types/types";
+import type { MediaResource } from "@/lib/types";
 import type { ReactNode } from "react";
 
+
+type FileFilter = "images" | "pdf";
 
 type MediaPickerModalProps = {
   onSelect?: (url: string) => void;
   onSelectMultiple?: (urls: string[]) => void;
   multiple?: boolean;
   trigger?: ReactNode;
+  fileFilter?: FileFilter;
 };
 
 export default function MediaPickerModal({
@@ -37,6 +40,7 @@ export default function MediaPickerModal({
   onSelectMultiple,
   multiple = false,
   trigger,
+  fileFilter = "images",
 }: MediaPickerModalProps) {
   const [open, setOpen] = useState(false);
   const [currentFolder, setCurrentFolder] = useState("");
@@ -107,8 +111,10 @@ export default function MediaPickerModal({
     setSelected(new Set());
   };
 
-  const imageResources =
-    data?.resources.filter((r) => r.format !== "pdf") ?? [];
+  const filteredResources =
+    data?.resources.filter((r) =>
+      fileFilter === "pdf" ? r.format === "pdf" : r.format !== "pdf"
+    ) ?? [];
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
@@ -121,7 +127,11 @@ export default function MediaPickerModal({
             title="Browse media library"
             aria-label="Browse media library"
           >
-            <ImagePlus className="size-4" />
+            {fileFilter === "pdf" ? (
+              <FilePlus className="size-4" />
+            ) : (
+              <ImagePlus className="size-4" />
+            )}
           </Button>
         )}
       </DialogTrigger>
@@ -150,7 +160,7 @@ export default function MediaPickerModal({
                 onNavigate={handleNavigate}
               />
               <PickerImageGrid
-                resources={imageResources}
+                resources={filteredResources}
                 selectedUrls={selected}
                 onToggle={handleToggle}
               />

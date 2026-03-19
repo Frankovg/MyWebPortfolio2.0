@@ -84,7 +84,7 @@ export function ImagesSection() {
                         aria-describedby={errors.gallery?.[index]?.imageUrl ? `gallery-${index}-imageUrl-error` : undefined}
                         {...field}
                       />
-                      <div className="absolute right-1 top-1/2 -translate-y-1/2">
+                      <div className="absolute right-1 top-1/2 -translate-y-1/2 bg-background">
                         <MediaPickerModal onSelect={(url) => field.onChange(url)} />
                       </div>
                     </div>

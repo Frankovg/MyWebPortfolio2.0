@@ -7,7 +7,8 @@ import { Switch } from "@/components/ui/switch";
 
 import ImageCard from "./image-card";
 
-import type { MediaResource } from "../types/types";
+import type { MediaResource } from "@/lib/types";
+
 
 type ImageGridProps = {
   resources: MediaResource[];

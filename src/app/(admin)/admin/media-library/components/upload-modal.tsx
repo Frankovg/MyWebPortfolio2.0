@@ -21,7 +21,8 @@ import { showErrorMessage } from "@/utils/showErrorMessage";
 
 import UploadModalContent from "./upload-modal-content";
 
-import type { FilePreview, MediaResource } from "../types/types";
+import type { FilePreview } from "../types/types";
+import type { MediaResource } from "@/lib/types";
 
 type UploadDialogProps = {
   currentFolder: string;
