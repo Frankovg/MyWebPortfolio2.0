@@ -35,6 +35,9 @@ type MediaPickerModalProps = {
   fileFilter?: FileFilter;
 };
 
+//TODO: Mobile responsive
+//TODO: Check security for non admin users
+
 export default function MediaPickerModal({
   onSelect,
   onSelectMultiple,
