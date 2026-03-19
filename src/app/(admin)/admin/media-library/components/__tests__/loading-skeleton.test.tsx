@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import { LoadingSkeleton } from '../loading-skeleton';
+import { LoadingSkeleton } from '../../../../../../components/skeletons/media-library-skeleton';
 
 describe('LoadingSkeleton', () => {
   it('should render breadcrumb skeleton', () => {

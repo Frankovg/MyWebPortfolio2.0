@@ -100,6 +100,7 @@ export default function UploadModal({
               : "Upload to root folder"}
           </DialogDescription>
         </DialogHeader>
+
         <UploadModalContent
           files={files}
           inputRef={inputRef}
@@ -107,6 +108,7 @@ export default function UploadModal({
           setSizeError={setSizeError}
           sizeError={sizeError ?? undefined}
         />
+
         <DialogFooter className="gap-4">
           <Button
             variant="secondary"

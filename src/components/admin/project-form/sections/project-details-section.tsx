@@ -1,6 +1,6 @@
 "use client";
 
-import { Controller } from "react-hook-form";
+import { Controller, useWatch } from "react-hook-form";
 
 import FormFieldError from "@/components/primitives/form-field-error";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
@@ -15,12 +15,15 @@ import { useProjectFormStore } from "@/stores/use-project-form-store";
 
 import { LabelLink } from "../../label-link";
 
+import MediaPickerModal from "@/components/admin/media-picker/media-picker-modal";
+
 export function ProjectDetailsSection() {
-  const { control, register, watch, getValues, errors } = useProjectFormStore();
+  const { control, register, getValues, errors } = useProjectFormStore();
 
-  if (!control || !register || !watch || !getValues) return null;
+  if (!control || !register || !getValues) return null;
 
-  const hasImage = isValidImageUrl(watch("image"));
+  const imageValue = useWatch({ control, name: "image" });
+  const hasImage = isValidImageUrl(imageValue);
 
   return (
     <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
@@ -70,13 +73,19 @@ export function ProjectDetailsSection() {
                     </>
                   }
                 />
-                <Input
-                  id="image"
-                  placeholder={IMAGE_PLACEHOLDER}
-                  {...field}
-                  aria-invalid={!!errors.image}
-                  aria-describedby={errors.image ? "image-error" : undefined}
-                />
+                <div className="relative">
+                  <Input
+                    id="image"
+                    placeholder={IMAGE_PLACEHOLDER}
+                    className="pr-10"
+                    {...field}
+                    aria-invalid={!!errors.image}
+                    aria-describedby={errors.image ? "image-error" : undefined}
+                  />
+                  <div className="absolute right-1 top-1/2 -translate-y-1/2">
+                    <MediaPickerModal onSelect={(url) => field.onChange(url)} />
+                  </div>
+                </div>
                 <FormFieldError
                   id="image-error"
                   message={errors.image?.message}

@@ -1,3 +1,7 @@
+import type { MediaFolder } from "@/lib/types";
+
+export type { MediaFolder };
+
 export type MediaResource = {
   public_id: string;
   secure_url: string;
@@ -7,11 +11,6 @@ export type MediaResource = {
   bytes: number;
   created_at: string;
   resource_type: string;
-};
-
-export type MediaFolder = {
-  name: string;
-  path: string;
 };
 
 export type MediaLibraryData = {

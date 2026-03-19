@@ -1,8 +1,8 @@
 "use client";
 
-import { ImageOff } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import { NoImages } from "@/components/admin/media-picker/no-images";
 import { Switch } from "@/components/ui/switch";
 
 import ImageCard from "./image-card";
@@ -29,10 +29,7 @@ export default function ImageGrid({ resources, onDelete }: ImageGridProps) {
 
   if (resources.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-20 text-muted-foreground gap-3">
-        <ImageOff className="size-10" />
-        <p className="text-sm">No images in this folder</p>
-      </div>
+      <NoImages />
     );
   }
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { PlusIcon } from "lucide-react";
-import { Controller, useFieldArray } from "react-hook-form";
+import { Controller, useFieldArray, useWatch } from "react-hook-form";
 
 import ButtonMinimal from "@/components/primitives/button-minimal";
 import FormFieldError from "@/components/primitives/form-field-error";
@@ -13,8 +13,10 @@ import { useProjectFormStore } from "@/stores/use-project-form-store";
 
 import { ProjectFormImagesViewer } from "./project-form-images-viewer";
 
+import MediaPickerModal from "@/components/admin/media-picker/media-picker-modal";
+
 export function ImagesSection() {
-  const { control, watch, errors } = useProjectFormStore();
+  const { control, errors } = useProjectFormStore();
 
   const {
     fields: galleryFields,
@@ -26,10 +28,11 @@ export function ImagesSection() {
     control: control ?? undefined,
   });
 
-  if (!control || !watch) return null;
+  if (!control) return null;
 
+  const galleryValue = useWatch({ control, name: "gallery" });
   const hasGallery =
-    watch("gallery")?.length && watch("gallery")?.[0].imageUrl !== "";
+    galleryValue?.length && galleryValue?.[0].imageUrl !== "";
 
   return (
     <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
@@ -50,13 +53,19 @@ export function ImagesSection() {
                       htmlFor={`image-url-${index}`}
                       label="Url"
                     />
-                    <Input
-                      id={`image-url-${index}`}
-                      placeholder={IMAGE_PLACEHOLDER}
-                      aria-invalid={!!errors.gallery?.[index]?.imageUrl}
-                      aria-describedby={errors.gallery?.[index]?.imageUrl ? `gallery-${index}-imageUrl-error` : undefined}
-                      {...field}
-                    />
+                    <div className="relative">
+                      <Input
+                        id={`image-url-${index}`}
+                        placeholder={IMAGE_PLACEHOLDER}
+                        className="pr-10"
+                        aria-invalid={!!errors.gallery?.[index]?.imageUrl}
+                        aria-describedby={errors.gallery?.[index]?.imageUrl ? `gallery-${index}-imageUrl-error` : undefined}
+                        {...field}
+                      />
+                      <div className="absolute right-1 top-1/2 -translate-y-1/2">
+                        <MediaPickerModal onSelect={(url) => field.onChange(url)} />
+                      </div>
+                    </div>
                     <FormFieldError id={`gallery-${index}-imageUrl-error`} message={errors.gallery?.[index]?.imageUrl?.message} className="absolute -bottom-4 text-secondary text-xs" />
                   </>
                 )}
@@ -133,7 +142,7 @@ export function ImagesSection() {
 
       <div className="flex flex-wrap gap-4">
         {hasGallery ? (
-          watch("gallery")?.map((image, index) => (
+          galleryValue?.map((image, index) => (
             <ProjectFormImagesViewer
               key={galleryFields[index]?.id ?? image.imageUrl}
               imageUrl={image.imageUrl}
