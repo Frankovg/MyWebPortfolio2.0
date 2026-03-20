@@ -47,6 +47,7 @@ export default function AddFolderModal({
       const result = await createFolder(fullPath);
       if ("message" in result) {
         showErrorMessage(result);
+        setIsOpen(false)
         return;
       }
       toast.success(`Folder "${trimmed}" created`);

@@ -62,6 +62,7 @@ export default function UploadModal({
         const result = await uploadMedia(formData);
         if ("message" in result) {
           showErrorMessage(result);
+          setIsOpen(false)
         } else {
           uploaded.push(result.resource);
         }

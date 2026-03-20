@@ -58,6 +58,7 @@ export default function EditFolderModal({
       const result = await renameFolder(currentFolder, newPath);
       if ("message" in result) {
         showErrorMessage(result);
+        setIsOpen(false)
         return;
       }
       toast.success(`Folder renamed to "${trimmed}"`);
@@ -70,6 +71,7 @@ export default function EditFolderModal({
     const result = await deleteFolder(currentFolder);
     if (result && "message" in result) {
       showErrorMessage(result);
+      setIsDeleteOpen(false)
       return;
     }
     toast.success(`Folder "${folderName}" deleted`);
