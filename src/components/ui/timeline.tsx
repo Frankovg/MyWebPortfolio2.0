@@ -4,6 +4,7 @@ import clsx from "clsx";
 import {
   useScroll,
   useTransform,
+  useReducedMotion,
   motion,
 } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
@@ -15,6 +16,7 @@ interface TimelineEntry {
 }
 
 export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
+  const shouldReduceMotion = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
@@ -42,7 +44,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
         {data.map((item, index) => (
           <div
-            key={index}
+            key={item.title + index}
             className={clsx("flex justify-start pt-10 930:gap-10",
               item.secondary ? "930:pt-16" : "930:pt-40"
             )}
@@ -75,7 +77,10 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           className="absolute 930:left-8 left-8 top-0 overflow-hidden w-0.5 bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-0% via-neutral-200 to-transparent to-99% mask-[linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
         >
           <motion.div
-            style={{
+            style={shouldReduceMotion ? {
+              height: height,
+              opacity: 1,
+            } : {
               height: heightTransform,
               opacity: opacityTransform,
             }}

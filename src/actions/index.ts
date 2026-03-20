@@ -4,3 +4,4 @@ export * from "./project-actions";
 export * from "./contact-actions";
 export * from "./download-actions";
 export * from "./password-actions";
+export * from "./media-library-actions";

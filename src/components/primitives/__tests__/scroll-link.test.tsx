@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { mockNextLink, mockRouter } from '@/__mocks__/test-utils';
+import { mockRouter } from '@/__mocks__/test-utils';
 
 import ScrollLink from '../scroll-link';
 
@@ -9,8 +9,6 @@ jest.mock('next/navigation', () => ({
   useRouter: () => mockRouter,
   usePathname: () => mockRouter.pathname,
 }));
-
-jest.mock('next/link', () => mockNextLink);
 
 describe('ScrollLink', () => {
   beforeEach(() => {
@@ -25,10 +23,10 @@ describe('ScrollLink', () => {
       expect(screen.getByText('Projects')).toBeInTheDocument();
     });
 
-    it('should render as a button inside a link', () => {
+    it('should render as a link', () => {
       render(<ScrollLink id="projects">Projects</ScrollLink>);
 
-      expect(screen.getByRole('button', { name: 'Projects' })).toBeInTheDocument();
+      expect(screen.getByRole('link', { name: /scroll to projects/i })).toBeInTheDocument();
     });
 
     it('should have correct href for non-home id', () => {
@@ -65,7 +63,7 @@ describe('ScrollLink', () => {
 
       render(<ScrollLink id="projects">Projects</ScrollLink>);
 
-      await user.click(screen.getByRole('button'));
+      await user.click(screen.getByRole('link'));
 
       expect(mockElement.scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' });
       expect(mockRouter.push).not.toHaveBeenCalled();
@@ -78,7 +76,7 @@ describe('ScrollLink', () => {
 
       render(<ScrollLink id="home">Home</ScrollLink>);
 
-      await user.click(screen.getByRole('button'));
+      await user.click(screen.getByRole('link'));
 
       expect(scrollToMock).toHaveBeenCalledWith({ top: 0, behavior: 'smooth' });
     });
@@ -90,7 +88,7 @@ describe('ScrollLink', () => {
 
       render(<ScrollLink id="projects" onClick={onClickMock}>Projects</ScrollLink>);
 
-      await user.click(screen.getByRole('button'));
+      await user.click(screen.getByRole('link'));
 
       expect(onClickMock).toHaveBeenCalled();
     });
@@ -106,7 +104,7 @@ describe('ScrollLink', () => {
 
       render(<ScrollLink id="projects">Projects</ScrollLink>);
 
-      await user.click(screen.getByRole('button'));
+      await user.click(screen.getByRole('link'));
 
       expect(mockRouter.push).toHaveBeenCalledWith('/home#projects');
     });
@@ -116,7 +114,7 @@ describe('ScrollLink', () => {
 
       render(<ScrollLink id="home">Home</ScrollLink>);
 
-      await user.click(screen.getByRole('button'));
+      await user.click(screen.getByRole('link'));
 
       expect(mockRouter.push).toHaveBeenCalledWith('/home');
     });
@@ -131,7 +129,7 @@ describe('ScrollLink', () => {
 
       render(<ScrollLink id="home">Home</ScrollLink>);
 
-      await user.click(screen.getByRole('button'));
+      await user.click(screen.getByRole('link'));
 
       expect(scrollToMock).toHaveBeenCalledWith({ top: 0, behavior: 'smooth' });
       expect(mockRouter.push).not.toHaveBeenCalled();

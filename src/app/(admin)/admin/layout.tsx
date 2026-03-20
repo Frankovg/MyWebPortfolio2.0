@@ -2,8 +2,11 @@ import React from "react";
 
 import { AppSidebar } from "@/components/admin/app-sidebar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { checkAuth } from "@/lib/server-utils-admin";
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = async ({ children }: { children: React.ReactNode }) => {
+  await checkAuth();
+
   return (
     <SidebarProvider>
       <AppSidebar />

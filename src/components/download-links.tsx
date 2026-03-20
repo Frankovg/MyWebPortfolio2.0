@@ -18,12 +18,12 @@ function DownloadLinks() {
 
   return (
     <div className="flex max-sm:flex-wrap gap-4 1100:flex-col items-center max-sm:justify-end w-full sm:w-max h-auto p-4">
-      {parsedDownloads.map((download, index) => (
+      {parsedDownloads.map((download) => (
         <a
-          href={download.fileHref || "#"}
+          href={download.fileHref ?? "#"}
           target="_blank"
           className="group relative overflow-hidden flex max-w-[400px] items-center"
-          key={index}
+          key={download.id}
         >
           <div className="max-lg:w-full w-2/5">
             <ImageWithFallback

@@ -124,11 +124,8 @@ describe('Navbar', () => {
 
       SOCIAL_ICONS.forEach((social) => {
         if (social.href) {
-          const links = screen.getAllByRole('link', { name: '' });
-          const socialLink = links.find(
-            (link) => link.getAttribute('href') === social.href
-          );
-          expect(socialLink).toBeInTheDocument();
+          const socialLink = screen.getByRole('link', { name: social.name });
+          expect(socialLink).toHaveAttribute('href', social.href);
         }
       });
     });
@@ -142,7 +139,7 @@ describe('Navbar', () => {
     it('should render mobile menu button', () => {
       render(<Navbar session={mockSessionWithoutUser} />);
 
-      const mobileMenuButton = screen.getByTitle('mobileMenuButton');
+      const mobileMenuButton = screen.getByRole('button', { name: /navigation menu/i });
       expect(mobileMenuButton).toBeInTheDocument();
     });
   });
@@ -280,7 +277,7 @@ describe('Navbar', () => {
       const user = userEvent.setup();
       render(<Navbar session={mockSessionWithoutUser} />);
 
-      const mobileMenuButton = screen.getByTitle('mobileMenuButton');
+      const mobileMenuButton = screen.getByRole('button', { name: /navigation menu/i });
       await user.click(mobileMenuButton);
 
       // The Sheet component should now be open - check for Sheet content
@@ -292,7 +289,7 @@ describe('Navbar', () => {
       const user = userEvent.setup();
       render(<Navbar session={mockSessionWithoutUser} />);
 
-      const mobileMenuButton = screen.getByTitle('mobileMenuButton');
+      const mobileMenuButton = screen.getByRole('button', { name: /navigation menu/i });
       await user.click(mobileMenuButton);
 
       expect(screen.getByRole('dialog')).toBeInTheDocument();
@@ -341,8 +338,9 @@ describe('Navbar', () => {
     it('should have accessible mobile menu button', () => {
       render(<Navbar session={mockSessionWithoutUser} />);
 
-      const mobileMenuButton = screen.getByTitle('mobileMenuButton');
+      const mobileMenuButton = screen.getByRole('button', { name: /navigation menu/i });
       expect(mobileMenuButton).toHaveAttribute('type', 'button');
+      expect(mobileMenuButton).toHaveAttribute('aria-label', 'Navigation menu');
     });
 
     it('should have accessible social links with target blank', () => {

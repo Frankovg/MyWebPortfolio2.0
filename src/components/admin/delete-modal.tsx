@@ -38,8 +38,12 @@ export default function DeleteModal({
           <DialogDescription>{subtitle}</DialogDescription>
         </DialogHeader>
         <div></div>
-        <DialogFooter>
-          <Button variant="secondary" onClick={close} className="w-24">
+        <DialogFooter className="flex flex-row justify-end gap-4">
+          <Button
+            variant="secondary"
+            onClick={close}
+            className="w-24"
+          >
             Cancel
           </Button>
           <Button

@@ -82,6 +82,12 @@ jest.mock('../../label-link', () => ({
   ),
 }));
 
+// Mock MediaPickerModal to avoid deep dependency chain (better-auth ESM)
+jest.mock('@/components/admin/media-picker/media-picker-modal', () => ({
+  __esModule: true,
+  default: () => <button data-testid="media-picker-mock">Pick</button>,
+}));
+
 describe('DownloadsForm', () => {
   beforeEach(() => {
     jest.clearAllMocks();

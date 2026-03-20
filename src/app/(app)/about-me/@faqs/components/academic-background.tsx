@@ -11,7 +11,7 @@ function AcademicBackground() {
           </div>
           <p className="text-sm max-sm:text-left text-center">{`${ab.year}, ${ab.city}, ${ab.country}`}</p>
           {ab.description.map((description, index) => (
-            <p key={index} className="text-am text-left font-normal tracking-wide">
+            <p key={description + index} className="text-am text-left font-normal tracking-wide">
               {description}
             </p>
           ))}

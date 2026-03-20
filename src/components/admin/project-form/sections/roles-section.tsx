@@ -154,7 +154,7 @@ export function RolesSection() {
       <div className="flex flex-wrap gap-4">
         {watch("roles")?.map((role, index) => (
           <ProjectFormRolesViewer
-            key={`${role.value}-${index}`}
+            key={rolesFields[index]?.id ?? `${role.value}-${index}`}
             role={role.value}
             label={role.label}
             remove={() => rolesRemove(index)}

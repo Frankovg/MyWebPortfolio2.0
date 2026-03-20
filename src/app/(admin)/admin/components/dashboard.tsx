@@ -2,13 +2,15 @@ import { getDownloadsContent, getUsersAdmin } from "@/lib/server-utils-admin";
 import { getCategoriesForChart } from "@/lib/server-utils-public";
 
 import { DownloadFiles } from "./download-files";
-import { PortfolioChart } from "./portfolio-chart";
+import PortfolioChartLoader from "./portfolio-chart-loader";
 import { SampleAccountStatus } from "./sample-account-status";
 
 export async function Dashboard() {
-  const categories = await getCategoriesForChart();
-  const users = await getUsersAdmin();
-  const downloads = await getDownloadsContent();
+  const [categories, users, downloads] = await Promise.all([
+    getCategoriesForChart(),
+    getUsersAdmin(),
+    getDownloadsContent(),
+  ]);
 
   if (!categories || !users || !downloads) {
     throw new Error("Error fetching the dashboard.")
@@ -19,7 +21,7 @@ export async function Dashboard() {
   return (
     <div className="flex flex-col-reverse max-1170:gap-4 shrink 1170:flex-row">
       <div className="flex-1 1170:p-2">
-        <PortfolioChart categories={categories} />
+        <PortfolioChartLoader categories={categories} />
       </div>
       <div className="flex-1 flex flex-col gap-4 items-center 1170:p-2">
         {sampleAccountInfo && (

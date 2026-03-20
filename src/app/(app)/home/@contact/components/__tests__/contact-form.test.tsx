@@ -13,6 +13,10 @@ setupResizeObserverMock();
 
 jest.mock('next/link', () => mockNextLink);
 
+jest.mock('@marsidev/react-turnstile', () => ({
+  Turnstile: () => <div data-testid="turnstile-mock" />,
+}));
+
 let mockSearchParams = new URLSearchParams();
 jest.mock('next/navigation', () => ({
   useSearchParams: () => mockSearchParams,

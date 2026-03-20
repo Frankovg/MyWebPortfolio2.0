@@ -36,7 +36,7 @@ export const createMockProjectFull = (
   id: "test-project-id",
   title: "Test Project",
   slug: "test-project",
-  shortDescription: "Short description",
+  shortDescription: "Short Description",
   description: "Full description",
   image: "https://example.com/image.jpg",
   date: mockDate,

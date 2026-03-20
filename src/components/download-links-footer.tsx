@@ -30,7 +30,7 @@ function DownloadLinksFooter() {
   return (
     <>
       {_downloads.map((download, index) => (
-        <li className="max-sm:text-center" key={index}>
+        <li className="max-sm:text-center" key={download.href ?? `${download.name}-${index}`}>
           <a
             href={download.href || "#"}
             target="_blank"

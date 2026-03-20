@@ -12,9 +12,9 @@ type LinkButtonsProps = {
 function LinkButtons({ data }: LinkButtonsProps) {
   return (
     <>
-      {data.map((item, index) => (
+      {data.map((item) => (
         <a
-          key={index}
+          key={item.url}
           href={item.url}
           target="_blank"
           rel="noopener noreferrer"

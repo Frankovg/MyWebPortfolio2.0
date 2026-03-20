@@ -3,9 +3,9 @@ import { SOCIAL_ICONS } from "@/lib/client-constants";
 export function SocialNavLinks() {
   return (
     <li className="flex items-center gap-6 600:gap-1.5">
-      {SOCIAL_ICONS.map((socialIcon, index) => (
+      {SOCIAL_ICONS.map((socialIcon) => (
         <a
-          key={`${index}-${socialIcon.href}`}
+          key={socialIcon.href ?? socialIcon.value}
           href={socialIcon.href ?? "#"}
           target="_blank"
           rel="noopener noreferrer"
