@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { Readex_Pro as FontSans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import NextNProgress from "nextjs-toploader";
 import { Toaster } from "sonner";
 
@@ -107,6 +108,7 @@ export default async function RootLayout({
             }}
           />
         </div>
+        <Analytics />
       </body>
     </html>
   );
