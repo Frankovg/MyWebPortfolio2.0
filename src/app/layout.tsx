@@ -1,4 +1,5 @@
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Metadata } from "next";
 import { Readex_Pro as FontSans } from "next/font/google";
 import { Toaster } from "sonner";
@@ -103,6 +104,7 @@ export default async function RootLayout({
           />
         </div>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
