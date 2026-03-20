@@ -101,7 +101,7 @@ function Footer() {
         </div>
         <div className="sm:absolute right-4 bottom-2.5">
           <p className="text-center w-full text-xs">
-            Last update: January 2026 | Version: {packageJson.version}
+            Last update: March 2026 | Version: {packageJson.version}
           </p>
         </div>
       </footer>
