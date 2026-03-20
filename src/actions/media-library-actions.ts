@@ -9,8 +9,8 @@ import { handleError } from "@/utils/handle-error";
 import type {
   MediaFolder,
   MediaLibraryData,
-  MediaResource,
 } from "@/app/(admin)/admin/media-library/types/types";
+import type { MediaResource } from "@/lib/types";
 
 
 export async function getMediaLibraryData(

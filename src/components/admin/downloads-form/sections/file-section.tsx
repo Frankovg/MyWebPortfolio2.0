@@ -1,6 +1,8 @@
 "use client";
 import { Controller } from "react-hook-form";
 
+import { LabelLink } from "@/components/admin/label-link";
+import MediaPickerModal from "@/components/admin/media-picker/media-picker-modal";
 import FormFieldError from "@/components/primitives/form-field-error";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -12,7 +14,6 @@ import { FILE_PLACEHOLDER, IMAGE_PLACEHOLDER, IMAGE_URL_PREFIXES } from "@/lib/c
 import { isValidFileUrl, isValidImageUrl } from "@/lib/validations";
 import { useDownloadFormStore } from "@/stores/use-download-form-store";
 
-import { LabelLink } from "../../label-link";
 
 export function FileSection() {
   const { register, getValues, watch, control, errors } =
@@ -94,13 +95,19 @@ export function FileSection() {
                     </>
                   }
                 />
-                <Input
-                  id="fileHref"
-                  placeholder={FILE_PLACEHOLDER}
-                  {...field}
-                  aria-invalid={!!errors.fileHref}
-                  aria-describedby={errors.fileHref ? "fileHref-error" : undefined}
-                />
+
+                <div className="relative">
+                  <Input
+                    id="fileHref"
+                    placeholder={FILE_PLACEHOLDER}
+                    {...field}
+                    aria-invalid={!!errors.fileHref}
+                    aria-describedby={errors.fileHref ? "fileHref-error" : undefined}
+                  />
+                  <div className="absolute right-1 top-1/2 -translate-y-1/2 bg-background">
+                    <MediaPickerModal fileFilter="pdf" onSelect={(url) => field.onChange(url)} />
+                  </div>
+                </div>
                 <FormFieldError id="fileHref-error" message={errors.fileHref?.message} className="absolute -bottom-4 text-secondary text-xs" />
               </>
             )}
@@ -171,7 +178,7 @@ export function FileSection() {
                   htmlFor="imageUrl"
                   label={
                     <>
-                      Hero image url
+                      Hero Image Url
                       {hasImage && (
                         <LabelLink
                           href={getValues("imageUrl") || ""}
@@ -181,13 +188,18 @@ export function FileSection() {
                     </>
                   }
                 />
-                <Input
-                  id="imageUrl"
-                  placeholder={IMAGE_PLACEHOLDER}
-                  {...field}
-                  aria-invalid={!!errors.imageUrl}
-                  aria-describedby={errors.imageUrl ? "imageUrl-error" : undefined}
-                />
+                <div className="relative">
+                  <Input
+                    id="imageUrl"
+                    placeholder={IMAGE_PLACEHOLDER}
+                    {...field}
+                    aria-invalid={!!errors.imageUrl}
+                    aria-describedby={errors.imageUrl ? "imageUrl-error" : undefined}
+                  />
+                  <div className="absolute right-1 top-1/2 -translate-y-1/2 bg-background">
+                    <MediaPickerModal onSelect={(url) => field.onChange(url)} />
+                  </div>
+                </div>
                 <FormFieldError id="imageUrl-error" message={errors.imageUrl?.message} className="absolute -bottom-4 text-secondary text-xs" />
               </>
             )}

@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 
-import PdfCard from '../pdf-card';
+import PdfCard from '@/components/admin/pdf-card';
+
 
 describe('PdfCard', () => {
   it('should render the file icon', () => {

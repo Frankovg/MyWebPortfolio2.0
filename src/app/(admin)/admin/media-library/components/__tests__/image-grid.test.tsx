@@ -5,7 +5,8 @@ import { setupMatchMediaMock } from '@/__mocks__/test-utils';
 
 import ImageGrid from '../image-grid';
 
-import type { MediaResource } from '../../types/types';
+import type { MediaResource } from '@/lib/types';
+
 
 jest.mock('next/image', () => require('@/__mocks__/test-utils').mockNextImage);
 jest.mock('sonner', () => require('@/__mocks__/test-utils').mockSonner);

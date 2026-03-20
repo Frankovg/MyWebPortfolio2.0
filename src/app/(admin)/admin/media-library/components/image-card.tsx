@@ -7,13 +7,14 @@ import { toast } from "sonner";
 
 
 import DeleteModal from "@/components/admin/delete-modal";
-import { Badge } from "@/components/ui/badge";
+import { ImageCardName } from "@/components/admin/media-picker/image-card-name";
+import PdfCard from "@/components/admin/pdf-card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-import PdfCard from "./pdf-card";
+import type { MediaResource } from "@/lib/types";
 
-import type { MediaResource } from "../types/types";
+
 
 type ImageCardProps = {
   resource: MediaResource;
@@ -83,14 +84,8 @@ export default function ImageCard({ resource, onDelete, showButtons }: ImageCard
             </Button>
           </div>
         </div>
-        <div className="p-2 flex items-center justify-between gap-2">
-          <span className="text-xs truncate" title={displayName}>
-            {displayName}
-          </span>
-          <Badge variant="outline" className="text-[10px] shrink-0">
-            {resource.format}
-          </Badge>
-        </div>
+
+        <ImageCardName name={displayName} format={resource.format} />
       </div>
 
       <DeleteModal

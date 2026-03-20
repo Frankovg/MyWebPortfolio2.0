@@ -67,3 +67,19 @@ type PayloadEdit = ProjectEssentials & {
 };
 type PayloadDelete = { projectId: string; categoryId: string };
 export type Payload = PayloadCreate | PayloadEdit | PayloadDelete;
+
+export type MediaFolder = {
+  name: string;
+  path: string;
+};
+
+export type MediaResource = {
+  public_id: string;
+  secure_url: string;
+  format: string;
+  width: number;
+  height: number;
+  bytes: number;
+  created_at: string;
+  resource_type: string;
+};

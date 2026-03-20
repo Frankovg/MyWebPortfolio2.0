@@ -4,7 +4,7 @@ import { ChevronRight, Folder } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
-import type { MediaFolder } from "../types/types";
+import type { MediaFolder } from "@/lib/types";
 
 type FolderNavProps = {
   currentFolder: string;

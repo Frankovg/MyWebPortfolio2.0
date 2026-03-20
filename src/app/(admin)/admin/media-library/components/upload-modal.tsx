@@ -21,7 +21,8 @@ import { showErrorMessage } from "@/utils/showErrorMessage";
 
 import UploadModalContent from "./upload-modal-content";
 
-import type { FilePreview, MediaResource } from "../types/types";
+import type { FilePreview } from "../types/types";
+import type { MediaResource } from "@/lib/types";
 
 type UploadDialogProps = {
   currentFolder: string;
@@ -61,6 +62,7 @@ export default function UploadModal({
         const result = await uploadMedia(formData);
         if ("message" in result) {
           showErrorMessage(result);
+          setIsOpen(false)
         } else {
           uploaded.push(result.resource);
         }
@@ -100,6 +102,7 @@ export default function UploadModal({
               : "Upload to root folder"}
           </DialogDescription>
         </DialogHeader>
+
         <UploadModalContent
           files={files}
           inputRef={inputRef}
@@ -107,6 +110,7 @@ export default function UploadModal({
           setSizeError={setSizeError}
           sizeError={sizeError ?? undefined}
         />
+
         <DialogFooter className="gap-4">
           <Button
             variant="secondary"

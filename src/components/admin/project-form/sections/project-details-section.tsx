@@ -1,7 +1,8 @@
 "use client";
 
-import { Controller } from "react-hook-form";
+import { Controller, useWatch } from "react-hook-form";
 
+import MediaPickerModal from "@/components/admin/media-picker/media-picker-modal";
 import FormFieldError from "@/components/primitives/form-field-error";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -15,16 +16,19 @@ import { useProjectFormStore } from "@/stores/use-project-form-store";
 
 import { LabelLink } from "../../label-link";
 
+
+
 export function ProjectDetailsSection() {
-  const { control, register, watch, getValues, errors } = useProjectFormStore();
+  const { control, register, getValues, errors } = useProjectFormStore();
 
-  if (!control || !register || !watch || !getValues) return null;
+  if (!control || !register || !getValues) return null;
 
-  const hasImage = isValidImageUrl(watch("image"));
+  const imageValue = useWatch({ control, name: "image" });
+  const hasImage = isValidImageUrl(imageValue);
 
   return (
     <section className="px-6 pt-4 pb-8 w-full space-y-6 border border-darkPrimary">
-      <h2 className="text-xl font-bold">Project details</h2>
+      <h2 className="text-xl font-bold">Project Details</h2>
       <div className="w-full flex flex-col lg:flex-row gap-6">
         <div className="relative flex flex-col gap-2 w-full lg:w-1/2">
           <Controller
@@ -60,7 +64,7 @@ export function ProjectDetailsSection() {
                   htmlFor="image"
                   label={
                     <>
-                      Hero image url
+                      Hero Image Url
                       {hasImage && (
                         <LabelLink
                           href={getValues("image") || ""}
@@ -70,13 +74,19 @@ export function ProjectDetailsSection() {
                     </>
                   }
                 />
-                <Input
-                  id="image"
-                  placeholder={IMAGE_PLACEHOLDER}
-                  {...field}
-                  aria-invalid={!!errors.image}
-                  aria-describedby={errors.image ? "image-error" : undefined}
-                />
+                <div className="relative">
+                  <Input
+                    id="image"
+                    placeholder={IMAGE_PLACEHOLDER}
+                    className="pr-10"
+                    {...field}
+                    aria-invalid={!!errors.image}
+                    aria-describedby={errors.image ? "image-error" : undefined}
+                  />
+                  <div className="absolute right-1 top-1/2 -translate-y-1/2 bg-background">
+                    <MediaPickerModal onSelect={(url) => field.onChange(url)} />
+                  </div>
+                </div>
                 <FormFieldError
                   id="image-error"
                   message={errors.image?.message}
@@ -95,7 +105,7 @@ export function ProjectDetailsSection() {
             control={control}
             render={({ field }) => (
               <>
-                <RequiredInputLabel htmlFor="slug" label="Unique identifier" />
+                <RequiredInputLabel htmlFor="slug" label="Unique Identifier" />
                 <Input
                   id="slug"
                   {...field}
@@ -164,7 +174,7 @@ export function ProjectDetailsSection() {
               <>
                 <RequiredInputLabel
                   htmlFor="shortDescription"
-                  label="Short description"
+                  label="Short Description"
                 />
                 <Textarea
                   maxLength={200}

@@ -23,7 +23,7 @@ export function EntitiesSection() {
             control={control}
             render={({ field }) => (
               <>
-                <Label htmlFor="company">Company name</Label>
+                <Label htmlFor="company">Company Name</Label>
                 <Input
                   id="company"
                   {...field}
@@ -81,7 +81,7 @@ export function EntitiesSection() {
             control={control}
             render={({ field }) => (
               <>
-                <Label htmlFor="client">Client name</Label>
+                <Label htmlFor="client">Client Name</Label>
                 <Input
                   id="client"
                   {...field}

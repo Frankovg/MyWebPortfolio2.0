@@ -1,7 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import FolderNav from '../folder-nav';
+
+import FolderNav from '@/components/admin/media-picker/folder-nav';
 
 import type { MediaFolder } from '../../types/types';
 

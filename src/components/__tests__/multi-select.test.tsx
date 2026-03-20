@@ -28,9 +28,9 @@ describe('MultiSelect', () => {
 
   describe('Rendering', () => {
     it('should render with placeholder', () => {
-      render(<MultiSelect {...defaultProps} placeholder="Select technologies" />);
+      render(<MultiSelect {...defaultProps} placeholder="Select Technologies" />);
 
-      expect(screen.getByText('Select technologies')).toBeInTheDocument();
+      expect(screen.getByText('Select Technologies')).toBeInTheDocument();
     });
 
     it('should render default placeholder when not provided', () => {
