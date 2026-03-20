@@ -12,6 +12,8 @@
   [![Zustand](https://img.shields.io/badge/Zustand-5.0.9-433E38?style=for-the-badge)](https://zustand-demo.pmnd.rs/)
   [![BetterAuth](https://img.shields.io/badge/BetterAuth-1.4.10-000000?style=for-the-badge)](https://www.better-auth.com/)
   [![shadcn/ui](https://img.shields.io/badge/shadcn/ui-latest-000000?style=for-the-badge)](https://ui.shadcn.com/)
+  [![Cloudinary](https://img.shields.io/badge/Cloudinary-3448C5?style=for-the-badge&logo=cloudinary&logoColor=white)](https://cloudinary.com/)
+  [![Sentry](https://img.shields.io/badge/Sentry-362D59?style=for-the-badge&logo=sentry&logoColor=white)](https://sentry.io/)
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
   
   **A modern, full-stack portfolio application showcasing web development, industrial design, and UX/UI projects**
@@ -70,7 +72,7 @@ This is a comprehensive portfolio web application built with modern technologies
 ### Admin Features (CMS)
 
 - **Project Management**: Create, edit, delete, and publish/unpublish projects
-- **Media Gallery**: Upload and manage project images via Google Drive integration
+- **Media Gallery**: Upload and manage project images and documents via Cloudinary integration
 - **User Management**: Control user access and permissions
 - **Download Management**: Manage downloadable resources (CV, portfolios)
 - **Content Customization**: Update all portfolio content without code changes
@@ -100,6 +102,8 @@ This is a comprehensive portfolio web application built with modern technologies
 - **Database**: [PostgreSQL](https://www.postgresql.org/) (Production) / [SQLite](https://sqlite.org/) (Development)
 - **Email**: [Nodemailer](https://nodemailer.com/)
 - **Password Hashing**: [bcrypt](https://www.npmjs.com/package/bcrypt)
+- **Media Hosting & CDN**: [Cloudinary](https://cloudinary.com/) — Image and document hosting with CDN delivery
+- **Error Tracking**: [Sentry](https://sentry.io/) — Error monitoring and performance tracing
 
 ### Development & Testing
 
@@ -351,7 +355,7 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 
 ### Professional Background
 
-- **Full-Stack Developer** with expertise in React, Next.js, and TypeScript
+- **Full-Stack Developer** with expertise in React, Next.js, TypeScript and Ruby on Rails
 - **Industrial Designer** with experience in product development and prototyping
 - **UX/UI Designer** focused on user-centered design and accessibility
 - **10+ years** of professional experience across design and development
