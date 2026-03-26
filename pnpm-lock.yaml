@@ -18,10 +18,10 @@ importers:
         specifier: ^1.58.0
         version: 1.58.2
       '@prisma/adapter-pg':
-        specifier: ^7.0.0
+        specifier: ^7.5.0
         version: 7.5.0
       '@prisma/client':
-        specifier: ^7.0.0
+        specifier: ^7.5.0
         version: 7.5.0(prisma@7.5.0(@types/react@19.2.7)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3)
       '@radix-ui/react-accordion':
         specifier: ^1.2.12
@@ -211,7 +211,7 @@ importers:
         specifier: ^7.0.2
         version: 7.0.11
       '@types/pg':
-        specifier: ^8.16.0
+        specifier: ^8.20.0
         version: 8.20.0
       '@types/react':
         specifier: 19.2.7
