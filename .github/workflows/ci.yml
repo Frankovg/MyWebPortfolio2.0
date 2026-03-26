@@ -32,4 +32,4 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm test -- --ci --forceExit
+      - run: pnpm exec jest --ci --forceExit
