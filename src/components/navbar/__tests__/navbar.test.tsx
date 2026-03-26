@@ -313,7 +313,7 @@ describe('Navbar', () => {
       render(<Navbar session={mockSessionWithoutUser} />);
 
       const connectLink = screen.getByText("Let's Connect").closest('a');
-      expect(connectLink).toHaveAttribute('href', 'contact');
+      expect(connectLink).toHaveAttribute('href', '/contact');
     });
 
     it('should have correct href for About me link', () => {
