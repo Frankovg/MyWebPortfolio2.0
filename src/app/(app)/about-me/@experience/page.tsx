@@ -13,7 +13,7 @@ async function Experience() {
       secondary: e.secondary,
       title: e.title,
       content: (
-        <div>
+        <div key={e.title}>
           <h3 className={clsx("font-semibold",
             e.secondary ? "text-lg 930:text-xl" : "text-xl 930:text-2xl"
           )}>
