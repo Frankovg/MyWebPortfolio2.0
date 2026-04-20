@@ -331,7 +331,7 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
    Best regards
    ```
 
-2. **Via Email**: Send an email to `di.francoamoroso@gmail.com` with the subject "Demo Account Request"
+2. **Via Email**: Send an email to `contact@franamoroso.com` with the subject "Demo Account Request"
 
 3. **Via LinkedIn**: Connect with me on [LinkedIn](https://www.linkedin.com/in/francoamoroso/) and send a message
 
@@ -350,7 +350,7 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 
 - 🌐 **Portfolio**: [www.franamoroso.com](https://www.franamoroso.com/)
 - 💼 **LinkedIn**: [francoamoroso](https://www.linkedin.com/in/francoamoroso/)
-- 📧 **Email**: di.francoamoroso@gmail.com
+- 📧 **Email**: contact@franamoroso.com
 - 📍 **Location**: Málaga, Spain
 
 ### Professional Background
