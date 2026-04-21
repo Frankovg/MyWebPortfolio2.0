@@ -68,5 +68,5 @@ export async function logOut() {
     handleError(error, "Logout error:");
   }
 
-  redirect("/");
+  redirect("/home");
 }
