@@ -60,7 +60,7 @@ function Footer() {
               return (
                 <li className="max-sm:text-center" key={item.href ?? `${item.name}-${index}`}>
                   {item.name.includes('LinkedIn') ? (
-                    <a href={linkHref} className={linkStyles} >{linkText}</a>
+                    <a href={linkHref} target="_blank" rel="noopener noreferrer" className={linkStyles} >{linkText}</a>
                   ) : (
                     <Link href={linkHref} className={linkStyles} >{linkText}</Link>
                   )}
