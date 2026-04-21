@@ -6,7 +6,7 @@ const createJestConfig = nextJest({
   dir: './',
 })
 
-const config: Config = {
+const config = {
   displayName: 'fran-web',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   testEnvironment: 'jest-environment-jsdom',
@@ -56,6 +56,6 @@ const config: Config = {
   clearMocks: true,
   resetMocks: true,
   restoreMocks: true
-}
+} satisfies Config
 
 export default createJestConfig(config)
