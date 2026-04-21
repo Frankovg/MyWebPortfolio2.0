@@ -40,9 +40,9 @@ next-env.d.ts
 /src/generated/prisma
 
 # claude code
-CLAUDE.md
-.claude/
-.mcp.json
+**/CLAUDE.md
+!/CLAUDE.md
+settings.local.json
 
 # Sentry Config File
 .env.sentry-build-plugin
