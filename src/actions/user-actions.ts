@@ -60,9 +60,13 @@ export async function logOut() {
     await sleep(1000);
   }
 
-  await auth.api.signOut({
-    headers: await headers(),
-  });
+  try {
+    await auth.api.signOut({
+      headers: await headers(),
+    });
+  } catch (error) {
+    handleError(error, "Logout error:");
+  }
 
   redirect("/");
 }
