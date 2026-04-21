@@ -1,4 +1,4 @@
-// import { dash } from "@better-auth/infra";
+import { dash } from "@better-auth/infra";
 import bcrypt from "bcryptjs";
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
@@ -48,8 +48,8 @@ export const auth = betterAuth({
   trustedOrigins: [process.env.BETTER_AUTH_URL || "http://localhost:3000"],
   plugins: [
     nextCookies(), // Required for Server Actions to set cookies
-    // dash({
-    //   apiKey: process.env.BETTER_AUTH_API_KEY,
-    // }),
+    dash({
+      apiKey: process.env.BETTER_AUTH_API_KEY,
+    }),
   ],
 });
