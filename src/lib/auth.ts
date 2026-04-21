@@ -4,7 +4,6 @@ import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { nextCookies } from "better-auth/next-js";
 
-
 import prisma from "./db";
 
 export const auth = betterAuth({
@@ -49,6 +48,8 @@ export const auth = betterAuth({
   trustedOrigins: [process.env.BETTER_AUTH_URL || "http://localhost:3000"],
   plugins: [
     nextCookies(), // Required for Server Actions to set cookies
-    dash()
+    dash({
+      apiKey: process.env.BETTER_AUTH_API_KEY,
+    }),
   ],
 });
