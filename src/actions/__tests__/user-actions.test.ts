@@ -214,7 +214,7 @@ describe('User Actions', () => {
       await logOut();
 
       expect(mockSignOut).toHaveBeenCalled();
-      expect(mockRedirect).toHaveBeenCalledWith('/');
+      expect(mockRedirect).toHaveBeenCalledWith('/home');
     });
 
     describe('Development mode behavior', () => {
