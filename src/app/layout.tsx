@@ -1,3 +1,4 @@
+import * as Sentry from "@sentry/nextjs";
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Metadata } from "next";
@@ -8,6 +9,8 @@ import { DownloadsInitializer } from "@/components/downloads-initializer";
 import { ProgressBar } from "@/components/progress-bar";
 import { getDownloadsContent } from "@/lib/server-utils-admin";
 import { cn } from "@/lib/utils";
+
+import type { Download } from "@/generated/prisma/client";
 
 import "../styles/globals.css";
 
@@ -73,7 +76,10 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const downloads = await getDownloadsContent();
+  const downloads = await getDownloadsContent().catch((error) => {
+    Sentry.captureException(error);
+    return [] as Download[];
+  });
 
   return (
     <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">

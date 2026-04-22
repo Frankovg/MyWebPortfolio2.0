@@ -17,6 +17,11 @@ import { PrismaClient } from '@/generated/prisma/client'
 
 const prismaClientSingleton = () => {
   const connectionString = process.env.POSTGRES_PRISMA_URL || process.env.DATABASE_URL
+  if (!connectionString) {
+    throw new Error(
+      'Database connection string is missing. Set POSTGRES_PRISMA_URL or DATABASE_URL.'
+    )
+  }
   const adapter = new PrismaNeon({ connectionString })
   return new PrismaClient({ adapter })
 }
