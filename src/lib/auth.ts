@@ -7,6 +7,7 @@ import { nextCookies } from "better-auth/next-js";
 import prisma from "./db";
 
 export const auth = betterAuth({
+  appName: "Franco Amoroso Portfolio",
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),
@@ -27,6 +28,7 @@ export const auth = betterAuth({
     cookieCache: {
       enabled: true,
       maxAge: 60 * 5, // 5 minutes
+      strategy: "compact",
     },
   },
   user: {
@@ -46,6 +48,14 @@ export const auth = betterAuth({
     },
   },
   trustedOrigins: [process.env.BETTER_AUTH_URL || "http://localhost:3000"],
+  advanced: {
+    ipAddress: {
+      ipAddressHeaders: ["x-forwarded-for"],
+    },
+  },
+  experimental: {
+    joins: true,
+  },
   plugins: [
     nextCookies(), // Required for Server Actions to set cookies
     dash({
