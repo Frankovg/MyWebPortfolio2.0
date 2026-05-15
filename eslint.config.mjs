@@ -2,8 +2,7 @@ import js from "@eslint/js";
 import nextPlugin from "@next/eslint-plugin-next";
 import typescript from "@typescript-eslint/eslint-plugin";
 import typescriptParser from "@typescript-eslint/parser";
-import importPlugin from "eslint-plugin-import";
-import reactPlugin from "eslint-plugin-react";
+import importX from "eslint-plugin-import-x";
 
 export default [
   // Base recommended config
@@ -41,16 +40,12 @@ export default [
 
     plugins: {
       "@typescript-eslint": typescript,
-      import: importPlugin,
-      react: reactPlugin,
+      "import-x": importX,
       "@next/next": nextPlugin,
     },
 
     settings: {
-      react: {
-        version: "detect",
-      },
-      "import/resolver": {
+      "import-x/resolver": {
         typescript: {
           alwaysTryTypes: true,
         },
@@ -63,14 +58,14 @@ export default [
 
     rules: {
       // Import rules
-      "import/no-cycle": [
+      "import-x/no-cycle": [
         "error",
         {
           maxDepth: 10,
           ignoreExternal: true,
         },
       ],
-      "import/order": [
+      "import-x/order": [
         "error",
         {
           groups: [
@@ -90,13 +85,7 @@ export default [
           },
         },
       ],
-      "import/no-unused-modules": "error",
-      "import/no-duplicates": "error",
-
-      // React rules
-      "react/no-unused-prop-types": "error",
-      "react/react-in-jsx-scope": "off", // Not needed in Next.js
-      "react/prop-types": "off", // Using TypeScript
+      "import-x/no-duplicates": "error",
 
       // TypeScript rules
       "@typescript-eslint/no-unused-vars": [
