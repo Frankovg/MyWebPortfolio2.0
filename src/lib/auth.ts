@@ -57,9 +57,9 @@ export const auth = betterAuth({
     joins: true,
   },
   plugins: [
-    nextCookies(), // Required for Server Actions to set cookies
     dash({
       apiKey: process.env.BETTER_AUTH_API_KEY,
     }),
+    nextCookies(), // Required for Server Actions to set cookies
   ],
 });

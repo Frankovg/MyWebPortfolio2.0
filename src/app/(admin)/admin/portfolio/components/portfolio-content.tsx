@@ -39,7 +39,7 @@ const initialModalState = {
 function PortfolioContent({ content }: PortfolioContentProps) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
-  const [globalFilter, setGlobalFilter] = useState<any>([]);
+  const [globalFilter, setGlobalFilter] = useState<string>("");
   const [deleteModal, setDeleteModal] = useState(initialModalState);
 
   const handleDeleteProject = useProjectStore((state) => state.handleDeleteProject);

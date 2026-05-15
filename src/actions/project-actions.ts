@@ -17,6 +17,8 @@ import {
 } from "@/lib/validations";
 import { handleError } from "@/utils/handle-error";
 
+import type { Prisma } from "@/generated/prisma/client";
+
 export async function addProject(
   project: ProjectEssentials,
   categoryId: string
@@ -177,8 +179,11 @@ export async function editProject(
         JSON.stringify(rolesForComparison) !==
         JSON.stringify(validatedProject.data.roles);
 
-      const updateData: any = {
-        ...validatedProject.data,
+      const { gallery, techStack, roles, ...scalarData } =
+        validatedProject.data;
+
+      const updateData: Prisma.ProjectUncheckedUpdateInput = {
+        ...scalarData,
         categoryId: originalProject.categoryId,
       };
 
@@ -187,25 +192,21 @@ export async function editProject(
           where: { projectId: validatedProjectId.data },
         });
         updateData.gallery = {
-          create: validatedProject.data.gallery.map((item) => ({
+          create: gallery.map((item) => ({
             imageUrl: item.imageUrl,
             alt: item.alt,
             description: item.description,
           })),
         };
-      } else {
-        delete updateData.gallery;
       }
 
       if (techStackChanged) {
         updateData.techStack = {
           set: [],
-          connect: validatedProject.data.techStack.map((tech) => ({
+          connect: techStack.map((tech) => ({
             value: tech.value,
           })),
         };
-      } else {
-        delete updateData.techStack;
       }
 
       if (rolesChanged) {
@@ -213,14 +214,12 @@ export async function editProject(
           where: { projectId: validatedProjectId.data },
         });
         updateData.roles = {
-          create: validatedProject.data.roles.map((role) => ({
+          create: roles.map((role) => ({
             label: role.label,
             value: role.value,
             percentage: role.percentage,
           })),
         };
-      } else {
-        delete updateData.roles;
       }
 
       await tx.project.update({
