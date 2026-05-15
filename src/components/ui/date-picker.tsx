@@ -1,7 +1,7 @@
 "use client";
 
-import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
+import { useMemo } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -24,6 +24,11 @@ export const DatePicker = ({
   selectedDate,
   onChange,
 }: DatePickerProps) => {
+  const dateFormatter = useMemo(
+    () => new Intl.DateTimeFormat("en-US", { dateStyle: "long" }),
+    []
+  );
+
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -35,7 +40,7 @@ export const DatePicker = ({
           )}
         >
           {defaultValue ? (
-            format(defaultValue, "PPP")
+            dateFormatter.format(defaultValue)
           ) : (
             <span>Pick a date</span>
           )}
