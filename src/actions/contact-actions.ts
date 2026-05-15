@@ -44,7 +44,7 @@ export async function sendMail(mail: SendMailProps) {
 
   const { email, subject, text, html, sendTo } = mail;
 
-  let isVerified = false;
+  let isVerified: boolean;
   try {
     isVerified = await transporter.verify();
   } catch (error) {
