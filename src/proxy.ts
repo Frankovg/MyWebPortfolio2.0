@@ -2,7 +2,17 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { auth } from "@/lib/auth";
 
+// Paths fantasma (no existen en la app) que están siendo scrapeados masivamente.
+// Cortamos antes de invocar Better Auth / RootLayout para no pagar Fast Origin Transfer.
+const BLOCKED_PATHS = [
+  /^\/blog(\/|$)/,
+];
+
 export async function proxy(request: NextRequest) {
+  if (BLOCKED_PATHS.some((re) => re.test(request.nextUrl.pathname))) {
+    return new NextResponse(null, { status: 404 });
+  }
+
   const session = await auth.api.getSession({
     headers: request.headers,
   });
