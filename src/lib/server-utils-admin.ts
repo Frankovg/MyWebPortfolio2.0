@@ -35,7 +35,7 @@ export const getCategoriesAdmin = unstable_cache(
     return categories;
   },
   ["categories-admin"],
-  { revalidate: 3600, tags: [CACHE_TAGS.categories] }
+  { revalidate: 604800, tags: [CACHE_TAGS.categories] }
 );
 
 export async function getCategoryById(id: string) {
@@ -64,7 +64,7 @@ export const getDownloadsContent = unstable_cache(
     return downloads;
   },
   ["downloads"],
-  { revalidate: 3600, tags: [CACHE_TAGS.downloads] }
+  { revalidate: 604800, tags: [CACHE_TAGS.downloads] }
 );
 
 export async function getDownloadFileById(id: string) {

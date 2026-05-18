@@ -1,14 +1,11 @@
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar/navbar";
-import { checkAuth } from "@/lib/check-auth";
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await checkAuth();
-
   return (
     <>
       <a
@@ -18,7 +15,7 @@ export default async function RootLayout({
         Skip to main content
       </a>
       <div className="max-w-fa mx-auto w-full">
-        <Navbar session={session} />
+        <Navbar />
         <div id="main-content">{children}</div>
       </div>
       <Footer />

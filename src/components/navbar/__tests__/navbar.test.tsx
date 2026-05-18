@@ -22,6 +22,14 @@ jest.mock('next/navigation', () => ({
 jest.mock('next/image', () => mockNextImage);
 jest.mock('next/link', () => mockNextLink);
 
+const mockUseSession = jest.fn();
+jest.mock('@/lib/auth-client', () => ({
+  useSession: () => mockUseSession(),
+  authClient: {
+    useSession: () => mockUseSession(),
+  },
+}));
+
 jest.mock('@/stores/use-downloads-store', () => ({
   useDownloadsStore: (selector?: (state: unknown) => unknown) => {
     const state = {
@@ -51,7 +59,7 @@ jest.mock('@/actions/user-actions', () => ({
 }));
 
 describe('Navbar', () => {
-  const mockSessionWithUser = {
+  const adminSessionData = {
     session: {
       id: 'session-1',
       createdAt: new Date(),
@@ -73,17 +81,45 @@ describe('Navbar', () => {
     },
   };
 
-  const mockSessionWithoutUser = null;
+  const nonAdminSessionData = {
+    session: {
+      id: 'session-2',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      userId: '2',
+      expiresAt: new Date('2099-12-31'),
+      token: 'mock-token-2',
+    },
+    user: {
+      id: '2',
+      email: 'demo@example.com',
+      name: 'Demo User',
+      emailVerified: true,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      isAdmin: false,
+      isActive: true,
+      image: null,
+    },
+  };
+
+  const mockAnonymous = () =>
+    mockUseSession.mockReturnValue({ data: null, isPending: false });
+  const mockAdmin = () =>
+    mockUseSession.mockReturnValue({ data: adminSessionData, isPending: false });
+  const mockNonAdmin = () =>
+    mockUseSession.mockReturnValue({ data: nonAdminSessionData, isPending: false });
 
   beforeEach(() => {
     jest.clearAllMocks();
     setupMatchMediaMock();
     setupScrollYMock(0);
+    mockAnonymous();
   });
 
   describe('Rendering', () => {
     it('should render the navbar', () => {
-      render(<Navbar session={mockSessionWithoutUser} />);
+      render(<Navbar />);
 
       const navElements = screen.getAllByRole('navigation');
       expect(navElements.length).toBeGreaterThanOrEqual(1);
@@ -91,14 +127,14 @@ describe('Navbar', () => {
     });
 
     it('should render the logo', () => {
-      render(<Navbar session={mockSessionWithoutUser} />);
+      render(<Navbar />);
 
       const logo = screen.getByAltText('Franco Amoroso Web Portfolio logo');
       expect(logo).toBeInTheDocument();
     });
 
     it('should render navigation links from ROUTES (except last one)', () => {
-      render(<Navbar session={mockSessionWithoutUser} />);
+      render(<Navbar />);
 
       const routesToShow = ROUTES.slice(0, -1);
       routesToShow.forEach((route) => {
@@ -107,20 +143,20 @@ describe('Navbar', () => {
     });
 
     it('should render Downloads menu link', () => {
-      render(<Navbar session={mockSessionWithoutUser} />);
+      render(<Navbar />);
 
       expect(screen.getByText('Downloads')).toBeInTheDocument();
     });
 
     it('should render About me link', () => {
-      render(<Navbar session={mockSessionWithoutUser} />);
+      render(<Navbar />);
 
       const aboutMeLinks = screen.getAllByText('About me');
       expect(aboutMeLinks.length).toBeGreaterThan(0);
     });
 
     it('should render social links', () => {
-      render(<Navbar session={mockSessionWithoutUser} />);
+      render(<Navbar />);
 
       SOCIAL_ICONS.forEach((social) => {
         if (social.href) {
@@ -131,13 +167,13 @@ describe('Navbar', () => {
     });
 
     it("should render Let's Connect link", () => {
-      render(<Navbar session={mockSessionWithoutUser} />);
+      render(<Navbar />);
 
       expect(screen.getByText("Let's Connect")).toBeInTheDocument();
     });
 
     it('should render mobile menu button', () => {
-      render(<Navbar session={mockSessionWithoutUser} />);
+      render(<Navbar />);
 
       const mobileMenuButton = screen.getByRole('button', { name: /navigation menu/i });
       expect(mobileMenuButton).toBeInTheDocument();
@@ -146,45 +182,49 @@ describe('Navbar', () => {
 
   describe('User session - Not logged in', () => {
     it('should render login link when not logged in', () => {
-      render(<Navbar session={mockSessionWithoutUser} />);
+      render(<Navbar />);
 
       expect(screen.getByText('Login')).toBeInTheDocument();
     });
 
     it('should not render admin link when not logged in', () => {
-      render(<Navbar session={mockSessionWithoutUser} />);
+      render(<Navbar />);
 
       expect(screen.queryByText('Admin')).not.toBeInTheDocument();
     });
 
     it('should not render logout button when not logged in', () => {
-      render(<Navbar session={mockSessionWithoutUser} />);
+      render(<Navbar />);
 
       expect(screen.queryByText('Logout')).not.toBeInTheDocument();
     });
   });
 
   describe('User session - Logged in as admin', () => {
+    beforeEach(() => {
+      mockAdmin();
+    });
+
     it('should render admin link when logged in as admin', () => {
-      render(<Navbar session={mockSessionWithUser} />);
+      render(<Navbar />);
 
       expect(screen.getByText('Admin')).toBeInTheDocument();
     });
 
     it('should render logout button when logged in', () => {
-      render(<Navbar session={mockSessionWithUser} />);
+      render(<Navbar />);
 
       expect(screen.getByText('Logout')).toBeInTheDocument();
     });
 
     it('should not render login link when logged in', () => {
-      render(<Navbar session={mockSessionWithUser} />);
+      render(<Navbar />);
 
       expect(screen.queryByText('Login')).not.toBeInTheDocument();
     });
 
     it('should display admin access message for admin users', () => {
-      render(<Navbar session={mockSessionWithUser} />);
+      render(<Navbar />);
 
       const messageElement = screen.getByText((_, element) => {
         return element?.getAttribute('data-desktop') === 'Welcome back! You have admin access.';
@@ -194,30 +234,12 @@ describe('Navbar', () => {
   });
 
   describe('User session - Logged in as non-admin', () => {
-    const nonAdminSession = {
-      session: {
-        id: 'session-2',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        userId: '2',
-        expiresAt: new Date('2099-12-31'),
-        token: 'mock-token-2',
-      },
-      user: {
-        id: '2',
-        email: 'demo@example.com',
-        name: 'Demo User',
-        emailVerified: true,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        isAdmin: false,
-        isActive: true,
-        image: null,
-      },
-    };
+    beforeEach(() => {
+      mockNonAdmin();
+    });
 
     it('should display demo account message for non-admin users', () => {
-      render(<Navbar session={nonAdminSession} />);
+      render(<Navbar />);
 
       const messageElement = screen.getByText((_, element) => {
         return element?.getAttribute('data-desktop') === 'Welcome! This is a demo account with restricted access.';
@@ -228,7 +250,7 @@ describe('Navbar', () => {
 
   describe('Scroll behavior', () => {
     it('should have transparent background initially', () => {
-      render(<Navbar session={mockSessionWithoutUser} />);
+      render(<Navbar />);
 
       const navElements = screen.getAllByRole('navigation');
       const mainNav = navElements[0];
@@ -237,7 +259,7 @@ describe('Navbar', () => {
     });
 
     it('should change background when scrolled past 50px', () => {
-      render(<Navbar session={mockSessionWithoutUser} />);
+      render(<Navbar />);
 
       Object.defineProperty(window, 'scrollY', {
         writable: true,
@@ -252,7 +274,7 @@ describe('Navbar', () => {
     });
 
     it('should revert to transparent when scrolled back to top', () => {
-      render(<Navbar session={mockSessionWithoutUser} />);
+      render(<Navbar />);
 
       Object.defineProperty(window, 'scrollY', {
         writable: true,
@@ -275,7 +297,7 @@ describe('Navbar', () => {
   describe('Mobile menu interaction', () => {
     it('should open mobile menu when button is clicked', async () => {
       const user = userEvent.setup();
-      render(<Navbar session={mockSessionWithoutUser} />);
+      render(<Navbar />);
 
       const mobileMenuButton = screen.getByRole('button', { name: /navigation menu/i });
       await user.click(mobileMenuButton);
@@ -287,7 +309,7 @@ describe('Navbar', () => {
 
     it('should close mobile menu when close button is clicked', async () => {
       const user = userEvent.setup();
-      render(<Navbar session={mockSessionWithoutUser} />);
+      render(<Navbar />);
 
       const mobileMenuButton = screen.getByRole('button', { name: /navigation menu/i });
       await user.click(mobileMenuButton);
@@ -303,21 +325,21 @@ describe('Navbar', () => {
 
   describe('Navigation links', () => {
     it('should have correct href for logo link', () => {
-      render(<Navbar session={mockSessionWithoutUser} />);
+      render(<Navbar />);
 
       const logoLink = screen.getByAltText('Franco Amoroso Web Portfolio logo').closest('a');
       expect(logoLink).toHaveAttribute('href', '/');
     });
 
     it("should have correct href for Let's Connect link", () => {
-      render(<Navbar session={mockSessionWithoutUser} />);
+      render(<Navbar />);
 
       const connectLink = screen.getByText("Let's Connect").closest('a');
       expect(connectLink).toHaveAttribute('href', '/contact');
     });
 
     it('should have correct href for About me link', () => {
-      render(<Navbar session={mockSessionWithoutUser} />);
+      render(<Navbar />);
 
       const aboutMeLinks = screen.getAllByText('About me');
       const standaloneAboutMe = aboutMeLinks.find(
@@ -329,14 +351,14 @@ describe('Navbar', () => {
 
   describe('Accessibility', () => {
     it('should have navigation landmark', () => {
-      render(<Navbar session={mockSessionWithoutUser} />);
+      render(<Navbar />);
 
       const navElements = screen.getAllByRole('navigation');
       expect(navElements.length).toBeGreaterThanOrEqual(1);
     });
 
     it('should have accessible mobile menu button', () => {
-      render(<Navbar session={mockSessionWithoutUser} />);
+      render(<Navbar />);
 
       const mobileMenuButton = screen.getByRole('button', { name: /navigation menu/i });
       expect(mobileMenuButton).toHaveAttribute('type', 'button');
@@ -344,7 +366,7 @@ describe('Navbar', () => {
     });
 
     it('should have accessible social links with target blank', () => {
-      render(<Navbar session={mockSessionWithoutUser} />);
+      render(<Navbar />);
 
       SOCIAL_ICONS.forEach((social) => {
         if (social.href) {
@@ -365,7 +387,7 @@ describe('Navbar', () => {
     it('should remove scroll event listener on unmount', () => {
       const removeEventListenerSpy = jest.spyOn(window, 'removeEventListener');
 
-      const { unmount } = render(<Navbar session={mockSessionWithoutUser} />);
+      const { unmount } = render(<Navbar />);
       unmount();
 
       expect(removeEventListenerSpy).toHaveBeenCalledWith(
