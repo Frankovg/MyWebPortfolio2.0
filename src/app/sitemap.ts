@@ -2,6 +2,8 @@ import { MetadataRoute } from 'next'
 
 import { getCategories } from '@/lib/server-utils-public'
 
+export const revalidate = 86400;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://franamoroso.com'
 

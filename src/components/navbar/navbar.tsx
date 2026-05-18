@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-import { UserSession } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 import Logo from "../primitives/logo";
@@ -16,11 +15,7 @@ import { NavLinks } from "./components/nav-links";
 import { SocialNavLinks } from "./components/social-nav-links";
 import UserMainBar from "./components/user-main-bar";
 
-type NavbarProps = {
-  session: UserSession;
-};
-
-export default function Navbar({ session }: NavbarProps) {
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -43,7 +38,7 @@ export default function Navbar({ session }: NavbarProps) {
           scrolled ? "bg-background py-5" : "bg-transparent py-8"
         )}
       >
-        <UserMainBar session={session} />
+        <UserMainBar />
         <div className="flex items-center justify-between w-full max-w-fa mx-auto px-4 mt-8 1100:mt-6">
           <div className="flex items-center gap-8 w-fit">
             <Logo />

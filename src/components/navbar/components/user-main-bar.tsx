@@ -1,19 +1,17 @@
 "use client";
 
-import { UserSession } from "@/lib/types";
+import { useSession } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 
 import { UserMainBarContent } from "./user-main-bar-content";
 
-type UserMainBarProps = {
-  session: UserSession;
-};
-
-function UserMainBar({ session }: UserMainBarProps) {
+function UserMainBar() {
+  const { data: session } = useSession();
   const user = session?.user;
 
   const isLogged = !!user;
-  const isAdmin = user?.isAdmin ?? false;
+  const isAdmin = (user as { isAdmin?: boolean } | undefined)?.isAdmin ?? false;
+
   const styles = isLogged
     ? "bg-primary text-darkPrimary"
     : "bg-transparent text-whiteText";

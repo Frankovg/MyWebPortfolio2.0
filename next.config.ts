@@ -16,24 +16,9 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   outputFileTracingRoot: path.join(__dirname),
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "drive.google.com",
-        port: "",
-        pathname: "/*",
-      },
-      {
-        protocol: "https",
-        hostname: "res.cloudinary.com",
-        port: "",
-        pathname: "/**",
-      },
-    ],
-    formats: ["image/webp", "image/avif"],
-    dangerouslyAllowSVG: false,
-    unoptimized: false,
-    qualities: [40, 50, 60, 75, 100],
+    loader: "custom",
+    loaderFile: "./src/lib/cloudinary-loader.ts",
+    qualities: [40, 50, 60, 90],
   },
   async redirects() {
     return [
@@ -81,7 +66,6 @@ export default withSentryConfig(nextConfig, {
   project: "mywebportfolio-2",
   silent: !process.env.CI,
   widenClientFileUpload: true,
-  tunnelRoute: "/monitoring",
   webpack: {
     automaticVercelMonitors: true,
     treeshake: {

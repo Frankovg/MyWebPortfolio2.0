@@ -13,9 +13,9 @@ export const CACHE_TAGS = {
 } as const;
 
 const CACHE_DURATION = {
-  categories: 3600,
-  projects: 3600,
-  downloads: 3600,
+  categories: 604800,
+  projects: 604800,
+  downloads: 604800,
 } as const;
 
 export const getCategories = unstable_cache(
