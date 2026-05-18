@@ -30,10 +30,10 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
-    formats: ["image/webp", "image/avif"],
+    formats: ["image/webp"],
     dangerouslyAllowSVG: false,
     unoptimized: false,
-    qualities: [40, 50, 60, 75, 100],
+    qualities: [40, 50, 60, 90],
   },
   async redirects() {
     return [
