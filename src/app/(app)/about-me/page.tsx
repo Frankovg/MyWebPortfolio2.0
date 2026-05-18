@@ -7,6 +7,9 @@ import Section from "@/components/section";
 
 import { ABOUT_ME, ABOUT_ME_BANNER } from "./constants/constants";
 
+export const dynamic = "force-static";
+export const revalidate = 86400;
+
 export const metadata: Metadata = {
   title: "About Me",
   description: "Full-stack developer with a background in Industrial Design. From Argentina to Australia to Spain, blending creativity with code to build meaningful digital experiences.",

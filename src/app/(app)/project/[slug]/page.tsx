@@ -13,6 +13,15 @@ import Loading from "./loading";
 import { getCachedProject } from "./utils/cached-project";
 import { parseCategories } from "./utils/parse-categories";
 
+export const revalidate = 604800;
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const categories = await getCategories();
+  return categories.flatMap((category) =>
+    category.projects.map((project) => ({ slug: project.slug }))
+  );
+}
 
 export async function generateMetadata({
   params,
