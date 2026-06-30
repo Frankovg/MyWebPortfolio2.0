@@ -1,10 +1,10 @@
 "use client";
 
-import { ChevronLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 import H1Main from "@/components/primitives/h1-main";
 import { Button } from "@/components/ui/button";
+import { ChevronLeft } from "@/icons/lucide";
 
 type AdminPageTitleProps = {
   title: string;

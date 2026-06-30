@@ -1,6 +1,5 @@
 "use client";
 
-import { FolderPen } from "lucide-react";
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
 
@@ -22,6 +21,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { FolderPen } from "@/icons/lucide";
 import { showErrorMessage } from "@/utils/showErrorMessage";
 
 type EditFolderDialogProps = {

@@ -1,11 +1,11 @@
-import { Check } from "lucide-react";
-
 import {
   Card,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Check } from "@/icons/lucide";
+
 
 import type { user as User } from "@/generated/prisma/client";
 

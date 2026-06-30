@@ -1,5 +1,3 @@
-import { FileDown } from "lucide-react";
-
 import {
   Card,
   CardContent,
@@ -7,6 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { FileDown } from "@/icons/lucide";
 import { LANGUAGE_DICTIONARY } from "@/lib/constants";
 
 import type { Download } from "@/generated/prisma/client";

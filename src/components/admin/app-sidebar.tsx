@@ -1,14 +1,5 @@
 "use client";
 
-import {
-  CloudDownload,
-  Home,
-  Users,
-  KeyRound,
-  LogOut,
-  Briefcase,
-  FileImage,
-} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTransition } from "react";
@@ -27,6 +18,15 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import {
+  CloudDownload,
+  Home,
+  Users,
+  KeyRound,
+  LogOut,
+  Briefcase,
+  FileImage,
+} from "@/icons/lucide";
 
 import Isologo from "../primitives/isologo";
 import Logo from "../primitives/logo";

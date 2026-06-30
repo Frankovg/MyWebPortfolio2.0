@@ -1,6 +1,9 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
+import Link from "next/link";
+
+import { Button } from "@/components/ui/button";
 import {
   ArrowDownUpIcon,
   CheckIcon,
@@ -9,10 +12,7 @@ import {
   Trash2,
   TvMinimalPlay,
   XIcon,
-} from "lucide-react";
-import Link from "next/link";
-
-import { Button } from "@/components/ui/button";
+} from "@/icons/lucide";
 import { GithubIcon } from "@/icons/social";
 import { DATE_FORMAT, DATE_LOCATION } from "@/lib/constants";
 

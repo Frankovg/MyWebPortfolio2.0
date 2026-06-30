@@ -1,8 +1,8 @@
 "use client";
 
-import { Check } from "lucide-react";
 import Image from "next/image";
 
+import { Check } from "@/icons/lucide";
 import { cn } from "@/lib/utils";
 
 import PdfCard from "../pdf-card";

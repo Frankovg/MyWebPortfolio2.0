@@ -1,7 +1,7 @@
-import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 import ImageWithFallback from "@/components/primitives/image-with-fallback";
+import { ArrowLeft } from "@/icons/lucide";
 import { FALLBACK_IMG, NEXT, PREV } from "@/lib/constants";
 import { PrevOrNextProject } from "@/lib/types";
 import { cn } from "@/lib/utils";

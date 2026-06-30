@@ -4,24 +4,26 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
+> **Package manager: always use `pnpm`** (never `npm` or `yarn`). The lockfile is `pnpm-lock.yaml`. Install deps with `pnpm install`, add/remove with `pnpm add` / `pnpm remove`.
+
 ```bash
 # Development
-npm run dev              # Start Next.js dev server
-npm run build            # Production build
-npm run lint             # Run ESLint
-npm run lint:fix         # Auto-fix ESLint issues
+pnpm dev                 # Start Next.js dev server
+pnpm build               # Production build
+pnpm lint                # Run ESLint
+pnpm lint:fix            # Auto-fix ESLint issues
 
 # Testing
-npm test                 # Run all Jest tests
-npm test -- path/to/file.test.ts  # Run single test file
-npm test:watch           # Watch mode
-npm test:coverage        # Generate coverage report (80% threshold required)
+pnpm test                # Run all Jest tests
+pnpm test path/to/file.test.ts  # Run single test file
+pnpm test:watch          # Watch mode
+pnpm test:coverage       # Generate coverage report (80% threshold required)
 
 # Database
-npx prisma generate      # Generate Prisma client
-npx prisma migrate dev --name <name>  # Create migration
-npx prisma db seed       # Seed database
-npx prisma studio        # Visual DB editor (port 5555)
+pnpm prisma generate     # Generate Prisma client
+pnpm prisma migrate dev --name <name>  # Create migration
+pnpm prisma db seed      # Seed database
+pnpm prisma studio       # Visual DB editor (port 5555)
 ```
 
 ## Architecture
