@@ -36,7 +36,18 @@ import {
   SolidWorks,
   VRay,
   Copilot,
-  ClaudeCode
+  ClaudeCode,
+  ReactNative,
+  InertiaRails,
+  Sqlite,
+  Supabase,
+  Ruby,
+  RubyOnRails,
+  Neon,
+  Cloudinary,
+  Vitest,
+  ReactTestingLibrary,
+  Vite
 } from "@/icons/techs"
 
 export const BASICS_TECHS = {
@@ -116,6 +127,27 @@ export const BASICS_TECHS = {
     description: "A minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.",
     link: "https://expressjs.com/",
     icon: Express
+  },
+  reactnative: {
+    name: 'React Native',
+    value: 'reactnative',
+    description: "A cross-platform mobile framework that lets you build iOS and Android apps from one JavaScript codebase while still rendering native UI components.",
+    link: "https://reactnative.dev/",
+    icon: ReactNative
+  },
+  inertiarails: {
+    name: 'Inertia Rails',
+    value: 'inertiarails',
+    description: "Is the official adapter that allows you to build single-page apps in Ruby on Rails using React, Vue, or Svelte for your frontend.",
+    link: "https://inertia-rails.dev/",
+    icon: InertiaRails
+  },
+  vite: {
+    name: 'Vite',
+    value: 'vite',
+    description: "Is a blazing fast frontend build tool powering the next generation of web applications.",
+    link: "https://vite.dev/",
+    icon: Vite
   }
 }
 
@@ -251,6 +283,48 @@ export const DB_TECHS = {
     description: "It serves as a bridge between the application and the database, offering a comprehensive toolkit that simplifies database access and management.",
     link: "https://www.prisma.io/?via=start&gad_source=1",
     icon: Prisma
+  },
+  sqlite: {
+    name: 'SQLite',
+    value: 'sqlite',
+    description: "Is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine.",
+    link: "https://sqlite.org/",
+    icon: Sqlite
+  },
+  supabase: {
+    name: 'Supabase',
+    value: 'supabase',
+    description: "Build production-grade applications with a Postgres database, Authentication, instant APIs, Realtime, Functions, Storage and Vector embeddings.",
+    link: "https://supabase.com/",
+    icon: Supabase
+  },
+  ruby: {
+    name: 'Ruby',
+    value: 'ruby',
+    description: "Is a highly popular programming language that's used for lots of things, from web app development to data analysis.",
+    link: "https://www.ruby-lang.org/en/",
+    icon: Ruby
+  },
+  rubyonrails: {
+    name: 'Ruby on Rails',
+    value: 'rubyonrails',
+    description: "Is a full-stack framework. It ships with all the tools needed to build amazing web apps on both the front and back end.",
+    link: "https://rubyonrails.org/",
+    icon: RubyOnRails
+  },
+  neon: {
+    name: 'Neon',
+    value: 'neon',
+    description: "The backend for apps and agents. Build with Serverless Postgres, Auth, Functions, Storage, and an AI Gateway: instant, branchable, serverless.",
+    link: "https://neon.com/",
+    icon: Neon
+  },
+  cloudinary: {
+    name: 'Cloudinary',
+    value: 'cloudinary',
+    description: "Streamline media management and improve user experience by automatically delivering images and videos, enhanced and optimized for every user.",
+    link: "https://cloudinary.com/",
+    icon: Cloudinary
   }
 }
 
@@ -282,6 +356,20 @@ export const TESTING_TECHS = {
     description: "Jest is a JavaScript testing framework, primarily used for unit testing React and JavaScript codebases, including those built with React Native.",
     link: "https://jestjs.io/",
     icon: Jest
+  },
+  vitest: {
+    name: 'Vitest',
+    value: 'vitest',
+    description: "A blazingly fast, Vite-native unit and component testing framework.",
+    link: "https://vitest.dev/",
+    icon: Vitest
+  },
+  rtl: {
+    name: 'React Testing Library',
+    value: 'rtl',
+    description: "Is a very light-weight solution for testing React components.",
+    link: "https://testing-library.com/docs/react-testing-library/intro/",
+    icon: ReactTestingLibrary
   }
 }
 
@@ -324,17 +412,15 @@ export const DEPLOYMENT_TECHS = {
 }
 
 const BASICS = "basics"
-const BASICS_LABEL = 'Essentials for Web App Development'
-const STYLING = "styling"
-const STYLING_LABEL = 'Styling and Related Libraries'
+const BASICS_LABEL = 'Front End - Frameworks and libraries'
 const DESIGN = "design"
 const DESIGN_LABEL = 'Design and UX/UI tools'
 const DB = "db"
-const DB_LABEL = 'Database Management'
+const DB_LABEL = 'Back End and Database management'
 const TESTING = "testing"
-const TESTING_LABEL = 'Testing and QA'
-const DEPLOYMENT = "deployment"
-const DEPLOYMENT_LABEL = 'Version Control and Deployment'
+const TESTING_LABEL = 'Testing and Deployment'
+const LANGUAGES = "languages"
+const LANGUAGES_LABEL = 'Languages and essential tools'
 
 export const CATEGORIES = [
   {
@@ -343,21 +429,8 @@ export const CATEGORIES = [
     techs: [
       BASICS_TECHS.react,
       BASICS_TECHS.nextjs,
-      BASICS_TECHS.turborepo,
-      BASICS_TECHS.typescript,
-      BASICS_TECHS.javascript,
-      BASICS_TECHS.claudecode,
-      BASICS_TECHS.copilot,
-      BASICS_TECHS.html,
-      BASICS_TECHS.css,
-      BASICS_TECHS.node,
-      BASICS_TECHS.express,
-    ]
-  },
-  {
-    label: STYLING_LABEL,
-    value: STYLING,
-    techs: [
+      BASICS_TECHS.reactnative,
+      BASICS_TECHS.inertiarails,
       STYLING_TECHS.tailwind,
       STYLING_TECHS.sass,
       STYLING_TECHS.styledcomponents,
@@ -384,10 +457,17 @@ export const CATEGORIES = [
     label: DB_LABEL,
     value: DB,
     techs: [
-      DB_TECHS.sql,
       DB_TECHS.postgresql,
       DB_TECHS.mysql,
       DB_TECHS.prisma,
+      DB_TECHS.sqlite,
+      DB_TECHS.supabase,
+      DEPLOYMENT_TECHS.firebase,
+      DB_TECHS.rubyonrails,
+      DB_TECHS.neon,
+      DB_TECHS.cloudinary,
+      BASICS_TECHS.node,
+      BASICS_TECHS.express,
     ]
   },
   {
@@ -398,21 +478,33 @@ export const CATEGORIES = [
       TESTING_TECHS.ladle,
       TESTING_TECHS.storybook,
       TESTING_TECHS.jest,
+      TESTING_TECHS.vitest,
+      TESTING_TECHS.rtl,
+      DEPLOYMENT_TECHS.vercel,
+      DEPLOYMENT_TECHS.gitlab,
+      DEPLOYMENT_TECHS.github,
+      BASICS_TECHS.turborepo,
+      BASICS_TECHS.vite,
     ]
   },
   {
-    label: DEPLOYMENT_LABEL,
-    value: DEPLOYMENT,
+    label: LANGUAGES_LABEL,
+    value: LANGUAGES,
     techs: [
-      DEPLOYMENT_TECHS.vercel,
-      DEPLOYMENT_TECHS.firebase,
-      DEPLOYMENT_TECHS.gitlab,
-      DEPLOYMENT_TECHS.github,
+      BASICS_TECHS.typescript,
+      BASICS_TECHS.javascript,
+      BASICS_TECHS.html,
+      BASICS_TECHS.css,
+      DB_TECHS.ruby,
+      DB_TECHS.sql,
       DEPLOYMENT_TECHS.git,
+      BASICS_TECHS.claudecode,
+      BASICS_TECHS.copilot,
     ]
   }
 ]
 
+//TODO: arreglar mobile
 export const MOBILE_CATEGORIES = [
   {
     label: BASICS_LABEL,
@@ -425,28 +517,23 @@ export const MOBILE_CATEGORIES = [
     techs: CATEGORIES[0].techs.slice(6, 12)
   },
   {
-    label: STYLING_LABEL,
-    value: STYLING,
-    techs: CATEGORIES[1].techs
-  },
-  {
     label: DESIGN_LABEL,
     value: DESIGN,
-    techs: CATEGORIES[2].techs.slice(0, 6)
+    techs: CATEGORIES[1].techs.slice(0, 6)
   },
   {
     label: DB_LABEL,
     value: DB,
-    techs: CATEGORIES[3].techs
+    techs: CATEGORIES[2].techs
   },
   {
     label: TESTING_LABEL,
     value: TESTING,
-    techs: CATEGORIES[4].techs
+    techs: CATEGORIES[3].techs
   },
   {
-    label: DEPLOYMENT_LABEL,
-    value: DEPLOYMENT,
-    techs: CATEGORIES[5].techs
+    label: LANGUAGES_LABEL,
+    value: LANGUAGES,
+    techs: CATEGORIES[4].techs
   }
 ]
