@@ -1,5 +1,6 @@
-import { HomeIcon } from "lucide-react"
 import Link from "next/link";
+
+import { HomeIcon } from "@/icons/lucide"
 
 export const GoHome = () => {
   return (

@@ -1,6 +1,5 @@
 "use client";
 
-import { FilePlus, ImagePlus } from "lucide-react";
 import { useState } from "react";
 
 import FolderNav from "@/components/admin/media-picker/folder-nav";
@@ -16,6 +15,7 @@ import {
 } from "@/components/ui/dialog";
 import { useMediaLibraryData } from "@/hooks/use-media-library-data";
 import { useMediaSearch } from "@/hooks/use-media-search";
+import { FilePlus, ImagePlus } from "@/icons/lucide";
 import { showErrorMessage } from "@/utils/showErrorMessage";
 
 import { MediaSearchInput } from "./media-search-input";

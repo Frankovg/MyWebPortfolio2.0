@@ -1,14 +1,13 @@
 'use client'
 
-import { JSX, SVGProps } from "react";
-
+import TechIcon from "@/components/tech-icon";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
 type TechCardProps = {
   tech: {
     name: string;
     value: string;
-    icon: (props: SVGProps<SVGSVGElement>) => JSX.Element;
+    icon: string;
     description: string;
     link: string;
   },
@@ -24,7 +23,7 @@ function TechCard({ tech, className = '' }: TechCardProps) {
           className="flex justify-center h-auto cursor-default p-0 bg-transparent border-none"
           aria-label={tech.name}
         >
-          <tech.icon className={className} aria-hidden="true" />
+          <TechIcon name={tech.icon} className={className} aria-hidden="true" />
         </button>
       </HoverCardTrigger>
       <HoverCardContent className="w-80 bg-background" sideOffset={10}>

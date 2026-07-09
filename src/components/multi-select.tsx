@@ -1,5 +1,4 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import { XCircle, ChevronDown, XIcon } from "lucide-react";
 import * as React from "react";
 
 import { Badge } from "@/components/ui/badge";
@@ -19,6 +18,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
+import { XCircle, ChevronDown, XIcon } from "@/icons/lucide";
 import { cn } from "@/lib/utils";
 
 export const multiSelectVariants = cva("m-1", {

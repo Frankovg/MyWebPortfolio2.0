@@ -1,8 +1,8 @@
 'use client'
 
-import { ExternalLink, SquarePlayIcon } from "lucide-react"
 import { useMemo } from "react"
 
+import { ExternalLink, SquarePlayIcon } from "@/icons/lucide"
 import { GithubIcon } from "@/icons/social"
 import { getYouTubeUrl } from "@/utils/getYouTubeUrl"
 

@@ -1,3 +1,4 @@
+import AboutIcon from "@/components/about-icon";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 
 import { COMPANY_CLIENTS } from "../constants/constants";
@@ -9,7 +10,7 @@ function CompanyClients() {
         <HoverCard key={brand.value} openDelay={200} closeDelay={150}>
           <HoverCardTrigger asChild className="group">
             <div className="flex justify-start sm:justify-center h-auto cursor-default p-2.5">
-              <brand.icon className='object-contain transition-all duration-200 ease-in-out group-hover:fill-primary group-hover:scale-105' />
+              <AboutIcon name={brand.icon} className='object-contain transition-all duration-200 ease-in-out group-hover:scale-105' />
             </div>
           </HoverCardTrigger>
           <HoverCardContent className="w-80 bg-background" sideOffset={10}>

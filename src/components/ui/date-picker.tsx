@@ -1,6 +1,5 @@
 "use client";
 
-import { CalendarIcon } from "lucide-react";
 import { useMemo } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -10,6 +9,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { CalendarIcon } from "@/icons/lucide";
 import { cn } from "@/lib/utils";
 
 

@@ -1,3 +1,4 @@
+import TechIcon from "@/components/tech-icon"
 import { CarouselItem } from "@/components/ui/carousel"
 
 import { MOBILE_CATEGORIES } from "../../constants/constants"
@@ -13,7 +14,7 @@ function CarouselItems() {
             </h5>
             {cat.techs.map(tech => (
               <div key={tech.name} className="flex justify-center p-4 h-40 max-h-40">
-                <tech.icon className="h-auto w-auto" />
+                <TechIcon name={tech.icon} className="h-auto w-auto" />
               </div>
             ))}
           </div>

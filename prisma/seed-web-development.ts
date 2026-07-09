@@ -344,7 +344,7 @@ export const WEB_DEVELOPMENT_SEED = {
       {
         title: "Petsoft",
         shortDescription:
-          "The Jokes API is a web app offering a selection of random jokes, allowing users to rate, filter by category, and even submit their own jokes for endless entertainment.",
+          "`A full-stack pet care management app for owners, vets, and caretakers — track medical records, visits, vaccinations, and treatments in one place.",
         description: `This is a modern full-stack web application designed to help pet owners, veterinarians, and caretakers efficiently manage the animals under their care. 
           With a clean, user-friendly interface, PetSoft allows users to keep track of medical records, visits, vaccinations, treatments, and more — all in one centralized and accessible place.
           From a technical perspective, PetSoft is built using Next.js and TypeScript for a robust and scalable frontend architecture. Styling is handled with Tailwind CSS, ensuring a responsive and maintainable UI. The backend is powered by Prisma ORM, interfacing with a relational database to ensure secure and performant data handling.

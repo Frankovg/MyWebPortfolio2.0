@@ -1,6 +1,6 @@
-import { XCircle } from "lucide-react";
-
 import { Badge } from "@/components/ui/badge";
+import { XCircle } from "@/icons/lucide";
+
 
 export const ProjectFormRolesViewer = ({
   role,

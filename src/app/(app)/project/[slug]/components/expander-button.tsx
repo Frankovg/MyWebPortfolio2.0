@@ -1,4 +1,4 @@
-import { Expand } from "lucide-react"
+import { Expand } from "@/icons/lucide"
 
 type ExpanderButtonProps = {
   onClick: VoidFunction

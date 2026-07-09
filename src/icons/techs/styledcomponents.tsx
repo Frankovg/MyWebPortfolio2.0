@@ -20,8 +20,6 @@ function StyledComponents(props: SVGProps<SVGSVGElement>): JSX.Element {
         </clipPath>
       </defs>
     </svg>
-
-
   )
 }
 

@@ -1,5 +1,6 @@
-import { TriangleAlertIcon } from "lucide-react";
 import Link from "next/link";
+
+import { TriangleAlertIcon } from "@/icons/lucide";
 
 import H3 from "./primitives/h3";
 

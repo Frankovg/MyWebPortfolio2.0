@@ -1,7 +1,7 @@
-import { X } from "lucide-react";
 import * as React from "react";
 
 import { Input } from "@/components/ui/input";
+import { X } from "@/icons/lucide";
 import { cn } from "@/lib/utils";
 
 type SearchInputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, "type">;
