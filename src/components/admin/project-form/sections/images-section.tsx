@@ -1,6 +1,5 @@
 "use client";
 
-import { PlusIcon } from "lucide-react";
 import { Controller, useFieldArray, useWatch } from "react-hook-form";
 
 import MediaPickerModal from "@/components/admin/media-picker/media-picker-modal";
@@ -10,6 +9,7 @@ import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { PlusIcon } from "@/icons/lucide";
 import { IMAGE_PLACEHOLDER } from "@/lib/constants";
 import { useProjectFormStore } from "@/stores/use-project-form-store";
 

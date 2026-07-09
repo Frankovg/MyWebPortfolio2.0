@@ -1,6 +1,5 @@
 "use client";
 
-import { Upload } from "lucide-react";
 import { useRef, useState, useTransition } from "react";
 import { toast } from "sonner";
 
@@ -17,6 +16,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Upload } from "@/icons/lucide";
 import { showErrorMessage } from "@/utils/showErrorMessage";
 
 import UploadModalContent from "./upload-modal-content";

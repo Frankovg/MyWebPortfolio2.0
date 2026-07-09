@@ -10,31 +10,26 @@ jest.mock('@/components/ui/hover-card', () => ({
   HoverCardContent: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
 }));
 
-const MockIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg data-testid="tech-icon" {...props}>
-    <rect />
-  </svg>
-);
-
 describe('TechCard', () => {
   const defaultTech = {
     name: 'React',
     value: 'react',
-    icon: MockIcon,
+    icon: 'ReactIcon',
     description: 'A JavaScript library for building user interfaces',
     link: 'https://react.dev',
   };
 
-  it('should render tech icon', () => {
-    render(<TechCard tech={defaultTech} />);
+  it('should render tech icon referencing the sprite symbol', () => {
+    const { container } = render(<TechCard tech={defaultTech} />);
 
-    expect(screen.getByTestId('tech-icon')).toBeInTheDocument();
+    const use = container.querySelector('use');
+    expect(use).toHaveAttribute('href', '/techs-sprite.svg#ReactIcon');
   });
 
   it('should apply custom className to icon', () => {
-    render(<TechCard tech={defaultTech} className="custom-icon-class" />);
+    const { container } = render(<TechCard tech={defaultTech} className="custom-icon-class" />);
 
-    expect(screen.getByTestId('tech-icon')).toHaveClass('custom-icon-class');
+    expect(container.querySelector('svg')).toHaveClass('custom-icon-class');
   });
 
   it('should render hover card content with tech value', () => {

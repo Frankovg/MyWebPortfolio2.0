@@ -8,16 +8,12 @@ import { sleep } from "@/lib/utils";
 import { emailSchema } from "@/lib/validations";
 import { handleError } from "@/utils/handle-error";
 
-const SMTP_SERVER_HOST = process.env.SMTP_SERVER_HOST;
 const SMTP_SERVER_USERNAME = process.env.SMTP_SERVER_USERNAME;
 const SMTP_SERVER_PASSWORD = process.env.SMTP_SERVER_PASSWORD;
 const SITE_MAIL_RECEIVER = process.env.SITE_MAIL_RECEIVER;
 
 const transporter = createTransport({
   service: "gmail",
-  host: SMTP_SERVER_HOST,
-  port: 587,
-  secure: true,
   auth: {
     user: SMTP_SERVER_USERNAME,
     pass: SMTP_SERVER_PASSWORD,

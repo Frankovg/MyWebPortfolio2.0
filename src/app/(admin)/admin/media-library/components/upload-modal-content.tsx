@@ -1,8 +1,8 @@
-import { X } from "lucide-react";
 import Image from "next/image";
 import { Dispatch, RefObject, SetStateAction } from "react";
 
 import PdfCard from "@/components/admin/pdf-card";
+import { X } from "@/icons/lucide";
 
 import { MAX_FILE_SIZE } from "../constants/constants";
 import { FilePreview } from "../types/types";

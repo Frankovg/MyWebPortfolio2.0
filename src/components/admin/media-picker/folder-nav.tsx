@@ -1,8 +1,8 @@
 "use client";
 
-import { ChevronRight, Folder } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
+import { ChevronRight, Folder } from "@/icons/lucide";
+
 
 import type { MediaFolder } from "@/lib/types";
 

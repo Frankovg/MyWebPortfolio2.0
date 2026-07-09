@@ -1,5 +1,6 @@
-import { FrownIcon } from "lucide-react";
 import Link from "next/link";
+
+import { FrownIcon } from "@/icons/lucide";
 
 import H3 from "./primitives/h3";
 

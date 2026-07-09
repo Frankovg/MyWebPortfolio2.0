@@ -1,5 +1,4 @@
-import { MailIcon, MapPinIcon, PhoneIcon } from "lucide-react"
-
+import { MailIcon, MapPinIcon, PhoneIcon } from "@/icons/lucide"
 import { GithubIcon, LinkedInIcon } from "@/icons/social"
 
 import { ConnectItem } from "./connect-item"

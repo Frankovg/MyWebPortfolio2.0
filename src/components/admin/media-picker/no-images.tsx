@@ -1,4 +1,4 @@
-import { ImageOff } from "lucide-react"
+import { ImageOff } from "@/icons/lucide"
 
 export const NoImages = () => {
   return (

@@ -1,6 +1,5 @@
 "use client";
 
-import { Copy, ExternalLink, Trash2 } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -10,6 +9,7 @@ import DeleteModal from "@/components/admin/delete-modal";
 import { ImageCardName } from "@/components/admin/media-picker/image-card-name";
 import PdfCard from "@/components/admin/pdf-card";
 import { Button } from "@/components/ui/button";
+import { Copy, ExternalLink, Trash2 } from "@/icons/lucide";
 import { cn } from "@/lib/utils";
 
 import type { MediaResource } from "@/lib/types";

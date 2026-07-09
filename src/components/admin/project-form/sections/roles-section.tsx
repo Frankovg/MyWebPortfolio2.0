@@ -1,6 +1,5 @@
 "use client";
 
-import { PlusIcon } from "lucide-react";
 import { Controller, useFieldArray } from "react-hook-form";
 
 import ButtonMinimal from "@/components/primitives/button-minimal";
@@ -8,6 +7,7 @@ import FormFieldError from "@/components/primitives/form-field-error";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { PlusIcon } from "@/icons/lucide";
 import { useProjectFormStore } from "@/stores/use-project-form-store";
 
 import { ProjectFormRolesViewer } from "./project-form-roles-viewer";

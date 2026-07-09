@@ -365,6 +365,19 @@ Interested in exploring the admin panel and CMS features? I'd be happy to provid
 <details>
 <summary><h2>📝 Changelog</h2></summary>
 
+### [1.3.3] - 09-07-2026
+
+**Features**
+
+- Svg icons as sprites (reduced the bundle to 90%).
+- Moved icons into the repository.
+- Added more techs.
+
+**Fixes**
+
+- General security improvements.
+- Some emailing configs.
+
 ### [1.3.2] - 19-03-2026
 
 **Features**

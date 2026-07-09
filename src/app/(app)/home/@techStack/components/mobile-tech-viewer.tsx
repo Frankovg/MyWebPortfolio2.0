@@ -11,7 +11,8 @@ function MobileTechViewer() {
     <section className="sm:hidden w-full flex justify-center px-5">
       <Carousel
         plugins={[WheelGesturesPlugin()]}
-        className="w-full mx-10" opts={{ loop: true }}
+        className="w-full mx-10" 
+        opts={{ loop: true }}
       >
         <CarouselContent>
           <CarouselItems />

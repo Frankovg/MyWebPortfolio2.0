@@ -1,10 +1,10 @@
-import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { FieldError, UseFormRegisterReturn } from "react-hook-form";
 
 import FormFieldError from "@/components/primitives/form-field-error";
 import RequiredInputLabel from "@/components/primitives/required-input-label";
 import { Input } from "@/components/ui/input";
+import { Eye, EyeOff } from "@/icons/lucide";
 
 interface PasswordInputProps {
   id: string;

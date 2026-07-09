@@ -1,6 +1,6 @@
-import { Play } from "lucide-react"
-
 import { Button } from "@/components/ui/button"
+import { Play } from "@/icons/lucide"
+
 
 type LinkButtonsProps = {
   data: {
