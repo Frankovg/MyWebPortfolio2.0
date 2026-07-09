@@ -20,6 +20,21 @@ const nextConfig: NextConfig = {
     loaderFile: "./src/lib/cloudinary-loader.ts",
     qualities: [40, 50, 60, 90],
   },
+  async headers() {
+    return [
+      {
+        // Icon sprites are fetched once per client and cached; keep them out of
+        // per-request egress. Filenames are stable, so revalidate in background.
+        source: "/:sprite(techs-sprite|about-sprite).svg",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400, stale-while-revalidate=604800",
+          },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
       {
