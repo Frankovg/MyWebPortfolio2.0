@@ -370,6 +370,15 @@ const TESTING_LABEL = 'Testing and Deployment'
 const LANGUAGES = "languages"
 const LANGUAGES_LABEL = 'Languages and essential tools'
 
+const MOBILE_FRONTEND_FRAMEWORKS = "Front End essentials"
+const MOBILE_UI = "Styling and UI"
+const MOBILE_DB = "Database, CDN and ORM"
+const MOBILE_BACKEND = "Back End essentials"
+const MOBILE_TESTING = "Testing"
+const MOBILE_DEPLOYMENT = "Building and Deployment"
+const MOBILE_LANGUAGES = "Languages"
+const MOBILE_TOOLS = "Tools"
+
 export const CATEGORIES = [
   {
     label: BASICS_LABEL,
@@ -409,11 +418,11 @@ export const CATEGORIES = [
       DB_TECHS.mysql,
       DB_TECHS.prisma,
       DB_TECHS.sqlite,
+      DB_TECHS.neon,
+      DB_TECHS.cloudinary,
       DB_TECHS.supabase,
       DEPLOYMENT_TECHS.firebase,
       DB_TECHS.rubyonrails,
-      DB_TECHS.neon,
-      DB_TECHS.cloudinary,
       BASICS_TECHS.node,
       BASICS_TECHS.express,
     ]
@@ -452,17 +461,16 @@ export const CATEGORIES = [
   }
 ]
 
-//TODO: arreglar mobile
 export const MOBILE_CATEGORIES = [
   {
-    label: BASICS_LABEL,
+    label: MOBILE_FRONTEND_FRAMEWORKS,
     value: BASICS,
-    techs: CATEGORIES[0].techs.slice(0, 6)
+    techs: CATEGORIES[0].techs.slice(0, 4)
   },
   {
-    label: BASICS_LABEL,
+    label: MOBILE_UI,
     value: `${BASICS}-2`,
-    techs: CATEGORIES[0].techs.slice(6, 12)
+    techs: CATEGORIES[0].techs.slice(4, 12)
   },
   {
     label: DESIGN_LABEL,
@@ -470,18 +478,33 @@ export const MOBILE_CATEGORIES = [
     techs: CATEGORIES[1].techs.slice(0, 6)
   },
   {
-    label: DB_LABEL,
+    label: MOBILE_DB,
     value: DB,
-    techs: CATEGORIES[2].techs
+    techs: CATEGORIES[2].techs.slice(0, 6)
   },
   {
-    label: TESTING_LABEL,
+    label: MOBILE_BACKEND,
+    value: `${DB}-2`,
+    techs: CATEGORIES[2].techs.slice(6, 12)
+  },
+  {
+    label: MOBILE_TESTING,
     value: TESTING,
-    techs: CATEGORIES[3].techs
+    techs: CATEGORIES[3].techs.slice(0, 6)
   },
   {
-    label: LANGUAGES_LABEL,
+    label: MOBILE_DEPLOYMENT,
+    value: `${TESTING}-2`,
+    techs: CATEGORIES[3].techs.slice(6, 12)
+  },
+  {
+    label: MOBILE_LANGUAGES,
     value: LANGUAGES,
-    techs: CATEGORIES[4].techs
+    techs: CATEGORIES[4].techs.slice(0, 6)
+  },
+  {
+    label: MOBILE_TOOLS,
+    value: `${LANGUAGES}-2`,
+    techs: CATEGORIES[4].techs.slice(6, 12)
   }
 ]
