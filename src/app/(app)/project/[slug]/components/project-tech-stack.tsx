@@ -31,7 +31,7 @@ function ProjectTechStack({ techStack }: ProjectTechStackProps) {
         </CardDescription>
       </CardHeader>
       <CardContent className="pt-2">
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid grid-cols-3 550:grid-cols-4 gap-8">
           {filteredTechs.map((tech) => (
             <TechCard
               key={tech.value}
