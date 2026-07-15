@@ -29,7 +29,8 @@ const config = {
       tsconfig: {
         jsx: 'react',
         esModuleInterop: true,
-        moduleResolution: 'node'
+        moduleResolution: 'node',
+        ignoreDeprecations: '6.0'
       }
     }]
   },
