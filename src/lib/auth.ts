@@ -47,14 +47,17 @@ export const auth = betterAuth({
       },
     },
   },
-  trustedOrigins: [process.env.BETTER_AUTH_URL || "http://localhost:3000"],
+  trustedOrigins: [
+    process.env.BETTER_AUTH_URL || "https://www.franamoroso.com",
+    "http://localhost:3000",
+  ],
   advanced: {
+    database: {
+      joins: true,
+    },
     ipAddress: {
       ipAddressHeaders: ["x-forwarded-for"],
     },
-  },
-  experimental: {
-    joins: true,
   },
   plugins: [
     dash({
