@@ -52,9 +52,9 @@ export const auth = betterAuth({
     ipAddress: {
       ipAddressHeaders: ["x-forwarded-for"],
     },
-  },
-  experimental: {
-    joins: true,
+    database: {
+      joins: true,
+    },
   },
   plugins: [
     dash({
