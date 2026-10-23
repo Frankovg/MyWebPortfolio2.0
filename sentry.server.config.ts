@@ -9,7 +9,4 @@ Sentry.init({
   enabled: process.env.NODE_ENV === "production",
 
   tracesSampleRate: 0,
-  enableLogs: false,
-
-  sendDefaultPii: true,
 });
