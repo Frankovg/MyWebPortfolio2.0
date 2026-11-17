@@ -47,3 +47,8 @@ export { default as Vite } from './vite';
 export { default as Vitest } from './vitest';
 export { default as Sqlite } from './sqlite';
 export { default as Supabase } from './supabase';
+export { default as Vue } from './vue';
+export { default as Aws } from './aws';
+export { default as Astro } from './astro';
+export { default as Python } from './python';
+export { default as FastApi } from './fastapi';
