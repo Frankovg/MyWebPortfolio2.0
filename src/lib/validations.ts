@@ -176,7 +176,7 @@ export const projectFormSchema = z
     companyUrl: optionalUrlSchema(),
     client: optionalStringSchema(50, value_too_long_error_50),
     clientUrl: optionalUrlSchema(),
-    techStack: z.array(techStackSchema),
+    techStack: z.array(techStackSchema).min(1, { error: required_error }),
     roles: z.array(roleSchema),
     published: z.boolean(),
   })

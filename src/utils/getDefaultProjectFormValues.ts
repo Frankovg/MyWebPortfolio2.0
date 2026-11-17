@@ -21,7 +21,7 @@ export const getDefaultProjectFormValues = (project?: IProjectFull): TProjectFor
       description: null,
     },
   ],
-  techStack: getTechStack(project) ?? [{ value: "" }],
+  techStack: getTechStack(project) ?? [],
   roles: getRoles(project) ?? [
     {
       label: "",

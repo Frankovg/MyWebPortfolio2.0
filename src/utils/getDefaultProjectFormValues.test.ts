@@ -47,10 +47,10 @@ describe("getDefaultProjectFormValues", () => {
       ]);
     });
 
-    it("should return default techStack with empty value", () => {
+    it("should return an empty default techStack", () => {
       const result = getDefaultProjectFormValues(undefined);
 
-      expect(result.techStack).toEqual([{ value: "" }]);
+      expect(result.techStack).toEqual([]);
     });
 
     it("should return default roles with empty values and 50% percentage", () => {
