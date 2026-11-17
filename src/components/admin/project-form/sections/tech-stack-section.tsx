@@ -36,7 +36,7 @@ export function TechStackSection() {
             />
           )}
         />
-        <FormFieldError id="techStack-error" message={errors.techStack?.[0]?.value?.message} className="absolute -bottom-4 text-secondary text-xs" />
+        <FormFieldError id="techStack-error" message={errors.techStack?.message ?? errors.techStack?.[0]?.value?.message} className="absolute -bottom-4 text-secondary text-xs" />
       </div>
     </section>
   );
