@@ -107,6 +107,45 @@ export const BASICS_TECHS = {
     link: "https://vite.dev/",
     icon: "Vite",
   },
+  vue: {
+    name: "Vue.js",
+    value: "vue",
+    description:
+      "A progressive JavaScript framework for building user interfaces.",
+    link: "https://vuejs.org/",
+    icon: "Vue",
+  },
+  astro: {
+    name: "Astro",
+    value: "astro",
+    description: "A static site generator for building fast, modern websites.",
+    link: "https://astro.build/",
+    icon: "Astro",
+  },
+  fastApi: {
+    name: "FastAPI",
+    value: "fastapi",
+    description:
+      "A modern, fast (high-performance) web framework for building APIs with Python.",
+    link: "https://fastapi.tiangolo.com/",
+    icon: "FastApi",
+  },
+  python: {
+    name: "Python",
+    value: "python",
+    description:
+      "A high-level programming language known for its simplicity and readability.",
+    link: "https://www.python.org/",
+    icon: "Python",
+  },
+  tanstack: {
+    name: "TanStack",
+    value: "tanstack",
+    description:
+      "A collection of lightweight React libraries for building high-performance web applications.",
+    link: "https://tanstack.com/",
+    icon: "TanStack",
+  },
 };
 
 export const STYLING_TECHS = {
@@ -396,6 +435,14 @@ export const DEPLOYMENT_TECHS = {
     link: "https://git-scm.com/",
     icon: "Git",
   },
+  aws: {
+    name: "AWS",
+    value: "aws",
+    description:
+      "A cloud computing platform for building and deploying web applications and websites.",
+    link: "https://aws.amazon.com/",
+    icon: "Aws",
+  },
 };
 
 const BASICS = "basics";
@@ -405,7 +452,7 @@ const DESIGN_LABEL = "Design and UX/UI Tools";
 const DB = "db";
 const DB_LABEL = "Back End and Database Management";
 const TESTING = "testing";
-const TESTING_LABEL = "Testing and Deployment";
+const TESTING_LABEL = "Testing, Infra and Deployment";
 const LANGUAGES = "languages";
 const LANGUAGES_LABEL = "Languages and AI Essential Tools";
 
@@ -427,11 +474,13 @@ export const CATEGORIES = [
       BASICS_TECHS.nextjs,
       BASICS_TECHS.reactnative,
       BASICS_TECHS.inertiarails,
+      BASICS_TECHS.vue,
+      BASICS_TECHS.astro,
+      BASICS_TECHS.tanstack,
       STYLING_TECHS.tailwind,
       STYLING_TECHS.sass,
       STYLING_TECHS.styledcomponents,
       STYLING_TECHS.emotioncss,
-      STYLING_TECHS.bootstrap,
       STYLING_TECHS.shadcnui,
     ],
   },
@@ -446,10 +495,10 @@ export const CATEGORIES = [
       DB_TECHS.neon,
       DB_TECHS.cloudinary,
       DB_TECHS.supabase,
-      DEPLOYMENT_TECHS.firebase,
       DB_TECHS.rubyonrails,
       BASICS_TECHS.node,
       BASICS_TECHS.express,
+      BASICS_TECHS.fastApi,
     ],
   },
   {
@@ -462,6 +511,7 @@ export const CATEGORIES = [
       BASICS_TECHS.css,
       DB_TECHS.ruby,
       DB_TECHS.sql,
+      BASICS_TECHS.python,
       DEPLOYMENT_TECHS.git,
       BASICS_TECHS.claudecode,
       BASICS_TECHS.copilot,
@@ -480,8 +530,9 @@ export const CATEGORIES = [
       DEPLOYMENT_TECHS.vercel,
       DEPLOYMENT_TECHS.gitlab,
       DEPLOYMENT_TECHS.github,
-      BASICS_TECHS.turborepo,
+      DEPLOYMENT_TECHS.firebase,
       BASICS_TECHS.vite,
+      DEPLOYMENT_TECHS.aws,
     ],
   },
   {
@@ -504,27 +555,27 @@ export const MOBILE_CATEGORIES = [
   {
     label: MOBILE_FRONTEND_FRAMEWORKS,
     value: BASICS,
-    techs: CATEGORIES[0].techs.slice(0, 4),
+    techs: CATEGORIES[0].techs.slice(0, 7),
   },
   {
     label: MOBILE_UI,
     value: `${BASICS}-2`,
-    techs: CATEGORIES[0].techs.slice(4, 12),
+    techs: CATEGORIES[0].techs.slice(7, 12),
   },
   {
     label: MOBILE_DB,
     value: DB,
-    techs: CATEGORIES[1].techs.slice(0, 6),
+    techs: CATEGORIES[1].techs.slice(0, 7),
   },
   {
     label: MOBILE_LANGUAGES,
     value: LANGUAGES,
-    techs: CATEGORIES[2].techs.slice(0, 6),
+    techs: CATEGORIES[2].techs.slice(0, 8),
   },
   {
     label: MOBILE_TOOLS,
     value: `${LANGUAGES}-2`,
-    techs: CATEGORIES[2].techs.slice(6, 12),
+    techs: CATEGORIES[2].techs.slice(8, 12),
   },
   {
     label: MOBILE_TESTING,
@@ -539,11 +590,6 @@ export const MOBILE_CATEGORIES = [
   {
     label: DESIGN_LABEL,
     value: DESIGN,
-    techs: CATEGORIES[4].techs.slice(0, 6),
-  },
-  {
-    label: DESIGN_LABEL,
-    value: `${DESIGN}-2`,
-    techs: CATEGORIES[4].techs.slice(6, 12),
+    techs: CATEGORIES[4].techs.slice(0, 12),
   },
 ];
