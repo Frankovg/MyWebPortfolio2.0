@@ -119,13 +119,13 @@ export const FOOTER_LINKS = {
   legals: [
     {
       name: "Cookies Policy",
-      href: "/cookies-policy"
+      href: "/cookies-policy",
     },
     {
       name: "Privacy Policy",
-      href: "/privacy-policy"
+      href: "/privacy-policy",
     },
-  ]
+  ],
 };
 
 export const FALLBACK_IMG = "/images/project-placeholder.webp";
@@ -151,19 +151,28 @@ export const DATE_FORMAT = {
 export const DATE_LOCATION = "es-ES";
 
 //Forms constants
-export const GOOGLE_DRIVE_IMAGE_URL = "https://drive.google.com/uc?export=view&id=";
-export const CLOUDINARY_IMAGE_URL = "https://res.cloudinary.com/webportfolio/image/upload/";
+export const GOOGLE_DRIVE_IMAGE_URL =
+  "https://drive.google.com/uc?export=view&id=";
+export const CLOUDINARY_IMAGE_URL =
+  "https://res.cloudinary.com/webportfolio/image/upload/";
 export const GOOGLE_DRIVE_FILE_URL = "https://drive.google.com/file/d/";
-export const CLOUDINARY_FILE_URL = "https://res.cloudinary.com/webportfolio/image/upload/";
+export const CLOUDINARY_FILE_URL =
+  "https://res.cloudinary.com/webportfolio/image/upload/";
 
 export const IMAGE_PLACEHOLDER = "Enter Cloudinary image URL";
 export const FILE_PLACEHOLDER = "Enter Cloudinary file URL";
 
 // Supported image URL prefixes
-export const IMAGE_URL_PREFIXES = [GOOGLE_DRIVE_IMAGE_URL, CLOUDINARY_IMAGE_URL] as const;
+export const IMAGE_URL_PREFIXES = [
+  GOOGLE_DRIVE_IMAGE_URL,
+  CLOUDINARY_IMAGE_URL,
+] as const;
 
 // Supported file URL prefixes
-export const FILE_URL_PREFIXES = [GOOGLE_DRIVE_FILE_URL, CLOUDINARY_FILE_URL] as const;
+export const FILE_URL_PREFIXES = [
+  GOOGLE_DRIVE_FILE_URL,
+  CLOUDINARY_FILE_URL,
+] as const;
 
 export const TECH_STACK_DATA = [
   { name: "Adobe Illustrator", value: "ai" },
@@ -215,6 +224,12 @@ export const TECH_STACK_DATA = [
   { name: "Vite", value: "vite" },
   { name: "Vitest", value: "vitest" },
   { name: "V-Ray", value: "vray" },
+  { name: "Vue", value: "vue" },
+  { name: "Astro", value: "astro" },
+  { name: "FastAPI", value: "fastapi" },
+  { name: "Python", value: "python" },
+  { name: "AWS", value: "aws" },
+  { name: "TanStack", value: "tanstack" },
 ];
 
 export const MONTHS = [
@@ -245,4 +260,5 @@ export const LANGUAGE_DICTIONARY = {
   es: "Spanish",
 };
 
-export const ACCOUNT_REQUEST_MESSAGE = "Hello,\n\nI would like to request access to a demo account to explore the platform and its features.\n\nThank you,\nBest regards"
+export const ACCOUNT_REQUEST_MESSAGE =
+  "Hello,\n\nI would like to request access to a demo account to explore the platform and its features.\n\nThank you,\nBest regards";

@@ -48,4 +48,10 @@ export const TECH_STACK_DATA = [
   { name: "Vite", value: "vite" },
   { name: "Vitest", value: "vitest" },
   { name: "V-Ray", value: "vray" },
+  { name: "Vue", value: "vue" },
+  { name: "Astro", value: "astro" },
+  { name: "FastAPI", value: "fastapi" },
+  { name: "Python", value: "python" },
+  { name: "AWS", value: "aws" },
+  { name: "TanStack", value: "tanstack" },
 ];
